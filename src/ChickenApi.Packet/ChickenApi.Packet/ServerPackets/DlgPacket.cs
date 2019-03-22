@@ -3,13 +3,13 @@
     [PacketHeader("dlg")]
     public class DlgPacket : IPacket
     {
-        [PacketIndex(0, IsReturnPacket = true)]
+        [PacketIndex(0)]
         public IPacket YesPacket { get; set; }
 
-        [PacketIndex(1, IsReturnPacket = true)]
+        [PacketIndex(1)]
         public IPacket NoPacket { get; set; }
 
-        [PacketIndex(2, SerializeToEnd = true)]
+        [PacketIndex(2)]
         public string Question { get; set; }
     }
 }

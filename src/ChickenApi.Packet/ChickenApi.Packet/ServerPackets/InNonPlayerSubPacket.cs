@@ -4,7 +4,7 @@ namespace ChickenApi.Packet.ServerPackets
 {
     public class InNonPlayerSubPacket : IPacket
     {
-        [PacketIndex(1, SpecialSeparator = " ")]
+        [PacketIndex(1)]
         public InAliveSubPacket InAliveSubPacket { get; set; }
 
         [PacketIndex(2)]

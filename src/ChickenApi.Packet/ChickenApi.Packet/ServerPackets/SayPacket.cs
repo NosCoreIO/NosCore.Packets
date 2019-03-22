@@ -14,7 +14,7 @@ namespace ChickenApi.Packet.ServerPackets
         [PacketIndex(2)]
         public SayColorType Type { get; set; }
 
-        [PacketIndex(3, SerializeToEnd = true)]
+        [PacketIndex(3)]
         public string Message { get; set; }
     }
 }

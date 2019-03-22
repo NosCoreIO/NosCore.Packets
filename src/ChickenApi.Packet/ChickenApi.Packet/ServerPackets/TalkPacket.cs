@@ -6,7 +6,7 @@
         [PacketIndex(0)]
         public long CharacterId { get; set; }
 
-        [PacketIndex(1, SerializeToEnd = true)]
+        [PacketIndex(1)]
         public string Message { get; set; }
     }
 }

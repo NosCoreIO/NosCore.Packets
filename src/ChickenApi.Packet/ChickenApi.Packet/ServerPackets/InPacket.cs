@@ -26,13 +26,13 @@ namespace ChickenApi.Packet.ServerPackets
         [PacketIndex(6, IsOptional = true)]
         public byte? Direction { get; set; }
 
-        [PacketIndex(7, IsOptional = true, SpecialSeparator = " ")]
+        [PacketIndex(7, IsOptional = true)]
         public InCharacterSubPacket InCharacterSubPacket { get; set; }
 
-        [PacketIndex(8, IsOptional = true, SpecialSeparator = " ")]
+        [PacketIndex(8, IsOptional = true)]
         public InItemSubPacket InItemSubPacket { get; set; }
 
-        [PacketIndex(9, IsOptional = true, SpecialSeparator = " ")]
+        [PacketIndex(9, IsOptional = true)]
         public InNonPlayerSubPacket InNonPlayerSubPacket { get; set; }
     }
 }

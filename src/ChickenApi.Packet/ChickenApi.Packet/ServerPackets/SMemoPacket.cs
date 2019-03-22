@@ -8,7 +8,7 @@ namespace ChickenApi.Packet.ServerPackets
         [PacketIndex(0)]
         public SMemoType Type { get; set; }
 
-        [PacketIndex(1, SerializeToEnd = true)]
+        [PacketIndex(1)]
         public string Message { get; set; }
     }
 }

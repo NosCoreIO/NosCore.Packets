@@ -3,7 +3,7 @@
     [PacketHeader("info")]
     public class InfoPacket : IPacket
     {
-        [PacketIndex(0, false, false)]
+        [PacketIndex(0)]
         public string Message { get; set; }
     }
 }
