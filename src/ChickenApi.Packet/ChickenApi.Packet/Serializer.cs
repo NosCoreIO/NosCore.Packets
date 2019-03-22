@@ -10,24 +10,18 @@ namespace ChickenApi.Packet
 {
     public class Serializer : ISerializer
     {
-        private Expression StringSerializer(Expression exp, bool isLastIndex)
+        private Expression StringSerializer(Expression exp, bool isLastIndex, bool isOptional)
         {
-            Expression expressionReplace = exp;
-            if (!isLastIndex)
-            {
-                expressionReplace = Expression.Call(expressionReplace,
-                    typeof(string).GetMethod("Replace", new[] { typeof(char), typeof(char) }),
-                    Expression.Constant(' '),
-                    Expression.Constant('^')
-                );
-
-            }
             return Expression.Condition(
-                Expression.Equal(expressionReplace, Expression.Constant(null, typeof(object))),
-                Expression.Constant(" -", typeof(object)),
+                Expression.Equal(exp, Expression.Constant(null, typeof(object))),
+                Expression.Constant(isOptional ? string.Empty : " -", typeof(object)),
                 Expression.Convert(Expression.Call(
                     typeof(string).GetMethod("Concat", new[] { typeof(object), typeof(object) }),
-                    Expression.Convert(expressionReplace, typeof(object)),
+                    Expression.Convert(isLastIndex ? exp : Expression.Call(exp,
+                        typeof(string).GetMethod("Replace", new[] { typeof(char), typeof(char) }),
+                        Expression.Constant(' '),
+                        Expression.Constant('^')
+                    ), typeof(object)),
                     Expression.Constant(' ', typeof(object))
                 ), typeof(object))
             );
@@ -37,7 +31,7 @@ namespace ChickenApi.Packet
         {
             return Expression.Condition(
                 Expression.Equal(exp, Expression.Constant(null, typeof(object))),
-                Expression.Constant(isOptional ? " -1" : string.Empty, typeof(object)),
+                Expression.Constant(isOptional ? string.Empty : " -1", typeof(object)),
                 Expression.Convert(Expression.Call(
                     typeof(string).GetMethod("Concat", new[] { typeof(object), typeof(object) }),
                     Expression.Convert(exp, typeof(object)),
@@ -89,7 +83,7 @@ namespace ChickenApi.Packet
 
                 if (prop.PropertyType == typeof(string)) //handle string
                 {
-                    specificTypeExpression = StringSerializer(specificTypeExpression, indexAttr.Index == maxIndex);
+                    specificTypeExpression = StringSerializer(specificTypeExpression, indexAttr.Index == maxIndex, indexAttr.IsOptional);
                 }
                 else if (Nullable.GetUnderlyingType(prop.PropertyType) != null) //handle null except string
                 {
