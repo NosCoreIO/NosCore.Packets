@@ -1,4 +1,7 @@
-﻿namespace ChickenApi.Packet.ClientPackets
+﻿using ChickenApi.Packet.Attributes;
+using ChickenApi.Packet.Interfaces;
+
+namespace ChickenApi.Packet.ClientPackets
 {
     [PacketHeader("f_repos")]
     public class FReposPacket : IPacket

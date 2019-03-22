@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using ChickenApi.Packet.Attributes;
+using ChickenApi.Packet.Interfaces;
 
 namespace ChickenApi.Packet.ClientPackets
 {

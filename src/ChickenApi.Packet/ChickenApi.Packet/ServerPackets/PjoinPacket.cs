@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using ChickenApi.Packet.Attributes;
 using ChickenApi.Packet.Enumerations;
+using ChickenApi.Packet.Interfaces;
 
 namespace ChickenApi.Packet.ServerPackets
 {

@@ -1,4 +1,7 @@
-﻿namespace ChickenApi.Packet.ServerPackets
+﻿using ChickenApi.Packet.Attributes;
+using ChickenApi.Packet.Interfaces;
+
+namespace ChickenApi.Packet.ServerPackets
 {
     [PacketHeader("finfo_sub_packets")]
     public class FinfoSubPackets : IPacket

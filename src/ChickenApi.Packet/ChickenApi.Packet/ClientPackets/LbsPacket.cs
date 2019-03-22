@@ -1,4 +1,7 @@
-﻿namespace ChickenApi.Packet.ClientPackets
+﻿using ChickenApi.Packet.Attributes;
+using ChickenApi.Packet.Interfaces;
+
+namespace ChickenApi.Packet.ClientPackets
 {
     [PacketHeader("lbs")]
     public class LbsPacket : IPacket

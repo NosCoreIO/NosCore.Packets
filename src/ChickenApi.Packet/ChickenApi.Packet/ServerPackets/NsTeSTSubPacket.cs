@@ -1,4 +1,7 @@
-﻿namespace ChickenApi.Packet.ServerPackets
+﻿using ChickenApi.Packet.Attributes;
+using ChickenApi.Packet.Interfaces;
+
+namespace ChickenApi.Packet.ServerPackets
 {
     [PacketHeader("NsTeST")]
     public class NsTeStSubPacket : IPacket
