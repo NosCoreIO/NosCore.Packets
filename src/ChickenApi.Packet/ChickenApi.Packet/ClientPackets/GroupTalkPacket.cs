@@ -3,7 +3,7 @@
     [PacketHeader(";")]
     public class GroupTalkPacket : IPacket
     {
-        [PacketIndex(0, SerializeToEnd = true)]
+        [PacketIndex(0)]
         public string Message { get; set; }
     }
 }

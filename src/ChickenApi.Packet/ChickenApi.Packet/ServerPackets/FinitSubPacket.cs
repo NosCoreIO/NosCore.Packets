@@ -13,7 +13,7 @@ namespace ChickenApi.Packet.ServerPackets
         [PacketIndex(2)]
         public bool IsOnline { get; set; }
 
-        [PacketIndex(3, SerializeToEnd = true)]
+        [PacketIndex(3)]
         public string CharacterName { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace ChickenApi.Packet.ServerPackets
         [PacketIndex(3)]
         public string EntityName { get; set; }
 
-        [PacketIndex(4, SerializeToEnd = true)]
+        [PacketIndex(4)]
         public string Message { get; set; }
     }
 }

@@ -9,7 +9,7 @@
         [PacketIndex(1)]
         public byte Type { get; set; }
 
-        [PacketIndex(2, IsReturnPacket = true)]
+        [PacketIndex(2)]
         public IPacket Packet { get; set; }
     }
 }

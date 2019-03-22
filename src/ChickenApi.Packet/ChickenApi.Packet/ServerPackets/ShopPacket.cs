@@ -20,7 +20,7 @@ namespace ChickenApi.Packet.ServerPackets
         [PacketIndex(4, IsOptional = true)]
         public byte? ShopType { get; set; }
 
-        [PacketIndex(5, IsOptional = true, SerializeToEnd = true)]
+        [PacketIndex(5, IsOptional = true)]
         public string Name { get; set; }
     }
 }
