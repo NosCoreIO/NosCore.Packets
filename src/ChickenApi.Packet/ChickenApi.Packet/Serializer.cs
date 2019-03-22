@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
 using ChickenApi.Packet.Attributes;
 using ChickenApi.Packet.Interfaces;
 
@@ -21,21 +20,29 @@ namespace ChickenApi.Packet
                     Expression.Constant(' '),
                     Expression.Constant('^')
                 );
-                
+
             }
             return Expression.Condition(
                 Expression.Equal(expressionReplace, Expression.Constant(null, typeof(object))),
-                Expression.Constant('-', typeof(object)),
-                Expression.Convert(expressionReplace, typeof(object))
+                Expression.Constant(" -", typeof(object)),
+                Expression.Convert(Expression.Call(
+                    typeof(string).GetMethod("Concat", new[] { typeof(object), typeof(object) }),
+                    Expression.Convert(expressionReplace, typeof(object)),
+                    Expression.Constant(' ', typeof(object))
+                ), typeof(object))
             );
         }
 
-        private Expression NullableSerializer(Expression exp)
+        private Expression NullableSerializer(Expression exp, bool isOptional)
         {
             return Expression.Condition(
                 Expression.Equal(exp, Expression.Constant(null, typeof(object))),
-                Expression.Constant(-1, typeof(object)),
-                Expression.Convert(exp, typeof(object))
+                Expression.Constant(isOptional ? " -1" : string.Empty, typeof(object)),
+                Expression.Convert(Expression.Call(
+                    typeof(string).GetMethod("Concat", new[] { typeof(object), typeof(object) }),
+                    Expression.Convert(exp, typeof(object)),
+                    Expression.Constant(' ', typeof(object))
+                ), typeof(object))
             );
         }
 
@@ -47,8 +54,8 @@ namespace ChickenApi.Packet
                 Expression.Convert(exp, typeof(object)),
                 Expression.Condition(
                     Expression.Equal(expbool, Expression.Constant(false, typeof(bool?))),
-                    Expression.Constant(0, typeof(object)),
-                    Expression.Constant(1, typeof(object))
+                    Expression.Constant(" 0", typeof(object)),
+                    Expression.Constant(" 1", typeof(object))
                 ));
         }
 
@@ -65,11 +72,11 @@ namespace ChickenApi.Packet
 
             var properties = typeof(T).GetProperties()
                 .Where(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().Any())
-                .OrderBy(x=> x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First().Index).ToList();
+                .OrderBy(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First().Index).ToList();
             var maxIndex = properties.LastOrDefault()?.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First()
                 .Index;
             ParameterExpression param = Expression.Parameter(typeof(T));
-            Expression serializedExp = Expression.Constant(header);
+            Expression serializedExp = Expression.Constant($"{header} ");
             foreach (var prop in properties)
             {
                 var indexAttr = prop.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First();
@@ -86,14 +93,8 @@ namespace ChickenApi.Packet
                 }
                 else if (Nullable.GetUnderlyingType(prop.PropertyType) != null) //handle null except string
                 {
-                    specificTypeExpression = NullableSerializer(specificTypeExpression);
+                    specificTypeExpression = NullableSerializer(specificTypeExpression, indexAttr.IsOptional);
                 }
-
-                serializedExp = Expression.Call(
-                    typeof(string).GetMethod("Concat", new[] { typeof(object), typeof(object) }),
-                    Expression.Convert(serializedExp, typeof(object)),
-                    Expression.Constant(' ', typeof(object))
-                );
 
                 serializedExp = Expression.Call(
                     typeof(string).GetMethod("Concat", new[] { typeof(object), typeof(object) }),
