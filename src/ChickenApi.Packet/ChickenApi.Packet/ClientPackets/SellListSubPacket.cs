@@ -1,6 +1,5 @@
 ﻿namespace ChickenApi.Packet.ClientPackets
 {
-    [PacketHeader("sell_list_subpacket")]
     public class SellListSubPacket : IPacket
     {
         [PacketIndex(0)]

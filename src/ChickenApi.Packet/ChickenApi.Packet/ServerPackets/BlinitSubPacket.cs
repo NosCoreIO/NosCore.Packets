@@ -1,6 +1,5 @@
 ﻿namespace ChickenApi.Packet.ServerPackets
 {
-    [PacketHeader("blinit_subpacket")]
     public class BlinitSubPacket : IPacket
     {
         [PacketIndex(0)]

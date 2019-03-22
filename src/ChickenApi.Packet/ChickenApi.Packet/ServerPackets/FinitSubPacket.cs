@@ -2,7 +2,6 @@
 
 namespace ChickenApi.Packet.ServerPackets
 {
-    [PacketHeader("finit_subpacket")]
     public class FinitSubPacket : IPacket
     {
         [PacketIndex(0)]

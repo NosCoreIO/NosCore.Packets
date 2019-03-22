@@ -2,7 +2,6 @@
 
 namespace ChickenApi.Packet.ServerPackets
 {
-    [PacketHeader("in_non_player_subpacket")]
     public class InNonPlayerSubPacket : IPacket
     {
         [PacketIndex(1, SpecialSeparator = " ")]
