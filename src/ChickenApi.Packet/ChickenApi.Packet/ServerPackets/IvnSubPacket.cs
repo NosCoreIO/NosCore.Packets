@@ -1,6 +1,5 @@
 ﻿namespace ChickenApi.Packet.ServerPackets
 {
-    [PacketHeader("ivn_subpacket")]
     public class IvnSubPacket : IPacket
     {
         [PacketIndex(0)]

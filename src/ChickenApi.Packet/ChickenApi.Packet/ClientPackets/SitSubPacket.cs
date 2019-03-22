@@ -2,7 +2,6 @@
 
 namespace ChickenApi.Packet.ClientPackets
 {
-    [PacketHeader("sit_sub_packet")]
     public class SitSubPacket : IPacket
     {
         [PacketIndex(0)]

@@ -1,6 +1,5 @@
 ﻿namespace ChickenApi.Packet.ServerPackets
 {
-    [PacketHeader("in_item_subpacket")]
     public class InItemSubPacket : IPacket
     {
         [PacketIndex(0)]

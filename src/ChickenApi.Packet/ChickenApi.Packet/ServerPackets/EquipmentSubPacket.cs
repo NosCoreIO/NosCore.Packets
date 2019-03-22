@@ -2,7 +2,6 @@
 
 namespace ChickenApi.Packet.ServerPackets
 {
-    [PacketHeader("equip_subpacket")]
     public class EquipmentSubPacket : IPacket
     {
         [PacketIndex(0)]

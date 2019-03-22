@@ -3,7 +3,6 @@ using ChickenApi.Packet.Enumerations;
 
 namespace ChickenApi.Packet.ClientPackets
 {
-    [PacketHeader("m_shop_subpacket")]
     public class MShopItemSubPacket : IPacket
     {
         [PacketIndex(0)]

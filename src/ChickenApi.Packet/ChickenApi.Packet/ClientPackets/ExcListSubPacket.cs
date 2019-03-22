@@ -3,7 +3,6 @@ using ChickenApi.Packet.Enumerations;
 
 namespace ChickenApi.Packet.ClientPackets
 {
-    [PacketHeader("exc_list_sub_packet")]
     public class ExcListSubPacket : IPacket
     {
         [PacketIndex(0)]
