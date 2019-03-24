@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ChickenApi.Packet.Enumerations
+﻿namespace ChickenAPI.Packets.Enumerations
 {
     public enum MessageType : byte
     {

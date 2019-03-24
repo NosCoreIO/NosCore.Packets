@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using ChickenApi.Packet.Attributes;
-using ChickenApi.Packet.Interfaces;
+using ChickenAPI.Packets.Attributes;
+using ChickenAPI.Packets.Interfaces;
 
-namespace ChickenApi.Packet
+namespace ChickenAPI.Packets
 {
     public class Serializer : ISerializer
     {
+        private const string INJECTION_KEY = "IPacketToInject";
         private Expression DefaultSerializer(Expression specificTypeExpression, string splitter)
         {
             return Expression.Call(
@@ -28,10 +28,10 @@ namespace ChickenApi.Packet
                 Expression.Convert(Expression.Call(
                     typeof(string).GetMethod("Concat", new[] { typeof(object), typeof(object) }),
                     Expression.Constant(splitter, typeof(object)),
-                    Expression.Convert(isLastIndex ? exp : Expression.Call(exp,
-                        typeof(string).GetMethod("Replace", new[] { typeof(char), typeof(char) }),
-                        Expression.Constant(splitter),
-                        Expression.Constant('^')
+                    Expression.Convert(isLastIndex || string.IsNullOrEmpty(splitter) ? exp : Expression.Call(exp,
+                        typeof(string).GetMethod("Replace", new[] { typeof(string), typeof(string) }),
+                        Expression.Constant(splitter, typeof(string)),
+                        Expression.Constant("^", typeof(string))
                     ), typeof(object))
                 ), typeof(object))
             );
@@ -76,7 +76,7 @@ namespace ChickenApi.Packet
                 ));
         }
 
-        private Expression ListSerializer(Expression specificTypeExpression, PacketIndexAttribute indexAttr, Type type, string packetSplitter, string propertySplitter)
+        private Expression ListSerializer(bool injectedPacket, Expression specificTypeExpression, PacketIndexAttribute indexAttr, Type type, string packetSplitter, string propertySplitter)
         {
             var param = Expression.Parameter(type.GenericTypeArguments[0]);
             var listJoin = Expression.Convert(Expression.Call(
@@ -88,9 +88,9 @@ namespace ChickenApi.Packet
                     new[] { type.GenericTypeArguments[0], typeof(string) },
                     specificTypeExpression,
                     Expression.Lambda(
-                        Expression.Convert(typeof(IPacket).IsAssignableFrom(type.GenericTypeArguments[0]) ? 
-                            IPacketSerializer(param, type.GenericTypeArguments[0], 0, propertySplitter, "") :
-                            PropertySerializer(indexAttr, type.GenericTypeArguments[0], param, 0, ""), typeof(string)), param)
+                        Expression.Convert(typeof(IPacket).IsAssignableFrom(type.GenericTypeArguments[0]) ?
+                            IPacketSerializer(injectedPacket, param, type.GenericTypeArguments[0], 0, propertySplitter, "") :
+                            PropertySerializer(injectedPacket, indexAttr, type.GenericTypeArguments[0], param, 0, ""), typeof(string)), param)
                 )), typeof(object));
             return Expression.Condition(
                 Expression.Equal(specificTypeExpression, Expression.Constant(null, typeof(object))),
@@ -99,26 +99,28 @@ namespace ChickenApi.Packet
             );
         }
 
-        private Expression IPacketSerializer(Expression specificTypeExpression, Type prop, int maxIndex, string propertySplitter, string discriminator)
+        private Expression IPacketSerializer(bool injectedPacket, Expression specificTypeExpression, Type prop, int maxIndex, string propertySplitter, string discriminator)
         {
             var properties = prop.GetProperties()
                 .Where(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().Any())
                 .OrderBy(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First().Index).ToList();
-            Expression propExp = Expression.Constant(discriminator);
+            Expression propExp = Expression.Constant(injectedPacket ? $"#{discriminator}" : discriminator);
 
             int i = 0;
             foreach (var property in properties)
             {
+                var index = property.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First();
                 var exp = Expression.Convert(
-                    PropertySerializer(property.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First(), property.PropertyType, Expression.Property(specificTypeExpression, property.Name), maxIndex,
-                        null), typeof(object));
+                    PropertySerializer(injectedPacket, index, property.PropertyType, Expression.Property(specificTypeExpression, property.Name), maxIndex,
+                        injectedPacket ? "^" : index.SpecialSeparator), typeof(object));
 
+                var removesplitter = i == 0 && string.IsNullOrEmpty(discriminator) && index.SpecialSeparator == null;
                 var trimnull = Expression.Condition(
                     Expression.Equal(exp, Expression.Constant(null, typeof(object))),
                     Expression.Constant(string.Empty),
                     Expression.Call(
                         typeof(string).GetMethod("Concat", new[] { typeof(object), typeof(object) }),
-                        Expression.Constant(i == 0 && string.IsNullOrEmpty(discriminator) ? string.Empty : propertySplitter, typeof(object)),
+                        Expression.Constant(removesplitter || injectedPacket || index.SpecialSeparator != null && i != 0 ? string.Empty : propertySplitter, typeof(object)),
                         exp
                 ));
 
@@ -138,7 +140,7 @@ namespace ChickenApi.Packet
 
         private Dictionary<string, Delegate> packetSerializerDictionary = new Dictionary<string, Delegate>();
 
-        private LambdaExpression PacketSerializerExpression<T>() where T : IPacket
+        private LambdaExpression PacketSerializerExpression<T>(bool injectedPacket) where T : IPacket
         {
             var header = typeof(T).GetCustomAttribute<PacketHeaderAttribute>()?.Identification;
 
@@ -153,10 +155,10 @@ namespace ChickenApi.Packet
             var maxIndex = properties.LastOrDefault()?.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First()
                 .Index ?? 0;
             ParameterExpression param = Expression.Parameter(typeof(T));
-            return Expression.Lambda(Expression.Convert(IPacketSerializer(param, typeof(T), maxIndex, " ", header), typeof(object)), param);
+            return Expression.Lambda(Expression.Convert(IPacketSerializer(injectedPacket, param, typeof(T), maxIndex, " ", header), typeof(object)), param);
         }
 
-        private Expression PropertySerializer(PacketIndexAttribute indexAttr, Type type, Expression specificTypeExpression, int maxIndex, string propertySplitter)
+        private Expression PropertySerializer(bool injectedPacket, PacketIndexAttribute indexAttr, Type type, Expression specificTypeExpression, int maxIndex, string propertySplitter)
         {
             var useCustomSerializer = false;
             switch (type)
@@ -173,7 +175,7 @@ namespace ChickenApi.Packet
                     break;
                 //handle list
                 case var t when (t.IsGenericType && t.GetGenericTypeDefinition().IsAssignableFrom(typeof(List<>))):
-                    specificTypeExpression = ListSerializer(specificTypeExpression, indexAttr, t, " ", typeof(IPacket).IsAssignableFrom(t.GenericTypeArguments[0]) ? "." : " ");
+                    specificTypeExpression = ListSerializer(injectedPacket, specificTypeExpression, indexAttr, t, " ", typeof(IPacket).IsAssignableFrom(t.GenericTypeArguments[0]) ? indexAttr.SpecialSeparator ?? "." : " ");
                     useCustomSerializer = true;
                     break;
                 //handle string
@@ -181,16 +183,20 @@ namespace ChickenApi.Packet
                     specificTypeExpression = StringSerializer(specificTypeExpression, indexAttr.Index == maxIndex, indexAttr.IsOptional, propertySplitter);
                     useCustomSerializer = true;
                     break;
-                //IPacket
-                case var t when typeof(IPacket).IsAssignableFrom(t):
-                    var header = t.GetCustomAttribute<PacketHeaderAttribute>()?.Identification;
-                    propertySplitter = ".";
+                //IPacket declared type
+                case var t when typeof(IPacket).IsAssignableFrom(t) && t != typeof(IPacket):
+                    var header = specificTypeExpression.Type.GetCustomAttribute<PacketHeaderAttribute>()?.Identification;
+                    propertySplitter = indexAttr.SpecialSeparator ?? ".";
                     if (!string.IsNullOrEmpty(header))
                     {
                         header = $"#{header}";
                         propertySplitter = "^";
                     }
-                    specificTypeExpression = IPacketSerializer(specificTypeExpression, t, maxIndex, propertySplitter, header);
+                    specificTypeExpression = IPacketSerializer(injectedPacket, specificTypeExpression, t, maxIndex, propertySplitter, header);
+                    useCustomSerializer = true;
+                    break;
+                case var t when t == typeof(IPacket):
+                    specificTypeExpression = Expression.Constant(INJECTION_KEY, typeof(string));
                     useCustomSerializer = true;
                     break;
             }
@@ -221,14 +227,33 @@ namespace ChickenApi.Packet
 
         public void Initialize<T>() where T : IPacket
         {
-            var packetSerializerExpression = PacketSerializerExpression<T>();
-            packetSerializerDictionary.Add(typeof(T).Name, packetSerializerExpression.Compile());
+            var packetSerializerExpressionFalse = PacketSerializerExpression<T>(false);
+            var packetSerializerExpressionTrue = PacketSerializerExpression<T>(true);
+            packetSerializerDictionary.Add($"{typeof(T).Name}False", packetSerializerExpressionFalse.Compile());
+            packetSerializerDictionary.Add($"{typeof(T).Name}True", packetSerializerExpressionTrue.Compile());
         }
 
         public string Serialize(IPacket packet)
         {
-            var deg = packetSerializerDictionary[packet.GetType().Name];
-            return (string)deg.DynamicInvoke(new[] { packet });
+            var realType = packet.GetType();
+            var deg = packetSerializerDictionary[$"{packet.GetType().Name}False"];
+            var fullString = (string)deg.DynamicInvoke(new[] { packet });
+            if (fullString.Contains(INJECTION_KEY))
+            {
+                //unfortunately some packets like DLG, DELAY can handle multiple type packet we can't build the full serializer at init, instead we inject serializer with reflection
+                foreach (var prop in realType.GetProperties().Where(p => p.PropertyType == typeof(IPacket)))
+                {
+                    int Place = fullString.IndexOf(INJECTION_KEY);
+                    var value = realType.GetProperty(prop.Name).GetValue(packet, null);
+                    fullString = fullString
+                                .Remove(Place, INJECTION_KEY.Length)
+                                .Insert(Place, (string)packetSerializerDictionary[$"{value.GetType().Name}True"].DynamicInvoke(new[]
+                                {
+                                    value
+                                }));
+                }
+            }
+            return fullString;
         }
 
         public string Serialize(IEnumerable<IPacket> packets)

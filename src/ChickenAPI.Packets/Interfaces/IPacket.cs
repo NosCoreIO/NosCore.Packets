@@ -1,4 +1,4 @@
-﻿namespace ChickenApi.Packet.Interfaces
+﻿namespace ChickenAPI.Packets.Interfaces
 {
     public interface IPacket
     {
