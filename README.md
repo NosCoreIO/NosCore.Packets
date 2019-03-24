@@ -33,9 +33,9 @@ This is what we know so far about packet serialization of nostale
 
 
 ### PacketIndex serialization by condition
-| Condition                                         | IPacket splitter | Item splitter | Property splitter | Discriminator    |
-|---------------------------------------------------|------------------|---------------|-------------------|------------------|
-| contain IPacket properties with a PacketHeader    | space            | space         | ^                 | #                |
-| contain IPacket properties without a PacketHeader | space            | space         | space             | no discriminator |
-| contain a Host property                           | :                | true/false    | -1                | no discriminator |
-| contain a List of IPacket the property            | space            | space         | .                 | no discriminator |
+| Condition                                         | IPacket splitter | Property splitter | Discriminator    |
+|---------------------------------------------------|------------------|-------------------|------------------|
+| contain IPacket properties with a PacketHeader    | space            | ^                 | #                |
+| contain IPacket properties without a PacketHeader | space            | space             | no discriminator |
+| contain a Host property                           | :                | -1                | no discriminator |
+| contain a List of IPacket the property            | space            | .                 | no discriminator |
