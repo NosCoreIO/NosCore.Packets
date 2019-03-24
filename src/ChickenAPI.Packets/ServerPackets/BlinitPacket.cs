@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using ChickenApi.Packet.Attributes;
-using ChickenApi.Packet.Interfaces;
+using ChickenAPI.Packets.Attributes;
+using ChickenAPI.Packets.Interfaces;
 
-namespace ChickenApi.Packet.ServerPackets
+namespace ChickenAPI.Packets.ServerPackets
 {
     [PacketHeader("blinit")]
     public class BlinitPacket : IPacket

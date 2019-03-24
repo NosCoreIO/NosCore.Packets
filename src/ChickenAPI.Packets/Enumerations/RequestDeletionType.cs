@@ -1,4 +1,4 @@
-﻿namespace ChickenApi.Packet.Enumerations
+﻿namespace ChickenAPI.Packets.Enumerations
 {
     public enum RequestDeletionType : byte
     {

@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using ChickenApi.Packet.Attributes;
-using ChickenApi.Packet.Enumerations;
-using ChickenApi.Packet.Interfaces;
+using ChickenAPI.Packets.Attributes;
+using ChickenAPI.Packets.Enumerations;
+using ChickenAPI.Packets.Interfaces;
 
-namespace ChickenApi.Packet.ClientPackets
+namespace ChickenAPI.Packets.ClientPackets
 {
     [PacketHeader("req_exc")]
     public class ExchangeRequestPacket : IPacket

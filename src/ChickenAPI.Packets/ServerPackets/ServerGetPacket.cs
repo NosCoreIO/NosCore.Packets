@@ -1,8 +1,8 @@
-﻿using ChickenApi.Packet.Attributes;
-using ChickenApi.Packet.Enumerations;
-using ChickenApi.Packet.Interfaces;
+﻿using ChickenAPI.Packets.Attributes;
+using ChickenAPI.Packets.Enumerations;
+using ChickenAPI.Packets.Interfaces;
 
-namespace ChickenApi.Packet.ServerPackets
+namespace ChickenAPI.Packets.ServerPackets
 {
     [PacketHeader("get")]
     public class ServerGetPacket : IPacket

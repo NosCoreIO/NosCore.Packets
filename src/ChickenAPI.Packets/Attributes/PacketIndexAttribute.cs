@@ -1,12 +1,13 @@
 ﻿using System;
 
-namespace ChickenApi.Packet.Attributes
+namespace ChickenAPI.Packets.Attributes
 {
     [AttributeUsage(AttributeTargets.All)]
     public class PacketIndexAttribute : Attribute
     {
-        public PacketIndexAttribute(int index) : this(index, ".")
+        public PacketIndexAttribute(int index)
         {
+            Index = index;
         }
 
         public PacketIndexAttribute(int index, string specialSeparator)

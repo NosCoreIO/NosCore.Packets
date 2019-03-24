@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ChickenApi.Packet.Attributes
+namespace ChickenAPI.Packets.Attributes
 {
     [AttributeUsage(AttributeTargets.All)]
     public class PacketHeaderAttribute : Attribute

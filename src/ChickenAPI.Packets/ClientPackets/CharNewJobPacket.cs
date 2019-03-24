@@ -1,6 +1,6 @@
-﻿using ChickenApi.Packet.Attributes;
+﻿using ChickenAPI.Packets.Attributes;
 
-namespace ChickenApi.Packet.ClientPackets
+namespace ChickenAPI.Packets.ClientPackets
 {
     [PacketHeader("Char_NEW_JOB", AnonymousAccess = true)]
     public class CharNewJobPacket : CharNewPacket
