@@ -21,7 +21,7 @@ namespace ChickenAPI.Packets.ServerPackets
         [PacketIndex(4)]
         public CharacterClassType Class { get; set; }
 
-        [PacketIndex(5)]
+        [PacketIndex(5, SpecialSeparator = ".")]
         public InEquipmentSubPacket Equipment { get; set; }
 
         [PacketIndex(6, SpecialSeparator = " ")]
