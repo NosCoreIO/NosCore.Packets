@@ -3,7 +3,6 @@ using ChickenAPI.Packets.Interfaces;
 
 namespace ChickenAPI.Packets.ServerPackets
 {
-    [PacketHeader("upgrade_rare_sub_packet")]
     public class UpgradeRareSubPacket : IPacket
     {
         [PacketIndex(0)]
