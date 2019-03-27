@@ -35,8 +35,23 @@ jobs:
             name: Build ChickenAPI package (nuget)
             command : | 
                 dotnet build -c Release
-                dotnet pack -c Release -o nupkgs -v m
-                dotnet nuget push src/ChickenAPI.Packets/nupkgs/ChickenAPI.Packets.$CIRCLE_TAG.nupkg -k $NUGET_API_KEY -s "https://api.nuget.org/v3/index.json"
+                dotnet pack -c Release -o /tmp/nupkgs -v m
+                dotnet nuget push /tmp/nupkgs/ChickenAPI.Packets.${CIRCLE_TAG}.nupkg -k ${NUGET_API_KEY} -s "https://api.nuget.org/v3/index.json"
+      - store_artifacts:
+            path: /tmp/nupkgs
+  release_github:
+    docker:
+      - image: circleci/golang:1.12
+    steps:
+      - attach_workspace:
+          at: /tmp/nupkgs
+      - run:
+          name: "Publish Release on GitHub"
+          command: |
+            go get github.com/tcnksm/ghr
+            VERSION=${CIRCLE_CI_TAG}
+            ARTIFACTS_PATH=/tmp/nupkgs
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ${ARTIFACTS_PATH}
 workflows:
   version: 2
   build_and_test:
@@ -48,11 +63,28 @@ workflows:
       - test_code_quality:
           requires:
             - build
+  build_test_and_release:
+    jobs:
+      - build:
+            filters:
+                tags:
+                    only: /^((\d+\.)+\d+)/
+                branches:
+                    only: master
       - release_nuget_packages:
           requires:
             - build
-          filters:  # using regex filters requires the entire branch to match
+          filters:
             tags:
-              only: /^\A((\d+\.)+\d+)\z/
+              only: /^((\d+\.)+\d+)/
+            branches:
+              ignore: /.*/
+      - release_github:
+          requires:
+            - build
+            - release_nuget_packages
+          filters:
+            tags:
+              only: /^((\d+\.)+\d+)/
             branches:
               ignore: /.*/
