@@ -2,6 +2,7 @@
 
 <center><img src="docs/_media/logo.png"></img>
 
+[![NuGet](https://img.shields.io/nuget/v/ChickenAPI.Packets.svg?style=flat-square)](https://www.nuget.org/packages/ChickenAPI.Packets/)
 [![CircleCI](https://circleci.com/gh/ChickenAPI/ChickenAPI.Packets/tree/master.svg?style=svg)](https://circleci.com/gh/ChickenAPI/ChickenAPI.Packets/tree/master)
 </center>
 
