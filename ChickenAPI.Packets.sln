@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28527.54
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChickenAPI.Packets", "src\ChickenAPI.Packets\ChickenAPI.Packets.csproj", "{8DC7839A-EB02-4E71-95DC-2D2BD9651E19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChickenAPI.Packets", "src\ChickenAPI.Packets\ChickenAPI.Packets.csproj", "{8DC7839A-EB02-4E71-95DC-2D2BD9651E19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChickenAPI.Packets.Tests", "test\ChickenAPI.Packets.Tests\ChickenAPI.Packets.Tests.csproj", "{BEEC67B8-A63B-43DE-87A5-73341AEFD62F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChickenAPI.Packets.Tests", "test\ChickenAPI.Packets.Tests\ChickenAPI.Packets.Tests.csproj", "{BEEC67B8-A63B-43DE-87A5-73341AEFD62F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChickenAPI.Packets.Benchmark", "test\ChickenAPI.Packets.Benchmark\ChickenAPI.Packets.Benchmark.csproj", "{1906792E-B5D5-4303-8962-8A6788D865BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{BEEC67B8-A63B-43DE-87A5-73341AEFD62F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEEC67B8-A63B-43DE-87A5-73341AEFD62F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEEC67B8-A63B-43DE-87A5-73341AEFD62F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1906792E-B5D5-4303-8962-8A6788D865BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1906792E-B5D5-4303-8962-8A6788D865BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1906792E-B5D5-4303-8962-8A6788D865BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1906792E-B5D5-4303-8962-8A6788D865BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
