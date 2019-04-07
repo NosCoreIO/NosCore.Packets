@@ -1,9 +1,19 @@
 ﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
 using ChickenAPI.Packets.ClientPackets;
+using ChickenAPI.Packets.ClientPackets.Chat;
+using ChickenAPI.Packets.ClientPackets.Inventory;
+using ChickenAPI.Packets.ClientPackets.Relations;
 using ChickenAPI.Packets.Enumerations;
 using ChickenAPI.Packets.Interfaces;
 using ChickenAPI.Packets.ServerPackets;
+using ChickenAPI.Packets.ServerPackets.CharacterSelectionScreen;
+using ChickenAPI.Packets.ServerPackets.Inventory;
+using ChickenAPI.Packets.ServerPackets.Login;
+using ChickenAPI.Packets.ServerPackets.Relations;
+using ChickenAPI.Packets.ServerPackets.Shop;
+using ChickenAPI.Packets.ServerPackets.UI;
+using ChickenAPI.Packets.ServerPackets.Visibility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ChickenAPI.Packets.Tests
