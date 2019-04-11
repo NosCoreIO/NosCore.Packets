@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.UI
 {
     [PacketHeader("delay")]
-    public class DelayPacket : IPacket
+    public class DelayPacket : PacketBase
     {
         [PacketIndex(0)]
         public short Delay { get; set; }

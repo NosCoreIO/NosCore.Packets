@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.MiniMap
 {
     [PacketHeader("c_map")]
-    public class CMapPacket : IPacket
+    public class CMapPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Type { get; set; }

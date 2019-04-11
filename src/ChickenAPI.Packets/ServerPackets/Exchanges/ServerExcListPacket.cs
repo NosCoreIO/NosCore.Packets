@@ -6,7 +6,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Exchanges
 {
     [PacketHeader("exc_list")]
-    public class ServerExcListPacket : IPacket
+    public class ServerExcListPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

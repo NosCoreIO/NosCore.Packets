@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Miniland
 {
     [PacketHeader("rmvobj")]
-    public class RmvobjPacket : IPacket
+    public class RmvobjPacket : PacketBase
     {
         [PacketIndex(0)]
         public short Slot { get; set; }

@@ -6,7 +6,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Shops
 {
     [PacketHeader("m_shop")]
-    public class MShopPacket : IPacket
+    public class MShopPacket : PacketBase
     {
         [PacketIndex(0)]
         public CreateShopPacketType Type { get; set; }

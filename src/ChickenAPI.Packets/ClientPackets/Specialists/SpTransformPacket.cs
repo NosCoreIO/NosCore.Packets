@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Specialists
 {
     [PacketHeader("sl")]
-    public class SpTransformPacket : IPacket
+    public class SpTransformPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Type { get; set; }

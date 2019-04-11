@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Movement
 {
     [PacketHeader("preq")]
-    public class PreqPacket : IPacket
+    public class PreqPacket : PacketBase
     {
     }
 }

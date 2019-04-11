@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Battle
 {
     [PacketHeader("u_as")]
-    public class UseAoeSkillPacket : IPacket
+    public class UseAoeSkillPacket : PacketBase
     {
         [PacketIndex(0)]
         public long CastId { get; set; }

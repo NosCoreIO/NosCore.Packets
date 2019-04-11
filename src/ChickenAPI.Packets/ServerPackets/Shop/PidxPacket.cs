@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Shop
 {
     [PacketHeader("pidx")]
-    public class PidxPacket : IPacket
+    public class PidxPacket : PacketBase
     {
         [PacketIndex(0)]
         public long GroupId { get; set; }

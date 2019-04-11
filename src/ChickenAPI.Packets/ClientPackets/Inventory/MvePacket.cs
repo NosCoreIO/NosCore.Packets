@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Inventory
 {
     [PacketHeader("mve")]
-    public class MvePacket : IPacket
+    public class MvePacket : PacketBase
     {
         [PacketIndex(0)]
         public PocketType InventoryType { get; set; }

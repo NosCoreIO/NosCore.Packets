@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Npcs
 {
     [PacketHeader("npc_req")]
-    public class RequestNpcPacket : IPacket
+    public class RequestNpcPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType Type { get; set; }

@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Families
 {
     [PacketHeader("fauth")]
-    public class FAuthPacket : IPacket
+    public class FAuthPacket : PacketBase
     {
         [PacketIndex(0)]
         public FamilyAuthority MemberType { get; set; }

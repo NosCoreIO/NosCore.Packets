@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.CharacterSelectionScreen
 {
     [PacketHeader("OK")]
-    public class OkPacket : IPacket
+    public class OkPacket : PacketBase
     {
     }
 }

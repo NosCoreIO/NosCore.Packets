@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Movement
 {
     [PacketHeader("dir")]
-    public class DirPacket : IPacket
+    public class DirPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

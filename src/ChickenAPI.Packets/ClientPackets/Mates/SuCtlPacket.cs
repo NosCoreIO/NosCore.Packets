@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Mates
 {
     [PacketHeader("suctl")]
-    public class SuCtlPacket : IPacket
+    public class SuCtlPacket : PacketBase
     {
         [PacketIndex(0)]
         public int CastId { get; set; }

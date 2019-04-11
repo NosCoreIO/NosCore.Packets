@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Battle
 {
     [PacketHeader("u_s")]
-    public class UseSkillPacket : IPacket
+    public class UseSkillPacket : PacketBase
     {
         [PacketIndex(0)]
         public long CastId { get; set; }

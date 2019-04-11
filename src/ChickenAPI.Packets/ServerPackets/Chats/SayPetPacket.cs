@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Chats
 {
     [PacketHeader("say_p")]
-    public class SayPetPacket : IPacket
+    public class SayPetPacket : PacketBase
     {
         [PacketIndex(0)]
         public long PetId { get; set; }

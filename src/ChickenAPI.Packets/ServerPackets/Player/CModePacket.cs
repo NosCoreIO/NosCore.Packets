@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Player
 {
     [PacketHeader("c_mode")]
-    public class CModePacket : IPacket
+    public class CModePacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

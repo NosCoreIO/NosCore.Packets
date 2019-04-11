@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Inventory
 {
     [PacketHeader("wear")]
-    public class WearPacket : IPacket
+    public class WearPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte InventorySlot { get; set; }

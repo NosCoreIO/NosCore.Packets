@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Entities
 {
     [PacketHeader("rest")]
-    public class RestPacket : IPacket
+    public class RestPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

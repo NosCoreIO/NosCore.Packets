@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.CharacterSelectionScreen
 {
     [PacketHeader("clist_end")]
-    public class ClistEndPacket : IPacket
+    public class ClistEndPacket : PacketBase
     {
     }
 }

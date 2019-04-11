@@ -6,7 +6,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.CharacterSelectionScreen
 {
     [PacketHeader("clist")]
-    public class ClistPacket : IPacket
+    public class ClistPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Slot { get; set; }

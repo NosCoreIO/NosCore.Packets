@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace ChickenAPI.Packets.ClientPackets.Battle
 {
     [PacketHeader("mtlist")]
-    public class MultiTargetListPacket : IPacket
+    public class MultiTargetListPacket : PacketBase
     {
         #region Properties
 

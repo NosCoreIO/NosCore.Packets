@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Shop
 {
     [PacketHeader("n_inv_item")]
-    public class NInvItemSubPacket : IPacket
+    public class NInvItemSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public PocketType Type { get; set; }

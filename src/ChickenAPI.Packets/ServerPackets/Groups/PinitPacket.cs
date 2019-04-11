@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Groups
 {
     [PacketHeader("pinit")]
-    public class PinitPacket : IPacket
+    public class PinitPacket : PacketBase
     {
         [PacketIndex(0)]
         public int GroupSize { get; set; }

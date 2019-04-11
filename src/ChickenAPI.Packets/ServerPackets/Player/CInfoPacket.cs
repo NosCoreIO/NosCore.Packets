@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Player
 {
     [PacketHeader("c_info")]
-    public class CInfoPacket : IPacket
+    public class CInfoPacket : PacketBase
     {
         [PacketIndex(0)]
         public string Name { get; set; }

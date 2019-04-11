@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 
 namespace ChickenAPI.Packets.ServerPackets.Inventory
 {
-    public class EquipmentSubPacket : IPacket
+    public class EquipmentSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public EquipmentType EquipmentType { get; set; }

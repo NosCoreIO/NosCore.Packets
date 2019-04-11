@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Inventory
 {
     [PacketHeader("remove")]
-    public class RemovePacket : IPacket
+    public class RemovePacket : PacketBase
     {
         [PacketIndex(0)]
         public EquipmentType InventorySlot { get; set; }

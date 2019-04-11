@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Mates
 {
     [PacketHeader("u_ps")]
-    public class UpsPacket : IPacket
+    public class UpsPacket : PacketBase
     {
         [PacketIndex(0)]
         public long MateTransportId { get; set; }

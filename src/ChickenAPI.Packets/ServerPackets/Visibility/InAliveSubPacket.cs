@@ -3,7 +3,7 @@ using ChickenAPI.Packets.Interfaces;
 
 namespace ChickenAPI.Packets.ServerPackets.Visibility
 {
-    public class InAliveSubPacket : IPacket
+    public class InAliveSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public int Hp { get; set; }

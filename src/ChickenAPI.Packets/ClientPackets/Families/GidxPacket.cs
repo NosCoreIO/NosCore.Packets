@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Families
 {
     [PacketHeader("gidx")]
-    public class GidxPacket : IPacket
+    public class GidxPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

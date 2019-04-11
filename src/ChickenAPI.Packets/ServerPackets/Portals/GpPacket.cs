@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Portals
 {
     [PacketHeader("gp")]
-    public class GpPacket : IPacket
+    public class GpPacket : PacketBase
     {
         [PacketIndex(0)]
         public short SourceX { get; set; }

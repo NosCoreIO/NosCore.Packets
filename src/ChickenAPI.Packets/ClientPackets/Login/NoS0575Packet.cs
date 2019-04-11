@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Login
 {
     [PacketHeader("NoS0575", AnonymousAccess = true)]
-    public class NoS0575Packet : IPacket
+    public class NoS0575Packet : PacketBase
     {
         [PacketIndex(0)]
         public int Number { get; set; }

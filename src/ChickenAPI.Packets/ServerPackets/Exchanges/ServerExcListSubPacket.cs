@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 
 namespace ChickenAPI.Packets.ServerPackets.Exchanges
 {
-    public class ServerExcListSubPacket : IPacket
+    public class ServerExcListSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public short? ExchangeSlot { get; set; }

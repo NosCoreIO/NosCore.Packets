@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Miniland
 {
     [PacketHeader("mlobj")]
-    public class MlobjPacket : IPacket
+    public class MlobjPacket : PacketBase
     {
         [PacketIndex(0)]
         public bool Deleted { get; set; }

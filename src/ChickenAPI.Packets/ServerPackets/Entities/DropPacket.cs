@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Entities
 {
     [PacketHeader("drop")]
-    public class DropPacket : IPacket
+    public class DropPacket : PacketBase
     {
         [PacketIndex(0)]
         public short VNum { get; set; }

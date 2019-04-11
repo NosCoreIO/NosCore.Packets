@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Relations
 {
     [PacketHeader("reloadfinfo")]
-    public class ReloadFinfoPacket : IPacket
+    public class ReloadFinfoPacket : PacketBase
     {
     }
 }

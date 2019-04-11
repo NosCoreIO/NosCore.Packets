@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Drops
 {
     [PacketHeader("get")]
-    public class GetPacket : IPacket
+    public class GetPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType PickerType { get; set; }

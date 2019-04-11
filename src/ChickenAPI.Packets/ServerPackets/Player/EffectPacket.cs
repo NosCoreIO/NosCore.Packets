@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Player
 {
     [PacketHeader("eff")]
-    public class EffectPacket : IPacket
+    public class EffectPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType EffectType { get; set; }

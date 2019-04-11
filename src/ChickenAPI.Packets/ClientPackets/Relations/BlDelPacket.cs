@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Relations
 {
     [PacketHeader("bldel")]
-    public class BlDelPacket : IPacket
+    public class BlDelPacket : PacketBase
     {
         [PacketIndex(0)]
         public long CharacterId { get; set; }

@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Movement
 {
     [PacketHeader("rest")]
-    public class SitPacket : IPacket
+    public class SitPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Amount { get; set; }

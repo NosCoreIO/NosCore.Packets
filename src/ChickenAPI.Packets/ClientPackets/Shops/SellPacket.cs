@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Shops
 {
     [PacketHeader("sell")]
-    public class SellPacket : IPacket
+    public class SellPacket : PacketBase
     {
         [PacketIndex(2)]
         public short Data { get; set; }

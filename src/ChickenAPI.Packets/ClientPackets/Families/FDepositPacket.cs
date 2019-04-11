@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Families
 {
     [PacketHeader("f_deposit")]
-    public class FDepositPacket : IPacket
+    public class FDepositPacket : PacketBase
     {
         [PacketIndex(0)]
         public PocketType Inventory { get; set; }

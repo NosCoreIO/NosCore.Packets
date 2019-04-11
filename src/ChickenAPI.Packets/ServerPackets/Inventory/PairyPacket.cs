@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Inventory
 {
     [PacketHeader("pairy")]
-    public class PairyPacket : IPacket
+    public class PairyPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

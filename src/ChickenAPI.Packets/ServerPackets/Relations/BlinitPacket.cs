@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Relations
 {
     [PacketHeader("blinit")]
-    public class BlinitPacket : IPacket
+    public class BlinitPacket : PacketBase
     {
         [PacketIndex(0, SpecialSeparator = "|")]
         public List<BlinitSubPacket> SubPackets { get; set; }

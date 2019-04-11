@@ -5,7 +5,7 @@ using ChickenAPI.Packets.ServerPackets.Inventory;
 
 namespace ChickenAPI.Packets.ServerPackets.Visibility
 {
-    public class InCharacterSubPacket : IPacket
+    public class InCharacterSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Authority { get; set; }
