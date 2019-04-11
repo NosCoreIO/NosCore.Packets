@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 
 namespace ChickenAPI.Packets.ServerPackets.Visibility
 {
-    public class InNonPlayerSubPacket : IPacket
+    public class InNonPlayerSubPacket : PacketBase
     {
         [PacketIndex(1)]
         public InAliveSubPacket InAliveSubPacket { get; set; }

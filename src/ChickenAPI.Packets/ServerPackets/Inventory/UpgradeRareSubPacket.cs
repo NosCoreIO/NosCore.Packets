@@ -3,7 +3,7 @@ using ChickenAPI.Packets.Interfaces;
 
 namespace ChickenAPI.Packets.ServerPackets.Inventory
 {
-    public class UpgradeRareSubPacket : IPacket
+    public class UpgradeRareSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Upgrade { get; set; }

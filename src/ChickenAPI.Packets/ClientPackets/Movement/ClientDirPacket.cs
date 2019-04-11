@@ -6,7 +6,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Movement
 {
     [PacketHeader("dir")]
-    public class ClientDirPacket : IPacket
+    public class ClientDirPacket : PacketBase
     {
         [PacketIndex(0)]
         [Range(0, 7)]

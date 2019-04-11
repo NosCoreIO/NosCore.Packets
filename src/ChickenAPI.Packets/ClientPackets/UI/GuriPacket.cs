@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.UI
 {
     [PacketHeader("guri")]
-    public class GuriPacket : IPacket
+    public class GuriPacket : PacketBase
     {
         [PacketIndex(0)]
         public int Type { get; set; }

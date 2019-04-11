@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Player
 {
     [PacketHeader("fs")]
-    public class FsPacket : IPacket
+    public class FsPacket : PacketBase
     {
         [PacketIndex(0)]
         public FactionType Faction { get; set; }

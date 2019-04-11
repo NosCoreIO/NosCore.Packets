@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Families
 {
     [PacketHeader("f_stash_end")]
-    public class FStashEndPacket : IPacket
+    public class FStashEndPacket : PacketBase
     {
     }
 }

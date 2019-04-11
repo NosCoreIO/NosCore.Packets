@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Entities
 {
     [PacketHeader("char_sc")]
-    public class CharScPacket : IPacket
+    public class CharScPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

@@ -6,7 +6,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Groups
 {
     [PacketHeader("pinit_sub_packet")]
-    public class PinitSubPacket : IPacket
+    public class PinitSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

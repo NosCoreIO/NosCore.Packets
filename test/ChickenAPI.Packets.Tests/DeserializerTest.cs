@@ -28,11 +28,30 @@ namespace ChickenAPI.Packets.Tests
             });
 
         [TestMethod]
-        public void Deserialize()
+        public void PacketEndingWithNullableMakeItOptional()
         {
             var packet = (WhisperPacket)Deserializer.Deserialize("/0Lucifer0 this is a long message", false);
             Assert.AreEqual("this is a long message", packet.Message);
         }
+
+        [TestMethod]
+        public void UnknownPacketAreUnresolved()
+        {
+            var packet = (UnresolvedPacket)Deserializer.Deserialize("unres 123", false);
+            Assert.AreEqual("123", packet.Body);
+            Assert.AreEqual("unres", packet.Header);
+        }
+
+
+        [TestMethod]
+        public void PacketAreDeserializedWithHeaderAndKeepAliveId()
+        {
+            var packet = (WhisperPacket)Deserializer.Deserialize("1234 /0Lucifer0 this is a long message", true);
+            Assert.AreEqual("this is a long message", packet.Message);
+            Assert.AreEqual(1234, packet.KeepAliveId);
+            Assert.AreEqual("/0Lucifer0", packet.Header);
+        }
+
 
         [TestMethod]
         public void DeserializationLastStringCanNotBeNull()

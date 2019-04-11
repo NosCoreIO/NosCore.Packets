@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Specialists
 {
     [PacketHeader("sp")]
-    public class SpPacket : IPacket
+    public class SpPacket : PacketBase
     {
         [PacketIndex(0)]
         public int AdditionalPoint { get; set; }

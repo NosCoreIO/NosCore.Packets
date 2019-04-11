@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Entities
 {
     [PacketHeader("req_info")]
-    public class ReqInfoPacket : IPacket
+    public class ReqInfoPacket : PacketBase
     {
         [PacketIndex(0)]
         public ReqInfoType ReqType { get; set; }

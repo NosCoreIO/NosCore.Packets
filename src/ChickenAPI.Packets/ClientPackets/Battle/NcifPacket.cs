@@ -6,7 +6,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Battle
 {
     [PacketHeader("ncif")]
-    public class NcifPacket : IPacket
+    public class NcifPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType Type { get; set; }

@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.MiniMap
 {
     [PacketHeader("rsfp")]
-    public class RsfpPacket : IPacket
+    public class RsfpPacket : PacketBase
     {
         [PacketIndex(0)]
         public long MapX { get; set; }

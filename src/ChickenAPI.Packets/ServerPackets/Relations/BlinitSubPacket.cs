@@ -3,7 +3,7 @@ using ChickenAPI.Packets.Interfaces;
 
 namespace ChickenAPI.Packets.ServerPackets.Relations
 {
-    public class BlinitSubPacket : IPacket
+    public class BlinitSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public long RelatedCharacterId { get; set; }

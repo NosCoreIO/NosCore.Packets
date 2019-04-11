@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Families
 {
     [PacketHeader("f_repos")]
-    public class FReposPacket : IPacket
+    public class FReposPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte OldSlot { get; set; }

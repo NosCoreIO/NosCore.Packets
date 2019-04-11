@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Shop
 {
     [PacketHeader("s_memo")]
-    public class SMemoPacket : IPacket
+    public class SMemoPacket : PacketBase
     {
         [PacketIndex(0)]
         public SMemoType Type { get; set; }

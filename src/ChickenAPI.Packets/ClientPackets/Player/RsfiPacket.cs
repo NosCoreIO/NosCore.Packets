@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Player
 {
     [PacketHeader("rsfi")]
-    public class RsfiPacket : IPacket
+    public class RsfiPacket : PacketBase
     {
         //TODO make this real packet, it's just here to fix a dialog issue with client
         [PacketIndex(0)]

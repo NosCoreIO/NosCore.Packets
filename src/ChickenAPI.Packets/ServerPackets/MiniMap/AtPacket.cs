@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.MiniMap
 {
     [PacketHeader("at")]
-    public class AtPacket : IPacket
+    public class AtPacket : PacketBase
     {
         [PacketIndex(0)]
         public long CharacterId { get; set; }

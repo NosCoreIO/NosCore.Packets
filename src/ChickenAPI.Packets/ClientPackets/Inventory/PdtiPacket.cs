@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Inventory
 {
     [PacketHeader("pdti")]
-    public class PdtiPacket : IPacket
+    public class PdtiPacket : PacketBase
     {
         [PacketIndex(0)]
         public short Unknow { get; set; } // TODO find this - type 10 and 11

@@ -3,7 +3,7 @@ using ChickenAPI.Packets.Interfaces;
 
 namespace ChickenAPI.Packets.ServerPackets.Inventory
 {
-    public class IvnSubPacket : IPacket
+    public class IvnSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public short Slot { get; set; }

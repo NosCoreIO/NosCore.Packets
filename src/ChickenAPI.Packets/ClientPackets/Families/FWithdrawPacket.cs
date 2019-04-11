@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Families
 {
     [PacketHeader("f_withdraw")]
-    public class FWithdrawPacket : IPacket
+    public class FWithdrawPacket : PacketBase
     {
         [PacketIndex(0)]
         public short Slot { get; set; }

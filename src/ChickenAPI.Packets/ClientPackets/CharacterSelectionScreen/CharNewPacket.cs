@@ -6,7 +6,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.CharacterSelectionScreen
 {
     [PacketHeader("Char_NEW", AnonymousAccess = true)]
-    public class CharNewPacket : IPacket
+    public class CharNewPacket : PacketBase
     {
         [PacketIndex(0)]
         [StringLength(15, MinimumLength = 3)]

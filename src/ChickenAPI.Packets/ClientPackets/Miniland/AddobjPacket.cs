@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Miniland
 {
     [PacketHeader("addobj")]
-    public class AddobjPacket : IPacket
+    public class AddobjPacket : PacketBase
     {
         #region Properties
 

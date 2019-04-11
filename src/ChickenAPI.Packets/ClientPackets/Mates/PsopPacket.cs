@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Mates
 {
     [PacketHeader("ps_op")]
-    public class PsopPacket : IPacket
+    public class PsopPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte PetSlot { get; set; }

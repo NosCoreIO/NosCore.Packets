@@ -3,7 +3,7 @@ using ChickenAPI.Packets.Interfaces;
 
 namespace ChickenAPI.Packets.ServerPackets.Visibility
 {
-    public class InEquipmentSubPacket : IPacket
+    public class InEquipmentSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public short? Hat { get; set; }

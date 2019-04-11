@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Shop
 {
     [PacketHeader("pflag")]
-    public class PflagPacket : IPacket
+    public class PflagPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

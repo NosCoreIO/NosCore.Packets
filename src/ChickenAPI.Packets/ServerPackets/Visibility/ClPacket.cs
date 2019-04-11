@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Visibility
 {
     [PacketHeader("cl")]
-    public class ClPacket : IPacket
+    public class ClPacket : PacketBase
     {
         [PacketIndex(0)]
         public long VisualId { get; set; }

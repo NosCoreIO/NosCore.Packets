@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Player
 {
     [PacketHeader("stat")]
-    public class StatPacket : IPacket
+    public class StatPacket : PacketBase
     {
         [PacketIndex(0)]
         public int Hp { get; set; }

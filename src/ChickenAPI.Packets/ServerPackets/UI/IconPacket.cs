@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.UI
 {
     [PacketHeader("icon")]
-    public class IconPacket : IPacket
+    public class IconPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

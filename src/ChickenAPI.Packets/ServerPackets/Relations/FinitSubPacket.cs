@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 
 namespace ChickenAPI.Packets.ServerPackets.Relations
 {
-    public class FinitSubPacket : IPacket
+    public class FinitSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public long CharacterId { get; set; }

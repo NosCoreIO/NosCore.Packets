@@ -6,7 +6,7 @@ using ChickenAPI.Packets.ServerPackets.Visibility;
 namespace ChickenAPI.Packets.ServerPackets.Inventory
 {
     [PacketHeader("eq")]
-    public class EqPacket : IPacket
+    public class EqPacket : PacketBase
     {
         [PacketIndex(0)]
         public long VisualId { get; set; }

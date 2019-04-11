@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 
 namespace ChickenAPI.Packets.ClientPackets.Movement
 {
-    public class SitSubPacket : IPacket
+    public class SitSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

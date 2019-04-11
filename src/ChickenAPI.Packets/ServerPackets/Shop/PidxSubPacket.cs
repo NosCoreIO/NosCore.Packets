@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Shop
 {
     [PacketHeader("pidx_sub_packet")]
-    public class PidxSubPacket : IPacket
+    public class PidxSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public bool IsGrouped { get; set; }

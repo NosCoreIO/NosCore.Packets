@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Relations
 {
     [PacketHeader("fins")]
-    public class FinsPacket : IPacket
+    public class FinsPacket : PacketBase
     {
         [PacketIndex(0)]
         public FinsPacketType Type { get; set; }

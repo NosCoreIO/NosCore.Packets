@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Player
 {
     [PacketHeader("bn")]
-    public class BnPacket : IPacket
+    public class BnPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte BnNumber { get; set; }

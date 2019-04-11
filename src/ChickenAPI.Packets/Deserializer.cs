@@ -84,7 +84,7 @@ namespace ChickenAPI.Packets
             }
         }
 
-        public void Initialize<T>() where T : IPacket
+        public void Initialize<T>() where T : PacketBase
         {
             var header = typeof(T).GetCustomAttribute<PacketHeaderAttribute>()?.Identification;
 
@@ -145,9 +145,9 @@ namespace ChickenAPI.Packets
                 }
 
                 var header = includesKeepAliveIdentity ? 1 : 0;
-
+                var realheader = packetsplit[header];
                 if (packetsplit[header].Length >= 1
-                    && (packetsplit[header][0] == '/' || packetsplit[1][0] == ':' || packetsplit[header][0] == ';'))
+                    && (packetsplit[header][0] == '/' || packetsplit[header][0] == ':' || packetsplit[header][0] == ';'))
                 {
                     packetsplit[header] = packetsplit[header][0].ToString();
                 }
@@ -155,10 +155,18 @@ namespace ChickenAPI.Packets
                 if (packetDeserializerDictionary.ContainsKey(packetsplit[header]))
                 {
                     var dic = packetDeserializerDictionary[packetsplit[header]];
-                    return DeserializeIPacket(dic, packetContent, includesKeepAliveIdentity, true);
+                    var packet = DeserializeIPacket(dic, packetContent, includesKeepAliveIdentity, true);
+                    packet.Header = realheader;
+                    packet.KeepAliveId = includesKeepAliveIdentity ? (int?)int.Parse(packetsplit[0]) : null;
+                    return packet;
                 }
 
-                throw new InvalidOperationException();
+                return new UnresolvedPacket
+                {
+                    Header = realheader,
+                    KeepAliveId = includesKeepAliveIdentity ? (int?)int.Parse(packetsplit[0]) : null,
+                    Body = packetContent.Substring((includesKeepAliveIdentity ? packetsplit[0].Length + 2 : 1) + (includesKeepAliveIdentity ? packetsplit[1].Length : packetsplit[0].Length))
+                };
             }
             catch (Exception ex)
             {

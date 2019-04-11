@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Player
 {
     [PacketHeader("lev")]
-    public class LevPacket : IPacket
+    public class LevPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Level { get; set; }

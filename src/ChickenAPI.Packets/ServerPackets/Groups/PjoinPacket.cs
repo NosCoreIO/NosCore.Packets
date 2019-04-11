@@ -6,7 +6,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Groups
 {
     [PacketHeader("pjoin")]
-    public class PjoinPacket : IPacket
+    public class PjoinPacket : PacketBase
     {
         [PacketIndex(0)]
         public GroupRequestType RequestType { get; set; }

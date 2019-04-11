@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Login
 {
     [PacketHeader("EntryPoint", 3, AnonymousAccess = true)]
-    public class EntryPointPacket : IPacket
+    public class EntryPointPacket : PacketBase
     {
         [PacketIndex(0)]
         public string Title { get; set; }

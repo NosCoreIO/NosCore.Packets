@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Relations
 {
     [PacketHeader("finit")]
-    public class FinitPacket : IPacket
+    public class FinitPacket : PacketBase
     {
         [PacketIndex(0, SpecialSeparator = "|")]
         public List<FinitSubPacket> SubPackets { get; set; }

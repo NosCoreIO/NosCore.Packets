@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Specialists
 {
     [PacketHeader("slinfo")]
-    public class SlInfoPacket : IPacket
+    public class SlInfoPacket : PacketBase
     {
         [PacketIndex(0)]
         public PocketType InventoryType { get; set; }

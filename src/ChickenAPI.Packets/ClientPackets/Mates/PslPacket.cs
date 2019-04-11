@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Mates
 {
     [PacketHeader("psl")]
-    public class PslPacket : IPacket
+    public class PslPacket : PacketBase
     {
         [PacketIndex(0)]
         public PslPacketType Type { get; set; }

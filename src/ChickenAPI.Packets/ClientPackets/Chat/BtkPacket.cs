@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Chat
 {
     [PacketHeader("btk")]
-    public class BtkPacket : IPacket
+    public class BtkPacket : PacketBase
     {
         [PacketIndex(0)]
         public long CharacterId { get; set; }

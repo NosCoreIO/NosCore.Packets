@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.UI
 {
     [PacketHeader("modal")]
-    public class ModalPacket : IPacket
+    public class ModalPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Type { get; set; } //TODO: find modal types

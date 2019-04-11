@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Npcs
 {
     [PacketHeader("n_run")]
-    public class NrunPacket : IPacket
+    public class NrunPacket : PacketBase
     {
         [PacketIndex(0)]
         public NrunRunnerType Runner { get; set; }

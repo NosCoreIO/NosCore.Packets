@@ -8,6 +8,6 @@ namespace ChickenAPI.Packets.Interfaces
 
         string Serialize(IEnumerable<IPacket> packet);
 
-        void Initialize<T>() where T : IPacket;
+        void Initialize<T>() where T : PacketBase;
     }
 }

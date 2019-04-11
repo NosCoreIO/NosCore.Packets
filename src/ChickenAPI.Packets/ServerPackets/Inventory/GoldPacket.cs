@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Inventory
 {
     [PacketHeader("gold")]
-    public class GoldPacket : IPacket
+    public class GoldPacket : PacketBase
     {
         [PacketIndex(0)]
         public long Gold { get; set; }

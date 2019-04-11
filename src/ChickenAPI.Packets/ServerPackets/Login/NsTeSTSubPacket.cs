@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Login
 {
     [PacketHeader("NsTeST")]
-    public class NsTeStSubPacket : IPacket
+    public class NsTeStSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public string Host { get; set; }

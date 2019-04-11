@@ -5,7 +5,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ServerPackets.Visibility
 {
     [PacketHeader("in")]
-    public class InPacket : IPacket
+    public class InPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

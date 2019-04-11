@@ -24,7 +24,7 @@ namespace ChickenAPI.Packets
             }
         }
 
-        public void Initialize<T>() where T : IPacket
+        public void Initialize<T>() where T : PacketBase
         {
             var packetSerializerExpressionFalse = PacketSerializerExpression<T>();
             packetSerializerDictionary.Add(typeof(T).Name, packetSerializerExpressionFalse.Compile());
@@ -213,7 +213,7 @@ namespace ChickenAPI.Packets
             );
         }
 
-        private LambdaExpression PacketSerializerExpression<T>() where T : IPacket
+        private LambdaExpression PacketSerializerExpression<T>() where T : PacketBase
         {
             var header = typeof(T).GetCustomAttribute<PacketHeaderAttribute>()?.Identification;
 

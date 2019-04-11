@@ -6,7 +6,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Exchanges
 {
     [PacketHeader("exc_list")]
-    public class ExcListPacket : IPacket
+    public class ExcListPacket : PacketBase
     {
         [PacketIndex(0)]
         [Range(0, long.MaxValue)]

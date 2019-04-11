@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Movement
 {
     [PacketHeader("walk")]
-    public class WalkPacket : IPacket
+    public class WalkPacket : PacketBase
     {
         [PacketIndex(0)]
         public short XCoordinate { get; set; }

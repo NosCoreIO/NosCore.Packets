@@ -6,7 +6,7 @@ using ChickenAPI.Packets.Interfaces;
 namespace ChickenAPI.Packets.ClientPackets.Exchanges
 {
     [PacketHeader("req_exc")]
-    public class ExchangeRequestPacket : IPacket
+    public class ExchangeRequestPacket : PacketBase
     {
         [PacketIndex(0)]
         public RequestExchangeType RequestType { get; set; }
