@@ -27,7 +27,10 @@ namespace ChickenAPI.Packets
         public void Initialize<T>() where T : PacketBase
         {
             var packetSerializerExpressionFalse = PacketSerializerExpression<T>();
-            packetSerializerDictionary.Add(typeof(T).Name, packetSerializerExpressionFalse.Compile());
+            if(packetSerializerExpressionFalse != null && !packetSerializerDictionary.ContainsKey(typeof(T).Name))
+            {
+                packetSerializerDictionary.Add(typeof(T).Name, packetSerializerExpressionFalse.Compile());
+            }
         }
 
         public string Serialize(IPacket packet)
@@ -219,7 +222,7 @@ namespace ChickenAPI.Packets
 
             if (string.IsNullOrEmpty(header))
             {
-                throw new ArgumentNullException(); //TODO add some error info
+                return null;
             }
 
             var properties = typeof(T).GetProperties()
