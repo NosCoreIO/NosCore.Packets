@@ -1,13 +1,9 @@
-﻿using System.Collections.Concurrent;
-using System.Collections.Generic;
-using ChickenAPI.Packets.ClientPackets;
-using ChickenAPI.Packets.ClientPackets.Chat;
+﻿using ChickenAPI.Packets.ClientPackets.Chat;
 using ChickenAPI.Packets.ClientPackets.Inventory;
 using ChickenAPI.Packets.ClientPackets.Movement;
 using ChickenAPI.Packets.ClientPackets.Shops;
 using ChickenAPI.Packets.Enumerations;
 using ChickenAPI.Packets.Interfaces;
-using ChickenAPI.Packets.ServerPackets;
 using ChickenAPI.Packets.ServerPackets.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
