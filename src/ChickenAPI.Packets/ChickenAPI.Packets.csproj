@@ -5,17 +5,18 @@
     <LangVersion>latest</LangVersion>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>Blowa</Authors>
+    <Authors>ChickenAPI</Authors>
     <Copyright>2019</Copyright>
     <PackageProjectUrl>https://github.com/ChickenAPI/ChickenAPI.Packets</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ChickenAPI/ChickenAPI.Packets.git</RepositoryUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/ChickenAPI/ChickenAPI.Packets/master/docs/_media/logo.png</PackageIconUrl>
     <PackageTags>nostale, chickenapi, nostale private server source, nostale emulator</PackageTags>
-    <Version>0.4.1</Version>
+    <Version>0.4.2</Version>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Description>ChickenAPI's Packets (Nostale packets) defined over classes</Description>
     <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
+    <Company>ChickenAPI</Company>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
