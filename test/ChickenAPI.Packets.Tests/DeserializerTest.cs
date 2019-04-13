@@ -41,6 +41,14 @@ namespace ChickenAPI.Packets.Tests
             Assert.AreEqual("unres", packet.Header);
         }
 
+        [TestMethod]
+        public void UnknownPacketAreUnresolvedWithoutBody()
+        {
+            var packet = (UnresolvedPacket)Deserializer.Deserialize("1234 0");
+            Assert.AreEqual("", packet.Body);
+            Assert.AreEqual("0", packet.Header);
+            Assert.AreEqual((ushort)1234, packet.KeepAliveId);
+        }
 
         [TestMethod]
         public void PacketAreDeserializedWithHeaderAndKeepAliveId()

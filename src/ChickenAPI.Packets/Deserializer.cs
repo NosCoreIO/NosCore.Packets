@@ -164,11 +164,12 @@ namespace ChickenAPI.Packets
                     return packet;
                 }
 
+                var bodyIndex = (includesKeepAliveIdentity ? packetsplit[0].Length + 2 : 1) + (includesKeepAliveIdentity ? packetsplit[1].Length : packetsplit[0].Length);
                 return new UnresolvedPacket
                 {
                     Header = realheader,
                     KeepAliveId = includesKeepAliveIdentity ? (ushort?)ushort.Parse(packetsplit[0]) : null,
-                    Body = packetContent.Substring((includesKeepAliveIdentity ? packetsplit[0].Length + 2 : 1) + (includesKeepAliveIdentity ? packetsplit[1].Length : packetsplit[0].Length))
+                    Body = bodyIndex >= packetContent.Length ? "" : packetContent.Substring(bodyIndex)
                 };
             }
             catch (Exception ex)
