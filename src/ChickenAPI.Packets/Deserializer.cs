@@ -136,7 +136,7 @@ namespace ChickenAPI.Packets
             return dic;
         }
 
-        public IPacket Deserialize(string packetContent, bool includesKeepAliveIdentity)
+        public IPacket Deserialize(string packetContent)
         {
             try
             {
@@ -146,7 +146,7 @@ namespace ChickenAPI.Packets
                 {
                     throw new InvalidOperationException();
                 }
-
+                bool includesKeepAliveIdentity = ushort.TryParse(packetsplit[0], out var keepalive);
                 var header = includesKeepAliveIdentity ? 1 : 0;
                 var realheader = packetsplit[header];
                 if (packetsplit[header].Length >= 1
@@ -160,14 +160,14 @@ namespace ChickenAPI.Packets
                     var dic = packetDeserializerDictionary[packetsplit[header]];
                     var packet = DeserializeIPacket(dic, packetContent, includesKeepAliveIdentity, true);
                     packet.Header = realheader;
-                    packet.KeepAliveId = includesKeepAliveIdentity ? (int?)int.Parse(packetsplit[0]) : null;
+                    packet.KeepAliveId = includesKeepAliveIdentity ? (ushort?)keepalive : null;
                     return packet;
                 }
 
                 return new UnresolvedPacket
                 {
                     Header = realheader,
-                    KeepAliveId = includesKeepAliveIdentity ? (int?)int.Parse(packetsplit[0]) : null,
+                    KeepAliveId = includesKeepAliveIdentity ? (ushort?)ushort.Parse(packetsplit[0]) : null,
                     Body = packetContent.Substring((includesKeepAliveIdentity ? packetsplit[0].Length + 2 : 1) + (includesKeepAliveIdentity ? packetsplit[1].Length : packetsplit[0].Length))
                 };
             }

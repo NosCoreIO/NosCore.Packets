@@ -8,6 +8,6 @@ namespace ChickenAPI.Packets
     public abstract class PacketBase : IPacket
     {
         public string Header { get; set; }
-        public int? KeepAliveId { get; set; }
+        public ushort? KeepAliveId { get; set; }
     }
 }
