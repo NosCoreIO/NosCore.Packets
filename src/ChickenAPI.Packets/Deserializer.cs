@@ -218,6 +218,8 @@ namespace ChickenAPI.Packets
             {
                 case var prop when prop == typeof(string):
                     return DeserializeString(matches, ref currentIndex, isMaxIndex);
+                case var prop when prop == typeof(Guid) || prop == typeof(Guid?):
+                    return DeserializeGuid(matches[currentIndex++ + (hasHeader ? 1 : 0)].ToString());
                 case var prop when prop == typeof(bool) || prop == typeof(bool?):
                     return DeserializeBoolean(matches[currentIndex++ + (hasHeader ? 1 : 0)].ToString());
                 case var prop when (prop.BaseType?.Equals(typeof(Enum)) ?? false) ||
@@ -279,6 +281,11 @@ namespace ChickenAPI.Packets
             return value == "-1" ? (bool?)null : value == "1";
         }
 
+        private object DeserializeGuid(string value)
+        {
+            return value == "NONE" ? (Guid?)null : Guid.Parse(value);
+        }
+
         private object DeserializeDefault(Type type, string value)
         {
             return value == "-1" ? type.GetDefaultValue() : Convert.ChangeType(value, type);
@@ -309,7 +316,7 @@ namespace ChickenAPI.Packets
             else
             {
                 currentIndex++;
-                return matches[currentIndex + 1];
+                return matches[currentIndex].ToString();
             }
         }
     }

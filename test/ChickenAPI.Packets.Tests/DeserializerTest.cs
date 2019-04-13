@@ -1,11 +1,13 @@
 ﻿using ChickenAPI.Packets.ClientPackets.Chat;
 using ChickenAPI.Packets.ClientPackets.Inventory;
+using ChickenAPI.Packets.ClientPackets.Login;
 using ChickenAPI.Packets.ClientPackets.Movement;
 using ChickenAPI.Packets.ClientPackets.Shops;
 using ChickenAPI.Packets.Enumerations;
 using ChickenAPI.Packets.Interfaces;
 using ChickenAPI.Packets.ServerPackets.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace ChickenAPI.Packets.Tests
 {
@@ -20,7 +22,8 @@ namespace ChickenAPI.Packets.Tests
                 typeof(SitPacket),
                 typeof(SitSubPacket),
                 typeof(MShopItemSubPacket),
-                typeof(StPacket)
+                typeof(StPacket),
+                typeof(NoS0575Packet)
             });
 
         [TestMethod]
@@ -110,6 +113,20 @@ namespace ChickenAPI.Packets.Tests
                 "st 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16",
                 false);
             Assert.IsTrue(packet.BuffIds.Count == 8);
+        }
+
+        [TestMethod]
+        public void DeserializeWithGuid()
+        {
+            var packet = (NoS0575Packet)Deserializer.Deserialize(
+                "NoS0575 3808647 admin EE26B0DD4AF7E749AA1A8EE3C10AE9923F618980772E473F8819A5D4940E0DB27AC185F8A0E1D5F84F88BC887FD67B143732C304CC5FA9AD8E6F57F50028A8FF 3e241e8e-b1cd-49c3-a455-4d253a75f6e6 0031F69F�0.9.3.3097 0 06A35F0058610A5B3FA13FC2CB04E795",
+                false);
+            Assert.IsTrue(packet.Header == "NoS0575");
+            Assert.IsTrue(packet.Number == 3808647);
+            Assert.IsTrue(packet.Name == "admin");
+            Assert.IsTrue(packet.Password == "EE26B0DD4AF7E749AA1A8EE3C10AE9923F618980772E473F8819A5D4940E0DB27AC185F8A0E1D5F84F88BC887FD67B143732C304CC5FA9AD8E6F57F50028A8FF");
+            Assert.IsTrue(packet.ClientId == Guid.Parse("3e241e8e-b1cd-49c3-a455-4d253a75f6e6"));
+            Assert.IsTrue(packet.ClientData == "0031F69F�0.9.3.3097 0 06A35F0058610A5B3FA13FC2CB04E795");
         }
     }
 }
