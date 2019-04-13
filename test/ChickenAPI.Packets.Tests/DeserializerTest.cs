@@ -29,14 +29,14 @@ namespace ChickenAPI.Packets.Tests
         [TestMethod]
         public void PacketEndingWithNullableMakeItOptional()
         {
-            var packet = (WhisperPacket)Deserializer.Deserialize("/0Lucifer0 this is a long message", false);
+            var packet = (WhisperPacket)Deserializer.Deserialize("/0Lucifer0 this is a long message");
             Assert.AreEqual("this is a long message", packet.Message);
         }
 
         [TestMethod]
         public void UnknownPacketAreUnresolved()
         {
-            var packet = (UnresolvedPacket)Deserializer.Deserialize("unres 123", false);
+            var packet = (UnresolvedPacket)Deserializer.Deserialize("unres 123");
             Assert.AreEqual("123", packet.Body);
             Assert.AreEqual("unres", packet.Header);
         }
@@ -45,9 +45,9 @@ namespace ChickenAPI.Packets.Tests
         [TestMethod]
         public void PacketAreDeserializedWithHeaderAndKeepAliveId()
         {
-            var packet = (WhisperPacket)Deserializer.Deserialize("1234 /0Lucifer0 this is a long message", true);
+            var packet = (WhisperPacket)Deserializer.Deserialize("1234 /0Lucifer0 this is a long message");
             Assert.AreEqual("this is a long message", packet.Message);
-            Assert.AreEqual(1234, packet.KeepAliveId);
+            Assert.AreEqual((ushort)1234, packet.KeepAliveId);
             Assert.AreEqual("/0Lucifer0", packet.Header);
         }
 
@@ -55,7 +55,7 @@ namespace ChickenAPI.Packets.Tests
         [TestMethod]
         public void DeserializationLastStringCanNotBeNull()
         {
-            var serializedPacket = (WhisperPacket)Deserializer.Deserialize("/0Lucifer0 ", false);
+            var serializedPacket = (WhisperPacket)Deserializer.Deserialize("/0Lucifer0 ");
             Assert.AreEqual(serializedPacket.Message, "");
         }
 
@@ -69,14 +69,14 @@ namespace ChickenAPI.Packets.Tests
         [TestMethod]
         public void DeserializeSpecial()
         {
-            var packet = (UseItemPacket)Deserializer.Deserialize("u_i 2 3 4 5 6", false);
+            var packet = (UseItemPacket)Deserializer.Deserialize("u_i 2 3 4 5 6");
             Assert.IsTrue(packet.Mode == 6);
         }
 
         [TestMethod]
         public void DeserializeOptionalListPacket()
         {
-            var packet = (MShopPacket)Deserializer.Deserialize("m_shop 1", false);
+            var packet = (MShopPacket)Deserializer.Deserialize("m_shop 1");
             Assert.IsTrue(packet.Type == CreateShopPacketType.Close);
         }
 
@@ -85,8 +85,8 @@ namespace ChickenAPI.Packets.Tests
         {
             var packet = (MShopPacket)Deserializer.Deserialize(
                 "m_shop 0 0 20 1 2400 0 21 1 10692 2 0 8 2500 2 3 2 480 0 0 0 0 0 0 0 0 0 0 0 0 0 0" +
-                " 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 admin Stand",
-                false);
+                " 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 admin Stand"
+                );
             Assert.IsTrue(packet.Type == 0
                 && packet.ItemList[1].Type == 0
                 && packet.ItemList[1].Slot == 21
@@ -99,8 +99,8 @@ namespace ChickenAPI.Packets.Tests
         public void DeserializeistSubPacketWithoutSeparator()
         {
             var packet = (SitPacket)Deserializer.Deserialize(
-                "rest 1 2 3",
-                false);
+                "rest 1 2 3"
+                );
             Assert.IsTrue(packet.Amount == 1
                 && packet.Users[0].VisualType == VisualType.Npc
                 && packet.Users[0].VisualId == 3);
@@ -110,8 +110,8 @@ namespace ChickenAPI.Packets.Tests
         public void DeserializeSimpleListWithoutSeparator()
         {
             var packet = (StPacket)Deserializer.Deserialize(
-                "st 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16",
-                false);
+                "st 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16"
+                );
             Assert.IsTrue(packet.BuffIds.Count == 8);
         }
 
@@ -119,8 +119,8 @@ namespace ChickenAPI.Packets.Tests
         public void DeserializeWithGuid()
         {
             var packet = (NoS0575Packet)Deserializer.Deserialize(
-                "NoS0575 3808647 admin EE26B0DD4AF7E749AA1A8EE3C10AE9923F618980772E473F8819A5D4940E0DB27AC185F8A0E1D5F84F88BC887FD67B143732C304CC5FA9AD8E6F57F50028A8FF 3e241e8e-b1cd-49c3-a455-4d253a75f6e6 0031F69F�0.9.3.3097 0 06A35F0058610A5B3FA13FC2CB04E795",
-                false);
+                "NoS0575 3808647 admin EE26B0DD4AF7E749AA1A8EE3C10AE9923F618980772E473F8819A5D4940E0DB27AC185F8A0E1D5F84F88BC887FD67B143732C304CC5FA9AD8E6F57F50028A8FF 3e241e8e-b1cd-49c3-a455-4d253a75f6e6 0031F69F�0.9.3.3097 0 06A35F0058610A5B3FA13FC2CB04E795"
+                );
             Assert.IsTrue(packet.Header == "NoS0575");
             Assert.IsTrue(packet.Number == 3808647);
             Assert.IsTrue(packet.Name == "admin");
