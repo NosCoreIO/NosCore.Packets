@@ -172,9 +172,11 @@ namespace ChickenAPI.Packets
                     Body = bodyIndex >= packetContent.Length ? "" : packetContent.Substring(bodyIndex)
                 };
             }
-            catch (Exception ex)
+            catch
             {
-                return null;
+                var exc = new ArgumentException();
+                exc.Data["Packet"] = packetContent;
+                throw exc;
             }
         }
 
@@ -184,7 +186,7 @@ namespace ChickenAPI.Packets
             var matches = Regex.Matches(packetContent, @"([^\040]+[\.][^\040]+[\040]?)+((?=\040)|$)|([^\040]+)((?=\040)|$)").OfType<Match>()
                 .ToArray(); ;
 
-            if (matches.Length > 0)
+            if (matches.Length > 0 && dic.packetDeserializerDictionary.Count > 0)
             {
                 var maxindex = dic.packetDeserializerDictionary.Max(s => s.Key.Item2.Index);
                 var trueIndex = -1;
