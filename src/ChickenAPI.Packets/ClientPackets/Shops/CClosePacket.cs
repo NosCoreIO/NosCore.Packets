@@ -6,5 +6,7 @@ namespace ChickenAPI.Packets.ClientPackets.Shops
     [PacketHeader("c_close")]
     public class CClosePacket : PacketBase
     {
+        [PacketIndex(0)]
+        public byte Type { get; set; }
     }
 }

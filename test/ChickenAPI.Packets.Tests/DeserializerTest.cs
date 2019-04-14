@@ -8,6 +8,7 @@ using ChickenAPI.Packets.Interfaces;
 using ChickenAPI.Packets.ServerPackets.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using ChickenAPI.Packets.ClientPackets.Families;
 
 namespace ChickenAPI.Packets.Tests
 {
@@ -24,7 +25,8 @@ namespace ChickenAPI.Packets.Tests
                 typeof(MShopItemSubPacket),
                 typeof(StPacket),
                 typeof(NoS0575Packet),
-                typeof(FamilyChatPacket)
+                typeof(FamilyChatPacket),
+                typeof(FStashEndPacket)
             });
 
         [TestMethod]
@@ -42,6 +44,13 @@ namespace ChickenAPI.Packets.Tests
             Assert.AreEqual("unres", packet.Header);
         }
 
+        [TestMethod]
+        public void PacketWithoutPropertiesAreDeserialized()
+        {
+            var packet = (FStashEndPacket)Deserializer.Deserialize("f_stash_end");
+            Assert.AreEqual("f_stash_end", packet.Header);
+        }
+        
         [TestMethod]
         public void UnknownPacketAreUnresolvedWithoutBody()
         {
