@@ -23,14 +23,15 @@ namespace ChickenAPI.Packets.Tests
                 typeof(SitSubPacket),
                 typeof(MShopItemSubPacket),
                 typeof(StPacket),
-                typeof(NoS0575Packet)
+                typeof(NoS0575Packet),
+                typeof(FamilyChatPacket)
             });
 
         [TestMethod]
         public void PacketEndingWithNullableMakeItOptional()
         {
             var packet = (WhisperPacket)Deserializer.Deserialize("/0Lucifer0 this is a long message");
-            Assert.AreEqual("this is a long message", packet.Message);
+            Assert.AreEqual("0Lucifer0 this is a long message", packet.Message);
         }
 
         [TestMethod]
@@ -54,16 +55,16 @@ namespace ChickenAPI.Packets.Tests
         public void PacketAreDeserializedWithHeaderAndKeepAliveId()
         {
             var packet = (WhisperPacket)Deserializer.Deserialize("1234 /0Lucifer0 this is a long message");
-            Assert.AreEqual("this is a long message", packet.Message);
+            Assert.AreEqual("0Lucifer0 this is a long message", packet.Message);
             Assert.AreEqual((ushort)1234, packet.KeepAliveId);
-            Assert.AreEqual("/0Lucifer0", packet.Header);
+            Assert.AreEqual("/", packet.Header);
         }
 
 
         [TestMethod]
         public void DeserializationLastStringCanNotBeNull()
         {
-            var serializedPacket = (WhisperPacket)Deserializer.Deserialize("/0Lucifer0 ");
+            var serializedPacket = (FamilyChatPacket)Deserializer.Deserialize(": ");
             Assert.AreEqual(serializedPacket.Message, "");
         }
 
