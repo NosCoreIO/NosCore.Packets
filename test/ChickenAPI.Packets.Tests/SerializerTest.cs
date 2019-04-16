@@ -1,7 +1,9 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using ChickenAPI.Packets.ClientPackets;
 using ChickenAPI.Packets.ClientPackets.Chat;
+using ChickenAPI.Packets.ClientPackets.Families;
 using ChickenAPI.Packets.ClientPackets.Inventory;
 using ChickenAPI.Packets.ClientPackets.Relations;
 using ChickenAPI.Packets.Enumerations;
@@ -22,7 +24,8 @@ namespace ChickenAPI.Packets.Tests
     public class SerializationTests
     {
         static ISerializer Serializer = new Serializer(
-            new[] {
+            new[]
+            {
                 typeof(DelayPacket),
                 typeof(UseItemPacket),
                 typeof(NInvPacket),
@@ -31,7 +34,8 @@ namespace ChickenAPI.Packets.Tests
                 typeof(InPacket),
                 typeof(BlinitPacket),
                 typeof(NsTestPacket),
-                typeof(FinsPacket)
+                typeof(FinsPacket),
+                typeof(GidxPacket)
             });
 
         [TestMethod]
@@ -96,7 +100,6 @@ namespace ChickenAPI.Packets.Tests
         }
 
 
-
         [TestMethod]
         public void SerializeWithSpecialSeparator()
         {
@@ -104,8 +107,8 @@ namespace ChickenAPI.Packets.Tests
             {
                 SubPackets = new List<BlinitSubPacket>
                 {
-                    new BlinitSubPacket {RelatedCharacterId = 1, CharacterName = "test"},
-                    new BlinitSubPacket {RelatedCharacterId = 2, CharacterName = "test2"}
+                    new BlinitSubPacket { RelatedCharacterId = 1, CharacterName = "test" },
+                    new BlinitSubPacket { RelatedCharacterId = 2, CharacterName = "test2" }
                 }
             };
 
@@ -220,7 +223,7 @@ namespace ChickenAPI.Packets.Tests
             var mapNpcPacket = new InPacket
             {
                 VisualType = VisualType.Npc,
-                Name =  null,
+                Name = null,
                 VisualId = 0,
                 VNum = null,
                 PositionX = 0,
@@ -247,7 +250,7 @@ namespace ChickenAPI.Packets.Tests
         [TestMethod]
         public void GenerateInPacketIsNotCorruptedForItem()
         {
-            var mapItem =  new InPacket
+            var mapItem = new InPacket
             {
                 VisualType = VisualType.Object,
                 VisualId = 1,
@@ -265,6 +268,25 @@ namespace ChickenAPI.Packets.Tests
             Assert.AreEqual($"in 9 - {mapItem.VisualId} 0 0 {mapItem.InItemSubPacket.Amount} 0 0", packet);
         }
 
+        [TestMethod]
+        public void GenerateGidxPacketIsNotCorrupted()
+        {
+            var characterTest = new GidxPacket
+            {
+                VisualType = VisualType.Player,
+                VisualId = 1,
+                FamilyId = 1337,
+                FamilyName = "FAMILY_NAME",
+                FamilyCustomRank = "NONE",
+                FamilyLevel = 10,
+                FamilyIcons = new List<bool> { false, false, false }
+            };
+            var packet = Serializer.Serialize(characterTest);
+            Assert.AreEqual(
+                $"gidx 1 1 1337 FAMILY_NAME NONE 10 0|0|0",
+                packet);
+        }
+
 
         [TestMethod]
         public void GenerateInPacketIsNotCorruptedForCharacter()
@@ -275,13 +297,13 @@ namespace ChickenAPI.Packets.Tests
                 Name = "characterTest",
                 VNum = null,
                 VisualId = 0,
-                PositionX =0,
+                PositionX = 0,
                 PositionY = 0,
                 Direction = 0,
                 InCharacterSubPacket = new InCharacterSubPacket
                 {
                     Authority = 2,
-                    Gender =0,
+                    Gender = 0,
                     HairStyle = 0,
                     HairColor = 0,
                     Class = CharacterClassType.Adventurer,
@@ -289,7 +311,7 @@ namespace ChickenAPI.Packets.Tests
                     InAliveSubPacket = new InAliveSubPacket
                     {
                         Hp = 0,
-                        Mp =0
+                        Mp = 0
                     },
                     IsSitting = false,
                     GroupId = null,
@@ -311,6 +333,7 @@ namespace ChickenAPI.Packets.Tests
                     Level = 1,
                     FamilyLevel = 0,
                     ArenaWinner = false,
+                    FamilyIcons = new List<bool> { false, false, false },
                     Compliment = 0,
                     Size = 10,
                     HeroLevel = 0
@@ -318,7 +341,7 @@ namespace ChickenAPI.Packets.Tests
             };
             var packet = Serializer.Serialize(characterTest);
             Assert.AreEqual(
-                $"in 1 characterTest - 0 0 0 0 {(byte)characterTest.InCharacterSubPacket.Authority} 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 0 00 00 -1 - 1 0 0 0 0 1 0 0 0 {(byte)characterTest.InCharacterSubPacket.Size} 0",
+                $"in 1 characterTest - 0 0 0 0 {(byte)characterTest.InCharacterSubPacket.Authority} 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 0 00 00 -1 - 1 0 0 0 0 1 0 0|0|0 0 0 {(byte)characterTest.InCharacterSubPacket.Size} 0",
                 packet);
         }
     }

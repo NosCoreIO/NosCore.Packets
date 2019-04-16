@@ -8,7 +8,7 @@
 
 ## Links
 Discord : https://discord.gg/7sTFU8d
-
+[List of Packets](PACKET_LIST.md)
 
 ## Description
 
@@ -17,6 +17,7 @@ ChickenAPI is an Emulator API for the game Nostale.
 We are willing to provide quality API with a lot of things inside it to facilitate and fasten developers' work inside their own projects related to Nostale.
 
 ChickenAPI.Packets is a library including all Nostale packets (at least the ones we have written over so far)
+
 
 
 ## Knowledge

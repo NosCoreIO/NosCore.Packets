@@ -90,7 +90,7 @@ namespace ChickenAPI.Packets
             if (!packetDeserializerDictionary.ContainsKey(header ?? typeof(T).Name))
             {
                 var types = typeof(T).GetProperties()
-                 .Where(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().Any());
+                    .Where(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().Any());
                 var propertyAmount = types.Any() ? types.Max(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First().Index) : 0;
 
                 var creator = new TypeCreator
@@ -184,7 +184,7 @@ namespace ChickenAPI.Packets
         {
             var deg = (IPacket)dic.Constructor.DynamicInvoke();
             var matches = Regex.Matches(packetContent, @"([^\040]+[\.][^\040]+[\040]?)+((?=\040)|$)|([^\040]+)((?=\040)|$)").OfType<Match>()
-                .ToArray(); ;
+                .ToArray();
 
             if (matches.Length > 0 && dic.packetDeserializerDictionary.Count > 0)
             {
@@ -193,7 +193,7 @@ namespace ChickenAPI.Packets
                 foreach (var packetBasePropertyInfo in dic.packetDeserializerDictionary)
                 {
                     var isMaxIndex = packetBasePropertyInfo.Key.Item2.Index == maxindex;
-                    var keepaliveIndex = (includesKeepAliveIdentity ? 1 : 0);
+                    var keepaliveIndex = includesKeepAliveIdentity ? 1 : 0;
                     var currentIndex = packetBasePropertyInfo.Key.Item2.Index + keepaliveIndex;
                     trueIndex = trueIndex == -1 ? currentIndex : trueIndex;
                     if (currentIndex < matches.Length + keepaliveIndex - (hasHeader ? 1 : 0))
@@ -242,10 +242,12 @@ namespace ChickenAPI.Packets
             {
                 length = (sbyte)(matches.Length - currentIndex - 1);
             }
+
             if (length == -1)
             {
                 length = sbyte.Parse(matches[currentIndex].Value);
             }
+
             if (length > 0)
             {
                 var list = new List<object>();
@@ -255,11 +257,13 @@ namespace ChickenAPI.Packets
                     {
                         var dic = packetDeserializerDictionary.Values.FirstOrDefault(s => s.PacketType == subType);
 
-                        if (dic != null)
+                        if (dic == null)
                         {
-                            list.Add(Convert.ChangeType(DeserializeIPacket(dic, string.Join(" ", matches.Skip(currentIndex + 1 + i * (1 + dic.PropertyAmount)).Take(dic.PropertyAmount + 1)), false, false), subType));
-                            newIndex += 1 + dic.PropertyAmount;
+                            continue;
                         }
+
+                        list.Add(Convert.ChangeType(DeserializeIPacket(dic, string.Join(" ", matches.Skip(currentIndex + 1 + i * (1 + dic.PropertyAmount)).Take(dic.PropertyAmount + 1)), false, false), subType));
+                        newIndex += 1 + dic.PropertyAmount;
                     }
                     else //simple list
                     {
@@ -267,6 +271,7 @@ namespace ChickenAPI.Packets
                         newIndex += i + 1;
                     }
                 }
+
                 currentIndex = newIndex;
                 return subType.GetAndFillListMethod()(list);
             }
@@ -305,6 +310,7 @@ namespace ChickenAPI.Packets
                     {
                         packet.Append(" ");
                     }
+
                     packet.Append(matches[i]);
                 }
 

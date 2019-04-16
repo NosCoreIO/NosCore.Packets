@@ -27,7 +27,7 @@ namespace ChickenAPI.Packets
         public void Initialize<T>() where T : PacketBase
         {
             var packetSerializerExpressionFalse = PacketSerializerExpression<T>();
-            if(packetSerializerExpressionFalse != null && !packetSerializerDictionary.ContainsKey(typeof(T).Name))
+            if (packetSerializerExpressionFalse != null && !packetSerializerDictionary.ContainsKey(typeof(T).Name))
             {
                 packetSerializerDictionary.Add(typeof(T).Name, packetSerializerExpressionFalse.Compile());
             }
@@ -57,7 +57,7 @@ namespace ChickenAPI.Packets
 
         public string Serialize(IEnumerable<IPacket> packets)
         {
-           return string.Join('\uffff'.ToString(), packets.Select(Serialize));
+            return string.Join('\uffff'.ToString(), packets.Select(Serialize));
         }
 
         private Expression DefaultSerializer(Expression specificTypeExpression, Expression splitter)
@@ -80,7 +80,7 @@ namespace ChickenAPI.Packets
 
             return Expression.Condition(
                 Expression.Equal(exp, Expression.Constant(null, typeof(object))),
-               isOptional ? Expression.Constant(null) : ConcatExpression(splitter, Expression.Constant("-")),
+                isOptional ? Expression.Constant(null) : ConcatExpression(splitter, Expression.Constant("-")),
                 ConcatExpression(splitter,
                     Expression.Condition(nullOrEmpty,
                         Expression.Convert(exp, typeof(object)),
@@ -92,7 +92,8 @@ namespace ChickenAPI.Packets
         {
             return Expression.Condition(
                 Expression.Equal(exp, Expression.Constant(null, typeof(object))),
-                isOptional ? Expression.Constant(null, typeof(object))
+                isOptional
+                    ? Expression.Constant(null, typeof(object))
                     : ConcatExpression(splitter, Expression.Constant("-1")),
                 ConcatExpression(splitter, exp)
             );
@@ -138,32 +139,35 @@ namespace ChickenAPI.Packets
             PacketIndexAttribute indexAttr, Type type, string packetSplitter, Expression propertySplitter)
         {
             var param = Expression.Parameter(type.GenericTypeArguments[0]);
+            var isPacketList = false;
             if (typeof(IPacket).IsAssignableFrom(type.GenericTypeArguments[0]))
             {
                 indexAttr.IsOptional = false;
+                isPacketList = true;
             }
 
             var selectExp = Expression.Call(
-            typeof(Enumerable),
-            "Select",
-            new[] { type.GenericTypeArguments[0], typeof(string) },
-            specificTypeExpression,
-            Expression.Lambda(
-                Expression.Convert(typeof(IPacket).IsAssignableFrom(type.GenericTypeArguments[0]) ?
-                    IPacketSerializer(injectedPacket, indexAttr, param, type.GenericTypeArguments[0], 0, propertySplitter, "") :
-                    PropertySerializer(injectedPacket, indexAttr, type.GenericTypeArguments[0], param, 0,
-                        Expression.Constant("")), typeof(string)), param)
+                typeof(Enumerable),
+                "Select",
+                new[] { type.GenericTypeArguments[0], typeof(string) },
+                specificTypeExpression,
+                Expression.Lambda(
+                    Expression.Convert(isPacketList
+                        ? IPacketSerializer(injectedPacket, indexAttr, param, type.GenericTypeArguments[0], 0, propertySplitter, "")
+                        : PropertySerializer(injectedPacket, indexAttr, type.GenericTypeArguments[0], param, 0,
+                            Expression.Constant("")), typeof(string)), param)
             );
 
             var listJoin = Expression.Convert(Expression.Call(
-                typeof(string).GetMethod("Join", new[] { typeof(string), typeof(IEnumerable<string>) }),
-                Expression.Constant(packetSplitter, typeof(string)),
-                selectExp), typeof(object));
+                    typeof(string).GetMethod("Join", new[] { typeof(string), typeof(IEnumerable<string>) }),
+                    isPacketList ? Expression.Constant(packetSplitter, typeof(string)) : propertySplitter,
+                    selectExp),
+                typeof(object));
 
             return Expression.Condition(
                 Expression.Equal(specificTypeExpression, Expression.Constant(null, typeof(object))),
                 Expression.Constant(null, typeof(object)),
-                Expression.Convert(listJoin, typeof(object))
+                !isPacketList ? ConcatExpression(Expression.Constant(" "), Expression.Convert(listJoin, typeof(object))) : Expression.Convert(listJoin, typeof(object))
             );
         }
 
@@ -257,7 +261,8 @@ namespace ChickenAPI.Packets
                 case var t when t.IsGenericType && t.GetGenericTypeDefinition().IsAssignableFrom(typeof(List<>)):
                     specificTypeExpression = ListSerializer(injectedPacket, specificTypeExpression, indexAttr, t, " ",
                         Expression.Constant(typeof(IPacket).IsAssignableFrom(t.GenericTypeArguments[0])
-                            ? indexAttr.SpecialSeparator ?? "." : " "));
+                            ? indexAttr.SpecialSeparator ?? "."
+                            : indexAttr.SpecialSeparator ?? " "));
                     break;
                 //handle string
                 case var t when t == typeof(string):
