@@ -26,6 +26,20 @@ jobs:
       - run: 
             name: Test Code Quality
             command : echo "todo"
+  test_validate_documentation:
+    docker:
+      - image: microsoft/dotnet:2.2-sdk-alpine
+    steps:
+      - checkout
+      - run: 
+            name: Build Packet List documentation generator
+            command : | 
+                dotnet restore
+                dotnet build src/ChickenAPI.Packets.Documentator -c Release -o /tmp/documentator
+                dotnet /tmp/documentator/ChickenAPI.Packets.Documentator.dll /tmp/PACKET_LIST_TEST.md
+                diff /tmp/PACKET_LIST_TEST.md PACKET_LIST.md 
+      - store_artifacts:
+            path: /tmp/PACKET_LIST_TEST.md
   release_nuget_packages:
     docker:
       - image: microsoft/dotnet:2.2-sdk-alpine
@@ -51,7 +65,8 @@ jobs:
             go get github.com/tcnksm/ghr
             VERSION=${CIRCLE_CI_TAG}
             ARTIFACTS_PATH=/tmp/nupkgs
-            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ${ARTIFACTS_PATH}
+            echo ${CIRCLE_PROJECT_USERNAME}
+            ghr ${VERSION} ${ARTIFACTS_PATH} -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete
 workflows:
   version: 2
   build_and_test:
@@ -61,6 +76,9 @@ workflows:
           requires:
             - build
       - test_code_quality:
+          requires:
+            - build
+      - test_validate_documentation:
           requires:
             - build
   build_test_and_release:

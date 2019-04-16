@@ -1,4 +1,5 @@
-﻿using ChickenAPI.Packets.Attributes;
+﻿using System.Collections.Generic;
+using ChickenAPI.Packets.Attributes;
 using ChickenAPI.Packets.Enumerations;
 using ChickenAPI.Packets.Interfaces;
 
@@ -19,10 +20,13 @@ namespace ChickenAPI.Packets.ClientPackets.Families
         [PacketIndex(3)]
         public string FamilyName { get; set; }
 
-        [PacketIndex(4, SpecialSeparator = "")]
+        [PacketIndex(4)]
         public string FamilyCustomRank { get; set; }
 
         [PacketIndex(5)]
         public byte FamilyLevel { get; set; }
+
+        [PacketIndex(6, SpecialSeparator = "|")]
+        public List<bool> FamilyIcons { get; set; }
     }
 }

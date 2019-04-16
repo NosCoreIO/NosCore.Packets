@@ -22,10 +22,13 @@ namespace ChickenAPI.Packets.ServerPackets.Player
         [PacketIndex(4)]
         public short MorphDesign { get; set; }
 
-        [PacketIndex(5, IsOptional = true)]
+        [PacketIndex(5)]
         public byte MorphBonus { get; set; }
 
-        [PacketIndex(6, IsOptional = true)]
-        public byte? Size { get; set; }
+        [PacketIndex(6)]
+        public byte Size { get; set; }
+
+        [PacketIndex(7)]
+        public byte Unknown { get; set; }
     }
 }

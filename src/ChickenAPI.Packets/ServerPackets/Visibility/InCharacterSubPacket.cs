@@ -1,4 +1,5 @@
-﻿using ChickenAPI.Packets.Attributes;
+﻿using System.Collections.Generic;
+using ChickenAPI.Packets.Attributes;
 using ChickenAPI.Packets.Enumerations;
 using ChickenAPI.Packets.Interfaces;
 using ChickenAPI.Packets.ServerPackets.Inventory;
@@ -86,16 +87,19 @@ namespace ChickenAPI.Packets.ServerPackets.Visibility
         [PacketIndex(25)]
         public byte FamilyLevel { get; set; }
 
-        [PacketIndex(26)]
-        public bool ArenaWinner { get; set; }
+        [PacketIndex(26, SpecialSeparator = "|")]
+        public List<bool> FamilyIcons { get; set; }
 
         [PacketIndex(27)]
-        public short Compliment { get; set; }
+        public bool ArenaWinner { get; set; }
 
         [PacketIndex(28)]
-        public byte Size { get; set; }
+        public short Compliment { get; set; }
 
         [PacketIndex(29)]
+        public byte Size { get; set; }
+
+        [PacketIndex(30)]
         public byte HeroLevel { get; set; }
     }
 }
