@@ -13,7 +13,7 @@ namespace ChickenAPI.Packets.ClientPackets.Npcs
         [PacketIndex(1)]
         public long TargetId { get; set; }
 
-        [PacketIndex(2)]
+        [PacketIndex(2, IsOptional = true)]
         public long? Data { get; set; }
     }
 }
