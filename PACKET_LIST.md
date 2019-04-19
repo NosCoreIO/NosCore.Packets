@@ -178,10 +178,10 @@
 ### Movement
 - [dir](src/ChickenAPI.Packets/ServerPackets/Movement/ChickenAPI.Packets.ServerPackets.Movement.DirPacket.cs)
 
-### MiniMap
-- [at](src/ChickenAPI.Packets/ServerPackets/MiniMap/ChickenAPI.Packets.ServerPackets.MiniMap.AtPacket.cs)
-- [c_map](src/ChickenAPI.Packets/ServerPackets/MiniMap/ChickenAPI.Packets.ServerPackets.MiniMap.CMapPacket.cs)
-- [rsfp](src/ChickenAPI.Packets/ServerPackets/MiniMap/ChickenAPI.Packets.ServerPackets.MiniMap.RsfpPacket.cs)
+### Minimap
+- [at](src/ChickenAPI.Packets/ServerPackets/Minimap/ChickenAPI.Packets.ServerPackets.Minimap.AtPacket.cs)
+- [c_map](src/ChickenAPI.Packets/ServerPackets/Minimap/ChickenAPI.Packets.ServerPackets.Minimap.CMapPacket.cs)
+- [rsfp](src/ChickenAPI.Packets/ServerPackets/Minimap/ChickenAPI.Packets.ServerPackets.Minimap.RsfpPacket.cs)
 
 ### Mates
 - [pski](src/ChickenAPI.Packets/ServerPackets/Mates/ChickenAPI.Packets.ServerPackets.Mates.PSkiPacket.cs)
@@ -198,6 +198,7 @@
 - [NsTeST](src/ChickenAPI.Packets/ServerPackets/Login/ChickenAPI.Packets.ServerPackets.Login.NsTeStSubPacket.cs)
 
 ### Inventory
+- [e_info](src/ChickenAPI.Packets/ServerPackets/Inventory/ChickenAPI.Packets.ServerPackets.Inventory.EInfoPacket.cs)
 - [eq](src/ChickenAPI.Packets/ServerPackets/Inventory/ChickenAPI.Packets.ServerPackets.Inventory.EqPacket.cs)
 - [equip](src/ChickenAPI.Packets/ServerPackets/Inventory/ChickenAPI.Packets.ServerPackets.Inventory.EquipPacket.cs)
 - [get](src/ChickenAPI.Packets/ServerPackets/Inventory/ChickenAPI.Packets.ServerPackets.Inventory.ServerGetPacket.cs)
@@ -205,6 +206,7 @@
 - [inv](src/ChickenAPI.Packets/ServerPackets/Inventory/ChickenAPI.Packets.ServerPackets.Inventory.InvPacket.cs)
 - [ivn](src/ChickenAPI.Packets/ServerPackets/Inventory/ChickenAPI.Packets.ServerPackets.Inventory.IvnPacket.cs)
 - [pairy](src/ChickenAPI.Packets/ServerPackets/Inventory/ChickenAPI.Packets.ServerPackets.Inventory.PairyPacket.cs)
+- [slinfo](src/ChickenAPI.Packets/ServerPackets/Inventory/ChickenAPI.Packets.ServerPackets.Inventory.SlInfoPacket.cs)
 
 ### Groups
 - [pinit](src/ChickenAPI.Packets/ServerPackets/Groups/ChickenAPI.Packets.ServerPackets.Groups.PinitPacket.cs)
@@ -224,6 +226,7 @@
 - [req_info](src/ChickenAPI.Packets/ServerPackets/Entities/ChickenAPI.Packets.ServerPackets.Entities.ReqInfoPacket.cs)
 - [rest](src/ChickenAPI.Packets/ServerPackets/Entities/ChickenAPI.Packets.ServerPackets.Entities.RestPacket.cs)
 - [st](src/ChickenAPI.Packets/ServerPackets/Entities/ChickenAPI.Packets.ServerPackets.Entities.StPacket.cs)
+- [tp](src/ChickenAPI.Packets/ServerPackets/Entities/ChickenAPI.Packets.ServerPackets.Entities.TpPacket.cs)
 
 ### Chats
 - [say](src/ChickenAPI.Packets/ServerPackets/Chats/ChickenAPI.Packets.ServerPackets.Chats.SayPacket.cs)
@@ -237,3 +240,16 @@
 - [clist_start](src/ChickenAPI.Packets/ServerPackets/CharacterSelectionScreen/ChickenAPI.Packets.ServerPackets.CharacterSelectionScreen.ClistStartPacket.cs)
 - [OK](src/ChickenAPI.Packets/ServerPackets/CharacterSelectionScreen/ChickenAPI.Packets.ServerPackets.CharacterSelectionScreen.OkPacket.cs)
 - [scene](src/ChickenAPI.Packets/ServerPackets/CharacterSelectionScreen/ChickenAPI.Packets.ServerPackets.CharacterSelectionScreen.ScenePacket.cs)
+
+### Battle
+- [bf](src/ChickenAPI.Packets/ServerPackets/Battle/ChickenAPI.Packets.ServerPackets.Battle.BfPacket.cs)
+- [cancel](src/ChickenAPI.Packets/ServerPackets/Battle/ChickenAPI.Packets.ServerPackets.Battle.CancelPacket.cs)
+- [ct](src/ChickenAPI.Packets/ServerPackets/Battle/ChickenAPI.Packets.ServerPackets.Battle.CtPacket.cs)
+- [ms_c](src/ChickenAPI.Packets/ServerPackets/Battle/ChickenAPI.Packets.ServerPackets.Battle.MscPacket.cs)
+- [su](src/ChickenAPI.Packets/ServerPackets/Battle/ChickenAPI.Packets.ServerPackets.Battle.SuPacket.cs)
+
+### Auction
+- [rc_blist](src/ChickenAPI.Packets/ServerPackets/Auction/ChickenAPI.Packets.ServerPackets.Auction.RcbListPacket.cs)
+- [rc_blist_subpacket](src/ChickenAPI.Packets/ServerPackets/Auction/ChickenAPI.Packets.ServerPackets.Auction.RcbListPacket+RcbListElementPacket.cs)
+- [rc_slist](src/ChickenAPI.Packets/ServerPackets/Auction/ChickenAPI.Packets.ServerPackets.Auction.RcsListPacket.cs)
+- [rc_slist_element](src/ChickenAPI.Packets/ServerPackets/Auction/ChickenAPI.Packets.ServerPackets.Auction.RcsListPacket+RcsListElementPacket.cs)
