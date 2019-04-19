@@ -1,7 +1,6 @@
 ﻿using ChickenAPI.Packets.Attributes;
-using ChickenAPI.Packets.Interfaces;
 
-namespace ChickenAPI.Packets.ServerPackets.MiniMap
+namespace ChickenAPI.Packets.ServerPackets.Minimap
 {
     [PacketHeader("at")]
     public class AtPacket : PacketBase
