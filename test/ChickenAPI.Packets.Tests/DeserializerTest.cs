@@ -103,6 +103,13 @@ namespace ChickenAPI.Packets.Tests
         }
 
         [TestMethod]
+        public void DeserializeSpecialWithKeepalive()
+        {
+            var packet = (UseItemPacket)Deserializer.Deserialize("12345 u_i 2 3 4 5 6");
+            Assert.IsTrue(packet.Mode == 6);
+        }
+
+        [TestMethod]
         public void DeserializeOptionalListPacket()
         {
             var packet = (MShopPacket)Deserializer.Deserialize("m_shop 1");

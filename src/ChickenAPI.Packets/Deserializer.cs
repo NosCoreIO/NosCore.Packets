@@ -194,12 +194,12 @@ namespace ChickenAPI.Packets
                 {
                     var isMaxIndex = packetBasePropertyInfo.Key.Item2.Index == maxindex;
                     var keepaliveIndex = includesKeepAliveIdentity ? 1 : 0;
-                    var currentIndex = packetBasePropertyInfo.Key.Item2.Index + keepaliveIndex;
-                    trueIndex = trueIndex == -1 ? currentIndex : trueIndex - keepaliveIndex;
-                    if (currentIndex < matches.Length + keepaliveIndex - (hasHeader ? 1 : 0))
+                    var currentIndex = packetBasePropertyInfo.Key.Item2.Index + (hasHeader ? 1 : 0) + keepaliveIndex;
+                    trueIndex = trueIndex == -1 ? currentIndex : trueIndex ;
+                    if (currentIndex < matches.Length)
                     {
                         packetBasePropertyInfo.Value.DynamicInvoke(deg,
-                            DeserializeValue(packetBasePropertyInfo.Key, packetBasePropertyInfo.Key.Item1, matches, ref trueIndex, isMaxIndex, hasHeader));
+                            DeserializeValue(packetBasePropertyInfo.Key, packetBasePropertyInfo.Key.Item1, matches, ref trueIndex, isMaxIndex));
                     }
                     else if (isMaxIndex && packetBasePropertyInfo.Key.Item1 == typeof(string))
                     {
@@ -215,23 +215,23 @@ namespace ChickenAPI.Packets
             return deg;
         }
 
-        private object DeserializeValue(Tuple<Type, PacketIndexAttribute> packetBasePropertyInfo, Type item1, Match[] matches, ref int currentIndex, bool isMaxIndex, bool hasHeader)
+        private object DeserializeValue(Tuple<Type, PacketIndexAttribute> packetBasePropertyInfo, Type item1, Match[] matches, ref int currentIndex, bool isMaxIndex)
         {
             switch (item1)
             {
                 case var prop when prop == typeof(string):
                     return DeserializeString(matches, ref currentIndex, isMaxIndex);
                 case var prop when prop == typeof(Guid) || prop == typeof(Guid?):
-                    return DeserializeGuid(matches[currentIndex++ + (hasHeader ? 1 : 0)].ToString());
+                    return DeserializeGuid(matches[currentIndex++].ToString());
                 case var prop when prop == typeof(bool) || prop == typeof(bool?):
-                    return DeserializeBoolean(matches[currentIndex++ + (hasHeader ? 1 : 0)].ToString());
+                    return DeserializeBoolean(matches[currentIndex++].ToString());
                 case var prop when (prop.BaseType?.Equals(typeof(Enum)) ?? false) ||
                     (Nullable.GetUnderlyingType(prop)?.IsEnum ?? false):
-                    return DeserializeEnum(item1, matches[currentIndex++ + (hasHeader ? 1 : 0)].ToString());
+                    return DeserializeEnum(item1, matches[currentIndex++].ToString());
                 case var prop when typeof(ICollection).IsAssignableFrom(prop):
                     return DeserializeList(packetBasePropertyInfo.Item1.GetGenericArguments()[0], packetBasePropertyInfo.Item2.Length, matches, ref currentIndex, isMaxIndex);
                 default:
-                    return DeserializeDefault(item1, matches[currentIndex++ + (hasHeader ? 1 : 0)].ToString());
+                    return DeserializeDefault(item1, matches[currentIndex++].ToString());
             }
         }
 
@@ -240,7 +240,7 @@ namespace ChickenAPI.Packets
             int newIndex = currentIndex;
             if (isMaxIndex)
             {
-                length = (sbyte)(matches.Length - currentIndex - 1);
+                length = (sbyte)(matches.Length - currentIndex);
             }
 
             if (length == -1)
@@ -262,12 +262,12 @@ namespace ChickenAPI.Packets
                             continue;
                         }
 
-                        list.Add(Convert.ChangeType(DeserializeIPacket(dic, string.Join(" ", matches.Skip(currentIndex + 1 + i * (1 + dic.PropertyAmount)).Take(dic.PropertyAmount + 1)), false, false), subType));
+                        list.Add(Convert.ChangeType(DeserializeIPacket(dic, string.Join(" ", matches.Skip(currentIndex + i * (1 + dic.PropertyAmount)).Take(dic.PropertyAmount + 1)), false, false), subType));
                         newIndex += 1 + dic.PropertyAmount;
                     }
                     else //simple list
                     {
-                        list.Add(Convert.ChangeType(matches[currentIndex + i + 1].Value, subType));
+                        list.Add(Convert.ChangeType(matches[currentIndex + i].Value, subType));
                         newIndex += i + 1;
                     }
                 }
@@ -304,9 +304,9 @@ namespace ChickenAPI.Packets
             if (isMaxIndex)
             {
                 StringBuilder packet = new StringBuilder();
-                for (int i = currentIndex + 1; i < matches.Length; i++)
+                for (int i = currentIndex; i < matches.Length; i++)
                 {
-                    if (i != currentIndex + 1)
+                    if (i != currentIndex)
                     {
                         packet.Append(" ");
                     }
@@ -317,15 +317,14 @@ namespace ChickenAPI.Packets
                 currentIndex = matches.Length - 1;
                 return packet.ToString();
             }
-            else if (matches[currentIndex + 1].ToString() == "-")
+            else if (matches[currentIndex].ToString() == "-")
             {
                 currentIndex++;
                 return null;
             }
             else
             {
-                currentIndex++;
-                return matches[currentIndex].ToString();
+                return matches[currentIndex++].ToString();
             }
         }
     }
