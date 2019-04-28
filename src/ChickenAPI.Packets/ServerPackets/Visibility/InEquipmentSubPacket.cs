@@ -31,5 +31,8 @@ namespace ChickenAPI.Packets.ServerPackets.Visibility
 
         [PacketIndex(8)]
         public short? WeaponSkin { get; set; }
+
+        [PacketIndex(9)]
+        public short? WingSkin { get; set; }
     }
 }
