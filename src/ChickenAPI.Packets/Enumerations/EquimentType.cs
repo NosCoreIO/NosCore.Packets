@@ -17,6 +17,7 @@
         Sp = 12,
         CostumeSuit = 13,
         CostumeHat = 14,
-        WeaponSkin = 15
+        WeaponSkin = 15,
+        WingSkin = 16
     }
 }
