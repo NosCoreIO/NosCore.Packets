@@ -59,5 +59,8 @@ namespace ChickenAPI.Packets.ServerPackets.Inventory
 
         [PacketIndex(17, IsOptional = true)]
         public EquipmentSubPacket WeaponSkin { get; set; }
+
+        [PacketIndex(18, IsOptional = true)]
+        public EquipmentSubPacket WingSkin { get; set; }
     }
 }

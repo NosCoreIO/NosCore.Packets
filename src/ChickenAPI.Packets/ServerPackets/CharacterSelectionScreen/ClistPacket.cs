@@ -39,7 +39,7 @@ namespace ChickenAPI.Packets.ServerPackets.CharacterSelectionScreen
         public byte HeroLevel { get; set; }
 
         [PacketIndex(10)]
-        public List<short?> Equipments { get; set; }
+        public List<short?> Equipments { get; set; }//TODO define this
 
         [PacketIndex(11)]
         public byte JobLevel { get; set; }
