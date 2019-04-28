@@ -195,7 +195,7 @@ namespace ChickenAPI.Packets
                     var isMaxIndex = packetBasePropertyInfo.Key.Item2.Index == maxindex;
                     var keepaliveIndex = includesKeepAliveIdentity ? 1 : 0;
                     var currentIndex = packetBasePropertyInfo.Key.Item2.Index + keepaliveIndex;
-                    trueIndex = trueIndex == -1 ? currentIndex : trueIndex;
+                    trueIndex = trueIndex == -1 ? currentIndex : trueIndex - keepaliveIndex;
                     if (currentIndex < matches.Length + keepaliveIndex - (hasHeader ? 1 : 0))
                     {
                         packetBasePropertyInfo.Value.DynamicInvoke(deg,
@@ -296,7 +296,7 @@ namespace ChickenAPI.Packets
 
         private object DeserializeDefault(Type type, string value)
         {
-            return value == "-1" ? type.GetDefaultValue() : Convert.ChangeType(value, type);
+            return value == "-1" ? type.GetDefaultValue() : Convert.ChangeType(value, Nullable.GetUnderlyingType(type) ?? type);
         }
 
         private object DeserializeString(Match[] matches, ref int currentIndex, bool isMaxIndex)
