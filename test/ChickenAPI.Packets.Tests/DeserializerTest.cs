@@ -88,6 +88,14 @@ namespace ChickenAPI.Packets.Tests
         }
 
         [TestMethod]
+        public void PacketEndingWithNullableMakeItOptionalWithKeepalive()
+        {
+            var packet = Deserializer.Deserialize("12345 npc_req 2");
+            Assert.IsNotNull(packet);
+            Assert.IsFalse(packet is UnresolvedPacket);
+        }
+
+        [TestMethod]
         public void DeserializeSpecial()
         {
             var packet = (UseItemPacket)Deserializer.Deserialize("u_i 2 3 4 5 6");
