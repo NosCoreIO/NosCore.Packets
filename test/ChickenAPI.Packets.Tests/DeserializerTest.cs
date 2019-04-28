@@ -9,6 +9,7 @@ using ChickenAPI.Packets.ServerPackets.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using ChickenAPI.Packets.ClientPackets.Families;
+using ChickenAPI.Packets.ClientPackets.Npcs;
 
 namespace ChickenAPI.Packets.Tests
 {
@@ -26,11 +27,12 @@ namespace ChickenAPI.Packets.Tests
                 typeof(StPacket),
                 typeof(NoS0575Packet),
                 typeof(FamilyChatPacket),
-                typeof(FStashEndPacket)
+                typeof(FStashEndPacket),
+                typeof(RequestNpcPacket)
             });
 
         [TestMethod]
-        public void PacketEndingWithNullableMakeItOptional()
+        public void PacketEndingWithStringMakeItSerializedToEnd()
         {
             var packet = (WhisperPacket)Deserializer.Deserialize("/0Lucifer0 this is a long message");
             Assert.AreEqual("0Lucifer0 this is a long message", packet.Message);
@@ -77,12 +79,13 @@ namespace ChickenAPI.Packets.Tests
             Assert.AreEqual(serializedPacket.Message, "");
         }
 
-        //[TestMethod]
-        //public void PacketEndingWithNullableMakeItOptional()
-        //{
-        //    var packet = Deserializer.Deserialize("$CreateItem 1012 1", false);
-        //    Assert.IsNotNull(packet);
-        //}
+        [TestMethod]
+        public void PacketEndingWithNullableMakeItOptional()
+        {
+            var packet = Deserializer.Deserialize("npc_req 2 2075");
+            Assert.IsNotNull(packet);
+            Assert.IsFalse(packet is UnresolvedPacket);
+        }
 
         [TestMethod]
         public void DeserializeSpecial()

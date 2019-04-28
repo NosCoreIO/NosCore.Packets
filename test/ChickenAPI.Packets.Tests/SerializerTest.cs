@@ -12,6 +12,7 @@ using ChickenAPI.Packets.ServerPackets;
 using ChickenAPI.Packets.ServerPackets.CharacterSelectionScreen;
 using ChickenAPI.Packets.ServerPackets.Inventory;
 using ChickenAPI.Packets.ServerPackets.Login;
+using ChickenAPI.Packets.ServerPackets.Player;
 using ChickenAPI.Packets.ServerPackets.Relations;
 using ChickenAPI.Packets.ServerPackets.Shop;
 using ChickenAPI.Packets.ServerPackets.UI;
@@ -35,7 +36,8 @@ namespace ChickenAPI.Packets.Tests
                 typeof(BlinitPacket),
                 typeof(NsTestPacket),
                 typeof(FinsPacket),
-                typeof(GidxPacket)
+                typeof(GidxPacket),
+                typeof(CInfoPacket)
             });
 
         [TestMethod]
@@ -151,6 +153,34 @@ namespace ChickenAPI.Packets.Tests
                 Message = "test message !"
             });
             Assert.AreEqual("/ test message !", packet);
+        }
+
+        [TestMethod]
+        public void SerializePacketWithStringNullReplaceByDash()
+        {
+            var packet = Serializer.Serialize(new CInfoPacket()
+            {
+                Name = "test",
+                Unknown1 = null,
+                Unknown2 = -1,
+                FamilyId = 0,
+                FamilyName = null,
+                CharacterId = 1,
+                Authority = 0,
+                Gender = GenderType.Male,
+                HairStyle = HairStyleType.HairStyleA,
+                HairColor = HairColorType.DarkPurple,
+                Class = CharacterClassType.Adventurer,
+                Icon = 0,
+                Compliment = 0,
+                Morph = 0,
+                Invisible = false,
+                FamilyLevel = 0,
+                MorphUpgrade = 0,
+                ArenaWinner = false
+
+            });
+            Assert.AreEqual("c_info test - -1 0 - 1 0 0 0 0 0 0 0 0 0 0 0 0", packet);
         }
 
         [TestMethod]
