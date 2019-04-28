@@ -3,7 +3,7 @@ using ChickenAPI.Packets.Interfaces;
 
 namespace ChickenAPI.Packets.ClientPackets.Login
 {
-    [PacketHeader("EntryPoint", 3, AnonymousAccess = true)]
+    [PacketHeader("EntryPoint", AnonymousAccess = true)]
     public class EntryPointPacket : PacketBase
     {
         [PacketIndex(0)]

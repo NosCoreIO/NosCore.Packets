@@ -3,7 +3,7 @@ using ChickenAPI.Packets.Interfaces;
 
 namespace ChickenAPI.Packets.ClientPackets.Shops
 {
-    [PacketHeader("c_close")]
+    [PacketHeader("c_close", AnonymousAccess = true)]
     public class CClosePacket : PacketBase
     {
         [PacketIndex(0)]
