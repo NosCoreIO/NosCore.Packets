@@ -5,10 +5,10 @@ namespace ChickenAPI.Packets.ServerPackets.Inventory
 {
     public class UpgradeRareSubPacket : PacketBase
     {
-        [PacketIndex(0)]
-        public byte Upgrade { get; set; }
+        [PacketIndex(0, IsOptional = true)]
+        public byte? Upgrade { get; set; }
 
         [PacketIndex(1)]
-        public byte Rare { get; set; }
+        public sbyte Rare { get; set; }
     }
 }
