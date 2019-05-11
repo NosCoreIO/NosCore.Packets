@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -17,7 +18,7 @@ namespace ChickenAPI.Packets
         public Type PacketType { get; set; }
         public Delegate Constructor { get; set; }
 
-        public Dictionary<Tuple<Type, PacketIndexAttribute>, Delegate> packetDeserializerDictionary = new Dictionary<Tuple<Type, PacketIndexAttribute>, Delegate>();
+        public Dictionary<Tuple<Type, PacketIndexAttribute, string, IEnumerable<ValidationAttribute>>, Delegate> packetDeserializerDictionary = new Dictionary<Tuple<Type, PacketIndexAttribute, string, IEnumerable<ValidationAttribute>>, Delegate>();
     }
 
     //TODO make those expression tree cached
@@ -119,9 +120,9 @@ namespace ChickenAPI.Packets
             ).Compile();
         }
 
-        private Dictionary<Tuple<Type, PacketIndexAttribute>, Delegate> GeneratePacketDeserializerDictionary(Type type)
+        private Dictionary<Tuple<Type, PacketIndexAttribute, string, IEnumerable<ValidationAttribute>>, Delegate> GeneratePacketDeserializerDictionary(Type type)
         {
-            var dic = new Dictionary<Tuple<Type, PacketIndexAttribute>, Delegate>();
+            var dic = new Dictionary<Tuple<Type, PacketIndexAttribute, string, IEnumerable<ValidationAttribute>>, Delegate>();
             var properties = type.GetProperties()
                 .Where(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().Any())
                 .OrderBy(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First().Index).ToList();
@@ -129,8 +130,9 @@ namespace ChickenAPI.Packets
             {
                 var packetIndex = packetBasePropertyInfo.GetCustomAttributes(true).OfType<PacketIndexAttribute>()
                     .First();
+                var packetValidators = packetBasePropertyInfo.GetCustomAttributes(true).OfType<ValidationAttribute>();
 
-                dic.Add(new Tuple<Type, PacketIndexAttribute>(packetBasePropertyInfo.PropertyType, packetIndex), GetPropSetter(type, packetBasePropertyInfo.PropertyType, packetBasePropertyInfo.Name));
+                dic.Add(new Tuple<Type, PacketIndexAttribute, string, IEnumerable<ValidationAttribute>>(packetBasePropertyInfo.PropertyType, packetIndex, packetBasePropertyInfo.Name, packetValidators), GetPropSetter(type, packetBasePropertyInfo.PropertyType, packetBasePropertyInfo.Name));
             }
 
             return dic;
@@ -195,11 +197,25 @@ namespace ChickenAPI.Packets
                     var isMaxIndex = packetBasePropertyInfo.Key.Item2.Index == maxindex;
                     var keepaliveIndex = includesKeepAliveIdentity ? 1 : 0;
                     var currentIndex = packetBasePropertyInfo.Key.Item2.Index + (hasHeader ? 1 : 0) + keepaliveIndex;
-                    trueIndex = trueIndex == -1 ? currentIndex : trueIndex ;
+                    trueIndex = trueIndex == -1 ? currentIndex : trueIndex;
                     if (currentIndex < matches.Length)
                     {
-                        packetBasePropertyInfo.Value.DynamicInvoke(deg,
-                            DeserializeValue(packetBasePropertyInfo.Key, packetBasePropertyInfo.Key.Item1, matches, ref trueIndex, isMaxIndex));
+                        var value = DeserializeValue(packetBasePropertyInfo.Key, packetBasePropertyInfo.Key.Item1,
+                            matches, ref trueIndex, isMaxIndex);
+                        foreach (var validation in packetBasePropertyInfo.Key.Item4)
+                        {
+                            var validate = validation.GetValidationResult(value, new ValidationContext(deg)
+                            {
+                                MemberName = packetBasePropertyInfo.Key.Item3,
+                            });
+
+                            deg.ValidationResult = validate;
+                            if (deg.ValidationResult?.ErrorMessage.Length > 0)
+                            {
+                                deg.IsValid = false;
+                            }
+                        }
+                        packetBasePropertyInfo.Value.DynamicInvoke(deg, value);
                     }
                     else if (isMaxIndex && packetBasePropertyInfo.Key.Item1 == typeof(string))
                     {
@@ -215,7 +231,7 @@ namespace ChickenAPI.Packets
             return deg;
         }
 
-        private object DeserializeValue(Tuple<Type, PacketIndexAttribute> packetBasePropertyInfo, Type item1, Match[] matches, ref int currentIndex, bool isMaxIndex)
+        private object DeserializeValue(Tuple<Type, PacketIndexAttribute, string, IEnumerable<ValidationAttribute>> packetBasePropertyInfo, Type item1, Match[] matches, ref int currentIndex, bool isMaxIndex)
         {
             switch (item1)
             {
@@ -281,7 +297,7 @@ namespace ChickenAPI.Packets
 
         private object DeserializeEnum(Type type, string value)
         {
-            return value == "-1" ? type.GetDefaultValue() : Enum.Parse(type, value);
+            return value == "-1" ? type.GetDefaultValue() : Enum.Parse(Nullable.GetUnderlyingType(type) ?? type, value);
         }
 
         private object DeserializeBoolean(string value)
