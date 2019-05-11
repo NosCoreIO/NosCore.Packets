@@ -8,6 +8,7 @@ using ChickenAPI.Packets.Interfaces;
 using ChickenAPI.Packets.ServerPackets.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using ChickenAPI.Packets.ClientPackets.Battle;
 using ChickenAPI.Packets.ClientPackets.Families;
 using ChickenAPI.Packets.ClientPackets.Npcs;
 
@@ -28,7 +29,9 @@ namespace ChickenAPI.Packets.Tests
                 typeof(NoS0575Packet),
                 typeof(FamilyChatPacket),
                 typeof(FStashEndPacket),
-                typeof(RequestNpcPacket)
+                typeof(RequestNpcPacket),
+                typeof(NrunPacket),
+                typeof(NcifPacket)
             });
 
         [TestMethod]
@@ -149,6 +152,29 @@ namespace ChickenAPI.Packets.Tests
                 "st 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16"
                 );
             Assert.IsTrue(packet.BuffIds.Count == 8);
+        }
+
+        [TestMethod]
+        public void DeserializeInvalidValidationIsNotValid()
+        {
+            var packet = (NcifPacket)Deserializer.Deserialize("ncif 1 -10");
+            Assert.IsFalse(packet.IsValid);
+        }
+
+        [TestMethod]
+        public void DeserializeValidValidationIsValid()
+        {
+            var packet = (NcifPacket)Deserializer.Deserialize("ncif 1 1");
+            Assert.IsTrue(packet.IsValid);
+        }
+
+        [TestMethod]
+        public void DeserializeNullableEnum()
+        {
+            var packet = (NrunPacket)Deserializer.Deserialize(
+                "n_run 1"
+            );
+            Assert.IsTrue(packet.Runner == NrunRunnerType.ChangeClass);
         }
 
         [TestMethod]
