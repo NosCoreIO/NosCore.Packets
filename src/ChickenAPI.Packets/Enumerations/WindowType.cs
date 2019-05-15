@@ -1,6 +1,6 @@
 ﻿namespace ChickenAPI.Packets.Enumerations
 {
-    public enum WindowIdType : byte
+    public enum WindowType : byte
     {
         ItemToPart = 0,
         UpgradeItem = 1, //  UpgradeMode.Normal, UpgradeProtection.None, hasAmulet: HasAmulet
