@@ -27,9 +27,14 @@
 - [fins](src/ChickenAPI.Packets/ClientPackets/Relations/ChickenAPI.Packets.ClientPackets.Relations.FinsPacket.cs)
 - [reloadfinfo](src/ChickenAPI.Packets/ClientPackets/Relations/ChickenAPI.Packets.ClientPackets.Relations.ReloadFinfoPacket.cs)
 
+### Quicklist
+- [qset](src/ChickenAPI.Packets/ClientPackets/Quicklist/ChickenAPI.Packets.ClientPackets.Quicklist.QsetPacket.cs)
+
 ### Player
+- [guri](src/ChickenAPI.Packets/ClientPackets/Player/ChickenAPI.Packets.ClientPackets.Player.ClientGuriPacket.cs)
 - [rsfi](src/ChickenAPI.Packets/ClientPackets/Player/ChickenAPI.Packets.ClientPackets.Player.RsfiPacket.cs)
 - [snap](src/ChickenAPI.Packets/ClientPackets/Player/ChickenAPI.Packets.ClientPackets.Player.SnapPacket.cs)
+- [up_gr](src/ChickenAPI.Packets/ClientPackets/Player/ChickenAPI.Packets.ClientPackets.Player.UpgradePacket.cs)
 
 ### Npcs
 - [n_run](src/ChickenAPI.Packets/ClientPackets/Npcs/ChickenAPI.Packets.ClientPackets.Npcs.NrunPacket.cs)
@@ -124,14 +129,20 @@
 - [in](src/ChickenAPI.Packets/ServerPackets/Visibility/ChickenAPI.Packets.ServerPackets.Visibility.InPacket.cs)
 
 ### UI
+- [act6](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.Act6Packet.cs)
+- [bsinfo](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.BSInfoPacket.cs)
+- [ch_dm](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.ChDMPacket.cs)
 - [delay](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.DelayPacket.cs)
+- [dlg](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.DialogPacket.cs)
 - [dlg](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.DlgPacket.cs)
+- [guri](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.GuriPacket.cs)
 - [icon](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.IconPacket.cs)
 - [info](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.InfoPacket.cs)
 - [modal](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.ModalPacket.cs)
 - [msg](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.MsgPacket.cs)
 - [p_clear](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.PclearPacket.cs)
 - [qna](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.QnaPacket.cs)
+- [zzim](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.ZzimPacket.cs)
 
 ### Specialists
 - [sd](src/ChickenAPI.Packets/ServerPackets/Specialists/ChickenAPI.Packets.ServerPackets.Specialists.SdPacket.cs)
@@ -142,7 +153,6 @@
 - [ishop](src/ChickenAPI.Packets/ServerPackets/Shop/ChickenAPI.Packets.ServerPackets.Shop.IshopPacket.cs)
 - [n_inv](src/ChickenAPI.Packets/ServerPackets/Shop/ChickenAPI.Packets.ServerPackets.Shop.NInvPacket.cs)
 - [n_inv_item](src/ChickenAPI.Packets/ServerPackets/Shop/ChickenAPI.Packets.ServerPackets.Shop.NInvItemSubPacket.cs)
-- [npc_req](src/ChickenAPI.Packets/ServerPackets/Shop/ChickenAPI.Packets.ServerPackets.Shop.NpcReqPacket.cs)
 - [pflag](src/ChickenAPI.Packets/ServerPackets/Shop/ChickenAPI.Packets.ServerPackets.Shop.PflagPacket.cs)
 - [pidx](src/ChickenAPI.Packets/ServerPackets/Shop/ChickenAPI.Packets.ServerPackets.Shop.PidxPacket.cs)
 - [pidx_sub_packet](src/ChickenAPI.Packets/ServerPackets/Shop/ChickenAPI.Packets.ServerPackets.Shop.PidxSubPacket.cs)
@@ -165,23 +175,30 @@
 - [c_mode](src/ChickenAPI.Packets/ServerPackets/Player/ChickenAPI.Packets.ServerPackets.Player.CModePacket.cs)
 - [cond](src/ChickenAPI.Packets/ServerPackets/Player/ChickenAPI.Packets.ServerPackets.Player.CondPacket.cs)
 - [eff](src/ChickenAPI.Packets/ServerPackets/Player/ChickenAPI.Packets.ServerPackets.Player.EffectPacket.cs)
+- [eqinfo](src/ChickenAPI.Packets/ServerPackets/Player/ChickenAPI.Packets.ServerPackets.Player.EquipmentInfoPacket.cs)
 - [fd](src/ChickenAPI.Packets/ServerPackets/Player/ChickenAPI.Packets.ServerPackets.Player.FdPacket.cs)
 - [fs](src/ChickenAPI.Packets/ServerPackets/Player/ChickenAPI.Packets.ServerPackets.Player.FsPacket.cs)
 - [lev](src/ChickenAPI.Packets/ServerPackets/Player/ChickenAPI.Packets.ServerPackets.Player.LevPacket.cs)
 - [levelup](src/ChickenAPI.Packets/ServerPackets/Player/ChickenAPI.Packets.ServerPackets.Player.LevelUpPacket.cs)
 - [npinfo](src/ChickenAPI.Packets/ServerPackets/Player/ChickenAPI.Packets.ServerPackets.Player.NpInfoPacket.cs)
+- [pflag](src/ChickenAPI.Packets/ServerPackets/Player/ChickenAPI.Packets.ServerPackets.Player.PFlagPacket.cs)
+- [qset](src/ChickenAPI.Packets/ServerPackets/Player/ChickenAPI.Packets.ServerPackets.Player.QsetPacketReceive.cs)
 - [qslot](src/ChickenAPI.Packets/ServerPackets/Player/ChickenAPI.Packets.ServerPackets.Player.QSlotPacket.cs)
 - [rage](src/ChickenAPI.Packets/ServerPackets/Player/ChickenAPI.Packets.ServerPackets.Player.RagePacket.cs)
+- [sc](src/ChickenAPI.Packets/ServerPackets/Player/ChickenAPI.Packets.ServerPackets.Player.ScPacket.cs)
+- [scr](src/ChickenAPI.Packets/ServerPackets/Player/ChickenAPI.Packets.ServerPackets.Player.ScrPacket.cs)
 - [stat](src/ChickenAPI.Packets/ServerPackets/Player/ChickenAPI.Packets.ServerPackets.Player.StatPacket.cs)
+- [tc_info](src/ChickenAPI.Packets/ServerPackets/Player/ChickenAPI.Packets.ServerPackets.Player.TcInfoPacket.cs)
 - [tit](src/ChickenAPI.Packets/ServerPackets/Player/ChickenAPI.Packets.ServerPackets.Player.TitPacket.cs)
+- [wopen](src/ChickenAPI.Packets/ServerPackets/Player/ChickenAPI.Packets.ServerPackets.Player.WopenPacket.cs)
 
 ### Movement
 - [dir](src/ChickenAPI.Packets/ServerPackets/Movement/ChickenAPI.Packets.ServerPackets.Movement.DirPacket.cs)
 
-### Minimap
-- [at](src/ChickenAPI.Packets/ServerPackets/Minimap/ChickenAPI.Packets.ServerPackets.Minimap.AtPacket.cs)
-- [c_map](src/ChickenAPI.Packets/ServerPackets/Minimap/ChickenAPI.Packets.ServerPackets.Minimap.CMapPacket.cs)
-- [rsfp](src/ChickenAPI.Packets/ServerPackets/Minimap/ChickenAPI.Packets.ServerPackets.Minimap.RsfpPacket.cs)
+### MiniMap
+- [at](src/ChickenAPI.Packets/ServerPackets/MiniMap/ChickenAPI.Packets.ServerPackets.MiniMap.AtPacket.cs)
+- [c_map](src/ChickenAPI.Packets/ServerPackets/MiniMap/ChickenAPI.Packets.ServerPackets.MiniMap.CMapPacket.cs)
+- [rsfp](src/ChickenAPI.Packets/ServerPackets/MiniMap/ChickenAPI.Packets.ServerPackets.MiniMap.RsfpPacket.cs)
 
 ### Mates
 - [pski](src/ChickenAPI.Packets/ServerPackets/Mates/ChickenAPI.Packets.ServerPackets.Mates.PSkiPacket.cs)
@@ -214,6 +231,9 @@
 - [pjoin](src/ChickenAPI.Packets/ServerPackets/Groups/ChickenAPI.Packets.ServerPackets.Groups.PjoinPacket.cs)
 - [pst](src/ChickenAPI.Packets/ServerPackets/Groups/ChickenAPI.Packets.ServerPackets.Groups.PstPacket.cs)
 
+### Families
+- [ginfo](src/ChickenAPI.Packets/ServerPackets/Families/ChickenAPI.Packets.ServerPackets.Families.GInfoPacket.cs)
+
 ### Exchanges
 - [exc_close](src/ChickenAPI.Packets/ServerPackets/Exchanges/ChickenAPI.Packets.ServerPackets.Exchanges.ExcClosePacket.cs)
 - [exc_list](src/ChickenAPI.Packets/ServerPackets/Exchanges/ChickenAPI.Packets.ServerPackets.Exchanges.ServerExcListPacket.cs)
@@ -229,8 +249,10 @@
 - [tp](src/ChickenAPI.Packets/ServerPackets/Entities/ChickenAPI.Packets.ServerPackets.Entities.TpPacket.cs)
 
 ### Chats
+- [ItemInfo ](src/ChickenAPI.Packets/ServerPackets/Chats/ChickenAPI.Packets.ServerPackets.Chats.SayItemPacket+SayItemSubPacket.cs)
 - [say](src/ChickenAPI.Packets/ServerPackets/Chats/ChickenAPI.Packets.ServerPackets.Chats.SayPacket.cs)
 - [say_p](src/ChickenAPI.Packets/ServerPackets/Chats/ChickenAPI.Packets.ServerPackets.Chats.SayPetPacket.cs)
+- [sayitem](src/ChickenAPI.Packets/ServerPackets/Chats/ChickenAPI.Packets.ServerPackets.Chats.SayItemPacket.cs)
 - [spk](src/ChickenAPI.Packets/ServerPackets/Chats/ChickenAPI.Packets.ServerPackets.Chats.SpeakPacket.cs)
 - [talk](src/ChickenAPI.Packets/ServerPackets/Chats/ChickenAPI.Packets.ServerPackets.Chats.TalkPacket.cs)
 

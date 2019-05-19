@@ -15,10 +15,10 @@ namespace ChickenAPI.Packets.ServerPackets.Visibility
         public GenderType Gender { get; set; }
 
         [PacketIndex(2)]
-        public byte HairStyle { get; set; }
+        public HairStyleType HairStyle { get; set; }
 
         [PacketIndex(3)]
-        public byte HairColor { get; set; }
+        public HairColorType HairColor { get; set; }
 
         [PacketIndex(4)]
         public CharacterClassType Class { get; set; }
@@ -47,7 +47,7 @@ namespace ChickenAPI.Packets.ServerPackets.Visibility
         [PacketIndex(12)]
         public byte Morph { get; set; }
 
-        //TODO: Find what Unknown2 & 3 are made for
+        //TODO: Find what GroupId & 3 are made for
         [PacketIndex(13)]
         public byte Unknown2 { get; set; }
 
@@ -76,7 +76,7 @@ namespace ChickenAPI.Packets.ServerPackets.Visibility
         public byte MorphUpgrade { get; set; }
 
         [PacketIndex(22)]
-        public byte Faction { get; set; }
+        public FactionType Faction { get; set; }
 
         [PacketIndex(23)]
         public byte MorphUpgrade2 { get; set; }

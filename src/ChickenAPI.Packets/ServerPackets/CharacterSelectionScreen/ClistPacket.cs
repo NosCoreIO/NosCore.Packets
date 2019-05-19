@@ -18,13 +18,13 @@ namespace ChickenAPI.Packets.ServerPackets.CharacterSelectionScreen
         public byte Unknown { get; set; } //TODO to find
 
         [PacketIndex(3)]
-        public byte Gender { get; set; }
+        public GenderType Gender { get; set; }
 
         [PacketIndex(4)]
-        public byte HairStyle { get; set; }
+        public HairStyleType HairStyle { get; set; }
 
         [PacketIndex(5)]
-        public byte HairColor { get; set; }
+        public HairColorType HairColor { get; set; }
 
         [PacketIndex(6)]
         public byte Unknown1 { get; set; } //TODO to find

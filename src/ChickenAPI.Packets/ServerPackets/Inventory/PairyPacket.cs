@@ -1,6 +1,5 @@
 ﻿using ChickenAPI.Packets.Attributes;
 using ChickenAPI.Packets.Enumerations;
-using ChickenAPI.Packets.Interfaces;
 
 namespace ChickenAPI.Packets.ServerPackets.Inventory
 {
@@ -14,10 +13,10 @@ namespace ChickenAPI.Packets.ServerPackets.Inventory
         public long VisualId { get; set; }
 
         [PacketIndex(2)]
-        public int Unknown { get; set; }
+        public int FairyMoveType { get; set; }
 
         [PacketIndex(3)]
-        public byte Element { get; set; }
+        public ElementType Element { get; set; }
 
         [PacketIndex(4)]
         public int ElementRate { get; set; }

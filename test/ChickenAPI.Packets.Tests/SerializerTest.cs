@@ -86,7 +86,7 @@ namespace ChickenAPI.Packets.Tests
         }
 
         [TestMethod]
-        public void serializeWithMultiplePacketAsProperty()
+        public void SerializeWithMultiplePacketAsProperty()
         {
             var dlgTest = new DlgPacket
             {
@@ -162,7 +162,7 @@ namespace ChickenAPI.Packets.Tests
             {
                 Name = "test",
                 Unknown1 = null,
-                Unknown2 = -1,
+                GroupId = -1,
                 FamilyId = 0,
                 FamilyName = null,
                 CharacterId = 1,
