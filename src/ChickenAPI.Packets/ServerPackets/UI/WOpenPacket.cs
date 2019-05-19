@@ -4,10 +4,10 @@ using ChickenAPI.Packets.Enumerations;
 namespace ChickenAPI.Packets.ServerPackets.UI
 {
     [PacketHeader("wopen")]
-    public class WOpenPacket : PacketBase
+    public class WopenPacket : PacketBase
     {
         [PacketIndex(0)]
-        public WindowType WindowId { get; set; }
+        public WindowType Type { get; set; }
 
         [PacketIndex(1)]
         public byte Unknown { get; set; }
