@@ -142,6 +142,8 @@
 - [msg](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.MsgPacket.cs)
 - [p_clear](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.PclearPacket.cs)
 - [qna](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.QnaPacket.cs)
+- [ta_rank](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.TARankPacket.cs)
+- [wopen](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.WopenPacket.cs)
 - [zzim](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.ZzimPacket.cs)
 
 ### Specialists
@@ -190,7 +192,6 @@
 - [stat](src/ChickenAPI.Packets/ServerPackets/Player/ChickenAPI.Packets.ServerPackets.Player.StatPacket.cs)
 - [tc_info](src/ChickenAPI.Packets/ServerPackets/Player/ChickenAPI.Packets.ServerPackets.Player.TcInfoPacket.cs)
 - [tit](src/ChickenAPI.Packets/ServerPackets/Player/ChickenAPI.Packets.ServerPackets.Player.TitPacket.cs)
-- [wopen](src/ChickenAPI.Packets/ServerPackets/Player/ChickenAPI.Packets.ServerPackets.Player.WopenPacket.cs)
 
 ### Movement
 - [dir](src/ChickenAPI.Packets/ServerPackets/Movement/ChickenAPI.Packets.ServerPackets.Movement.DirPacket.cs)
