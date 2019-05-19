@@ -23,6 +23,6 @@ namespace ChickenAPI.Packets.ServerPackets.Portals
         public int PortalId { get; set; }
 
         [PacketIndex(5)]
-        public int IsDisabled { get; set; }
+        public bool IsDisabled { get; set; }
     }
 }

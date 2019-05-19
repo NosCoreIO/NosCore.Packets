@@ -1,5 +1,5 @@
 ﻿using ChickenAPI.Packets.Attributes;
-using ChickenAPI.Packets.Interfaces;
+using ChickenAPI.Packets.Enumerations;
 
 namespace ChickenAPI.Packets.ClientPackets.Specialists
 {
@@ -7,7 +7,7 @@ namespace ChickenAPI.Packets.ClientPackets.Specialists
     public class SpTransformPacket : PacketBase
     {
         [PacketIndex(0)]
-        public byte Type { get; set; }
+        public SlPacketType Type { get; set; }
 
         [PacketIndex(1, IsOptional = true)]
         public int? TransportId { get; set; }

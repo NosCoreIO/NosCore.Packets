@@ -1,6 +1,6 @@
 ﻿using ChickenAPI.Packets.Attributes;
 
-namespace ChickenAPI.Packets.ServerPackets.Minimap
+namespace ChickenAPI.Packets.ServerPackets.MiniMap
 {
     [PacketHeader("rsfp")]
     public class RsfpPacket : PacketBase

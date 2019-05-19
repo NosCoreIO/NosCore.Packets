@@ -1,6 +1,11 @@
 ﻿namespace ChickenAPI.Packets.Enumerations
 {
-    public enum MessageType : byte
+    public enum ModalPacketType
+    {
+        Default = 1,
+    }
+
+    public enum MsgPacketType
     {
         Whisper = 0,
         PrivateChat = 1,

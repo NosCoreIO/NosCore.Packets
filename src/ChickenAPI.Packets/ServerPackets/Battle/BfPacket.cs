@@ -12,21 +12,21 @@ namespace ChickenAPI.Packets.ServerPackets.Battle
         [PacketIndex(1)]
         public long VisualId { get; set; }
 
-        [PacketIndex(3, ".")]
+        [PacketIndex(2, ".")]
         public BuffElementSubPacket Buff { get; set; }
 
-        [PacketIndex(4)]
+        [PacketIndex(3)]
         public long BuffLevel { get; set; }
 
         public class BuffElementSubPacket : PacketBase
         {
-            [PacketIndex(2)]
+            [PacketIndex(0)]
             public long ChargeValue { get; set; }
 
-            [PacketIndex(3)]
+            [PacketIndex(1)]
             public long BuffId { get; set; }
 
-            [PacketIndex(4)]
+            [PacketIndex(2)]
             public long Duration { get; set; }
         }
     }
