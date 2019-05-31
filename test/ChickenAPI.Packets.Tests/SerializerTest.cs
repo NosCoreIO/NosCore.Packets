@@ -24,7 +24,7 @@ namespace ChickenAPI.Packets.Tests
     [TestClass]
     public class SerializationTests
     {
-        static ISerializer Serializer = new Serializer(
+        static readonly ISerializer Serializer = new Serializer(
             new[]
             {
                 typeof(DelayPacket),

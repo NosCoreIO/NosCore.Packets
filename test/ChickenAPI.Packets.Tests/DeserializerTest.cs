@@ -17,7 +17,7 @@ namespace ChickenAPI.Packets.Tests
     [TestClass]
     public class DeserializerTest
     {
-        static IDeserializer Deserializer = new Deserializer(
+        static readonly IDeserializer Deserializer = new Deserializer(
             new[] {
                 typeof(WhisperPacket),
                 typeof(UseItemPacket),

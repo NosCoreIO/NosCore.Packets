@@ -88,22 +88,30 @@ namespace ChickenAPI.Packets
         public void Initialize<T>() where T : PacketBase
         {
             var header = typeof(T).GetCustomAttribute<PacketHeaderAttribute>()?.Identification;
-            if (!packetDeserializerDictionary.ContainsKey(header ?? typeof(T).Name))
+            if (packetDeserializerDictionary.ContainsKey(header ?? typeof(T).Name))
             {
-                var types = typeof(T).GetProperties()
-                    .Where(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().Any());
-                var propertyAmount = types.Any() ? types.Max(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First().Index) : 0;
-
-                var creator = new TypeCreator
+                if (typeof(T).Namespace.Contains("ServerPackets"))
                 {
-                    PacketType = typeof(T),
-                    PropertyAmount = propertyAmount,
-                    Constructor = Expression.Lambda(Expression.New(typeof(T))).Compile(),
-                    packetDeserializerDictionary = GeneratePacketDeserializerDictionary(typeof(T))
-                };
+                    return;
+                }
 
-                packetDeserializerDictionary.Add(header ?? typeof(T).Name, creator);
+                packetDeserializerDictionary.Remove(header ?? typeof(T).Name);
             }
+
+            var types = typeof(T).GetProperties()
+                    .Where(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().Any());
+            var propertyAmount = types.Any() ? types.Max(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First().Index) : 0;
+
+            var creator = new TypeCreator
+            {
+                PacketType = typeof(T),
+                PropertyAmount = propertyAmount,
+                Constructor = Expression.Lambda(Expression.New(typeof(T))).Compile(),
+                packetDeserializerDictionary = GeneratePacketDeserializerDictionary(typeof(T))
+            };
+
+            packetDeserializerDictionary.Add(header ?? typeof(T).Name, creator);
+
         }
 
         private Delegate GetPropSetter(Type typeObj, Type typeProperty, string propertyName)
