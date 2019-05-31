@@ -27,8 +27,17 @@ namespace ChickenAPI.Packets
         public void Initialize<T>() where T : PacketBase
         {
             var packetSerializerExpressionFalse = PacketSerializerExpression<T>();
-            if (packetSerializerExpressionFalse != null && !packetSerializerDictionary.ContainsKey(typeof(T).Name))
+            if (packetSerializerExpressionFalse != null)
             {
+                if (packetSerializerDictionary.ContainsKey(typeof(T).Name))
+                {
+                    if (typeof(T).Namespace.Contains("ClientPackets"))
+                    {
+                        return;
+                    }
+
+                    packetSerializerDictionary.Remove(typeof(T).Name);
+                }
                 packetSerializerDictionary.Add(typeof(T).Name, packetSerializerExpressionFalse.Compile());
             }
         }
