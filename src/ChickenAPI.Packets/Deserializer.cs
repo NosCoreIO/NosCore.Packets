@@ -150,6 +150,7 @@ namespace ChickenAPI.Packets
         {
             try
             {
+                bool isSpecial = packetContent.StartsWith("#");
                 var packetstring = packetContent.Replace('^', ' ').Replace("#", "").TrimEnd();
                 var packetsplit = packetstring.Split(' ');
                 if (packetsplit.Length < 1)
@@ -168,7 +169,7 @@ namespace ChickenAPI.Packets
                 if (packetDeserializerDictionary.ContainsKey(packetsplit[header]))
                 {
                     var dic = packetDeserializerDictionary[packetsplit[header]];
-                    var packet = DeserializeIPacket(dic, packetContent, includesKeepAliveIdentity, true);
+                    var packet = DeserializeIPacket(dic, isSpecial ? packetstring : packetContent, includesKeepAliveIdentity, true);
                     packet.Header = packetsplit[header];
                     packet.KeepAliveId = includesKeepAliveIdentity ? (ushort?)keepalive : null;
                     return packet;
@@ -253,18 +254,28 @@ namespace ChickenAPI.Packets
                     (Nullable.GetUnderlyingType(prop)?.IsEnum ?? false):
                     return DeserializeEnum(item1, matches[currentIndex++].ToString());
                 case var prop when typeof(ICollection).IsAssignableFrom(prop):
-                    return DeserializeList(packetBasePropertyInfo.Item1.GetGenericArguments()[0], packetBasePropertyInfo.Item2.Length, matches, ref currentIndex, isMaxIndex);
+                    return DeserializeList(packetBasePropertyInfo.Item1.GetGenericArguments()[0], packetBasePropertyInfo.Item2, matches, ref currentIndex, isMaxIndex);
+                case var prop when prop == typeof(IPacket):
+                    return Deserialize(matches[currentIndex++].ToString());
                 default:
                     return DeserializeDefault(item1, matches[currentIndex++].ToString());
             }
         }
 
-        private object DeserializeList(Type subType, sbyte length, Match[] matches, ref int currentIndex, bool isMaxIndex)
+        private object DeserializeList(Type subType, PacketIndexAttribute packetIndexAttribute, Match[] matches, ref int currentIndex, bool isMaxIndex)
         {
             int newIndex = currentIndex;
-            if (isMaxIndex)
+            var length = packetIndexAttribute.Length;
+            string[] splited = null;
+            if (isMaxIndex && string.IsNullOrEmpty(packetIndexAttribute.SpecialSeparator))
             {
                 length = (sbyte)(matches.Length - currentIndex);
+            }
+
+            if (!string.IsNullOrEmpty(packetIndexAttribute.SpecialSeparator))
+            {
+                splited = matches[currentIndex].Value.Split(new string[] { packetIndexAttribute.SpecialSeparator }, StringSplitOptions.None);
+                length = (sbyte)splited.Length;
             }
 
             if (length == -1)
@@ -286,14 +297,27 @@ namespace ChickenAPI.Packets
                             continue;
                         }
 
-                        list.Add(Convert.ChangeType(DeserializeIPacket(dic, string.Join(" ", matches.Skip(currentIndex + i * (1 + dic.PropertyAmount)).Take(dic.PropertyAmount + 1)), false, false), subType));
-                        newIndex += 1 + dic.PropertyAmount;
+                        list.Add(Convert.ChangeType(DeserializeIPacket(dic, splited != null ? string.Join(" ", splited) : string.Join(" ", matches.Skip(currentIndex + i * (1 + dic.PropertyAmount)).Take(dic.PropertyAmount + 1)), false, false), subType));
+
+                        if (splited == null)
+                        {
+                            newIndex += 1 + dic.PropertyAmount;
+                        }
                     }
                     else //simple list
                     {
-                        list.Add(Convert.ChangeType(matches[currentIndex + i].Value, subType));
-                        newIndex += i + 1;
+                        var value = long.Parse(splited != null ? splited[i] : matches[currentIndex + i].Value);
+                        list.Add(Convert.ChangeType(value, subType));
+                        if (splited == null)
+                        {
+                            newIndex += i + 1;
+                        }
                     }
+                }
+
+                if (splited != null)
+                {
+                    newIndex++;
                 }
 
                 currentIndex = newIndex;

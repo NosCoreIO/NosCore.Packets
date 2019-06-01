@@ -14,7 +14,7 @@ namespace ChickenAPI.Packets.ServerPackets.Player
         public string Unknown1 { get; set; } //TODO to find
 
         [PacketIndex(2)]
-        public short GroupId { get; set; } //TODO to find
+        public short? GroupId { get; set; }
 
         [PacketIndex(3)]
         public int FamilyId { get; set; }

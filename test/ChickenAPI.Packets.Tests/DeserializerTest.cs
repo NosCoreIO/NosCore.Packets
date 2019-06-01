@@ -11,6 +11,9 @@ using System;
 using ChickenAPI.Packets.ClientPackets.Battle;
 using ChickenAPI.Packets.ClientPackets.Families;
 using ChickenAPI.Packets.ClientPackets.Npcs;
+using ChickenAPI.Packets.ClientPackets.Relations;
+using ChickenAPI.Packets.ServerPackets.UI;
+using System.Linq;
 
 namespace ChickenAPI.Packets.Tests
 {
@@ -31,7 +34,10 @@ namespace ChickenAPI.Packets.Tests
                 typeof(FStashEndPacket),
                 typeof(RequestNpcPacket),
                 typeof(NrunPacket),
-                typeof(NcifPacket)
+                typeof(NcifPacket),
+                typeof(FinsPacket),
+                typeof(DlgPacket),
+                typeof(GidxPacket)
             });
 
         [TestMethod]
@@ -55,7 +61,7 @@ namespace ChickenAPI.Packets.Tests
             var packet = (FStashEndPacket)Deserializer.Deserialize("f_stash_end");
             Assert.AreEqual("f_stash_end", packet.Header);
         }
-        
+
         [TestMethod]
         public void UnknownPacketAreUnresolvedWithoutBody()
         {
@@ -88,6 +94,20 @@ namespace ChickenAPI.Packets.Tests
             var packet = Deserializer.Deserialize("npc_req 2 2075");
             Assert.IsNotNull(packet);
             Assert.IsFalse(packet is UnresolvedPacket);
+        }
+
+        [TestMethod]
+        public void DeserializeSpecialSeparator()
+        {
+            var packet = (GidxPacket)Deserializer.Deserialize("gidx 0 1 2 familyname customrank 3 1|1|1|0");
+            Assert.IsTrue(packet.VisualType == VisualType.Map);
+            Assert.IsTrue(packet.VisualId == 1);
+            Assert.IsTrue(packet.FamilyId == 2);
+            Assert.IsTrue(packet.FamilyName == "familyname");
+            Assert.IsTrue(packet.FamilyCustomRank == "customrank");
+            Assert.IsTrue(packet.FamilyLevel == 3);
+            Assert.IsTrue(packet.FamilyIcons.Count(s=>s) == 3);
+            Assert.IsTrue(packet.FamilyIcons.Count(s => !s) == 1);
         }
 
         [TestMethod]
@@ -152,6 +172,29 @@ namespace ChickenAPI.Packets.Tests
                 "st 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16"
                 );
             Assert.IsTrue(packet.BuffIds.Count == 8);
+        }
+
+        [TestMethod]
+        public void DeserializeSpecialPacket()
+        {
+            var packet = (FinsPacket)Deserializer.Deserialize(
+                "#fins^1^2"
+            );
+            Assert.IsTrue(packet.Type == FinsPacketType.Accepted);
+            Assert.IsTrue(packet.CharacterId == 2);
+        }
+
+        [TestMethod]
+        public void DeserializeInjectedSpecialPacket()
+        {
+            var packet = (DlgPacket)Deserializer.Deserialize(
+                "dlg #fins^1^2 #fins^2^2 test"
+            );
+            Assert.IsTrue(((FinsPacket)packet.YesPacket).Type == FinsPacketType.Accepted);
+            Assert.IsTrue(((FinsPacket)packet.YesPacket).CharacterId == 2);
+            Assert.IsTrue(((FinsPacket)packet.NoPacket).Type == FinsPacketType.Rejected);
+            Assert.IsTrue(((FinsPacket)packet.NoPacket).CharacterId == 2);
+            Assert.IsTrue(packet.Question == "test");
         }
 
         [TestMethod]
