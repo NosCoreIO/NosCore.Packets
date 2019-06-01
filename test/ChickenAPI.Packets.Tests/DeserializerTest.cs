@@ -185,6 +185,16 @@ namespace ChickenAPI.Packets.Tests
         }
 
         [TestMethod]
+        public void DeserializeSpecialPacketAndKeepaliveId()
+        {
+            var packet = (FinsPacket)Deserializer.Deserialize(
+                "123 #fins^1^2"
+            );
+            Assert.IsTrue(packet.Type == FinsPacketType.Accepted);
+            Assert.IsTrue(packet.CharacterId == 2);
+        }
+
+        [TestMethod]
         public void DeserializeInjectedSpecialPacket()
         {
             var packet = (DlgPacket)Deserializer.Deserialize(
