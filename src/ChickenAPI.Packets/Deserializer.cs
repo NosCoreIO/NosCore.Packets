@@ -150,20 +150,29 @@ namespace ChickenAPI.Packets
         {
             try
             {
-                bool isSpecial = packetContent.StartsWith("#");
-                var packetstring = packetContent.Replace('^', ' ').Replace("#", "").TrimEnd();
+                bool isSpecial = false;
+                var packetstring = packetContent.Replace('^', ' ').TrimEnd();
                 var packetsplit = packetstring.Split(' ');
                 if (packetsplit.Length < 1)
                 {
                     throw new InvalidOperationException();
                 }
+
                 bool includesKeepAliveIdentity = ushort.TryParse(packetsplit[0], out var keepalive);
                 var header = includesKeepAliveIdentity ? 1 : 0;
                 if (packetsplit[header].Length >= 1
-                    && (packetsplit[header][0] == '/' || packetsplit[header][0] == ':' || packetsplit[header][0] == ';'))
+                    && (packetsplit[header][0] == '/' || packetsplit[header][0] == ':' || packetsplit[header][0] == ';' || packetsplit[header][0] == '#'))
                 {
-                    packetsplit[header] = packetsplit[header][0].ToString();
-                    packetContent = packetContent.Insert(packetContent.IndexOf(packetsplit[header][0]) + 1, " ");
+                    if (packetsplit[header][0] == '#')
+                    {
+                        isSpecial = true;
+                        packetsplit[header] =packetsplit[header].Replace("#", "");
+                    }
+                    else
+                    {
+                        packetsplit[header] = packetsplit[header][0].ToString();
+                        packetContent = packetContent.Insert(packetContent.IndexOf(packetsplit[header][0]) + 1, " ");
+                    }
                 }
 
                 if (packetDeserializerDictionary.ContainsKey(packetsplit[header]))
