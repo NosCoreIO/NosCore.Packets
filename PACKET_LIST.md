@@ -31,7 +31,6 @@
 - [qset](src/ChickenAPI.Packets/ClientPackets/Quicklist/ChickenAPI.Packets.ClientPackets.Quicklist.QsetPacket.cs)
 
 ### Player
-- [guri](src/ChickenAPI.Packets/ClientPackets/Player/ChickenAPI.Packets.ClientPackets.Player.ClientGuriPacket.cs)
 - [rsfi](src/ChickenAPI.Packets/ClientPackets/Player/ChickenAPI.Packets.ClientPackets.Player.RsfiPacket.cs)
 - [snap](src/ChickenAPI.Packets/ClientPackets/Player/ChickenAPI.Packets.ClientPackets.Player.SnapPacket.cs)
 - [up_gr](src/ChickenAPI.Packets/ClientPackets/Player/ChickenAPI.Packets.ClientPackets.Player.UpgradePacket.cs)
@@ -101,9 +100,9 @@
 - [get](src/ChickenAPI.Packets/ClientPackets/Drops/ChickenAPI.Packets.ClientPackets.Drops.GetPacket.cs)
 
 ### Chat
-- [;](src/ChickenAPI.Packets/ClientPackets/Chat/ChickenAPI.Packets.ClientPackets.Chat.GroupTalkPacket.cs)
-- [:](src/ChickenAPI.Packets/ClientPackets/Chat/ChickenAPI.Packets.ClientPackets.Chat.FamilyChatPacket.cs)
 - [/](src/ChickenAPI.Packets/ClientPackets/Chat/ChickenAPI.Packets.ClientPackets.Chat.WhisperPacket.cs)
+- [:](src/ChickenAPI.Packets/ClientPackets/Chat/ChickenAPI.Packets.ClientPackets.Chat.FamilyChatPacket.cs)
+- [;](src/ChickenAPI.Packets/ClientPackets/Chat/ChickenAPI.Packets.ClientPackets.Chat.GroupTalkPacket.cs)
 - [btk](src/ChickenAPI.Packets/ClientPackets/Chat/ChickenAPI.Packets.ClientPackets.Chat.BtkPacket.cs)
 - [hero](src/ChickenAPI.Packets/ClientPackets/Chat/ChickenAPI.Packets.ClientPackets.Chat.HeroPacket.cs)
 - [say](src/ChickenAPI.Packets/ClientPackets/Chat/ChickenAPI.Packets.ClientPackets.Chat.ClientSayPacket.cs)
@@ -133,7 +132,6 @@
 - [bsinfo](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.BSInfoPacket.cs)
 - [ch_dm](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.ChDMPacket.cs)
 - [delay](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.DelayPacket.cs)
-- [dlg](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.DialogPacket.cs)
 - [dlg](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.DlgPacket.cs)
 - [guri](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.GuriPacket.cs)
 - [icon](src/ChickenAPI.Packets/ServerPackets/UI/ChickenAPI.Packets.ServerPackets.UI.IconPacket.cs)
