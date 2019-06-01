@@ -10,15 +10,15 @@ namespace ChickenAPI.Packets.ClientPackets.UI
         public int Type { get; set; }
 
         [PacketIndex(1)]
-        public int Argument { get; set; }
+        public int? Argument { get; set; }
 
-        [PacketIndex(2)]
-        public long? VisualEntityId { get; set; }
+        [PacketIndex(2, IsOptional = true)]
+        public long? VisualId { get; set; }
 
-        [PacketIndex(3)]
-        public int Data { get; set; }
+        [PacketIndex(3, IsOptional = true)]
+        public long? Data { get; set; }
 
-        [PacketIndex(4)]
+        [PacketIndex(4, IsOptional = true)]
         public string Value { get; set; }
     }
 }
