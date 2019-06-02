@@ -166,7 +166,7 @@ namespace ChickenAPI.Packets
                     if (packetsplit[header][0] == '#')
                     {
                         isSpecial = true;
-                        packetsplit[header] =packetsplit[header].Replace("#", "");
+                        packetsplit[header] = packetsplit[header].Replace("#", "");
                     }
                     else
                     {
@@ -203,7 +203,7 @@ namespace ChickenAPI.Packets
         private IPacket DeserializeIPacket(TypeCreator dic, string packetContent, bool includesKeepAliveIdentity, bool hasHeader)
         {
             var deg = (IPacket)dic.Constructor.DynamicInvoke();
-            var matches = Regex.Matches(packetContent, @"([^\040]+[\.][^\040]+[\040]?)+((?=\040)|$)|([^\040]+)((?=\040)|$)").OfType<Match>()
+            var matches = Regex.Matches(packetContent, @"([^\040]+[\.]+[\040]?)+((?=\040)|$)|([^\040]+)((?=\040)|$)").OfType<Match>()
                 .ToArray();
 
             if (matches.Length > 0 && dic.packetDeserializerDictionary.Count > 0)
@@ -275,12 +275,13 @@ namespace ChickenAPI.Packets
         {
             int newIndex = currentIndex;
             var length = packetIndexAttribute.Length;
-            string[] splited = null;
+        
             if (isMaxIndex && string.IsNullOrEmpty(packetIndexAttribute.SpecialSeparator))
             {
                 length = (sbyte)(matches.Length - currentIndex);
             }
 
+            string[] splited = null;
             if (!string.IsNullOrEmpty(packetIndexAttribute.SpecialSeparator))
             {
                 splited = matches[currentIndex].Value.Split(new string[] { packetIndexAttribute.SpecialSeparator }, StringSplitOptions.None);
@@ -306,7 +307,18 @@ namespace ChickenAPI.Packets
                             continue;
                         }
 
-                        list.Add(Convert.ChangeType(DeserializeIPacket(dic, splited != null ? string.Join(" ", splited) : string.Join(" ", matches.Skip(currentIndex + i * (1 + dic.PropertyAmount)).Take(dic.PropertyAmount + 1)), false, false), subType));
+                        string toConvert;
+
+                        if (matches[currentIndex + i].ToString().Contains(packetIndexAttribute.SpecialSeparator ?? "."))
+                        {
+                            toConvert = matches[currentIndex + i].ToString().Replace(packetIndexAttribute.SpecialSeparator ?? ".", " ");
+                        }
+                        else
+                        {
+                            toConvert = string.Join(" ",
+                                matches.Skip(currentIndex + i * (1 + dic.PropertyAmount)).Take(dic.PropertyAmount + 1));
+                        }
+                        list.Add(Convert.ChangeType(DeserializeIPacket(dic, toConvert, false, false), subType));
 
                         if (splited == null)
                         {
