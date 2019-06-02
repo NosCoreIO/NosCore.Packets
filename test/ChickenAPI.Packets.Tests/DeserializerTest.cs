@@ -14,6 +14,7 @@ using ChickenAPI.Packets.ClientPackets.Npcs;
 using ChickenAPI.Packets.ClientPackets.Relations;
 using ChickenAPI.Packets.ServerPackets.UI;
 using System.Linq;
+using ChickenAPI.Packets.ServerPackets.Relations;
 
 namespace ChickenAPI.Packets.Tests
 {
@@ -37,7 +38,9 @@ namespace ChickenAPI.Packets.Tests
                 typeof(NcifPacket),
                 typeof(FinsPacket),
                 typeof(DlgPacket),
-                typeof(GidxPacket)
+                typeof(GidxPacket),
+                typeof(FinfoPacket),
+                typeof(FinfoSubPackets)
             });
 
         [TestMethod]
@@ -193,6 +196,20 @@ namespace ChickenAPI.Packets.Tests
             Assert.IsTrue(packet.Type == FinsPacketType.Accepted);
             Assert.IsTrue(packet.CharacterId == 2);
         }
+
+        [TestMethod]
+        public void DeserializeSpecialPacketSubpacket()
+        {
+            var packet = (FinfoPacket)Deserializer.Deserialize(
+                "finfo 2.1 3.0"
+            );
+            Assert.IsTrue(packet.FriendList.Count == 2);
+            Assert.IsTrue(packet.FriendList.First().CharacterId == 2);
+            Assert.IsTrue(packet.FriendList.First().IsConnected);
+            Assert.IsTrue(packet.FriendList.Skip(1).First().CharacterId == 3);
+            Assert.IsFalse(packet.FriendList.Skip(1).First().IsConnected);
+        }
+        
 
         [TestMethod]
         public void DeserializeInjectedSpecialPacket()
