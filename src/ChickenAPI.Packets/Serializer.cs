@@ -291,7 +291,7 @@ namespace ChickenAPI.Packets
 
                     if (header == null && indexAttr.SpecialSeparator != null)
                     {
-                        header = " ";
+                        header = indexAttr.Index == 0 ? string.Empty : " ";
                     }
 
                     specificTypeExpression = IPacketSerializer(injectedPacket, indexAttr, specificTypeExpression, t, maxIndex,

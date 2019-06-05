@@ -209,7 +209,19 @@ namespace ChickenAPI.Packets.Tests
             Assert.IsTrue(packet.FriendList.Skip(1).First().CharacterId == 3);
             Assert.IsFalse(packet.FriendList.Skip(1).First().IsConnected);
         }
-        
+
+        [TestMethod]
+        public void DeserializeListWithAmountIndex()
+        {
+            var packet = (SitPacket) Deserializer.Deserialize(
+                "rest 2 1 5 1 4"
+            );
+            Assert.IsTrue(packet.Users.Count == 2);
+            Assert.IsTrue(packet.Users.First().VisualType == VisualType.Player);
+            Assert.IsTrue(packet.Users.First().VisualId == 5);
+            Assert.IsTrue(packet.Users.Skip(1).First().VisualType == VisualType.Player);
+            Assert.IsTrue(packet.Users.Skip(1).First().VisualId == 4);
+        }
 
         [TestMethod]
         public void DeserializeInjectedSpecialPacket()

@@ -131,7 +131,7 @@
         OldGetQuestEasterCalvinCoach = 1506,
         GetDailyQuestSummerCaptainJackPanon = 1507,
         GetTemporaryPirateSP = 1508,
-        GetPirateSeal = 1509,//Requires: 10 Mariner's Symbols and 10 Treasure Map Fragments.
+        ExchangeForPirateSeal = 1509,//Requires: 10 Mariner's Symbols and 10 Treasure Map Fragments.
         Unknown6 = 1510,//Delted content?
         GambleForThePirateSP = 1511,//Requires: 1k gold and a Pirate SP Fragment
         Unknown7 = 1512,//Delted content?

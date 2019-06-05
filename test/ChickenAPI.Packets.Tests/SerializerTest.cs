@@ -10,6 +10,7 @@ using ChickenAPI.Packets.Enumerations;
 using ChickenAPI.Packets.Interfaces;
 using ChickenAPI.Packets.ServerPackets;
 using ChickenAPI.Packets.ServerPackets.CharacterSelectionScreen;
+using ChickenAPI.Packets.ServerPackets.Event;
 using ChickenAPI.Packets.ServerPackets.Inventory;
 using ChickenAPI.Packets.ServerPackets.Login;
 using ChickenAPI.Packets.ServerPackets.Player;
@@ -37,7 +38,8 @@ namespace ChickenAPI.Packets.Tests
                 typeof(NsTestPacket),
                 typeof(FinsPacket),
                 typeof(GidxPacket),
-                typeof(CInfoPacket)
+                typeof(CInfoPacket),
+                typeof(RbrPacket)
             });
 
         [TestMethod]
@@ -61,6 +63,31 @@ namespace ChickenAPI.Packets.Tests
 
             var packet = Serializer.Serialize(testPacket);
             Assert.AreEqual("n_inv 0 0 0 0 0.0.0.-1.0", packet);
+        }
+
+        [TestMethod]
+        public void SerializePacketWithReturnSplitter()
+        {
+            var testPacket = new RbrPacket
+            {
+                TsBasicInfo = new RbrSubPacketBasicInfo(),
+                BonusRewards = new List<RbrSubPacketItem> { new RbrSubPacketItem(), new RbrSubPacketItem(), new RbrSubPacketItem() },
+                Completed = true,
+                DrawRewards = new List<RbrSubPacketItem> { new RbrSubPacketItem(), new RbrSubPacketItem(), new RbrSubPacketItem(), new RbrSubPacketItem(), new RbrSubPacketItem() },
+                HighScore = new RbrSubPacketHighScore(),
+                SpecialRewards = new List<RbrSubPacketItem> { new RbrSubPacketItem(), new RbrSubPacketItem() },
+                RequiredSeeds = 1,
+                MinMaxLevel = new RbrSubPacketMinMaxLevel {MinLevel = 1, MaxLevel = 99},
+                Unknown = 0,
+                TitleAndDescription = new RbrSubPacketTitleAndDescription
+                {
+                    Description = "this is a test",
+                    Title = "this is another test"
+                }
+            };
+
+            var packet = Serializer.Serialize(testPacket);
+            Assert.AreEqual("rbr 0.0.0 0 1 1 99 1 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 0 0 0 this is another test\nthis is a test", packet);
         }
 
         [TestMethod]
