@@ -275,22 +275,24 @@ namespace ChickenAPI.Packets
         {
             int newIndex = currentIndex;
             var length = packetIndexAttribute.Length;
-        
-            if (isMaxIndex && string.IsNullOrEmpty(packetIndexAttribute.SpecialSeparator))
-            {
-                length = (sbyte)(matches.Length - currentIndex);
-            }
-
             string[] splited = null;
-            if (!string.IsNullOrEmpty(packetIndexAttribute.SpecialSeparator))
-            {
-                splited = matches[currentIndex].Value.Split(new string[] { packetIndexAttribute.SpecialSeparator }, StringSplitOptions.None);
-                length = (sbyte)splited.Length;
-            }
 
             if (length == -1)
             {
-                length = sbyte.Parse(matches[currentIndex].Value);
+                length = sbyte.Parse(matches[currentIndex - 1].Value);
+            }
+            else
+            {
+                if (isMaxIndex && string.IsNullOrEmpty(packetIndexAttribute.SpecialSeparator))
+                {
+                    length = (sbyte)(matches.Length - currentIndex);
+                }
+              
+                if (!string.IsNullOrEmpty(packetIndexAttribute.SpecialSeparator))
+                {
+                    splited = matches[currentIndex].Value.Split(new string[] { packetIndexAttribute.SpecialSeparator }, StringSplitOptions.None);
+                    length = (sbyte)splited.Length;
+                }
             }
 
             if (length > 0)

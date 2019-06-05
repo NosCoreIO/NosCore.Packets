@@ -8,10 +8,5 @@
         Miniland = 3,
         Specialist = 6,
         Costume = 7,
-        Wear = 8,
-        Bazaar = 9,
-        Warehouse = 10,
-        FamilyWareHouse = 11,
-        PetWarehouse = 12
     }
 }
