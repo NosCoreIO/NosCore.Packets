@@ -228,11 +228,19 @@ namespace ChickenAPI.Packets
                             });
 
                             deg.ValidationResult = validate;
-                            if (deg.ValidationResult?.ErrorMessage.Length > 0)
-                            {
-                                deg.IsValid = false;
-                            }
                         }
+
+                        if (packetBasePropertyInfo.Key.Item1.IsEnum && !Enum.IsDefined(packetBasePropertyInfo.Key.Item1, value))
+                        {
+                            deg.ValidationResult = new ValidationResult("Invalid Enum value",
+                                new[] {packetBasePropertyInfo.Key.Item3});
+                        }
+
+                        if (deg.ValidationResult?.ErrorMessage.Length > 0)
+                        {
+                            deg.IsValid = false;
+                        }
+
                         packetBasePropertyInfo.Value.DynamicInvoke(deg, value);
                     }
                     else if (isMaxIndex && packetBasePropertyInfo.Key.Item1 == typeof(string))
