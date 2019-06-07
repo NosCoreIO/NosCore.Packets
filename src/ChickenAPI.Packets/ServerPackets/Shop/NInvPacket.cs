@@ -17,13 +17,16 @@ namespace ChickenAPI.Packets.ServerPackets.Shop
         [PacketIndex(2)]
         public byte Unknown { get; set; }
 
-        [PacketIndex(3)]
-        public byte ShopKind { get; set; }
+        [PacketIndex(3, IsOptional = true)]
+        public byte? ShopKind { get; set; }
 
         [PacketIndex(4, IsOptional = true)]
         public List<NInvItemSubPacket> Items { get; set; }
 
         [PacketIndex(5, IsOptional = true)]
         public List<short> Skills { get; set; }
+
+        [PacketIndex(6, IsOptional = true, SpecialSeparator = "|")]
+        public List<NInvFamilySkillSubPacket> FamilySkills { get; set; }
     }
 }

@@ -62,7 +62,7 @@ namespace ChickenAPI.Packets.Tests
             };
 
             var packet = Serializer.Serialize(testPacket);
-            Assert.AreEqual("n_inv 0 0 0 0 0.0.0.-1.0", packet);
+            Assert.AreEqual("n_inv 0 0 0 0.0.0.-1.0", packet);
         }
 
         [TestMethod]

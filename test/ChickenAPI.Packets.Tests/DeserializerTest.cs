@@ -251,6 +251,13 @@ namespace ChickenAPI.Packets.Tests
         }
 
         [TestMethod]
+        public void DeserializeInvalidEnumIsNotValid()
+        {
+            var packet = (NcifPacket)Deserializer.Deserialize("ncif 5 1");
+            Assert.IsFalse(packet.IsValid);
+        }
+
+        [TestMethod]
         public void DeserializeNullableEnum()
         {
             var packet = (NrunPacket)Deserializer.Deserialize(
