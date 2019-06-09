@@ -1,4 +1,5 @@
-﻿using ChickenAPI.Packets.Attributes;
+﻿using System.Collections.Generic;
+using ChickenAPI.Packets.Attributes;
 using ChickenAPI.Packets.Enumerations;
 
 namespace ChickenAPI.Packets.ClientPackets.Bazaar
@@ -31,6 +32,6 @@ namespace ChickenAPI.Packets.ClientPackets.Bazaar
         public byte Unknown1 { get; set; }
 
         [PacketIndex(8)]
-        public string ItemVNumFilter { get; set; }
+        public List<short> ItemVNumFilter { get; set; }
     }
 }

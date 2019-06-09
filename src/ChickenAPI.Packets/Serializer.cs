@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -176,7 +177,7 @@ namespace ChickenAPI.Packets
             return Expression.Condition(
                 Expression.Equal(specificTypeExpression, Expression.Constant(null, typeof(object))),
                 Expression.Constant(null, typeof(object)),
-                !isPacketList ? ConcatExpression(Expression.Constant(" "), Expression.Convert(listJoin, typeof(object))) : Expression.Convert(listJoin, typeof(object))
+                !isPacketList ? ConcatExpression(Expression.Constant(" "), Expression.Convert(listJoin, typeof(object))) : ConcatExpression(Expression.Constant(indexAttr.Index != 0 && indexAttr.SpecialSeparator != null ? " " : ""), Expression.Convert(listJoin, typeof(object)))
             );
         }
 
@@ -295,7 +296,7 @@ namespace ChickenAPI.Packets
                     }
 
                     specificTypeExpression = IPacketSerializer(injectedPacket, indexAttr, specificTypeExpression, t, maxIndex,
-                        propertySplitter, header);
+                        propertySplitter, indexAttr.RemoveHeader ? "" : header);
                     break;
                 case var t when t == typeof(IPacket):
                     specificTypeExpression = Expression.Constant(INJECTION_KEY, typeof(string));

@@ -13,7 +13,6 @@ namespace ChickenAPI.Packets.ServerPackets.Auction
         [PacketIndex(1, SpecialSeparator = "|")]
         public List<RcbListElementPacket> Items { get; set; }
 
-        [PacketHeader("rc_blist_subpacket")]
         public class RcbListElementPacket : PacketBase
         {
             [PacketIndex(0)]
@@ -29,7 +28,7 @@ namespace ChickenAPI.Packets.ServerPackets.Auction
             public long ItemId { get; set; }
 
             [PacketIndex(4)]
-            public long Amount { get; set; }
+            public short Amount { get; set; }
 
             [PacketIndex(5)]
             public bool IsPackage { get; set; }
@@ -55,7 +54,7 @@ namespace ChickenAPI.Packets.ServerPackets.Auction
             [PacketIndex(11)]
             public long Upgrade { get; set; }
 
-            [PacketIndex(12)]
+            [PacketIndex(12, RemoveHeader = true)]
             public EInfoPacket EInfo { get; set; }
         }
     }
