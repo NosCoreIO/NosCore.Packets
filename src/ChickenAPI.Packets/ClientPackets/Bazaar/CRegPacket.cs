@@ -1,4 +1,6 @@
-﻿using ChickenAPI.Packets.Attributes;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Net.Http.Headers;
+using ChickenAPI.Packets.Attributes;
 
 namespace ChickenAPI.Packets.ClientPackets.Bazaar
 {
@@ -20,8 +22,10 @@ namespace ChickenAPI.Packets.ClientPackets.Bazaar
         [PacketIndex(6)]
         public int IsPackage { get; set; }
         [PacketIndex(7)]
-        public byte Amount { get; set; }
+        [Range(1, short.MaxValue)]
+        public short Amount { get; set; }
         [PacketIndex(8)]
+        [Range(1, long.MaxValue)]
         public long Price { get; set; }
         [PacketIndex(9)]
         public int Taxe { get; set; }

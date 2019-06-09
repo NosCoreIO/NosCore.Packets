@@ -1,4 +1,5 @@
-﻿using ChickenAPI.Packets.Attributes;
+﻿using System.ComponentModel.DataAnnotations;
+using ChickenAPI.Packets.Attributes;
 
 namespace ChickenAPI.Packets.ClientPackets.Bazaar
 {
@@ -12,12 +13,15 @@ namespace ChickenAPI.Packets.ClientPackets.Bazaar
         public short VNum { get; set; }
 
         [PacketIndex(2)]
+        [Range(1, byte.MaxValue)]
         public byte Amount { get; set; }
 
         [PacketIndex(3)]
+        [Range(1, byte.MaxValue)]
         public byte MaxAmount { get; set; }
 
         [PacketIndex(4)]
+        [Range(1, long.MaxValue)]
         public long Price { get; set; }
     }
 }

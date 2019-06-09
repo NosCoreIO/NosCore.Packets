@@ -9,6 +9,7 @@ using ChickenAPI.Packets.ClientPackets.Relations;
 using ChickenAPI.Packets.Enumerations;
 using ChickenAPI.Packets.Interfaces;
 using ChickenAPI.Packets.ServerPackets;
+using ChickenAPI.Packets.ServerPackets.Auction;
 using ChickenAPI.Packets.ServerPackets.CharacterSelectionScreen;
 using ChickenAPI.Packets.ServerPackets.Event;
 using ChickenAPI.Packets.ServerPackets.Inventory;
@@ -28,6 +29,7 @@ namespace ChickenAPI.Packets.Tests
         static readonly ISerializer Serializer = new Serializer(
             new[]
             {
+                typeof(RcbListPacket),
                 typeof(DelayPacket),
                 typeof(UseItemPacket),
                 typeof(NInvPacket),
@@ -77,7 +79,7 @@ namespace ChickenAPI.Packets.Tests
                 HighScore = new RbrSubPacketHighScore(),
                 SpecialRewards = new List<RbrSubPacketItem> { new RbrSubPacketItem(), new RbrSubPacketItem() },
                 RequiredSeeds = 1,
-                MinMaxLevel = new RbrSubPacketMinMaxLevel {MinLevel = 1, MaxLevel = 99},
+                MinMaxLevel = new RbrSubPacketMinMaxLevel { MinLevel = 1, MaxLevel = 99 },
                 Unknown = 0,
                 TitleAndDescription = new RbrSubPacketTitleAndDescription
                 {
@@ -88,6 +90,55 @@ namespace ChickenAPI.Packets.Tests
 
             var packet = Serializer.Serialize(testPacket);
             Assert.AreEqual("rbr 0.0.0 0 1 1 99 1 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 0 0 0 this is another test\nthis is a test", packet);
+        }
+
+
+        [TestMethod]
+        public void SerializeWithRemoveHeader()
+        {
+
+            var packet = Serializer.Serialize(
+                new RcbListPacket
+                {
+                    PageIndex = 1,
+                    Items = new List<RcbListPacket.RcbListElementPacket>
+                   {
+                       new RcbListPacket.RcbListElementPacket
+                       {
+                            AuctionId = 1,
+                            OwnerId = 2,
+                            OwnerName = "test",
+                            ItemId = 3,
+                            Amount = 4,
+                            IsPackage=false,
+                            Price = 6,
+                            MinutesLeft =7,
+                            Unknown1 = false,
+                            Unknown = 9,
+                            Rarity = 10 ,
+                            Upgrade = 11,
+                            EInfo = new EInfoPacket()
+                        },
+                       new RcbListPacket.RcbListElementPacket
+                       {
+                           AuctionId = 1,
+                           OwnerId = 2,
+                           OwnerName = "test",
+                           ItemId = 3,
+                           Amount = 4,
+                           IsPackage=false,
+                           Price = 6,
+                           MinutesLeft =7,
+                           Unknown1 = false,
+                           Unknown = 9,
+                           Rarity = 10 ,
+                           Upgrade = 11,
+                           EInfo = new EInfoPacket()
+                       }
+                   }
+                }
+            );
+            Assert.AreEqual($"rc_blist 1 1|2|test|3|4|0|6|7|0|9|10|11|0^0^0^0^0 1|2|test|3|4|0|6|7|0|9|10|11|0^0^0^0^0", packet);
         }
 
         [TestMethod]

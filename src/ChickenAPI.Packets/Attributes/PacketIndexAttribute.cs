@@ -23,5 +23,7 @@ namespace ChickenAPI.Packets.Attributes
         public string SpecialSeparator { get; set; }
 
         public sbyte Length { get; set; }
-    }
+
+        public bool RemoveHeader { get; set; }
+}
 }
