@@ -13,8 +13,6 @@ namespace ChickenAPI.Packets.ServerPackets.Auction
 
         [PacketIndex(1, SpecialSeparator = "|")]
         public List<RcsListElementPacket> Items { get; set; }
-
-        [PacketHeader("rc_slist_element")]
         public class RcsListElementPacket : PacketBase
         {
             [PacketIndex(0)]
@@ -56,7 +54,7 @@ namespace ChickenAPI.Packets.ServerPackets.Auction
             [PacketIndex(12)]
             public long Upgrade { get; set; }
 
-            [PacketIndex(13)]
+            [PacketIndex(13, RemoveHeader = true)]
             public EInfoPacket EInfo { get; set; }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using ChickenAPI.Packets.Attributes;
+using ChickenAPI.Packets.Enumerations;
 
 namespace ChickenAPI.Packets.ClientPackets.Bazaar
 {
@@ -10,6 +11,6 @@ namespace ChickenAPI.Packets.ClientPackets.Bazaar
 
 
         [PacketIndex(1)]
-        public byte Filter { get; set; }
+        public BazaarStatusType Filter { get; set; }
     }
 }
