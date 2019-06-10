@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ChickenAPI.Packets.Attributes;
+using ChickenAPI.Packets.Enumerations;
 using ChickenAPI.Packets.ServerPackets.Inventory;
 
 namespace ChickenAPI.Packets.ServerPackets.Auction
@@ -10,7 +11,7 @@ namespace ChickenAPI.Packets.ServerPackets.Auction
         [PacketIndex(0)]
         public int PageNumber { get; set; }
 
-        [PacketIndex(1, SpecialSeparator= "|")]
+        [PacketIndex(1, SpecialSeparator = "|")]
         public List<RcsListElementPacket> Items { get; set; }
 
         [PacketHeader("rc_slist_element")]
@@ -35,24 +36,27 @@ namespace ChickenAPI.Packets.ServerPackets.Auction
             public bool IsPackage { get; set; }
 
             [PacketIndex(6)]
-            public long Price { get; set; }
+            public BazaarStatusType Status { get; set; }
 
             [PacketIndex(7)]
-            public long MinutesLeft { get; set; }
+            public long Price { get; set; }
 
             [PacketIndex(8)]
-            public bool IsSellerUsingMedal { get; set; }
+            public long MinutesLeft { get; set; }
 
             [PacketIndex(9)]
-            public long Unknown { get; set; }
+            public bool IsSellerUsingMedal { get; set; }
 
             [PacketIndex(10)]
-            public long Rarity { get; set; }
+            public long Unknown { get; set; }
 
             [PacketIndex(11)]
-            public long Upgrade { get; set; }
+            public long Rarity { get; set; }
 
             [PacketIndex(12)]
+            public long Upgrade { get; set; }
+
+            [PacketIndex(13)]
             public EInfoPacket EInfo { get; set; }
         }
     }
