@@ -34,10 +34,10 @@ namespace ChickenAPI.Packets.ServerPackets.Auction
             public bool IsPackage { get; set; }
 
             [PacketIndex(6)]
-            public BazaarStatusType Status { get; set; }
+            public long Price { get; set; }
 
             [PacketIndex(7)]
-            public long Price { get; set; }
+            public BazaarStatusType Status { get; set; }
 
             [PacketIndex(8)]
             public long MinutesLeft { get; set; }
