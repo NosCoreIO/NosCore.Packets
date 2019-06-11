@@ -4,7 +4,7 @@ using ChickenAPI.Packets.Enumerations;
 namespace ChickenAPI.Packets.ServerPackets.Bazaar
 {
     [PacketHeader("rc_buy")]
-    public class RCPacket : PacketBase
+    public class RCBuyPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType Type { get; set; }
