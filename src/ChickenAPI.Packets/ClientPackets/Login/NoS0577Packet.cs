@@ -41,24 +41,20 @@ namespace ChickenAPI.Packets.ClientPackets.Login
         /// </summary>
         [PacketIndex(3)]
         public string UnknownYet { get; set; } = "003662BF";
-
-        [PacketIndex(4, SpecialSeparator = "")]
-        public char UnknownProperty { get; set; } = (char)0xB;
-
  
         /// <summary>
         /// May be obtained from the NostaleClientX.exe version
         /// </summary>
-        [PacketIndex(5, SpecialSeparator = ".")]
+        [PacketIndex(4, SpecialSeparator = ".")]
         public ClientVersionSubPacket ClientVersion { get; set; }
 
-        [PacketIndex(6)]
+        [PacketIndex(5)]
         public byte UnknownConstant { get; set; } = 0;
 
         /// <summary>
         /// The MD5 string is a MD5 hashing : MD5_STRING(MD5_FILE(NostaleXClient.exe) + MD5_FILE(NostaleClient.exe))
         /// </summary>
-        [PacketIndex(7)]
+        [PacketIndex(6)]
         public string Md5String { get; set; }
     }
 }
