@@ -19,7 +19,23 @@ namespace ChickenAPI.Packets.ClientPackets.Login
         [PacketIndex(3)]
         public Guid? ClientId { get; set; }
 
+        /// <summary>
+        /// Seems to always be 00564F36 (random value converted to HEX)
+        /// Would be better if we could provide some kind of HEX serialization instead of using string
+        /// </summary>
+        [PacketIndex(3)]
+        public string UnknownYet { get; set; } = "00564F36";
+
         [PacketIndex(4)]
-        public string ClientData { get; set; }
+        public ClientVersionSubPacket ClientVersion { get; set; }
+
+        [PacketIndex(5)]
+        public byte UnknownConstant { get; set; } = 0;
+
+        /// <summary>
+        /// The MD5 string is a MD5 hashing : MD5_STRING(MD5_FILE(NostaleXClient.exe) + MD5_FILE(NostaleClient.exe))
+        /// </summary>
+        [PacketIndex(6)]
+        public string Md5String { get; set; }
     }
 }
