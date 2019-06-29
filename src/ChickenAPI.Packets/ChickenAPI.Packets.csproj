@@ -11,7 +11,7 @@
     <RepositoryUrl>https://github.com/ChickenAPI/ChickenAPI.Packets.git</RepositoryUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/ChickenAPI/ChickenAPI.Packets/master/docs/_media/logo.png</PackageIconUrl>
     <PackageTags>nostale, chickenapi, nostale private server source, nostale emulator</PackageTags>
-    <Version>0.10.0</Version>
+    <Version>0.10.1</Version>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Description>ChickenAPI's Packets (Nostale packets) defined over classes</Description>
     <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
