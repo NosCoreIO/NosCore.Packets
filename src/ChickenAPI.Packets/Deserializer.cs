@@ -203,7 +203,7 @@ namespace ChickenAPI.Packets
         private IPacket DeserializeIPacket(TypeCreator dic, string packetContent, bool includesKeepAliveIdentity, bool hasHeader)
         {
             var deg = (IPacket)dic.Constructor.DynamicInvoke();
-            var matches = Regex.Matches(packetContent, @"([^\s|\v]+[\.]+[\s|\v]?)+((?=\s|\v)|$)|([^\s|\v]+)((?=\s|\v)|$)").OfType<Match>()
+            var matches = Regex.Matches(packetContent, @"([^(\s\v)]+[\.]+[(\s\v)]?)+((?=(\s\v))|$)|([^(\s\v)]+)((?=\s)|$)").OfType<Match>()
                 .ToArray();
 
             if (matches.Length > 0 && dic.packetDeserializerDictionary.Count > 0)
