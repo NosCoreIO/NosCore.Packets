@@ -26,7 +26,7 @@ namespace ChickenAPI.Packets.ClientPackets.Login
         [PacketIndex(3)]
         public string UnknownYet { get; set; } = "00564F36";
 
-        [PacketIndex(4, SpecialSeparator = ".")]
+        [PacketIndex(4)]
         public ClientVersionSubPacket ClientVersion { get; set; }
 
         [PacketIndex(5)]
