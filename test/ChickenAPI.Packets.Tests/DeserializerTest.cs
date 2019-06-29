@@ -40,7 +40,8 @@ namespace ChickenAPI.Packets.Tests
                 typeof(DlgPacket),
                 typeof(GidxPacket),
                 typeof(FinfoPacket),
-                typeof(FinfoSubPackets)
+                typeof(FinfoSubPackets),
+                typeof(ClientVersionSubPacket),
             });
 
         [TestMethod]
@@ -270,14 +271,20 @@ namespace ChickenAPI.Packets.Tests
         public void DeserializeWithGuid()
         {
             var packet = (NoS0575Packet)Deserializer.Deserialize(
-                "NoS0575 3808647 admin EE26B0DD4AF7E749AA1A8EE3C10AE9923F618980772E473F8819A5D4940E0DB27AC185F8A0E1D5F84F88BC887FD67B143732C304CC5FA9AD8E6F57F50028A8FF 3e241e8e-b1cd-49c3-a455-4d253a75f6e6 0031F69F�0.9.3.3097 0 06A35F0058610A5B3FA13FC2CB04E795"
+                "NoS0575 3808647 admin EE26B0DD4AF7E749AA1A8EE3C10AE9923F618980772E473F8819A5D4940E0DB27AC185F8A0E1D5F84F88BC887FD67B143732C304CC5FA9AD8E6F57F50028A8FF 3e241e8e-b1cd-49c3-a455-4d253a75f6e6 0031F69F\v0.9.3.3097 0 06A35F0058610A5B3FA13FC2CB04E795"
                 );
             Assert.IsTrue(packet.Header == "NoS0575");
             Assert.IsTrue(packet.Number == 3808647);
             Assert.IsTrue(packet.Name == "admin");
             Assert.IsTrue(packet.Password == "EE26B0DD4AF7E749AA1A8EE3C10AE9923F618980772E473F8819A5D4940E0DB27AC185F8A0E1D5F84F88BC887FD67B143732C304CC5FA9AD8E6F57F50028A8FF");
             Assert.IsTrue(packet.ClientId == Guid.Parse("3e241e8e-b1cd-49c3-a455-4d253a75f6e6"));
-            Assert.IsTrue(packet.ClientData == "0031F69F�0.9.3.3097 0 06A35F0058610A5B3FA13FC2CB04E795");
+            Assert.IsTrue(packet.UnknownYet == "0031F69F");
+            Assert.IsTrue(packet.ClientVersion.Major == 0);
+            Assert.IsTrue(packet.ClientVersion.Minor == 9);
+            Assert.IsTrue(packet.ClientVersion.Fix == 3);
+            Assert.IsTrue(packet.ClientVersion.SubFix == 3097);
+            Assert.IsTrue(packet.UnknownConstant == 0);
+            Assert.IsTrue(packet.Md5String == "06A35F0058610A5B3FA13FC2CB04E795");
         }
     }
 }

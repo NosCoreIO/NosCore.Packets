@@ -203,7 +203,7 @@ namespace ChickenAPI.Packets
         private IPacket DeserializeIPacket(TypeCreator dic, string packetContent, bool includesKeepAliveIdentity, bool hasHeader)
         {
             var deg = (IPacket)dic.Constructor.DynamicInvoke();
-            var matches = Regex.Matches(packetContent, @"([^\040]+[\.]+[\040]?)+((?=\040)|$)|([^\040]+)((?=\040)|$)").OfType<Match>()
+            var matches = Regex.Matches(packetContent, @"([^(\s\v)]+[\.]+[(\s\v)]?)+((?=(\s\v))|$)|([^(\s\v)]+)((?=\s)|$)").OfType<Match>()
                 .ToArray();
 
             if (matches.Length > 0 && dic.packetDeserializerDictionary.Count > 0)
@@ -274,6 +274,11 @@ namespace ChickenAPI.Packets
                     return DeserializeList(packetBasePropertyInfo.Item1.GetGenericArguments()[0], packetBasePropertyInfo.Item2, matches, ref currentIndex, isMaxIndex);
                 case var prop when prop == typeof(IPacket):
                     return Deserialize(matches[currentIndex++].ToString());
+                case var prop when typeof(IPacket).IsAssignableFrom(prop):
+                    var dic = packetDeserializerDictionary[prop.Name];
+                    var packet = DeserializeIPacket(dic, matches[currentIndex].ToString().Replace(packetBasePropertyInfo.Item2.SpecialSeparator ?? ".", " "), false, false);
+                    currentIndex++;
+                    return packet;
                 default:
                     return DeserializeDefault(item1, matches[currentIndex++].ToString());
             }
