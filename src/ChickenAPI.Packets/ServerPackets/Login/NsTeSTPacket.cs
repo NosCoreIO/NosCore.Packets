@@ -13,7 +13,10 @@ namespace ChickenAPI.Packets.ServerPackets.Login
         [PacketIndex(1)]
         public int SessionId { get; set; }
 
-        [PacketIndex(2)]
+        [PacketIndex(2, IsOptional = true)]
+        public int? Unknown { get; set; }
+
+        [PacketIndex(3)]
         public List<NsTeStSubPacket> SubPacket { get; set; }
     }
 }
