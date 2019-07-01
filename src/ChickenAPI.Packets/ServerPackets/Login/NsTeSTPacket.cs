@@ -10,11 +10,13 @@ namespace ChickenAPI.Packets.ServerPackets.Login
         [PacketIndex(0)]
         public string AccountName { get; set; }
 
-        [PacketIndex(1)]
+        //this seems to be always 2 in case of new auth and null else
+        [PacketIndex(1, IsOptional = true)]
+        public int? Unknown { get; set; }
+
+        [PacketIndex(2)]
         public int SessionId { get; set; }
 
-        [PacketIndex(2, IsOptional = true)]
-        public int? Unknown { get; set; }
 
         [PacketIndex(3)]
         public List<NsTeStSubPacket> SubPacket { get; set; }
