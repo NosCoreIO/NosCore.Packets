@@ -227,7 +227,10 @@ namespace ChickenAPI.Packets
                                 MemberName = packetBasePropertyInfo.Key.Item3,
                             });
 
-                            deg.ValidationResult = validate;
+                            if(validate != null)
+                            {
+                                deg.ValidationResult = validate;
+                            }
                         }
 
                         if (packetBasePropertyInfo.Key.Item1.IsEnum && !Enum.IsDefined(packetBasePropertyInfo.Key.Item1, value))

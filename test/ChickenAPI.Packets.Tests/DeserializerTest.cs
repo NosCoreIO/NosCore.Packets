@@ -15,6 +15,7 @@ using ChickenAPI.Packets.ClientPackets.Relations;
 using ChickenAPI.Packets.ServerPackets.UI;
 using System.Linq;
 using ChickenAPI.Packets.ServerPackets.Relations;
+using ChickenAPI.Packets.ClientPackets.Bazaar;
 
 namespace ChickenAPI.Packets.Tests
 {
@@ -42,6 +43,7 @@ namespace ChickenAPI.Packets.Tests
                 typeof(FinfoPacket),
                 typeof(FinfoSubPackets),
                 typeof(ClientVersionSubPacket),
+                typeof(CScalcPacket)
             });
 
         [TestMethod]
@@ -235,6 +237,14 @@ namespace ChickenAPI.Packets.Tests
             Assert.IsTrue(((FinsPacket)packet.NoPacket).Type == FinsPacketType.Rejected);
             Assert.IsTrue(((FinsPacket)packet.NoPacket).CharacterId == 2);
             Assert.IsTrue(packet.Question == "test");
+        }
+
+        [TestMethod]
+        public void DeserializeInvalidValidationIsNotValidAndValidationResultIsFilled()
+        {
+            var packet = (CScalcPacket)Deserializer.Deserialize("c_scalc 11 1012 -1 99 10");
+            Assert.IsNotNull(packet.ValidationResult);
+            Assert.IsFalse(packet.IsValid);
         }
 
         [TestMethod]
