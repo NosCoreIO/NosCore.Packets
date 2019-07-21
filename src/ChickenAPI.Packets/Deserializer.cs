@@ -227,7 +227,7 @@ namespace ChickenAPI.Packets
                                 MemberName = packetBasePropertyInfo.Key.Item3,
                             });
 
-                            deg.ValidationResult = validate;
+                            deg.ValidationResult = deg.ValidationResult ?? validate;
                         }
 
                         if (packetBasePropertyInfo.Key.Item1.IsEnum && !Enum.IsDefined(packetBasePropertyInfo.Key.Item1, value))
@@ -380,7 +380,7 @@ namespace ChickenAPI.Packets
 
         private object DeserializeDefault(Type type, string value)
         {
-            return value == "-1" ? type.GetDefaultValue() : Convert.ChangeType(value, Nullable.GetUnderlyingType(type) ?? type);
+            return value == "-1" && !type.IsPrimitive ? type.GetDefaultValue() : Convert.ChangeType(value, Nullable.GetUnderlyingType(type) ?? type);
         }
 
         private object DeserializeString(Match[] matches, ref int currentIndex, bool isMaxIndex)
