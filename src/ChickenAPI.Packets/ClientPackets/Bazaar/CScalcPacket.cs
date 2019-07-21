@@ -13,7 +13,7 @@ namespace ChickenAPI.Packets.ClientPackets.Bazaar
         public short VNum { get; set; }
 
         [PacketIndex(2)]
-        [Range(1, short.MaxValue)]
+        [Range(0, short.MaxValue)]
         public short Amount { get; set; }
 
         [PacketIndex(3)]
