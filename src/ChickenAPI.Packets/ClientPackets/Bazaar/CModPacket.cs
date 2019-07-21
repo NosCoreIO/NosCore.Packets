@@ -1,10 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
 using ChickenAPI.Packets.Attributes;
 
 namespace ChickenAPI.Packets.ClientPackets.Bazaar
 {
-    [PacketHeader("c_scalc")]
-    public class CScalcPacket : PacketBase
+    [PacketHeader("c_mod")]
+    public class CModPacket : PacketBase
     {
         [PacketIndex(0)]
         public long BazaarId { get; set; }
@@ -17,11 +20,7 @@ namespace ChickenAPI.Packets.ClientPackets.Bazaar
         public short Amount { get; set; }
 
         [PacketIndex(3)]
-        [Range(1, short.MaxValue)]
-        public short MaxAmount { get; set; }
-
-        [PacketIndex(4)]
         [Range(1, long.MaxValue)]
-        public long Price { get; set; }
+        public short NewAmount { get; set; }
     }
 }
