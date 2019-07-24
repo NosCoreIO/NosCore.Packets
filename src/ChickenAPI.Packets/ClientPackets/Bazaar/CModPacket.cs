@@ -21,6 +21,6 @@ namespace ChickenAPI.Packets.ClientPackets.Bazaar
 
         [PacketIndex(3)]
         [Range(1, long.MaxValue)]
-        public short NewAmount { get; set; }
+        public long NewPrice { get; set; }
     }
 }
