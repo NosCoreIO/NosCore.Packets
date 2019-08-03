@@ -3,7 +3,6 @@ using ChickenAPI.Packets.Enumerations;
 
 namespace ChickenAPI.Packets.ServerPackets.Quicklist
 {
-    [PacketHeader("qset_sub_packet")]
     public class QsetClientSubPacket : PacketBase
     {
         [PacketIndex(0)]
