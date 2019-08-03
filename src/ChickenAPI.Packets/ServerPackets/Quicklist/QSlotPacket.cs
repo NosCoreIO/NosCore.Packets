@@ -1,7 +1,8 @@
 ﻿using ChickenAPI.Packets.Attributes;
 using ChickenAPI.Packets.Interfaces;
+using System.Collections.Generic;
 
-namespace ChickenAPI.Packets.ServerPackets.Player
+namespace ChickenAPI.Packets.ServerPackets.Quicklist
 {
     [PacketHeader("qslot")]
     public class QSlotPacket : PacketBase
@@ -10,6 +11,6 @@ namespace ChickenAPI.Packets.ServerPackets.Player
         public long Slot { get; set; }
 
         [PacketIndex(1)]
-        public string Data { get; set; }
+        public List<QsetClientSubPacket> Data { get; set; }
     }
 }
