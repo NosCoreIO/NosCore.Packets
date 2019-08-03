@@ -12,7 +12,7 @@ namespace ChickenAPI.Packets.ServerPackets.Quicklist
         [PacketIndex(1)]
         public short OriginQuickListSlot { get; set; }
 
-        [PacketIndex(2)]
+        [PacketIndex(2, SpecialSeparator = ".")]
         public QsetClientSubPacket Data { get; set; }
     }
 }
