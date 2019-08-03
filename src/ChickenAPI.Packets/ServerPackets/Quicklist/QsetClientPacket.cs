@@ -1,10 +1,10 @@
 ﻿using ChickenAPI.Packets.Attributes;
 using ChickenAPI.Packets.Enumerations;
 
-namespace ChickenAPI.Packets.ClientPackets.Quicklist
+namespace ChickenAPI.Packets.ServerPackets.Quicklist
 {
     [PacketHeader("qset")]
-    public class QsetPacket : PacketBase
+    public class QsetClientPacket : PacketBase
     {
         [PacketIndex(0)]
         public QSetType Type { get; set; }
@@ -16,9 +16,6 @@ namespace ChickenAPI.Packets.ClientPackets.Quicklist
         public short OriginQuickListSlot { get; set; }
 
         [PacketIndex(3)]
-        public short? FirstData { get; set; }
-
-        [PacketIndex(4)]
-        public short? SecondData { get; set; }
+        public QsetClientSubPacket Data { get; set; }
     }
 }

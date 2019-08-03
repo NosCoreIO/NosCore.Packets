@@ -3,7 +3,7 @@ using ChickenAPI.Packets.Interfaces;
 
 namespace ChickenAPI.Packets.ServerPackets.Login
 {
-    [PacketHeader("NsTeST")]
+    [PacketHeader("NsTeST_sub_packet")]
     public class NsTeStSubPacket : PacketBase
     {
         [PacketIndex(0)]
