@@ -5,8 +5,8 @@ namespace ChickenAPI.Packets.ServerPackets.Quicklist
 {
     public class QsetClientSubPacket : PacketBase
     {
-        [PacketIndex(0)]
-        public QSetType Type { get; set; }
+        [PacketIndex(0, IsOptional = true)]
+        public QSetType? Type { get; set; }
 
         [PacketIndex(1)]
         public short OriginQuickList { get; set; }
