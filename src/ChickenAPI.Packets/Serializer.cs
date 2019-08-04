@@ -177,7 +177,7 @@ namespace ChickenAPI.Packets
             return Expression.Condition(
                 Expression.Equal(specificTypeExpression, Expression.Constant(null, typeof(object))),
                 Expression.Constant(null, typeof(object)),
-                !isPacketList ? ConcatExpression(Expression.Constant(" "), Expression.Convert(listJoin, typeof(object))) : ConcatExpression(Expression.Constant(indexAttr.Index != 0 && indexAttr.SpecialSeparator != null ? " " : ""), Expression.Convert(listJoin, typeof(object)))
+                ConcatExpression(Expression.Constant(indexAttr.SpecialSeparator != null ? " " : string.Empty), Expression.Convert(listJoin, typeof(object)))
             );
         }
 
@@ -191,7 +191,11 @@ namespace ChickenAPI.Packets
             Expression propExp = Expression.Condition(injectedPacket, Expression.Constant($"#{discriminator}"),
                 Expression.Constant(discriminator, typeof(string)));
 
-            var i = 0;
+            Expression incrementExpr = Expression.Condition(
+                Expression.Equal(propertySplitter, Expression.Constant(" ", typeof(string))),
+                Expression.Constant(!string.IsNullOrWhiteSpace(discriminator)),
+                Expression.Constant(false));
+
             foreach (var property in properties)
             {
                 var index = property.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First();
@@ -205,22 +209,25 @@ namespace ChickenAPI.Packets
                             Expression.Constant(index.SpecialSeparator, typeof(object))))
                     , typeof(object));
 
-                var removesplitter =
-                    (i == 0) && string.IsNullOrWhiteSpace(discriminator) && (index.SpecialSeparator == null);
-
                 var splitter = Expression.Condition(injectedPacket,
                     Expression.Constant(string.Empty, typeof(object)),
-                    removesplitter || ((index.SpecialSeparator != null) && (i != 0))
+                    index.SpecialSeparator != null
                         ? Expression.Constant(string.Empty, typeof(object))
                         : (Expression)Expression.Convert(propertySplitter, typeof(object)));
 
-                var trimnull = Expression.Condition(
-                    Expression.Equal(exp, Expression.Constant(null, typeof(object))),
-                    Expression.Constant(string.Empty, typeof(object)),
+                var trimfirst = Expression.Condition(
+                    Expression.Equal(incrementExpr, Expression.Constant(false)),
+                    exp,
                     ConcatExpression(splitter, exp));
 
+                var trimnull = Expression.Condition(
+                    Expression.Equal(exp, Expression.Constant(null, typeof(string))),
+                    Expression.Constant(string.Empty, typeof(object)),
+                    trimfirst);
+
                 propExp = ConcatExpression(propExp, trimnull);
-                i++;
+
+                incrementExpr = Expression.Constant(true);
             }
 
             return Expression.Condition(
@@ -292,7 +299,7 @@ namespace ChickenAPI.Packets
 
                     if (header == null && indexAttr.SpecialSeparator != null)
                     {
-                        header = indexAttr.Index == 0 ? string.Empty : " ";
+                        header = " ";
                     }
 
                     specificTypeExpression = IPacketSerializer(injectedPacket, indexAttr, specificTypeExpression, t, maxIndex,
