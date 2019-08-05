@@ -3,13 +3,14 @@ using ChickenAPI.Packets.Enumerations;
 
 namespace ChickenAPI.Packets.ServerPackets.Quicklist
 {
+    //TODO fix issue when first param is optional and null
     public class QsetClientSubPacket : PacketBase
     {
-        [PacketIndex(0, IsOptional = true)]
-        public QSetType? Type { get; set; }
+        [PacketIndex(0)] //This should be nullable and optional
+        public QSetType Type { get; set; }
 
-        [PacketIndex(1)]
-        public short OriginQuickList { get; set; }
+        [PacketIndex(1, IsOptional = true)] //this shouldnt be nullable
+        public short? OriginQuickList { get; set; }
 
         [PacketIndex(2)]
         public short OriginQuickListSlot { get; set; }
