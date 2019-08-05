@@ -30,11 +30,11 @@ namespace ChickenAPI.Packets.Tests
         static readonly ISerializer Serializer = new Serializer(
             new[]
             {
+                typeof(NInvPacket),
                 typeof(QSlotPacket),
                 typeof(RcbListPacket),
                 typeof(DelayPacket),
                 typeof(UseItemPacket),
-                typeof(NInvPacket),
                 typeof(DlgPacket),
                 typeof(WhisperPacket),
                 typeof(InPacket),
@@ -181,35 +181,34 @@ namespace ChickenAPI.Packets.Tests
                 packet);
         }
 
-        //TODO fix issue when first param is optional and null
-        //[TestMethod]
-        //public void SerializeWithNullFirstParam()
-        //{
-        //    var dlgTest = new QSlotPacket
-        //    {
-        //        Slot = 0,
-        //        Data = new List<QsetClientSubPacket>
-        //        {
-        //            new QsetClientSubPacket
-        //            {
-        //                OriginQuickList = 7,
-        //                OriginQuickListSlot = 7,
-        //                Data = -1
-        //            },
-        //             new QsetClientSubPacket
-        //            {
-        //                OriginQuickList = 7,
-        //                OriginQuickListSlot = 7,
-        //                Data = -1
-        //            }
-        //        }
-        //    };
+        [TestMethod]
+        public void SerializeWithNullFirstParam()
+        {
+            var dlgTest = new QSlotPacket
+            {
+                Slot = 0,
+                Data = new List<QsetClientSubPacket>
+                {
+                    new QsetClientSubPacket
+                    {
+                        OriginQuickList = 7,
+                        OriginQuickListSlot = 7,
+                        Data = -1
+                    },
+                     new QsetClientSubPacket
+                    {
+                        OriginQuickList = 7,
+                        OriginQuickListSlot = 7,
+                        Data = -1
+                    }
+                }
+            };
 
-        //    var packet = Serializer.Serialize(dlgTest);
-        //    Assert.AreEqual(
-        //        "qslot 0 7.7.-1 7.7.-1",
-        //        packet);
-        //}
+            var packet = Serializer.Serialize(dlgTest);
+            Assert.AreEqual(
+                "qslot 0 7.7.-1 7.7.-1",
+                packet);
+        }
 
         [TestMethod]
         public void SerializeWithSpecialSeparator()
