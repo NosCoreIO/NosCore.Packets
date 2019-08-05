@@ -163,7 +163,7 @@ namespace ChickenAPI.Packets
                 specificTypeExpression,
                 Expression.Lambda(
                     Expression.Convert(isPacketList
-                        ? IPacketSerializer(injectedPacket, indexAttr, param, type.GenericTypeArguments[0], 0, propertySplitter, "")
+                        ? IPacketSerializer(injectedPacket, indexAttr, param, type.GenericTypeArguments[0], 0, propertySplitter, "", true)
                         : PropertySerializer(injectedPacket, indexAttr, type.GenericTypeArguments[0], param, 0,
                             Expression.Constant("")), typeof(string)), param)
             );
@@ -182,7 +182,7 @@ namespace ChickenAPI.Packets
         }
 
         private Expression IPacketSerializer(Expression injectedPacket, PacketIndexAttribute indexAttr, Expression specificTypeExpression, Type prop,
-            int maxIndex, Expression propertySplitter, string discriminator)
+            int maxIndex, Expression propertySplitter, string discriminator, bool isFromList = false)
         {
             var properties = prop.GetProperties()
                 .Where(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().Any())
@@ -195,10 +195,21 @@ namespace ChickenAPI.Packets
                 Expression.Equal(propertySplitter, Expression.Constant(" ", typeof(string))),
                 Expression.Constant(!string.IsNullOrWhiteSpace(discriminator)),
                 Expression.Constant(false));
-
+            var startserie = true;
+            var isOptionalSerie = false;
             foreach (var property in properties)
             {
                 var index = property.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First();
+                if (startserie && index.IsOptional)
+                {
+                    isOptionalSerie = true;
+                }
+                else
+                {
+                    startserie = index.IsOptional;
+                    isOptionalSerie = false;
+                }
+
                 var exp = Expression.Convert(
                     PropertySerializer(injectedPacket,
                         index,
@@ -227,7 +238,7 @@ namespace ChickenAPI.Packets
 
                 propExp = ConcatExpression(propExp, trimnull);
 
-                incrementExpr = Expression.Constant(true);
+                incrementExpr = Expression.Constant(!isFromList || !isOptionalSerie);
             }
 
             return Expression.Condition(
