@@ -6,8 +6,6 @@ namespace ChickenAPI.Packets.ClientPackets.Miniland
     [PacketHeader("addobj")]
     public class AddobjPacket : PacketBase
     {
-        #region Properties
-
         [PacketIndex(0)]
         public short Slot { get; set; }
 
@@ -16,7 +14,5 @@ namespace ChickenAPI.Packets.ClientPackets.Miniland
 
         [PacketIndex(2)]
         public short PositionY { get; set; }
-
-        #endregion
     }
 }
