@@ -6,7 +6,7 @@ namespace ChickenAPI.Packets.ServerPackets.Map
     public class GroundEffectPacket : PacketBase
     {
         [PacketIndex(0)]
-        public char ExtraSpace { get; set; } = '\0';
+        public string ExtraSpace { get; set; } = string.Empty;
 
         [PacketIndex(1)]
         public ushort Effect { get; set; }
