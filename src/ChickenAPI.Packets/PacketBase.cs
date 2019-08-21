@@ -1,9 +1,5 @@
 ﻿using ChickenAPI.Packets.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
 
 namespace ChickenAPI.Packets
 {
