@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ChickenAPI.Packets.Enumerations
+﻿namespace ChickenAPI.Packets.Enumerations
 {
     public enum BazaarStatusType : byte
     {

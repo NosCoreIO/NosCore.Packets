@@ -1,5 +1,4 @@
 ﻿using ChickenAPI.Packets.Attributes;
-using ChickenAPI.Packets.Interfaces;
 using System.Collections.Generic;
 
 namespace ChickenAPI.Packets.ClientPackets.Battle
