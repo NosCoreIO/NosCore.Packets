@@ -1,7 +1,4 @@
 ﻿using ChickenAPI.Packets.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ChickenAPI.Packets.ClientPackets.Miniland
 {

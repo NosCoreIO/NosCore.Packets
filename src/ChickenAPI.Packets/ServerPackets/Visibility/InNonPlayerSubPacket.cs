@@ -1,6 +1,5 @@
 ﻿using ChickenAPI.Packets.Attributes;
 using ChickenAPI.Packets.Enumerations;
-using ChickenAPI.Packets.Interfaces;
 
 namespace ChickenAPI.Packets.ServerPackets.Visibility
 {

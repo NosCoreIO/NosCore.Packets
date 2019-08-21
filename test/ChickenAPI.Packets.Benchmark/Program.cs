@@ -1,13 +1,10 @@
-﻿using System.Collections.Generic;
-using BenchmarkDotNet.Attributes;
+﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Reports;
 using BenchmarkDotNet.Running;
 using ChickenAPI.Packets.Benchmark.SaltyEmu;
-using ChickenAPI.Packets.ClientPackets;
 using ChickenAPI.Packets.ClientPackets.Relations;
 using ChickenAPI.Packets.Enumerations;
 using ChickenAPI.Packets.Interfaces;
-using ChickenAPI.Packets.ServerPackets;
 using ChickenAPI.Packets.ServerPackets.Shop;
 using ChickenAPI.Packets.ServerPackets.UI;
 
