@@ -223,7 +223,7 @@ namespace ChickenAPI.Packets
                 var splitter = Expression.Condition(injectedPacket,
                     Expression.Constant(string.Empty, typeof(object)),
                     index.SpecialSeparator != null
-                        ? Expression.Constant(string.Empty, typeof(object))
+                        ? Expression.Constant(indexAttr.SpecialSeparator ?? string.Empty, typeof(object))
                         : (Expression)Expression.Convert(propertySplitter, typeof(object)));
 
                 var trimfirst = Expression.Condition(
@@ -305,7 +305,7 @@ namespace ChickenAPI.Packets
                     if (!string.IsNullOrEmpty(header))
                     {
                         header = $"#{header}";
-                        propertySplitter = Expression.Constant("^");
+                        propertySplitter = Expression.Constant(indexAttr.SpecialSeparator ?? "^");
                     }
 
                     if (header == null && indexAttr.SpecialSeparator != null)

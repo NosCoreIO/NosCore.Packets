@@ -1,5 +1,6 @@
 ﻿using ChickenAPI.Packets.Attributes;
 using ChickenAPI.Packets.Interfaces;
+using ChickenAPI.Packets.ServerPackets.Miniland;
 
 namespace ChickenAPI.Packets.ClientPackets.Miniland
 {
@@ -7,33 +8,30 @@ namespace ChickenAPI.Packets.ClientPackets.Miniland
     public class MlobjPacket : PacketBase
     {
         [PacketIndex(0)]
-        public bool Deleted { get; set; }
+        public bool InUse { get; set; }
 
         [PacketIndex(1)]
-        public short Slot { get; set; }
-
-        [PacketIndex(2)]
         public short MapX { get; set; }
 
-        [PacketIndex(3)]
+        [PacketIndex(2)]
         public short MapY { get; set; }
 
+        [PacketIndex(3)]
+        public byte Width { get; set; }
+
         [PacketIndex(4)]
-        public short Width { get; set; }
+        public byte Height { get; set; }
 
         [PacketIndex(5)]
-        public short Height { get; set; }
+        public byte Unknown { get; set; }
 
         [PacketIndex(6)]
-        public byte Unknown { get; set; } // looks like always 0
+        public int DurabilityPoint { get; set; }
 
         [PacketIndex(7)]
-        public short DurabilityPoint { get; set; }
+        public bool Unknown2 { get; set; }
 
         [PacketIndex(8)]
-        public byte Unknown2 { get; set; } // looks like always 0
-
-        [PacketIndex(9)]
         public bool IsWarehouse { get; set; }
     }
 }
