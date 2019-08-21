@@ -5,6 +5,7 @@ using ChickenAPI.Packets.ClientPackets;
 using ChickenAPI.Packets.ClientPackets.Chat;
 using ChickenAPI.Packets.ClientPackets.Families;
 using ChickenAPI.Packets.ClientPackets.Inventory;
+using ChickenAPI.Packets.ClientPackets.Miniland;
 using ChickenAPI.Packets.ClientPackets.Relations;
 using ChickenAPI.Packets.Enumerations;
 using ChickenAPI.Packets.Interfaces;
@@ -14,6 +15,7 @@ using ChickenAPI.Packets.ServerPackets.CharacterSelectionScreen;
 using ChickenAPI.Packets.ServerPackets.Event;
 using ChickenAPI.Packets.ServerPackets.Inventory;
 using ChickenAPI.Packets.ServerPackets.Login;
+using ChickenAPI.Packets.ServerPackets.Miniland;
 using ChickenAPI.Packets.ServerPackets.Player;
 using ChickenAPI.Packets.ServerPackets.Quicklist;
 using ChickenAPI.Packets.ServerPackets.Relations;
@@ -43,7 +45,8 @@ namespace ChickenAPI.Packets.Tests
                 typeof(FinsPacket),
                 typeof(GidxPacket),
                 typeof(CInfoPacket),
-                typeof(RbrPacket)
+                typeof(RbrPacket),
+                typeof(MlobjlstPacket),
             });
 
         [TestMethod]
@@ -67,6 +70,27 @@ namespace ChickenAPI.Packets.Tests
 
             var packet = Serializer.Serialize(testPacket);
             Assert.AreEqual("n_inv 0 0 0 0.0.0.-1.0", packet);
+        }
+
+        [TestMethod]
+        public void SerializePacketWithCaretSpecialSeparator()
+        {
+            var testPacket = new MlobjlstPacket
+            {
+                MlobjlstSubPacket = new List<MlobjlstSubPacket>
+                {
+                    new MlobjlstSubPacket()
+                    {
+                        MlObjSubPacket = new MlobjPacket()
+                    },  new MlobjlstSubPacket()
+                    {
+                        MlObjSubPacket = new MlobjPacket()
+                    }
+                }
+            };
+
+            var packet = Serializer.Serialize(testPacket);
+            Assert.AreEqual("mlobjlst 0.0.0.0.0.0.0.0.0.0 0.0.0.0.0.0.0.0.0.0", packet);
         }
 
         [TestMethod]
