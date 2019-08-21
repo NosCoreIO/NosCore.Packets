@@ -6,10 +6,10 @@ namespace ChickenAPI.Packets.ServerPackets.Miniland
     public class MlobjPacket : PacketBase
     {
         [PacketIndex(0)]
-        public short Slot { get; set; }
+        public bool Deleted { get; set; }
 
         [PacketIndex(1)]
-        public bool InUse { get; set; }
+        public short Slot { get; set; }
 
         [PacketIndex(2)]
         public MlobjSubPacket MlobjSubPacket { get; set; }
