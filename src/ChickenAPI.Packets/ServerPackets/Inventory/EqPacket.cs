@@ -1,6 +1,5 @@
 ﻿using ChickenAPI.Packets.Attributes;
 using ChickenAPI.Packets.Enumerations;
-using ChickenAPI.Packets.Interfaces;
 using ChickenAPI.Packets.ServerPackets.Visibility;
 
 namespace ChickenAPI.Packets.ServerPackets.Inventory

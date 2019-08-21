@@ -1,5 +1,4 @@
 ﻿using ChickenAPI.Packets.Attributes;
-using ChickenAPI.Packets.ClientPackets.Miniland;
 
 namespace ChickenAPI.Packets.ServerPackets.Miniland
 {
@@ -8,7 +7,10 @@ namespace ChickenAPI.Packets.ServerPackets.Miniland
         [PacketIndex(0)]
         public short Slot { get; set; }
 
-        [PacketIndex(1, RemoveHeader = true, SpecialSeparator = ".")]
-        public MlobjPacket MlObjSubPacket { get; set; }
+        [PacketIndex(1)]
+        public bool InUse { get; set; }
+
+        [PacketIndex(2,RemoveHeader = true, SpecialSeparator = ".")]
+        public MlobjSubPacket MlObjSubPacket { get; set; }
     }
 }

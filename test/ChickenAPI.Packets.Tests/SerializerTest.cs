@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using ChickenAPI.Packets.ClientPackets;
+﻿using System.Collections.Generic;
 using ChickenAPI.Packets.ClientPackets.Chat;
 using ChickenAPI.Packets.ClientPackets.Families;
 using ChickenAPI.Packets.ClientPackets.Inventory;
-using ChickenAPI.Packets.ClientPackets.Miniland;
 using ChickenAPI.Packets.ClientPackets.Relations;
 using ChickenAPI.Packets.Enumerations;
 using ChickenAPI.Packets.Interfaces;
-using ChickenAPI.Packets.ServerPackets;
 using ChickenAPI.Packets.ServerPackets.Auction;
-using ChickenAPI.Packets.ServerPackets.CharacterSelectionScreen;
 using ChickenAPI.Packets.ServerPackets.Event;
 using ChickenAPI.Packets.ServerPackets.Inventory;
 using ChickenAPI.Packets.ServerPackets.Login;
@@ -81,10 +75,10 @@ namespace ChickenAPI.Packets.Tests
                 {
                     new MlobjlstSubPacket()
                     {
-                        MlObjSubPacket = new MlobjPacket()
+                        MlObjSubPacket = new MlobjSubPacket()
                     },  new MlobjlstSubPacket()
                     {
-                        MlObjSubPacket = new MlobjPacket()
+                        MlObjSubPacket = new MlobjSubPacket()
                     }
                 }
             };

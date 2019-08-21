@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Net.Http.Headers;
 using ChickenAPI.Packets.Attributes;
 
 namespace ChickenAPI.Packets.ClientPackets.Bazaar

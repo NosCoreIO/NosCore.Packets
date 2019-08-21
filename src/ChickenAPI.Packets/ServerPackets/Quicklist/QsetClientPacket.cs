@@ -1,5 +1,4 @@
 ﻿using ChickenAPI.Packets.Attributes;
-using ChickenAPI.Packets.Enumerations;
 
 namespace ChickenAPI.Packets.ServerPackets.Quicklist
 {

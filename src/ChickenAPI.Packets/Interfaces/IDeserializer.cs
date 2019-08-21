@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace ChickenAPI.Packets.Interfaces
+﻿namespace ChickenAPI.Packets.Interfaces
 {
     public interface IDeserializer
     {
