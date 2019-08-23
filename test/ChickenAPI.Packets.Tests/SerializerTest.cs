@@ -26,6 +26,7 @@ namespace ChickenAPI.Packets.Tests
         static readonly ISerializer Serializer = new Serializer(
             new[]
             {
+                typeof(MloInfoPacket),
                 typeof(NInvPacket),
                 typeof(QSlotPacket),
                 typeof(RcbListPacket),
@@ -40,7 +41,7 @@ namespace ChickenAPI.Packets.Tests
                 typeof(GidxPacket),
                 typeof(CInfoPacket),
                 typeof(RbrPacket),
-                typeof(MlobjlstPacket),
+                typeof(MlobjlstPacket)
             });
 
         [TestMethod]
@@ -243,6 +244,33 @@ namespace ChickenAPI.Packets.Tests
             var packet = Serializer.Serialize(dlgTest);
             Assert.AreEqual(
                 "blinit 1|test 2|test2",
+                packet);
+        }
+
+        [TestMethod]
+        public void SerializeWithSizedArray()
+        {
+            var mloInfoPacket = new MloInfoPacket
+            {
+                IsOwner = false,
+                ObjectVNum = 0,
+                Slot = 0,
+                MinilandPoints = 0,
+                LawDurability = false,
+                IsFull = false,
+                MinigamePoints = new MloInfoPacketSubPacket[5]
+                {
+                    new MloInfoPacketSubPacket(),
+                    new MloInfoPacketSubPacket(),
+                    new MloInfoPacketSubPacket(),
+                    new MloInfoPacketSubPacket(),
+                    new MloInfoPacketSubPacket(),
+                }
+            };
+
+            var packet = Serializer.Serialize(mloInfoPacket);
+            Assert.AreEqual(
+                "mlo_info 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0",
                 packet);
         }
 

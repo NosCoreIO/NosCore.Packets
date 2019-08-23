@@ -147,9 +147,10 @@ namespace ChickenAPI.Packets
         private Expression ListSerializer(Expression injectedPacket, Expression specificTypeExpression,
             PacketIndexAttribute indexAttr, Type type, string packetSplitter, Expression propertySplitter)
         {
-            var param = Expression.Parameter(type.GenericTypeArguments[0]);
+            var subtype = type.GenericTypeArguments.Any() ? type.GenericTypeArguments[0] : type.GetElementType();
+            var param = Expression.Parameter(subtype);
             var isPacketList = false;
-            if (typeof(IPacket).IsAssignableFrom(type.GenericTypeArguments[0]))
+            if (typeof(IPacket).IsAssignableFrom(subtype))
             {
                 indexAttr.IsOptional = false;
                 isPacketList = true;
@@ -158,12 +159,12 @@ namespace ChickenAPI.Packets
             var selectExp = Expression.Call(
                 typeof(Enumerable),
                 "Select",
-                new[] { type.GenericTypeArguments[0], typeof(string) },
+                new[] { subtype, typeof(string) },
                 specificTypeExpression,
                 Expression.Lambda(
                     Expression.Convert(isPacketList
-                        ? IPacketSerializer(injectedPacket, indexAttr, param, type.GenericTypeArguments[0], 0, propertySplitter, "", true)
-                        : PropertySerializer(injectedPacket, indexAttr, type.GenericTypeArguments[0], param, 0,
+                        ? IPacketSerializer(injectedPacket, indexAttr, param, subtype, 0, propertySplitter, "", true)
+                        : PropertySerializer(injectedPacket, indexAttr, subtype, param, 0,
                             Expression.Constant("")), typeof(string)), param)
             );
 
@@ -285,9 +286,9 @@ namespace ChickenAPI.Packets
                     specificTypeExpression = EnumSerializer(specificTypeExpression, propertySplitter);
                     break;
                 //handle list
-                case var t when t.IsGenericType && t.GetGenericTypeDefinition().IsAssignableFrom(typeof(List<>)):
+                case var t when t.GetInterface("System.Collections.ICollection") != null:
                     specificTypeExpression = ListSerializer(injectedPacket, specificTypeExpression, indexAttr, t, " ",
-                        Expression.Constant(typeof(IPacket).IsAssignableFrom(t.GenericTypeArguments[0])
+                        Expression.Constant(typeof(IPacket).IsAssignableFrom(t.GenericTypeArguments.Any() ? t.GenericTypeArguments[0] : t.GetElementType())
                             ? indexAttr.SpecialSeparator ?? "."
                             : indexAttr.SpecialSeparator ?? " "));
                     break;
