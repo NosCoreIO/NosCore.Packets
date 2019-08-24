@@ -16,5 +16,8 @@ namespace ChickenAPI.Packets.ClientPackets.Miniland
 
         [PacketIndex(3)]
         public int? Point { get; set; }
+
+        [PacketIndex(4, IsOptional = true)]
+        public int? Unknown { get; set; }
     }
 }
