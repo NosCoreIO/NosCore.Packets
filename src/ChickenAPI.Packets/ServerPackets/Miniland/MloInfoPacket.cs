@@ -23,7 +23,7 @@ namespace ChickenAPI.Packets.ServerPackets.Miniland
         [PacketIndex(5)]
         public bool IsFull { get; set; }
 
-        [PacketIndex(6, Length = 5, SpecialSeparator = " ")]
+        [PacketIndex(6, SpecialSeparator = " ")]
         public MloInfoPacketSubPacket[] MinigamePoints { get; set; }
     }
 }
