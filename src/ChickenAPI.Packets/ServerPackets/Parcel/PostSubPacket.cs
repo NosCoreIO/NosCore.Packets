@@ -2,7 +2,7 @@
 using ChickenAPI.Packets.Enumerations;
 using ChickenAPI.Packets.ServerPackets.Visibility;
 
-namespace ChickenAPI.Packets.ServerPackets.Movement
+namespace ChickenAPI.Packets.ServerPackets.Parcel
 {
     public class PostSubPacket : PacketBase
     {

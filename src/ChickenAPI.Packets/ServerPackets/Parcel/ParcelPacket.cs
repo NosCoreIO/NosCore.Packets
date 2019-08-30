@@ -1,6 +1,7 @@
 ﻿using ChickenAPI.Packets.Attributes;
+using ChickenAPI.Packets.ServerPackets.Movement;
 
-namespace ChickenAPI.Packets.ServerPackets.Movement
+namespace ChickenAPI.Packets.ServerPackets.Parcel
 {
     [PacketHeader("parcel")]
     public class ParcelPacket : PacketBase

@@ -1,6 +1,6 @@
 ﻿using ChickenAPI.Packets.Attributes;
 
-namespace ChickenAPI.Packets.ClientPackets.Miniland
+namespace ChickenAPI.Packets.ServerPackets.Miniland
 {
     [PacketHeader("useobj")]
     public class UseObjPacket : PacketBase
