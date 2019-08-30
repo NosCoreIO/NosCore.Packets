@@ -3,7 +3,7 @@
 namespace ChickenAPI.Packets.ClientPackets.Parcel
 {
     [PacketHeader("pcl")]
-    public class GetGiftPacket : PacketBase
+    public class PclPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Type { get; set; }
