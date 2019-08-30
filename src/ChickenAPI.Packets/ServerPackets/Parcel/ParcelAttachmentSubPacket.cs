@@ -1,6 +1,6 @@
 ﻿using ChickenAPI.Packets.Attributes;
 
-namespace ChickenAPI.Packets.ServerPackets.Movement
+namespace ChickenAPI.Packets.ServerPackets.Parcel
 {
     public class ParcelAttachmentSubPacket : PacketBase
     {
