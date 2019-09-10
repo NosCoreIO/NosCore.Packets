@@ -2,7 +2,7 @@
 using ChickenAPI.Packets.Attributes;
 using ChickenAPI.Packets.Enumerations;
 
-namespace ChickenAPI.Packets.ServerPackets.Groups
+namespace ChickenAPI.Packets.ServerPackets.Parcel
 {
     [PacketHeader("pst")]
     public class PstPacket : PacketBase
