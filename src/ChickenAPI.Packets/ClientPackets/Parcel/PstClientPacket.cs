@@ -2,6 +2,7 @@
 
 namespace ChickenAPI.Packets.ClientPackets.Parcel
 {
+    [PacketHeader("pst")]
     public class PstClientPacket : PacketBase
     {
         [PacketIndex(0)]
