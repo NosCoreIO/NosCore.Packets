@@ -1,6 +1,6 @@
 ﻿using ChickenAPI.Packets.Attributes;
 
-namespace ChickenAPI.Packets.ClientPackets.Families
+namespace ChickenAPI.Packets.ClientPackets.Warehouse
 {
     [PacketHeader("f_repos")]
     public class FReposPacket : PacketBase
