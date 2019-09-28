@@ -16,6 +16,7 @@ using ChickenAPI.Packets.ServerPackets.UI;
 using System.Linq;
 using ChickenAPI.Packets.ServerPackets.Relations;
 using ChickenAPI.Packets.ClientPackets.Bazaar;
+using ChickenAPI.Packets.ClientPackets.Warehouse;
 
 namespace ChickenAPI.Packets.Tests
 {
