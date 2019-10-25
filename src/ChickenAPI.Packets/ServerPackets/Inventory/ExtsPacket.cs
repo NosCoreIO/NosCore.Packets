@@ -11,12 +11,12 @@ namespace ChickenAPI.Packets.ServerPackets.Inventory
         public byte Type { get; set; }
 
         [PacketIndex(1)]
-        public PocketType EquipmentExtension { get; set; }
+        public byte EquipmentExtension { get; set; }
 
         [PacketIndex(2)]
-        public PocketType MainExtension { get; set; }
+        public byte MainExtension { get; set; }
 
         [PacketIndex(3)]
-        public PocketType EtcExtension { get; set; }
+        public byte EtcExtension { get; set; }
     }
 }
