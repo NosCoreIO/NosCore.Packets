@@ -1,4 +1,5 @@
 ﻿using ChickenAPI.Packets.Attributes;
+using ChickenAPI.Packets.Enumerations;
 
 namespace ChickenAPI.Packets.ClientPackets.UI
 {
@@ -6,7 +7,7 @@ namespace ChickenAPI.Packets.ClientPackets.UI
     public class GuriPacket : PacketBase
     {
         [PacketIndex(0)]
-        public int Type { get; set; }
+        public GuriPacketType Type { get; set; }
 
         [PacketIndex(1)]
         public int? Argument { get; set; }
