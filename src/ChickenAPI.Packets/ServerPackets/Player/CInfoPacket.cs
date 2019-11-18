@@ -25,7 +25,7 @@ namespace ChickenAPI.Packets.ServerPackets.Player
         public long CharacterId { get; set; }
 
         [PacketIndex(6)]
-        public byte Authority { get; set; }
+        public short Authority { get; set; }
 
         [PacketIndex(7)]
         public GenderType Gender { get; set; }
