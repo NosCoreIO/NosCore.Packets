@@ -8,7 +8,7 @@ namespace ChickenAPI.Packets.ServerPackets.Visibility
     public class InCharacterSubPacket : PacketBase
     {
         [PacketIndex(0)]
-        public short Authority { get; set; }
+        public AuthorityUIType Authority { get; set; }
 
         [PacketIndex(1)]
         public GenderType Gender { get; set; }

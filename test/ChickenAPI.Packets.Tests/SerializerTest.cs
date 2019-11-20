@@ -320,7 +320,7 @@ namespace ChickenAPI.Packets.Tests
                 FamilyId = 0,
                 FamilyName = null,
                 CharacterId = 1,
-                Authority = 0,
+                Authority = AuthorityUIType.User,
                 Gender = GenderType.Male,
                 HairStyle = HairStyleType.HairStyleA,
                 HairColor = HairColorType.DarkPurple,
@@ -486,7 +486,7 @@ namespace ChickenAPI.Packets.Tests
                 Direction = 0,
                 InCharacterSubPacket = new InCharacterSubPacket
                 {
-                    Authority = 2,
+                    Authority = AuthorityUIType.GameMaster,
                     Gender = 0,
                     HairStyle = 0,
                     HairColor = 0,
