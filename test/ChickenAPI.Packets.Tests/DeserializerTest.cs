@@ -17,6 +17,7 @@ using System.Linq;
 using ChickenAPI.Packets.ServerPackets.Relations;
 using ChickenAPI.Packets.ClientPackets.Bazaar;
 using ChickenAPI.Packets.ClientPackets.Warehouse;
+using ChickenAPI.Packets.ServerPackets.Miniland;
 
 namespace ChickenAPI.Packets.Tests
 {
@@ -25,6 +26,7 @@ namespace ChickenAPI.Packets.Tests
     {
         static readonly IDeserializer Deserializer = new Deserializer(
             new[] {
+                typeof(PercentInvitePacket),
                 typeof(WhisperPacket),
                 typeof(UseItemPacket),
                 typeof(MShopPacket),
@@ -76,6 +78,13 @@ namespace ChickenAPI.Packets.Tests
             Assert.AreEqual("", packet.Body);
             Assert.AreEqual("0", packet.Header);
             Assert.AreEqual((ushort)1234, packet.KeepAliveId);
+        }
+
+        [TestMethod]
+        public void PacketWithAliasCanBeDeserialized()
+        {
+            var packet = (PercentInvitePacket)Deserializer.Deserialize("$Inviter test");
+            Assert.AreEqual("test", packet.Username);
         }
 
         [TestMethod]

@@ -2,7 +2,7 @@
 
 namespace ChickenAPI.Packets.Attributes
 {
-    [AttributeUsage(AttributeTargets.All)]
+    [AttributeUsage(AttributeTargets.Class)]
     public class PacketHeaderAttribute : Attribute
     {
         public PacketHeaderAttribute(string identification)
