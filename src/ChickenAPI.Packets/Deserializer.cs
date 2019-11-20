@@ -111,7 +111,11 @@ namespace ChickenAPI.Packets
             };
 
             packetDeserializerDictionary.Add(header ?? typeof(T).Name, creator);
-
+            var aliases = typeof(T).GetCustomAttributes<PacketHeaderAliasAttribute>().Select(s=>s.Identification);
+            foreach(var alias in aliases)
+            {
+                packetDeserializerDictionary.Add(alias ?? typeof(T).Name, creator);
+            }
         }
 
         private Delegate GetPropSetter(Type typeObj, Type typeProperty, string propertyName)
