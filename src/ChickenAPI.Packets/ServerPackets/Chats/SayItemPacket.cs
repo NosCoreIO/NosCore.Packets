@@ -16,36 +16,20 @@ namespace ChickenAPI.Packets.ServerPackets.Chats
         [PacketIndex(2)]
         public byte OratorSlot { get; set; }
 
-
-        [PacketIndex(3)]
-        public string GlobalPrefix { get; set; }
-
-        [PacketIndex(4)]
-        public string CharacterName { get; set; }
-
-        [PacketIndex(5)]
-        public string ItemName { get; set; }
-
         /// <summary>
         /// Spaces should be replaced by '^'
         /// </summary>
-        [PacketIndex(6, IsOptional = true)]
+        [PacketIndex(3, IsOptional = true)]
         public string Message { get; set; }
 
+        [PacketIndex(4, IsOptional = true, RemoveHash = true)]
+        public IconInfoPacket IconInfo { get; set; }
 
-        [PacketIndex(6, IsOptional = true)]
-        public SayItemSubPacket ItemData { get; set; }
-
-        [PacketIndex(7, IsOptional = true)]
+        [PacketIndex(5, IsOptional = true, RemoveHash = true)]
         public EInfoPacket EquipmentInfo { get; set; }
 
-        [PacketHeader("ItemInfo ")]
-        public class SayItemSubPacket : PacketBase
-        {
-            // disgusting but it's entwell
-            // :hap:
-            [PacketIndex(0, IsOptional = true)]
-            public long? IconId { get; set; }
-        }
+        [PacketIndex(6, IsOptional = true, RemoveHash = true)]
+        public SlInfoPacket SlInfo { get; set; }
+
     }
 }

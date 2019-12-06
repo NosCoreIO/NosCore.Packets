@@ -304,7 +304,7 @@ namespace ChickenAPI.Packets
                     propertySplitter = Expression.Constant(indexAttr.SpecialSeparator ?? (header == null ? " " : "."));
                     if (!string.IsNullOrEmpty(header))
                     {
-                        header = $"#{header}";
+                        header = $"{(indexAttr.RemoveHash ? "" : "#")}{header}{(indexAttr.RemoveHash ? " " : "")}";
                         propertySplitter = Expression.Constant(indexAttr.SpecialSeparator ?? "^");
                     }
 
