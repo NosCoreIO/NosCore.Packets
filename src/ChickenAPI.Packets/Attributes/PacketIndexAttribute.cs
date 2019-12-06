@@ -25,5 +25,7 @@ namespace ChickenAPI.Packets.Attributes
         public sbyte Length { get; set; }
 
         public bool RemoveHeader { get; set; }
-}
+
+        public bool RemoveHash { get; set; }
+    }
 }

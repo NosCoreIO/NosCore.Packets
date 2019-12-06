@@ -6,6 +6,7 @@ using ChickenAPI.Packets.ClientPackets.Relations;
 using ChickenAPI.Packets.Enumerations;
 using ChickenAPI.Packets.Interfaces;
 using ChickenAPI.Packets.ServerPackets.Auction;
+using ChickenAPI.Packets.ServerPackets.Chats;
 using ChickenAPI.Packets.ServerPackets.Event;
 using ChickenAPI.Packets.ServerPackets.Inventory;
 using ChickenAPI.Packets.ServerPackets.Login;
@@ -26,6 +27,7 @@ namespace ChickenAPI.Packets.Tests
         static readonly ISerializer Serializer = new Serializer(
             new[]
             {
+                typeof(SayItemPacket),
                 typeof(MloInfoPacket),
                 typeof(NInvPacket),
                 typeof(QSlotPacket),
@@ -197,6 +199,28 @@ namespace ChickenAPI.Packets.Tests
             var packet = Serializer.Serialize(dlgTest);
             Assert.AreEqual(
                 "dlg #fins^1^1 #fins^2^1 question",
+                packet);
+        }
+
+        [TestMethod]
+        public void SerializeWithNoSpecialHeader()
+        {
+            var dlgTest = new SayItemPacket
+            {
+                 Message = "<SPEAKER>[Username]:{item}",
+                 OratorSlot = 17,
+                 EquipmentInfo = null,
+                 VisualId = 1,
+                 VisualType = VisualType.Player,
+                 IconInfo = new IconInfoPacket
+                 {
+                     IconId = 1012
+                 }
+            };
+
+            var packet = Serializer.Serialize(dlgTest);
+            Assert.AreEqual(
+                "sayitem 1 1 17 <SPEAKER>[Username]:{item} IconInfo 1012",
                 packet);
         }
 
