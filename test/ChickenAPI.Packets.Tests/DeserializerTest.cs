@@ -214,13 +214,15 @@ namespace ChickenAPI.Packets.Tests
         public void DeserializeSpecialPacketSubpacket()
         {
             var packet = (FinfoPacket)Deserializer.Deserialize(
-                "finfo 2.1 3.0"
+                "finfo 2.1.Friend1 3.0.Friend2"
             );
             Assert.IsTrue(packet.FriendList.Count == 2);
             Assert.IsTrue(packet.FriendList.First().CharacterId == 2);
             Assert.IsTrue(packet.FriendList.First().IsConnected);
+            Assert.IsTrue(packet.FriendList.First().CharacterName == "Friend1");
             Assert.IsTrue(packet.FriendList.Skip(1).First().CharacterId == 3);
             Assert.IsFalse(packet.FriendList.Skip(1).First().IsConnected);
+            Assert.IsTrue(packet.FriendList.Skip(1).First().CharacterName == "Friend2");
         }
 
         [TestMethod]
