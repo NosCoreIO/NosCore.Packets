@@ -10,5 +10,8 @@ namespace ChickenAPI.Packets.ServerPackets.Relations
 
         [PacketIndex(1)]
         public bool IsConnected { get; set; }
+
+        [PacketIndex(2)]
+        public string CharacterName { get; set; }
     }
 }
