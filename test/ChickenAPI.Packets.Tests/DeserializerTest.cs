@@ -300,7 +300,7 @@ namespace ChickenAPI.Packets.Tests
             Assert.IsTrue(packet.AuthToken == "37633936363633662D633332352D346461612D383933612D373031346639653063646463");
             Assert.IsTrue(packet.ClientId == Guid.Parse("c437f3f4-06cb-405d-b3c8-73e5c7772c80"));
             Assert.IsTrue(packet.UnknownYet == "0034F3E8");
-            Assert.IsTrue(packet.ClientVersion.Major == 0);
+            Assert.IsTrue(packet.ClientVersion!.Major == 0);
             Assert.IsTrue(packet.ClientVersion.Minor == 9);
             Assert.IsTrue(packet.ClientVersion.Fix == 3);
             Assert.IsTrue(packet.ClientVersion.SubFix == 3123);
