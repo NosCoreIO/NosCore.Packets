@@ -7,10 +7,10 @@ namespace ChickenAPI.Packets.ServerPackets.Player
     public class CInfoPacket : PacketBase
     {
         [PacketIndex(0)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [PacketIndex(1)]
-        public string Unknown1 { get; set; } //TODO to find
+        public string? Unknown1 { get; set; } //TODO to find
 
         [PacketIndex(2)]
         public short? GroupId { get; set; }
@@ -19,7 +19,7 @@ namespace ChickenAPI.Packets.ServerPackets.Player
         public int FamilyId { get; set; }
 
         [PacketIndex(4)]
-        public string FamilyName { get; set; }
+        public string? FamilyName { get; set; }
 
         [PacketIndex(5)]
         public long CharacterId { get; set; }

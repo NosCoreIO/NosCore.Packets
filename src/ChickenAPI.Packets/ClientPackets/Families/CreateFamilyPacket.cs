@@ -6,6 +6,6 @@ namespace ChickenAPI.Packets.ClientPackets.Families
     public class CreateFamilyPacket : PacketBase
     {
         [PacketIndex(0)]
-        public string FamilyName { get; set; }
+        public string? FamilyName { get; set; }
     }
 }

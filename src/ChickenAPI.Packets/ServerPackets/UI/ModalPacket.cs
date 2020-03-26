@@ -9,6 +9,6 @@ namespace ChickenAPI.Packets.ServerPackets.UI
         public byte Type { get; set; } //TODO: find modal types
 
         [PacketIndex(1)]
-        public string Message { get; set; }
+        public string? Message { get; set; }
     }
 }

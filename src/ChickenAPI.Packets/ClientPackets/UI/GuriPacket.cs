@@ -19,6 +19,6 @@ namespace ChickenAPI.Packets.ClientPackets.UI
         public long? Data { get; set; }
 
         [PacketIndex(4, IsOptional = true)]
-        public string Value { get; set; }
+        public string? Value { get; set; }
     }
 }

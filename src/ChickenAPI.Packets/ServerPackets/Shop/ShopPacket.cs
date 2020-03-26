@@ -22,6 +22,6 @@ namespace ChickenAPI.Packets.ServerPackets.Shop
         public byte? ShopType { get; set; }
 
         [PacketIndex(5, IsOptional = true)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
     }
 }

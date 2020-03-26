@@ -21,7 +21,7 @@ namespace ChickenAPI.Packets.ServerPackets.Groups
         public byte Level { get; set; }
 
         [PacketIndex(4)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [PacketIndex(5)]
         public int Unknown { get; set; } //TODO: Find what this is made for

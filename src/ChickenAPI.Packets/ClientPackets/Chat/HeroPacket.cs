@@ -6,6 +6,6 @@ namespace ChickenAPI.Packets.ClientPackets.Chat
     public class HeroPacket : PacketBase
     {
         [PacketIndex(0)]
-        public string Message { get; set; }
+        public string? Message { get; set; }
     }
 }

@@ -16,6 +16,6 @@ namespace ChickenAPI.Packets.ServerPackets.Chats
         public SayColorType Type { get; set; }
 
         [PacketIndex(3)]
-        public string Message { get; set; }
+        public string? Message { get; set; }
     }
 }

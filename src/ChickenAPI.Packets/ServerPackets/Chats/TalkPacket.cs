@@ -9,6 +9,6 @@ namespace ChickenAPI.Packets.ServerPackets.Chats
         public long CharacterId { get; set; }
 
         [PacketIndex(1)]
-        public string Message { get; set; }
+        public string? Message { get; set; }
     }
 }

@@ -16,6 +16,6 @@ namespace ChickenAPI.Packets.ServerPackets.Parcel
         public short Id { get; set; }
 
         [PacketIndex(3, IsOptional = true)]
-        public ParcelAttachmentSubPacket ParcelAttachment { get; set; }
+        public ParcelAttachmentSubPacket? ParcelAttachment { get; set; }
     }
 }

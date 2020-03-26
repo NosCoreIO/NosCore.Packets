@@ -10,6 +10,6 @@ namespace ChickenAPI.Packets.ClientPackets.Shops
         public long ValueSold { get; set; }
 
         [PacketIndex(1)]
-        public List<SellListSubPacket> SellListSubPacket { get; set; }
+        public List<SellListSubPacket?>? SellListSubPacket { get; set; }
     }
 }

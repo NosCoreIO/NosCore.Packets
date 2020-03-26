@@ -9,6 +9,6 @@ namespace ChickenAPI.Packets.ServerPackets.Warehouse
     public class PStashClientPacket : PacketBase
     {
         [PacketIndex(0)]
-        public List<IvnSubPacket> IvnSubPackets { get; set; }
+        public List<IvnSubPacket?>? IvnSubPackets { get; set; }
     }
 }

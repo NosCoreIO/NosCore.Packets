@@ -20,12 +20,12 @@ namespace ChickenAPI.Packets.ServerPackets.Shop
         public byte? ShopKind { get; set; }
 
         [PacketIndex(4, IsOptional = true)]
-        public List<NInvItemSubPacket> Items { get; set; }
+        public List<NInvItemSubPacket?>? Items { get; set; }
 
         [PacketIndex(5, IsOptional = true)]
-        public List<short> Skills { get; set; }
+        public List<short>? Skills { get; set; }
 
         [PacketIndex(6, IsOptional = true, SpecialSeparator = "|")]
-        public List<NInvFamilySkillSubPacket> FamilySkills { get; set; }
+        public List<NInvFamilySkillSubPacket?>? FamilySkills { get; set; }
     }
 }

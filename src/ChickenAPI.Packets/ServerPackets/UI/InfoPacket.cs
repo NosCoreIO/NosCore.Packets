@@ -6,6 +6,6 @@ namespace ChickenAPI.Packets.ServerPackets.UI
     public class InfoPacket : PacketBase
     {
         [PacketIndex(0)]
-        public string Message { get; set; }
+        public string? Message { get; set; }
     }
 }

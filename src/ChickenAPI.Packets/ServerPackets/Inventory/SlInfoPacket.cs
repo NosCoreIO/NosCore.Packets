@@ -67,7 +67,7 @@ namespace ChickenAPI.Packets.ServerPackets.Inventory
         public short SpXpData { get; set; }
 
         [PacketIndex(20)]
-        public string Skill { get; set; }
+        public string? Skill { get; set; }
 
         [PacketIndex(21)]
         public int TransportId { get; set; }

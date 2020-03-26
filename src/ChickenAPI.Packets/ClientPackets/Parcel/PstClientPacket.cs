@@ -21,12 +21,12 @@ namespace ChickenAPI.Packets.ClientPackets.Parcel
         public int Unknow2 { get; set; }
 
         [PacketIndex(5)]
-        public string ReceiverName { get; set; }
+        public string? ReceiverName { get; set; }
 
         [PacketIndex(6, IsOptional = true)]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         [PacketIndex(7, IsOptional = true)]
-        public string Text { get; set; }
+        public string? Text { get; set; }
     }
 }

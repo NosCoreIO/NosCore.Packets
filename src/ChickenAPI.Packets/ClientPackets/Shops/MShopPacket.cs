@@ -11,9 +11,9 @@ namespace ChickenAPI.Packets.ClientPackets.Shops
         public CreateShopPacketType Type { get; set; }
 
         [PacketIndex(1, IsOptional = true, Length = 20)]
-        public List<MShopItemSubPacket> ItemList { get; set; }
+        public List<MShopItemSubPacket?>? ItemList { get; set; }
 
         [PacketIndex(2, IsOptional = true)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
     }
 }
