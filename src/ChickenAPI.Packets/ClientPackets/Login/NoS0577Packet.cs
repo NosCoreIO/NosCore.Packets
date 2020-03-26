@@ -7,7 +7,7 @@ namespace ChickenAPI.Packets.ClientPackets.Login
     /// <summary>
     /// Thanks to https://github.com/morsisko/NosTale-Auth
     ///  That's how it looks like:
-    /// "NoS0577 " + SESSION_GUID + " " + username + " " + INSTALLATION_GUID +
+    /// "NoS0577 " + SESSION_GUID + "  " + INSTALLATION_GUID +
     /// " 003662BF" + char(0xB) + "0.9.3.3103" + " 0 " +
     /// MD5_STR(MD5_FILE("NostaleClientX.exe") + MD5_FILE("NostaleClient.exe"))
     /// 
@@ -28,6 +28,7 @@ namespace ChickenAPI.Packets.ClientPackets.Login
         [PacketIndex(0)]
         public string? AuthToken { get; set; }
 
+
         [PacketIndex(1)]
         public Guid? ClientId { get; set; }
 
@@ -36,23 +37,23 @@ namespace ChickenAPI.Packets.ClientPackets.Login
         /// Would be better if we could provide some kind of HEX serialization instead of using string
         /// it may be the update version number
         /// </summary>
-        [PacketIndex(2)]
-        public string? UnknownYet { get; set; }
- 
+        [PacketIndex(2, SpecialSeparator = "")]
+        public string UnknownYet { get; set; }
+
         /// <summary>
         /// May be obtained from the NostaleClientX.exe version
         /// </summary>
-        [PacketIndex(4, SpecialSeparator = ".")]
+        [PacketIndex(3, SpecialSeparator = ".")]
         public ClientVersionSubPacket? ClientVersion { get; set; }
 
-        [PacketIndex(3)]
+        [PacketIndex(4)]
         [Range(0,0)]
         public byte UnknownConstant { get; set; }
 
         /// <summary>
         /// The MD5 string is a MD5 hashing : MD5_STRING(MD5_FILE(NostaleXClient.exe) + MD5_FILE(NostaleClient.exe))
         /// </summary>
-        [PacketIndex(4)]
+        [PacketIndex(5)]
         public string? Md5String { get; set; }
     }
 }
