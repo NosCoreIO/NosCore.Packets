@@ -1,12 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <LangVersion>latest</LangVersion>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>ChickenAPI</Authors>
     <Copyright>2019</Copyright>
+    <Nullable>enable</Nullable>
     <PackageProjectUrl>https://github.com/ChickenAPI/ChickenAPI.Packets</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ChickenAPI/ChickenAPI.Packets.git</RepositoryUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/ChickenAPI/ChickenAPI.Packets/master/docs/_media/logo.png</PackageIconUrl>
