@@ -1,29 +1,14 @@
-# ChickenAPI.Packets (C#)
+# NosCore.Packets #
 
-<center><img src="docs/_media/logo.png"></img>
+<p align="center">
+  <img width="250px" src="https://cdn.discordapp.com/attachments/319565884454731795/426892646288457728/N2.png"/>
+  <img src="docs/_media/logo.png"></img>
+</p>
 
-[![NuGet](https://img.shields.io/nuget/v/ChickenAPI.Packets.svg?style=flat-square)](https://www.nuget.org/packages/ChickenAPI.Packets/)
-[![CircleCI](https://circleci.com/gh/ChickenAPI/ChickenAPI.Packets/tree/master.svg?style=svg)](https://circleci.com/gh/ChickenAPI/ChickenAPI.Packets/tree/master)
-</center>
+[![Travis build status](https://travis-ci.org/NosCoreIO//NosCore.Packets.svg?branch=master)](https://travis-ci.org/NosCoreIO/NosCore.Packets)
 
 ## Links
-Discord : https://discord.gg/7sTFU8d
 [List of Packets](PACKET_LIST.md)
-
-## Description
-
-ChickenAPI is an Emulator API for the game Nostale.
-
-We are willing to provide quality API with a lot of things inside it to facilitate and fasten developers' work inside their own projects related to Nostale.
-
-ChickenAPI.Packets is a library including all Nostale packets (at least the ones we have written over so far)
-
-
-
-## Knowledge
-
-This is what we know so far about packet serialization of nostale
-
 
 ### PacketIndex serialization by type
 | Type    | string to serialize | Null | True | False | Value     | Value when Last |
@@ -41,3 +26,27 @@ This is what we know so far about packet serialization of nostale
 | contain IPacket properties without a PacketHeader | space            | space             | no discriminator |
 | contain a Host property                           | :                | -1                | no discriminator |
 | contain a List of IPacket the property            | space            | .                 | no discriminator |
+
+## You like our work ? ##
+[![ko-fi](https://www.ko-fi.com/img/donate_sm.png)](https://ko-fi.com/A3562BQV)
+or
+<a href="https://www.patreon.com/bePatron?u=6503887" data-patreon-widget-type="become-patron-button">Become a Patron!</a>
+
+## Achtung! ##
+We are not responsible of any damages caused by bad usage of our source. Please before asking questions or installing this source read this readme and also do a research, google is your friend. If you mess up when installing our source because you didnt follow it, we will laugh at you. A lot.
+
+## Instructions to contribute ##
+
+### Disclaimer ###
+This project not for commercial use.
+
+## Disclaimer ##
+This project is a community project not for commercial use. The result is to learn and program together for prove the study. 
+
+## Legal ##
+This is an independent and unofficial server for educational use ONLY. Using the Project might be against the TOS.
+
+### Contribution is only possible with Visual Studio 2019 ###
+We recommend usage of : 
+* [Roslynator extension](https://github.com/JosefPihrt/Roslynator).
+* [Resharper](https://www.jetbrains.com/resharper/)
