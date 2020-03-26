@@ -9,6 +9,6 @@ namespace ChickenAPI.Packets.ClientPackets.CharacterSelectionScreen
         public byte Slot { get; set; }
 
         [PacketIndex(1)]
-        public string Password { get; set; }
+        public string? Password { get; set; }
     }
 }

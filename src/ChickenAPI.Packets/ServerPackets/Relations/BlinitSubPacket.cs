@@ -8,6 +8,6 @@ namespace ChickenAPI.Packets.ServerPackets.Relations
         public long RelatedCharacterId { get; set; }
 
         [PacketIndex(1)]
-        public string CharacterName { get; set; }
+        public string? CharacterName { get; set; }
     }
 }

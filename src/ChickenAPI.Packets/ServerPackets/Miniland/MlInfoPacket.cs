@@ -28,9 +28,9 @@ namespace ChickenAPI.Packets.ServerPackets.Miniland
         public MinilandState MinilandState { get; set; }
 
         [PacketIndex(7)]
-        public string WelcomeMusicInfo { get; set; }
+        public string? WelcomeMusicInfo { get; set; }
 
         [PacketIndex(8)]
-        public string MinilandWelcomeMessage { get; set; }
+        public string? MinilandWelcomeMessage { get; set; }
     }
 }

@@ -12,6 +12,6 @@ namespace ChickenAPI.Packets.ServerPackets.Miniland
         public short Slot { get; set; }
 
         [PacketIndex(2)]
-        public MlobjSubPacket MlobjSubPacket { get; set; }
+        public MlobjSubPacket? MlobjSubPacket { get; set; }
     }
 }

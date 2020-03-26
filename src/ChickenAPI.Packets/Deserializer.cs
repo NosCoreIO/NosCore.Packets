@@ -15,8 +15,8 @@ namespace ChickenAPI.Packets
     public class TypeCreator
     {
         public int PropertyAmount { get; set; }
-        public Type PacketType { get; set; }
-        public Delegate Constructor { get; set; }
+        public Type? PacketType { get; set; }
+        public Delegate? Constructor { get; set; }
 
         public Dictionary<Tuple<Type, PacketIndexAttribute, string, IEnumerable<ValidationAttribute>>, Delegate> packetDeserializerDictionary = new Dictionary<Tuple<Type, PacketIndexAttribute, string, IEnumerable<ValidationAttribute>>, Delegate>();
     }
@@ -183,8 +183,8 @@ namespace ChickenAPI.Packets
                 {
                     var dic = packetDeserializerDictionary[packetsplit[header]];
                     var packet = DeserializeIPacket(dic, isSpecial ? packetstring : packetContent, includesKeepAliveIdentity, true);
-                    packet.Header = packetsplit[header];
-                    packet.KeepAliveId = includesKeepAliveIdentity ? (ushort?)keepalive : null;
+                    packet!.Header = packetsplit[header];
+                    packet!.KeepAliveId = includesKeepAliveIdentity ? (ushort?)keepalive : null;
                     return packet;
                 }
 
@@ -204,9 +204,9 @@ namespace ChickenAPI.Packets
             }
         }
 
-        private IPacket DeserializeIPacket(TypeCreator dic, string packetContent, bool includesKeepAliveIdentity, bool hasHeader)
+        private IPacket? DeserializeIPacket(TypeCreator dic, string packetContent, bool includesKeepAliveIdentity, bool hasHeader)
         {
-            var deg = (IPacket)dic.Constructor.DynamicInvoke();
+            var deg = (IPacket)dic.Constructor!.DynamicInvoke()!;
             var matches = Regex.Matches(packetContent, @"([^(\s\v)]+[\.]+[(\s\v)]?)+((?=(\s\v))|$)|([^(\s\v)]+)((?=\s)|$)").OfType<Match>()
                 .ToArray();
 
@@ -231,7 +231,7 @@ namespace ChickenAPI.Packets
                                 MemberName = packetBasePropertyInfo.Key.Item3,
                             });
 
-                            deg.ValidationResult = deg.ValidationResult ?? validate;
+                            deg.ValidationResult ??= validate;
                         }
 
                         if (packetBasePropertyInfo.Key.Item1.IsEnum && !Enum.IsDefined(packetBasePropertyInfo.Key.Item1, value))
@@ -261,7 +261,7 @@ namespace ChickenAPI.Packets
             return deg;
         }
 
-        private object DeserializeValue(Tuple<Type, PacketIndexAttribute, string, IEnumerable<ValidationAttribute>> packetBasePropertyInfo, Type item1, Match[] matches, ref int currentIndex, bool isMaxIndex)
+        private object? DeserializeValue(Tuple<Type, PacketIndexAttribute, string, IEnumerable<ValidationAttribute>> packetBasePropertyInfo, Type item1, Match[] matches, ref int currentIndex, bool isMaxIndex)
         {
             switch (item1)
             {
@@ -288,11 +288,11 @@ namespace ChickenAPI.Packets
             }
         }
 
-        private object DeserializeList(Type subType, PacketIndexAttribute packetIndexAttribute, Match[] matches, ref int currentIndex, bool isMaxIndex)
+        private object? DeserializeList(Type subType, PacketIndexAttribute packetIndexAttribute, Match[] matches, ref int currentIndex, bool isMaxIndex)
         {
             int newIndex = currentIndex;
             var length = packetIndexAttribute.Length;
-            string[] splited = null;
+            string[]? splited = null;
 
             if (length == -1)
             {
@@ -372,22 +372,22 @@ namespace ChickenAPI.Packets
             return value == "-1" ? type.GetDefaultValue() : Enum.Parse(Nullable.GetUnderlyingType(type) ?? type, value);
         }
 
-        private object DeserializeBoolean(string value)
+        private object? DeserializeBoolean(string value)
         {
             return value == "-1" ? (bool?)null : value == "1";
         }
 
-        private object DeserializeGuid(string value)
+        private object? DeserializeGuid(string value)
         {
             return value == "NONE" ? (Guid?)null : Guid.Parse(value);
         }
 
-        private object DeserializeDefault(Type type, string value)
+        private object? DeserializeDefault(Type type, string value)
         {
             return value == "-1" && !type.IsPrimitive ? type.GetDefaultValue() : Convert.ChangeType(value, Nullable.GetUnderlyingType(type) ?? type);
         }
 
-        private object DeserializeString(Match[] matches, ref int currentIndex, bool isMaxIndex)
+        private object? DeserializeString(Match[] matches, ref int currentIndex, bool isMaxIndex)
         {
             if (isMaxIndex)
             {

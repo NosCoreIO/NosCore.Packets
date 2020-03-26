@@ -7,9 +7,9 @@ namespace ChickenAPI.Packets.ServerPackets.UI
     public class QnaPacket : PacketBase
     {
         [PacketIndex(0)]
-        public IPacket YesPacket { get; set; }
+        public IPacket? YesPacket { get; set; }
 
         [PacketIndex(1)]
-        public string Question { get; set; }
+        public string? Question { get; set; }
     }
 }

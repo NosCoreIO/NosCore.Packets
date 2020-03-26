@@ -51,7 +51,7 @@ namespace ChickenAPI.Packets.Tests
         {
             var testPacket = new NInvPacket
             {
-                Items = new List<NInvItemSubPacket>
+                Items = new List<NInvItemSubPacket?>
                 {
                     new NInvItemSubPacket
                     {
@@ -74,7 +74,7 @@ namespace ChickenAPI.Packets.Tests
         {
             var testPacket = new MlobjlstPacket
             {
-                MlobjlstSubPacket = new List<MlobjlstSubPacket>
+                MlobjlstSubPacket = new List<MlobjlstSubPacket?>
                 {
                     new MlobjlstSubPacket()
                     {
@@ -96,11 +96,11 @@ namespace ChickenAPI.Packets.Tests
             var testPacket = new RbrPacket
             {
                 TsBasicInfo = new RbrSubPacketBasicInfo(),
-                BonusRewards = new List<RbrSubPacketItem> { new RbrSubPacketItem(), new RbrSubPacketItem(), new RbrSubPacketItem() },
+                BonusRewards = new List<RbrSubPacketItem?> { new RbrSubPacketItem(), new RbrSubPacketItem(), new RbrSubPacketItem() },
                 Completed = true,
-                DrawRewards = new List<RbrSubPacketItem> { new RbrSubPacketItem(), new RbrSubPacketItem(), new RbrSubPacketItem(), new RbrSubPacketItem(), new RbrSubPacketItem() },
+                DrawRewards = new List<RbrSubPacketItem?> { new RbrSubPacketItem(), new RbrSubPacketItem(), new RbrSubPacketItem(), new RbrSubPacketItem(), new RbrSubPacketItem() },
                 HighScore = new RbrSubPacketHighScore(),
-                SpecialRewards = new List<RbrSubPacketItem> { new RbrSubPacketItem(), new RbrSubPacketItem() },
+                SpecialRewards = new List<RbrSubPacketItem?> { new RbrSubPacketItem(), new RbrSubPacketItem() },
                 RequiredSeeds = 1,
                 MinMaxLevel = new RbrSubPacketMinMaxLevel { MinLevel = 1, MaxLevel = 99 },
                 Unknown = 0,
@@ -124,7 +124,7 @@ namespace ChickenAPI.Packets.Tests
                 new RcbListPacket
                 {
                     PageIndex = 1,
-                    Items = new List<RcbListPacket.RcbListElementPacket>
+                    Items = new List<RcbListPacket.RcbListElementPacket?>
                    {
                        new RcbListPacket.RcbListElementPacket
                        {
@@ -230,7 +230,7 @@ namespace ChickenAPI.Packets.Tests
             var dlgTest = new QSlotPacket
             {
                 Slot = 0,
-                Data = new List<QsetClientSubPacket>
+                Data = new List<QsetClientSubPacket?>
                 {
                     new QsetClientSubPacket
                     {
@@ -258,7 +258,7 @@ namespace ChickenAPI.Packets.Tests
         {
             var dlgTest = new BlinitPacket
             {
-                SubPackets = new List<BlinitSubPacket>
+                SubPackets = new List<BlinitSubPacket?>
                 {
                     new BlinitSubPacket { RelatedCharacterId = 1, CharacterName = "test" },
                     new BlinitSubPacket { RelatedCharacterId = 2, CharacterName = "test2" }
@@ -301,7 +301,7 @@ namespace ChickenAPI.Packets.Tests
         [TestMethod]
         public void SerializeWithOneSpecialAndOneDefaultSeparator()
         {
-            var subpacket = new List<NsTeStSubPacket>
+            var subpacket = new List<NsTeStSubPacket?>
             {
                 new NsTeStSubPacket
                 {
@@ -370,7 +370,7 @@ namespace ChickenAPI.Packets.Tests
                 VisualId = 0,
                 Unknown = 0,
                 ShopKind = 0,
-                Items = new List<NInvItemSubPacket>()
+                Items = new List<NInvItemSubPacket?>()
                 {
                     new NInvItemSubPacket()
                     {

@@ -11,10 +11,10 @@ namespace ChickenAPI.Packets.ClientPackets.Login
         public int SessionId { get; set; }
 
         [PacketIndex(1)]
-        public string Username { get; set; }
+        public string? Username { get; set; }
 
         [PacketIndex(2)]
-        public string Password { get; set; }
+        public string? Password { get; set; }
 
         [PacketIndex(3)]
         public Guid? ClientId { get; set; }
@@ -25,10 +25,10 @@ namespace ChickenAPI.Packets.ClientPackets.Login
         /// it may be the update version number
         /// </summary>
         [PacketIndex(3)]
-        public string UnknownYet { get; set; }
+        public string? UnknownYet { get; set; }
 
         [PacketIndex(4)]
-        public ClientVersionSubPacket ClientVersion { get; set; }
+        public ClientVersionSubPacket? ClientVersion { get; set; }
 
         [PacketIndex(5)]
         [Range(0, 0)]
@@ -38,6 +38,6 @@ namespace ChickenAPI.Packets.ClientPackets.Login
         /// The MD5 string is a MD5 hashing : MD5_STRING(MD5_FILE(NostaleXClient.exe) + MD5_FILE(NostaleClient.exe))
         /// </summary>
         [PacketIndex(6)]
-        public string Md5String { get; set; }
+        public string? Md5String { get; set; }
     }
 }

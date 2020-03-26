@@ -7,8 +7,8 @@ namespace ChickenAPI.Packets.Benchmark.SaltyEmu
 {
     public class PacketPropertyContainer
     {
-        public PacketIndexAttribute PacketIndex { get; set; }
-        public PropertyInfo PropertyInfo { get; set; }
-        public IEnumerable<ValidationAttribute> Validations { get; set; }
+        public PacketIndexAttribute? PacketIndex { get; set; }
+        public PropertyInfo? PropertyInfo { get; set; }
+        public IEnumerable<ValidationAttribute?>? Validations { get; set; }
     }
 }

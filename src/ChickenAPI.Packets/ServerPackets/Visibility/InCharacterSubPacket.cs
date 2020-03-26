@@ -23,10 +23,10 @@ namespace ChickenAPI.Packets.ServerPackets.Visibility
         public CharacterClassType Class { get; set; }
 
         [PacketIndex(5, SpecialSeparator = ".")]
-        public InEquipmentSubPacket Equipment { get; set; }
+        public InEquipmentSubPacket? Equipment { get; set; }
 
         [PacketIndex(6, SpecialSeparator = " ")]
-        public InAliveSubPacket InAliveSubPacket { get; set; }
+        public InAliveSubPacket? InAliveSubPacket { get; set; }
 
         [PacketIndex(7)]
         public bool IsSitting { get; set; }
@@ -54,16 +54,16 @@ namespace ChickenAPI.Packets.ServerPackets.Visibility
         public byte Unknown3 { get; set; }
 
         [PacketIndex(15, SpecialSeparator = "")]
-        public UpgradeRareSubPacket WeaponUpgradeRareSubPacket { get; set; }
+        public UpgradeRareSubPacket? WeaponUpgradeRareSubPacket { get; set; }
 
         [PacketIndex(16, SpecialSeparator = "")]
-        public UpgradeRareSubPacket ArmorUpgradeRareSubPacket { get; set; }
+        public UpgradeRareSubPacket? ArmorUpgradeRareSubPacket { get; set; }
 
         [PacketIndex(17)]
         public long FamilyId { get; set; }
 
         [PacketIndex(18)]
-        public string FamilyName { get; set; }
+        public string? FamilyName { get; set; }
 
         [PacketIndex(19)]
         public short ReputIco { get; set; }
@@ -87,7 +87,7 @@ namespace ChickenAPI.Packets.ServerPackets.Visibility
         public byte FamilyLevel { get; set; }
 
         [PacketIndex(26, SpecialSeparator = "|")]
-        public List<bool> FamilyIcons { get; set; }
+        public List<bool>? FamilyIcons { get; set; }
 
         [PacketIndex(27)]
         public bool ArenaWinner { get; set; }

@@ -28,16 +28,16 @@ namespace ChickenAPI.Packets.ServerPackets.Mates
         public long Experience { get; set; }
 
         [PacketIndex(6, SpecialSeparator = ".")]
-        public ScEquipmentDetails WeaponInstanceDetails { get; set; }
+        public ScEquipmentDetails? WeaponInstanceDetails { get; set; }
 
         [PacketIndex(7, SpecialSeparator = ".")]
-        public ScEquipmentDetails ArmorInstanceDetails { get; set; }
+        public ScEquipmentDetails? ArmorInstanceDetails { get; set; }
 
         [PacketIndex(8, SpecialSeparator = ".")]
-        public ScEquipmentDetails GauntletInstanceDetails { get; set; }
+        public ScEquipmentDetails? GauntletInstanceDetails { get; set; }
 
         [PacketIndex(9)]
-        public ScEquipmentDetails BootsInstanceDetails { get; set; }
+        public ScEquipmentDetails? BootsInstanceDetails { get; set; }
 
         [PacketIndex(10)]
         public short Unknown { get; set; }
@@ -121,7 +121,7 @@ namespace ChickenAPI.Packets.ServerPackets.Mates
         ///     Spaces should be replaced by "^"
         /// </summary>
         [PacketIndex(36)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         ///     Sp Instance or Skin
@@ -139,25 +139,25 @@ namespace ChickenAPI.Packets.ServerPackets.Mates
         ///     Sp Instance or Skin
         /// </summary>
         [PacketIndex(39)]
-        public ScSpDetails SpDetails { get; set; }
+        public ScSpDetails? SpDetails { get; set; }
 
         /// <summary>
         ///     Sp Instance or Skin
         /// </summary>
         [PacketIndex(40)]
-        public ScSkillDetails Skill1Details { get; set; }
+        public ScSkillDetails? Skill1Details { get; set; }
 
         /// <summary>
         ///     Sp Instance or Skin
         /// </summary>
         [PacketIndex(41)]
-        public ScSkillDetails Skill2Details { get; set; }
+        public ScSkillDetails? Skill2Details { get; set; }
 
         /// <summary>
         ///     Sp Instance or Skin
         /// </summary>
         [PacketIndex(42)]
-        public ScSkillDetails Skill3Details { get; set; }
+        public ScSkillDetails? Skill3Details { get; set; }
 
         public class ScSpDetails : PacketBase
         {

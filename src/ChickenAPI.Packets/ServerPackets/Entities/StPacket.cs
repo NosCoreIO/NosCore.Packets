@@ -32,6 +32,6 @@ namespace ChickenAPI.Packets.ServerPackets.Entities
         public int CurrentMp { get; set; }
 
         [PacketIndex(8, IsOptional = true)]
-        public List<short> BuffIds { get; set; }
+        public List<short>? BuffIds { get; set; }
     }
 }

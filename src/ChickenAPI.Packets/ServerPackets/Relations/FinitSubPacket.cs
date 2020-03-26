@@ -15,6 +15,6 @@ namespace ChickenAPI.Packets.ServerPackets.Relations
         public bool IsOnline { get; set; }
 
         [PacketIndex(3)]
-        public string CharacterName { get; set; }
+        public string? CharacterName { get; set; }
     }
 }

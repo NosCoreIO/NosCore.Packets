@@ -10,10 +10,10 @@ namespace ChickenAPI.Packets.ServerPackets.Visibility
         public VisualType VisualType { get; set; }
 
         [PacketIndex(1, IsOptional = true)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [PacketIndex(2)]
-        public string VNum { get; set; }
+        public string? VNum { get; set; }
 
         [PacketIndex(3)]
         public long VisualId { get; set; }
@@ -28,12 +28,12 @@ namespace ChickenAPI.Packets.ServerPackets.Visibility
         public byte? Direction { get; set; }
 
         [PacketIndex(7, IsOptional = true)]
-        public InCharacterSubPacket InCharacterSubPacket { get; set; }
+        public InCharacterSubPacket? InCharacterSubPacket { get; set; }
 
         [PacketIndex(8, IsOptional = true)]
-        public InItemSubPacket InItemSubPacket { get; set; }
+        public InItemSubPacket? InItemSubPacket { get; set; }
 
         [PacketIndex(9, IsOptional = true)]
-        public InNonPlayerSubPacket InNonPlayerSubPacket { get; set; }
+        public InNonPlayerSubPacket? InNonPlayerSubPacket { get; set; }
     }
 }

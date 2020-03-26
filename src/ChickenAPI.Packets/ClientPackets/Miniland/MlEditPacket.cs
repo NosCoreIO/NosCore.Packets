@@ -13,6 +13,6 @@ namespace ChickenAPI.Packets.ClientPackets.Miniland
         public MinilandState? Parameter { get; set; }
 
         [PacketIndex(2, IsOptional = true)]
-        public string MinilandInfo { get; set; }
+        public string? MinilandInfo { get; set; }
     }
 }

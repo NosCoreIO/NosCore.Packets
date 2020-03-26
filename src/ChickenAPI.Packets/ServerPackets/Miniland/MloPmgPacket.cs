@@ -18,6 +18,6 @@ namespace ChickenAPI.Packets.ServerPackets.Miniland
         public bool IsFull { get; set; }
 
         [PacketIndex(4)]
-        public MloPmgSubPacket[] MloPmgSubPackets { get; set; }
+        public MloPmgSubPacket?[]? MloPmgSubPackets { get; set; }
     }
 }

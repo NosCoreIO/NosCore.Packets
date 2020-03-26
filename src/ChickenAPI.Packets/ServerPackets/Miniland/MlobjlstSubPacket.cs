@@ -11,6 +11,6 @@ namespace ChickenAPI.Packets.ServerPackets.Miniland
         public bool InUse { get; set; }
 
         [PacketIndex(2,RemoveHeader = true, SpecialSeparator = ".")]
-        public MlobjSubPacket MlObjSubPacket { get; set; }
+        public MlobjSubPacket? MlObjSubPacket { get; set; }
     }
 }

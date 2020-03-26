@@ -10,6 +10,6 @@ namespace ChickenAPI.Packets.ServerPackets.UI
         public MessageType Type { get; set; }
 
         [PacketIndex(1)]
-        public string Message { get; set; }
+        public string? Message { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace ChickenAPI.Packets.ServerPackets.UI
         public byte? HeroLevel { get; set; }
 
         [PacketIndex(3)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [PacketIndex(4)]
         public CharacterClassType? CharacterClass { get; set; }

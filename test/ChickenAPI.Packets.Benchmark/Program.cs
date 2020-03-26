@@ -1,4 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Reports;
 using BenchmarkDotNet.Running;
 using ChickenAPI.Packets.Benchmark.SaltyEmu;
@@ -10,22 +11,23 @@ using ChickenAPI.Packets.ServerPackets.UI;
 
 namespace ChickenAPI.Packets.Benchmark
 {
-    [CoreJob, CoreRtJob]
+    [SimpleJob(RuntimeMoniker.CoreRt31)]
+    [SimpleJob(RuntimeMoniker.NetCoreApp31)]
     [RPlotExporter, RankColumn]
     [MemoryDiagnoser]
     public class PacketSerializationSpeed
     {
-        readonly ISerializer ChickenAPISerializer = new Serializer(
+        readonly ISerializer _chickenApiSerializer = new Serializer(
             new[]
             {
                 typeof(NInvPacket),
             });
 
-        readonly PluggablePacketFactory SaltyEmuPacketSerializer = new PluggablePacketFactory();
+        readonly PluggablePacketFactory _saltyEmuPacketSerializer = new PluggablePacketFactory();
 
         [Params(1, 10, 100)] public int NumberOfItems;
 
-        private IPacket _testPacket;
+        private IPacket? _testPacket;
 
         [GlobalSetup]
         public void Setup()
@@ -43,7 +45,7 @@ namespace ChickenAPI.Packets.Benchmark
         {
             for (int i = 0; i < NumberOfItems; i++)
             {
-                ChickenAPISerializer.Serialize(_testPacket);
+                _chickenApiSerializer.Serialize(_testPacket!);
             }
 
             return true;
@@ -54,7 +56,7 @@ namespace ChickenAPI.Packets.Benchmark
         {
             for (int i = 0; i < NumberOfItems; i++)
             {
-                SaltyEmuPacketSerializer.Serialize(_testPacket);
+                _saltyEmuPacketSerializer.Serialize(_testPacket!);
             }
 
             return true;
@@ -63,9 +65,9 @@ namespace ChickenAPI.Packets.Benchmark
 
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Summary summary = BenchmarkRunner.Run<PacketSerializationSpeed>();
+            BenchmarkRunner.Run<PacketSerializationSpeed>();
         }
     }
 }

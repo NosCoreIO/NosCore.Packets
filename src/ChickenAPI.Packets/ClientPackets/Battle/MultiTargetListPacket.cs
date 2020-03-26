@@ -12,7 +12,7 @@ namespace ChickenAPI.Packets.ClientPackets.Battle
         public byte TargetsAmount { get; set; }
 
         [PacketIndex(1)]
-        public List<MultiTargetListSubPacket> Targets { get; set; }
+        public List<MultiTargetListSubPacket>? Targets { get; set; }
 
         #endregion
     }

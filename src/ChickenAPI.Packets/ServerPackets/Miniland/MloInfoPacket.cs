@@ -24,6 +24,6 @@ namespace ChickenAPI.Packets.ServerPackets.Miniland
         public bool IsFull { get; set; }
 
         [PacketIndex(6, SpecialSeparator = " ")]
-        public MloInfoPacketSubPacket[] MinigamePoints { get; set; }
+        public MloInfoPacketSubPacket?[]? MinigamePoints { get; set; }
     }
 }

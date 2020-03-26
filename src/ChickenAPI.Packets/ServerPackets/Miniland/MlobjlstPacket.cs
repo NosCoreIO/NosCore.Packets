@@ -7,6 +7,6 @@ namespace ChickenAPI.Packets.ServerPackets.Miniland
     public class MlobjlstPacket : PacketBase
     {
         [PacketIndex(0, SpecialSeparator = ".")]
-        public List<MlobjlstSubPacket> MlobjlstSubPacket { get; set; }
+        public List<MlobjlstSubPacket?>? MlobjlstSubPacket { get; set; }
     }
 }

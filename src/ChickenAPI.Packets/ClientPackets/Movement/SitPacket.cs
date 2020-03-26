@@ -10,6 +10,6 @@ namespace ChickenAPI.Packets.ClientPackets.Movement
         public byte Amount { get; set; }
 
         [PacketIndex(1, Length = -1)]
-        public List<SitSubPacket> Users { get; set; }
+        public List<SitSubPacket?>? Users { get; set; }
     }
 }

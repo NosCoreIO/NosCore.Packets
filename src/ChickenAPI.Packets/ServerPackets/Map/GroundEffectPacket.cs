@@ -12,7 +12,7 @@ namespace ChickenAPI.Packets.ServerPackets.Map
         public ushort Effect { get; set; }
 
         [PacketIndex(2)]
-        public string XYCoordinates { get; set; }
+        public string? XYCoordinates { get; set; }
 
         [PacketIndex(3)]
         public ushort MapX { get; set; }

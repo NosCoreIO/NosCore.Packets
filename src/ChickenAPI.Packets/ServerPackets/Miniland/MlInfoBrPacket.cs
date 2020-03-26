@@ -9,7 +9,7 @@ namespace ChickenAPI.Packets.ServerPackets.Miniland
         public short Unknown1 { get; set; }
 
         [PacketIndex(1)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [PacketIndex(2)]
         public int DailyVisitCount { get; set; }
@@ -21,6 +21,6 @@ namespace ChickenAPI.Packets.ServerPackets.Miniland
         public byte Unknown2 { get; set; }
 
         [PacketIndex(5)]
-        public string MinilandMessage { get; set; }
+        public string? MinilandMessage { get; set; }
     }
 }

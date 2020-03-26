@@ -14,7 +14,7 @@ namespace ChickenAPI.Packets.Benchmark.SaltyEmu
     /// </summary>
     public static class TypeExtension
     {
-        private static readonly ConcurrentDictionary<Type, Func<object>> Constructors = new ConcurrentDictionary<Type, Func<object>>();
+        private static readonly ConcurrentDictionary<Type, Func<object?>?> Constructors = new ConcurrentDictionary<Type, Func<object?>?>();
 
         /// <summary>
         ///     Gets the default constructor delegate (empty parameters)
@@ -44,7 +44,7 @@ namespace ChickenAPI.Packets.Benchmark.SaltyEmu
             Type[] genericArguments = delegateType.GetGenericArguments();
             Type[] argTypes = genericArguments.Length > 1 ? genericArguments.Take(genericArguments.Length - 1).ToArray() : Type.EmptyTypes;
 
-            ConstructorInfo constructor = type.GetConstructor(argTypes);
+            ConstructorInfo? constructor = type.GetConstructor(argTypes);
             if (constructor == null)
             {
                 if (argTypes.Length == 0)
@@ -72,11 +72,11 @@ namespace ChickenAPI.Packets.Benchmark.SaltyEmu
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public static object CreateInstance(this Type type)
+        public static object? CreateInstance(this Type type)
         {
-            if (Constructors.TryGetValue(type, out Func<object> constructor))
+            if (Constructors.TryGetValue(type, out Func<object?>? constructor))
             {
-                return constructor();
+                return constructor!();
             }
 
             constructor = type.GetDefaultConstructorDelegate();

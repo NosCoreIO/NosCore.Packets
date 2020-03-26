@@ -38,6 +38,6 @@ namespace ChickenAPI.Packets.ServerPackets.Parcel
         public short Morph { get; set; }
 
         [PacketIndex(10, IsOptional = true)]
-        public List<int> BuffIds { get; set; }
+        public List<int>? BuffIds { get; set; }
     }
 }
