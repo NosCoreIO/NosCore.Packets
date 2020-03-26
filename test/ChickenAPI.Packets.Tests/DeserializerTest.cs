@@ -35,6 +35,7 @@ namespace ChickenAPI.Packets.Tests
                 typeof(MShopItemSubPacket),
                 typeof(StPacket),
                 typeof(NoS0575Packet),
+                typeof(NoS0577Packet),
                 typeof(FamilyChatPacket),
                 typeof(FStashEndPacket),
                 typeof(RequestNpcPacket),
@@ -287,6 +288,24 @@ namespace ChickenAPI.Packets.Tests
                 "n_run 1"
             );
             Assert.IsTrue(packet.Runner == NrunRunnerType.ChangeClass);
+        }
+
+        [TestMethod]
+        public void DeserializeWithDoubleSpace()
+        {
+            var packet = (NoS0577Packet)Deserializer.Deserialize(
+                "NoS0577 37633936363633662D633332352D346461612D383933612D373031346639653063646463  c437f3f4-06cb-405d-b3c8-73e5c7772c80 0034F3E80.9.3.3123 0 BC4AE02D9759A1C83532D7B5C861D2D2"
+            );
+            Assert.IsTrue(packet.Header == "NoS0577");
+            Assert.IsTrue(packet.AuthToken == "37633936363633662D633332352D346461612D383933612D373031346639653063646463");
+            Assert.IsTrue(packet.ClientId == Guid.Parse("c437f3f4-06cb-405d-b3c8-73e5c7772c80"));
+            Assert.IsTrue(packet.UnknownYet == "0034F3E8");
+            Assert.IsTrue(packet.ClientVersion!.Major == 0);
+            Assert.IsTrue(packet.ClientVersion.Minor == 9);
+            Assert.IsTrue(packet.ClientVersion.Fix == 3);
+            Assert.IsTrue(packet.ClientVersion.SubFix == 3123);
+            Assert.IsTrue(packet.UnknownConstant == 0);
+            Assert.IsTrue(packet.Md5String == "BC4AE02D9759A1C83532D7B5C861D2D2");
         }
 
         [TestMethod]
