@@ -16,13 +16,13 @@ namespace ChickenAPI.Packets.Documentator
             return typeof(UnresolvedPacket).Assembly.GetTypes()
                 .Where(s => s.GetInterfaces().Any(p => p == typeof(IPacket)))
                 .Where(s => !s.IsAbstract)
-                .Where(s => s.Namespace.Contains(name))
-                .GroupBy(s => s.Namespace.Substring(s.Namespace.LastIndexOf('.') + 1));
+                .Where(s => s.Namespace?.Contains(name) ?? true)
+                .GroupBy(s => s.Namespace!.Substring(s.Namespace.LastIndexOf('.') + 1));
         }
 
         private static IEnumerable<Type> GetPackets(IEnumerable<Type> types)
         {
-            return types.Where(s => s.GetCustomAttribute<PacketHeaderAttribute>() != null).OrderBy(s => s.GetCustomAttribute<PacketHeaderAttribute>().Identification.ToLower());
+            return types.Where(s => s.GetCustomAttribute<PacketHeaderAttribute>() != null).OrderBy(s => s.GetCustomAttribute<PacketHeaderAttribute>()!.Identification.ToLower());
         }
 
         private static void Main(string[] args)
@@ -36,7 +36,7 @@ namespace ChickenAPI.Packets.Documentator
                 builder.Append($"### {packetGroup.Key}\n");
                 foreach (Type packet in GetPackets(packetGroup))
                 {
-                    builder.Append($"- [{packet.GetCustomAttribute<PacketHeaderAttribute>().Identification}](src/ChickenAPI.Packets/ClientPackets/{packetGroup.Key}/{packet}.cs)\n");
+                    builder.Append($"- [{packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification}](src/ChickenAPI.Packets/ClientPackets/{packetGroup.Key}/{packet}.cs)\n");
                 }
             }
 
@@ -48,7 +48,7 @@ namespace ChickenAPI.Packets.Documentator
                 builder.Append($"### {packetGroup.Key}\n");
                 foreach (Type packet in GetPackets(packetGroup))
                 {
-                    builder.Append($"- [{packet.GetCustomAttribute<PacketHeaderAttribute>().Identification}](src/ChickenAPI.Packets/ServerPackets/{packetGroup.Key}/{packet}.cs)\n");
+                    builder.Append($"- [{packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification}](src/ChickenAPI.Packets/ServerPackets/{packetGroup.Key}/{packet}.cs)\n");
                 }
             }
 

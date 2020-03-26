@@ -8,6 +8,6 @@ namespace ChickenAPI.Packets.ServerPackets.Warehouse
     public class StashClientPacket : PacketBase
     {
         [PacketIndex(0)]
-        public List<IvnSubPacket> IvnSubPackets { get; set; }
+        public List<IvnSubPacket?>? IvnSubPackets { get; set; }
     }
 }

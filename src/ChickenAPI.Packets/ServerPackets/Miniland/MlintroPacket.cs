@@ -6,6 +6,6 @@ namespace ChickenAPI.Packets.ServerPackets.Miniland
     public class MlintroPacket : PacketBase
     {
         [PacketIndex(0)]
-        public string Intro { get; set; }
+        public string? Intro { get; set; }
     }
 }

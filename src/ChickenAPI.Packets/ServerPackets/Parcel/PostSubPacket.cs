@@ -22,6 +22,6 @@ namespace ChickenAPI.Packets.ServerPackets.Parcel
         public HairColorType HairColor { get; set; }
 
         [PacketIndex(5, SpecialSeparator = ".")]
-        public InEquipmentSubPacket Equipment { get; set; }
+        public InEquipmentSubPacket? Equipment { get; set; }
     }
 }

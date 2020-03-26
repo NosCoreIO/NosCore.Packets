@@ -26,12 +26,12 @@ namespace ChickenAPI.Packets.ServerPackets.Inventory
         public CharacterClassType ClassType { get; set; }
 
         [PacketIndex(6)]
-        public InEquipmentSubPacket EqSubPacket { get; set; }
+        public InEquipmentSubPacket? EqSubPacket { get; set; }
 
         [PacketIndex(7, SpecialSeparator = "")]
-        public UpgradeRareSubPacket WeaponUpgradeRarePacket { get; set; }
+        public UpgradeRareSubPacket? WeaponUpgradeRarePacket { get; set; }
 
         [PacketIndex(8, SpecialSeparator = "")]
-        public UpgradeRareSubPacket ArmorUpgradeRarePacket { get; set; }
+        public UpgradeRareSubPacket? ArmorUpgradeRarePacket { get; set; }
     }
 }

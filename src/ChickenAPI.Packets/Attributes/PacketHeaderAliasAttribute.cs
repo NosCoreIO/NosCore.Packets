@@ -15,6 +15,6 @@ namespace ChickenAPI.Packets.Attributes
         /// <summary>
         ///     anything that can be used to filter alias
         /// </summary>
-        public string Flag { get; set; }
+        public string? Flag { get; set; }
     }
 }

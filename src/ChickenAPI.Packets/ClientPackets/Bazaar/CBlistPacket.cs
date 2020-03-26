@@ -32,6 +32,6 @@ namespace ChickenAPI.Packets.ClientPackets.Bazaar
         public byte Unknown1 { get; set; }
 
         [PacketIndex(8)]
-        public List<short> ItemVNumFilter { get; set; }
+        public List<short>? ItemVNumFilter { get; set; }
     }
 }

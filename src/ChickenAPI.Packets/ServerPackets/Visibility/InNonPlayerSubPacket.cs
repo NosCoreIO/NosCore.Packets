@@ -6,7 +6,7 @@ namespace ChickenAPI.Packets.ServerPackets.Visibility
     public class InNonPlayerSubPacket : PacketBase
     {
         [PacketIndex(1)]
-        public InAliveSubPacket InAliveSubPacket { get; set; }
+        public InAliveSubPacket? InAliveSubPacket { get; set; }
 
         [PacketIndex(2)]
         public short Dialog { get; set; }
@@ -31,7 +31,7 @@ namespace ChickenAPI.Packets.ServerPackets.Visibility
         public short? Morph { get; set; }
 
         [PacketIndex(9)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [PacketIndex(10)]
         public byte Unknow1 { get; set; }

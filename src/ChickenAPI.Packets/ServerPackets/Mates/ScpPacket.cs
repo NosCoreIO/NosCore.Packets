@@ -102,7 +102,7 @@ namespace ChickenAPI.Packets.ServerPackets.Mates
         public bool CanPickUp { get; set; }
 
         [PacketIndex(31)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [PacketIndex(32)]
         public bool IsSummonable { get; set; }

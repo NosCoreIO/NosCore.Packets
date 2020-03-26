@@ -10,6 +10,6 @@ namespace ChickenAPI.Packets.ServerPackets.Shop
         public long GroupId { get; set; }
 
         [PacketIndex(1)]
-        public List<PidxSubPacket> SubPackets { get; set; }
+        public List<PidxSubPacket?>? SubPackets { get; set; }
     }
 }

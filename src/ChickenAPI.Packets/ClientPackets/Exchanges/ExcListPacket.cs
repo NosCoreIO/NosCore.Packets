@@ -16,6 +16,6 @@ namespace ChickenAPI.Packets.ClientPackets.Exchanges
         public long BankGold { get; set; }
 
         [PacketIndex(2, SpecialSeparator = " ")]
-        public List<ExcListSubPacket> SubPackets { get; set; }
+        public List<ExcListSubPacket?>? SubPackets { get; set; }
     }
 }

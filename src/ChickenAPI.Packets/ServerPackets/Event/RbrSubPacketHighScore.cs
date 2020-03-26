@@ -8,6 +8,6 @@ namespace ChickenAPI.Packets.ServerPackets.Event
         public short Score { get; set; }
 
         [PacketIndex(1, IsOptional = true)]
-        public string Nickname { get; set; }
+        public string? Nickname { get; set; }
     }
 }

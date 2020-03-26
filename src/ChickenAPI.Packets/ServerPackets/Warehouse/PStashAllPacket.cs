@@ -12,6 +12,6 @@ namespace ChickenAPI.Packets.ServerPackets.Warehouse
         public byte WarehouseSize { get; set; }
 
         [PacketIndex(1)]
-        public List<IvnSubPacket> IvnSubPackets { get; set; }
+        public List<IvnSubPacket>? IvnSubPackets { get; set; }
     }
 }

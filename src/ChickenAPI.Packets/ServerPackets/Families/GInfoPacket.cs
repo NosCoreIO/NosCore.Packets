@@ -7,10 +7,10 @@ namespace ChickenAPI.Packets.ServerPackets.Families
     public class GInfoPacket : PacketBase
     {
         [PacketIndex(0)]
-        public string FamilyName { get; set; }
+        public string? FamilyName { get; set; }
 
         [PacketIndex(1)]
-        public string CharacterName { get; set; }
+        public string? CharacterName { get; set; }
 
         /// <summary>
         ///     Todo to confirm
@@ -61,6 +61,6 @@ namespace ChickenAPI.Packets.ServerPackets.Families
         ///     Should replace ' ' by '^'
         /// </summary>
         [PacketIndex(16)]
-        public string FamilyMessage { get; set; }
+        public string? FamilyMessage { get; set; }
     }
 }

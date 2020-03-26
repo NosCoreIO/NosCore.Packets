@@ -36,13 +36,13 @@ namespace ChickenAPI.Packets.Benchmark.SaltyEmu
 
                 int lastIndex = 0;
 
-                foreach (PacketPropertyContainer property in serializationInformation.PacketProps)
+                foreach (PacketPropertyContainer property in serializationInformation.PacketProps!)
                 {
-                    PacketIndexAttribute packetIndex = property.PacketIndex;
-                    PropertyInfo propertyType = property.PropertyInfo;
-                    IEnumerable<ValidationAttribute> validations = property.Validations;
+                    PacketIndexAttribute? packetIndex = property.PacketIndex;
+                    PropertyInfo? propertyType = property.PropertyInfo;
+                    IEnumerable<ValidationAttribute?>? validations = property.Validations;
                     // check if we need to add a non mapped values (pseudovalues)
-                    if (packetIndex.Index > lastIndex + 1)
+                    if (packetIndex!.Index > lastIndex + 1)
                     {
                         int amountOfEmptyValuesToAdd = packetIndex.Index - (lastIndex + 1);
 
@@ -53,7 +53,7 @@ namespace ChickenAPI.Packets.Benchmark.SaltyEmu
                     }
 
                     // add value for current configuration
-                    builder.Append(SerializeValue(propertyType.PropertyType, propertyType.GetValue(packet), validations, packetIndex));
+                    builder.Append(SerializeValue(propertyType!.PropertyType, propertyType.GetValue(packet), validations, packetIndex));
 
                     // check if the value should be serialized to end
                     if (packetIndex.Index > serializationInformation.PacketProps.Length)
@@ -68,7 +68,7 @@ namespace ChickenAPI.Packets.Benchmark.SaltyEmu
 
                 return builder.ToString();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return string.Empty;
             }
@@ -77,9 +77,9 @@ namespace ChickenAPI.Packets.Benchmark.SaltyEmu
 
         #region Serialization
 
-        private string SerializeValue(Type propertyType, object value, IEnumerable<ValidationAttribute> validationAttributes, PacketIndexAttribute packetIndexAttribute = null)
+        private string SerializeValue(Type? propertyType, object? value, IEnumerable<ValidationAttribute?>? validationAttributes, PacketIndexAttribute? packetIndexAttribute = null)
         {
-            if (propertyType == null && validationAttributes.All(a => a.IsValid(value)))
+            if (propertyType == null && validationAttributes.All(a => a!.IsValid(value)))
             {
                 return string.Empty;
             }
@@ -95,13 +95,13 @@ namespace ChickenAPI.Packets.Benchmark.SaltyEmu
                 return $"{packetIndexAttribute?.SpecialSeparator}-";
             }
 
-            if (Nullable.GetUnderlyingType(propertyType) != null && string.IsNullOrEmpty(Convert.ToString(value)))
+            if (propertyType != null && Nullable.GetUnderlyingType(propertyType) != null && string.IsNullOrEmpty(Convert.ToString(value)))
             {
                 return $"{packetIndexAttribute?.SpecialSeparator}-1";
             }
 
             // enum should be casted to number
-            if (propertyType.BaseType?.Equals(typeof(Enum)) == true)
+            if (propertyType!.BaseType?.Equals(typeof(Enum)) == true)
             {
                 return $"{packetIndexAttribute?.SpecialSeparator}{Convert.ToInt16(value)}";
             }
@@ -115,59 +115,58 @@ namespace ChickenAPI.Packets.Benchmark.SaltyEmu
             if (value is IPacket)
             {
                 PacketInformation subpacketSerializationInfo = GetSerializationInformation(value.GetType());
-                return SerializeSubpacket(value, subpacketSerializationInfo, packetIndexAttribute?.IsOptional ?? false, packetIndexAttribute?.IsOptional ?? false);
+                return SerializeSubpacket(value, subpacketSerializationInfo, packetIndexAttribute?.IsOptional ?? false);
             }
 
             if (propertyType.BaseType?.Equals(typeof(IPacket)) == true)
             {
                 PacketInformation subpacketSerializationInfo = GetSerializationInformation(propertyType);
-                return SerializeSubpacket(value, subpacketSerializationInfo, packetIndexAttribute?.IsOptional ?? false, packetIndexAttribute?.IsOptional ?? false);
+                return SerializeSubpacket(value, subpacketSerializationInfo, packetIndexAttribute?.IsOptional ?? false);
             }
 
             if (propertyType.IsGenericType && propertyType.GetGenericTypeDefinition().IsAssignableFrom(typeof(List<>))
                 && propertyType.GenericTypeArguments[0].BaseType == typeof(IPacket))
             {
-                return packetIndexAttribute?.SpecialSeparator + SerializeSubpackets((IList)value, propertyType, packetIndexAttribute?.IsOptional ?? false);
+                return packetIndexAttribute?.SpecialSeparator + SerializeSubpackets((IList?)value, propertyType);
             }
 
             if (propertyType.IsGenericType && propertyType.GetGenericTypeDefinition().IsAssignableFrom(typeof(List<>))) //simple list
             {
-                return packetIndexAttribute?.SpecialSeparator + SerializeSimpleList((IList)value, propertyType, packetIndexAttribute);
+                return packetIndexAttribute?.SpecialSeparator + SerializeSimpleList((IList?)value, propertyType, packetIndexAttribute);
             }
 
             return $"{packetIndexAttribute?.SpecialSeparator}{value}";
         }
 
-        private string SerializeSimpleList(IList listValues, Type propertyType, PacketIndexAttribute index)
+        private string SerializeSimpleList(IList? listValues, Type propertyType, PacketIndexAttribute? index)
         {
             string resultListPacket = string.Empty;
-            int listValueCount = listValues.Count;
+            int listValueCount = listValues?.Count ?? 0;
             if (listValueCount <= 0)
             {
                 return resultListPacket;
             }
 
-            resultListPacket += SerializeValue(propertyType.GenericTypeArguments[0], listValues[0], propertyType.GenericTypeArguments[0].GetCustomAttributes<ValidationAttribute>());
+            resultListPacket += SerializeValue(propertyType.GenericTypeArguments[0], listValues![0], propertyType.GenericTypeArguments[0].GetCustomAttributes<ValidationAttribute>());
 
             for (int i = 1; i < listValueCount; i++)
             {
                 resultListPacket +=
-                    $"{index.SpecialSeparator}{SerializeValue(propertyType.GenericTypeArguments[0], listValues[i], propertyType.GenericTypeArguments[0].GetCustomAttributes<ValidationAttribute>()).Replace(" ", "")}";
+                    $"{index!.SpecialSeparator}{SerializeValue(propertyType.GenericTypeArguments[0], listValues[i], propertyType.GenericTypeArguments[0].GetCustomAttributes<ValidationAttribute>()).Replace(" ", "")}";
             }
 
             return resultListPacket;
         }
 
-        private string SerializeSubpacket(object value, PacketInformation subpacketSerializationInfo, bool isReturnPacket,
-            bool shouldRemoveSeparator)
+        private string SerializeSubpacket(object? value, PacketInformation subpacketSerializationInfo, bool isReturnPacket)
         {
             string serializedSubpacket = isReturnPacket ? $" #{subpacketSerializationInfo.Header}^" : " ";
 
             // iterate thru configure subpacket properties
-            foreach (PacketPropertyContainer tmp in subpacketSerializationInfo.PacketProps)
+            foreach (PacketPropertyContainer tmp in subpacketSerializationInfo.PacketProps!)
             {
-                PacketIndexAttribute key = tmp.PacketIndex;
-                PropertyInfo propertyInfo = tmp.PropertyInfo;
+                PacketIndexAttribute key = tmp.PacketIndex!;
+                PropertyInfo propertyInfo = tmp.PropertyInfo!;
                 // first element
                 if (key.Index != 0)
                 {
@@ -182,7 +181,7 @@ namespace ChickenAPI.Packets.Benchmark.SaltyEmu
 
         private PacketInformation GenerateSerializationInformations(Type serializationType)
         {
-            string header = serializationType.GetCustomAttribute<PacketHeaderAttribute>()?.Identification;
+            string? header = serializationType.GetCustomAttribute<PacketHeaderAttribute>()?.Identification;
 
             if (string.IsNullOrEmpty(header))
             {
@@ -195,7 +194,7 @@ namespace ChickenAPI.Packets.Benchmark.SaltyEmu
 
 
             List<PacketPropertyContainer> packetProperties =
-                (from packetBasePropertyInfo in packetIndexProperties.OrderBy(s => s.GetCustomAttribute<PacketIndexAttribute>(false).Index)
+                (from packetBasePropertyInfo in packetIndexProperties.OrderBy(s => s.GetCustomAttribute<PacketIndexAttribute>(false)!.Index)
                  let indexAttribute = packetBasePropertyInfo.GetCustomAttributes(false).OfType<PacketIndexAttribute>().FirstOrDefault()
                  where indexAttribute != null
                  select new PacketPropertyContainer
@@ -208,7 +207,7 @@ namespace ChickenAPI.Packets.Benchmark.SaltyEmu
             {
                 Type = serializationType,
                 Header = header,
-                PacketProps = packetProperties.OrderBy(container => container.PacketIndex.Index).ToArray()
+                PacketProps = packetProperties.OrderBy(container => container.PacketIndex!.Index).ToArray()
             };
 
             if (!_packetTypesByHeader.ContainsKey(tmp.Header))
@@ -223,7 +222,7 @@ namespace ChickenAPI.Packets.Benchmark.SaltyEmu
 
         private PacketInformation GetSerializationInformation(Type serializationType)
         {
-            if (_deserializationInformations.TryGetValue(serializationType, out PacketInformation packetInfo))
+            if (_deserializationInformations.TryGetValue(serializationType, out PacketInformation? packetInfo))
             {
                 return packetInfo;
             }
@@ -231,7 +230,7 @@ namespace ChickenAPI.Packets.Benchmark.SaltyEmu
             return GenerateSerializationInformations(serializationType);
         }
 
-        private string SerializeSubpackets(ICollection listValues, Type packetBasePropertyType, bool shouldRemoveSeparator)
+        private string SerializeSubpackets(ICollection? listValues, Type packetBasePropertyType)
         {
             string serializedSubPacket = string.Empty;
             PacketInformation subpacketSerializationInfo = GetSerializationInformation(packetBasePropertyType.GetGenericArguments()[0]);
@@ -239,7 +238,7 @@ namespace ChickenAPI.Packets.Benchmark.SaltyEmu
             if (listValues?.Count > 0)
             {
                 serializedSubPacket = listValues.Cast<object>().Aggregate(serializedSubPacket,
-                    (current, listValue) => current + SerializeSubpacket(listValue, subpacketSerializationInfo, false, shouldRemoveSeparator));
+                    (current, listValue) => current + SerializeSubpacket(listValue, subpacketSerializationInfo, false));
             }
 
             return serializedSubPacket;

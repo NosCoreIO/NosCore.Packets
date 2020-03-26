@@ -7,6 +7,6 @@ namespace ChickenAPI.Packets.ServerPackets.Player
     public class TitlePacket : PacketBase
     {
         [PacketIndex(0, IsOptional = true)]
-        public List<TitleSubPacket> Data { get; set; }
+        public List<TitleSubPacket?>? Data { get; set; }
     }
 }

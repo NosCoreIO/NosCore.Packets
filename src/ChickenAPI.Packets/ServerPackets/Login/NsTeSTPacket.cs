@@ -7,7 +7,7 @@ namespace ChickenAPI.Packets.ServerPackets.Login
     public class NsTestPacket : PacketBase
     {
         [PacketIndex(0)]
-        public string AccountName { get; set; }
+        public string? AccountName { get; set; }
 
         //this seems to be always 2 in case of new auth and null else
         [PacketIndex(1, IsOptional = true)]
@@ -18,6 +18,6 @@ namespace ChickenAPI.Packets.ServerPackets.Login
 
 
         [PacketIndex(3)]
-        public List<NsTeStSubPacket> SubPacket { get; set; }
+        public List<NsTeStSubPacket?>? SubPacket { get; set; }
     }
 }

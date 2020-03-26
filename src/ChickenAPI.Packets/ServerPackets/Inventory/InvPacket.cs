@@ -11,6 +11,6 @@ namespace ChickenAPI.Packets.ServerPackets.Inventory
         public PocketType Type { get; set; }
 
         [PacketIndex(1)]
-        public List<IvnSubPacket> IvnSubPackets { get; set; }
+        public List<IvnSubPacket?>? IvnSubPackets { get; set; }
     }
 }

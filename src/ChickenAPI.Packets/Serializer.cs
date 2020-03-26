@@ -248,7 +248,7 @@ namespace ChickenAPI.Packets
             );
         }
 
-        private LambdaExpression PacketSerializerExpression<T>() where T : PacketBase
+        private LambdaExpression? PacketSerializerExpression<T>() where T : PacketBase
         {
             var header = typeof(T).GetCustomAttribute<PacketHeaderAttribute>()?.Identification;
 
@@ -314,7 +314,7 @@ namespace ChickenAPI.Packets
                     }
 
                     specificTypeExpression = IPacketSerializer(injectedPacket, indexAttr, specificTypeExpression, t, maxIndex,
-                        propertySplitter, indexAttr.RemoveHeader ? "" : header);
+                        propertySplitter, indexAttr.RemoveHeader ? "" : header ?? "");
                     break;
                 case var t when t == typeof(IPacket):
                     specificTypeExpression = Expression.Constant(INJECTION_KEY, typeof(string));

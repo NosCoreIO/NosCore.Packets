@@ -6,7 +6,7 @@ namespace ChickenAPI.Packets.ServerPackets.Login
     public class NsTeStSubPacket : PacketBase
     {
         [PacketIndex(0)]
-        public string Host { get; set; }
+        public string? Host { get; set; }
 
         [PacketIndex(1, SpecialSeparator = ":")]
         public int? Port { get; set; }
@@ -21,6 +21,6 @@ namespace ChickenAPI.Packets.ServerPackets.Login
         public int WorldId { get; set; }
 
         [PacketIndex(5)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
     }
 }

@@ -9,6 +9,6 @@ namespace ChickenAPI.Packets.ServerPackets.Player
         public byte BnNumber { get; set; }
 
         [PacketIndex(1)]
-        public string Message { get; set; }
+        public string? Message { get; set; }
     }
 }

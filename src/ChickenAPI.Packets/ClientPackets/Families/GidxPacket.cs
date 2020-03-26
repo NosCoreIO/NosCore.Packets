@@ -17,15 +17,15 @@ namespace ChickenAPI.Packets.ClientPackets.Families
         public long FamilyId { get; set; }
 
         [PacketIndex(3)]
-        public string FamilyName { get; set; }
+        public string? FamilyName { get; set; }
 
         [PacketIndex(4)]
-        public string FamilyCustomRank { get; set; }
+        public string? FamilyCustomRank { get; set; }
 
         [PacketIndex(5)]
         public byte FamilyLevel { get; set; }
 
         [PacketIndex(6, SpecialSeparator = "|")]
-        public List<bool> FamilyIcons { get; set; }
+        public List<bool>? FamilyIcons { get; set; }
     }
 }
