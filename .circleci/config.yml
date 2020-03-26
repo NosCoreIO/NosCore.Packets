@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: microsoft/dotnet:2.2-sdk-alpine
+      - image: microsoft/dotnet:3.1-sdk-alpine
     steps:
       - checkout
       - run: 
@@ -12,7 +12,7 @@ jobs:
                 dotnet build
   test_unit_testing:
     docker:
-      - image: microsoft/dotnet:2.2-sdk-alpine
+      - image: microsoft/dotnet:3.1-sdk-alpine
     steps:
       - checkout
       - run: 
@@ -21,14 +21,14 @@ jobs:
                 dotnet test test/ChickenAPI.Packets.Tests -v m
   test_code_quality:
     docker:
-      - image: microsoft/dotnet:2.2-sdk-alpine
+      - image: microsoft/dotnet:3.1-sdk-alpine
     steps:
       - run: 
             name: Test Code Quality
             command : echo "todo"
   test_validate_documentation:
     docker:
-      - image: microsoft/dotnet:2.2-sdk-alpine
+      - image: microsoft/dotnet:3.1-sdk-alpine
     steps:
       - checkout
       - run: 
