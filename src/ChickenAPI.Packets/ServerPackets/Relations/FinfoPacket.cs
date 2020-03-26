@@ -7,6 +7,6 @@ namespace ChickenAPI.Packets.ServerPackets.Relations
     public class FinfoPacket : PacketBase
     {
         [PacketIndex(0)]
-        public List<FinfoSubPackets> FriendList { get; set; }
+        public List<FinfoSubPackets?>? FriendList { get; set; }
     }
 }

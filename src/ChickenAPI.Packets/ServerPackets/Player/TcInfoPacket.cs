@@ -18,7 +18,7 @@ namespace ChickenAPI.Packets.ServerPackets.Player
         public long Level { get; set; }
 
         [PacketIndex(1)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [PacketIndex(2)]
         public ElementType Element { get; set; }
@@ -33,7 +33,7 @@ namespace ChickenAPI.Packets.ServerPackets.Player
         public GenderType Gender { get; set; }
 
         [PacketIndex(6)]
-        public string Family { get; set; }
+        public string? Family { get; set; }
 
         [PacketIndex(7)]
         public CharacterRep ReputationIco { get; set; }
@@ -111,18 +111,18 @@ namespace ChickenAPI.Packets.ServerPackets.Player
         public long Act4Points { get; set; }
 
         [PacketIndex(32)]
-        public bool isPvpPrimary { get; set; }
+        public bool IsPvpPrimary { get; set; }
 
         [PacketIndex(33)]
-        public bool isPvpSecondary { get; set; }
+        public bool IsPvpSecondary { get; set; }
 
         [PacketIndex(34)]
-        public bool isPvpArmor { get; set; }
+        public bool IsPvpArmor { get; set; }
 
         [PacketIndex(35)]
         public long HeroLevel { get; set; }
 
         [PacketIndex(36)]
-        public string Biography { get; set; }
+        public string? Biography { get; set; }
     }
 }

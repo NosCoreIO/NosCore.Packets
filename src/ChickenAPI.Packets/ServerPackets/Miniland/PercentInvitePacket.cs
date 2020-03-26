@@ -8,6 +8,6 @@ namespace ChickenAPI.Packets.ServerPackets.Miniland
     public class PercentInvitePacket : PacketBase
     {
         [PacketIndex(0)]
-        public string Username { get; set; }
+        public string? Username { get; set; }
     }
 }

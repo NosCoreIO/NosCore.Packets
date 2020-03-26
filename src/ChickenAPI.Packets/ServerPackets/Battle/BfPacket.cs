@@ -13,7 +13,7 @@ namespace ChickenAPI.Packets.ServerPackets.Battle
         public long VisualId { get; set; }
 
         [PacketIndex(2, ".")]
-        public BuffElementSubPacket Buff { get; set; }
+        public BuffElementSubPacket? Buff { get; set; }
 
         [PacketIndex(3)]
         public long BuffLevel { get; set; }

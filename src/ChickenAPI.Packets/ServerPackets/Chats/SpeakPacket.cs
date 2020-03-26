@@ -16,9 +16,9 @@ namespace ChickenAPI.Packets.ServerPackets.Chats
         public SpeakType SpeakType { get; set; }
 
         [PacketIndex(3)]
-        public string EntityName { get; set; }
+        public string? EntityName { get; set; }
 
         [PacketIndex(4)]
-        public string Message { get; set; }
+        public string? Message { get; set; }
     }
 }

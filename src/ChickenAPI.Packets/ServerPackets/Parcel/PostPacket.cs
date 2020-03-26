@@ -21,18 +21,18 @@ namespace ChickenAPI.Packets.ServerPackets.Parcel
         public bool IsOpened { get; set; }
 
         [PacketIndex(5, IsOptional = true)]
-        public PostSubPacket PostSubPacket { get; set; }
+        public PostSubPacket? PostSubPacket { get; set; }
 
         [PacketIndex(6, IsOptional = true)]
-        public string DateTime { get; set; }
+        public string? DateTime { get; set; }
 
         [PacketIndex(7)]
-        public string SenderName { get; set; }
+        public string? SenderName { get; set; }
 
         [PacketIndex(8)]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         [PacketIndex(9, IsOptional = true)]
-        public string Message { get; set; }
+        public string? Message { get; set; }
     }
 }

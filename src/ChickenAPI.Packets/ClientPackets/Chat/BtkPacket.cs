@@ -1,4 +1,5 @@
-﻿using ChickenAPI.Packets.Attributes;
+﻿using System.ComponentModel.DataAnnotations;
+using ChickenAPI.Packets.Attributes;
 
 namespace ChickenAPI.Packets.ClientPackets.Chat
 {
@@ -9,6 +10,6 @@ namespace ChickenAPI.Packets.ClientPackets.Chat
         public long CharacterId { get; set; }
 
         [PacketIndex(1)]
-        public string Message { get; set; }
+        public string? Message { get; set; }
     }
 }

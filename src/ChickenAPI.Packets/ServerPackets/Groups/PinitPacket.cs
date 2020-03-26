@@ -10,6 +10,6 @@ namespace ChickenAPI.Packets.ServerPackets.Groups
         public int GroupSize { get; set; }
 
         [PacketIndex(1, SpecialSeparator = "|")]
-        public List<PinitSubPacket> PinitSubPackets { get; set; }
+        public List<PinitSubPacket?>? PinitSubPackets { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace ChickenAPI.Packets.ServerPackets.CharacterSelectionScreen
         public byte Slot { get; set; }
 
         [PacketIndex(1)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [PacketIndex(2)]
         public byte Unknown { get; set; } //TODO to find
@@ -38,7 +38,7 @@ namespace ChickenAPI.Packets.ServerPackets.CharacterSelectionScreen
         public byte HeroLevel { get; set; }
 
         [PacketIndex(10)]
-        public List<short?> Equipments { get; set; }//TODO define this
+        public List<short?>? Equipments { get; set; }//TODO define this
 
         [PacketIndex(11)]
         public byte JobLevel { get; set; }
@@ -50,7 +50,7 @@ namespace ChickenAPI.Packets.ServerPackets.CharacterSelectionScreen
         public byte QuestPart { get; set; }
 
         [PacketIndex(14)]
-        public List<short?> Pets { get; set; }
+        public List<short?>? Pets { get; set; }
 
         [PacketIndex(15)]
         public int Design { get; set; }

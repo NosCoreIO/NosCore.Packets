@@ -6,6 +6,6 @@ namespace ChickenAPI.Packets.ClientPackets.Relations
     public class FlPacket : PacketBase
     {
         [PacketIndex(0)]
-        public string CharacterName { get; set; }
+        public string? CharacterName { get; set; }
     }
 }

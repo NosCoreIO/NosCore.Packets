@@ -13,6 +13,6 @@ namespace ChickenAPI.Packets.ServerPackets.UI
         public byte Type { get; set; }
 
         [PacketIndex(2)]
-        public IPacket Packet { get; set; }
+        public IPacket? Packet { get; set; }
     }
 }

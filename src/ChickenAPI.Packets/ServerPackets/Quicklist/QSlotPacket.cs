@@ -10,6 +10,6 @@ namespace ChickenAPI.Packets.ServerPackets.Quicklist
         public long Slot { get; set; }
 
         [PacketIndex(1)]
-        public List<QsetClientSubPacket> Data { get; set; }
+        public List<QsetClientSubPacket?>? Data { get; set; }
     }
 }

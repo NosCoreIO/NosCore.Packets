@@ -20,16 +20,16 @@ namespace ChickenAPI.Packets.ServerPackets.Chats
         /// Spaces should be replaced by '^'
         /// </summary>
         [PacketIndex(3, IsOptional = true)]
-        public string Message { get; set; }
+        public string? Message { get; set; }
 
         [PacketIndex(4, IsOptional = true, RemoveHash = true)]
-        public IconInfoPacket IconInfo { get; set; }
+        public IconInfoPacket? IconInfo { get; set; }
 
         [PacketIndex(5, IsOptional = true, RemoveHash = true)]
-        public EInfoPacket EquipmentInfo { get; set; }
+        public EInfoPacket? EquipmentInfo { get; set; }
 
         [PacketIndex(6, IsOptional = true, RemoveHash = true)]
-        public SlInfoPacket SlInfo { get; set; }
+        public SlInfoPacket? SlInfo { get; set; }
 
     }
 }

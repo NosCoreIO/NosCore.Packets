@@ -7,6 +7,6 @@ namespace ChickenAPI.Packets.ServerPackets.Relations
     public class BlinitPacket : PacketBase
     {
         [PacketIndex(0, SpecialSeparator = "|")]
-        public List<BlinitSubPacket> SubPackets { get; set; }
+        public List<BlinitSubPacket?>? SubPackets { get; set; }
     }
 }

@@ -11,10 +11,10 @@ namespace ChickenAPI.Packets.ServerPackets.Parcel
         public byte Unknown2 { get; set; }
 
         [PacketIndex(2)]
-        public string Date { get; set; }
+        public string? Date { get; set; }
 
         [PacketIndex(3)]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         [PacketIndex(4)]
         public short AttachmentVNum { get; set; }
