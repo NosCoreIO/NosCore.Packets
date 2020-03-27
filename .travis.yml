@@ -17,6 +17,7 @@ env:
   global:
     - DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
     - DOTNET_CLI_TELEMETRY_OPTOUT=1
+    - NUGET_API_KEY=${NUGET_API_KEY}
 jobs:
   include:
     - stage: test_unit_testing
@@ -47,8 +48,6 @@ jobs:
         edge: true
         script: dotnet nuget push /tmp/nupkgs/NosCore.Packets.${TRAVIS_TAG}.nupkg -k ${NUGET_API_KEY} -s https://api.nuget.org/v3/index.json
         cleanup: false
-        env:
-          - NUGET_API_KEY=$(NUGET_API_KEY)
         'on':
           tags: true
     - stage: release_github
