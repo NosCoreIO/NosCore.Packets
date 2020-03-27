@@ -19,7 +19,7 @@ env:
     - DOTNET_CLI_TELEMETRY_OPTOUT=1
 jobs:
   include:
-    - stage: test_unit_testing
+    - stage: tests
       name: Run tests on NosCore.Packets
       script:
         - dotnet restore
