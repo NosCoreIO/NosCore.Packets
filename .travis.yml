@@ -20,20 +20,16 @@ env:
 jobs:
   include:
     - stage: tests
-      name: Run tests on NosCore.Packets
-      script:
+      install:
         - dotnet restore
         - dotnet build
+      name: Run tests on NosCore.Packet
+      script:
         - dotnet test test/NosCore.Packets.Tests -v m
     - script:
       name: Build Packet List documentation generator
-        - dotnet restore
-        - >-
-          dotnet build src/NosCore.Packets.Documentator -c Release -o
-          /tmp/documentator
-        - >-
-          dotnet /tmp/documentator/NosCore.Packets.Documentator.dll
-          /tmp/PACKET_LIST_TEST.md
+        - dotnet build src/NosCore.Packets.Documentator -c Release -o /tmp/documentator
+        - dotnet /tmp/documentator/NosCore.Packets.Documentator.dll /tmp/PACKET_LIST_TEST.md
     - stage: release_nuget_packages
       name: Build NosCore.Packets package (nuget)
       if: (tag =~ /^((\d+\.)+\d+)/)
