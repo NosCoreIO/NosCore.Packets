@@ -44,9 +44,8 @@ jobs:
         - dotnet pack -c Release -o /tmp/nupkgs -v m
       deploy:
         provider: script
-        script: >-
-          dotnet nuget push /tmp/nupkgs/NosCore.Packets.$TRAVIS_TAG.nupkg -k
-          $NUGET_API_KEY -s "https://api.nuget.org/v3/index.json"
+        edge: true
+        script:  dotnet nuget push /tmp/nupkgs/NosCore.Packets.${TRAVIS_TAG}.nupkg -k ${NUGET_API_KEY} -s "https://api.nuget.org/v3/index.json"
         cleanup: false
         'on':
           tags: true
@@ -59,8 +58,9 @@ jobs:
         - dotnet pack -c Release -o /tmp/nupkgs -v m
       deploy:
         provider: releases
+        edge: true
         token: $GITHUB_TOKEN
-        file: /tmp/nupkgs/NosCore.Packets.$TRAVIS_TAG.nupkg
+        file: /tmp/nupkgs/NosCore.Packets.${TRAVIS_TAG}.nupkg
         cleanup: false
         'on':
           tags: true
