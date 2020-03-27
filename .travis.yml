@@ -42,7 +42,13 @@ jobs:
         - dotnet restore
         - dotnet build -c Release
         - dotnet pack -c Release -o /tmp/nupkgs -v m
-        - dotnet nuget push /tmp/nupkgs/NosCore.Packets.${TRAVIS_TAG}.nupkg -k ${NUGET_API_KEY} -s https://api.nuget.org/v3/index.json
+      deploy:
+        provider: script
+        script: bash dotnet nuget push /tmp/nupkgs/NosCore.Packets.${TRAVIS_TAG}.nupkg -k ${NUGET_API_KEY} -s https://api.nuget.org/v3/index.json
+        edge: true
+        cleanup: false
+        'on':
+          tags: true
     - stage: release_github
       name: Publish Release on GitHub
       if: (tag =~ /^((\d+\.)+\d+)/)
