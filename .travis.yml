@@ -1,62 +1,64 @@
 language: csharp
 mono: none
-sudo: required
 dist: xenial
+os: linux
 addons:
-    snaps:
-      - name: dotnet-sdk
-        confinement: classic
-        channel: 3.1/stable
+  snaps:
+    - name: dotnet-sdk
+      confinement: classic
+      channel: 3.1/stable
 install:
-    - export PATH="$PATH:/home/travis/.dotnet/tools"
-    - export PATH="$PATH:$HOME/.local/bin"
-    - pip install --user awscli
-    - sudo snap alias dotnet-sdk.dotnet dotnet
-    - dotnet --version
+  - 'export PATH="$PATH:/home/travis/.dotnet/tools"'
+  - 'export PATH="$PATH:$HOME/.local/bin"'
+  - pip install --user awscli
+  - sudo snap alias dotnet-sdk.dotnet dotnet
+  - dotnet --version
+env:
+  global:
+    - DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
+    - DOTNET_CLI_TELEMETRY_OPTOUT=1
 jobs:
   include:
     - stage: test_unit_testing
-      name: "Run tests on ChickenAPI.Packets"
+      name: Run tests on NosCore.Packets
       script:
         - dotnet restore
         - dotnet build
-        - dotnet test test/ChickenAPI.Packets.Tests -v m
-    
+        - dotnet test test/NosCore.Packets.Tests -v m
     - stage: test_validate_documentation
-      name: "Build Packet List documentation generator"
+      name: Build Packet List documentation generator
       script:
         - dotnet restore
-        - dotnet build src/ChickenAPI.Packets.Documentator -c Release -o /tmp/documentator
-        - dotnet /tmp/documentator/ChickenAPI.Packets.Documentator.dll /tmp/PACKET_LIST_TEST.md
-        # todo fix - diff /tmp/PACKET_LIST_TEST.md PACKET_LIST.md
-    
+        - >-
+          dotnet build src/NosCore.Packets.Documentator -c Release -o
+          /tmp/documentator
+        - >-
+          dotnet /tmp/documentator/NosCore.Packets.Documentator.dll
+          /tmp/PACKET_LIST_TEST.md
     - stage: release_nuget_packages
-      name: "Build ChickenAPI package (nuget)"
+      name: Build NosCore.Packets package (nuget)
       script:
-       - dotnet restore
-       - dotnet build -c Release
-       - dotnet pack -c Release -o /tmp/nupkgs -v m
+        - dotnet restore
+        - dotnet build -c Release
+        - dotnet pack -c Release -o /tmp/nupkgs -v m
       deploy:
         provider: script
-        script: dotnet nuget push /tmp/nupkgs/NosCore.Packets.$TRAVIS_TAG.nupkg -k $NUGET_API_KEY -s "https://api.nuget.org/v3/index.json"
-        skip_cleanup: true
-        on:
+        script: >-
+          dotnet nuget push /tmp/nupkgs/NosCore.Packets.$TRAVIS_TAG.nupkg -k
+          $NUGET_API_KEY -s "https://api.nuget.org/v3/index.json"
+        cleanup: false
+        'on':
           tags: true
-          
     - stage: release_github
-      name: "Publish Release on GitHub"
+      name: Publish Release on GitHub
       script:
-       - dotnet restore
-       - dotnet build -c Release
-       - dotnet pack -c Release -o /tmp/nupkgs -v m
+        - dotnet restore
+        - dotnet build -c Release
+        - dotnet pack -c Release -o /tmp/nupkgs -v m
       deploy:
         provider: releases
-        api_key: $GITHUB_TOKEN
+        token: $GITHUB_TOKEN
         file: /tmp/nupkgs/NosCore.Packets.$TRAVIS_TAG.nupkg
-        skip_cleanup: true
-        on:
+        cleanup: false
+        'on':
           tags: true
-
-global:
-    - DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
-    - DOTNET_CLI_TELEMETRY_OPTOUT=1
