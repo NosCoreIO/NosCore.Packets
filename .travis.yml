@@ -37,7 +37,7 @@ jobs:
           /tmp/PACKET_LIST_TEST.md
     - stage: release_nuget_packages
       name: Build NosCore.Packets package (nuget)
-      if: (tag =~ ^v)
+      if: (tag =~ /^((\d+\.)+\d+)/)
       script:
         - dotnet restore
         - dotnet build -c Release
@@ -52,7 +52,7 @@ jobs:
           tags: true
     - stage: release_github
       name: Publish Release on GitHub
-      if: (tag =~ ^v)
+      if: (tag =~ /^((\d+\.)+\d+)/)
       script:
         - dotnet restore
         - dotnet build -c Release
