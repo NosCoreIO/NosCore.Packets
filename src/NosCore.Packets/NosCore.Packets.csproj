@@ -12,7 +12,7 @@
     <RepositoryUrl>https://github.com/ChickenAPI/NosCore.Packets.git</RepositoryUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/ChickenAPI/NosCore.Packets/master/docs/_media/logo.png</PackageIconUrl>
     <PackageTags>nostale, chickenapi, nostale private server source, nostale emulator</PackageTags>
-    <Version>0.18.4</Version>
+    <Version>0.18.5</Version>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Description>ChickenAPI's Packets (Nostale packets) defined over classes</Description>
     <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
