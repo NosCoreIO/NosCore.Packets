@@ -42,16 +42,7 @@ jobs:
         - dotnet restore
         - dotnet build -c Release
         - dotnet pack -c Release -o /tmp/nupkgs -v m
-        - echo ${NUGET_API_KEY} > key.txt
-      before_deploy:
-        - export NUGET_API_KEY=$(cat key.txt)
-      deploy:
-        provider: script
-        edge: true
-        script: dotnet nuget push /tmp/nupkgs/NosCore.Packets.${TRAVIS_TAG}.nupkg -k ${NUGET_API_KEY} -s https://api.nuget.org/v3/index.json
-        cleanup: false
-        'on':
-          tags: true
+        - dotnet nuget push /tmp/nupkgs/NosCore.Packets.${TRAVIS_TAG}.nupkg -k ${NUGET_API_KEY} -s https://api.nuget.org/v3/index.json
     - stage: release_github
       name: Publish Release on GitHub
       if: (tag =~ /^((\d+\.)+\d+)/)
