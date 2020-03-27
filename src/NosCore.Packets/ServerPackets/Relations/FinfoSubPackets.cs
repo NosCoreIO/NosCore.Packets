@@ -1,0 +1,17 @@
+﻿using NosCore.Packets.Attributes;
+
+namespace NosCore.Packets.ServerPackets.Relations
+{
+    [PacketHeader("finfo_sub_packets")]
+    public class FinfoSubPackets : PacketBase
+    {
+        [PacketIndex(0)]
+        public long CharacterId { get; set; }
+
+        [PacketIndex(1)]
+        public bool IsConnected { get; set; }
+
+        [PacketIndex(2)]
+        public string? CharacterName { get; set; }
+    }
+}
