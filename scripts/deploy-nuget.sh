@@ -1,0 +1,1 @@
+dotnet nuget push /tmp/nupkgs/NosCore.Packets.${TRAVIS_TAG}.nupkg -k ${NUGET_API_KEY} -s https://api.nuget.org/v3/index.json
