@@ -45,8 +45,10 @@ jobs:
       deploy:
         provider: script
         edge: true
-        script: dotnet nuget push /tmp/nupkgs/NosCore.Packets.${TRAVIS_TAG}.nupkg -k${NUGET_API_KEY} -shttps://api.nuget.org/v3/index.json
+        script: dotnet nuget push /tmp/nupkgs/NosCore.Packets.${TRAVIS_TAG}.nupkg -k ${NUGET_API_KEY} -s https://api.nuget.org/v3/index.json
         cleanup: false
+        env:
+          - NUGET_API_KEY=$(NUGET_API_KEY)
         'on':
           tags: true
     - stage: release_github
