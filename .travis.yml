@@ -45,7 +45,7 @@ jobs:
       deploy:
         provider: script
         edge: true
-        script: bash scripts/deploy-nuget.sh
+        script: dotnet nuget push /tmp/nupkgs/NosCore.Packets.${TRAVIS_TAG}.nupkg -k${NUGET_API_KEY} -shttps://api.nuget.org/v3/index.json
         cleanup: false
         'on':
           tags: true
@@ -59,7 +59,7 @@ jobs:
       deploy:
         provider: releases
         edge: true
-        token: $GITHUB_TOKEN
+        token: ${GITHUB_TOKEN}
         file: /tmp/nupkgs/NosCore.Packets.${TRAVIS_TAG}.nupkg
         cleanup: false
         'on':
