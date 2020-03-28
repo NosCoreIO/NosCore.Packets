@@ -20,7 +20,7 @@ env:
 jobs:
   include:
     - stage: tests
-      install:
+      before_script:
         - dotnet restore
         - dotnet build
       name: Run tests on NosCore.Packet
