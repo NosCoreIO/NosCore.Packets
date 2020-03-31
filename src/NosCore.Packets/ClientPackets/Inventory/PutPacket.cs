@@ -22,7 +22,7 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Inventory
 {
-    [PacketHeader("put")]
+    [PacketHeader("put", BlockedByTrading = true)]
     public class PutPacket : PacketBase
     {
         [PacketIndex(0)]
