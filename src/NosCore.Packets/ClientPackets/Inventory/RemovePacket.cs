@@ -22,7 +22,7 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Inventory
 {
-    [PacketHeader("remove")]
+    [PacketHeader("remove", BlockedByTrading = true)]
     public class RemovePacket : PacketBase
     {
         [PacketIndex(0)]
