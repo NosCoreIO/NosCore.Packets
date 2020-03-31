@@ -4,7 +4,7 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Shops
 {
-    [PacketHeader("buy")]
+    [PacketHeader("buy", BlockedByTrading = true)]
     public class BuyPacket : PacketBase
     {
         [PacketIndex(0)]

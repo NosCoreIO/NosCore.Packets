@@ -3,7 +3,7 @@ using NosCore.Packets.Attributes;
 
 namespace NosCore.Packets.ClientPackets.Bazaar
 {
-    [PacketHeader("c_scalc")]
+    [PacketHeader("c_scalc", BlockedByTrading = true)]
     public class CScalcPacket : PacketBase
     {
         [PacketIndex(0)]
