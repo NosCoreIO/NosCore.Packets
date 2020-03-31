@@ -29,8 +29,8 @@ namespace NosCore.Packets.ClientPackets.Bazaar
         [PacketIndex(0)]
         public int Type { get; set; }
         [PacketIndex(1)]
-        [Range((byte)PocketType.Equipment, (byte)PocketType.Equipment)]
-        public PocketType Inventory { get; set; }
+        [Range(0, 4)] // won't use an enum because of the 4
+        public byte Inventory { get; set; }
         [PacketIndex(2)]
         public byte Slot { get; set; }
         [PacketIndex(3)]

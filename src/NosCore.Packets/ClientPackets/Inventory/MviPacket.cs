@@ -22,7 +22,7 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Inventory
 {
-    [PacketHeader("mvi")]
+    [PacketHeader("mvi", BlockedByTrading = true)]
     public class MviPacket : PacketBase
     {
         [PacketIndex(0)]
