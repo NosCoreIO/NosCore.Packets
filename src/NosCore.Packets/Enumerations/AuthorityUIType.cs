@@ -4,6 +4,6 @@
     {
         User = 0,
         GameMaster = 2,
-        Administrator = 3,
+        Administrator = 3
     }
 }

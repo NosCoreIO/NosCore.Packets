@@ -2,7 +2,7 @@
 {
     public enum ModalPacketType
     {
-        Default = 1,
+        Default = 1
     }
 
     public enum MsgPacketType

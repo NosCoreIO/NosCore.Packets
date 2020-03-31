@@ -4,6 +4,6 @@
     {
         MainMission = 0,
         HeroMission = 1,
-        Miscelaneous = 2,
+        Miscelaneous = 2
     }
 }
