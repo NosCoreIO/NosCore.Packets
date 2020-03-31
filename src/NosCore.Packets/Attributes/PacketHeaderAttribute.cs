@@ -16,5 +16,7 @@ namespace NosCore.Packets.Attributes
         public string Identification { get; set; }
 
         public bool AnonymousAccess { get; set; }
+
+        public bool BlockedByTrading { get; set; }
     }
 }

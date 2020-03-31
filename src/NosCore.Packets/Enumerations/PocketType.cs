@@ -7,6 +7,6 @@
         Etc = 2,
         Miniland = 3,
         Specialist = 6,
-        Costume = 7,
+        Costume = 7
     }
 }

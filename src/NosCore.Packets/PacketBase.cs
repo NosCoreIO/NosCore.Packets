@@ -1,5 +1,5 @@
-﻿using NosCore.Packets.Interfaces;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets
 {
