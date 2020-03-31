@@ -1,4 +1,23 @@
-﻿using System;
+﻿//  __  _  __    __   ___ __  ___ ___
+// |  \| |/__\ /' _/ / _//__\| _ \ __|
+// | | ' | \/ |`._`.| \_| \/ | v / _|
+// |_|\__|\__/ |___/ \__/\__/|_|_\___|
+// 
+// Copyright (C) 2019 - NosCore
+// 
+// NosCore is a free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+using System;
 using System.Collections.Concurrent;
 using System.Linq;
 using System.Reflection;
@@ -14,14 +33,16 @@ namespace NosCore.Packets.Benchmark.SaltyEmu
     /// </summary>
     public static class TypeExtension
     {
-        private static readonly ConcurrentDictionary<Type, Func<object?>?> Constructors = new ConcurrentDictionary<Type, Func<object?>?>();
+        private static readonly ConcurrentDictionary<Type, Func<object?>?> Constructors =
+            new ConcurrentDictionary<Type, Func<object?>?>();
 
         /// <summary>
         ///     Gets the default constructor delegate (empty parameters)
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public static Func<object> GetDefaultConstructorDelegate(this Type type) => (Func<object>)GetConstructorDelegate(type, typeof(Func<object>));
+        public static Func<object> GetDefaultConstructorDelegate(this Type type) =>
+            (Func<object>) GetConstructorDelegate(type, typeof(Func<object>));
 
         /// <summary>
         ///     Retrieves the constructor of the given type based on the given delegate type
@@ -42,14 +63,17 @@ namespace NosCore.Packets.Benchmark.SaltyEmu
             }
 
             Type[] genericArguments = delegateType.GetGenericArguments();
-            Type[] argTypes = genericArguments.Length > 1 ? genericArguments.Take(genericArguments.Length - 1).ToArray() : Type.EmptyTypes;
+            Type[] argTypes = genericArguments.Length > 1
+                ? genericArguments.Take(genericArguments.Length - 1).ToArray()
+                : Type.EmptyTypes;
 
             ConstructorInfo? constructor = type.GetConstructor(argTypes);
             if (constructor == null)
             {
                 if (argTypes.Length == 0)
                 {
-                    throw new InvalidOperationException($"Type '{type.Name}' doesn't have a parameterless constructor.");
+                    throw new InvalidOperationException(
+                        $"Type '{type.Name}' doesn't have a parameterless constructor.");
                 }
 
                 throw new InvalidOperationException($"Type '{type.Name}' doesn't have the requested constructor.");

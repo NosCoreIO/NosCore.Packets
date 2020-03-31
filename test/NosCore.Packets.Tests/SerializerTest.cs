@@ -1,4 +1,23 @@
-﻿using System.Collections.Generic;
+﻿//  __  _  __    __   ___ __  ___ ___
+// |  \| |/__\ /' _/ / _//__\| _ \ __|
+// | | ' | \/ |`._`.| \_| \/ | v / _|
+// |_|\__|\__/ |___/ \__/\__/|_|_\___|
+// 
+// Copyright (C) 2019 - NosCore
+// 
+// NosCore is a free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+using System.Collections.Generic;
 using NosCore.Packets.ClientPackets.Chat;
 using NosCore.Packets.ClientPackets.Families;
 using NosCore.Packets.ClientPackets.Inventory;
@@ -79,7 +98,8 @@ namespace NosCore.Packets.Tests
                     new MlobjlstSubPacket()
                     {
                         MlObjSubPacket = new MlobjSubPacket()
-                    },  new MlobjlstSubPacket()
+                    },
+                    new MlobjlstSubPacket()
                     {
                         MlObjSubPacket = new MlobjSubPacket()
                     }
@@ -96,13 +116,18 @@ namespace NosCore.Packets.Tests
             var testPacket = new RbrPacket
             {
                 TsBasicInfo = new RbrSubPacketBasicInfo(),
-                BonusRewards = new List<RbrSubPacketItem?> { new RbrSubPacketItem(), new RbrSubPacketItem(), new RbrSubPacketItem() },
+                BonusRewards = new List<RbrSubPacketItem?>
+                    {new RbrSubPacketItem(), new RbrSubPacketItem(), new RbrSubPacketItem()},
                 Completed = true,
-                DrawRewards = new List<RbrSubPacketItem?> { new RbrSubPacketItem(), new RbrSubPacketItem(), new RbrSubPacketItem(), new RbrSubPacketItem(), new RbrSubPacketItem() },
+                DrawRewards = new List<RbrSubPacketItem?>
+                {
+                    new RbrSubPacketItem(), new RbrSubPacketItem(), new RbrSubPacketItem(), new RbrSubPacketItem(),
+                    new RbrSubPacketItem()
+                },
                 HighScore = new RbrSubPacketHighScore(),
-                SpecialRewards = new List<RbrSubPacketItem?> { new RbrSubPacketItem(), new RbrSubPacketItem() },
+                SpecialRewards = new List<RbrSubPacketItem?> {new RbrSubPacketItem(), new RbrSubPacketItem()},
                 RequiredSeeds = 1,
-                MinMaxLevel = new RbrSubPacketMinMaxLevel { MinLevel = 1, MaxLevel = 99 },
+                MinMaxLevel = new RbrSubPacketMinMaxLevel {MinLevel = 1, MaxLevel = 99},
                 Unknown = 0,
                 TitleAndDescription = new RbrSubPacketTitleAndDescription
                 {
@@ -112,56 +137,58 @@ namespace NosCore.Packets.Tests
             };
 
             var packet = Serializer.Serialize(testPacket);
-            Assert.AreEqual("rbr 0.0.0 0 1 1 99 1 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 0 0 0 this is another test\nthis is a test", packet);
+            Assert.AreEqual(
+                "rbr 0.0.0 0 1 1 99 1 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 0 0 0 this is another test\nthis is a test",
+                packet);
         }
 
 
         [TestMethod]
         public void SerializeWithRemoveHeader()
         {
-
             var packet = Serializer.Serialize(
                 new RcbListPacket
                 {
                     PageIndex = 1,
                     Items = new List<RcbListPacket.RcbListElementPacket?>
-                   {
-                       new RcbListPacket.RcbListElementPacket
-                       {
+                    {
+                        new RcbListPacket.RcbListElementPacket
+                        {
                             AuctionId = 1,
                             OwnerId = 2,
                             OwnerName = "test",
                             ItemId = 3,
                             Amount = 4,
-                            IsPackage=false,
+                            IsPackage = false,
                             Price = 6,
-                            MinutesLeft =7,
+                            MinutesLeft = 7,
                             Unknown1 = false,
                             Unknown = 9,
-                            Rarity = 10 ,
+                            Rarity = 10,
                             Upgrade = 11,
                             EInfo = new EInfoPacket()
                         },
-                       new RcbListPacket.RcbListElementPacket
-                       {
-                           AuctionId = 1,
-                           OwnerId = 2,
-                           OwnerName = "test",
-                           ItemId = 3,
-                           Amount = 4,
-                           IsPackage=false,
-                           Price = 6,
-                           MinutesLeft =7,
-                           Unknown1 = false,
-                           Unknown = 9,
-                           Rarity = 10 ,
-                           Upgrade = 11,
-                           EInfo = new EInfoPacket()
-                       }
-                   }
+                        new RcbListPacket.RcbListElementPacket
+                        {
+                            AuctionId = 1,
+                            OwnerId = 2,
+                            OwnerName = "test",
+                            ItemId = 3,
+                            Amount = 4,
+                            IsPackage = false,
+                            Price = 6,
+                            MinutesLeft = 7,
+                            Unknown1 = false,
+                            Unknown = 9,
+                            Rarity = 10,
+                            Upgrade = 11,
+                            EInfo = new EInfoPacket()
+                        }
+                    }
                 }
             );
-            Assert.AreEqual($"rc_blist 1 1|2|test|3|4|0|6|7|0|9|10|11|0^0^0^0^0 1|2|test|3|4|0|6|7|0|9|10|11|0^0^0^0^0", packet);
+            Assert.AreEqual($"rc_blist 1 1|2|test|3|4|0|6|7|0|9|10|11|0^0^0^0^0 1|2|test|3|4|0|6|7|0|9|10|11|0^0^0^0^0",
+                packet);
         }
 
         [TestMethod]
@@ -192,8 +219,8 @@ namespace NosCore.Packets.Tests
             var dlgTest = new DlgPacket
             {
                 Question = "question",
-                NoPacket = new FinsPacket { Type = FinsPacketType.Rejected, CharacterId = 1 },
-                YesPacket = new FinsPacket { Type = FinsPacketType.Accepted, CharacterId = 1 }
+                NoPacket = new FinsPacket {Type = FinsPacketType.Rejected, CharacterId = 1},
+                YesPacket = new FinsPacket {Type = FinsPacketType.Accepted, CharacterId = 1}
             };
 
             var packet = Serializer.Serialize(dlgTest);
@@ -207,15 +234,15 @@ namespace NosCore.Packets.Tests
         {
             var dlgTest = new SayItemPacket
             {
-                 Message = "<SPEAKER>[Username]:{item}",
-                 OratorSlot = 17,
-                 EquipmentInfo = null,
-                 VisualId = 1,
-                 VisualType = VisualType.Player,
-                 IconInfo = new IconInfoPacket
-                 {
-                     IconId = 1012
-                 }
+                Message = "<SPEAKER>[Username]:{item}",
+                OratorSlot = 17,
+                EquipmentInfo = null,
+                VisualId = 1,
+                VisualType = VisualType.Player,
+                IconInfo = new IconInfoPacket
+                {
+                    IconId = 1012
+                }
             };
 
             var packet = Serializer.Serialize(dlgTest);
@@ -238,7 +265,7 @@ namespace NosCore.Packets.Tests
                         OriginQuickListSlot = 7,
                         Data = -1
                     },
-                     new QsetClientSubPacket
+                    new QsetClientSubPacket
                     {
                         OriginQuickList = 7,
                         OriginQuickListSlot = 7,
@@ -260,8 +287,8 @@ namespace NosCore.Packets.Tests
             {
                 SubPackets = new List<BlinitSubPacket?>
                 {
-                    new BlinitSubPacket { RelatedCharacterId = 1, CharacterName = "test" },
-                    new BlinitSubPacket { RelatedCharacterId = 2, CharacterName = "test2" }
+                    new BlinitSubPacket {RelatedCharacterId = 1, CharacterName = "test"},
+                    new BlinitSubPacket {RelatedCharacterId = 2, CharacterName = "test2"}
                 }
             };
 
@@ -356,7 +383,6 @@ namespace NosCore.Packets.Tests
                 FamilyLevel = 0,
                 MorphUpgrade = 0,
                 ArenaWinner = false
-
             });
             Assert.AreEqual("c_info test - -1 0 - 1 0 0 0 0 0 0 0 0 0 0 0 0", packet);
         }
@@ -487,7 +513,7 @@ namespace NosCore.Packets.Tests
                 FamilyName = "FAMILY_NAME",
                 FamilyCustomRank = "NONE",
                 FamilyLevel = 10,
-                FamilyIcons = new List<bool> { false, false, false }
+                FamilyIcons = new List<bool> {false, false, false}
             };
             var packet = Serializer.Serialize(characterTest);
             Assert.AreEqual(
@@ -541,7 +567,7 @@ namespace NosCore.Packets.Tests
                     Level = 1,
                     FamilyLevel = 0,
                     ArenaWinner = false,
-                    FamilyIcons = new List<bool> { false, false, false },
+                    FamilyIcons = new List<bool> {false, false, false},
                     Compliment = 0,
                     Size = 10,
                     HeroLevel = 0
@@ -549,7 +575,7 @@ namespace NosCore.Packets.Tests
             };
             var packet = Serializer.Serialize(characterTest);
             Assert.AreEqual(
-                $"in 1 characterTest - 0 0 0 0 {(byte)characterTest.InCharacterSubPacket.Authority} 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 0 0 0 -1 - 1 0 0 0 0 1 0 0|0|0 0 0 {(byte)characterTest.InCharacterSubPacket.Size} 0",
+                $"in 1 characterTest - 0 0 0 0 {(byte) characterTest.InCharacterSubPacket.Authority} 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 0 0 0 -1 - 1 0 0 0 0 1 0 0|0|0 0 0 {(byte) characterTest.InCharacterSubPacket.Size} 0",
                 packet);
         }
     }
