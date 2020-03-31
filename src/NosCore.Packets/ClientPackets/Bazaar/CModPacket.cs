@@ -3,7 +3,7 @@ using NosCore.Packets.Attributes;
 
 namespace NosCore.Packets.ClientPackets.Bazaar
 {
-    [PacketHeader("c_mod")]
+    [PacketHeader("c_mod", BlockedByTrading = true)]
     public class CModPacket : PacketBase
     {
         [PacketIndex(0)]

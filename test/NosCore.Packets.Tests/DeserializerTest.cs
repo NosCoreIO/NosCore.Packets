@@ -164,10 +164,10 @@ namespace NosCore.Packets.Tests
                 " 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 admin Stand"
                 );
             Assert.IsTrue(packet.Type == 0
-                && packet.ItemList[1].Type == 0
-                && packet.ItemList[1].Slot == 21
-                && packet.ItemList[1].Amount == 1
-                && packet.ItemList[1].Price == 10692
+                && packet.ItemList![1]!.Type == 0
+                && packet.ItemList[1]!.Slot == 21
+                && packet.ItemList[1]!.Amount == 1
+                && packet.ItemList[1]!.Price == 10692
                 && packet.Name == "admin Stand");
         }
 
@@ -178,8 +178,8 @@ namespace NosCore.Packets.Tests
                 "rest 1 2 3"
                 );
             Assert.IsTrue(packet.Amount == 1
-                && packet.Users[0].VisualType == VisualType.Npc
-                && packet.Users[0].VisualId == 3);
+                && packet.Users![0]!.VisualType == VisualType.Npc
+                && packet.Users[0]!.VisualId == 3);
         }
 
         [TestMethod]
@@ -188,7 +188,7 @@ namespace NosCore.Packets.Tests
             var packet = (StPacket)Deserializer.Deserialize(
                 "st 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16"
                 );
-            Assert.IsTrue(packet.BuffIds.Count == 8);
+            Assert.IsTrue(packet.BuffIds!.Count == 8);
         }
 
         [TestMethod]
@@ -217,13 +217,13 @@ namespace NosCore.Packets.Tests
             var packet = (FinfoPacket)Deserializer.Deserialize(
                 "finfo 2.1.Friend1 3.0.Friend2"
             );
-            Assert.IsTrue(packet.FriendList.Count == 2);
-            Assert.IsTrue(packet.FriendList.First().CharacterId == 2);
-            Assert.IsTrue(packet.FriendList.First().IsConnected);
-            Assert.IsTrue(packet.FriendList.First().CharacterName == "Friend1");
-            Assert.IsTrue(packet.FriendList.Skip(1).First().CharacterId == 3);
-            Assert.IsFalse(packet.FriendList.Skip(1).First().IsConnected);
-            Assert.IsTrue(packet.FriendList.Skip(1).First().CharacterName == "Friend2");
+            Assert.IsTrue(packet.FriendList!.Count == 2);
+            Assert.IsTrue(packet.FriendList.First()!.CharacterId == 2);
+            Assert.IsTrue(packet.FriendList.First()!.IsConnected);
+            Assert.IsTrue(packet.FriendList.First()!.CharacterName == "Friend1");
+            Assert.IsTrue(packet.FriendList.Skip(1).First()!.CharacterId == 3);
+            Assert.IsFalse(packet.FriendList.Skip(1).First()!.IsConnected);
+            Assert.IsTrue(packet.FriendList.Skip(1).First()!.CharacterName == "Friend2");
         }
 
         [TestMethod]
@@ -232,11 +232,11 @@ namespace NosCore.Packets.Tests
             var packet = (SitPacket) Deserializer.Deserialize(
                 "rest 2 1 5 1 4"
             );
-            Assert.IsTrue(packet.Users.Count == 2);
-            Assert.IsTrue(packet.Users.First().VisualType == VisualType.Player);
-            Assert.IsTrue(packet.Users.First().VisualId == 5);
-            Assert.IsTrue(packet.Users.Skip(1).First().VisualType == VisualType.Player);
-            Assert.IsTrue(packet.Users.Skip(1).First().VisualId == 4);
+            Assert.IsTrue(packet.Users!.Count == 2);
+            Assert.IsTrue(packet.Users.First()!.VisualType == VisualType.Player);
+            Assert.IsTrue(packet.Users.First()!.VisualId == 5);
+            Assert.IsTrue(packet.Users.Skip(1).First()!.VisualType == VisualType.Player);
+            Assert.IsTrue(packet.Users.Skip(1).First()!.VisualId == 4);
         }
 
         [TestMethod]
@@ -245,9 +245,9 @@ namespace NosCore.Packets.Tests
             var packet = (DlgPacket)Deserializer.Deserialize(
                 "dlg #fins^1^2 #fins^2^2 test"
             );
-            Assert.IsTrue(((FinsPacket)packet.YesPacket).Type == FinsPacketType.Accepted);
-            Assert.IsTrue(((FinsPacket)packet.YesPacket).CharacterId == 2);
-            Assert.IsTrue(((FinsPacket)packet.NoPacket).Type == FinsPacketType.Rejected);
+            Assert.IsTrue(((FinsPacket)packet.YesPacket!).Type == FinsPacketType.Accepted);
+            Assert.IsTrue(((FinsPacket)packet.YesPacket!).CharacterId == 2);
+            Assert.IsTrue(((FinsPacket)packet.NoPacket!).Type == FinsPacketType.Rejected);
             Assert.IsTrue(((FinsPacket)packet.NoPacket).CharacterId == 2);
             Assert.IsTrue(packet.Question == "test");
         }
@@ -320,7 +320,7 @@ namespace NosCore.Packets.Tests
             Assert.IsTrue(packet.Password == "EE26B0DD4AF7E749AA1A8EE3C10AE9923F618980772E473F8819A5D4940E0DB27AC185F8A0E1D5F84F88BC887FD67B143732C304CC5FA9AD8E6F57F50028A8FF");
             Assert.IsTrue(packet.ClientId == Guid.Parse("3e241e8e-b1cd-49c3-a455-4d253a75f6e6"));
             Assert.IsTrue(packet.UnknownYet == "00564F36");
-            Assert.IsTrue(packet.ClientVersion.Major == 0);
+            Assert.IsTrue(packet.ClientVersion!.Major == 0);
             Assert.IsTrue(packet.ClientVersion.Minor == 9);
             Assert.IsTrue(packet.ClientVersion.Fix == 3);
             Assert.IsTrue(packet.ClientVersion.SubFix == 3097);
