@@ -1,15 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Bazaar
 {
-    [PacketHeader("c_reg")]
+    [PacketHeader("c_reg", BlockedByTrading = true)]
     public class CRegPacket : PacketBase
     {
         [PacketIndex(0)]
         public int Type { get; set; }
         [PacketIndex(1)]
-        public byte Inventory { get; set; }
+        [Range((byte)PocketType.Equipment, (byte)PocketType.Equipment)]
+        public PocketType Inventory { get; set; }
         [PacketIndex(2)]
         public byte Slot { get; set; }
         [PacketIndex(3)]
@@ -17,9 +19,10 @@ namespace NosCore.Packets.ClientPackets.Bazaar
         [PacketIndex(4)]
         public int Unknown2 { get; set; }
         [PacketIndex(5)]
+        [Range(0, 4)]
         public byte Durability { get; set; }
         [PacketIndex(6)]
-        public int IsPackage { get; set; }
+        public bool IsPackage { get; set; }
         [PacketIndex(7)]
         [Range(1, short.MaxValue)]
         public short Amount { get; set; }

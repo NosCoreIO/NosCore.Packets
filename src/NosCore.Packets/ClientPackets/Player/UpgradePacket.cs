@@ -6,8 +6,6 @@ namespace NosCore.Packets.ClientPackets.Player
     [PacketHeader("up_gr")]
     public class UpgradePacket : PacketBase
     {
-        #region Properties
-
         [PacketIndex(0)]
         public UpgradePacketType UpgradeType { get; set; }
 
@@ -29,6 +27,5 @@ namespace NosCore.Packets.ClientPackets.Player
         [PacketIndex(6, IsOptional = true)]
         public byte? CellonSlot { get; set; }
 
-        #endregion Properties
     }
 }
