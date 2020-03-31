@@ -3,6 +3,7 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Inventory
 {
+    //todo cleanup this messy packet
     [PacketHeader("e_info")]
     public class EInfoPacket : PacketBase
     {

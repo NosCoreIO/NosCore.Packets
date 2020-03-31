@@ -5,8 +5,6 @@ namespace NosCore.Packets.ServerPackets.Player
     [PacketHeader("eqinfo")]
     public class EquipmentInfoPacket : PacketBase
     {
-        #region Properties
-
         [PacketIndex(0)]
         public byte Type { get; set; } // todo more information
 
@@ -15,7 +13,5 @@ namespace NosCore.Packets.ServerPackets.Player
 
         [PacketIndex(2)]
         public long? ShopOwnerId { get; set; }
-
-        #endregion
     }
 }

@@ -17,9 +17,9 @@
         PerfectSp = 41,
         UpgradeSpPirate = 42, // Scroll Pirate - Event
         UpgradeItemGoldScroll = 43, // UpgradeMode.Reduced, UpgradeProtection.Protected, hasAmulet: hasAmulet ( Gold scroll)
-        FusionItem = 53,
-        CreateFairyFernon = 52,
         CreateFairyZenas = 50,
         CreateFairyErenia = 51,
+        CreateFairyFernon = 52,
+        FusionItem = 53,
     }
 }
