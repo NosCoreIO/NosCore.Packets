@@ -6,6 +6,7 @@
   <img src="docs/_media/logo.png"></img>
 </p>
 
+[![NuGet](https://img.shields.io/nuget/v/NosCore.Packets.svg?style=flat-square)](https://www.nuget.org/packages/NosCore.Packets/)
 [![Travis build status](https://travis-ci.org/NosCoreIO//NosCore.Packets.svg?branch=master)](https://travis-ci.org/NosCoreIO/NosCore.Packets)
 
 ## You like our work ? ##

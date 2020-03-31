@@ -5,19 +5,20 @@
     <LangVersion>latest</LangVersion>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>ChickenAPI</Authors>
-    <Copyright>2019</Copyright>
+    <Authors>NosCore - ChickenAPI</Authors>
+    <Copyright>2020</Copyright>
     <Nullable>enable</Nullable>
     <PackageProjectUrl>https://github.com/ChickenAPI/NosCore.Packets</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/ChickenAPI/NosCore.Packets.git</RepositoryUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/ChickenAPI/NosCore.Packets/master/docs/_media/logo.png</PackageIconUrl>
-    <PackageTags>nostale, chickenapi, nostale private server source, nostale emulator</PackageTags>
+    <RepositoryUrl>https://github.com/NosCoreIO/NosCore.Packets.git</RepositoryUrl>
+    <PackageIconUrl></PackageIconUrl>
+    <PackageTags>nostale, noscore, chickenapi, nostale private server source, nostale emulator</PackageTags>
     <Version>0.19.0</Version>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Description>ChickenAPI's Packets (Nostale packets) defined over classes</Description>
+    <Description>NosCore's Packets (Nostale packets) defined over classes</Description>
     <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
-    <Company>ChickenAPI</Company>
+    <Company>NosCore</Company>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -26,6 +27,13 @@
 
   <ItemGroup>
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
