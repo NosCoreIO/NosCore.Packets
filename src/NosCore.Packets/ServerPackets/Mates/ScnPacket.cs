@@ -1,4 +1,23 @@
-﻿using NosCore.Packets.Attributes;
+﻿//  __  _  __    __   ___ __  ___ ___
+// |  \| |/__\ /' _/ / _//__\| _ \ __|
+// | | ' | \/ |`._`.| \_| \/ | v / _|
+// |_|\__|\__/ |___/ \__/\__/|_|_\___|
+// 
+// Copyright (C) 2019 - NosCore
+// 
+// NosCore is a free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Mates
@@ -9,23 +28,17 @@ namespace NosCore.Packets.ServerPackets.Mates
     [PacketHeader("sc_n")]
     public class ScnPacket : PacketBase
     {
-        [PacketIndex(0)]
-        public long PetId { get; set; }
+        [PacketIndex(0)] public long PetId { get; set; }
 
-        [PacketIndex(1)]
-        public long NpcMonsterVNum { get; set; }
+        [PacketIndex(1)] public long NpcMonsterVNum { get; set; }
 
-        [PacketIndex(2)]
-        public long TransportId { get; set; }
+        [PacketIndex(2)] public long TransportId { get; set; }
 
-        [PacketIndex(3)]
-        public short Level { get; set; }
+        [PacketIndex(3)] public short Level { get; set; }
 
-        [PacketIndex(4)]
-        public short Loyalty { get; set; }
+        [PacketIndex(4)] public short Loyalty { get; set; }
 
-        [PacketIndex(5)]
-        public long Experience { get; set; }
+        [PacketIndex(5)] public long Experience { get; set; }
 
         [PacketIndex(6, SpecialSeparator = ".")]
         public ScEquipmentDetails? WeaponInstanceDetails { get; set; }
@@ -36,86 +49,59 @@ namespace NosCore.Packets.ServerPackets.Mates
         [PacketIndex(8, SpecialSeparator = ".")]
         public ScEquipmentDetails? GauntletInstanceDetails { get; set; }
 
-        [PacketIndex(9)]
-        public ScEquipmentDetails? BootsInstanceDetails { get; set; }
+        [PacketIndex(9)] public ScEquipmentDetails? BootsInstanceDetails { get; set; }
 
-        [PacketIndex(10)]
-        public short Unknown { get; set; }
+        [PacketIndex(10)] public short Unknown { get; set; }
 
-        [PacketIndex(11)]
-        public short Unknown2 { get; set; }
+        [PacketIndex(11)] public short Unknown2 { get; set; }
 
-        [PacketIndex(12)]
-        public short Unknown3 { get; set; }
+        [PacketIndex(12)] public short Unknown3 { get; set; }
 
-        [PacketIndex(13)]
-        public short AttackUpgrade { get; set; }
+        [PacketIndex(13)] public short AttackUpgrade { get; set; }
 
-        [PacketIndex(14)]
-        public int MinimumAttack { get; set; }
+        [PacketIndex(14)] public int MinimumAttack { get; set; }
 
-        [PacketIndex(15)]
-        public int MaximumAttack { get; set; }
+        [PacketIndex(15)] public int MaximumAttack { get; set; }
 
-        [PacketIndex(16)]
-        public int Precision { get; set; }
+        [PacketIndex(16)] public int Precision { get; set; }
 
-        [PacketIndex(17)]
-        public int CriticalRate { get; set; }
+        [PacketIndex(17)] public int CriticalRate { get; set; }
 
-        [PacketIndex(18)]
-        public int CriticalDamageRate { get; set; }
+        [PacketIndex(18)] public int CriticalDamageRate { get; set; }
 
-        [PacketIndex(19)]
-        public short DefenceUpgrade { get; set; }
+        [PacketIndex(19)] public short DefenceUpgrade { get; set; }
 
-        [PacketIndex(20)]
-        public int Defence { get; set; }
+        [PacketIndex(20)] public int Defence { get; set; }
 
-        [PacketIndex(21)]
-        public int DefenceDodge { get; set; }
+        [PacketIndex(21)] public int DefenceDodge { get; set; }
 
-        [PacketIndex(22)]
-        public int DistanceDefence { get; set; }
+        [PacketIndex(22)] public int DistanceDefence { get; set; }
 
-        [PacketIndex(23)]
-        public int DistanceDodge { get; set; }
+        [PacketIndex(23)] public int DistanceDodge { get; set; }
 
-        [PacketIndex(24)]
-        public int DodgeRate { get; set; }
+        [PacketIndex(24)] public int DodgeRate { get; set; }
 
-        [PacketIndex(25)]
-        public int ElementRate { get; set; }
+        [PacketIndex(25)] public int ElementRate { get; set; }
 
-        [PacketIndex(26)]
-        public int FireResistance { get; set; }
+        [PacketIndex(26)] public int FireResistance { get; set; }
 
-        [PacketIndex(27)]
-        public int WaterResistance { get; set; }
+        [PacketIndex(27)] public int WaterResistance { get; set; }
 
-        [PacketIndex(28)]
-        public int LightResistance { get; set; }
+        [PacketIndex(28)] public int LightResistance { get; set; }
 
-        [PacketIndex(29)]
-        public int DarkResistance { get; set; }
+        [PacketIndex(29)] public int DarkResistance { get; set; }
 
-        [PacketIndex(30)]
-        public int Hp { get; set; }
+        [PacketIndex(30)] public int Hp { get; set; }
 
-        [PacketIndex(31)]
-        public int HpMax { get; set; }
+        [PacketIndex(31)] public int HpMax { get; set; }
 
-        [PacketIndex(32)]
-        public int Mp { get; set; }
+        [PacketIndex(32)] public int Mp { get; set; }
 
-        [PacketIndex(33)]
-        public int MpMax { get; set; }
+        [PacketIndex(33)] public int MpMax { get; set; }
 
-        [PacketIndex(34)]
-        public int Unknown21 { get; set; }
+        [PacketIndex(34)] public int Unknown21 { get; set; }
 
-        [PacketIndex(35)]
-        public int Unknown22 { get; set; }
+        [PacketIndex(35)] public int Unknown22 { get; set; }
 
         /// <summary>
         ///     Spaces should be replaced by "^"
@@ -161,32 +147,25 @@ namespace NosCore.Packets.ServerPackets.Mates
 
         public class ScSpDetails : PacketBase
         {
-            [PacketIndex(0)]
-            public long ItemId { get; set; }
+            [PacketIndex(0)] public long ItemId { get; set; }
 
-            [PacketIndex(1)]
-            public byte AgilityPercentage { get; set; }
+            [PacketIndex(1)] public byte AgilityPercentage { get; set; }
         }
 
         public class ScEquipmentDetails : PacketBase
         {
-            [PacketIndex(0)]
-            public long ItemId { get; set; }
+            [PacketIndex(0)] public long ItemId { get; set; }
 
-            [PacketIndex(1)]
-            public long ItemRare { get; set; }
+            [PacketIndex(1)] public long ItemRare { get; set; }
 
-            [PacketIndex(2)]
-            public long ItemUpgrade { get; set; }
+            [PacketIndex(2)] public long ItemUpgrade { get; set; }
         }
 
         public class ScSkillDetails : PacketBase
         {
-            [PacketIndex(0)]
-            public long SkillId { get; set; }
+            [PacketIndex(0)] public long SkillId { get; set; }
 
-            [PacketIndex(1)]
-            public SpPartnerRank Rank { get; set; }
+            [PacketIndex(1)] public SpPartnerRank Rank { get; set; }
         }
     }
 }
