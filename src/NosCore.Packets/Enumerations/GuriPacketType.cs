@@ -16,6 +16,6 @@
         Title = 306,
         IceBreaker = 501,
         IceBreakerFrozen = 502,
-        EventInWaiting = 506,
+        EventInWaiting = 506
     }
 }
