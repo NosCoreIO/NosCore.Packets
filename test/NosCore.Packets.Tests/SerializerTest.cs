@@ -37,6 +37,7 @@ using NosCore.Packets.ServerPackets.Shop;
 using NosCore.Packets.ServerPackets.UI;
 using NosCore.Packets.ServerPackets.Visibility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NosCore.Packets.ServerPackets.CharacterSelectionScreen;
 
 namespace NosCore.Packets.Tests
 {
@@ -62,7 +63,8 @@ namespace NosCore.Packets.Tests
                 typeof(GidxPacket),
                 typeof(CInfoPacket),
                 typeof(RbrPacket),
-                typeof(MlobjlstPacket)
+                typeof(MlobjlstPacket),
+                typeof(SuccessPacket)
             });
 
         [TestMethod]
@@ -86,6 +88,15 @@ namespace NosCore.Packets.Tests
 
             var packet = Serializer.Serialize(testPacket);
             Assert.AreEqual("n_inv 0 0 0 0.0.0.-1.0", packet);
+        }
+
+        [TestMethod]
+        public void SerializePacketWithNoParameters()
+        {
+            var testPacket = new SuccessPacket();
+
+            var packet = Serializer.Serialize(testPacket);
+            Assert.AreEqual("success", packet);
         }
 
         [TestMethod]
