@@ -75,6 +75,6 @@ namespace NosCore.Packets.ServerPackets.CharacterSelectionScreen
         public int Design { get; set; }
 
         [PacketIndex(16)]
-        public byte Unknown3 { get; set; } //TODO to find
+        public byte Rename { get; set; }
     }
 }
