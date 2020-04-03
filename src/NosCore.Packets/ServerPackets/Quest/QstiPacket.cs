@@ -35,13 +35,10 @@ namespace NosCore.Packets.ServerPackets.Quest
         [PacketIndex(2)]
         public short InfoId { get; set; }
 
-        [PacketIndex(3)]
-        public short Unknown { get; set; }
+        [PacketListIndex(3, ListSeparator = ".")]
+        public List<QuestObjectiveSubPacket> QuestObjectiveSubPackets { get; set; }
 
-        [PacketIndex(4, Length = -4, SpecialSeparator = ".")]
-        public QuestObjectiveSubPacket[]? QuestObjectiveSubPackets { get; set; }
-
-        [PacketIndex(5)]
+        [PacketIndex(4)]
         public bool ShowDialog { get; set; }
     }
 }

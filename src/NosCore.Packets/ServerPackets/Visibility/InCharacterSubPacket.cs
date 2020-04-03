@@ -105,7 +105,7 @@ namespace NosCore.Packets.ServerPackets.Visibility
         [PacketIndex(25)]
         public byte FamilyLevel { get; set; }
 
-        [PacketIndex(26, SpecialSeparator = "|")]
+        [PacketListIndex(26, SpecialSeparator = "|")]
         public List<bool>? FamilyIcons { get; set; }
 
         [PacketIndex(27)]

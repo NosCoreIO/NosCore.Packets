@@ -28,7 +28,7 @@ namespace NosCore.Packets.ServerPackets.Shop
         [PacketIndex(0)]
         public long GroupId { get; set; }
 
-        [PacketIndex(1)]
+        [PacketListIndex(1)]
         public List<PidxSubPacket?>? SubPackets { get; set; }
     }
 }

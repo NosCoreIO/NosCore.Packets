@@ -30,7 +30,7 @@ namespace NosCore.Packets.ServerPackets.Warehouse
         [PacketIndex(0)]
         public byte WarehouseSize { get; set; }
 
-        [PacketIndex(1)]
+        [PacketListIndex(1)]
         public List<IvnSubPacket>? IvnSubPackets { get; set; }
     }
 }

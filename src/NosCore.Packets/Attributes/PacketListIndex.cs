@@ -17,15 +17,19 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System.Collections.Generic;
-using NosCore.Packets.Attributes;
+using System;
 
-namespace NosCore.Packets.ServerPackets.Player
+namespace NosCore.Packets.Attributes
 {
-    [PacketHeader("title")]
-    public class TitlePacket : PacketBase
+    [AttributeUsage(AttributeTargets.All)]
+    public class PacketListIndex : PacketIndexAttribute
     {
-        [PacketListIndex(0, IsOptional = true)]
-        public List<TitleSubPacket?>? Data { get; set; }
+        public PacketListIndex(int index) : base(index)
+        {
+            ListSeparator = " ";
+        }
+
+        public string ListSeparator { get; set; }
+        public sbyte Length { get; set; }
     }
 }

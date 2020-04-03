@@ -30,10 +30,10 @@ namespace NosCore.Packets.ServerPackets.Quest
         [PacketIndex(1)]
         public short CurrentCount { get; set; }
 
-        [PacketIndex(0)]
+        [PacketIndex(2)]
         public short MaxCount { get; set; }
 
-        [PacketIndex(0)]
+        [PacketIndex(3)]
         public bool IsFinished { get; set; }
     }
 }

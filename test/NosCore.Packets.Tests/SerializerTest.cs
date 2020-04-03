@@ -48,6 +48,7 @@ namespace NosCore.Packets.Tests
         static readonly ISerializer Serializer = new Serializer(
             new[]
             {
+                typeof(QstlistPacket),
                 typeof(SayItemPacket),
                 typeof(MloInfoPacket),
                 typeof(NInvPacket),
@@ -65,8 +66,7 @@ namespace NosCore.Packets.Tests
                 typeof(CInfoPacket),
                 typeof(RbrPacket),
                 typeof(MlobjlstPacket),
-                typeof(SuccessPacket),
-                typeof(QstlistPacket)
+                typeof(SuccessPacket)
             });
 
         [TestMethod]
@@ -103,7 +103,7 @@ namespace NosCore.Packets.Tests
                     ObjectiveCount = 5,
                     QuestId = 1500,
                     InfoId = 1500,
-                    QuestObjectiveSubPackets = new[]
+                    QuestObjectiveSubPackets = new List<QuestObjectiveSubPacket>()
                        {
                            new QuestObjectiveSubPacket
                            {
@@ -112,9 +112,6 @@ namespace NosCore.Packets.Tests
                                IsFinished = false,
                                MaxCount = 5
                            }
-                           , new QuestObjectiveSubPacket()
-                           , new QuestObjectiveSubPacket()
-                           , new QuestObjectiveSubPacket()
                            , new QuestObjectiveSubPacket()
                            , new QuestObjectiveSubPacket()
                        },

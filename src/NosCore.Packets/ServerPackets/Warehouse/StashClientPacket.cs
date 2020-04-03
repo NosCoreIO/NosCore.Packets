@@ -26,7 +26,7 @@ namespace NosCore.Packets.ServerPackets.Warehouse
     [PacketHeader("stash")]
     public class StashClientPacket : PacketBase
     {
-        [PacketIndex(0)]
+        [PacketListIndex(0)]
         public List<IvnSubPacket?>? IvnSubPackets { get; set; }
     }
 }

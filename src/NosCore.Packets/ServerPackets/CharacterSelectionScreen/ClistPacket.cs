@@ -56,7 +56,7 @@ namespace NosCore.Packets.ServerPackets.CharacterSelectionScreen
         [PacketIndex(9)]
         public byte HeroLevel { get; set; }
 
-        [PacketIndex(10)]
+        [PacketListIndex(10)]
         public List<short?>? Equipments { get; set; }//TODO define this
 
         [PacketIndex(11)]
@@ -68,7 +68,7 @@ namespace NosCore.Packets.ServerPackets.CharacterSelectionScreen
         [PacketIndex(13)]
         public byte QuestPart { get; set; }
 
-        [PacketIndex(14)]
+        [PacketListIndex(14)]
         public List<short?>? Pets { get; set; }
 
         [PacketIndex(15)]

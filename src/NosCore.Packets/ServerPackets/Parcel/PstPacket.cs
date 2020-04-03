@@ -56,7 +56,7 @@ namespace NosCore.Packets.ServerPackets.Parcel
         [PacketIndex(9)]
         public short Morph { get; set; }
 
-        [PacketIndex(10, IsOptional = true)]
+        [PacketListIndex(10, IsOptional = true)]
         public List<int>? BuffIds { get; set; }
     }
 }
