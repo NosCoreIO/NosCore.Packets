@@ -19,6 +19,7 @@
 
 using System.Collections.Generic;
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Quest
 {
@@ -35,10 +36,13 @@ namespace NosCore.Packets.ServerPackets.Quest
         [PacketIndex(2)]
         public short InfoId { get; set; }
 
-        [PacketListIndex(3, ListSeparator = ".")]
-        public List<QuestObjectiveSubPacket> QuestObjectiveSubPackets { get; set; }
+        [PacketIndex(3)]
+        public QuestType GoalType { get; set; }
 
-        [PacketIndex(4)]
+        [PacketListIndex(4, ListSeparator = ".")]
+        public List<QuestObjectiveSubPacket>? QuestObjectiveSubPackets { get; set; }
+
+        [PacketIndex(5)]
         public bool ShowDialog { get; set; }
     }
 }

@@ -25,15 +25,12 @@ namespace NosCore.Packets.ServerPackets.Quest
     public class QuestObjectiveSubPacket : PacketBase
     {
         [PacketIndex(0)]
-        public QuestType GoalType { get; set; }
-
-        [PacketIndex(1)]
         public short CurrentCount { get; set; }
 
-        [PacketIndex(2)]
+        [PacketIndex(1)]
         public short MaxCount { get; set; }
 
-        [PacketIndex(3)]
-        public bool IsFinished { get; set; }
+        [PacketIndex(2, IsOptional = true)]
+        public bool? IsFinished { get; set; }
     }
 }
