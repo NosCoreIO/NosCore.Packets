@@ -100,22 +100,24 @@ namespace NosCore.Packets.Tests
                 QstiPackets = new List<QstiPacket>
                 {
                     new QstiPacket {
-                    ObjectiveCount = 5,
-                    QuestId = 1500,
-                    InfoId = 1500,
-                    QuestObjectiveSubPackets = new List<QuestObjectiveSubPacket>()
-                       {
-                           new QuestObjectiveSubPacket
+                        ObjectiveCount = 5,
+                        QuestId = 1500,
+                        InfoId = 1500,
+                        GoalType = QuestType.Hunt,
+                        QuestObjectiveSubPackets = new List<QuestObjectiveSubPacket>()
                            {
-                               GoalType = QuestType.Hunt,
-                               CurrentCount = 0,
-                               IsFinished = false,
-                               MaxCount = 5
-                           }
-                           , new QuestObjectiveSubPacket()
-                           , new QuestObjectiveSubPacket()
-                       },
-                    ShowDialog = true
+                               new QuestObjectiveSubPacket
+                               {
+                                   CurrentCount = 0,
+                                   IsFinished = false,
+                                   MaxCount = 5
+                               }
+                               , new QuestObjectiveSubPacket()
+                               , new QuestObjectiveSubPacket()
+                               , new QuestObjectiveSubPacket()
+                               , new QuestObjectiveSubPacket()
+                           },
+                        ShowDialog = true
                     }
                 }
             };
