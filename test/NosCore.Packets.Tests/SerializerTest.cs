@@ -66,7 +66,8 @@ namespace NosCore.Packets.Tests
                 typeof(CInfoPacket),
                 typeof(RbrPacket),
                 typeof(MlobjlstPacket),
-                typeof(SuccessPacket)
+                typeof(SuccessPacket),
+                typeof(TargetOffPacket),
             });
 
         [TestMethod]
@@ -90,6 +91,22 @@ namespace NosCore.Packets.Tests
 
             var packet = Serializer.Serialize(testPacket);
             Assert.AreEqual("n_inv 0 0 0 0.0.0.-1.0", packet);
+        }
+
+
+        [TestMethod]
+        public void SerializeInheritedPacket()
+        {
+            var testPacket = new TargetOffPacket
+            {
+                QuestId = 1997,
+                TargetX = 57,
+                TargetY = 149,
+                TargetMap = 1
+            };
+
+            var packet = Serializer.Serialize(testPacket);
+            Assert.AreEqual("targetoff 57 149 1 1997", packet);
         }
 
         [TestMethod]
