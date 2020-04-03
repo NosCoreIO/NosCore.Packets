@@ -50,7 +50,7 @@ namespace NosCore.Packets.ClientPackets.Bazaar
         [PacketIndex(7)]
         public byte Unknown1 { get; set; }
 
-        [PacketIndex(8)]
+        [PacketListIndex(8)]
         public List<short>? ItemVNumFilter { get; set; }
     }
 }

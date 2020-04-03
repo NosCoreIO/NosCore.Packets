@@ -306,7 +306,7 @@ namespace NosCore.Packets
                     break;
                 //handle list
                 case var t when t.GetInterface("System.Collections.ICollection") != null:
-                    specificTypeExpression = ListSerializer(injectedPacket, specificTypeExpression, indexAttr, t, " ",
+                    specificTypeExpression = ListSerializer(injectedPacket, specificTypeExpression, indexAttr, t, indexAttr is PacketListIndex ind ? ind.ListSeparator : " ",
                         Expression.Constant(typeof(IPacket).IsAssignableFrom(t.GenericTypeArguments.Any() ? t.GenericTypeArguments[0] : t.GetElementType())
                             ? indexAttr.SpecialSeparator ?? "."
                             : indexAttr.SpecialSeparator ?? " "));

@@ -29,7 +29,7 @@ namespace NosCore.Packets.ClientPackets.Shops
         [PacketIndex(0)]
         public CreateShopPacketType Type { get; set; }
 
-        [PacketIndex(1, IsOptional = true, Length = 20)]
+        [PacketListIndex(1, IsOptional = true, Length = 20)]
         public List<MShopItemSubPacket?>? ItemList { get; set; }
 
         [PacketIndex(2, IsOptional = true)]

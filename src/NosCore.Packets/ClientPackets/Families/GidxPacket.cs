@@ -44,7 +44,7 @@ namespace NosCore.Packets.ClientPackets.Families
         [PacketIndex(5)]
         public byte FamilyLevel { get; set; }
 
-        [PacketIndex(6, SpecialSeparator = "|")]
+        [PacketListIndex(6, SpecialSeparator = "|")]
         public List<bool>? FamilyIcons { get; set; }
     }
 }

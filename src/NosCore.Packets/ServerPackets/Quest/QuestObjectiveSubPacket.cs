@@ -17,15 +17,20 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System.Collections.Generic;
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 
-namespace NosCore.Packets.ServerPackets.Player
+namespace NosCore.Packets.ServerPackets.Quest
 {
-    [PacketHeader("title")]
-    public class TitlePacket : PacketBase
+    public class QuestObjectiveSubPacket : PacketBase
     {
-        [PacketListIndex(0, IsOptional = true)]
-        public List<TitleSubPacket?>? Data { get; set; }
+        [PacketIndex(0)]
+        public short CurrentCount { get; set; }
+
+        [PacketIndex(1)]
+        public short MaxCount { get; set; }
+
+        [PacketIndex(2, IsOptional = true)]
+        public bool? IsFinished { get; set; }
     }
 }

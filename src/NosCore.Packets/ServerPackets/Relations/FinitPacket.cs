@@ -25,7 +25,7 @@ namespace NosCore.Packets.ServerPackets.Relations
     [PacketHeader("finit")]
     public class FinitPacket : PacketBase
     {
-        [PacketIndex(0, SpecialSeparator = "|")]
+        [PacketListIndex(0, SpecialSeparator = "|")]
         public List<FinitSubPacket?>? SubPackets { get; set; }
     }
 }

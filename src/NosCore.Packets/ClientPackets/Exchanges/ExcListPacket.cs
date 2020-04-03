@@ -34,7 +34,7 @@ namespace NosCore.Packets.ClientPackets.Exchanges
         [Range(0, long.MaxValue)]
         public long BankGold { get; set; }
 
-        [PacketIndex(2, SpecialSeparator = " ")]
+        [PacketListIndex(2, SpecialSeparator = " ")]
         public List<ExcListSubPacket?>? SubPackets { get; set; }
     }
 }

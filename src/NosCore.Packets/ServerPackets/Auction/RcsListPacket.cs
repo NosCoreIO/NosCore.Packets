@@ -30,7 +30,7 @@ namespace NosCore.Packets.ServerPackets.Auction
         [PacketIndex(0)]
         public int PageNumber { get; set; }
 
-        [PacketIndex(1, SpecialSeparator = "|")]
+        [PacketListIndex(1, SpecialSeparator = "|")]
         public List<RcsListElementPacket?>? Items { get; set; }
         public class RcsListElementPacket : PacketBase
         {

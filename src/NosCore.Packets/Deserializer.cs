@@ -310,12 +310,12 @@ namespace NosCore.Packets
         private object? DeserializeList(Type subType, PacketIndexAttribute packetIndexAttribute, Match[] matches, ref int currentIndex, bool isMaxIndex)
         {
             int newIndex = currentIndex;
-            var length = packetIndexAttribute.Length;
+            var length = packetIndexAttribute is PacketListIndex listIndex ? listIndex.Length : 0;
             string[]? splited = null;
 
-            if (length == -1)
+            if (length < 0)
             {
-                length = sbyte.Parse(matches[currentIndex - 1].Value);
+                length = sbyte.Parse(matches[currentIndex + length].Value);
             }
             else
             {
