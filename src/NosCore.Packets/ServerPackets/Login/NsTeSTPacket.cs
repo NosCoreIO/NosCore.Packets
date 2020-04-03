@@ -36,7 +36,7 @@ namespace NosCore.Packets.ServerPackets.Login
         public int SessionId { get; set; }
 
 
-        [PacketIndex(3)]
+        [PacketListIndex(3)]
         public List<NsTeStSubPacket?>? SubPacket { get; set; }
     }
 }
