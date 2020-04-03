@@ -20,12 +20,13 @@
 using System.Collections.Generic;
 using NosCore.Packets.Attributes;
 
-namespace NosCore.Packets.ServerPackets.Player
+namespace NosCore.Packets.ServerPackets.Quest
 {
-    [PacketHeader("title")]
-    public class TitlePacket : PacketBase
+
+    [PacketHeader("qstlist")]
+    public class QstlistPacket : PacketBase
     {
-        [PacketListIndex(0, IsOptional = true)]
-        public List<TitleSubPacket?>? Data { get; set; }
+        [PacketListIndex(0, RemoveHeader = true)]
+        public List<QstiPacket> QstiPackets { get; set; }
     }
 }

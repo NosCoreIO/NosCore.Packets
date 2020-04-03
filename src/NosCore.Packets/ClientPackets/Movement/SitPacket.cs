@@ -28,7 +28,7 @@ namespace NosCore.Packets.ClientPackets.Movement
         [PacketIndex(0)]
         public byte Amount { get; set; }
 
-        [PacketIndex(1, Length = -1)]
+        [PacketListIndex(1, Length = -1)]
         public List<SitSubPacket?>? Users { get; set; }
     }
 }

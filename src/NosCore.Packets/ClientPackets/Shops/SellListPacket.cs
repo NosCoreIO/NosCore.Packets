@@ -28,7 +28,7 @@ namespace NosCore.Packets.ClientPackets.Shops
         [PacketIndex(0)]
         public long ValueSold { get; set; }
 
-        [PacketIndex(1)]
+        [PacketListIndex(1)]
         public List<SellListSubPacket?>? SellListSubPacket { get; set; }
     }
 }

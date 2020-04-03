@@ -28,7 +28,7 @@ namespace NosCore.Packets.ClientPackets.Battle
         [PacketIndex(0)]
         public byte TargetsAmount { get; set; }
 
-        [PacketIndex(1)]
+        [PacketListIndex(1)]
         public List<MultiTargetListSubPacket>? Targets { get; set; }
 
     }

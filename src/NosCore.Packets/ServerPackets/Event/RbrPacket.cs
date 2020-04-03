@@ -40,13 +40,13 @@ namespace NosCore.Packets.ServerPackets.Event
         [PacketIndex(4)]
         public short RequiredSeeds { get; set; }
 
-        [PacketIndex(5)]
+        [PacketListIndex(5)]
         public List<RbrSubPacketItem?>? DrawRewards { get; set; } //Length = 5
 
-        [PacketIndex(6)]
+        [PacketListIndex(6)]
         public List<RbrSubPacketItem?>? SpecialRewards { get; set; } //Length = 2
 
-        [PacketIndex(7)]
+        [PacketListIndex(7)]
         public List<RbrSubPacketItem?>? BonusRewards { get; set; } //Length = 3
 
         [PacketIndex(8, SpecialSeparator = ".")]
