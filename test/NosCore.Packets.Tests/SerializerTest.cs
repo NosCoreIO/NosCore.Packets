@@ -38,6 +38,7 @@ using NosCore.Packets.ServerPackets.UI;
 using NosCore.Packets.ServerPackets.Visibility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NosCore.Packets.ServerPackets.CharacterSelectionScreen;
+using NosCore.Packets.ServerPackets.Quest;
 
 namespace NosCore.Packets.Tests
 {
@@ -64,7 +65,8 @@ namespace NosCore.Packets.Tests
                 typeof(CInfoPacket),
                 typeof(RbrPacket),
                 typeof(MlobjlstPacket),
-                typeof(SuccessPacket)
+                typeof(SuccessPacket),
+                typeof(QstlistPacket)
             });
 
         [TestMethod]
@@ -88,6 +90,41 @@ namespace NosCore.Packets.Tests
 
             var packet = Serializer.Serialize(testPacket);
             Assert.AreEqual("n_inv 0 0 0 0.0.0.-1.0", packet);
+        }
+
+        [TestMethod]
+        public void SerializeRecursiveSubPackets()
+        {
+            var testPacket = new QstlistPacket()
+            {
+                QstiPackets = new List<QstiPacket>
+                {
+                    new QstiPacket {
+                    ObjectiveCount = 5,
+                    QuestId = 1500,
+                    InfoId = 1500,
+                    QuestObjectiveSubPackets = new[]
+                       {
+                           new QuestObjectiveSubPacket
+                           {
+                               GoalType = QuestType.Hunt,
+                               CurrentCount = 0,
+                               IsFinished = false,
+                               MaxCount = 5
+                           }
+                           , new QuestObjectiveSubPacket()
+                           , new QuestObjectiveSubPacket()
+                           , new QuestObjectiveSubPacket()
+                           , new QuestObjectiveSubPacket()
+                           , new QuestObjectiveSubPacket()
+                       },
+                    ShowDialog = true
+                    }
+                }
+            };
+
+            var packet = Serializer.Serialize(testPacket);
+            Assert.AreEqual("qstlist 5.1500.1500.1.0.5.0.0.0.0.0.0.0.0.0.1", packet);
         }
 
         [TestMethod]
@@ -237,15 +274,15 @@ namespace NosCore.Packets.Tests
         {
             var dlgTest = new SayItemPacket
             {
-                 Message = "<SPEAKER>[Username]:{item}",
-                 OratorSlot = 17,
-                 EquipmentInfo = null,
-                 VisualId = 1,
-                 VisualType = VisualType.Player,
-                 IconInfo = new IconInfoPacket
-                 {
-                     IconId = 1012
-                 }
+                Message = "<SPEAKER>[Username]:{item}",
+                OratorSlot = 17,
+                EquipmentInfo = null,
+                VisualId = 1,
+                VisualType = VisualType.Player,
+                IconInfo = new IconInfoPacket
+                {
+                    IconId = 1012
+                }
             };
 
             var packet = Serializer.Serialize(dlgTest);
