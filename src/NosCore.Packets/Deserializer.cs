@@ -313,9 +313,9 @@ namespace NosCore.Packets
             var length = packetIndexAttribute.Length;
             string[]? splited = null;
 
-            if (length == -1)
+            if (length < 0)
             {
-                length = sbyte.Parse(matches[currentIndex - 1].Value);
+                length = sbyte.Parse(matches[currentIndex + length].Value);
             }
             else
             {
