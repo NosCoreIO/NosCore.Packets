@@ -21,6 +21,7 @@ namespace NosCore.Packets.Enumerations
 {
     public enum QuestActionType : byte
     {
+        Dialog = 0,
         Achieve = 1,
         GiveUp = 3,
         Validate = 4
