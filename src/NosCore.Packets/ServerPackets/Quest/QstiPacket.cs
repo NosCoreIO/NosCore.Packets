@@ -17,9 +17,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System.Collections.Generic;
 using NosCore.Packets.Attributes;
-using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Quest
 {
@@ -27,22 +25,7 @@ namespace NosCore.Packets.ServerPackets.Quest
     [PacketHeader("qsti")]
     public class QstiPacket : PacketBase
     {
-        [PacketIndex(0)]
-        public byte ObjectiveCount { get; set; }
-
-        [PacketIndex(1)]
-        public short QuestId { get; set; }
-
-        [PacketIndex(2)]
-        public short InfoId { get; set; }
-
-        [PacketIndex(3)]
-        public QuestType GoalType { get; set; }
-
-        [PacketListIndex(4, ListSeparator = ".")]
-        public List<QuestObjectiveSubPacket>? QuestObjectiveSubPackets { get; set; }
-
-        [PacketIndex(5)]
-        public bool ShowDialog { get; set; }
+        [PacketIndex(0, SpecialSeparator = ".")]
+        public QuestSubPacket QuestSubPacket { get; set; }
     }
 }
