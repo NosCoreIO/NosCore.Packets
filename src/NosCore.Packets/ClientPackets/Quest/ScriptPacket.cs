@@ -26,7 +26,7 @@ namespace NosCore.Packets.ClientPackets.Quest
     public class ScriptClientPacket : PacketBase
     {
         [PacketIndex(0)]
-        public ScriptType Type { get; set; }
+        public QuestActionType Type { get; set; }
 
         [PacketIndex(1, IsOptional = true)]
         public short? FirstArgument { get; set; }
