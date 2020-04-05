@@ -19,7 +19,7 @@
 
 namespace NosCore.Packets.Enumerations
 {
-    public enum KeyBind : byte
+    public enum KeyBind : short
     {
 		SameKey = -1,
 		CtrlA	= 0
