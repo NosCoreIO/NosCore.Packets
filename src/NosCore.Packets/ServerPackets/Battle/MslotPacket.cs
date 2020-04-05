@@ -26,7 +26,7 @@ namespace NosCore.Packets.ServerPackets.Battle
     public class MslotPacket : PacketBase
     {
 		[PacketIndex(0)]
-		public byte SkillCastId { get; set; }
+		public long SkillCastId { get; set; }
 
 		[PacketIndex(1)]
 		public KeyBind KeyId { get; set; }
