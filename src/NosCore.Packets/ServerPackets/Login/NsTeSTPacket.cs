@@ -19,6 +19,7 @@
 
 using System.Collections.Generic;
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Login
 {
@@ -26,17 +27,20 @@ namespace NosCore.Packets.ServerPackets.Login
     public class NsTestPacket : PacketBase
     {
         [PacketIndex(0)]
+        public RegionType RegionType { get; set; }
+
+        [PacketIndex(1)]
         public string? AccountName { get; set; }
 
         //this seems to be always 2 in case of new auth and null else
-        [PacketIndex(1, IsOptional = true)]
+        [PacketIndex(2, IsOptional = true)]
         public int? Unknown { get; set; }
 
-        [PacketIndex(2)]
+        [PacketIndex(3)]
         public int SessionId { get; set; }
 
 
-        [PacketListIndex(3)]
+        [PacketListIndex(4)]
         public List<NsTeStSubPacket?>? SubPacket { get; set; }
     }
 }
