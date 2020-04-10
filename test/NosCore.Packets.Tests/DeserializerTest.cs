@@ -313,7 +313,7 @@ namespace NosCore.Packets.Tests
         public void DeserializeWithDoubleSpace()
         {
             var packet = (NoS0577Packet)Deserializer.Deserialize(
-                "NoS0577 37633936363633662D633332352D346461612D383933612D373031346639653063646463  c437f3f4-06cb-405d-b3c8-73e5c7772c80 0034F3E80.9.3.3123 0 BC4AE02D9759A1C83532D7B5C861D2D2"
+                "NoS0577 37633936363633662D633332352D346461612D383933612D373031346639653063646463  c437f3f4-06cb-405d-b3c8-73e5c7772c80 0034F3E8 00.9.3.3123 0 BC4AE02D9759A1C83532D7B5C861D2D2"
             );
             Assert.IsTrue(packet.Header == "NoS0577");
             Assert.IsTrue(packet.AuthToken == "37633936363633662D633332352D346461612D383933612D373031346639653063646463");
@@ -322,6 +322,7 @@ namespace NosCore.Packets.Tests
             Assert.IsTrue(packet.ClientVersion!.Major == 0);
             Assert.IsTrue(packet.ClientVersion.Minor == 9);
             Assert.IsTrue(packet.ClientVersion.Fix == 3);
+            Assert.IsTrue(packet.RegionType == RegionType.EN);
             Assert.IsTrue(packet.ClientVersion.SubFix == 3123);
             Assert.IsTrue(packet.UnknownConstant == 0);
             Assert.IsTrue(packet.Md5String == "BC4AE02D9759A1C83532D7B5C861D2D2");
@@ -331,20 +332,21 @@ namespace NosCore.Packets.Tests
         public void DeserializeWithGuid()
         {
             var packet = (NoS0575Packet)Deserializer.Deserialize(
-                "NoS0575 3808647 admin EE26B0DD4AF7E749AA1A8EE3C10AE9923F618980772E473F8819A5D4940E0DB27AC185F8A0E1D5F84F88BC887FD67B143732C304CC5FA9AD8E6F57F50028A8FF 3e241e8e-b1cd-49c3-a455-4d253a75f6e6 00564F36\v0.9.3.3097 0 06A35F0058610A5B3FA13FC2CB04E795"
+                "NoS0575 1468578 admin EE26B0DD4AF7E749AA1A8EE3C10AE9923F618980772E473F8819A5D4940E0DB27AC185F8A0E1D5F84F88BC887FD67B143732C304CC5FA9AD8E6F57F50028A8FF c437f3f4-06cb-405d-b3c8-73e5c7772c80 006548C6 00.9.3.3125 0 458E0876581FA9A6EFE00A28AA8E75F2"
                 );
             Assert.IsTrue(packet.Header == "NoS0575");
-            Assert.IsTrue(packet.SessionId == 3808647);
+            Assert.IsTrue(packet.SessionId == 1468578);
             Assert.IsTrue(packet.Username == "admin");
             Assert.IsTrue(packet.Password == "EE26B0DD4AF7E749AA1A8EE3C10AE9923F618980772E473F8819A5D4940E0DB27AC185F8A0E1D5F84F88BC887FD67B143732C304CC5FA9AD8E6F57F50028A8FF");
-            Assert.IsTrue(packet.ClientId == Guid.Parse("3e241e8e-b1cd-49c3-a455-4d253a75f6e6"));
-            Assert.IsTrue(packet.UnknownYet == "00564F36");
+            Assert.IsTrue(packet.ClientId == Guid.Parse("c437f3f4-06cb-405d-b3c8-73e5c7772c80"));
+            Assert.IsTrue(packet.UnknownYet == "006548C6");
+            Assert.IsTrue(packet.Unknown2 == 0);
             Assert.IsTrue(packet.ClientVersion!.Major == 0);
             Assert.IsTrue(packet.ClientVersion.Minor == 9);
             Assert.IsTrue(packet.ClientVersion.Fix == 3);
-            Assert.IsTrue(packet.ClientVersion.SubFix == 3097);
-            Assert.IsTrue(packet.UnknownConstant == 0);
-            Assert.IsTrue(packet.Md5String == "06A35F0058610A5B3FA13FC2CB04E795");
+            Assert.IsTrue(packet.ClientVersion.SubFix == 3125);
+            Assert.IsTrue(packet.RegionType == RegionType.EN);
+            Assert.IsTrue(packet.Md5String == "458E0876581FA9A6EFE00A28AA8E75F2");
         }
     }
 }
