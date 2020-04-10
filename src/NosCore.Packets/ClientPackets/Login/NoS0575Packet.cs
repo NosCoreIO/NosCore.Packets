@@ -20,6 +20,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Login
 {
@@ -43,20 +44,21 @@ namespace NosCore.Packets.ClientPackets.Login
         /// Would be better if we could provide some kind of HEX serialization instead of using string
         /// it may be the update version number
         /// </summary>
-        [PacketIndex(3)]
+        [PacketIndex(4)]
         public string? UnknownYet { get; set; }
 
-        [PacketIndex(4)]
+        [PacketIndex(5, SpecialSeparator = "")]
+        public RegionType RegionType { get; set; }
+
+        [PacketIndex(6)]
         public ClientVersionSubPacket? ClientVersion { get; set; }
 
-        [PacketIndex(5)]
-        [Range(0, 0)]
-        public byte UnknownConstant { get; set; }
-
+        [PacketIndex(7)]
+        public byte Unknown2 { get; set; }
         /// <summary>
         /// The MD5 string is a MD5 hashing : MD5_STRING(MD5_FILE(NostaleXClient.exe) + MD5_FILE(NostaleClient.exe))
         /// </summary>
-        [PacketIndex(6)]
+        [PacketIndex(8)]
         public string? Md5String { get; set; }
     }
 }
