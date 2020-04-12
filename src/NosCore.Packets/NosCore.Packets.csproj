@@ -19,8 +19,6 @@
     <RepositoryType>git</RepositoryType>
     <Company>NosCore</Company>
     <PackageIcon>icon.png</PackageIcon>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
