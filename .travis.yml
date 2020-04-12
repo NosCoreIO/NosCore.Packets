@@ -41,7 +41,7 @@ jobs:
       script:
         - dotnet restore
         - dotnet build -c Release
-        - dotnet pack -c Release -o /tmp/nupkgs -v m -Symbols -SymbolPackageFormat snupkg
+        - dotnet pack -c Release -o /tmp/nupkgs -v m -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg
       deploy:
         provider: script
         script: dotnet nuget push /tmp/nupkgs/NosCore.Packets.${TRAVIS_TAG}.nupkg -k ${NUGET_API_KEY} -s https://api.nuget.org/v3/index.json
