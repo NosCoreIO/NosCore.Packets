@@ -26,10 +26,9 @@ namespace NosCore.Packets.Attributes
     {
         public PacketListIndex(int index) : base(index)
         {
-            ListSeparator = " ";
         }
 
-        public string ListSeparator { get; set; }
+        public string? ListSeparator { get; set; }
         public sbyte Length { get; set; }
     }
 }
