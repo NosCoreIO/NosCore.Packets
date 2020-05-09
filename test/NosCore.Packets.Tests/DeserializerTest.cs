@@ -133,7 +133,7 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
-        public void DeserializeSpecialSeparator()
+        public void DeserializeListSeparator()
         {
             var packet = (GidxPacket)Deserializer.Deserialize("gidx 0 1 2 familyname customrank 3 1|1|1|0");
             Assert.IsTrue(packet.VisualType == VisualType.Map);
