@@ -48,6 +48,7 @@ namespace NosCore.Packets.Tests
         static readonly ISerializer Serializer = new Serializer(
             new[]
             {
+                typeof(ClistPacket),
                 typeof(QstlistPacket),
                 typeof(QstiPacket),
                 typeof(SayItemPacket),
@@ -68,7 +69,7 @@ namespace NosCore.Packets.Tests
                 typeof(RbrPacket),
                 typeof(MlobjlstPacket),
                 typeof(SuccessPacket),
-                typeof(TargetOffPacket),
+                typeof(TargetOffPacket)
             });
 
         [TestMethod]
@@ -92,6 +93,21 @@ namespace NosCore.Packets.Tests
 
             var packet = Serializer.Serialize(testPacket);
             Assert.AreEqual("n_inv 0 0 0 0.0.0.-1.0", packet);
+        }
+
+        [TestMethod]
+        public void SerializePacketWithNonPacketListNonSplitted()
+        {
+            var testPacket = new ClistPacket
+            {
+                Name = "test",
+                Equipments = new List<short?>() { null, null, null, null, null, null, null, null, null, null },
+                Pets = new List<short?>() { null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null },
+                Rename = true
+            };
+
+            var packet = Serializer.Serialize(testPacket);
+            Assert.AreEqual("clist 0 test 0 0 0 0 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0  0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 1", packet);
         }
 
 
@@ -595,7 +611,7 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void GenerateGidxPacketIsNotCorrupted()
         {
-            var characterTest = new GidxPacket
+            var characterTest = new GidxPacket()
             {
                 VisualType = VisualType.Player,
                 VisualId = 1,

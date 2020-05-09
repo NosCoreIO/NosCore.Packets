@@ -130,8 +130,8 @@ namespace NosCore.Packets
             };
 
             packetDeserializerDictionary.Add(header ?? typeof(T).Name, creator);
-            var aliases = typeof(T).GetCustomAttributes<PacketHeaderAliasAttribute>().Select(s=>s.Identification);
-            foreach(var alias in aliases)
+            var aliases = typeof(T).GetCustomAttributes<PacketHeaderAliasAttribute>().Select(s => s.Identification);
+            foreach (var alias in aliases)
             {
                 packetDeserializerDictionary.Add(alias ?? typeof(T).Name, creator);
             }
@@ -256,7 +256,7 @@ namespace NosCore.Packets
                         if (packetBasePropertyInfo.Key.Item1.IsEnum && !Enum.IsDefined(packetBasePropertyInfo.Key.Item1, value))
                         {
                             deg.ValidationResult = new ValidationResult("Invalid Enum value",
-                                new[] {packetBasePropertyInfo.Key.Item3});
+                                new[] { packetBasePropertyInfo.Key.Item3 });
                         }
 
                         if (deg.ValidationResult?.ErrorMessage.Length > 0)
@@ -299,7 +299,7 @@ namespace NosCore.Packets
                     return Deserialize(matches[currentIndex++].ToString());
                 case var prop when typeof(IPacket).IsAssignableFrom(prop):
                     var dic = packetDeserializerDictionary[prop.Name];
-                    var packet = DeserializeIPacket(dic, matches[currentIndex].ToString().Replace(packetBasePropertyInfo.Item2.SpecialSeparator ?? ".", " "), false, false);
+                    var packet = DeserializeIPacket(dic, matches[currentIndex].ToString().Replace((packetBasePropertyInfo.Item2 is PacketListIndex ind ? ind.ListSeparator : packetBasePropertyInfo.Item2.SpecialSeparator) ?? ".", " "), false, false);
                     currentIndex++;
                     return packet;
                 default:
@@ -319,14 +319,15 @@ namespace NosCore.Packets
             }
             else
             {
-                if (isMaxIndex && string.IsNullOrEmpty(packetIndexAttribute.SpecialSeparator))
+                var separator = packetIndexAttribute is PacketListIndex ind ? ind.ListSeparator : packetIndexAttribute.SpecialSeparator;
+                if (isMaxIndex && string.IsNullOrEmpty(separator))
                 {
                     length = (sbyte)(matches.Length - currentIndex);
                 }
-              
-                if (!string.IsNullOrEmpty(packetIndexAttribute.SpecialSeparator))
+
+                if (!string.IsNullOrEmpty(separator))
                 {
-                    splited = matches[currentIndex].Value.Split(new string[] { packetIndexAttribute.SpecialSeparator }, StringSplitOptions.None);
+                    splited = matches[currentIndex].Value.Split(new string[] { separator }, StringSplitOptions.None);
                     length = (sbyte)splited.Length;
                 }
             }

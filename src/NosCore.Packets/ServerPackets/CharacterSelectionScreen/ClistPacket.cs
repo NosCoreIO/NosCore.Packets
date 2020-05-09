@@ -56,25 +56,28 @@ namespace NosCore.Packets.ServerPackets.CharacterSelectionScreen
         [PacketIndex(9)]
         public byte HeroLevel { get; set; }
 
-        [PacketListIndex(10, SpecialSeparator = ".")]
+        [PacketListIndex(10)]
         public List<short?>? Equipments { get; set; }//TODO define this
 
         [PacketIndex(11)]
         public byte JobLevel { get; set; }
 
-        [PacketIndex(12)]
-        public byte QuestCompletion { get; set; }
+        [PacketIndex(12)] 
+        public string? ExtraSpace { get; } = "";
 
         [PacketIndex(13)]
+        public byte QuestCompletion { get; set; }
+
+        [PacketIndex(14)]
         public byte QuestPart { get; set; }
 
-        [PacketListIndex(14, SpecialSeparator = ".")]
+        [PacketListIndex(15)]
         public List<short?>? Pets { get; set; }
 
-        [PacketIndex(15)]
+        [PacketIndex(16)]
         public int Design { get; set; }
 
-        [PacketIndex(16)]
+        [PacketIndex(17)]
         public bool Rename { get; set; }
     }
 }
