@@ -63,7 +63,7 @@ namespace NosCore.Packets.ServerPackets.CharacterSelectionScreen
         public byte JobLevel { get; set; }
 
         [PacketIndex(12)] 
-        public string? ExtraSpace { get; } = "";
+        public string? ExtraSpace { get; set; } = string.Empty;
 
         [PacketIndex(13)]
         public byte QuestCompletion { get; set; }
