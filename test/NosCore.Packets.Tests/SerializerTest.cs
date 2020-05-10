@@ -611,7 +611,7 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void GenerateGidxPacketIsNotCorrupted()
         {
-            var characterTest = new GidxPacket()
+            var characterTest = new GidxPacket
             {
                 VisualType = VisualType.Player,
                 VisualId = 1,
