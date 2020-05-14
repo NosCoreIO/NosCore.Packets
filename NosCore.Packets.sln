@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NosCore.Packets.Tests", "te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NosCore.Packets.Benchmark", "test\NosCore.Packets.Benchmark\NosCore.Packets.Benchmark.csproj", "{1906792E-B5D5-4303-8962-8A6788D865BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NosCore.Packets.Documentator", "src\NosCore.Packets.Documentator\NosCore.Packets.Documentator.csproj", "{3D862BDB-4393-40ED-9264-CB5541831667}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{1906792E-B5D5-4303-8962-8A6788D865BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1906792E-B5D5-4303-8962-8A6788D865BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1906792E-B5D5-4303-8962-8A6788D865BD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3D862BDB-4393-40ED-9264-CB5541831667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3D862BDB-4393-40ED-9264-CB5541831667}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3D862BDB-4393-40ED-9264-CB5541831667}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3D862BDB-4393-40ED-9264-CB5541831667}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
