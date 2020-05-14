@@ -41,39 +41,39 @@ namespace NosCore.Packets.Tests
                 .Where(s => !s.IsAbstract)
                 .Where(s => s.Namespace?.Contains(name) ?? true)
                 .GroupBy(s => s.Namespace!.Substring(s.Namespace.LastIndexOf('.') + 1))
-                .OrderByDescending(s => s.Key);
+                .OrderBy(s => s.Key);
         }
 
         private static IEnumerable<Type> GetPackets(IEnumerable<Type> types)
         {
-            return types.Where(s => s.GetCustomAttribute<PacketHeaderAttribute>() != null).OrderBy(s => s.GetCustomAttribute<PacketHeaderAttribute>()!.Identification.ToLower());
+            return types.Where(s => s.GetCustomAttribute<PacketHeaderAttribute>() != null).OrderBy(s => s.GetCustomAttribute<PacketHeaderAttribute>()!.Identification.ToLowerInvariant());
         }
 
         [TestMethod]
         public void PacketsDocumentation()
         {
             var builder = new StringBuilder();
-            builder.Append("# NosCore.Packets's Documentation\n");
-            builder.Append("## ClientPackets :\n");
+            builder.AppendLine("# NosCore.Packets's Documentation");
+            builder.AppendLine("## ClientPackets :");
             foreach (IGrouping<string, Type> packetGroup in GetPacketsWithinNamespace("ClientPackets"))
             {
-                builder.Append("\n");
-                builder.Append($"### {packetGroup.Key}\n");
+                builder.AppendLine();
+                builder.AppendLine($"### {packetGroup.Key}");
                 foreach (Type packet in GetPackets(packetGroup))
                 {
-                    builder.Append($"- [{packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification}](src/NosCore.Packets/ClientPackets/{packetGroup.Key}/{packet}.cs)\n");
+                    builder.AppendLine($"- [{packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification}](src/NosCore.Packets/ClientPackets/{packetGroup.Key}/{packet}.cs)");
                 }
             }
 
-            builder.Append("\n");
-            builder.Append("## ServerPackets :\n");
+            builder.AppendLine();
+            builder.AppendLine("## ServerPackets :");
             foreach (IGrouping<string, Type> packetGroup in GetPacketsWithinNamespace("ServerPackets"))
             {
-                builder.Append($"\n");
-                builder.Append($"### {packetGroup.Key}\n");
+                builder.AppendLine();
+                builder.AppendLine($"### {packetGroup.Key}");
                 foreach (Type packet in GetPackets(packetGroup))
                 {
-                    builder.Append($"- [{packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification}](src/NosCore.Packets/ServerPackets/{packetGroup.Key}/{packet}.cs)\n");
+                    builder.AppendLine($"- [{packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification}](src/NosCore.Packets/ServerPackets/{packetGroup.Key}/{packet}.cs)");
                 }
             }
 
