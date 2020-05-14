@@ -39,6 +39,7 @@ using NosCore.Packets.ServerPackets.Visibility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NosCore.Packets.ServerPackets.CharacterSelectionScreen;
 using NosCore.Packets.ServerPackets.Quest;
+using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.Tests
 {

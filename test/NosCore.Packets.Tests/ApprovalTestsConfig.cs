@@ -17,14 +17,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace NosCore.Packets.Enumerations
-{
-    public enum CharacterClassType : byte
-    {
-        Adventurer = 0,
-        Swordman = 1,
-        Archer = 2,
-        Magician = 3,
-        MartialArtist = 4
-    }
-}
+using ApprovalTests.Reporters;
+
+[assembly: UseReporter(typeof(DiffReporter))]
+[assembly: ApprovalTests.Namers.UseApprovalSubdirectory("../../documentation")] 
