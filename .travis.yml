@@ -13,6 +13,7 @@ install:
   - pip install --user awscli
   - sudo snap alias dotnet-sdk.dotnet dotnet
   - dotnet --version
+  - sudo apt-get install meld
 env:
   global:
     - DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
@@ -25,16 +26,6 @@ jobs:
         - dotnet restore
         - dotnet build
         - dotnet test test/NosCore.Packets.Tests -v m
-    - stage: test_validate_documentation
-      name: Build Packet List documentation generator
-      script:
-        - dotnet restore
-        - >-
-          dotnet build src/NosCore.Packets.Documentator -c Release -o
-          /tmp/documentator
-        - >-
-          dotnet /tmp/documentator/NosCore.Packets.Documentator.dll
-          /tmp/PACKET_LIST_TEST.md
     - stage: release_nuget_packages
       name: Build NosCore.Packets package (nuget)
       if: (tag =~ /^((\d+\.)+\d+)/)
