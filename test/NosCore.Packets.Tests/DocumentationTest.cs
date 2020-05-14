@@ -46,7 +46,8 @@ namespace NosCore.Packets.Tests
 
         private static IEnumerable<Type> GetPackets(IEnumerable<Type> types)
         {
-            return types.Where(s => s.GetCustomAttribute<PacketHeaderAttribute>() != null).OrderBy(s => s.GetCustomAttribute<PacketHeaderAttribute>()!.Identification.ToLowerInvariant());
+            return types.Where(s => s.GetCustomAttribute<PacketHeaderAttribute>() != null)
+                .OrderBy(s => s.Name);
         }
 
         [TestMethod]
@@ -61,7 +62,7 @@ namespace NosCore.Packets.Tests
                 builder.AppendLine($"### {packetGroup.Key}");
                 foreach (Type packet in GetPackets(packetGroup))
                 {
-                    //builder.AppendLine($"- [{packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification}](src/NosCore.Packets/ClientPackets/{packetGroup.Key}/{packet}.cs)");
+                    builder.AppendLine($"- [{packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification}](src/NosCore.Packets/ClientPackets/{packetGroup.Key}/{packet}.cs)");
                 }
             }
 
@@ -73,7 +74,7 @@ namespace NosCore.Packets.Tests
                 builder.AppendLine($"### {packetGroup.Key}");
                 foreach (Type packet in GetPackets(packetGroup))
                 {
-                    //builder.AppendLine($"- [{packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification}](src/NosCore.Packets/ServerPackets/{packetGroup.Key}/{packet}.cs)");
+                    builder.AppendLine($"- [{packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification}](src/NosCore.Packets/ServerPackets/{packetGroup.Key}/{packet}.cs)");
                 }
             }
 
