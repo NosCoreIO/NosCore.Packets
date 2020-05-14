@@ -1,9 +1,6 @@
 # NosCore.Packets's Documentation
 ## ClientPackets :
 
-### ClientPackets
-- [lbs](src/NosCore.Packets/ClientPackets/ClientPackets/NosCore.Packets.ClientPackets.LbsPacket.cs)
-
 ### Warehouse
 - [deposit](src/NosCore.Packets/ClientPackets/Warehouse/NosCore.Packets.ClientPackets.Warehouse.DepositPacket.cs)
 - [f_deposit](src/NosCore.Packets/ClientPackets/Warehouse/NosCore.Packets.ClientPackets.Warehouse.FDepositPacket.cs)
@@ -115,6 +112,9 @@
 - [drop](src/NosCore.Packets/ClientPackets/Drops/NosCore.Packets.ClientPackets.Drops.DropPacket.cs)
 - [get](src/NosCore.Packets/ClientPackets/Drops/NosCore.Packets.ClientPackets.Drops.GetPacket.cs)
 
+### ClientPackets
+- [lbs](src/NosCore.Packets/ClientPackets/ClientPackets/NosCore.Packets.ClientPackets.LbsPacket.cs)
+
 ### Chat
 - [/](src/NosCore.Packets/ClientPackets/Chat/NosCore.Packets.ClientPackets.Chat.WhisperPacket.cs)
 - [:](src/NosCore.Packets/ClientPackets/Chat/NosCore.Packets.ClientPackets.Chat.FamilyChatPacket.cs)
@@ -214,6 +214,29 @@
 
 ### Portals
 - [gp](src/NosCore.Packets/ServerPackets/Portals/NosCore.Packets.ServerPackets.Portals.GpPacket.cs)
+
+### Player
+- [bn](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.BnPacket.cs)
+- [c_info](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.CInfoPacket.cs)
+- [c_mode](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.CModePacket.cs)
+- [cond](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.CondPacket.cs)
+- [eff](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.EffectPacket.cs)
+- [eqinfo](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.EquipmentInfoPacket.cs)
+- [fd](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.FdPacket.cs)
+- [fs](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.FsPacket.cs)
+- [lev](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.LevPacket.cs)
+- [levelup](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.LevelUpPacket.cs)
+- [npinfo](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.NpInfoPacket.cs)
+- [pflag](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.PFlagPacket.cs)
+- [rage](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.RagePacket.cs)
+- [sc](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.ScPacket.cs)
+- [scr](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.ScrPacket.cs)
+- [stat](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.StatPacket.cs)
+- [tc_info](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.TcInfoPacket.cs)
+- [tit](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.TitPacket.cs)
+- [tit_eq](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.TitEqPacket.cs)
+- [titinfo](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.TitleInfoPacket.cs)
+- [title](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.TitlePacket.cs)
 
 ### Parcel
 - [parcel](src/NosCore.Packets/ServerPackets/Parcel/NosCore.Packets.ServerPackets.Parcel.ParcelPacket.cs)
@@ -328,26 +351,3 @@
 ### Auction
 - [rc_blist](src/NosCore.Packets/ServerPackets/Auction/NosCore.Packets.ServerPackets.Auction.RcbListPacket.cs)
 - [rc_slist](src/NosCore.Packets/ServerPackets/Auction/NosCore.Packets.ServerPackets.Auction.RcsListPacket.cs)
-
-### Player
-- [bn](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.BnPacket.cs)
-- [c_info](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.CInfoPacket.cs)
-- [c_mode](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.CModePacket.cs)
-- [cond](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.CondPacket.cs)
-- [eff](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.EffectPacket.cs)
-- [eqinfo](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.EquipmentInfoPacket.cs)
-- [fd](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.FdPacket.cs)
-- [fs](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.FsPacket.cs)
-- [lev](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.LevPacket.cs)
-- [levelup](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.LevelUpPacket.cs)
-- [npinfo](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.NpInfoPacket.cs)
-- [pflag](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.PFlagPacket.cs)
-- [rage](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.RagePacket.cs)
-- [sc](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.ScPacket.cs)
-- [scr](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.ScrPacket.cs)
-- [stat](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.StatPacket.cs)
-- [tc_info](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.TcInfoPacket.cs)
-- [tit](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.TitPacket.cs)
-- [tit_eq](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.TitEqPacket.cs)
-- [titinfo](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.TitleInfoPacket.cs)
-- [title](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.TitlePacket.cs)

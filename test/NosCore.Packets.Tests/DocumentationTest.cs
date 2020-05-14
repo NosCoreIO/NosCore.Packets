@@ -40,7 +40,8 @@ namespace NosCore.Packets.Tests
                 .Where(s => s.GetInterfaces().Any(p => p == typeof(IPacket)))
                 .Where(s => !s.IsAbstract)
                 .Where(s => s.Namespace?.Contains(name) ?? true)
-                .GroupBy(s => s.Namespace!.Substring(s.Namespace.LastIndexOf('.') + 1));
+                .GroupBy(s => s.Namespace!.Substring(s.Namespace.LastIndexOf('.') + 1))
+                .OrderByDescending(s => s.Key);
         }
 
         private static IEnumerable<Type> GetPackets(IEnumerable<Type> types)
