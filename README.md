@@ -34,7 +34,7 @@ We recommend usage of :
 * [Resharper](https://www.jetbrains.com/resharper/)
 
 ## Links
-[List of Packets](PACKET_LIST.md)
+[List of Packets](./documentation/DocumentationTest.PacketsDocumentation.approved.md)
 
 ### PacketIndex serialization by type
 | Type    | string to serialize | Null | True | False | Value     | Value when Last |

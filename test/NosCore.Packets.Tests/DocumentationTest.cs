@@ -23,12 +23,16 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using ApprovalTests;
+using ApprovalTests.Writers;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Interfaces;
 
-namespace NosCore.Packets.Documentator
+namespace NosCore.Packets.Tests
 {
-    internal class Program
+    [TestClass]
+    public class DocumentationTest
     {
         private static IEnumerable<IGrouping<string, Type>> GetPacketsWithinNamespace(string name)
         {
@@ -44,7 +48,8 @@ namespace NosCore.Packets.Documentator
             return types.Where(s => s.GetCustomAttribute<PacketHeaderAttribute>() != null).OrderBy(s => s.GetCustomAttribute<PacketHeaderAttribute>()!.Identification.ToLower());
         }
 
-        private static void Main(string[] args)
+        [TestMethod]
+        public void PacketsDocumentation()
         {
             var builder = new StringBuilder();
             builder.Append("# NosCore.Packets's Documentation\n");
@@ -71,15 +76,7 @@ namespace NosCore.Packets.Documentator
                 }
             }
 
-            string file = "PACKET_LIST.md";
-            if (args.Any())
-            {
-                file = args[0];
-            }
-
-
-            File.WriteAllText(file, builder.ToString());
-            return;
+            Approvals.Verify(WriterFactory.CreateTextWriter(builder.ToString(), "md"));
         }
     }
 }

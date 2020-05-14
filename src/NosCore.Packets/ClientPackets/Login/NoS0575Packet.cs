@@ -21,6 +21,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Login
 {

@@ -37,6 +37,7 @@ using NosCore.Packets.ServerPackets.Relations;
 using NosCore.Packets.ClientPackets.Bazaar;
 using NosCore.Packets.ClientPackets.Warehouse;
 using NosCore.Packets.ServerPackets.Miniland;
+using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.Tests
 {
