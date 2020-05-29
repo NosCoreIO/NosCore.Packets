@@ -19,7 +19,7 @@ namespace NosCore.Packets.ServerPackets.Bank
 
         [PacketIndex(2)]
         [Range(0, int.MaxValue)]
-        public long Gold { get; set; }
+        public int Gold { get; set; }
 
         [PacketIndex(3)]
         public BankRankType BankRank { get; set; }
