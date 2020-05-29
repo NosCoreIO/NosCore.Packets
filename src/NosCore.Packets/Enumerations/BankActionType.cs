@@ -19,9 +19,11 @@
 
 namespace NosCore.Packets.Enumerations
 {
-    public enum BankOpeningType : byte
+    public enum BankActionType : byte
     {
         OpenFromSavingsBook = 0,
+        DepositGold = 1,
+        WithdrawGold = 2,
         OpenBank = 3
     }
 }
