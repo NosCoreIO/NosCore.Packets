@@ -27,7 +27,7 @@ namespace NosCore.Packets.ServerPackets.Bank
     public class GbPacket : PacketBase
     {
         [PacketIndex(0)]
-        public BankOpeningType Type { get; set; }
+        public BankActionType Type { get; set; }
 
         [PacketIndex(1)]
         [Range(0, long.MaxValue)]
