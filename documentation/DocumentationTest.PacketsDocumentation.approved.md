@@ -1,6 +1,9 @@
 # NosCore.Packets's Documentation
 ## ClientPackets :
 
+### Bank
+- [gbox](src/NosCore.Packets/ClientPackets/Bank/NosCore.Packets.ClientPackets.Bank.GboxPacket.cs)
+
 ### Battle
 - [mtlist](src/NosCore.Packets/ClientPackets/Battle/NosCore.Packets.ClientPackets.Battle.MultiTargetListPacket.cs)
 - [multi_target_list_sub_packet](src/NosCore.Packets/ClientPackets/Battle/NosCore.Packets.ClientPackets.Battle.MultiTargetListSubPacket.cs)
