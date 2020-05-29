@@ -153,6 +153,9 @@
 - [rc_blist](src/NosCore.Packets/ServerPackets/Auction/NosCore.Packets.ServerPackets.Auction.RcbListPacket.cs)
 - [rc_slist](src/NosCore.Packets/ServerPackets/Auction/NosCore.Packets.ServerPackets.Auction.RcsListPacket.cs)
 
+### Bank
+- [gb](src/NosCore.Packets/ServerPackets/Bank/NosCore.Packets.ServerPackets.Bank.GbPacket.cs)
+
 ### Battle
 - [bf](src/NosCore.Packets/ServerPackets/Battle/NosCore.Packets.ServerPackets.Battle.BfPacket.cs)
 - [cancel](src/NosCore.Packets/ServerPackets/Battle/NosCore.Packets.ServerPackets.Battle.CancelPacket.cs)
