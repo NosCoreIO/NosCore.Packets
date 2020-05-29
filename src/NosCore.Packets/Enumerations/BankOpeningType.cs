@@ -7,6 +7,6 @@ namespace NosCore.Packets.Enumerations
     public enum BankOpeningType : byte
     {
         OpenFromSavingsBook = 0,
-        OpenBank = 1
+        OpenBank = 3
     }
 }
