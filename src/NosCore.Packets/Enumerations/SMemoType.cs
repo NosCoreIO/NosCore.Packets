@@ -23,6 +23,9 @@ namespace NosCore.Packets.Enumerations
     {
         Success = 1,
         Error = 2,
-        FatalError = 3
+        FatalError = 3,
+        BankSuccess = 4,
+        BankError = 5,
+        BankNormal = 6
     }
 }
