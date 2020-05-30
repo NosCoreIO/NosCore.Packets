@@ -22,8 +22,8 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Chats
 {
-    [PacketHeader("sayi")]
-    public class SayiPacket : PacketBase
+    [PacketHeader("sayi2")]
+    public class Sayi2Packet : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }
@@ -37,7 +37,13 @@ namespace NosCore.Packets.ServerPackets.Chats
         [PacketIndex(3)]
         public Game18NConstString Message { get; set; }
 
-        [PacketListIndex(4, ListSeparator = " ")]
+        [PacketIndex(4)]
+        public short FirstArgument { get; set; }
+
+        [PacketIndex(5)]
+        public short SecondArgument { get; set; }
+
+        [PacketListIndex(6, ListSeparator = ",")]
         public short Arguments { get; set; }
     }
 }
