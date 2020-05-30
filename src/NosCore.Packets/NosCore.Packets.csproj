@@ -12,7 +12,7 @@
     <RepositoryUrl>https://github.com/NosCoreIO/NosCore.Packets.git</RepositoryUrl>
     <PackageIconUrl></PackageIconUrl>
     <PackageTags>nostale, noscore, chickenapi, nostale private server source, nostale emulator</PackageTags>
-    <Version>0.25.2</Version>
+    <Version>0.25.3</Version>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Description>NosCore's Packets (Nostale packets) defined over classes</Description>
     <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
@@ -26,7 +26,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NosCore.Shared" Version="1.5.0" />
+    <PackageReference Include="NosCore.Shared" Version="1.5.1" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
   </ItemGroup>
 
