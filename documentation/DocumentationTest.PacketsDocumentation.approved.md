@@ -182,10 +182,12 @@
 
 ### Chats
 - [IconInfo](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.IconInfoPacket.cs)
+- [sayi2](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.Sayi2Packet.cs)
 - [sayi](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SayiPacket.cs)
 - [sayitem](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SayItemPacket.cs)
 - [say](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SayPacket.cs)
 - [say_p](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SayPetPacket.cs)
+- [sayt](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SaytPacket.cs)
 - [spk](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SpeakPacket.cs)
 - [talk](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.TalkPacket.cs)
 
@@ -344,6 +346,7 @@
 - [msgi](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.MsgiPacket.cs)
 - [msg](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.MsgPacket.cs)
 - [p_clear](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.PclearPacket.cs)
+- [qnai2](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.Qnai2Packet.cs)
 - [qna](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.QnaPacket.cs)
 - [ta_rank](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.TARankPacket.cs)
 - [wopen](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.WopenPacket.cs)
