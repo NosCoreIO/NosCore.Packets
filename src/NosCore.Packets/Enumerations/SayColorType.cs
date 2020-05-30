@@ -27,9 +27,11 @@ namespace NosCore.Packets.Enumerations
         RedWhisper = 5,
         Blue = 6,
         LightYellow = 7,
-        RedW = 8,
+        Red = 8,
         Yellow = 10,
         Purple = 11,
-        Green = 12
+        Green = 12,
+        DarkPurple = 13,
+        LightPurple = 17
     }
 }
