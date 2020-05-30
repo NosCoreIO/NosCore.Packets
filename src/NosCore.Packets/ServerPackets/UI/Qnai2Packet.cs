@@ -17,27 +17,23 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+using System.Collections.Generic;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
-namespace NosCore.Packets.ServerPackets.Chats
+namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("sayi")]
-    public class SayiPacket : PacketBase
+    [PacketHeader("qnai2")]
+    public class Qnai2Packet : PacketBase
     {
         [PacketIndex(0)]
-        public VisualType VisualType { get; set; }
+        public IPacket? YesPacket { get; set; }
 
         [PacketIndex(1)]
-        public long VisualId { get; set; }
+        public Game18NConstString Question { get; set; }
 
-        [PacketIndex(2)]
-        public SayColorType Type { get; set; }
-
-        [PacketIndex(3)]
-        public Game18NConstString Message { get; set; }
-
-        [PacketListIndex(4, ListSeparator = " ")]
-        public short Arguments { get; set; }
+        [PacketListIndex(2, ListSeparator = " ")]
+        public List<byte>? Arguments { get; set; }
     }
 }
