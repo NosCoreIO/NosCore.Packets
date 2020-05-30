@@ -182,6 +182,7 @@
 
 ### Chats
 - [IconInfo](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.IconInfoPacket.cs)
+- [sayi](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SayiPacket.cs)
 - [sayitem](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SayItemPacket.cs)
 - [say](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SayPacket.cs)
 - [say_p](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SayPetPacket.cs)
@@ -322,6 +323,7 @@
 - [pidx_sub_packet](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.PidxSubPacket.cs)
 - [shop_end](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.ShopEndPacket.cs)
 - [shop](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.ShopPacket.cs)
+- [s_memoi2](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.SMemoi2Packet.cs)
 - [s_memo](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.SMemoPacket.cs)
 
 ### Specialists
@@ -339,6 +341,7 @@
 - [icon](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.IconPacket.cs)
 - [info](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.InfoPacket.cs)
 - [modal](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.ModalPacket.cs)
+- [msgi](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.MsgiPacket.cs)
 - [msg](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.MsgPacket.cs)
 - [p_clear](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.PclearPacket.cs)
 - [qna](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.QnaPacket.cs)
