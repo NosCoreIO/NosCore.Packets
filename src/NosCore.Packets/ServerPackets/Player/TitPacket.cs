@@ -18,6 +18,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
@@ -25,7 +26,7 @@ namespace NosCore.Packets.ServerPackets.Player
     public class TitPacket : PacketBase
     {
         [PacketIndex(0)]
-        public string? ClassType { get; set; }
+        public Game18NConstString ClassType { get; set; }
 
         [PacketIndex(1)]
         public string? Name { get; set; }
