@@ -185,6 +185,7 @@
 - [sayi2](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.Sayi2Packet.cs)
 - [sayi](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SayiPacket.cs)
 - [sayitem](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SayItemPacket.cs)
+- [sayitemt](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SayItemtPacket.cs)
 - [say](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SayPacket.cs)
 - [say_p](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SayPetPacket.cs)
 - [sayt](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SaytPacket.cs)
