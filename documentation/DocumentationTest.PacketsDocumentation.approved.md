@@ -342,6 +342,7 @@
 - [dlg](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.DlgPacket.cs)
 - [guri](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.GuriPacket.cs)
 - [icon](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.IconPacket.cs)
+- [infoi](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.InfoiPacket.cs)
 - [info](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.InfoPacket.cs)
 - [modal](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.ModalPacket.cs)
 - [msgi](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.MsgiPacket.cs)
