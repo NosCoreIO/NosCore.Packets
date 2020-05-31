@@ -17,8 +17,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
-using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Miniland
 {
@@ -41,6 +41,6 @@ namespace NosCore.Packets.ServerPackets.Miniland
         public byte Unknown2 { get; set; }
 
         [PacketIndex(5)]
-        public Game18NConstString MinilandMessage { get; set; }
+        public string? MinilandMessage { get; set; }
     }
 }
