@@ -18,6 +18,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Miniland
 {
@@ -25,7 +26,7 @@ namespace NosCore.Packets.ServerPackets.Miniland
     public class MlInfoBrPacket : PacketBase
     {
         [PacketIndex(0)]
-        public short Unknown1 { get; set; }
+        public short MinilandMusicId { get; set; }
 
         [PacketIndex(1)]
         public string? Name { get; set; }
@@ -40,6 +41,6 @@ namespace NosCore.Packets.ServerPackets.Miniland
         public byte Unknown2 { get; set; }
 
         [PacketIndex(5)]
-        public string? MinilandMessage { get; set; }
+        public Game18NConstString MinilandMessage { get; set; }
     }
 }
