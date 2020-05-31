@@ -37,7 +37,19 @@ namespace NosCore.Packets.ServerPackets.Chats
         [PacketIndex(3)]
         public Game18NConstString Message { get; set; }
 
-        [PacketListIndex(4, ListSeparator = " ")]
-        public short Arguments { get; set; }
+        [PacketIndex(4)]
+        public short FirstArgument { get; set; }
+
+        [PacketIndex(5)]
+        public short SecondArgument { get; set; }
+
+        [PacketIndex(6)]
+        public short ThirdArgument { get; set; }
+
+        [PacketIndex(7)]
+        public short FourthArgument { get; set; }
+
+        [PacketIndex(8)]
+        public short FifthArgument { get; set; }
     }
 }

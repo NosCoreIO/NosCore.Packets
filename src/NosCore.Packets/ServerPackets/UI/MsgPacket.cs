@@ -19,9 +19,11 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using System;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
+    [Obsolete("this packet is obsolete please use MsgiPacket")]
     [PacketHeader("msg")]
     public class MsgPacket : PacketBase
     {
