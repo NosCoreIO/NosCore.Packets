@@ -26,7 +26,7 @@ namespace NosCore.Packets.ServerPackets.Miniland
     public class MlinfoPacket : PacketBase
     {
         [PacketIndex(0)]
-        public short Unknown1 { get; set; }
+        public short WelcomeMusicInfo { get; set; } = 3800;
 
         [PacketIndex(1)]
         public long MinilandPoint { get; set; }
@@ -46,10 +46,10 @@ namespace NosCore.Packets.ServerPackets.Miniland
         [PacketIndex(6)]
         public MinilandState MinilandState { get; set; }
 
-        [PacketIndex(7)]
-        public string? WelcomeMusicInfo { get; set; }
+        [PacketIndex(7)] 
+        public short WelcomeMusicInfo2 { get; set; } = 3800;
 
-        [PacketIndex(8)]
-        public string? MinilandWelcomeMessage { get; set; }
+        [PacketIndex(8)] 
+        public Game18NConstString MinilandWelcomeMessage { get; set; } = Game18NConstString.Welcome;
     }
 }
