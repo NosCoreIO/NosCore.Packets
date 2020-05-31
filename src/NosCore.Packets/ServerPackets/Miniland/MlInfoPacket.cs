@@ -50,6 +50,6 @@ namespace NosCore.Packets.ServerPackets.Miniland
         public short WelcomeMusicInfo2 { get; set; } = 3800;
 
         [PacketIndex(8)] 
-        public Game18NConstString MinilandWelcomeMessage { get; set; } = Game18NConstString.Welcome;
+        public string MinilandWelcomeMessage { get; set; } = ((short)Game18NConstString.Welcome).ToString();
     }
 }
