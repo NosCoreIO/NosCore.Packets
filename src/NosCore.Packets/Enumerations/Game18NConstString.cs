@@ -1594,8 +1594,8 @@ namespace NosCore.Packets.Enumerations
         Undefined1570 = 1570,
         Undefined1571 = 1571,
         //You cannot enter the Time-Space with more companions. = 1572,
-        TimeSpaceAlreadyFull = 1573
-Undefined1574 = 1574,
+        TimeSpaceAlreadyFull = 1573,
+        Undefined1574 = 1574,
         SingleInstantCombatActivated = 1575,
         CancelSingleInstantCombat = 1576,
         NotActivatedFamilyFunction = 1577,
