@@ -18,16 +18,20 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using NosCore.Packets.Attributes;
+using NosCore.Shared.Enumerations;
 
-namespace NosCore.Packets.ClientPackets.Player
+namespace NosCore.Packets.ClientPackets.Commands
 {
-    [PacketHeader("tit_eq")]
-    public class TitEqPacket : PacketBase
+    [PacketHeader("%Familyleave")]
+    [PacketHeaderAlias("%Congédefamill", Flag = nameof(RegionType.FR))]
+    [PacketHeaderAlias("%Familienaustritt", Flag = nameof(RegionType.DE))]
+    [PacketHeaderAlias("%Uscita", Flag = nameof(RegionType.IT))]
+    [PacketHeaderAlias("%Salida", Flag = nameof(RegionType.ES))]
+    [PacketHeaderAlias("%Familyleave", Flag = nameof(RegionType.PL))]
+    [PacketHeaderAlias("%Покинуть", Flag = nameof(RegionType.RU))]
+    [PacketHeaderAlias("%AileÇaðrýsý", Flag = nameof(RegionType.TR))]
+    [PacketHeaderAlias("%Opustit", Flag = nameof(RegionType.CS))]
+    public class FamilyLeavePacket : PacketBase
     {
-        [PacketIndex(0)]
-        public byte Mode { get; set; }
-
-        [PacketIndex(1)]
-        public short TitleId { get; set; }
     }
 }
