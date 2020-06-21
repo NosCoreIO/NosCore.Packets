@@ -37,7 +37,7 @@ namespace NosCore.Packets
         public Type? PacketType { get; set; }
         public Delegate? Constructor { get; set; }
 
-        public Dictionary<Tuple<Type, PacketIndexAttribute, string, IEnumerable<ValidationAttribute>>, Delegate> packetDeserializerDictionary = new Dictionary<Tuple<Type, PacketIndexAttribute, string, IEnumerable<ValidationAttribute>>, Delegate>();
+        public Dictionary<Tuple<Type, PacketIndexAttribute, string, IEnumerable<ValidationAttribute>>, Delegate> PacketDeserializerDictionary = new Dictionary<Tuple<Type, PacketIndexAttribute, string, IEnumerable<ValidationAttribute>>, Delegate>();
     }
 
     //TODO make those expression tree cached
@@ -93,7 +93,7 @@ namespace NosCore.Packets
 
     public class Deserializer : IDeserializer
     {
-        private readonly Dictionary<string, TypeCreator> packetDeserializerDictionary = new Dictionary<string, TypeCreator>();
+        private readonly Dictionary<string, TypeCreator> _packetDeserializerDictionary = new Dictionary<string, TypeCreator>();
 
         public Deserializer(IEnumerable<Type> types)
         {
@@ -107,14 +107,14 @@ namespace NosCore.Packets
         public void Initialize<T>() where T : PacketBase
         {
             var header = typeof(T).GetCustomAttribute<PacketHeaderAttribute>()?.Identification;
-            if (packetDeserializerDictionary.ContainsKey(header ?? typeof(T).Name))
+            if (_packetDeserializerDictionary.ContainsKey(header ?? typeof(T).Name))
             {
                 if (typeof(T).Namespace.Contains("ServerPackets"))
                 {
                     return;
                 }
 
-                packetDeserializerDictionary.Remove(header ?? typeof(T).Name);
+                _packetDeserializerDictionary.Remove(header ?? typeof(T).Name);
             }
 
             var types = typeof(T).GetProperties()
@@ -126,14 +126,14 @@ namespace NosCore.Packets
                 PacketType = typeof(T),
                 PropertyAmount = propertyAmount,
                 Constructor = Expression.Lambda(Expression.New(typeof(T))).Compile(),
-                packetDeserializerDictionary = GeneratePacketDeserializerDictionary(typeof(T))
+                PacketDeserializerDictionary = GeneratePacketDeserializerDictionary(typeof(T))
             };
 
-            packetDeserializerDictionary.Add(header ?? typeof(T).Name, creator);
+            _packetDeserializerDictionary.Add(header ?? typeof(T).Name, creator);
             var aliases = typeof(T).GetCustomAttributes<PacketHeaderAliasAttribute>().Select(s => s.Identification);
             foreach (var alias in aliases)
             {
-                packetDeserializerDictionary.Add(alias ?? typeof(T).Name, creator);
+                _packetDeserializerDictionary.Add(alias ?? typeof(T).Name, creator);
             }
         }
 
@@ -198,9 +198,9 @@ namespace NosCore.Packets
                     }
                 }
 
-                if (packetDeserializerDictionary.ContainsKey(packetsplit[header]))
+                if (_packetDeserializerDictionary.ContainsKey(packetsplit[header]))
                 {
-                    var dic = packetDeserializerDictionary[packetsplit[header]];
+                    var dic = _packetDeserializerDictionary[packetsplit[header]];
                     var packet = DeserializeIPacket(dic, isSpecial ? packetstring : packetContent, includesKeepAliveIdentity, true);
                     packet!.Header = packetsplit[header];
                     packet!.KeepAliveId = includesKeepAliveIdentity ? (ushort?)keepalive : null;
@@ -229,11 +229,11 @@ namespace NosCore.Packets
             var matches = Regex.Matches(packetContent, @"([^(\s\v)]+[\.]+[(\s\v)]?)+((?=(\s\v))|$)|([^(\s\v)]+)((?=\s)|$)").OfType<Match>()
                 .ToArray();
 
-            if (matches.Length > 0 && dic.packetDeserializerDictionary.Count > 0)
+            if (matches.Length > 0 && dic.PacketDeserializerDictionary.Count > 0)
             {
-                var maxindex = dic.packetDeserializerDictionary.Max(s => s.Key.Item2.Index);
+                var maxindex = dic.PacketDeserializerDictionary.Max(s => s.Key.Item2.Index);
                 var trueIndex = -1;
-                foreach (var packetBasePropertyInfo in dic.packetDeserializerDictionary)
+                foreach (var packetBasePropertyInfo in dic.PacketDeserializerDictionary)
                 {
                     var isMaxIndex = packetBasePropertyInfo.Key.Item2.Index == maxindex;
                     var keepaliveIndex = includesKeepAliveIdentity ? 1 : 0;
@@ -298,7 +298,7 @@ namespace NosCore.Packets
                 case var prop when prop == typeof(IPacket):
                     return Deserialize(matches[currentIndex++].ToString());
                 case var prop when typeof(IPacket).IsAssignableFrom(prop):
-                    var dic = packetDeserializerDictionary[prop.Name];
+                    var dic = _packetDeserializerDictionary[prop.Name];
                     var packet = DeserializeIPacket(dic, matches[currentIndex].ToString().Replace((packetBasePropertyInfo.Item2 is PacketListIndex ind ? ind.ListSeparator : packetBasePropertyInfo.Item2.SpecialSeparator) ?? ".", " "), false, false);
                     currentIndex++;
                     return packet;
@@ -339,7 +339,7 @@ namespace NosCore.Packets
                 {
                     if (typeof(IPacket).IsAssignableFrom(subType))
                     {
-                        var dic = packetDeserializerDictionary.Values.FirstOrDefault(s => s.PacketType == subType);
+                        var dic = _packetDeserializerDictionary.Values.FirstOrDefault(s => s.PacketType == subType);
 
                         if (dic == null)
                         {
