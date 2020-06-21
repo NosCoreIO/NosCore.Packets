@@ -18,16 +18,22 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using NosCore.Packets.Attributes;
+using NosCore.Shared.Enumerations;
 
-namespace NosCore.Packets.ClientPackets.Player
+namespace NosCore.Packets.ClientPackets.Commands
 {
-    [PacketHeader("tit_eq")]
-    public class TitEqPacket : PacketBase
+    [PacketHeader("$Adding")]
+    [PacketHeaderAlias("$Ajouter", Flag = nameof(RegionType.FR))]
+    [PacketHeaderAlias("$Hinzufügen", Flag = nameof(RegionType.DE))]
+    [PacketHeaderAlias("$Aggiungi", Flag = nameof(RegionType.IT))]
+    [PacketHeaderAlias("$Añadir", Flag = nameof(RegionType.ES))]
+    [PacketHeaderAlias("$Dodaj", Flag = nameof(RegionType.PL))]
+    [PacketHeaderAlias("$Добавить", Flag = nameof(RegionType.RU))]
+    [PacketHeaderAlias("$Ekle", Flag = nameof(RegionType.TR))]
+    [PacketHeaderAlias("$Pøidat", Flag = nameof(RegionType.CS))]
+    public class FriendInvitePacket : PacketBase
     {
         [PacketIndex(0)]
-        public byte Mode { get; set; }
-
-        [PacketIndex(1)]
-        public short TitleId { get; set; }
+        public string? CharacterName { get; set; }
     }
 }

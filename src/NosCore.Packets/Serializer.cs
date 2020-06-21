@@ -29,9 +29,9 @@ namespace NosCore.Packets
 {
     public class Serializer : ISerializer
     {
-        private const string INJECTION_KEY = "IPacketToInject";
+        private const string InjectionKey = "IPacketToInject";
 
-        private readonly Dictionary<string, Delegate> packetSerializerDictionary = new Dictionary<string, Delegate>();
+        private readonly Dictionary<string, Delegate> _packetSerializerDictionary = new Dictionary<string, Delegate>();
 
 
         public Serializer(IEnumerable<Type> types)
@@ -48,35 +48,35 @@ namespace NosCore.Packets
             var packetSerializerExpressionFalse = PacketSerializerExpression<T>();
             if (packetSerializerExpressionFalse != null)
             {
-                if (packetSerializerDictionary.ContainsKey(typeof(T).Name))
+                if (_packetSerializerDictionary.ContainsKey(typeof(T).Name))
                 {
                     if (typeof(T).Namespace.Contains("ClientPackets"))
                     {
                         return;
                     }
 
-                    packetSerializerDictionary.Remove(typeof(T).Name);
+                    _packetSerializerDictionary.Remove(typeof(T).Name);
                 }
-                packetSerializerDictionary.Add(typeof(T).Name, packetSerializerExpressionFalse.Compile());
+                _packetSerializerDictionary.Add(typeof(T).Name, packetSerializerExpressionFalse.Compile());
             }
         }
 
         public string Serialize(IPacket packet)
         {
             var realType = packet.GetType();
-            var deg = packetSerializerDictionary[packet.GetType().Name];
+            var deg = _packetSerializerDictionary[packet.GetType().Name];
             var fullString = (string)deg.DynamicInvoke(packet, false);
-            if (fullString.Contains(INJECTION_KEY))
+            if (fullString.Contains(InjectionKey))
             {
                 //unfortunately some packets like DLG, DELAY can handle multiple type packet we can't build the full serializer at init, instead we inject serializer with reflection
                 foreach (var prop in realType.GetProperties().Where(p => p.PropertyType == typeof(IPacket)))
                 {
-                    var Place = fullString.IndexOf(INJECTION_KEY);
+                    var place = fullString.IndexOf(InjectionKey, StringComparison.Ordinal);
                     var value = realType.GetProperty(prop.Name).GetValue(packet, null);
                     fullString = fullString
-                        .Remove(Place, INJECTION_KEY.Length)
-                        .Insert(Place,
-                            (string)packetSerializerDictionary[value.GetType().Name].DynamicInvoke(value, true));
+                        .Remove(place, InjectionKey.Length)
+                        .Insert(place,
+                            (string)_packetSerializerDictionary[value.GetType().Name].DynamicInvoke(value, true));
                 }
             }
 
@@ -182,7 +182,7 @@ namespace NosCore.Packets
                 specificTypeExpression,
                 Expression.Lambda(
                     Expression.Convert(isPacketList
-                        ? IPacketSerializer(injectedPacket, indexAttr, param, subtype, 0, propertySplitter, "", true)
+                        ? PacketSerializer(injectedPacket, indexAttr, param, subtype, 0, propertySplitter, "", true)
                         : PropertySerializer(injectedPacket, indexAttr, subtype, param, 0,
                             Expression.Constant("")), typeof(string)), param)
             );
@@ -200,7 +200,7 @@ namespace NosCore.Packets
             );
         }
 
-        private Expression IPacketSerializer(Expression injectedPacket, PacketIndexAttribute indexAttr, Expression specificTypeExpression, Type prop,
+        private Expression PacketSerializer(Expression injectedPacket, PacketIndexAttribute indexAttr, Expression specificTypeExpression, Type prop,
             int maxIndex, Expression propertySplitter, string discriminator, bool isFromList = false)
         {
             var properties = prop.GetProperties()
@@ -285,7 +285,7 @@ namespace NosCore.Packets
             var injectedPacket = Expression.Parameter(typeof(bool));
             return Expression.Lambda(
                 Expression.Convert(
-                    IPacketSerializer(injectedPacket, new PacketIndexAttribute(0), param, typeof(T), maxIndex, Expression.Constant(" "), header),
+                    PacketSerializer(injectedPacket, new PacketIndexAttribute(0), param, typeof(T), maxIndex, Expression.Constant(" "), header),
                     typeof(object)), param, injectedPacket);
         }
 
@@ -335,11 +335,11 @@ namespace NosCore.Packets
                         header = " ";
                     }
 
-                    specificTypeExpression = IPacketSerializer(injectedPacket, indexAttr, specificTypeExpression, t, maxIndex,
+                    specificTypeExpression = PacketSerializer(injectedPacket, indexAttr, specificTypeExpression, t, maxIndex,
                         propertySplitter, indexAttr.RemoveHeader ? "" : header ?? "");
                     break;
                 case var t when t == typeof(IPacket):
-                    specificTypeExpression = Expression.Constant(INJECTION_KEY, typeof(string));
+                    specificTypeExpression = Expression.Constant(InjectionKey, typeof(string));
                     break;
                 default:
                     useCustomSerializer = false;
