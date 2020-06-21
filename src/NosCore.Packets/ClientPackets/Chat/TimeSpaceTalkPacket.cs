@@ -19,15 +19,12 @@
 
 using NosCore.Packets.Attributes;
 
-namespace NosCore.Packets.ClientPackets.Player
+namespace NosCore.Packets.ClientPackets.Chat
 {
-    [PacketHeader("tit_eq")]
-    public class TitEqPacket : PacketBase
+    [PacketHeader("!")]
+    public class TimeSpaceTalkPacket : PacketBase
     {
         [PacketIndex(0)]
-        public byte Mode { get; set; }
-
-        [PacketIndex(1)]
-        public short TitleId { get; set; }
+        public string? Message { get; set; }
     }
 }
