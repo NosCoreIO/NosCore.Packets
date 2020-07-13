@@ -1399,7 +1399,7 @@ namespace NosCore.Packets.Enumerations
         OnlyGlacernon2 = 1388,
         ReturnToSharesCanyon = 1389,
         //The base camp has already been built.#13#10Will you rebuild it after removing the previous one?#13#10 = 1390,
-        AngelCampbuilt = 1391,
+        AngelCampBuilt = 1391,
         DevilCampBuilt = 1392,
         NoBaseCamp = 1393,
         OnlyYouCanCampFlag = 1394,
