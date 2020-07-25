@@ -2032,6 +2032,7 @@ namespace NosCore.Packets.Enumerations
         MateEatTentatively = 2022,
         BeingUsed = 2023,
         UseOnlyIfPetAccompanyingPlayer = 2024,
+        MysteriousEggReceivedOncePerAccountAfterFinishedChickenQueenRaid = 2025,
         PetDevelopmentSucceeded = 2026,
         PetDevelopedIntoX = 2027,
         PetDevelopmentFailed = 2028,
