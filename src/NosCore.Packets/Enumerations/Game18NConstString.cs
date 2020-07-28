@@ -6,14 +6,8 @@
 
 namespace NosCore.Packets.Enumerations
 {
-    /// <summary>
-    /// test
-    /// </summary>
     public enum Game18NConstString : short
     {
-        /// <summary>
-        /// test
-        /// </summary>
         Hooray = 1,
         DoNotHaveEnoughGold = 2,
         YouAreMine = 3,
