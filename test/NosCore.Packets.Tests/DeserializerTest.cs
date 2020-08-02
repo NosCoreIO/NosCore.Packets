@@ -24,6 +24,7 @@ using NosCore.Packets.ServerPackets.Relations;
 using NosCore.Packets.ClientPackets.Bazaar;
 using NosCore.Packets.ClientPackets.Warehouse;
 using NosCore.Packets.ServerPackets.Miniland;
+using NosCore.Packets.ServerPackets.Login;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.Tests
@@ -54,8 +55,17 @@ namespace NosCore.Packets.Tests
                 typeof(FinfoPacket),
                 typeof(FinfoSubPackets),
                 typeof(ClientVersionSubPacket),
-                typeof(CScalcPacket)
+                typeof(CScalcPacket),
+                typeof(NsTestPacket),
             });
+
+        [TestMethod]
+        public void PacketNsTestLogin()
+        {
+            var packet = (NsTestPacket)Deserializer.Deserialize("NsTeST 4 gorlik 2 31135 79.110.84.132:4016:1:1.7.Feniks 79.110.84.132:4014:1:1.5.Feniks 79.110.84.132:4015:0:1.6.Feniks 79.110.84.132:4011:7:1.2.Feniks 79.110.84.132:4012:1:1.3.Feniks 79.110.84.132:4013:1:1.4.Feniks 79.110.84.132:4010:1:1.1.Feniks -1:-1:-1:10000.10000.1");
+            Assert.AreEqual("gorlik", packet.AccountName);
+            Assert.AreEqual(8, packet.SubPacket.Count);
+        }
 
         [TestMethod]
         public void PacketEndingWithStringMakeItSerializedToEnd()
