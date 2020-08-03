@@ -148,7 +148,8 @@ namespace NosCore.Packets.Tests
             builder.AppendLine(@"}");
             var path = Path.Combine(Directory.GetCurrentDirectory(), $"..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}src{Path.DirectorySeparatorChar}NosCore.Packets{Path.DirectorySeparatorChar}Enumerations{Path.DirectorySeparatorChar}");
             var file = $"{path}Game18NConstString.cs";
-            Approvals.AssertText(builder.ToString(), await File.ReadAllTextAsync(file));
+            var result = await File.ReadAllTextAsync(file);
+            Approvals.AssertText(builder.ToString(), result);
             Assert.AreEqual("[]", JsonConvert.SerializeObject(nullvalues));
         }
     }

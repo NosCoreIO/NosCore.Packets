@@ -9337,7 +9337,7 @@ namespace NosCore.Packets.Enumerations
         /// <summary>
         BoneWarriorRagnar = 2332,
         /// <summary>
-        /// *
+        /// **
         /// <summary>
         Undefined2333 = 2333,
         /// <summary>
@@ -9968,5 +9968,9 @@ namespace NosCore.Packets.Enumerations
         /// Time-Space Stone completed:
         /// <summary>
         TimeSpaceStoneCompleted = 2490,
+        /// <summary>
+        /// Akhenaton the Cursed Pharaoh
+        /// <summary>
+        AkhenatonCursedPharaoh = 2491,
     }
 }
