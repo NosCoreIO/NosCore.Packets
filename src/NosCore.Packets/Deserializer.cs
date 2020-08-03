@@ -333,11 +333,28 @@ namespace NosCore.Packets
                             continue;
                         }
 
-                        string toConvert;
+                        string toConvert = "";
 
                         if (matches[currentIndex + i].ToString().Contains(packetIndexAttribute.SpecialSeparator ?? "."))
                         {
-                            toConvert = matches[currentIndex + i].ToString().Replace(packetIndexAttribute.SpecialSeparator ?? ".", " ");
+                            var subpacket = matches[currentIndex + i].ToString();
+
+                            var packSeperators = subType.GetProperties()
+                                .Select(prop => prop.GetCustomAttribute<PacketIndexAttribute>()).Where(s => s != null).ToList();
+
+                            for (var index = 0; index < packSeperators.Count; index++)
+                            {
+                                var c = index == packSeperators.Count - 1 ? -1 : subpacket.IndexOf(packSeperators[index + 1].SpecialSeparator ?? ".");
+                                if (c == -1)
+                                {
+                                    toConvert += subpacket;
+                                }
+                                else
+                                {
+                                    toConvert += subpacket.Substring(0, c) + " ";
+                                    subpacket = subpacket.Substring(c + 1);
+                                }
+                            }
                         }
                         else
                         {
