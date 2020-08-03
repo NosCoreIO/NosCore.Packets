@@ -25,6 +25,7 @@ using NosCore.Packets.ClientPackets.Bazaar;
 using NosCore.Packets.ClientPackets.Warehouse;
 using NosCore.Packets.ServerPackets.Login;
 using NosCore.Packets.ServerPackets.Miniland;
+using NosCore.Packets.ServerPackets.CharacterSelectionScreen;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.Tests
@@ -58,8 +59,16 @@ namespace NosCore.Packets.Tests
                 typeof(CScalcPacket),
                 typeof(NsTestPacket),
                 typeof(NsTeStSubPacket),
+                typeof(ClistPacket),
             });
-
+			
+		[TestMethod]
+        public void PacketclistTestCharacterSelectScrean()
+        {
+            var packet = (ClistPacket)Deserializer.Deserialize("clist 0 gorlik 0 1 0 9 0 0 1 0 -1.12.1.8.-1.-1.-1.-1.-1.-1 1  1 1 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1. 0 0");
+            Assert.AreEqual("gorlik", packet.Name);
+        }
+		
         [TestMethod]
         public void PacketNsTestLogin()
         {
