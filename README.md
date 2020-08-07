@@ -1,4 +1,6 @@
-# NosCore.Packets #
+what Changed:
+-
+# NosCore.Packets GorlikFork#
 [forked from ChickenAPI/ChickenAPI.Packets](https://github.com/ChickenAPI/ChickenAPI.Packets)
 
 <p align="center">
@@ -6,10 +8,9 @@
   <img src="docs/_media/logo.png"></img>
 </p>
 
-[![NuGet](https://img.shields.io/nuget/v/NosCore.Packets.svg?style=flat-square)](https://www.nuget.org/packages/NosCore.Packets/)
-[![Travis build status](https://travis-ci.org/NosCoreIO/NosCore.Packets.svg?branch=master)](https://travis-ci.org/NosCoreIO/NosCore.Packets)
+[![Travis build status](https://travis-ci.org/GorlikItsMe/NosCore.Packets.svg?branch=master)](https://travis-ci.org/GorlikItsMe/NosCore.Packets)
 
-## You like our work ? ##
+## You like our work (OriginalProject)? ##
 <a href='https://github.com/sponsors/0Lucifer0' target='_blank'><img height='48' style='border:0px;height:46px;' src='https://i.gyazo.com/47b2ca2eb6e1ce38d02b04c410e1c82a.png' border='0' alt='Sponsor me!' /></a>
 <a href='https://ko-fi.com/A3562BQV' target='_blank'><img height='46' style='border:0px;height:46px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a> 
 <a href='https://www.patreon.com/bePatron?u=6503887' target='_blank'><img height='46' style='border:0px;height:46px;' src='https://c5.patreon.com/external/logo/become_a_patron_button@2x.png' border='0' alt='Become a Patron!' /></a>
