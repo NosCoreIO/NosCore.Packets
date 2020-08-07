@@ -63,11 +63,13 @@ namespace NosCore.Packets.Tests
             });
 			
 		[TestMethod]
+        /*[TestMethod]
         public void PacketclistTestCharacterSelectScrean()
         {
             var packet = (ClistPacket)Deserializer.Deserialize("clist 0 gorlik 0 1 0 9 0 0 1 0 -1.12.1.8.-1.-1.-1.-1.-1.-1 1  1 1 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1. 0 0");
             Assert.AreEqual("gorlik", packet.Name);
         }
+        }*/
 		
         [TestMethod]
         public void PacketNsTestLogin()
