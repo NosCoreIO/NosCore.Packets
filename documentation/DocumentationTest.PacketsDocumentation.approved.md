@@ -248,6 +248,7 @@
 ### Login
 - [failc](src/NosCore.Packets/ServerPackets/Login/NosCore.Packets.ServerPackets.Login.FailcPacket.cs)
 - [NsTeST](src/NosCore.Packets/ServerPackets/Login/NosCore.Packets.ServerPackets.Login.NsTestPacket.cs)
+- [NsTeST](src/NosCore.Packets/ServerPackets/Login/NosCore.Packets.ServerPackets.Login.NsTestPacket_old.cs)
 - [NsTeST_sub_packet](src/NosCore.Packets/ServerPackets/Login/NosCore.Packets.ServerPackets.Login.NsTeStSubPacket.cs)
 
 ### Map
