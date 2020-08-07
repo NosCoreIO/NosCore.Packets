@@ -58,17 +58,25 @@ namespace NosCore.Packets.Tests
                 typeof(ClientVersionSubPacket),
                 typeof(CScalcPacket),
                 typeof(NsTestPacket),
+                typeof(NsTestPacket_old),
                 typeof(NsTeStSubPacket),
                 typeof(ClistPacket),
             });
-			
-		[TestMethod]
+
+        /*[TestMethod]
+        public void OldLoginPacketTest()
+        {
+            var packet = (NsTestPacket_old)Deserializer.Deserialize("NsTeST Gorlik 50 127.0.0.1:1337:2:1.1.Name 79.110.84.132:4016:1:1.7.Feniks -1:-1:-1:10000.10000.1");
+            Assert.AreEqual("gorlik", packet.AccountName);
+            Assert.AreEqual(50, packet.SessionId);
+            //Assert.AreEqual("127.0.0.1", packet.SubPacket[0].Host);
+        }*/
+
         /*[TestMethod]
         public void PacketclistTestCharacterSelectScrean()
         {
             var packet = (ClistPacket)Deserializer.Deserialize("clist 0 gorlik 0 1 0 9 0 0 1 0 -1.12.1.8.-1.-1.-1.-1.-1.-1 1  1 1 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1. 0 0");
             Assert.AreEqual("gorlik", packet.Name);
-        }
         }*/
 		
         [TestMethod]
