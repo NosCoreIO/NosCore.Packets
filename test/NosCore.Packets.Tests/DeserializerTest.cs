@@ -23,6 +23,7 @@ using System.Linq;
 using NosCore.Packets.ServerPackets.Relations;
 using NosCore.Packets.ClientPackets.Bazaar;
 using NosCore.Packets.ClientPackets.Warehouse;
+using NosCore.Packets.ServerPackets.CharacterSelectionScreen;
 using NosCore.Packets.ServerPackets.Login;
 using NosCore.Packets.ServerPackets.Miniland;
 using NosCore.Shared.Enumerations;
@@ -34,6 +35,7 @@ namespace NosCore.Packets.Tests
     {
         static readonly IDeserializer Deserializer = new Deserializer(
             new[] {
+                typeof(ClistPacket),
                 typeof(PercentInvitePacket),
                 typeof(WhisperPacket),
                 typeof(UseItemPacket),
@@ -59,6 +61,13 @@ namespace NosCore.Packets.Tests
                 typeof(NsTestPacket),
                 typeof(NsTeStSubPacket),
             });
+
+        [TestMethod]
+        public void PacketclistTestCharacterSelectScrean()
+        {
+            var packet = (ClistPacket)Deserializer.Deserialize("clist 0 gorlik 0 1 0 9 0 0 1 0 -1.12.1.8.-1.-1.-1.-1.-1.-1 1  1 1 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1. 0 0");
+            Assert.AreEqual("gorlik", packet.Name);
+        }
 
         [TestMethod]
         public void PacketNsTestLogin()
@@ -141,7 +150,7 @@ namespace NosCore.Packets.Tests
             Assert.IsTrue(packet.FamilyName == "familyname");
             Assert.IsTrue(packet.FamilyCustomRank == "customrank");
             Assert.IsTrue(packet.FamilyLevel == 3);
-            Assert.IsTrue(packet.FamilyIcons.Count(s=>s) == 3);
+            Assert.IsTrue(packet.FamilyIcons.Count(s => s) == 3);
             Assert.IsTrue(packet.FamilyIcons.Count(s => !s) == 1);
         }
 
@@ -247,7 +256,7 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void DeserializeListWithAmountIndex()
         {
-            var packet = (SitPacket) Deserializer.Deserialize(
+            var packet = (SitPacket)Deserializer.Deserialize(
                 "rest 2 1 5 1 4"
             );
             Assert.IsTrue(packet.Users!.Count == 2);

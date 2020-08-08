@@ -43,12 +43,12 @@ namespace NosCore.Packets
         }
 
         //https://stackoverflow.com/questions/35913495/moving-from-reflection-to-expression-tree
-        public static Func<IEnumerable<object>, object> GetAndFillListMethod(this Type genericType)
+        public static Func<IEnumerable<object?>, object> GetAndFillListMethod(this Type genericType)
         {
             var listType = typeof(List<>);
             var listGenericType = listType.MakeGenericType(genericType);
 
-            var values = Expression.Parameter(typeof(IEnumerable<object>), "values");
+            var values = Expression.Parameter(typeof(IEnumerable<object?>), "values");
 
             var ctor = listGenericType.GetConstructor(BindingFlags.Instance | BindingFlags.Public, null, new Type[0], null);
 
@@ -74,7 +74,7 @@ namespace NosCore.Packets
                 Expression.Convert(instance, typeof(object))
             );
 
-            return (Func<IEnumerable<object>, object>)Expression.Lambda(block, values).Compile();
+            return (Func<IEnumerable<object?>, object>)Expression.Lambda(block, values).Compile();
         }
     }
 
@@ -213,7 +213,7 @@ namespace NosCore.Packets
         private IPacket? DeserializeIPacket(TypeCreator dic, string packetContent, bool includesKeepAliveIdentity, bool hasHeader)
         {
             var deg = (IPacket)dic.Constructor!.DynamicInvoke()!;
-            var matches = Regex.Matches(packetContent, @"([^(\s\v)]+[\.]+[(\s\v)]?)+((?=(\s\v))|$)|([^(\s\v)]+)((?=\s)|$)").OfType<Match>()
+            var matches = Regex.Matches(packetContent, @"([^(\s\v)]+[\.]+[(\s\v)]?)+((?=(\s\v))|$)|([^(\s\v)]+)((?=\s)|$)").Select(s=>s.Value)
                 .ToArray();
 
             if (matches.Length > 0 && dic.PacketDeserializerDictionary.Count > 0)
@@ -267,34 +267,34 @@ namespace NosCore.Packets
             return deg;
         }
 
-        private object? DeserializeValue(Tuple<Type, PacketIndexAttribute, string, IEnumerable<ValidationAttribute>> packetBasePropertyInfo, Type item1, Match[] matches, ref int currentIndex, bool isMaxIndex)
+        private object? DeserializeValue(Tuple<Type, PacketIndexAttribute, string, IEnumerable<ValidationAttribute>> packetBasePropertyInfo, Type item1, string[] matches, ref int currentIndex, bool isMaxIndex)
         {
             switch (item1)
             {
                 case var prop when prop == typeof(string):
                     return DeserializeString(matches, ref currentIndex, isMaxIndex);
                 case var prop when prop == typeof(Guid) || prop == typeof(Guid?):
-                    return DeserializeGuid(matches[currentIndex++].ToString());
+                    return DeserializeGuid(matches[currentIndex++]);
                 case var prop when prop == typeof(bool) || prop == typeof(bool?):
-                    return DeserializeBoolean(matches[currentIndex++].ToString());
+                    return DeserializeBoolean(matches[currentIndex++]);
                 case var prop when (prop.BaseType?.Equals(typeof(Enum)) ?? false) ||
                     (Nullable.GetUnderlyingType(prop)?.IsEnum ?? false):
-                    return DeserializeEnum(item1, matches[currentIndex++].ToString());
+                    return DeserializeEnum(item1, matches[currentIndex++]);
                 case var prop when typeof(ICollection).IsAssignableFrom(prop):
                     return DeserializeList(packetBasePropertyInfo.Item1.GetGenericArguments()[0], packetBasePropertyInfo.Item2, matches, ref currentIndex, isMaxIndex);
                 case var prop when prop == typeof(IPacket):
-                    return Deserialize(matches[currentIndex++].ToString());
+                    return Deserialize(matches[currentIndex++]);
                 case var prop when typeof(IPacket).IsAssignableFrom(prop):
                     var dic = _packetDeserializerDictionary[prop.Name];
-                    var packet = DeserializeIPacket(dic, matches[currentIndex].ToString().Replace((packetBasePropertyInfo.Item2 is PacketListIndex ind ? ind.ListSeparator : packetBasePropertyInfo.Item2.SpecialSeparator) ?? ".", " "), false, false);
+                    var packet = DeserializeIPacket(dic, matches[currentIndex].Replace((packetBasePropertyInfo.Item2 is PacketListIndex ind ? ind.ListSeparator : packetBasePropertyInfo.Item2.SpecialSeparator) ?? ".", " "), false, false);
                     currentIndex++;
                     return packet;
                 default:
-                    return DeserializeDefault(item1, matches[currentIndex++].ToString());
+                    return DeserializeDefault(item1, matches[currentIndex++]);
             }
         }
 
-        private object? DeserializeList(Type subType, PacketIndexAttribute packetIndexAttribute, Match[] matches, ref int currentIndex, bool isMaxIndex)
+        private object? DeserializeList(Type subType, PacketIndexAttribute packetIndexAttribute, string[] matches, ref int currentIndex, bool isMaxIndex)
         {
             int newIndex = currentIndex;
             var length = packetIndexAttribute is PacketListIndex listIndex ? listIndex.Length : 0;
@@ -302,7 +302,7 @@ namespace NosCore.Packets
 
             if (length < 0)
             {
-                length = sbyte.Parse(matches[currentIndex + length].Value);
+                length = sbyte.Parse(matches[currentIndex + length]);
             }
             else
             {
@@ -314,14 +314,14 @@ namespace NosCore.Packets
 
                 if (!string.IsNullOrEmpty(separator))
                 {
-                    splited = matches[currentIndex].Value.Split(new string[] { separator }, StringSplitOptions.None);
+                    splited = matches[currentIndex].Split(new [] { separator }, StringSplitOptions.RemoveEmptyEntries);
                     length = (sbyte)splited.Length;
                 }
             }
 
             if (length > 0)
             {
-                var list = new List<object>();
+                var list = new List<object?>();
                 for (var i = 0; i < length; i++)
                 {
                     if (typeof(IPacket).IsAssignableFrom(subType))
@@ -335,9 +335,9 @@ namespace NosCore.Packets
 
                         string toConvert = "";
 
-                        if (matches[currentIndex + i].ToString().Contains(packetIndexAttribute.SpecialSeparator ?? "."))
+                        if (matches[currentIndex + i].Contains(packetIndexAttribute.SpecialSeparator ?? "."))
                         {
-                            var subpacket = matches[currentIndex + i].ToString();
+                            var subpacket = matches[currentIndex + i];
 
                             var packSeperators = subType.GetProperties()
                                 .Select(prop => prop.GetCustomAttribute<PacketIndexAttribute>()).Where(s => s != null).ToList();
@@ -370,7 +370,7 @@ namespace NosCore.Packets
                     }
                     else //simple list
                     {
-                        var value = long.Parse(splited != null ? splited[i] : matches[currentIndex + i].Value);
+                        var value = long.Parse(splited != null ? splited[i] : matches[currentIndex + i]);
                         list.Add(Convert.ChangeType(value, subType));
                         if (splited == null)
                         {
@@ -411,7 +411,7 @@ namespace NosCore.Packets
             return value == "-1" && !type.IsPrimitive ? type.GetDefaultValue() : Convert.ChangeType(value, Nullable.GetUnderlyingType(type) ?? type);
         }
 
-        private object? DeserializeString(Match[] matches, ref int currentIndex, bool isMaxIndex)
+        private object? DeserializeString(string[] matches, ref int currentIndex, bool isMaxIndex)
         {
             if (isMaxIndex)
             {
@@ -429,14 +429,14 @@ namespace NosCore.Packets
                 currentIndex = matches.Length - 1;
                 return packet.ToString();
             }
-            else if (matches[currentIndex].ToString() == "-")
+            else if (matches[currentIndex] == "-")
             {
                 currentIndex++;
                 return null;
             }
             else
             {
-                return matches[currentIndex++].ToString();
+                return matches[currentIndex++];
             }
         }
     }
