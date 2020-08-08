@@ -36,30 +36,32 @@ namespace NosCore.Packets.ClientPackets.Login
         [PacketIndex(0)]
         public string? AuthToken { get; set; }
 
-
         [PacketIndex(1)]
-        public Guid? ClientId { get; set; }
+        public string? ExtraSpace { get; set; } = string.Empty;
 
         [PacketIndex(2)]
+        public Guid? ClientId { get; set; }
+
+        [PacketIndex(3)]
         public string? UnknownYet { get; set; }
 
-        [PacketIndex(3, SpecialSeparator = "")]
+        [PacketIndex(4, SpecialSeparator = "")]
         public RegionType RegionType { get; set; }
 
         /// <summary>
         /// May be obtained from the NostaleClientX.exe version
         /// </summary>
-        [PacketIndex(4, SpecialSeparator = ".")]
+        [PacketIndex(5, SpecialSeparator = ".")]
         public ClientVersionSubPacket? ClientVersion { get; set; }
 
-        [PacketIndex(5)]
+        [PacketIndex(6)]
         [Range(0,0)]
         public byte UnknownConstant { get; set; }
 
         /// <summary>
         /// The MD5 string is a MD5 hashing : MD5_STRING(MD5_FILE(NostaleXClient.exe) + MD5_FILE(NostaleClient.exe))
         /// </summary>
-        [PacketIndex(6)]
+        [PacketIndex(7)]
         public string? Md5String { get; set; }
     }
 }

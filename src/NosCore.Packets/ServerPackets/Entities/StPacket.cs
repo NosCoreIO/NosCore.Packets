@@ -37,7 +37,7 @@ namespace NosCore.Packets.ServerPackets.Entities
         [PacketIndex(7)]
         public int CurrentMp { get; set; }
 
-        [PacketListIndex(8, IsOptional = true)]
+        [PacketListIndex(8, ListSeparator = " ", IsOptional = true)]
         public List<short>? BuffIds { get; set; }
     }
 }
