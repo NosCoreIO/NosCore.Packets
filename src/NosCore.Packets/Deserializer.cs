@@ -213,8 +213,9 @@ namespace NosCore.Packets
         private IPacket? DeserializeIPacket(TypeCreator dic, string packetContent, bool includesKeepAliveIdentity, bool hasHeader)
         {
             var deg = (IPacket)dic.Constructor!.DynamicInvoke()!;
-            var matches = Regex.Matches(packetContent, @"([^(\s\v)]+[\.]+[(\s\v)]?)+((?=(\s\v))|$)|([^(\s\v)]+)((?=\s)|$)").Select(s=>s.Value)
-                .ToArray();
+         
+            var matches = Regex.Matches(packetContent.Replace("  ", " EMPTY_SPACE "), @"([^(\s\v)]+\.+[(\s\v)]+)+((?=(\s\v))|$)|([^(\s\v)]+)((?=\s)|$)")
+                .Select(s => s.Value == "EMPTY_SPACE" ? "" : s.Value).ToArray();
 
             if (matches.Length > 0 && dic.PacketDeserializerDictionary.Count > 0)
             {
@@ -306,13 +307,18 @@ namespace NosCore.Packets
             }
             else
             {
-                var separator = packetIndexAttribute is PacketListIndex ind ? ind.ListSeparator : packetIndexAttribute.SpecialSeparator;
-                if (isMaxIndex && string.IsNullOrEmpty(separator))
+
+                var separator = packetIndexAttribute.SpecialSeparator;
+                if (packetIndexAttribute is PacketListIndex ind)
+                {
+                    separator = ind.ListSeparator ?? (typeof(IPacket).IsAssignableFrom(subType) ? separator : ".");
+                }
+                if (isMaxIndex && string.IsNullOrWhiteSpace(separator))
                 {
                     length = (sbyte)(matches.Length - currentIndex);
                 }
 
-                if (!string.IsNullOrEmpty(separator))
+                if (!string.IsNullOrWhiteSpace(separator))
                 {
                     splited = matches[currentIndex].Split(new [] { separator }, StringSplitOptions.RemoveEmptyEntries);
                     length = (sbyte)splited.Length;
@@ -371,7 +377,7 @@ namespace NosCore.Packets
                     else //simple list
                     {
                         var value = long.Parse(splited != null ? splited[i] : matches[currentIndex + i]);
-                        list.Add(Convert.ChangeType(value, subType));
+                        list.Add(value == -1 ? null : Convert.ChangeType(value, Nullable.GetUnderlyingType(subType) ?? subType));
                         if (splited == null)
                         {
                             newIndex += i + 1;

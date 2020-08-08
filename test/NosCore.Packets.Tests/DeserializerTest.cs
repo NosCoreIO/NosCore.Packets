@@ -63,7 +63,7 @@ namespace NosCore.Packets.Tests
             });
 
         [TestMethod]
-        public void PacketclistTestCharacterSelectScrean()
+        public void PacketClistTest()
         {
             var packet = (ClistPacket)Deserializer.Deserialize("clist 0 gorlik 0 1 0 9 0 0 1 0 -1.12.1.8.-1.-1.-1.-1.-1.-1 1  1 1 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1. 0 0");
             Assert.AreEqual("gorlik", packet.Name);
@@ -210,7 +210,7 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
-        public void DeserializeSimpleListWithoutSeparator()
+        public void DeserializeSimpleListWithoutSpaceSeparator()
         {
             var packet = (StPacket)Deserializer.Deserialize(
                 "st 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16"
