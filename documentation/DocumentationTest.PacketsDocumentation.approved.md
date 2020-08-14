@@ -273,7 +273,6 @@
 - [mlo_pmg](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MloPmgPacket.cs)
 - [mlo_rw](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MloRwPacket.cs)
 - [mlo_st](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MloStPacket.cs)
-- [%Invite](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.PercentInvitePacket.cs)
 - [useobj](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.UseObjPacket.cs)
 
 ### MiniMap
