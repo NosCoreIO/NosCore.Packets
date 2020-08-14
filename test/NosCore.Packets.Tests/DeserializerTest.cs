@@ -22,6 +22,7 @@ using NosCore.Packets.ServerPackets.UI;
 using System.Linq;
 using NosCore.Packets.ServerPackets.Relations;
 using NosCore.Packets.ClientPackets.Bazaar;
+using NosCore.Packets.ClientPackets.Commands;
 using NosCore.Packets.ClientPackets.Warehouse;
 using NosCore.Packets.ServerPackets.CharacterSelectionScreen;
 using NosCore.Packets.ServerPackets.Login;
@@ -36,7 +37,7 @@ namespace NosCore.Packets.Tests
         static readonly IDeserializer Deserializer = new Deserializer(
             new[] {
                 typeof(ClistPacket),
-                typeof(PercentInvitePacket),
+                typeof(MinilandInvitePacket),
                 typeof(WhisperPacket),
                 typeof(UseItemPacket),
                 typeof(MShopPacket),
@@ -61,6 +62,14 @@ namespace NosCore.Packets.Tests
                 typeof(NsTestPacket),
                 typeof(NsTeStSubPacket),
             });
+
+        [TestMethod]
+        public void AllPacketsAreDeserializable()
+        {
+            var deserializer = new Deserializer(typeof(IPacket).Assembly.GetTypes()
+                .Where(p => p.GetInterfaces().Contains(typeof(IPacket)) && p.IsClass && !p.IsAbstract).ToList());
+            Assert.IsTrue(deserializer != null);
+        }
 
         [TestMethod]
         public void PacketClistTest()
@@ -111,8 +120,8 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void PacketWithAliasCanBeDeserialized()
         {
-            var packet = (PercentInvitePacket)Deserializer.Deserialize("$Inviter test");
-            Assert.AreEqual("test", packet.Username);
+            var packet = (MinilandInvitePacket)Deserializer.Deserialize("$Inviter test");
+            Assert.AreEqual("test", packet.CharacterName);
         }
 
         [TestMethod]

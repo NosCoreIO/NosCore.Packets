@@ -5,6 +5,7 @@
 // -----------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using NosCore.Packets.ClientPackets.Chat;
 using NosCore.Packets.ClientPackets.Families;
 using NosCore.Packets.ClientPackets.Inventory;
@@ -60,6 +61,13 @@ namespace NosCore.Packets.Tests
                 typeof(TargetOffPacket)
             });
 
+        [TestMethod]
+        public void AllPacketsAreSerializable()
+        {
+            var serializer = new Serializer(typeof(IPacket).Assembly.GetTypes()
+                .Where(p => p.GetInterfaces().Contains(typeof(IPacket)) && p.IsClass && !p.IsAbstract).ToList());
+            Assert.IsTrue(serializer != null);
+        }
         [TestMethod]
         public void SerializePacketWithNullableOptional()
         {

@@ -120,6 +120,11 @@ namespace NosCore.Packets
             var aliases = typeof(T).GetCustomAttributes<PacketHeaderAliasAttribute>().Select(s => s.Identification);
             foreach (var alias in aliases)
             {
+                if (_packetDeserializerDictionary.ContainsKey(alias ?? typeof(T).Name) &&
+                    _packetDeserializerDictionary[alias ?? typeof(T).Name].PacketType == creator.PacketType)
+                {
+                    continue;
+                }
                 _packetDeserializerDictionary.Add(alias ?? typeof(T).Name, creator);
             }
         }
@@ -213,7 +218,7 @@ namespace NosCore.Packets
         private IPacket? DeserializeIPacket(TypeCreator dic, string packetContent, bool includesKeepAliveIdentity, bool hasHeader)
         {
             var deg = (IPacket)dic.Constructor!.DynamicInvoke()!;
-         
+
             var matches = Regex.Matches(packetContent.Replace("  ", " EMPTY_SPACE "), @"([^(\s\v)]+\.+[(\s\v)]+)+((?=(\s\v))|$)|([^(\s\v)]+)((?=\s)|$)")
                 .Select(s => s.Value == "EMPTY_SPACE" ? "" : s.Value).ToArray();
 
@@ -320,7 +325,7 @@ namespace NosCore.Packets
 
                 if (!string.IsNullOrWhiteSpace(separator))
                 {
-                    splited = matches[currentIndex].Split(new [] { separator }, StringSplitOptions.RemoveEmptyEntries);
+                    splited = matches[currentIndex].Split(new[] { separator }, StringSplitOptions.RemoveEmptyEntries);
                     length = (sbyte)splited.Length;
                 }
             }
