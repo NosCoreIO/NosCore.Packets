@@ -28,6 +28,8 @@ using NosCore.Packets.ServerPackets.CharacterSelectionScreen;
 using NosCore.Packets.ServerPackets.Login;
 using NosCore.Packets.ServerPackets.Miniland;
 using NosCore.Shared.Enumerations;
+using NosCore.Packets.ServerPackets.Inventory;
+using NosCore.Packets.ServerPackets.Visibility;
 
 namespace NosCore.Packets.Tests
 {
@@ -61,7 +63,57 @@ namespace NosCore.Packets.Tests
                 typeof(CScalcPacket),
                 typeof(NsTestPacket),
                 typeof(NsTeStSubPacket),
+                typeof(UpgradeRareSubPacket),
+                typeof(InFamily),
+                typeof(NewIn1Packet),
+                typeof(InEquipmentSubPacket),
             });
+
+        [TestMethod]
+        public void NewIn1PacketTest()
+        {
+            var packet = (NewIn1Packet)Deserializer.Deserialize("in 1 Olien - 2186033 78 111 2 0 0 0 2 3 4847.4018.4327.765.4846.802.4268.4179.-1.4435 100 72 0 -1 4 3 0 0 1 28 85 57 1986.917 ~Baccarat~ 19 0 11 0 0 85 7 0|0|0 0 2 10 1 9378");
+            Assert.AreEqual(VisualType.Player, packet.VisualType);
+            Assert.AreEqual("Olien", packet.Name);
+            Assert.AreEqual(2186033, packet.VisualId);
+            Assert.AreEqual(78, packet.PositionX);
+            Assert.AreEqual(111, packet.PositionY);
+            Assert.AreEqual(2, packet.Direction);
+            Assert.AreEqual(AuthorityUIType.User, packet.Authority);
+            Assert.AreEqual(GenderType.Male, packet.Gender);
+            Assert.AreEqual(HairStyleType.HairStyleA, packet.HairStyle);
+            Assert.AreEqual(HairColorType.Blue, packet.HairColor);
+            Assert.AreEqual(CharacterClassType.Mage, packet.Class);
+            Assert.AreEqual((short)4847, packet.Equipment?.Hat);
+            Assert.AreEqual(100, packet.Hp);
+            Assert.AreEqual(72, packet.Mp);
+            Assert.AreEqual(false, packet.IsSitting);
+            Assert.AreEqual(null, packet.GroupId);
+            Assert.AreEqual(4, packet.Fairy);
+            Assert.AreEqual(3, packet.FairyElement);
+            Assert.AreEqual(0, packet.Unknown);
+            Assert.AreEqual(0, packet.FairyMorph);
+            Assert.AreEqual(1, packet.TeleportEffect);
+            Assert.AreEqual(28, packet.Morph);
+            Assert.AreEqual((byte)8, packet.WeaponUpgradeRareSubPacket?.Upgrade);
+            Assert.AreEqual((sbyte)7, packet.ArmorUpgradeRareSubPacket?.Rare);
+            Assert.AreEqual(1986, packet.Family.Id);
+            Assert.AreEqual(917, packet.Family.Title);
+            Assert.AreEqual("~Baccarat~", packet.FamilyName);
+            Assert.AreEqual(19, packet.ReputIco);
+            Assert.AreEqual(false, packet.Invisible);
+            Assert.AreEqual(11, packet.MorphUpgrade);
+            Assert.AreEqual(FactionType.Neutral, packet.FactionType);
+            Assert.AreEqual(0, packet.MorphUpgrade2);
+            Assert.AreEqual(85, packet.Level);
+            Assert.AreEqual(7, packet.FamilyLevel);
+            //Assert.AreEqual(List<bool>, packet.FamilyIcons);
+            Assert.AreEqual(false, packet.ArenaWinner);
+            Assert.AreEqual(2, packet.Compliment);
+            Assert.AreEqual(10, packet.Size);
+            Assert.AreEqual(1, packet.HeroLevel);
+            Assert.AreEqual(9378, packet.Title);
+        }
 
         [TestMethod]
         public void AllPacketsAreDeserializable()

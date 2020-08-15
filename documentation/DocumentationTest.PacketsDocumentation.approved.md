@@ -371,6 +371,7 @@
 ### Visibility
 - [cl](src/NosCore.Packets/ServerPackets/Visibility/NosCore.Packets.ServerPackets.Visibility.ClPacket.cs)
 - [in](src/NosCore.Packets/ServerPackets/Visibility/NosCore.Packets.ServerPackets.Visibility.InPacket.cs)
+- [in](src/NosCore.Packets/ServerPackets/Visibility/NosCore.Packets.ServerPackets.Visibility.NewIn1Packet.cs)
 
 ### Warehouse
 - [f_stash_all](src/NosCore.Packets/ServerPackets/Warehouse/NosCore.Packets.ServerPackets.Warehouse.FStashAllPacket.cs)
