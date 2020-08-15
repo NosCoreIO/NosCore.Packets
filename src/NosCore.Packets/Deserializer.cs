@@ -292,7 +292,21 @@ namespace NosCore.Packets
                     return Deserialize(matches[currentIndex++]);
                 case var prop when typeof(IPacket).IsAssignableFrom(prop):
                     var dic = _packetDeserializerDictionary[prop.Name];
-                    var packet = DeserializeIPacket(dic, matches[currentIndex].Replace((packetBasePropertyInfo.Item2 is PacketListIndex ind ? ind.ListSeparator : packetBasePropertyInfo.Item2.SpecialSeparator) ?? ".", " "), false, false);
+                    IPacket? packet;
+                    if (packetBasePropertyInfo.Item2.SpecialSeparator?.Length == 0) // if ListSeparator == ""
+                    {
+                        string temp = "";
+                        for (int i = 0; i < matches[currentIndex].Length; i++)
+                        {
+                            temp = temp + matches[currentIndex][i] + " ";
+                        }
+                        temp = temp.Remove(temp.Length - 1);
+                        packet = DeserializeIPacket(dic, temp, false, false);
+                    }
+                    else
+                    {
+                        packet = DeserializeIPacket(dic, matches[currentIndex].Replace((packetBasePropertyInfo.Item2 is PacketListIndex ind ? ind.ListSeparator : packetBasePropertyInfo.Item2.SpecialSeparator) ?? ".", " "), false, false);
+                    }
                     currentIndex++;
                     return packet;
                 default:
