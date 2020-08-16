@@ -66,8 +66,8 @@ namespace NosCore.Packets.ServerPackets.Visibility
         [PacketIndex(16, SpecialSeparator = "")]
         public UpgradeRareSubPacket? ArmorUpgradeRareSubPacket { get; set; }
 
-        [PacketIndex(17)]
-        public long FamilyId { get; set; }
+        [PacketIndex(17, SpecialSeparator = ".")]
+        public FamilySubPacket? FamilySubPacket { get; set; }
 
         [PacketIndex(18)]
         public string? FamilyName { get; set; }
@@ -107,5 +107,8 @@ namespace NosCore.Packets.ServerPackets.Visibility
 
         [PacketIndex(30)]
         public byte HeroLevel { get; set; }
+
+        [PacketIndex(31)]
+        public short Title { get; set; }
     }
 }
