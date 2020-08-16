@@ -659,7 +659,7 @@ namespace NosCore.Packets.Tests
                     Unknown3 = 0,
                     WeaponUpgradeRareSubPacket = new UpgradeRareSubPacket(),
                     ArmorUpgradeRareSubPacket = new UpgradeRareSubPacket(),
-                    FamilyId = -1,
+                    FamilySubPacket = new FamilySubPacket(),
                     FamilyName = null,
                     ReputIco = 1,
                     Invisible = false,
@@ -672,12 +672,13 @@ namespace NosCore.Packets.Tests
                     FamilyIcons = new List<bool> { false, false, false },
                     Compliment = 0,
                     Size = 10,
-                    HeroLevel = 0
+                    HeroLevel = 0,
+                    Title = 0
                 }
             };
             var packet = Serializer.Serialize(characterTest);
             Assert.AreEqual(
-                $"in 1 characterTest - 0 0 0 0 {(byte)characterTest.InCharacterSubPacket.Authority} 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 0 0 0 -1 - 1 0 0 0 0 1 0 0|0|0 0 0 {(byte)characterTest.InCharacterSubPacket.Size} 0",
+                $"in 1 characterTest - 0 0 0 0 {(byte)characterTest.InCharacterSubPacket.Authority} 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 0 0 0 -1.-1 - 1 0 0 0 0 1 0 0|0|0 0 0 {(byte)characterTest.InCharacterSubPacket.Size} 0 0",
                 packet);
         }
     }

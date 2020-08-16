@@ -9,9 +9,9 @@ using System;
 namespace NosCore.Packets.Attributes
 {
     [AttributeUsage(AttributeTargets.All)]
-    public class PacketListIndex : PacketIndexAttribute
+    public class PacketListIndexAttribute : PacketIndexAttribute
     {
-        public PacketListIndex(int index) : base(index)
+        public PacketListIndexAttribute(int index) : base(index)
         {
         }
 

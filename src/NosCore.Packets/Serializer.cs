@@ -176,7 +176,7 @@ namespace NosCore.Packets
 
             var listJoin = Expression.Convert(Expression.Call(
                     typeof(string).GetMethod("Join", new[] { typeof(string), typeof(IEnumerable<string>) }),
-                    isPacketList || indexAttr is PacketListIndex ? Expression.Constant(packetSplitter, typeof(string)) : propertySplitter,
+                    isPacketList || indexAttr is PacketListIndexAttribute ? Expression.Constant(packetSplitter, typeof(string)) : propertySplitter,
                     selectExp),
                 typeof(object));
 
@@ -293,7 +293,7 @@ namespace NosCore.Packets
                     break;
                 //handle list
                 case var t when t.GetInterface("System.Collections.ICollection") != null:
-                    var splitter = indexAttr is PacketListIndex ind
+                    var splitter = indexAttr is PacketListIndexAttribute ind
                         ? ind.ListSeparator ?? (typeof(IPacket).IsAssignableFrom(t.GenericTypeArguments.Any() ? t.GenericTypeArguments[0] : t.GetElementType()) ? " " : ".")
                         : indexAttr.SpecialSeparator ?? " ";
                     specificTypeExpression = ListSerializer(injectedPacket, specificTypeExpression, indexAttr, t, splitter,

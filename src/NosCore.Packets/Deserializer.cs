@@ -292,7 +292,7 @@ namespace NosCore.Packets
                     return Deserialize(matches[currentIndex++]);
                 case var prop when typeof(IPacket).IsAssignableFrom(prop):
                     var dic = _packetDeserializerDictionary[prop.Name];
-                    var packet = DeserializeIPacket(dic, matches[currentIndex].Replace((packetBasePropertyInfo.Item2 is PacketListIndex ind ? ind.ListSeparator : packetBasePropertyInfo.Item2.SpecialSeparator) ?? ".", " "), false, false);
+                    var packet = DeserializeIPacket(dic, matches[currentIndex].Replace((packetBasePropertyInfo.Item2 is PacketListIndexAttribute ind ? ind.ListSeparator : packetBasePropertyInfo.Item2.SpecialSeparator) ?? ".", " "), false, false);
                     currentIndex++;
                     return packet;
                 default:
@@ -303,7 +303,7 @@ namespace NosCore.Packets
         private object? DeserializeList(Type subType, PacketIndexAttribute packetIndexAttribute, string[] matches, ref int currentIndex, bool isMaxIndex)
         {
             int newIndex = currentIndex;
-            var length = packetIndexAttribute is PacketListIndex listIndex ? listIndex.Length : 0;
+            var length = packetIndexAttribute is PacketListIndexAttribute listIndex ? listIndex.Length : 0;
             string[]? splited = null;
 
             if (length < 0)
@@ -314,7 +314,7 @@ namespace NosCore.Packets
             {
 
                 var separator = packetIndexAttribute.SpecialSeparator;
-                if (packetIndexAttribute is PacketListIndex ind)
+                if (packetIndexAttribute is PacketListIndexAttribute ind)
                 {
                     separator = ind.ListSeparator ?? (typeof(IPacket).IsAssignableFrom(subType) ? separator : ".");
                 }
