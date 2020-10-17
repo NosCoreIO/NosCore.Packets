@@ -685,7 +685,7 @@ namespace NosCore.Packets.Enumerations
         /// <summary>
         AlreadyTrading = 168,
         /// <summary>
-        /// Accept trade from %s?<NEW_TYPE><0>
+        /// Accept trade from %s %s?<NEW_TYPE><0,1>
         /// <summary>
         WantAcceptTrade = 169,
         /// <summary>
@@ -9781,7 +9781,7 @@ namespace NosCore.Packets.Enumerations
         /// <summary>
         WeaponIsDamaged = 2443,
         /// <summary>
-        /// This weapon is bound to another player. You can only carve runes into your own weapons. %s <NEW_TYPE><0>
+        /// This weapon is bound to another player. You can only carve runes into your own weapons. 
         /// <summary>
         CannotCarveNotYourWeapon = 2444,
         /// <summary>
@@ -9972,5 +9972,9 @@ namespace NosCore.Packets.Enumerations
         /// Akhenaton the Cursed Pharaoh
         /// <summary>
         AkhenatonCursedPharaoh = 2491,
+        /// <summary>
+        /// Not possible while in a party.
+        /// <summary>
+        NotPossibleInGroup = 2492,
     }
 }
