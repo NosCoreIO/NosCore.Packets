@@ -1,40 +1,41 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <LangVersion>latest</LangVersion>
-    <ApplicationIcon>favicon.ico</ApplicationIcon>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>NosCore - ChickenAPI</Authors>
-    <Copyright>2020</Copyright>
-    <Nullable>enable</Nullable>
-    <PackageProjectUrl>https://github.com/ChickenAPI/NosCore.Packets</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/NosCoreIO/NosCore.Packets.git</RepositoryUrl>
-    <PackageIconUrl></PackageIconUrl>
-    <PackageTags>nostale, noscore, chickenapi, nostale private server source, nostale emulator</PackageTags>
-    <Version>0.33.1</Version>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Description>NosCore's Packets (Nostale packets) defined over classes</Description>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryType>git</RepositoryType>
-    <Company>NosCore</Company>
-    <PackageIcon>icon.png</PackageIcon>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<LangVersion>latest</LangVersion>
+		<ApplicationIcon>favicon.ico</ApplicationIcon>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Authors>NosCore - ChickenAPI</Authors>
+		<Copyright>2020</Copyright>
+		<Nullable>enable</Nullable>
+		<PackageProjectUrl>https://github.com/ChickenAPI/NosCore.Packets</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/NosCoreIO/NosCore.Packets.git</RepositoryUrl>
+		<PackageIconUrl></PackageIconUrl>
+		<PackageTags>nostale, noscore, chickenapi, nostale private server source, nostale emulator</PackageTags>
+		<Version>0.34.0</Version>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<Description>NosCore's Packets (Nostale packets) defined over classes</Description>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<RepositoryType>git</RepositoryType>
+		<Company>NosCore</Company>
+		<PackageIcon>icon.png</PackageIcon>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\build\</OutputPath>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>..\..\build\</OutputPath>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="NosCore.Shared" Version="1.9.1" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="NosCore.Shared" Version="1.9.1" />
+		<PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\..\icon.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\..\icon.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
 
 </Project>

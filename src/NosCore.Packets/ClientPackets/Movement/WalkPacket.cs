@@ -18,7 +18,7 @@ namespace NosCore.Packets.ClientPackets.Movement
         public short YCoordinate { get; set; }
 
         [PacketIndex(2)]
-        public short Unknown { get; set; } //TODO to find
+        public byte CheckSum { get; set; }
 
         [PacketIndex(3)]
         public short Speed { get; set; }
