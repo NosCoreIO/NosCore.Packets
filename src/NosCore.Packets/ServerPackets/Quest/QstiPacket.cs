@@ -13,6 +13,6 @@ namespace NosCore.Packets.ServerPackets.Quest
     public class QstiPacket : PacketBase
     {
         [PacketIndex(0, SpecialSeparator = ".")]
-        public QuestSubPacket QuestSubPacket { get; set; }
+        public QuestSubPacket QuestSubPacket { get; set; } = null!;
     }
 }

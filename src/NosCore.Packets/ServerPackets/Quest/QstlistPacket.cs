@@ -14,6 +14,6 @@ namespace NosCore.Packets.ServerPackets.Quest
     public class QstlistPacket : PacketBase
     {
         [PacketListIndex(0, RemoveHeader = true)]
-        public List<QuestSubPacket> QuestSubPackets { get; set; }
+        public List<QuestSubPacket> QuestSubPackets { get; set; } = null!;
     }
 }
