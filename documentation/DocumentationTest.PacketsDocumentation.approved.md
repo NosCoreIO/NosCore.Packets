@@ -247,6 +247,8 @@
 
 ### Login
 - [failc](src/NosCore.Packets/ServerPackets/Login/NosCore.Packets.ServerPackets.Login.FailcPacket.cs)
+- [it](src/NosCore.Packets/ServerPackets/Login/NosCore.Packets.ServerPackets.Login.ItPacket.cs)
+- [mz](src/NosCore.Packets/ServerPackets/Login/NosCore.Packets.ServerPackets.Login.MzPacket.cs)
 - [NsTeST](src/NosCore.Packets/ServerPackets/Login/NosCore.Packets.ServerPackets.Login.NsTestPacket.cs)
 - [NsTeST_sub_packet](src/NosCore.Packets/ServerPackets/Login/NosCore.Packets.ServerPackets.Login.NsTeStSubPacket.cs)
 
