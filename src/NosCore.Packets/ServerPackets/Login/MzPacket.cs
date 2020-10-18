@@ -15,7 +15,7 @@ namespace NosCore.Packets.ServerPackets.Login
         public string Ip { get; set; } = null!;
 
         [PacketIndex(1)]
-        public short Port { get; set; }
+        public ushort Port { get; set; }
 
         [PacketIndex(2)]
         public byte CharacterSlot { get; set; }

@@ -15,7 +15,7 @@ namespace NosCore.Packets.ServerPackets.Login
         public string? Host { get; set; }
 
         [PacketIndex(1, SpecialSeparator = ":")]
-        public int? Port { get; set; }
+        public ushort? Port { get; set; }
 
         [PacketIndex(2, SpecialSeparator = ":")]
         public int? Color { get; set; }
