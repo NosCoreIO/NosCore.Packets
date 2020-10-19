@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Player
 {
     [PacketHeader("rsfi")]
-    public class RsfiPacket : PacketBase
+    public class RsfiPacket : PacketBase, IWorldPacket
     {
         //TODO make this real packet, it's just here to fix a dialog issue with client
         [PacketIndex(0)]

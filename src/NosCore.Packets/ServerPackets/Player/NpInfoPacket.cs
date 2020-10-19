@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
     [PacketHeader("npinfo")]
-    public class NpInfoPacket : PacketBase
+    public class NpInfoPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte Page { get; set; }

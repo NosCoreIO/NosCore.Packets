@@ -7,11 +7,12 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Exchanges
 {
     [PacketHeader("exc_list")]
-    public class ExcListPacket : PacketBase
+    public class ExcListPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         [Range(0, long.MaxValue)]

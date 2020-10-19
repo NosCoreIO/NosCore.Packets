@@ -7,12 +7,13 @@
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 using System;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
     [Obsolete("this packet is obsolete please use MsgiPacket")]
     [PacketHeader("msg")]
-    public class MsgPacket : PacketBase
+    public class MsgPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public MessageType Type { get; set; }

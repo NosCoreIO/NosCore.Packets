@@ -6,10 +6,11 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Quicklist
 {
-    public class QsetClientSubPacket : PacketBase
+    public class QsetClientSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0, IsOptional = true)]
         public QSetType? Type { get; set; }

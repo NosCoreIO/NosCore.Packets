@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Battle
 {
     [PacketHeader("ms_c")]
-    public class MscPacket : PacketBase
+    public class MscPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long Unknown { get; set; } = 0;

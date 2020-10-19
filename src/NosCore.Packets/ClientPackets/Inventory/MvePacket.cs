@@ -6,11 +6,12 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Inventory
 {
     [PacketHeader("mve")]
-    public class MvePacket : PacketBase
+    public class MvePacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public PocketType InventoryType { get; set; }

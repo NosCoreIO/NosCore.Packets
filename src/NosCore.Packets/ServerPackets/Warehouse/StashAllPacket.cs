@@ -6,12 +6,13 @@
 
 using System.Collections.Generic;
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 using NosCore.Packets.ServerPackets.Inventory;
 
 namespace NosCore.Packets.ServerPackets.Warehouse
 {
     [PacketHeader("stash_all")]
-    public class StashAllPacket : PacketBase
+    public class StashAllPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte WarehouseSize { get; set; }

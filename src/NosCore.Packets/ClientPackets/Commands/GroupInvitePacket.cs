@@ -5,6 +5,7 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Commands
@@ -18,7 +19,7 @@ namespace NosCore.Packets.ClientPackets.Commands
     [PacketHeaderAlias("$Пригласить-группа", Flag = nameof(RegionType.RU))]
     [PacketHeaderAlias("$GrupDaveti", Flag = nameof(RegionType.TR))]
     [PacketHeaderAlias("$Skupina", Flag = nameof(RegionType.CS))]
-    public class GroupInvitePacket : PacketBase
+    public class GroupInvitePacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public string? CharacterName { get; set; }

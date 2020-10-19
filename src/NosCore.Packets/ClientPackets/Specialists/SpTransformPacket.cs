@@ -6,11 +6,12 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Specialists
 {
     [PacketHeader("sl")]
-    public class SpTransformPacket : PacketBase
+    public class SpTransformPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public SlPacketType Type { get; set; }

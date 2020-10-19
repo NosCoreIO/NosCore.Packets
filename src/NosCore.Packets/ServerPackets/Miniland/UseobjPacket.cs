@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Miniland
 {
     [PacketHeader("useobj")]
-    public class UseObjPacket : PacketBase
+    public class UseObjPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public string? Name { get; set; }

@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Relations
 {
     [PacketHeader("reloadfinfo")]
-    public class ReloadFinfoPacket : PacketBase
+    public class ReloadFinfoPacket : PacketBase, IWorldPacket
     {
     }
 }

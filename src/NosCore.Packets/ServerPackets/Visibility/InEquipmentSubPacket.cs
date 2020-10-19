@@ -5,10 +5,11 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Visibility
 {
-    public class InEquipmentSubPacket : PacketBase
+    public class InEquipmentSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public short? Hat { get; set; }

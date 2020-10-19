@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Families
 {
     [PacketHeader("glist")]
-    public class GListPacket : PacketBase
+    public class GListPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(1)]
         public byte Type { get; set; }

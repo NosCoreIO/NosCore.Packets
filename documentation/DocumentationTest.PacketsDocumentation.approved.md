@@ -77,6 +77,10 @@
 ### Groups
 - [pleave](src/NosCore.Packets/ClientPackets/Groups/NosCore.Packets.ClientPackets.Groups.PleavePacket.cs)
 
+### Infrastructure
+- [DAC](src/NosCore.Packets/ClientPackets/Infrastructure/NosCore.Packets.ClientPackets.Infrastructure.DacPacket.cs)
+- [0](src/NosCore.Packets/ClientPackets/Infrastructure/NosCore.Packets.ClientPackets.Infrastructure.ZeroPacket.cs)
+
 ### Inventory
 - [b_i](src/NosCore.Packets/ClientPackets/Inventory/NosCore.Packets.ClientPackets.Inventory.BiPacket.cs)
 - [mve](src/NosCore.Packets/ClientPackets/Inventory/NosCore.Packets.ClientPackets.Inventory.MvePacket.cs)

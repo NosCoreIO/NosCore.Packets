@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 using NosCore.Packets.ServerPackets.Movement;
 
 namespace NosCore.Packets.ServerPackets.Parcel
 {
     [PacketHeader("parcel")]
-    public class ParcelPacket : PacketBase
+    public class ParcelPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte Type { get; set; }

@@ -7,12 +7,13 @@
 using System.Collections.Generic;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 using NosCore.Packets.ServerPackets.Inventory;
 
 namespace NosCore.Packets.ServerPackets.Warehouse
 {
     [PacketHeader("f_stash")]
-    public class FStashClientPacket : PacketBase
+    public class FStashClientPacket : PacketBase, IWorldPacket
     {
         [PacketListIndex(0)]
         public List<IvnSubPacket?>? IvnSubPackets { get; set; }

@@ -6,10 +6,11 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Quest
 {
-    public class QuestObjectiveSubPacket : PacketBase
+    public class QuestObjectiveSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public short CurrentCount { get; set; }

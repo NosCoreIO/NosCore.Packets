@@ -6,11 +6,12 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Quest
 {
     [PacketHeader("target")]
-    public class TargetPacket : PacketBase
+    public class TargetPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public short TargetX { get; set; }

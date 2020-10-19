@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Player
 {
     [PacketHeader("snap")]
-    public class SnapPacket : PacketBase
+    public class SnapPacket : PacketBase, IWorldPacket
     {
     }
 }

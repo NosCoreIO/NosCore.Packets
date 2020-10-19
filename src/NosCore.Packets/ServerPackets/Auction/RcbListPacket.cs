@@ -6,12 +6,13 @@
 
 using System.Collections.Generic;
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 using NosCore.Packets.ServerPackets.Inventory;
 
 namespace NosCore.Packets.ServerPackets.Auction
 {
     [PacketHeader("rc_blist")]
-    public class RcbListPacket : PacketBase
+    public class RcbListPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long PageIndex { get; set; }
@@ -19,7 +20,7 @@ namespace NosCore.Packets.ServerPackets.Auction
         [PacketListIndex(1, SpecialSeparator = "|")]
         public List<RcbListElementPacket?>? Items { get; set; }
 
-        public class RcbListElementPacket : PacketBase
+        public class RcbListElementPacket : PacketBase, IWorldPacket
         {
             [PacketIndex(0)]
             public long AuctionId { get; set; }

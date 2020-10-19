@@ -6,12 +6,13 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
     [PacketHeader("pflag")]
-    public class PFlagPacket : PacketBase
+    public class PFlagPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public VisualType EntityType { get; set; }

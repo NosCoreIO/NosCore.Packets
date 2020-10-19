@@ -6,11 +6,12 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Quest
 {
     [PacketHeader("qt")]
-    public class QtPacket : PacketBase
+    public class QtPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public QuestActionType Type { get; set; }

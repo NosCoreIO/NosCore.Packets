@@ -6,12 +6,13 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
     [PacketHeader("tc_info")]
-    public class TcInfoPacket : PacketBase
+    public class TcInfoPacket : PacketBase, IWorldPacket
     {
         // return $"tc_info {Level} {Name} {fairy?.Item.Element ?? 0} {ElementRate + (Buff.Any(s => s.Card.CardId == 131) ? 30 : 0)}
         // {(byte)Class} {(byte)Gender} {(Family != null ? $"{Family.FamilyId}

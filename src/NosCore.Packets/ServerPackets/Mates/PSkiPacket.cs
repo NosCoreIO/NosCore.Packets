@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Mates
 {
     [PacketHeader("pski")]
-    public class PSkiPacket : PacketBase
+    public class PSkiPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long FirstSkill { get; set; }

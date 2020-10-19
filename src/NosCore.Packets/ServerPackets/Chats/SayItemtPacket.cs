@@ -6,13 +6,14 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 using NosCore.Packets.ServerPackets.Inventory;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Chats
 {
     [PacketHeader("sayitemt")]
-    public class SayItemtPacket : PacketBase
+    public class SayItemtPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

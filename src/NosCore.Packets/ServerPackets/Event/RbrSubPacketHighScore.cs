@@ -5,10 +5,11 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Event
 {
-    public class RbrSubPacketHighScore : PacketBase
+    public class RbrSubPacketHighScore : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public short Score { get; set; }

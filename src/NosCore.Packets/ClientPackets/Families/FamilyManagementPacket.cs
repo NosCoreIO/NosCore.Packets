@@ -6,11 +6,12 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Families
 {
     [PacketHeader("fmg")]
-    public class FamilyManagementPacket : PacketBase
+    public class FamilyManagementPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public FamilyAuthority FamilyAuthorityType { get; set; }

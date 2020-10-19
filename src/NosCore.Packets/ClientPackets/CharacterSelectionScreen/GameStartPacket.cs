@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.CharacterSelectionScreen
 {
     [PacketHeader("game_start")]
-    public class GameStartPacket : PacketBase
+    public class GameStartPacket : PacketBase, IWorldPacket
     {
     }
 }

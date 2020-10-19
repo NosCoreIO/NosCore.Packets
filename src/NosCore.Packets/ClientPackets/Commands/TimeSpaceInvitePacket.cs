@@ -5,6 +5,7 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Commands
@@ -18,7 +19,7 @@ namespace NosCore.Packets.ClientPackets.Commands
     [PacketHeaderAlias("$Сопровождать", Flag = nameof(RegionType.RU))]
     [PacketHeaderAlias("$Eþlik", Flag = nameof(RegionType.TR))]
     [PacketHeaderAlias("$Doprovázet", Flag = nameof(RegionType.CS))]
-    public class TimeSpaceInvitePacket : PacketBase
+    public class TimeSpaceInvitePacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public string? CharacterName { get; set; }

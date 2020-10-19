@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Battle
 {
     [PacketHeader("multi_target_list_sub_packet")]
-    public class MultiTargetListSubPacket : PacketBase
+    public class MultiTargetListSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public int SkillCastId { get; set; }

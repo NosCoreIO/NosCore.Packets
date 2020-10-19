@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Families
 {
     [PacketHeader("today_cts")]
-    public class TodayPacket : PacketBase
+    public class TodayPacket : PacketBase, IWorldPacket
     {
     }
 }

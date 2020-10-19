@@ -6,12 +6,13 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Inventory
 {
     //todo cleanup this messy packet
     [PacketHeader("e_info")]
-    public class EInfoPacket : PacketBase
+    public class EInfoPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public EInfoPacketType EInfoType { get; set; }

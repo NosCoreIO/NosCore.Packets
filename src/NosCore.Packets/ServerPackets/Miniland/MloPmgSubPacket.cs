@@ -5,10 +5,11 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Miniland
 {
-    public class MloPmgSubPacket : PacketBase
+    public class MloPmgSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public short BoxVNum { get; set; }

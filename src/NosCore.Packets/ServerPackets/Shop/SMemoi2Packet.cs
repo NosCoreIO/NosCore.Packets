@@ -6,11 +6,12 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Shop
 {
     [PacketHeader("s_memoi2")]
-    public class SMemoi2Packet : PacketBase
+    public class SMemoi2Packet : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public SMemoType Type { get; set; }

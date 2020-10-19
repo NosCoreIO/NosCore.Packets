@@ -6,11 +6,12 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Families
 {
     [PacketHeader("ginfo")]
-    public class GInfoPacket : PacketBase
+    public class GInfoPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public string? FamilyName { get; set; }

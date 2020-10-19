@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Miniland
 {
     [PacketHeader("mlpt")]
-    public class MinilandPointPacket : PacketBase
+    public class MinilandPointPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long MinilandPoint { get; set; }

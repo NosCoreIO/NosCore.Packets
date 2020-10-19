@@ -7,12 +7,13 @@
 using System.Collections.Generic;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.CharacterSelectionScreen
 {
     [PacketHeader("clist")]
-    public class ClistPacket : PacketBase
+    public class ClistPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte Slot { get; set; }

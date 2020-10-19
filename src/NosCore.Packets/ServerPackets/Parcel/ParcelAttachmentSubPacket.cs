@@ -5,10 +5,11 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Parcel
 {
-    public class ParcelAttachmentSubPacket : PacketBase
+    public class ParcelAttachmentSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte TitleType { get; set; }

@@ -6,11 +6,12 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Miniland
 {
     [PacketHeader("mlinfo")]
-    public class MlinfoPacket : PacketBase
+    public class MlinfoPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public short WelcomeMusicInfo { get; set; } = 3800;

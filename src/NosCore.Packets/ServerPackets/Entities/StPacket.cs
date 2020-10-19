@@ -7,12 +7,13 @@
 using System.Collections.Generic;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Entities
 {
     [PacketHeader("st")]
-    public class StPacket : PacketBase
+    public class StPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public VisualType Type { get; set; }

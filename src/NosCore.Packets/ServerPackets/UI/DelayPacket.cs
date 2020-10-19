@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 namespace NosCore.Packets.ServerPackets.UI
 {
     [PacketHeader("delay")]
-    public class DelayPacket : PacketBase
+    public class DelayPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public short Delay { get; set; }

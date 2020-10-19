@@ -6,11 +6,12 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Inventory
 {
     [PacketHeader("slinfo")]
-    public class SlInfoPacket : PacketBase
+    public class SlInfoPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public PocketType InventoryType { get; set; }

@@ -6,11 +6,12 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Entities
 {
     [PacketHeader("req_info")]
-    public class ReqInfoPacket : PacketBase
+    public class ReqInfoPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public ReqInfoType ReqType { get; set; }

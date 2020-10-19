@@ -5,6 +5,7 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Commands
@@ -18,7 +19,7 @@ namespace NosCore.Packets.ClientPackets.Commands
     [PacketHeaderAlias("%Покинуть", Flag = nameof(RegionType.RU))]
     [PacketHeaderAlias("%AileÇaðrýsý", Flag = nameof(RegionType.TR))]
     [PacketHeaderAlias("%Opustit", Flag = nameof(RegionType.CS))]
-    public class FamilyLeavePacket : PacketBase
+    public class FamilyLeavePacket : PacketBase, IWorldPacket
     {
     }
 }

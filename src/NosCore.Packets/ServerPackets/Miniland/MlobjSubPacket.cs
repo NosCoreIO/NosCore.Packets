@@ -5,10 +5,11 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Miniland
 {
-    public class MlobjSubPacket : PacketBase
+    public class MlobjSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public short MapX { get; set; }

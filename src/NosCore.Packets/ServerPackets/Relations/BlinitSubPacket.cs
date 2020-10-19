@@ -5,10 +5,11 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Relations
 {
-    public class BlinitSubPacket : PacketBase
+    public class BlinitSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long RelatedCharacterId { get; set; }

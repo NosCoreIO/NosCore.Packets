@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
     [PacketHeader("bn")]
-    public class BnPacket : PacketBase
+    public class BnPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte BnNumber { get; set; }

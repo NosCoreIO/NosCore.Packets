@@ -6,11 +6,12 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Bazaar
 {
     [PacketHeader("c_slist")]
-    public class CSListPacket : PacketBase
+    public class CSListPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte Index { get; set; }

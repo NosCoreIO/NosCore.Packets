@@ -6,11 +6,12 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Inventory
 {
     [PacketHeader("b_i")]
-    public class BiPacket : PacketBase
+    public class BiPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public PocketType PocketType { get; set; }

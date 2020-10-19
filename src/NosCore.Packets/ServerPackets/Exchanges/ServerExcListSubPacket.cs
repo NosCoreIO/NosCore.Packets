@@ -7,10 +7,11 @@
 using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Exchanges
 {
-    public class ServerExcListSubPacket : PacketBase
+    public class ServerExcListSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public short? ExchangeSlot { get; set; }

@@ -5,10 +5,11 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Event
 {
-    public class RbrSubPacketTitleAndDescription : PacketBase
+    public class RbrSubPacketTitleAndDescription : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public string? Title { get; set; }

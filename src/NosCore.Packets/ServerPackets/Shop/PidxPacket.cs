@@ -6,11 +6,12 @@
 
 using System.Collections.Generic;
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Shop
 {
     [PacketHeader("pidx")]
-    public class PidxPacket : PacketBase
+    public class PidxPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long GroupId { get; set; }

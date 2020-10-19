@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Warehouse
 {
     [PacketHeader("stash_end", AnonymousAccess = true)]
-    public class StashEndPacket : PacketBase
+    public class StashEndPacket : PacketBase, IWorldPacket
     {
     }
 }

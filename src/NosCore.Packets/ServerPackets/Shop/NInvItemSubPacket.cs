@@ -6,11 +6,12 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Shop
 {
     [PacketHeader("n_inv_item")]
-    public class NInvItemSubPacket : PacketBase
+    public class NInvItemSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public PocketType Type { get; set; }

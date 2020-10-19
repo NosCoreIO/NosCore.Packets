@@ -5,10 +5,11 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Inventory
 {
-    public class UpgradeRareSubPacket : PacketBase
+    public class UpgradeRareSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0, IsOptional = true)]
         public byte? Upgrade { get; set; }

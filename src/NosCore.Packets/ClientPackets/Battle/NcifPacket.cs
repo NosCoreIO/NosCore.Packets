@@ -7,12 +7,13 @@
 using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Battle
 {
     [PacketHeader("ncif")]
-    public class NcifPacket : PacketBase
+    public class NcifPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public VisualType Type { get; set; }

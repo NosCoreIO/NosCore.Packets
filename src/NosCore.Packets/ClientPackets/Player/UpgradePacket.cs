@@ -6,11 +6,12 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Player
 {
     [PacketHeader("up_gr")]
-    public class UpgradePacket : PacketBase
+    public class UpgradePacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public UpgradePacketType UpgradeType { get; set; }

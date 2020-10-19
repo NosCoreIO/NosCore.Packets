@@ -6,12 +6,13 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Mates
 {
     [PacketHeader("suctl")]
-    public class SuCtlPacket : PacketBase
+    public class SuCtlPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public int CastId { get; set; }

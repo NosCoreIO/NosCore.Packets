@@ -7,11 +7,12 @@
 using System.Collections.Generic;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Inventory
 {
     [PacketHeader("inv")]
-    public class InvPacket : PacketBase
+    public class InvPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public PocketType Type { get; set; }

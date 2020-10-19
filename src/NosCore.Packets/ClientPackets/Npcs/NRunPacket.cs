@@ -6,12 +6,13 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Npcs
 {
     [PacketHeader("n_run")]
-    public class NrunPacket : PacketBase
+    public class NrunPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public NrunRunnerType Runner { get; set; }

@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
     [PacketHeader("fd")]
-    public class FdPacket : PacketBase
+    public class FdPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long Reput { get; set; }

@@ -12,7 +12,7 @@ using NosCore.Packets.Interfaces;
 namespace NosCore.Packets.ServerPackets.UI
 {
     [PacketHeader("qnai2")]
-    public class Qnai2Packet : PacketBase
+    public class Qnai2Packet : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public IPacket? YesPacket { get; set; }

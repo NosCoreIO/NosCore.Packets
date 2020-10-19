@@ -6,11 +6,12 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Warehouse
 {
     [PacketHeader("f_deposit")]
-    public class FDepositPacket : PacketBase
+    public class FDepositPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public PocketType Inventory { get; set; }

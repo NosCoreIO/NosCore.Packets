@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Movement
 {
     [PacketHeader("preq")]
-    public class PreqPacket : PacketBase
+    public class PreqPacket : PacketBase, IWorldPacket
     {
     }
 }

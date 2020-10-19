@@ -6,11 +6,12 @@
 
 using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Shops
 {
     [PacketHeader("sell", BlockedByTrading = true)]
-    public class SellPacket : PacketBase
+    public class SellPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(2)]
         public short Data { get; set; }

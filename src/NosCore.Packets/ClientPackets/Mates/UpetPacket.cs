@@ -6,12 +6,13 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Mates
 {
     [PacketHeader("u_pet")]
-    public class UpetPacket : PacketBase
+    public class UpetPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long MateTransportId { get; set; }

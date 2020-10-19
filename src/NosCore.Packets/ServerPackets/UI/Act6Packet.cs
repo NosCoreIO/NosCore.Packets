@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
     [PacketHeader("act6")]
-    public class Act6Packet : PacketBase
+    public class Act6Packet : PacketBase, IWorldPacket
     {
     }
 }

@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Player
 {
     [PacketHeader("tit_eq")]
-    public class TitEqPacket : PacketBase
+    public class TitEqPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte Mode { get; set; }

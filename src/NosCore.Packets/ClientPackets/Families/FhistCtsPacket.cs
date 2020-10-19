@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Families
 {
     [PacketHeader("fhis_cts")]
-    public class FhistCtsPacket : PacketBase
+    public class FhistCtsPacket : PacketBase, IWorldPacket
     {
     }
 }

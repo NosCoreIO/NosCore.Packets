@@ -7,11 +7,12 @@
 using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Bazaar
 {
     [PacketHeader("c_reg", BlockedByTrading = true)]
-    public class CRegPacket : PacketBase
+    public class CRegPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public int Type { get; set; }

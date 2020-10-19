@@ -7,10 +7,11 @@
 using System.Collections.Generic;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Quest
 {
-    public class QuestSubPacket : PacketBase
+    public class QuestSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte ObjectiveCount { get; set; }

@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
     [PacketHeader("ch_dm")]
-    public class ChDMPacket : PacketBase
+    public class ChDMPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public int Maxhp { get; set; }

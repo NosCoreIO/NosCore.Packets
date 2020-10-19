@@ -6,11 +6,12 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Portals
 {
     [PacketHeader("gp")]
-    public class GpPacket : PacketBase
+    public class GpPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public short SourceX { get; set; }

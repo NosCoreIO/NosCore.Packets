@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Movement
 {
     [PacketHeader("walk")]
-    public class WalkPacket : PacketBase
+    public class WalkPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public short XCoordinate { get; set; }

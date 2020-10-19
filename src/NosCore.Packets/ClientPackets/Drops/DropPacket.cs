@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Drops
 {
     [PacketHeader("drop")]
-    internal class DropPacket : PacketBase
+    internal class DropPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long ItemVNum { get; set; }

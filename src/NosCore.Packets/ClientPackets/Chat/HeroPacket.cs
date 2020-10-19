@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Chat
 {
     [PacketHeader("hero")]
-    public class HeroPacket : PacketBase
+    public class HeroPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public string? Message { get; set; }

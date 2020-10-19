@@ -5,10 +5,11 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Visibility
 {
-    public class InItemSubPacket : PacketBase
+    public class InItemSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public int Amount { get; set; }

@@ -7,11 +7,12 @@
 using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Groups
 {
     [PacketHeader("pjoin")]
-    public class PjoinPacket : PacketBase
+    public class PjoinPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public GroupRequestType RequestType { get; set; }

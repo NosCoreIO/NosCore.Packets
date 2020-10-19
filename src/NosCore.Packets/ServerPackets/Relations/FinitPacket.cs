@@ -6,11 +6,12 @@
 
 using System.Collections.Generic;
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Relations
 {
     [PacketHeader("finit")]
-    public class FinitPacket : PacketBase
+    public class FinitPacket : PacketBase, IWorldPacket
     {
         [PacketListIndex(0, SpecialSeparator = "|")]
         public List<FinitSubPacket?>? SubPackets { get; set; }

@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Parcel
 {
     [PacketHeader("pst")]
-    public class PstClientPacket : PacketBase
+    public class PstClientPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public int ActionType { get; set; }

@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
     [PacketHeader("lev")]
-    public class LevPacket : PacketBase
+    public class LevPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte Level { get; set; }

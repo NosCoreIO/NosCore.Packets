@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Map
 {
     [PacketHeader("mapout")]
-    public class MapOutPacket : PacketBase
+    public class MapOutPacket : PacketBase, IWorldPacket
     {
     }
 }

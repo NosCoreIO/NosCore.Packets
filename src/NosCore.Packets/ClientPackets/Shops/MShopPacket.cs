@@ -7,11 +7,12 @@
 using System.Collections.Generic;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Shops
 {
     [PacketHeader("m_shop", BlockedByTrading = true)]
-    public class MShopPacket : PacketBase
+    public class MShopPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public CreateShopPacketType Type { get; set; }

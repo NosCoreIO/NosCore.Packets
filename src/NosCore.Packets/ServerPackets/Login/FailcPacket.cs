@@ -6,11 +6,12 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Login
 {
     [PacketHeader("failc")]
-    public class FailcPacket : PacketBase
+    public class FailcPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public LoginFailType Type { get; set; }

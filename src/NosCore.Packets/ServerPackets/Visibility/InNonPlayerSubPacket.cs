@@ -6,10 +6,11 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Visibility
 {
-    public class InNonPlayerSubPacket : PacketBase
+    public class InNonPlayerSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(1)]
         public InAliveSubPacket? InAliveSubPacket { get; set; }

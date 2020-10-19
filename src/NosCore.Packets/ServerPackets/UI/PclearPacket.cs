@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
     [PacketHeader("p_clear")]
-    public class PclearPacket : PacketBase
+    public class PclearPacket : PacketBase, IWorldPacket
     {
     }
 }

@@ -5,11 +5,12 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Movement
 {
     [PacketHeader("pulse")]
-    public class PulsePacket : PacketBase
+    public class PulsePacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public int Tick { get; set; }

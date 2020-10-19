@@ -6,10 +6,11 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Event
 {
-    public class RbrSubPacketBasicInfo : PacketBase
+    public class RbrSubPacketBasicInfo : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public short TsId { get; set; }

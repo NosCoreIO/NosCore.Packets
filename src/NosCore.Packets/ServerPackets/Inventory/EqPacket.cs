@@ -6,13 +6,14 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 using NosCore.Packets.ServerPackets.Visibility;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Inventory
 {
     [PacketHeader("eq")]
-    public class EqPacket : PacketBase
+    public class EqPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long VisualId { get; set; }

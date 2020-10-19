@@ -5,10 +5,11 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Login
 {
-    public class ClientVersionSubPacket : PacketBase
+    public class ClientVersionSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte Major { get; set; }

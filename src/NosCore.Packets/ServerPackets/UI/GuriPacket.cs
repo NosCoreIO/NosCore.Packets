@@ -6,11 +6,12 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
     [PacketHeader("guri")]
-    public class GuriPacket : PacketBase
+    public class GuriPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public GuriPacketType Type { get; set; }
