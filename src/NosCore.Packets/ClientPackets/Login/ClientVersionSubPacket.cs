@@ -9,7 +9,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Login
 {
-    public class ClientVersionSubPacket : PacketBase, IWorldPacket
+    public class ClientVersionSubPacket : PacketBase, ILoginPacket
     {
         [PacketIndex(0)]
         public byte Major { get; set; }
