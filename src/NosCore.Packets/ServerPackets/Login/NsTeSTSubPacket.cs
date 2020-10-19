@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 namespace NosCore.Packets.ServerPackets.Login
 {
     [PacketHeader("NsTeST_sub_packet")]
-    public class NsTeStSubPacket : PacketBase, IWorldPacket
+    public class NsTeStSubPacket : PacketBase, ILoginPacket
     {
         [PacketIndex(0)]
         public string? Host { get; set; }

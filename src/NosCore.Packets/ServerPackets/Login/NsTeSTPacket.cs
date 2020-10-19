@@ -13,7 +13,7 @@ using NosCore.Shared.Enumerations;
 namespace NosCore.Packets.ServerPackets.Login
 {
     [PacketHeader("NsTeST")]
-    public class NsTestPacket : PacketBase, IWorldPacket
+    public class NsTestPacket : PacketBase, ILoginPacket
     {
         [PacketIndex(0)]
         public RegionType RegionType { get; set; }

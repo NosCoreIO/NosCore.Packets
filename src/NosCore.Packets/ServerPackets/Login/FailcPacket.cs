@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 namespace NosCore.Packets.ServerPackets.Login
 {
     [PacketHeader("failc")]
-    public class FailcPacket : PacketBase, IWorldPacket
+    public class FailcPacket : PacketBase, ILoginPacket
     {
         [PacketIndex(0)]
         public LoginFailType Type { get; set; }
