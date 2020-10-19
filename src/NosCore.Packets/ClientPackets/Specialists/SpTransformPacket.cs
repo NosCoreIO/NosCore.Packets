@@ -10,7 +10,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ClientPackets.Specialists
 {
     [PacketHeader("sl")]
-    public class SpTransformPacket : PacketBase
+    public class SpTransformPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public SlPacketType Type { get; set; }

@@ -10,7 +10,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ClientPackets.Movement
 {
     [PacketHeader("rest")]
-    public class SitPacket : PacketBase
+    public class SitPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte Amount { get; set; }

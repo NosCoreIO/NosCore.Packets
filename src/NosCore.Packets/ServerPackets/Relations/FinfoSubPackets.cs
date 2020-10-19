@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ServerPackets.Relations
 {
     [PacketHeader("finfo_sub_packets")]
-    public class FinfoSubPackets : PacketBase
+    public class FinfoSubPackets : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long CharacterId { get; set; }

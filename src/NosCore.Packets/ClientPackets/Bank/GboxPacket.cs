@@ -11,7 +11,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ClientPackets.Bank
 {
     [PacketHeader("gbox")]
-    public class GboxPacket : PacketBase
+    public class GboxPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public BankActionType Type { get; set; }

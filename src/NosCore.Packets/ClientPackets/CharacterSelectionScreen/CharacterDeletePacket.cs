@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ClientPackets.CharacterSelectionScreen
 {
     [PacketHeader("Char_DEL", AnonymousAccess = true)]
-    public class CharacterDeletePacket : PacketBase
+    public class CharacterDeletePacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte Slot { get; set; }

@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ClientPackets.Movement
 {
     [PacketHeader("walk")]
-    public class WalkPacket : PacketBase
+    public class WalkPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public short XCoordinate { get; set; }

@@ -10,7 +10,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ServerPackets.Miniland
 {
     [PacketHeader("mlinfobr")]
-    public class MlInfoBrPacket : PacketBase
+    public class MlInfoBrPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public short MinilandMusicId { get; set; }

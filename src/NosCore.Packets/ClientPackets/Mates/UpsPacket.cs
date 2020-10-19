@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 namespace NosCore.Packets.ClientPackets.Mates
 {
     [PacketHeader("u_ps")]
-    public class UpsPacket : PacketBase
+    public class UpsPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long MateTransportId { get; set; }

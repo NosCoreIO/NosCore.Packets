@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 namespace NosCore.Packets.ServerPackets.Bazaar
 {
     [PacketHeader("rc_buy")]
-    public class RCBuyPacket : PacketBase
+    public class RCBuyPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public VisualType Type { get; set; }

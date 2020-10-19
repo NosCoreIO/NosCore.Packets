@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ServerPackets.Visibility
 {
     [PacketHeader("cl")]
-    public class ClPacket : PacketBase
+    public class ClPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long VisualId { get; set; }

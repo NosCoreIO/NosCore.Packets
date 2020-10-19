@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ServerPackets.CharacterSelectionScreen
 {
     [PacketHeader("clist_start")]
-    public class ClistStartPacket : PacketBase
+    public class ClistStartPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte Type { get; set; }

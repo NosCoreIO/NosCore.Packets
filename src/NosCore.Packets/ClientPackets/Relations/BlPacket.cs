@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ClientPackets.Relations
 {
     [PacketHeader("$bl")]
-    public class BlPacket : PacketBase
+    public class BlPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public string? CharacterName { get; set; }

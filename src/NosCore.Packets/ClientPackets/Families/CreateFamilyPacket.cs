@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ClientPackets.Families
 {
     [PacketHeader("glmk")]
-    public class CreateFamilyPacket : PacketBase
+    public class CreateFamilyPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public string? FamilyName { get; set; }

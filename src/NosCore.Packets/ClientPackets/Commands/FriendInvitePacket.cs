@@ -18,7 +18,7 @@ namespace NosCore.Packets.ClientPackets.Commands
     [PacketHeaderAlias("$Добавить", Flag = nameof(RegionType.RU))]
     [PacketHeaderAlias("$Ekle", Flag = nameof(RegionType.TR))]
     [PacketHeaderAlias("$Pøidat", Flag = nameof(RegionType.CS))]
-    public class FriendInvitePacket : PacketBase
+    public class FriendInvitePacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public string? CharacterName { get; set; }

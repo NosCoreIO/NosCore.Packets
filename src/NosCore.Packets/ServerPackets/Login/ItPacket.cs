@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ServerPackets.Login
 {
     [PacketHeader("it")]
-    public class ItPacket : PacketBase
+    public class ItPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte Mode { get; set; }

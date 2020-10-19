@@ -10,7 +10,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ServerPackets.Shop
 {
     [PacketHeader("s_memo")]
-    public class SMemoPacket : PacketBase
+    public class SMemoPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public SMemoType Type { get; set; }

@@ -9,7 +9,7 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Inventory
 {
-    public class EquipmentSubPacket : PacketBase
+    public class EquipmentSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public EquipmentType EquipmentType { get; set; }

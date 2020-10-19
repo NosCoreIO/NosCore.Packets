@@ -10,7 +10,7 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Shops
 {
-    public class MShopItemSubPacket : PacketBase
+    public class MShopItemSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public PocketType Type { get; set; }

@@ -9,7 +9,7 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Quicklist
 {
-    public class QsetClientSubPacket : PacketBase
+    public class QsetClientSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0, IsOptional = true)]
         public QSetType? Type { get; set; }

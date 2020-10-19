@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ServerPackets.Inventory
 {
     [PacketHeader("gold")]
-    public class GoldPacket : PacketBase
+    public class GoldPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long Gold { get; set; }

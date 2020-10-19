@@ -10,7 +10,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ServerPackets.UI
 {
     [PacketHeader("wopen")]
-    public class WopenPacket : PacketBase
+    public class WopenPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public WindowType Type { get; set; }

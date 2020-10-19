@@ -10,7 +10,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ClientPackets.Shops
 {
     [PacketHeader("sell_list")]
-    public class SellListPacket : PacketBase
+    public class SellListPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long ValueSold { get; set; }

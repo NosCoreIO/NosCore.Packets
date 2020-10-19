@@ -12,7 +12,7 @@ using NosCore.Shared.Enumerations;
 namespace NosCore.Packets.ServerPackets.Exchanges
 {
     [PacketHeader("exc_list")]
-    public class ServerExcListPacket : PacketBase
+    public class ServerExcListPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

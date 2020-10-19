@@ -8,7 +8,7 @@ using NosCore.Packets.Attributes;
 
 namespace NosCore.Packets.ServerPackets.Event
 {
-    public class RbrSubPacketItem : PacketBase
+    public class RbrSubPacketItem : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public short? ItemId { get; set; }

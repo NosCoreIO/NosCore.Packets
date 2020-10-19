@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ClientPackets.Warehouse
 {
     [PacketHeader("withdraw")]
-    public class WithdrawPacket : PacketBase
+    public class WithdrawPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public short Slot { get; set; }

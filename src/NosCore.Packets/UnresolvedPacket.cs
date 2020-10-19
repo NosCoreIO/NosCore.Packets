@@ -8,7 +8,7 @@ using NosCore.Packets.Attributes;
 
 namespace NosCore.Packets
 {
-    public class UnresolvedPacket : PacketBase
+    public class UnresolvedPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public string? Body { get; set; }

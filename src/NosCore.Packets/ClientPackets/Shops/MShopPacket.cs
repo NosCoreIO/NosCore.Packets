@@ -11,7 +11,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ClientPackets.Shops
 {
     [PacketHeader("m_shop", BlockedByTrading = true)]
-    public class MShopPacket : PacketBase
+    public class MShopPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public CreateShopPacketType Type { get; set; }

@@ -12,7 +12,7 @@ using NosCore.Packets.ServerPackets.Inventory;
 namespace NosCore.Packets.ServerPackets.Warehouse
 {
     [PacketHeader("f_stash_all")]
-    public class FStashAllPacket : PacketBase
+    public class FStashAllPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte WarehouseSize { get; set; }

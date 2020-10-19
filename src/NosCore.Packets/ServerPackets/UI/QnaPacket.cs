@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 namespace NosCore.Packets.ServerPackets.UI
 {
     [PacketHeader("qna")]
-    public class QnaPacket : PacketBase
+    public class QnaPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public IPacket? YesPacket { get; set; }

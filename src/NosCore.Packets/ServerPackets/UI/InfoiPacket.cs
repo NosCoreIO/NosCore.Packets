@@ -10,7 +10,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ServerPackets.UI
 {
     [PacketHeader("infoi")]
-    public class InfoiPacket : PacketBase
+    public class InfoiPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public Game18NConstString Message { get; set; }

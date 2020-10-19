@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ServerPackets.Player
 {
     [PacketHeader("stat")]
-    public class StatPacket : PacketBase
+    public class StatPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public int Hp { get; set; }

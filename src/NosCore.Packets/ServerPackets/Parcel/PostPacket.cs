@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ServerPackets.Parcel
 {
     [PacketHeader("post")]
-    public class PostPacket : PacketBase
+    public class PostPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte Type { get; set; }

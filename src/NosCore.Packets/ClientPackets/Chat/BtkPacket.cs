@@ -10,7 +10,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ClientPackets.Chat
 {
     [PacketHeader("btk")]
-    public class BtkPacket : PacketBase
+    public class BtkPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long CharacterId { get; set; }

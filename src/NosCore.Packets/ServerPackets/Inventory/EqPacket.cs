@@ -12,7 +12,7 @@ using NosCore.Shared.Enumerations;
 namespace NosCore.Packets.ServerPackets.Inventory
 {
     [PacketHeader("eq")]
-    public class EqPacket : PacketBase
+    public class EqPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long VisualId { get; set; }

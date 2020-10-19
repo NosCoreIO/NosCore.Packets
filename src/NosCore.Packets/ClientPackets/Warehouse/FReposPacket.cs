@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ClientPackets.Warehouse
 {
     [PacketHeader("f_repos")]
-    public class FReposPacket : PacketBase
+    public class FReposPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte OldSlot { get; set; }

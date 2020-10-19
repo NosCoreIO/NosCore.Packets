@@ -10,7 +10,7 @@ using System.Collections.Generic;
 namespace NosCore.Packets.ServerPackets.UI
 {
     [PacketHeader("ta_rank")]
-    public class TARankPacket : PacketBase
+    public class TARankPacket : PacketBase, IWorldPacket
     {
         [PacketListIndex(0, SpecialSeparator = ".")]
         public List<TARankSubPacket?>? CharacterList { get; set; }

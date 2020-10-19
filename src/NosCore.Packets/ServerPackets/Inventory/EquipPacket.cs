@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ServerPackets.Inventory
 {
     [PacketHeader("equip")]
-    public class EquipPacket : PacketBase
+    public class EquipPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0, SpecialSeparator = "")]
         public UpgradeRareSubPacket? WeaponUpgradeRareSubPacket { get; set; }

@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 namespace NosCore.Packets.ServerPackets.Inventory
 {
     [PacketHeader("pairy")]
-    public class PairyPacket : PacketBase
+    public class PairyPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

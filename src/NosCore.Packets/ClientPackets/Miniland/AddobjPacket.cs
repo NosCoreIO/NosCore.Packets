@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ClientPackets.Miniland
 {
     [PacketHeader("addobj")]
-    public class AddobjPacket : PacketBase
+    public class AddobjPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public short Slot { get; set; }

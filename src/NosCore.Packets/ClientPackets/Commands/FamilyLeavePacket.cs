@@ -18,7 +18,7 @@ namespace NosCore.Packets.ClientPackets.Commands
     [PacketHeaderAlias("%Покинуть", Flag = nameof(RegionType.RU))]
     [PacketHeaderAlias("%AileÇaðrýsý", Flag = nameof(RegionType.TR))]
     [PacketHeaderAlias("%Opustit", Flag = nameof(RegionType.CS))]
-    public class FamilyLeavePacket : PacketBase
+    public class FamilyLeavePacket : PacketBase, IWorldPacket
     {
     }
 }

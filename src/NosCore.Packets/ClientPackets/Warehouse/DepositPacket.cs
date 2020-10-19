@@ -10,7 +10,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ClientPackets.Warehouse
 {
     [PacketHeader("deposit")]
-    public class DepositPacket : PacketBase
+    public class DepositPacket : PacketBase, IWorldPacket
     {     
         [PacketIndex(0)]
         public PocketType Inventory { get; set; }

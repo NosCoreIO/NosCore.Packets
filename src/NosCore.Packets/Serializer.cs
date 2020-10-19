@@ -30,7 +30,7 @@ namespace NosCore.Packets
             }
         }
 
-        public void Initialize<T>() where T : PacketBase
+        public void Initialize<T>() where T : PacketBase, IWorldPacket
         {
             var packetSerializerExpressionFalse = PacketSerializerExpression<T>();
             if (packetSerializerExpressionFalse != null)
@@ -254,7 +254,7 @@ namespace NosCore.Packets
             );
         }
 
-        private LambdaExpression? PacketSerializerExpression<T>() where T : PacketBase
+        private LambdaExpression? PacketSerializerExpression<T>() where T : PacketBase, IWorldPacket
         {
             var header = typeof(T).GetCustomAttribute<PacketHeaderAttribute>()?.Identification;
 

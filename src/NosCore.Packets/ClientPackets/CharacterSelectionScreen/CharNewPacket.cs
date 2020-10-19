@@ -11,7 +11,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ClientPackets.CharacterSelectionScreen
 {
     [PacketHeader("Char_NEW", AnonymousAccess = true)]
-    public class CharNewPacket : PacketBase
+    public class CharNewPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         [StringLength(15, MinimumLength = 3)]

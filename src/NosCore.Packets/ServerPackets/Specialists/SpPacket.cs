@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ServerPackets.Specialists
 {
     [PacketHeader("sp")]
-    public class SpPacket : PacketBase
+    public class SpPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public int AdditionalPoint { get; set; }

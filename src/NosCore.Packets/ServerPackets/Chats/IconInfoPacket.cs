@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ServerPackets.Chats
 {
     [PacketHeader("IconInfo")]
-    public class IconInfoPacket : PacketBase
+    public class IconInfoPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public short IconId { get; set; }

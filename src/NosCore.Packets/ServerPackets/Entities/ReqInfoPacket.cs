@@ -10,7 +10,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ServerPackets.Entities
 {
     [PacketHeader("req_info")]
-    public class ReqInfoPacket : PacketBase
+    public class ReqInfoPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public ReqInfoType ReqType { get; set; }

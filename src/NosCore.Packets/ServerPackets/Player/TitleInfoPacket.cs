@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 namespace NosCore.Packets.ServerPackets.Player
 {
     [PacketHeader("titinfo")]
-    public class TitleInfoPacket : PacketBase
+    public class TitleInfoPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

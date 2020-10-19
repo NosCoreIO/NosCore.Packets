@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 namespace NosCore.Packets.ClientPackets.Miniland
 {
     [PacketHeader("mjoin")]
-    public class MJoinPacket : PacketBase
+    public class MJoinPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public VisualType Type { get; set; }

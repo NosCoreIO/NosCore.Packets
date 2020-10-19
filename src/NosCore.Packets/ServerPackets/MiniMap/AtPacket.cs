@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ServerPackets.MiniMap
 {
     [PacketHeader("at")]
-    public class AtPacket : PacketBase
+    public class AtPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long CharacterId { get; set; }

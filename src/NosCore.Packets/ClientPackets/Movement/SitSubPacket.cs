@@ -10,7 +10,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Movement
 {
-    public class SitSubPacket : PacketBase
+    public class SitSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

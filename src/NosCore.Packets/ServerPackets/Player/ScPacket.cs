@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ServerPackets.Player
 {
     [PacketHeader("sc")]
-    public class ScPacket : PacketBase
+    public class ScPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte Type { get; set; }

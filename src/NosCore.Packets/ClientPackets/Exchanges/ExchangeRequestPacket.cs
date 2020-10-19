@@ -11,7 +11,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ClientPackets.Exchanges
 {
     [PacketHeader("req_exc")]
-    public class ExchangeRequestPacket : PacketBase
+    public class ExchangeRequestPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public RequestExchangeType RequestType { get; set; }

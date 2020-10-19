@@ -8,7 +8,7 @@ using NosCore.Packets.Attributes;
 
 namespace NosCore.Packets.ServerPackets.Event
 {
-    public class RbrSubPacketMinMaxLevel : PacketBase
+    public class RbrSubPacketMinMaxLevel : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte MinLevel { get; set; }

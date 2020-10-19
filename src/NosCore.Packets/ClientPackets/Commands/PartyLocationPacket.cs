@@ -18,7 +18,7 @@ namespace NosCore.Packets.ClientPackets.Commands
     [PacketHeaderAlias("$Место-группы", Flag = nameof(RegionType.RU))]
     [PacketHeaderAlias("$Grup", Flag = nameof(RegionType.TR))]
     [PacketHeaderAlias("$Pozice", Flag = nameof(RegionType.CS))]
-    public class PartyLocationPacket : PacketBase
+    public class PartyLocationPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public string? CharacterName { get; set; }

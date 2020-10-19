@@ -10,7 +10,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ServerPackets.Battle
 {
     [PacketHeader("mslot")]
-    public class MslotPacket : PacketBase
+    public class MslotPacket : PacketBase, IWorldPacket
     {
 		[PacketIndex(0)]
 		public long SkillCastId { get; set; }

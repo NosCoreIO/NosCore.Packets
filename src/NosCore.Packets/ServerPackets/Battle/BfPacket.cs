@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 namespace NosCore.Packets.ServerPackets.Battle
 {
     [PacketHeader("bf")]
-    public class BfPacket : PacketBase
+    public class BfPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }
@@ -25,7 +25,7 @@ namespace NosCore.Packets.ServerPackets.Battle
         [PacketIndex(3)]
         public long BuffLevel { get; set; }
 
-        public class BuffElementSubPacket : PacketBase
+        public class BuffElementSubPacket : PacketBase, IWorldPacket
         {
             [PacketIndex(0)]
             public long ChargeValue { get; set; }

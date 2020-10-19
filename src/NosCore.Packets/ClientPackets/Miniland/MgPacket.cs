@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ClientPackets.Miniland
 {
     [PacketHeader("mg")]
-    public class MinigamePacket : PacketBase
+    public class MinigamePacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte Type { get; set; }

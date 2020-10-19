@@ -8,7 +8,7 @@ using NosCore.Packets.Attributes;
 
 namespace NosCore.Packets.ServerPackets.Event
 {
-    public class RbrSubPacketHighScore : PacketBase
+    public class RbrSubPacketHighScore : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public short Score { get; set; }

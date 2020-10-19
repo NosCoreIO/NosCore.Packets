@@ -10,7 +10,7 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Quest
 {
-    public class QuestSubPacket : PacketBase
+    public class QuestSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte ObjectiveCount { get; set; }

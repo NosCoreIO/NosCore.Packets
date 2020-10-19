@@ -12,7 +12,7 @@ namespace NosCore.Packets.ServerPackets.Mates
     ///     Packets for pets
     /// </summary>
     [PacketHeader("sc_p")]
-    public class ScpPacket : PacketBase
+    public class ScpPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long PetId { get; set; }

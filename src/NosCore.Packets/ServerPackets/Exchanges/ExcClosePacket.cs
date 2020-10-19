@@ -10,7 +10,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ServerPackets.Exchanges
 {
     [PacketHeader("exc_close")]
-    public class ExcClosePacket : PacketBase
+    public class ExcClosePacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public ExchangeResultType Type { get; set; }

@@ -10,7 +10,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ClientPackets.Relations
 {
     [PacketHeader("fins")]
-    public class FinsPacket : PacketBase
+    public class FinsPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public FinsPacketType Type { get; set; }

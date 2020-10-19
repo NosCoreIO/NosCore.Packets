@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ServerPackets.Specialists
 {
     [PacketHeader("sd")]
-    public class SdPacket : PacketBase
+    public class SdPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public short Cooldown { get; set; }

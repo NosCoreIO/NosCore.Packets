@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ServerPackets.Chats
 {
     [PacketHeader("talk")]
-    public class TalkPacket : PacketBase
+    public class TalkPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long CharacterId { get; set; }

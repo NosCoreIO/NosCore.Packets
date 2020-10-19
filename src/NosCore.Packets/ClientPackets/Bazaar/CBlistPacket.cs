@@ -11,7 +11,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ClientPackets.Bazaar
 {
     [PacketHeader("c_blist")]
-    public class CBListPacket : PacketBase
+    public class CBListPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public int Index { get; set; }

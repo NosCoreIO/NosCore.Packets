@@ -10,7 +10,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ClientPackets.Miniland
 {
     [PacketHeader("mledit")]
-    public class MLEditPacket : PacketBase
+    public class MLEditPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte Type { get; set; }

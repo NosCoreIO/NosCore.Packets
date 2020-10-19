@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 namespace NosCore.Packets.ServerPackets.UI
 {
     [PacketHeader("dlg")]
-    public class DlgPacket : PacketBase
+    public class DlgPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public IPacket? YesPacket { get; set; }

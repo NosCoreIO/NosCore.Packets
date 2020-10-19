@@ -10,7 +10,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ServerPackets.Families
 {
     [PacketHeader("ginfo")]
-    public class GInfoPacket : PacketBase
+    public class GInfoPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public string? FamilyName { get; set; }

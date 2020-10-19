@@ -10,7 +10,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ClientPackets.Quicklist
 {
     [PacketHeader("qset")]
-    public class QsetPacket : PacketBase
+    public class QsetPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public QSetType Type { get; set; }

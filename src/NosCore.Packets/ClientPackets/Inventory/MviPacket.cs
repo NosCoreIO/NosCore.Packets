@@ -10,7 +10,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ClientPackets.Inventory
 {
     [PacketHeader("mvi", BlockedByTrading = true)]
-    public class MviPacket : PacketBase
+    public class MviPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public PocketType InventoryType { get; set; }

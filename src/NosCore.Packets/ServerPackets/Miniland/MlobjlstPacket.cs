@@ -10,7 +10,7 @@ using System.Collections.Generic;
 namespace NosCore.Packets.ServerPackets.Miniland
 {
     [PacketHeader("mlobjlst")]
-    public class MlobjlstPacket : PacketBase
+    public class MlobjlstPacket : PacketBase, IWorldPacket
     {
         [PacketListIndex(0, SpecialSeparator = ".")]
         public List<MlobjlstSubPacket?>? MlobjlstSubPacket { get; set; }

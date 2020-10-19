@@ -8,7 +8,7 @@ using NosCore.Packets.Attributes;
 
 namespace NosCore.Packets.ServerPackets.Miniland
 {
-    public class MlobjlstSubPacket : PacketBase
+    public class MlobjlstSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public short Slot { get; set; }

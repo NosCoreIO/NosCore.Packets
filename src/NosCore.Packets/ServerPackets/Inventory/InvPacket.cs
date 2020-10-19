@@ -11,7 +11,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ServerPackets.Inventory
 {
     [PacketHeader("inv")]
-    public class InvPacket : PacketBase
+    public class InvPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public PocketType Type { get; set; }

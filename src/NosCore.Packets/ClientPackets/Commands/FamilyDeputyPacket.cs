@@ -18,7 +18,7 @@ namespace NosCore.Packets.ClientPackets.Commands
     [PacketHeaderAlias("%Представитель", Flag = nameof(RegionType.RU))]
     [PacketHeaderAlias("%Aile", Flag = nameof(RegionType.TR))]
     [PacketHeaderAlias("%Zástupce", Flag = nameof(RegionType.CS))]
-    public class FamilyDeputyPacket : PacketBase
+    public class FamilyDeputyPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public string? CharacterName { get; set; }

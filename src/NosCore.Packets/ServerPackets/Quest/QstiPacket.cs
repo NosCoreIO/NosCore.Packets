@@ -10,7 +10,7 @@ namespace NosCore.Packets.ServerPackets.Quest
 {
 
     [PacketHeader("qsti")]
-    public class QstiPacket : PacketBase
+    public class QstiPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0, SpecialSeparator = ".")]
         public QuestSubPacket QuestSubPacket { get; set; } = null!;

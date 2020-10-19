@@ -12,7 +12,7 @@ using NosCore.Shared.Enumerations;
 namespace NosCore.Packets.ClientPackets.Movement
 {
     [PacketHeader("dir")]
-    public class ClientDirPacket : PacketBase
+    public class ClientDirPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         [Range(0, 7)]

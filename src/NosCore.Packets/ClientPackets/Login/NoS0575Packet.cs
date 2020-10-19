@@ -8,12 +8,13 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Login
 {
     [PacketHeader("NoS0575", AnonymousAccess = true)]
-    public class NoS0575Packet : PacketBase
+    public class NoS0575Packet : PacketBase, ILoginPacket
     {
         [PacketIndex(0)]
         public int SessionId { get; set; }

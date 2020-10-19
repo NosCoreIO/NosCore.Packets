@@ -10,7 +10,7 @@ using System.Collections.Generic;
 namespace NosCore.Packets.ServerPackets.Quicklist
 {
     [PacketHeader("qslot")]
-    public class QSlotPacket : PacketBase
+    public class QSlotPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long Slot { get; set; }

@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 namespace NosCore.Packets.ServerPackets.Player
 {
     [PacketHeader("c_info")]
-    public class CInfoPacket : PacketBase
+    public class CInfoPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public string? Name { get; set; }

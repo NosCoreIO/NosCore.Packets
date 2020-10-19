@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ServerPackets.Mates
 {
     [PacketHeader("pski")]
-    public class PSkiPacket : PacketBase
+    public class PSkiPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long FirstSkill { get; set; }

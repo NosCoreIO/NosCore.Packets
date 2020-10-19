@@ -8,7 +8,7 @@ using NosCore.Packets.Attributes;
 
 namespace NosCore.Packets.ClientPackets.Login
 {
-    public class ClientVersionSubPacket : PacketBase
+    public class ClientVersionSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte Major { get; set; }

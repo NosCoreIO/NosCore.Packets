@@ -18,7 +18,7 @@ namespace NosCore.Packets.ClientPackets.Commands
     [PacketHeaderAlias("%Выгнать", Flag = nameof(RegionType.RU))]
     [PacketHeaderAlias("%AiledenÇýkma", Flag = nameof(RegionType.TR))]
     [PacketHeaderAlias("%Vyhození", Flag = nameof(RegionType.CS))]
-    public class FamilyDismissPacket : PacketBase
+    public class FamilyDismissPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public string? CharacterName { get; set; }

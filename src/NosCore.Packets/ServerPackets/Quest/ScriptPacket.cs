@@ -10,7 +10,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ServerPackets.Quest
 {
     [PacketHeader("script")]
-    public class ScriptPacket : PacketBase
+    public class ScriptPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public int ScriptId { get; set; }

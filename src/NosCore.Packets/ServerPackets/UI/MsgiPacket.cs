@@ -10,7 +10,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ServerPackets.UI
 {
     [PacketHeader("msgi")]
-    public class MsgiPacket : PacketBase
+    public class MsgiPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public MessageType Type { get; set; }

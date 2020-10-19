@@ -10,7 +10,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ServerPackets.Player
 {
     [PacketHeader("tit")]
-    public class TitPacket : PacketBase
+    public class TitPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public Game18NConstString ClassType { get; set; }

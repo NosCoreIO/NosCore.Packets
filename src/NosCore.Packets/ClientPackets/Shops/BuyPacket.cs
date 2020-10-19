@@ -12,7 +12,7 @@ using NosCore.Shared.Enumerations;
 namespace NosCore.Packets.ClientPackets.Shops
 {
     [PacketHeader("buy", BlockedByTrading = true)]
-    public class BuyPacket : PacketBase
+    public class BuyPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

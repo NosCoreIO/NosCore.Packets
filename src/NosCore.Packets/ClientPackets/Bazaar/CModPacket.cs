@@ -10,7 +10,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ClientPackets.Bazaar
 {
     [PacketHeader("c_mod", BlockedByTrading = true)]
-    public class CModPacket : PacketBase
+    public class CModPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long BazaarId { get; set; }

@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ClientPackets.Battle
 {
     [PacketHeader("u_as")]
-    public class UseAoeSkillPacket : PacketBase
+    public class UseAoeSkillPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long CastId { get; set; }

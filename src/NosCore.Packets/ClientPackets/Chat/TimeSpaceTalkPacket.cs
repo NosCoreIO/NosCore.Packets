@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ClientPackets.Chat
 {
     [PacketHeader("!")]
-    public class TimeSpaceTalkPacket : PacketBase
+    public class TimeSpaceTalkPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public string? Message { get; set; }

@@ -8,7 +8,7 @@ using NosCore.Packets.Attributes;
 
 namespace NosCore.Packets.ServerPackets.Inventory
 {
-    public class IvnSubPacket : PacketBase
+    public class IvnSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public short Slot { get; set; }

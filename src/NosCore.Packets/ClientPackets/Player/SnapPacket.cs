@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ClientPackets.Player
 {
     [PacketHeader("snap")]
-    public class SnapPacket : PacketBase
+    public class SnapPacket : PacketBase, IWorldPacket
     {
     }
 }

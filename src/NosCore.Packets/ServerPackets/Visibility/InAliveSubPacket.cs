@@ -8,7 +8,7 @@ using NosCore.Packets.Attributes;
 
 namespace NosCore.Packets.ServerPackets.Visibility
 {
-    public class InAliveSubPacket : PacketBase
+    public class InAliveSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public int Hp { get; set; }

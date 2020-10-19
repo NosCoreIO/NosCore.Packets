@@ -12,7 +12,7 @@ using NosCore.Shared.Enumerations;
 namespace NosCore.Packets.ClientPackets.Families
 {
     [PacketHeader("gidx")]
-    public class GidxPacket : PacketBase
+    public class GidxPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

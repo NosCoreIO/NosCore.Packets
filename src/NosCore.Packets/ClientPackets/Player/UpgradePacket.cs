@@ -10,7 +10,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ClientPackets.Player
 {
     [PacketHeader("up_gr")]
-    public class UpgradePacket : PacketBase
+    public class UpgradePacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public UpgradePacketType UpgradeType { get; set; }

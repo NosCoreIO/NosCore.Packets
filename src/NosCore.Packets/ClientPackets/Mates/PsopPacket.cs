@@ -9,7 +9,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ClientPackets.Mates
 {
     [PacketHeader("ps_op")]
-    public class PsopPacket : PacketBase
+    public class PsopPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public byte PetSlot { get; set; }

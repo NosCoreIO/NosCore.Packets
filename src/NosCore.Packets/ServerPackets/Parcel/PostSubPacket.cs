@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Parcel
 {
-    public class PostSubPacket : PacketBase
+    public class PostSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public CharacterClassType Class { get; set; }

@@ -10,7 +10,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ClientPackets.Families
 {
     [PacketHeader("fauth")]
-    public class FAuthPacket : PacketBase
+    public class FAuthPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public FamilyAuthority MemberType { get; set; }

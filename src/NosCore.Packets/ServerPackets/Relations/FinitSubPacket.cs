@@ -9,7 +9,7 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Relations
 {
-    public class FinitSubPacket : PacketBase
+    public class FinitSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public long CharacterId { get; set; }

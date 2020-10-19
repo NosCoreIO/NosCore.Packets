@@ -10,7 +10,7 @@ using NosCore.Packets.Attributes;
 namespace NosCore.Packets.ServerPackets.Relations
 {
     [PacketHeader("blinit")]
-    public class BlinitPacket : PacketBase
+    public class BlinitPacket : PacketBase, IWorldPacket
     {
         [PacketListIndex(0, SpecialSeparator = "|")]
         public List<BlinitSubPacket?>? SubPackets { get; set; }

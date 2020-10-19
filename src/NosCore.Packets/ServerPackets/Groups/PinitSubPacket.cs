@@ -12,7 +12,7 @@ using NosCore.Shared.Enumerations;
 namespace NosCore.Packets.ServerPackets.Groups
 {
     [PacketHeader("pinit_sub_packet")]
-    public class PinitSubPacket : PacketBase
+    public class PinitSubPacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

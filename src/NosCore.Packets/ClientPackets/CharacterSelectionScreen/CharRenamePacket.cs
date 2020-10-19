@@ -11,7 +11,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ClientPackets.CharacterSelectionScreen
 {
     [PacketHeader("Char_REN", AnonymousAccess = true)]
-    public class CharRenamePacket : PacketBase
+    public class CharRenamePacket : PacketBase, IWorldPacket
     {
         [PacketIndex(0)]
         [Range(0, 3)]
