@@ -7,6 +7,7 @@
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 using System;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {

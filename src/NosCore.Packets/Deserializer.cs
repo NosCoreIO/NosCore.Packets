@@ -91,7 +91,7 @@ namespace NosCore.Packets
             }
         }
 
-        public void Initialize<T>() where T : PacketBase, IWorldPacket
+        public void Initialize<T>() where T : PacketBase
         {
             var header = typeof(T).GetCustomAttribute<PacketHeaderAttribute>()?.Identification;
             if (_packetDeserializerDictionary.ContainsKey(header ?? typeof(T).Name))
@@ -292,7 +292,7 @@ namespace NosCore.Packets
                     return Deserialize(matches[currentIndex++]);
                 case var prop when typeof(IPacket).IsAssignableFrom(prop):
                     var dic = _packetDeserializerDictionary[prop.Name];
-                    var packet = DeserializeIPacket(dic, matches[currentIndex].Replace((packetBasePropertyInfo.Item2 is PacketListIndexAttribute ind ? ind.ListSeparator : PacketBase, IWorldPacketPropertyInfo.Item2.SpecialSeparator) ?? ".", " "), false, false);
+                    var packet = DeserializeIPacket(dic, matches[currentIndex].Replace((packetBasePropertyInfo.Item2 is PacketListIndexAttribute ind ? ind.ListSeparator : packetBasePropertyInfo.Item2.SpecialSeparator) ?? ".", " "), false, false);
                     currentIndex++;
                     return packet;
                 default:

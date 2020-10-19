@@ -6,10 +6,10 @@
 
 namespace NosCore.Packets.Interfaces
 {
-    public interface ILoginPacket
+    public interface ILoginPacket : IPacket
     {
     }
-    public interface IWorldPacket
+    public interface IWorldPacket : IPacket
     {
     }
 }

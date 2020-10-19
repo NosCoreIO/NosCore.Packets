@@ -5,6 +5,7 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Interfaces;
 using NosCore.Packets.ServerPackets.Movement;
 
 namespace NosCore.Packets.ServerPackets.Parcel

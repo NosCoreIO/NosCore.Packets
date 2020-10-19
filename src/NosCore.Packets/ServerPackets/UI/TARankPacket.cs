@@ -6,6 +6,7 @@
 
 using NosCore.Packets.Attributes;
 using System.Collections.Generic;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {

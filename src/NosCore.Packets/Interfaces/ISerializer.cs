@@ -14,6 +14,6 @@ namespace NosCore.Packets.Interfaces
 
         string Serialize(IEnumerable<IPacket> packet);
 
-        void Initialize<T>() where T : PacketBase, IWorldPacket;
+        void Initialize<T>() where T : PacketBase;
     }
 }
