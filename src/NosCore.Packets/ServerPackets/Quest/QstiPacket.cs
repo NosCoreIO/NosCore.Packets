@@ -5,13 +5,14 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Quest
 {
 
-    [PacketHeader("qsti")]
-    public class QstiPacket : PacketBase, IWorldPacket
+    [PacketHeader("qsti", Scope.InGame | Scope.InExchange)]
+    public class QstiPacket : PacketBase
     {
         [PacketIndex(0, SpecialSeparator = ".")]
         public QuestSubPacket QuestSubPacket { get; set; } = null!;

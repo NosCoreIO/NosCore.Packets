@@ -9,7 +9,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Event
 {
-    public class RbrSubPacketMinMaxLevel : PacketBase, IWorldPacket
+    public class RbrSubPacketMinMaxLevel : PacketBase
     {
         [PacketIndex(0)]
         public byte MinLevel { get; set; }

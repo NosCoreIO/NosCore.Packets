@@ -9,7 +9,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Inventory
 {
-    public class UpgradeRareSubPacket : PacketBase, IWorldPacket
+    public class UpgradeRareSubPacket : PacketBase
     {
         [PacketIndex(0, IsOptional = true)]
         public byte? Upgrade { get; set; }

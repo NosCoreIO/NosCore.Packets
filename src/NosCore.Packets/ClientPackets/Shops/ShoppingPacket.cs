@@ -11,8 +11,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Shops
 {
-    [PacketHeader("shopping", BlockedByTrading = true)]
-    public class ShoppingPacket : PacketBase, IWorldPacket
+    [PacketHeader("shopping", Scope.InGame | Scope.InExchange)]
+    public class ShoppingPacket : PacketBase
     {
         [PacketIndex(0)]
         public short ShopType { get; set; }

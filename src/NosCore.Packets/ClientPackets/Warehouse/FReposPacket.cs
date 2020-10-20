@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Warehouse
 {
-    [PacketHeader("f_repos")]
-    public class FReposPacket : PacketBase, IWorldPacket
+    [PacketHeader("f_repos", Scope.InGame | Scope.InExchange)]
+    public class FReposPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte OldSlot { get; set; }

@@ -5,13 +5,14 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 using NosCore.Packets.ServerPackets.Movement;
 
 namespace NosCore.Packets.ServerPackets.Parcel
 {
-    [PacketHeader("parcel")]
-    public class ParcelPacket : PacketBase, IWorldPacket
+    [PacketHeader("parcel", Scope.InGame | Scope.InExchange)]
+    public class ParcelPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Type { get; set; }

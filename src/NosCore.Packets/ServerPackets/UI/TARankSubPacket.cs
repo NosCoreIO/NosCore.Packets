@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    public class TARankSubPacket : PacketBase, IWorldPacket
+    public class TARankSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public short? Score { get; set; }

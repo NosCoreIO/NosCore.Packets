@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    [PacketHeader("bn")]
-    public class BnPacket : PacketBase, IWorldPacket
+    [PacketHeader("bn", Scope.InGame | Scope.InExchange)]
+    public class BnPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte BnNumber { get; set; }

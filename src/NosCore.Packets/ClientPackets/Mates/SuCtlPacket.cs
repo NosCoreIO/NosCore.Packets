@@ -11,8 +11,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Mates
 {
-    [PacketHeader("suctl")]
-    public class SuCtlPacket : PacketBase, IWorldPacket
+    [PacketHeader("suctl", Scope.InGame | Scope.InExchange)]
+    public class SuCtlPacket : PacketBase
     {
         [PacketIndex(0)]
         public int CastId { get; set; }

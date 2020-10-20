@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Families
 {
-    [PacketHeader("glmk")]
-    public class CreateFamilyPacket : PacketBase, IWorldPacket
+    [PacketHeader("glmk", Scope.InGame | Scope.InExchange)]
+    public class CreateFamilyPacket : PacketBase
     {
         [PacketIndex(0)]
         public string? FamilyName { get; set; }

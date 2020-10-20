@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.CharacterSelectionScreen
 {
-    [PacketHeader("OK")]
-    public class OkPacket : PacketBase, IWorldPacket
+    [PacketHeader("OK", Scope.InGame | Scope.InExchange)]
+    public class OkPacket : PacketBase
     {
     }
 }

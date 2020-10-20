@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    [PacketHeader("scr")]
-    public class ScrPacket : PacketBase, IWorldPacket
+    [PacketHeader("scr", Scope.InGame | Scope.InExchange)]
+    public class ScrPacket : PacketBase
     {
         [PacketIndex(0)]
         public int Unknow1 { get; set; }

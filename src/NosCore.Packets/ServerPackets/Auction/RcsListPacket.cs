@@ -12,15 +12,15 @@ using NosCore.Packets.ServerPackets.Inventory;
 
 namespace NosCore.Packets.ServerPackets.Auction
 {
-    [PacketHeader("rc_slist")]
-    public class RcsListPacket : PacketBase, IWorldPacket
+    [PacketHeader("rc_slist", Scope.InGame | Scope.InExchange)]
+    public class RcsListPacket : PacketBase
     {
         [PacketIndex(0)]
         public int PageNumber { get; set; }
 
         [PacketListIndex(1, SpecialSeparator = "|")]
         public List<RcsListElementPacket?>? Items { get; set; }
-        public class RcsListElementPacket : PacketBase, IWorldPacket
+        public class RcsListElementPacket : PacketBase
         {
             [PacketIndex(0)]
             public long AuctionId { get; set; }

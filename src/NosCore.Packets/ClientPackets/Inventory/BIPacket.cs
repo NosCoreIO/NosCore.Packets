@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Inventory
 {
-    [PacketHeader("b_i")]
-    public class BiPacket : PacketBase, IWorldPacket
+    [PacketHeader("b_i", Scope.InGame | Scope.InExchange)]
+    public class BiPacket : PacketBase
     {
         [PacketIndex(0)]
         public PocketType PocketType { get; set; }

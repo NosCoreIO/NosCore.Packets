@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    [PacketHeader("tit")]
-    public class TitPacket : PacketBase, IWorldPacket
+    [PacketHeader("tit", Scope.InGame | Scope.InExchange)]
+    public class TitPacket : PacketBase
     {
         [PacketIndex(0)]
         public Game18NConstString ClassType { get; set; }

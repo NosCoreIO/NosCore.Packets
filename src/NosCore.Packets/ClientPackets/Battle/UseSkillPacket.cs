@@ -11,8 +11,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Battle
 {
-    [PacketHeader("u_s")]
-    public class UseSkillPacket : PacketBase, IWorldPacket
+    [PacketHeader("u_s", Scope.InGame | Scope.InExchange)]
+    public class UseSkillPacket : PacketBase
     {
         [PacketIndex(0)]
         public long CastId { get; set; }

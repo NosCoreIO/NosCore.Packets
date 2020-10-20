@@ -11,8 +11,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Bazaar
 {
-    [PacketHeader("c_reg", BlockedByTrading = true)]
-    public class CRegPacket : PacketBase, IWorldPacket
+    [PacketHeader("c_reg", Scope.InGame | Scope.InExchange)]
+    public class CRegPacket : PacketBase
     {
         [PacketIndex(0)]
         public int Type { get; set; }

@@ -31,8 +31,8 @@ namespace NosCore.Packets.ClientPackets.Login
     /// MD5_STR(MD5_FILE("NostaleClientX.exe") + MD5_FILE("NostaleClient.exe")) - MD5 generated from concatenation of MD5 strings of NostaleClientX.exe and NostaleClient.exe
     /// 
     /// </summary>
-    [PacketHeader("NoS0577", AnonymousAccess = true)]
-    public class NoS0577Packet : PacketBase, ILoginPacket
+    [PacketHeader("NoS0577", Scope.OnLoginScreen)]
+    public class NoS0577Packet : PacketBase
     {
         [PacketIndex(0)]
         public string? AuthToken { get; set; }

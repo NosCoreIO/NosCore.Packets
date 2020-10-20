@@ -6,12 +6,13 @@
 
 using NosCore.Packets.Attributes;
 using System.Collections.Generic;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Quicklist
 {
-    [PacketHeader("qslot")]
-    public class QSlotPacket : PacketBase, IWorldPacket
+    [PacketHeader("qslot", Scope.InGame | Scope.InExchange)]
+    public class QSlotPacket : PacketBase
     {
         [PacketIndex(0)]
         public long Slot { get; set; }

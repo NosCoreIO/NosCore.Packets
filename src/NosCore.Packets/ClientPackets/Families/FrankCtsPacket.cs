@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Families
 {
-    [PacketHeader("frank_cts")]
-    public class FrankCtsPacket : PacketBase, IWorldPacket
+    [PacketHeader("frank_cts", Scope.InGame | Scope.InExchange)]
+    public class FrankCtsPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Type { get; set; }

@@ -9,7 +9,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Event
 {
-    public class RbrSubPacketHighScore : PacketBase, IWorldPacket
+    public class RbrSubPacketHighScore : PacketBase
     {
         [PacketIndex(0)]
         public short Score { get; set; }

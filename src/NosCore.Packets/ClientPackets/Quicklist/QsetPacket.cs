@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Quicklist
 {
-    [PacketHeader("qset")]
-    public class QsetPacket : PacketBase, IWorldPacket
+    [PacketHeader("qset", Scope.InGame | Scope.InExchange)]
+    public class QsetPacket : PacketBase
     {
         [PacketIndex(0)]
         public QSetType Type { get; set; }

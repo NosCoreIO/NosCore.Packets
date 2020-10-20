@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Commands
 {
-    [PacketHeader("$Adding")]
+    [PacketHeader("$Adding", Scope.InGame | Scope.InExchange)]
     [PacketHeaderAlias("$Ajouter", Flag = nameof(RegionType.FR))]
     [PacketHeaderAlias("$Hinzufügen", Flag = nameof(RegionType.DE))]
     [PacketHeaderAlias("$Aggiungi", Flag = nameof(RegionType.IT))]
@@ -19,7 +20,7 @@ namespace NosCore.Packets.ClientPackets.Commands
     [PacketHeaderAlias("$Добавить", Flag = nameof(RegionType.RU))]
     [PacketHeaderAlias("$Ekle", Flag = nameof(RegionType.TR))]
     [PacketHeaderAlias("$Pøidat", Flag = nameof(RegionType.CS))]
-    public class FriendInvitePacket : PacketBase, IWorldPacket
+    public class FriendInvitePacket : PacketBase
     {
         [PacketIndex(0)]
         public string? CharacterName { get; set; }

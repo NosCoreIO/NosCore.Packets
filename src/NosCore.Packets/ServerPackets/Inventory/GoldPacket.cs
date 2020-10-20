@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Inventory
 {
-    [PacketHeader("gold")]
-    public class GoldPacket : PacketBase, IWorldPacket
+    [PacketHeader("gold", Scope.InGame | Scope.InExchange)]
+    public class GoldPacket : PacketBase
     {
         [PacketIndex(0)]
         public long Gold { get; set; }

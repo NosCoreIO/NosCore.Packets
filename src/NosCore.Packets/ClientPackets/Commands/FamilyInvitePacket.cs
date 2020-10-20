@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Commands
 {
-    [PacketHeader("%Familyinvite")]
+    [PacketHeader("%Familyinvite", Scope.InGame | Scope.InExchange)]
     [PacketHeaderAlias("%Invitationdefamille", Flag = nameof(RegionType.FR))]
     [PacketHeaderAlias("%Familieneinladung", Flag = nameof(RegionType.DE))]
     [PacketHeaderAlias("%Invita", Flag = nameof(RegionType.IT))]
@@ -19,7 +20,7 @@ namespace NosCore.Packets.ClientPackets.Commands
     [PacketHeaderAlias("%Пригласить-семья", Flag = nameof(RegionType.RU))]
     [PacketHeaderAlias("%Aileden", Flag = nameof(RegionType.TR))]
     [PacketHeaderAlias("%Rodina", Flag = nameof(RegionType.CS))]
-    public class FamilyInvitePacket : PacketBase, IWorldPacket
+    public class FamilyInvitePacket : PacketBase
     {
         [PacketIndex(0)]
         public string? CharacterName { get; set; }

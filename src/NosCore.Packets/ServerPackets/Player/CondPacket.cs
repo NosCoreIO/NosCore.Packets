@@ -11,8 +11,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    [PacketHeader("cond")]
-    public class CondPacket : PacketBase, IWorldPacket
+    [PacketHeader("cond", Scope.InGame | Scope.InExchange)]
+    public class CondPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

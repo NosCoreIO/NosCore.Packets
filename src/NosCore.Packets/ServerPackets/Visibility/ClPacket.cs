@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Visibility
 {
-    [PacketHeader("cl")]
-    public class ClPacket : PacketBase, IWorldPacket
+    [PacketHeader("cl", Scope.InGame | Scope.InExchange)]
+    public class ClPacket : PacketBase
     {
         [PacketIndex(0)]
         public long VisualId { get; set; }

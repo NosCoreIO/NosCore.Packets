@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("dlg")]
-    public class DlgPacket : PacketBase, IWorldPacket
+    [PacketHeader("dlg", Scope.InGame | Scope.InExchange)]
+    public class DlgPacket : PacketBase
     {
         [PacketIndex(0)]
         public IPacket? YesPacket { get; set; }

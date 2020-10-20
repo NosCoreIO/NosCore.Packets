@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("info")]
-    public class InfoPacket : PacketBase, IWorldPacket
+    [PacketHeader("info", Scope.InGame | Scope.InExchange)]
+    public class InfoPacket : PacketBase
     {
         [PacketIndex(0)]
         public string? Message { get; set; }

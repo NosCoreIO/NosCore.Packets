@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("infoi")]
-    public class InfoiPacket : PacketBase, IWorldPacket
+    [PacketHeader("infoi", Scope.InGame | Scope.InExchange)]
+    public class InfoiPacket : PacketBase
     {
         [PacketIndex(0)]
         public Game18NConstString Message { get; set; }

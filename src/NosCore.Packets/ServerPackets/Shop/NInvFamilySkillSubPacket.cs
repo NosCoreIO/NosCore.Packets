@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Shop
 {
-    [PacketHeader("n_inv_skills")]
-    public class NInvFamilySkillSubPacket : PacketBase, IWorldPacket
+    [PacketHeader("n_inv_skills", Scope.InGame | Scope.InExchange)]
+    public class NInvFamilySkillSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public short SkillId { get; set; }

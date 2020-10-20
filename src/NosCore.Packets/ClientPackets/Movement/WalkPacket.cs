@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Movement
 {
-    [PacketHeader("walk")]
-    public class WalkPacket : PacketBase, IWorldPacket
+    [PacketHeader("walk", Scope.InGame | Scope.InExchange)]
+    public class WalkPacket : PacketBase
     {
         [PacketIndex(0)]
         public short XCoordinate { get; set; }

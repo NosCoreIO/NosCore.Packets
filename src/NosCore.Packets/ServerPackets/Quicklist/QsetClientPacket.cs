@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Quicklist
 {
-    [PacketHeader("qset")]
-    public class QsetClientPacket : PacketBase, IWorldPacket
+    [PacketHeader("qset", Scope.InGame | Scope.InExchange)]
+    public class QsetClientPacket : PacketBase
     {
         [PacketIndex(0)]
         public short OriginQuickList { get; set; }

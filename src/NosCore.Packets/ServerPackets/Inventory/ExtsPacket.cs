@@ -11,8 +11,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Inventory
 {
-    [PacketHeader("exts")]
-    public class ExtsPacket : PacketBase, IWorldPacket
+    [PacketHeader("exts", Scope.InGame | Scope.InExchange)]
+    public class ExtsPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Type { get; set; }

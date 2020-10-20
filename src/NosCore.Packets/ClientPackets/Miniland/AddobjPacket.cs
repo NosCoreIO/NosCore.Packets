@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Miniland
 {
-    [PacketHeader("addobj")]
-    public class AddobjPacket : PacketBase, IWorldPacket
+    [PacketHeader("addobj", Scope.InGame | Scope.InExchange)]
+    public class AddobjPacket : PacketBase
     {
         [PacketIndex(0)]
         public short Slot { get; set; }

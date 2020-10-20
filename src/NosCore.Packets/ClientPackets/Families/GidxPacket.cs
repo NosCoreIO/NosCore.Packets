@@ -12,8 +12,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Families
 {
-    [PacketHeader("gidx")]
-    public class GidxPacket : PacketBase, IWorldPacket
+    [PacketHeader("gidx", Scope.InGame | Scope.InExchange)]
+    public class GidxPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

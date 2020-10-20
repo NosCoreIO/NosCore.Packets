@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Relations
 {
-    public class FinitSubPacket : PacketBase, IWorldPacket
+    public class FinitSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public long CharacterId { get; set; }

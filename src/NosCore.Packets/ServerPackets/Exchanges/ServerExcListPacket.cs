@@ -12,8 +12,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Exchanges
 {
-    [PacketHeader("exc_list")]
-    public class ServerExcListPacket : PacketBase, IWorldPacket
+    [PacketHeader("exc_list", Scope.InGame | Scope.InExchange)]
+    public class ServerExcListPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

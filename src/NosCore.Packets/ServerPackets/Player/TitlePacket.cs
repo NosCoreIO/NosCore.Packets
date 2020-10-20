@@ -6,12 +6,13 @@
 
 using System.Collections.Generic;
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    [PacketHeader("title")]
-    public class TitlePacket : PacketBase, IWorldPacket
+    [PacketHeader("title", Scope.InGame | Scope.InExchange)]
+    public class TitlePacket : PacketBase
     {
         [PacketListIndex(0, IsOptional = true)]
         public List<TitleSubPacket?>? Data { get; set; }

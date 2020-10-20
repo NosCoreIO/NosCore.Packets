@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Shop
 {
-    [PacketHeader("pidx_sub_packet")]
-    public class PidxSubPacket : PacketBase, IWorldPacket
+    [PacketHeader("pidx_sub_packet", Scope.InGame | Scope.InExchange)]
+    public class PidxSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public bool IsGrouped { get; set; }

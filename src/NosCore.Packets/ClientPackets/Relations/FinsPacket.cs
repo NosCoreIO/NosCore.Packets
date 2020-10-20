@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Relations
 {
-    [PacketHeader("fins")]
-    public class FinsPacket : PacketBase, IWorldPacket
+    [PacketHeader("fins", Scope.InGame | Scope.InExchange)]
+    public class FinsPacket : PacketBase
     {
         [PacketIndex(0)]
         public FinsPacketType Type { get; set; }

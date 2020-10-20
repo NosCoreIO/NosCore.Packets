@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Miniland
 {
-    [PacketHeader("mlo_mg")]
-    public class MloMgPacket : PacketBase, IWorldPacket
+    [PacketHeader("mlo_mg", Scope.InGame | Scope.InExchange)]
+    public class MloMgPacket : PacketBase
     {
         [PacketIndex(0)]
         public short MinigameVNum { get; set; }

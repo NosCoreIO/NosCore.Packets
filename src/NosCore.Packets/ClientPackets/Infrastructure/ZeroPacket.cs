@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Infrastructure
 {
-    [PacketHeader("0", AnonymousAccess = true)]
-    public class ZeroPacket : PacketBase, IWorldPacket
+    [PacketHeader("0", Scope.InGame | Scope.InExchange | Scope.OnCharacterScreen)]
+    public class ZeroPacket : PacketBase
     {
     }
 }

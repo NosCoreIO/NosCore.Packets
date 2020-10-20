@@ -11,8 +11,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Battle
 {
-    [PacketHeader("ct")]
-    public class CtPacket : PacketBase, IWorldPacket
+    [PacketHeader("ct", Scope.InGame | Scope.InExchange)]
+    public class CtPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

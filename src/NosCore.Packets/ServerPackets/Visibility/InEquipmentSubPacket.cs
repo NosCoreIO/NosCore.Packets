@@ -9,7 +9,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Visibility
 {
-    public class InEquipmentSubPacket : PacketBase, IWorldPacket
+    public class InEquipmentSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public short? Hat { get; set; }

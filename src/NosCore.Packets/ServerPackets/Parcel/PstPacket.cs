@@ -12,8 +12,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Parcel
 {
-    [PacketHeader("pst")]
-    public class PstPacket : PacketBase, IWorldPacket
+    [PacketHeader("pst", Scope.InGame | Scope.InExchange)]
+    public class PstPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType Type { get; set; }

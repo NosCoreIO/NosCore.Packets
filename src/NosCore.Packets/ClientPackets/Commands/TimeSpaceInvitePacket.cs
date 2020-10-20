@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Commands
 {
-    [PacketHeader("$Accompany")]
+    [PacketHeader("$Accompany", Scope.InGame | Scope.InExchange)]
     [PacketHeaderAlias("$Accompagner", Flag = nameof(RegionType.FR))]
     [PacketHeaderAlias("$Begleiten", Flag = nameof(RegionType.DE))]
     [PacketHeaderAlias("$Accompagna", Flag = nameof(RegionType.IT))]
@@ -19,7 +20,7 @@ namespace NosCore.Packets.ClientPackets.Commands
     [PacketHeaderAlias("$Сопровождать", Flag = nameof(RegionType.RU))]
     [PacketHeaderAlias("$Eþlik", Flag = nameof(RegionType.TR))]
     [PacketHeaderAlias("$Doprovázet", Flag = nameof(RegionType.CS))]
-    public class TimeSpaceInvitePacket : PacketBase, IWorldPacket
+    public class TimeSpaceInvitePacket : PacketBase
     {
         [PacketIndex(0)]
         public string? CharacterName { get; set; }

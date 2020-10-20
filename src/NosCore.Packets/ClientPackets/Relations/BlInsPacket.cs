@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Relations
 {
-    [PacketHeader("blins")]
-    public class BlInsPacket : PacketBase, IWorldPacket
+    [PacketHeader("blins", Scope.InGame | Scope.InExchange)]
+    public class BlInsPacket : PacketBase
     {
         [PacketIndex(0)]
         public long CharacterId { get; set; }

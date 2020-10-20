@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Miniland
 {
-    [PacketHeader("mlo_info")]
-    public class MloInfoPacket : PacketBase, IWorldPacket
+    [PacketHeader("mlo_info", Scope.InGame | Scope.InExchange)]
+    public class MloInfoPacket : PacketBase
     {
         [PacketIndex(0)]
         public bool IsOwner { get; set; }

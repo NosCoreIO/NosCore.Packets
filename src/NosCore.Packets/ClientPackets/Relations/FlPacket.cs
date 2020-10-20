@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Relations
 {
-    [PacketHeader("$fl")]
-    public class FlPacket : PacketBase, IWorldPacket
+    [PacketHeader("$fl", Scope.InGame | Scope.InExchange)]
+    public class FlPacket : PacketBase
     {
         [PacketIndex(0)]
         public string? CharacterName { get; set; }

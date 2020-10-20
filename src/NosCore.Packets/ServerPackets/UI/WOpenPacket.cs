@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("wopen")]
-    public class WopenPacket : PacketBase, IWorldPacket
+    [PacketHeader("wopen", Scope.InGame | Scope.InExchange)]
+    public class WopenPacket : PacketBase
     {
         [PacketIndex(0)]
         public WindowType Type { get; set; }

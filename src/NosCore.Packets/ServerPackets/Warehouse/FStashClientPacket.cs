@@ -12,8 +12,8 @@ using NosCore.Packets.ServerPackets.Inventory;
 
 namespace NosCore.Packets.ServerPackets.Warehouse
 {
-    [PacketHeader("f_stash")]
-    public class FStashClientPacket : PacketBase, IWorldPacket
+    [PacketHeader("f_stash", Scope.InGame | Scope.InExchange)]
+    public class FStashClientPacket : PacketBase
     {
         [PacketListIndex(0)]
         public List<IvnSubPacket?>? IvnSubPackets { get; set; }

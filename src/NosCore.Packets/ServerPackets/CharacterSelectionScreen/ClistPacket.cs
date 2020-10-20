@@ -12,8 +12,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.CharacterSelectionScreen
 {
-    [PacketHeader("clist")]
-    public class ClistPacket : PacketBase, IWorldPacket
+    [PacketHeader("clist", Scope.OnCharacterScreen)]
+    public class ClistPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Slot { get; set; }

@@ -9,7 +9,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Event
 {
-    public class RbrSubPacketTitleAndDescription : PacketBase, IWorldPacket
+    public class RbrSubPacketTitleAndDescription : PacketBase
     {
         [PacketIndex(0)]
         public string? Title { get; set; }

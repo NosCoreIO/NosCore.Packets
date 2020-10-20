@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Commands
 {
-    [PacketHeader("$Partylocation")]
+    [PacketHeader("$Partylocation", Scope.InGame | Scope.InExchange)]
     [PacketHeaderAlias("$RalliementGroupe", Flag = nameof(RegionType.FR))]
     [PacketHeaderAlias("$Gruppenstandort", Flag = nameof(RegionType.DE))]
     [PacketHeaderAlias("$Posizione", Flag = nameof(RegionType.IT))]
@@ -19,7 +20,7 @@ namespace NosCore.Packets.ClientPackets.Commands
     [PacketHeaderAlias("$Место-группы", Flag = nameof(RegionType.RU))]
     [PacketHeaderAlias("$Grup", Flag = nameof(RegionType.TR))]
     [PacketHeaderAlias("$Pozice", Flag = nameof(RegionType.CS))]
-    public class PartyLocationPacket : PacketBase, IWorldPacket
+    public class PartyLocationPacket : PacketBase
     {
         [PacketIndex(0)]
         public string? CharacterName { get; set; }

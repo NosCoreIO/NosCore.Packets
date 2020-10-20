@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Warehouse
 {
-    [PacketHeader("deposit")]
-    public class DepositPacket : PacketBase, IWorldPacket
+    [PacketHeader("deposit", Scope.InGame | Scope.InExchange)]
+    public class DepositPacket : PacketBase
     {     
         [PacketIndex(0)]
         public PocketType Inventory { get; set; }

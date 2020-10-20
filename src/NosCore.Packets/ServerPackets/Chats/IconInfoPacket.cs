@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Chats
 {
-    [PacketHeader("IconInfo")]
-    public class IconInfoPacket : PacketBase, IWorldPacket
+    [PacketHeader("IconInfo", Scope.InGame | Scope.InExchange)]
+    public class IconInfoPacket : PacketBase
     {
         [PacketIndex(0)]
         public short IconId { get; set; }

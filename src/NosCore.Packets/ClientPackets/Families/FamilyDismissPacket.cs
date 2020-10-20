@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Families
 {
-    [PacketHeader("glrm")]
-    public class FamilyDismissPacket : PacketBase, IWorldPacket
+    [PacketHeader("glrm", Scope.InGame | Scope.InExchange)]
+    public class FamilyDismissPacket : PacketBase
     {
     }
 }

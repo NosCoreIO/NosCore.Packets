@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    [PacketHeader("lev")]
-    public class LevPacket : PacketBase, IWorldPacket
+    [PacketHeader("lev", Scope.InGame | Scope.InExchange)]
+    public class LevPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Level { get; set; }

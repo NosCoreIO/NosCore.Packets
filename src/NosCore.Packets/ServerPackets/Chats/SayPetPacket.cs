@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Chats
 {
-    [PacketHeader("say_p")]
-    public class SayPetPacket : PacketBase, IWorldPacket
+    [PacketHeader("say_p", Scope.InGame | Scope.InExchange)]
+    public class SayPetPacket : PacketBase
     {
         [PacketIndex(0)]
         public long PetId { get; set; }

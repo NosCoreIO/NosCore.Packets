@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Inventory
 {
-    [PacketHeader("equip")]
-    public class EquipPacket : PacketBase, IWorldPacket
+    [PacketHeader("equip", Scope.InGame | Scope.InExchange)]
+    public class EquipPacket : PacketBase
     {
         [PacketIndex(0, SpecialSeparator = "")]
         public UpgradeRareSubPacket? WeaponUpgradeRareSubPacket { get; set; }

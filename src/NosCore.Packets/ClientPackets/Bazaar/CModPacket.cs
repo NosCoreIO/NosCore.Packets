@@ -6,12 +6,13 @@
 
 using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Bazaar
 {
-    [PacketHeader("c_mod", BlockedByTrading = true)]
-    public class CModPacket : PacketBase, IWorldPacket
+    [PacketHeader("c_mod", Scope.InGame | Scope.InExchange)]
+    public class CModPacket : PacketBase
     {
         [PacketIndex(0)]
         public long BazaarId { get; set; }

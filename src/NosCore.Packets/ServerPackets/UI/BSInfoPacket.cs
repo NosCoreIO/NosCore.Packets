@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("bsinfo")]
-    public class BSInfoPacket : PacketBase, IWorldPacket
+    [PacketHeader("bsinfo", Scope.InGame | Scope.InExchange)]
+    public class BSInfoPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Mode { get; set; }

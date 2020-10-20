@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Player
 {
-    [PacketHeader("up_gr")]
-    public class UpgradePacket : PacketBase, IWorldPacket
+    [PacketHeader("up_gr", Scope.InGame | Scope.InExchange)]
+    public class UpgradePacket : PacketBase
     {
         [PacketIndex(0)]
         public UpgradePacketType UpgradeType { get; set; }

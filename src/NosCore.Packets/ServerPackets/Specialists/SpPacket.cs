@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Specialists
 {
-    [PacketHeader("sp")]
-    public class SpPacket : PacketBase, IWorldPacket
+    [PacketHeader("sp", Scope.InGame | Scope.InExchange)]
+    public class SpPacket : PacketBase
     {
         [PacketIndex(0)]
         public int AdditionalPoint { get; set; }

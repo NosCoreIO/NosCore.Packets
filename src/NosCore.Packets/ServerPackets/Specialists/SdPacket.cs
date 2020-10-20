@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Specialists
 {
-    [PacketHeader("sd")]
-    public class SdPacket : PacketBase, IWorldPacket
+    [PacketHeader("sd", Scope.InGame | Scope.InExchange)]
+    public class SdPacket : PacketBase
     {
         [PacketIndex(0)]
         public short Cooldown { get; set; }

@@ -13,8 +13,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Login
 {
-    [PacketHeader("NoS0575", AnonymousAccess = true)]
-    public class NoS0575Packet : PacketBase, ILoginPacket
+    [PacketHeader("NoS0575", Scope.OnLoginScreen)]
+    public class NoS0575Packet : PacketBase
     {
         [PacketIndex(0)]
         public int SessionId { get; set; }

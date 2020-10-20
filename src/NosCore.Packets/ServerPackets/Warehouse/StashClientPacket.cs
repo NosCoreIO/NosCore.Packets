@@ -6,13 +6,14 @@
 
 using System.Collections.Generic;
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 using NosCore.Packets.ServerPackets.Inventory;
 
 namespace NosCore.Packets.ServerPackets.Warehouse
 {
-    [PacketHeader("stash")]
-    public class StashClientPacket : PacketBase, IWorldPacket
+    [PacketHeader("stash", Scope.InGame | Scope.InExchange)]
+    public class StashClientPacket : PacketBase
     {
         [PacketListIndex(0)]
         public List<IvnSubPacket?>? IvnSubPackets { get; set; }

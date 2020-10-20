@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Player
 {
-    [PacketHeader("tit_eq")]
-    public class TitEqPacket : PacketBase, IWorldPacket
+    [PacketHeader("tit_eq", Scope.InGame | Scope.InExchange)]
+    public class TitEqPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Mode { get; set; }

@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Groups
 {
-    [PacketHeader("pleave")]
-    public class PleavePacket : PacketBase, IWorldPacket
+    [PacketHeader("pleave", Scope.InGame | Scope.InExchange)]
+    public class PleavePacket : PacketBase
     {
     }
 }

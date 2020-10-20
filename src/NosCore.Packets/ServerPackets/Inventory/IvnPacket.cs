@@ -11,8 +11,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Inventory
 {
-    [PacketHeader("ivn")]
-    public class IvnPacket : PacketBase, IWorldPacket
+    [PacketHeader("ivn", Scope.InGame | Scope.InExchange)]
+    public class IvnPacket : PacketBase
     {
         [PacketIndex(0)]
         public PocketType Type { get; set; }

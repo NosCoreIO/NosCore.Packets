@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Mates
 {
-    [PacketHeader("ps_op")]
-    public class PsopPacket : PacketBase, IWorldPacket
+    [PacketHeader("ps_op", Scope.InGame | Scope.InExchange)]
+    public class PsopPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte PetSlot { get; set; }

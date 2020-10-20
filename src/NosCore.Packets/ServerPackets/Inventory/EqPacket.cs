@@ -12,8 +12,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Inventory
 {
-    [PacketHeader("eq")]
-    public class EqPacket : PacketBase, IWorldPacket
+    [PacketHeader("eq", Scope.InGame | Scope.InExchange)]
+    public class EqPacket : PacketBase
     {
         [PacketIndex(0)]
         public long VisualId { get; set; }

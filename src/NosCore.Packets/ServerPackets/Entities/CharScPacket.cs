@@ -11,8 +11,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Entities
 {
-    [PacketHeader("char_sc")]
-    public class CharScPacket : PacketBase, IWorldPacket
+    [PacketHeader("char_sc", Scope.InGame | Scope.InExchange)]
+    public class CharScPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

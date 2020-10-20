@@ -11,8 +11,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Shop
 {
-    [PacketHeader("pflag")]
-    public class PflagPacket : PacketBase, IWorldPacket
+    [PacketHeader("pflag", Scope.InGame | Scope.InExchange)]
+    public class PflagPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.MiniMap
 {
-    [PacketHeader("c_map")]
-    public class CMapPacket : PacketBase, IWorldPacket
+    [PacketHeader("c_map", Scope.InGame | Scope.InExchange)]
+    public class CMapPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Type { get; set; }

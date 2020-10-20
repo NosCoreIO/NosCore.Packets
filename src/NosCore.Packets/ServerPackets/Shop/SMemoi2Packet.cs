@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Shop
 {
-    [PacketHeader("s_memoi2")]
-    public class SMemoi2Packet : PacketBase, IWorldPacket
+    [PacketHeader("s_memoi2", Scope.InGame | Scope.InExchange)]
+    public class SMemoi2Packet : PacketBase
     {
         [PacketIndex(0)]
         public SMemoType Type { get; set; }

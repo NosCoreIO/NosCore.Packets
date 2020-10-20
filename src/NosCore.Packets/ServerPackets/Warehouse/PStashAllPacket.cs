@@ -12,8 +12,8 @@ using NosCore.Packets.ServerPackets.Inventory;
 
 namespace NosCore.Packets.ServerPackets.Warehouse
 {
-    [PacketHeader("p_stash_all")]
-    public class PStashAllPacket : PacketBase, IWorldPacket
+    [PacketHeader("p_stash_all", Scope.InGame | Scope.InExchange)]
+    public class PStashAllPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte WarehouseSize { get; set; }

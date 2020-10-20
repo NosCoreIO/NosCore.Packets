@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Exchanges
 {
-    public class ExcListSubPacket : PacketBase, IWorldPacket
+    public class ExcListSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public PocketType PocketType { get; set; }

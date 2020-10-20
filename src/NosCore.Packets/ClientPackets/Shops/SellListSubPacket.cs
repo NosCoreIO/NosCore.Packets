@@ -9,7 +9,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Shops
 {
-    public class SellListSubPacket : PacketBase, IWorldPacket
+    public class SellListSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public short Slot { get; set; }

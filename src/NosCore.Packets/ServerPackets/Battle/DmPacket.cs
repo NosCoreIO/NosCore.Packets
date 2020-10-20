@@ -10,7 +10,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Battle
 {
-    [PacketHeader("dm")]
+    [PacketHeader("dm", Scope.InGame | Scope.InExchange)]
     public class DmPacket
     {
         [PacketIndex(0)]

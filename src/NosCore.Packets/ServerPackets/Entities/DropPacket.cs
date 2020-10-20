@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Entities
 {
-    [PacketHeader("drop")]
-    public class DropPacket : PacketBase, IWorldPacket
+    [PacketHeader("drop", Scope.InGame | Scope.InExchange)]
+    public class DropPacket : PacketBase
     {
         [PacketIndex(0)]
         public short VNum { get; set; }

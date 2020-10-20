@@ -9,7 +9,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Miniland
 {
-    public class MlobjSubPacket : PacketBase, IWorldPacket
+    public class MlobjSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public short MapX { get; set; }

@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Map
 {  
-    [PacketHeader("eff_g")]
-    public class GroundEffectPacket : PacketBase, IWorldPacket
+    [PacketHeader("eff_g", Scope.InGame | Scope.InExchange)]
+    public class GroundEffectPacket : PacketBase
     {
         [PacketIndex(0)]
         public string ExtraSpace { get; set; } = string.Empty;

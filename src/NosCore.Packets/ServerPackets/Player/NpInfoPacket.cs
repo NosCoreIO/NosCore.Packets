@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    [PacketHeader("npinfo")]
-    public class NpInfoPacket : PacketBase, IWorldPacket
+    [PacketHeader("npinfo", Scope.InGame | Scope.InExchange)]
+    public class NpInfoPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Page { get; set; }

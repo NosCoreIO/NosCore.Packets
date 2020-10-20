@@ -10,7 +10,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Battle
 {
-    [PacketHeader("rc")]
+    [PacketHeader("rc", Scope.InGame | Scope.InExchange)]
     public class RcPacket
     {
         [PacketIndex(0)]

@@ -6,12 +6,13 @@
 
 using NosCore.Packets.Attributes;
 using System.Collections.Generic;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Battle
 {
-    [PacketHeader("mtlist")]
-    public class MultiTargetListPacket : PacketBase, IWorldPacket
+    [PacketHeader("mtlist", Scope.InGame | Scope.InExchange)]
+    public class MultiTargetListPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte TargetsAmount { get; set; }
