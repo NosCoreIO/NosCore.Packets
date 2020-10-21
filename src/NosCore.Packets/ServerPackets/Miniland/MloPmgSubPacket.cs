@@ -9,7 +9,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Miniland
 {
-    public class MloPmgSubPacket : PacketBase, IWorldPacket
+    public class MloPmgSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public short BoxVNum { get; set; }

@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Warehouse
 {
-    [PacketHeader("f_withdraw")]
-    public class FWithdrawPacket : PacketBase, IWorldPacket
+    [PacketHeader("f_withdraw", Scope.InGame | Scope.InTrade)]
+    public class FWithdrawPacket : PacketBase
     {
         [PacketIndex(0)]
         public short Slot { get; set; }

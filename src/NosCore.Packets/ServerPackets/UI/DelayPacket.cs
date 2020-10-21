@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("delay")]
-    public class DelayPacket : PacketBase, IWorldPacket
+    [PacketHeader("delay", Scope.InGame)]
+    public class DelayPacket : PacketBase
     {
         [PacketIndex(0)]
         public short Delay { get; set; }

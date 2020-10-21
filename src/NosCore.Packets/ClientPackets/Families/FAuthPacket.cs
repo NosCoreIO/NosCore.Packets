@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Families
 {
-    [PacketHeader("fauth")]
-    public class FAuthPacket : PacketBase, IWorldPacket
+    [PacketHeader("fauth", Scope.InGame)]
+    public class FAuthPacket : PacketBase
     {
         [PacketIndex(0)]
         public FamilyAuthority MemberType { get; set; }

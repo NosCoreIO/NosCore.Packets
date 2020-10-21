@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets
 {
-    [PacketHeader("lbs")]
-    public class LbsPacket : PacketBase, IWorldPacket
+    [PacketHeader("lbs", Scope.InGame | Scope.InTrade)]
+    public class LbsPacket : PacketBase
     {
         [PacketIndex(0)]
         public int Type { get; set; }

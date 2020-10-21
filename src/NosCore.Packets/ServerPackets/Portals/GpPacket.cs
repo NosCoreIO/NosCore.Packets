@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Portals
 {
-    [PacketHeader("gp")]
-    public class GpPacket : PacketBase, IWorldPacket
+    [PacketHeader("gp", Scope.InGame)]
+    public class GpPacket : PacketBase
     {
         [PacketIndex(0)]
         public short SourceX { get; set; }

@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Specialists
 {
-    [PacketHeader("sl")]
-    public class SpTransformPacket : PacketBase, IWorldPacket
+    [PacketHeader("sl", Scope.InGame)]
+    public class SpTransformPacket : PacketBase
     {
         [PacketIndex(0)]
         public SlPacketType Type { get; set; }

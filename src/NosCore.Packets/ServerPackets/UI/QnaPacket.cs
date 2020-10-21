@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("qna")]
-    public class QnaPacket : PacketBase, IWorldPacket
+    [PacketHeader("qna", Scope.InGame)]
+    public class QnaPacket : PacketBase
     {
         [PacketIndex(0)]
         public IPacket? YesPacket { get; set; }

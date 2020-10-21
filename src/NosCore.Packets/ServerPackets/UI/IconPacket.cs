@@ -11,8 +11,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("icon")]
-    public class IconPacket : PacketBase, IWorldPacket
+    [PacketHeader("icon", Scope.InGame)]
+    public class IconPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

@@ -13,7 +13,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Visibility
 {
-    public class InCharacterSubPacket : PacketBase, IWorldPacket
+    public class InCharacterSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public AuthorityUIType Authority { get; set; }

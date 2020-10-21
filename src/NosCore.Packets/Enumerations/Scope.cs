@@ -4,12 +4,17 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
-namespace NosCore.Packets.Interfaces
+using System;
+
+namespace NosCore.Packets.Enumerations
 {
-    public interface ILoginPacket : IPacket
+    [Flags]
+    public enum Scope
     {
-    }
-    public interface IWorldPacket : IPacket
-    {
+        Unknown = 0,
+        OnCharacterScreen = 1,
+        InTrade = 2,
+        InGame = 4,
+        OnLoginScreen = 8,
     }
 }

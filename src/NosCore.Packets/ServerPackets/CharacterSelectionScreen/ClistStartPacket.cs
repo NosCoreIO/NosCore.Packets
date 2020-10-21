@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.CharacterSelectionScreen
 {
-    [PacketHeader("clist_start")]
-    public class ClistStartPacket : PacketBase, IWorldPacket
+    [PacketHeader("clist_start", Scope.InGame)]
+    public class ClistStartPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Type { get; set; }

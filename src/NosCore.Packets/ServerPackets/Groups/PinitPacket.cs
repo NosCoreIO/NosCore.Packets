@@ -6,12 +6,13 @@
 
 using System.Collections.Generic;
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Groups
 {
-    [PacketHeader("pinit")]
-    public class PinitPacket : PacketBase, IWorldPacket
+    [PacketHeader("pinit", Scope.InGame)]
+    public class PinitPacket : PacketBase
     {
         [PacketIndex(0)]
         public int GroupSize { get; set; }

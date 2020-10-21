@@ -11,8 +11,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Chats
 {
-    [PacketHeader("sayt")]
-    public class SaytPacket : PacketBase, IWorldPacket
+    [PacketHeader("sayt", Scope.InGame)]
+    public class SaytPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

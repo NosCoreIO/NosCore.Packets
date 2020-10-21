@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("zzim")]
-    public class ZzimPacket : PacketBase, IWorldPacket
+    [PacketHeader("zzim", Scope.InGame)]
+    public class ZzimPacket : PacketBase
     {
     }
 }

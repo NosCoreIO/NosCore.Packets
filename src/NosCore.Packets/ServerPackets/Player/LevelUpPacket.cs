@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    [PacketHeader("levelup")]
-    public class LevelUpPacket : PacketBase, IWorldPacket
+    [PacketHeader("levelup", Scope.InGame)]
+    public class LevelUpPacket : PacketBase
     {
         [PacketIndex(0)]
         public long CharacterId { get; set; }

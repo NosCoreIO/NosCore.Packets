@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Login
 {
-    [PacketHeader("NsTeST_sub_packet")]
-    public class NsTeStSubPacket : PacketBase, ILoginPacket
+    [PacketHeader("NsTeST_sub_packet", Scope.OnLoginScreen)]
+    public class NsTeStSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public string? Host { get; set; }

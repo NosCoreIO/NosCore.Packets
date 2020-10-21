@@ -9,7 +9,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    public class TitleSubPacket : PacketBase, IWorldPacket
+    public class TitleSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public short TitleId { get; set; }

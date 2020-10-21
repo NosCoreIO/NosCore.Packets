@@ -6,12 +6,13 @@
 
 using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Infrastructure
 {
-    [PacketHeader("DAC", AnonymousAccess = true)]
-    public class DacPacket : PacketBase, IWorldPacket
+    [PacketHeader("DAC", Scope.OnCharacterScreen)]
+    public class DacPacket : PacketBase
     {
         [PacketIndex(0)]
         public string AccountName { get; set; } = null!;

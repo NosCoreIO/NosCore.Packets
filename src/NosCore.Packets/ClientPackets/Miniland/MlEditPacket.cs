@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Miniland
 {
-    [PacketHeader("mledit")]
-    public class MLEditPacket : PacketBase, IWorldPacket
+    [PacketHeader("mledit", Scope.InGame)]
+    public class MLEditPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Type { get; set; }

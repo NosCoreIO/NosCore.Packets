@@ -5,6 +5,7 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Mates
@@ -12,8 +13,8 @@ namespace NosCore.Packets.ServerPackets.Mates
     /// <summary>
     ///     Packets for pets
     /// </summary>
-    [PacketHeader("sc_p")]
-    public class ScpPacket : PacketBase, IWorldPacket
+    [PacketHeader("sc_p", Scope.InGame)]
+    public class ScpPacket : PacketBase
     {
         [PacketIndex(0)]
         public long PetId { get; set; }

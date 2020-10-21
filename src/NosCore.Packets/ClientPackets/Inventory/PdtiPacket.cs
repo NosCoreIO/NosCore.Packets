@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Inventory
 {
-    [PacketHeader("pdti")]
-    public class PdtiPacket : PacketBase, IWorldPacket
+    [PacketHeader("pdti", Scope.InGame)]
+    public class PdtiPacket : PacketBase
     {
         [PacketIndex(0)]
         public short Unknow { get; set; } // TODO find this - type 10 and 11

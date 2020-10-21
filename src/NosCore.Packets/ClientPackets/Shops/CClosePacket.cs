@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Shops
 {
-    [PacketHeader("c_close", AnonymousAccess = true)]
-    public class CClosePacket : PacketBase, IWorldPacket
+    [PacketHeader("c_close", Scope.InGame | Scope.InTrade | Scope.OnCharacterScreen)]
+    public class CClosePacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Type { get; set; }

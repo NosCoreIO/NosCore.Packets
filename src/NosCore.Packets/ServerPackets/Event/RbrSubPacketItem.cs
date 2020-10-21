@@ -9,7 +9,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Event
 {
-    public class RbrSubPacketItem : PacketBase, IWorldPacket
+    public class RbrSubPacketItem : PacketBase
     {
         [PacketIndex(0)]
         public short? ItemId { get; set; }

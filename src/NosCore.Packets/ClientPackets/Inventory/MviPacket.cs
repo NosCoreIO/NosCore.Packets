@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Inventory
 {
-    [PacketHeader("mvi", BlockedByTrading = true)]
-    public class MviPacket : PacketBase, IWorldPacket
+    [PacketHeader("mvi", Scope.InGame)]
+    public class MviPacket : PacketBase
     {
         [PacketIndex(0)]
         public PocketType InventoryType { get; set; }

@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Player
 {
-    [PacketHeader("snap")]
-    public class SnapPacket : PacketBase, IWorldPacket
+    [PacketHeader("snap", Scope.InGame | Scope.InTrade)]
+    public class SnapPacket : PacketBase
     {
     }
 }

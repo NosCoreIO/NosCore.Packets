@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Shop
 {
-    [PacketHeader("n_inv_item")]
-    public class NInvItemSubPacket : PacketBase, IWorldPacket
+    [PacketHeader("n_inv_item", Scope.InGame)]
+    public class NInvItemSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public PocketType Type { get; set; }

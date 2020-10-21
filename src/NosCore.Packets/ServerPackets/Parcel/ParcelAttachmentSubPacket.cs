@@ -9,7 +9,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Parcel
 {
-    public class ParcelAttachmentSubPacket : PacketBase, IWorldPacket
+    public class ParcelAttachmentSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte TitleType { get; set; }

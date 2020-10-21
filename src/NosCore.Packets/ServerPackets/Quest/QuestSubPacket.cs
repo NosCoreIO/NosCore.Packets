@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Quest
 {
-    public class QuestSubPacket : PacketBase, IWorldPacket
+    public class QuestSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte ObjectiveCount { get; set; }

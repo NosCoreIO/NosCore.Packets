@@ -5,15 +5,17 @@
 // -----------------------------------
 
 using System;
+using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.Attributes
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class PacketHeaderAttribute : Attribute
     {
-        public PacketHeaderAttribute(string identification)
+        public PacketHeaderAttribute(string identification, Scope scopes)
         {
             Identification = identification;
+            Scopes = scopes;
         }
 
         /// <summary>
@@ -21,8 +23,6 @@ namespace NosCore.Packets.Attributes
         /// </summary>
         public string Identification { get; set; }
 
-        public bool AnonymousAccess { get; set; }
-
-        public bool BlockedByTrading { get; set; }
+        public Scope Scopes { get; set; }
     }
 }

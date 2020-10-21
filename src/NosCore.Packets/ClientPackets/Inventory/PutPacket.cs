@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Inventory
 {
-    [PacketHeader("put", BlockedByTrading = true)]
-    public class PutPacket : PacketBase, IWorldPacket
+    [PacketHeader("put", Scope.InGame)]
+    public class PutPacket : PacketBase
     {
         [PacketIndex(0)]
         public PocketType PocketType { get; set; }

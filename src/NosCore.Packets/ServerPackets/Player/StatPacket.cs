@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    [PacketHeader("stat")]
-    public class StatPacket : PacketBase, IWorldPacket
+    [PacketHeader("stat", Scope.InGame)]
+    public class StatPacket : PacketBase
     {
         [PacketIndex(0)]
         public int Hp { get; set; }

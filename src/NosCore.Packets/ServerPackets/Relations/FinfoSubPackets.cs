@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Relations
 {
-    [PacketHeader("finfo_sub_packets")]
-    public class FinfoSubPackets : PacketBase, IWorldPacket
+    [PacketHeader("finfo_sub_packets", Scope.InGame)]
+    public class FinfoSubPackets : PacketBase
     {
         [PacketIndex(0)]
         public long CharacterId { get; set; }

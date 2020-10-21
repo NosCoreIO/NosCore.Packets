@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Entities
 {
-    [PacketHeader("req_info")]
-    public class ReqInfoPacket : PacketBase, IWorldPacket
+    [PacketHeader("req_info", Scope.InGame)]
+    public class ReqInfoPacket : PacketBase
     {
         [PacketIndex(0)]
         public ReqInfoType ReqType { get; set; }

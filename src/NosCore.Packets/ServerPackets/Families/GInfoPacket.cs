@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Families
 {
-    [PacketHeader("ginfo")]
-    public class GInfoPacket : PacketBase, IWorldPacket
+    [PacketHeader("ginfo", Scope.InGame)]
+    public class GInfoPacket : PacketBase
     {
         [PacketIndex(0)]
         public string? FamilyName { get; set; }

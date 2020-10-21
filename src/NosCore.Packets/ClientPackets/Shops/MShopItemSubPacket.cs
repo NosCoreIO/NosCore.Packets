@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Shops
 {
-    public class MShopItemSubPacket : PacketBase, IWorldPacket
+    public class MShopItemSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public PocketType Type { get; set; }

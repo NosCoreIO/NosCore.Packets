@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Relations
 {
-    [PacketHeader("reloadfinfo")]
-    public class ReloadFinfoPacket : PacketBase, IWorldPacket
+    [PacketHeader("reloadfinfo", Scope.InGame | Scope.InTrade)]
+    public class ReloadFinfoPacket : PacketBase
     {
     }
 }

@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Shop
 {
-    [PacketHeader("ishop")]
-    public class IshopPacket : PacketBase, IWorldPacket
+    [PacketHeader("ishop", Scope.InGame)]
+    public class IshopPacket : PacketBase
     {
     }
 }

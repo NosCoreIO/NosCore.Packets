@@ -6,12 +6,13 @@
 
 using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Miniland
 {
-    [PacketHeader("mlinfobr")]
-    public class MlInfoBrPacket : PacketBase, IWorldPacket
+    [PacketHeader("mlinfobr", Scope.InGame)]
+    public class MlInfoBrPacket : PacketBase
     {
         [PacketIndex(0)]
         public short MinilandMusicId { get; set; }

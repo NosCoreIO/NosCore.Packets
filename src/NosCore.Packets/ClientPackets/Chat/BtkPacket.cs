@@ -6,12 +6,13 @@
 
 using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Chat
 {
-    [PacketHeader("btk")]
-    public class BtkPacket : PacketBase, IWorldPacket
+    [PacketHeader("btk", Scope.InGame | Scope.InTrade)]
+    public class BtkPacket : PacketBase
     {
         [PacketIndex(0)]
         public long CharacterId { get; set; }

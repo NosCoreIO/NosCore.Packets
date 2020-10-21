@@ -13,8 +13,8 @@ namespace NosCore.Packets.ServerPackets.Mates
     /// <summary>
     ///     Packets for partners
     /// </summary>
-    [PacketHeader("sc_n")]
-    public class ScnPacket : PacketBase, IWorldPacket
+    [PacketHeader("sc_n", Scope.InGame)]
+    public class ScnPacket : PacketBase
     {
         [PacketIndex(0)]
         public long PetId { get; set; }
@@ -166,7 +166,7 @@ namespace NosCore.Packets.ServerPackets.Mates
         [PacketIndex(42)]
         public ScSkillDetails? Skill3Details { get; set; }
 
-        public class ScSpDetails : PacketBase, IWorldPacket
+        public class ScSpDetails : PacketBase
         {
             [PacketIndex(0)]
             public long ItemId { get; set; }
@@ -175,7 +175,7 @@ namespace NosCore.Packets.ServerPackets.Mates
             public byte AgilityPercentage { get; set; }
         }
 
-        public class ScEquipmentDetails : PacketBase, IWorldPacket
+        public class ScEquipmentDetails : PacketBase
         {
             [PacketIndex(0)]
             public long ItemId { get; set; }
@@ -187,7 +187,7 @@ namespace NosCore.Packets.ServerPackets.Mates
             public long ItemUpgrade { get; set; }
         }
 
-        public class ScSkillDetails : PacketBase, IWorldPacket
+        public class ScSkillDetails : PacketBase
         {
             [PacketIndex(0)]
             public long SkillId { get; set; }

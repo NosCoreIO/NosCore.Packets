@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Families
 {
-    [PacketHeader("fhis_cts")]
-    public class FhistCtsPacket : PacketBase, IWorldPacket
+    [PacketHeader("fhis_cts", Scope.InGame)]
+    public class FhistCtsPacket : PacketBase
     {
     }
 }

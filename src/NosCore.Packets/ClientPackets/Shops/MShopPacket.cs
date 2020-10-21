@@ -11,8 +11,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Shops
 {
-    [PacketHeader("m_shop", BlockedByTrading = true)]
-    public class MShopPacket : PacketBase, IWorldPacket
+    [PacketHeader("m_shop", Scope.InGame)]
+    public class MShopPacket : PacketBase
     {
         [PacketIndex(0)]
         public CreateShopPacketType Type { get; set; }

@@ -46,7 +46,19 @@ namespace NosCore.Packets.Tests
             return types.Where(s => s.GetCustomAttribute<PacketHeaderAttribute>() != null)
                 .OrderBy(s => s.Name);
         }
+        public List<string> ListScopes(Scope scope)
+        {
+            List<string> result = new List<string>();
+            foreach (Scope sc in Enum.GetValues(typeof(Scope)))
+            {
+                if ((scope & sc) != 0)
+                {
+                    result.Add(sc.ToString());
+                }
+            }
 
+            return result;
+        }
         [TestMethod]
         public void PacketsDocumentation()
         {
@@ -57,9 +69,11 @@ namespace NosCore.Packets.Tests
             {
                 builder.AppendLine();
                 builder.AppendLine($"### {packetGroup.Key}");
+
                 foreach (Type packet in GetPackets(packetGroup))
                 {
-                    builder.AppendLine($"- [{packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification}](src/NosCore.Packets/ClientPackets/{packetGroup.Key}/{packet}.cs)");
+                    builder.AppendLine(
+                        $"- [{packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification}](src/NosCore.Packets/ClientPackets/{packetGroup.Key}/{packet}.cs) *{string.Join(" | ", ListScopes((packet.GetCustomAttributes(typeof(PacketHeaderAttribute))?.FirstOrDefault() as PacketHeaderAttribute)?.Scopes ?? Scope.Unknown))}*");
                 }
             }
 
@@ -71,7 +85,8 @@ namespace NosCore.Packets.Tests
                 builder.AppendLine($"### {packetGroup.Key}");
                 foreach (Type packet in GetPackets(packetGroup))
                 {
-                    builder.AppendLine($"- [{packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification}](src/NosCore.Packets/ServerPackets/{packetGroup.Key}/{packet}.cs)");
+                    builder.AppendLine(
+                        $"- [{packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification}](src/NosCore.Packets/ServerPackets/{packetGroup.Key}/{packet}.cs) *{string.Join(" | ", ListScopes((packet.GetCustomAttributes(typeof(PacketHeaderAttribute))?.FirstOrDefault() as PacketHeaderAttribute)?.Scopes ?? Scope.Unknown))}*");
                 }
             }
 

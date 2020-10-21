@@ -11,8 +11,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Drops
 {
-    [PacketHeader("get")]
-    public class GetPacket : PacketBase, IWorldPacket
+    [PacketHeader("get", Scope.InGame)]
+    public class GetPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType PickerType { get; set; }

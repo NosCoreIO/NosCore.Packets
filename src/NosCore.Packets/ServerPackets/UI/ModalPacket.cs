@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("modal")]
-    public class ModalPacket : PacketBase, IWorldPacket
+    [PacketHeader("modal", Scope.InGame)]
+    public class ModalPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Type { get; set; } //TODO: find modal types

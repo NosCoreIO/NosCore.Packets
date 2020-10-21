@@ -9,7 +9,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Miniland
 {
-    public class MloInfoPacketSubPacket : PacketBase, IWorldPacket
+    public class MloInfoPacketSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public long MinimumPoints { get; set; }

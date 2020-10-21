@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Chat
 {
-    [PacketHeader("!")]
-    public class TimeSpaceTalkPacket : PacketBase, IWorldPacket
+    [PacketHeader("!", Scope.InGame)]
+    public class TimeSpaceTalkPacket : PacketBase
     {
         [PacketIndex(0)]
         public string? Message { get; set; }

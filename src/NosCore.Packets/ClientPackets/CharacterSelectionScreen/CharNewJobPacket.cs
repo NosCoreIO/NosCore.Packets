@@ -5,10 +5,11 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.CharacterSelectionScreen
 {
-    [PacketHeader("Char_NEW_JOB", AnonymousAccess = true)]
+    [PacketHeader("Char_NEW_JOB", Scope.OnCharacterScreen)]
     public class CharNewJobPacket : CharNewPacket
     {
         public CharNewJobPacket()

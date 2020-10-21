@@ -11,8 +11,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Exchanges
 {
-    [PacketHeader("req_exc")]
-    public class ExchangeRequestPacket : PacketBase, IWorldPacket
+    [PacketHeader("req_exc", Scope.InGame)]
+    public class ExchangeRequestPacket : PacketBase
     {
         [PacketIndex(0)]
         public RequestExchangeType RequestType { get; set; }

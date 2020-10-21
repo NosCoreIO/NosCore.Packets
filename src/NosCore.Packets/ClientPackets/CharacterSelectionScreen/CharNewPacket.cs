@@ -11,8 +11,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.CharacterSelectionScreen
 {
-    [PacketHeader("Char_NEW", AnonymousAccess = true)]
-    public class CharNewPacket : PacketBase, IWorldPacket
+    [PacketHeader("Char_NEW", Scope.OnCharacterScreen)]
+    public class CharNewPacket : PacketBase
     {
         [PacketIndex(0)]
         [StringLength(15, MinimumLength = 3)]

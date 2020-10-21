@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.MiniMap
 {
-    [PacketHeader("at")]
-    public class AtPacket : PacketBase, IWorldPacket
+    [PacketHeader("at", Scope.InGame)]
+    public class AtPacket : PacketBase
     {
         [PacketIndex(0)]
         public long CharacterId { get; set; }

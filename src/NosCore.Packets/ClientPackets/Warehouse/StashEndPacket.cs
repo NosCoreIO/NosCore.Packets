@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Warehouse
 {
-    [PacketHeader("stash_end", AnonymousAccess = true)]
-    public class StashEndPacket : PacketBase, IWorldPacket
+    [PacketHeader("stash_end", Scope.InGame | Scope.InTrade | Scope.OnCharacterScreen)]
+    public class StashEndPacket : PacketBase
     {
     }
 }

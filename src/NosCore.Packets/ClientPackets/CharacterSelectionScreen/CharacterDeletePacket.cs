@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.CharacterSelectionScreen
 {
-    [PacketHeader("Char_DEL", AnonymousAccess = true)]
-    public class CharacterDeletePacket : PacketBase, IWorldPacket
+    [PacketHeader("Char_DEL", Scope.OnCharacterScreen)]
+    public class CharacterDeletePacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Slot { get; set; }

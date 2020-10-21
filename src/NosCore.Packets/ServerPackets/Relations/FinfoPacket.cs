@@ -6,12 +6,13 @@
 
 using System.Collections.Generic;
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Relations
 {
-    [PacketHeader("finfo")]
-    public class FinfoPacket : PacketBase, IWorldPacket
+    [PacketHeader("finfo", Scope.InGame)]
+    public class FinfoPacket : PacketBase
     {
         [PacketListIndex(0)]
         public List<FinfoSubPackets?>? FriendList { get; set; }

@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Battle
 {
-    [PacketHeader("mslot")]
-    public class MslotPacket : PacketBase, IWorldPacket
+    [PacketHeader("mslot", Scope.InGame)]
+    public class MslotPacket : PacketBase
     {
 		[PacketIndex(0)]
 		public long SkillCastId { get; set; }

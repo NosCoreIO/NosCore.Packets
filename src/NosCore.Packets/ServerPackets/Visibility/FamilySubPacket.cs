@@ -9,7 +9,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Visibility
 {
-    public class FamilySubPacket : PacketBase, IWorldPacket
+    public class FamilySubPacket : PacketBase
     {
         [PacketIndex(0)]
         public long? FamilyId { get; set; }

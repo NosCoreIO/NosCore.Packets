@@ -12,8 +12,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Movement
 {
-    [PacketHeader("dir")]
-    public class ClientDirPacket : PacketBase, IWorldPacket
+    [PacketHeader("dir", Scope.InGame | Scope.InTrade)]
+    public class ClientDirPacket : PacketBase
     {
         [PacketIndex(0)]
         [Range(0, 7)]

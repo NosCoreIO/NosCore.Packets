@@ -11,8 +11,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    [PacketHeader("c_mode")]
-    public class CModePacket : PacketBase, IWorldPacket
+    [PacketHeader("c_mode", Scope.InGame)]
+    public class CModePacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

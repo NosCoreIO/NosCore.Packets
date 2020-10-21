@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Miniland
 {
-    [PacketHeader("mlinfo")]
-    public class MlinfoPacket : PacketBase, IWorldPacket
+    [PacketHeader("mlinfo", Scope.InGame)]
+    public class MlinfoPacket : PacketBase
     {
         [PacketIndex(0)]
         public short WelcomeMusicInfo { get; set; } = 3800;

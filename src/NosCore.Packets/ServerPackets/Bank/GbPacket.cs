@@ -12,8 +12,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Bank
 {
-    [PacketHeader("gb")]
-    public class GbPacket : PacketBase, IWorldPacket
+    [PacketHeader("gb", Scope.InGame)]
+    public class GbPacket : PacketBase
     {
         [PacketIndex(0)]
         public BankActionType Type { get; set; }

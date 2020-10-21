@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    [PacketHeader("fd")]
-    public class FdPacket : PacketBase, IWorldPacket
+    [PacketHeader("fd", Scope.InGame)]
+    public class FdPacket : PacketBase
     {
         [PacketIndex(0)]
         public long Reput { get; set; }

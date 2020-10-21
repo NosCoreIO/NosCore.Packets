@@ -11,8 +11,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Bazaar
 {
-    [PacketHeader("c_blist")]
-    public class CBListPacket : PacketBase, IWorldPacket
+    [PacketHeader("c_blist", Scope.InGame | Scope.InTrade)]
+    public class CBListPacket : PacketBase
     {
         [PacketIndex(0)]
         public int Index { get; set; }

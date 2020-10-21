@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Quest
 {
-    [PacketHeader("qt")]
-    public class QtPacket : PacketBase, IWorldPacket
+    [PacketHeader("qt", Scope.InGame)]
+    public class QtPacket : PacketBase
     {
         [PacketIndex(0)]
         public QuestActionType Type { get; set; }

@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Visibility
 {
-    public class InNonPlayerSubPacket : PacketBase, IWorldPacket
+    public class InNonPlayerSubPacket : PacketBase
     {
         [PacketIndex(1)]
         public InAliveSubPacket? InAliveSubPacket { get; set; }

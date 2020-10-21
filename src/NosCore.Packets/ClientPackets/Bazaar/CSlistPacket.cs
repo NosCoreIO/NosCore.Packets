@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Bazaar
 {
-    [PacketHeader("c_slist")]
-    public class CSListPacket : PacketBase, IWorldPacket
+    [PacketHeader("c_slist", Scope.InGame | Scope.InTrade)]
+    public class CSListPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Index { get; set; }

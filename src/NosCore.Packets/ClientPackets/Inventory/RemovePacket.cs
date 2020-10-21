@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Inventory
 {
-    [PacketHeader("remove", BlockedByTrading = true)]
-    public class RemovePacket : PacketBase, IWorldPacket
+    [PacketHeader("remove", Scope.InGame)]
+    public class RemovePacket : PacketBase
     {
         [PacketIndex(0)]
         public EquipmentType InventorySlot { get; set; }

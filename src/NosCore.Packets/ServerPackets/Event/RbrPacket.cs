@@ -6,12 +6,13 @@
 
 using System.Collections.Generic;
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Event
 {
-    [PacketHeader("rbr")]
-    public class RbrPacket : PacketBase, IWorldPacket
+    [PacketHeader("rbr", Scope.InGame)]
+    public class RbrPacket : PacketBase
     {
         [PacketIndex(0, SpecialSeparator = ".")]
         public RbrSubPacketBasicInfo? TsBasicInfo { get; set; }

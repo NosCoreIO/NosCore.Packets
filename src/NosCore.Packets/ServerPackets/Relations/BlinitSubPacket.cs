@@ -9,7 +9,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Relations
 {
-    public class BlinitSubPacket : PacketBase, IWorldPacket
+    public class BlinitSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public long RelatedCharacterId { get; set; }

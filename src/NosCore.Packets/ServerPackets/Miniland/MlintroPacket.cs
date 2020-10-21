@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Miniland
 {
-    [PacketHeader("mlintro")]
-    public class MlintroPacket : PacketBase, IWorldPacket
+    [PacketHeader("mlintro", Scope.InGame)]
+    public class MlintroPacket : PacketBase
     {
         [PacketIndex(0)]
         public string? Intro { get; set; }

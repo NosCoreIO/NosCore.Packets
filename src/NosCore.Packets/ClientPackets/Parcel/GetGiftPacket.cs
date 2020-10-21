@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Parcel
 {
-    [PacketHeader("pcl")]
-    public class PclPacket : PacketBase, IWorldPacket
+    [PacketHeader("pcl", Scope.InGame)]
+    public class PclPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Type { get; set; }

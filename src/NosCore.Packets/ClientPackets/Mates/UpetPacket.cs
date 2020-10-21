@@ -11,8 +11,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Mates
 {
-    [PacketHeader("u_pet")]
-    public class UpetPacket : PacketBase, IWorldPacket
+    [PacketHeader("u_pet", Scope.InGame)]
+    public class UpetPacket : PacketBase
     {
         [PacketIndex(0)]
         public long MateTransportId { get; set; }

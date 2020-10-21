@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Shop
 {
-    [PacketHeader("shop_end")]
-    public class ShopEndPacket : PacketBase, IWorldPacket
+    [PacketHeader("shop_end", Scope.InGame)]
+    public class ShopEndPacket : PacketBase
     {
         [PacketIndex(0)]
         public ShopEndPacketType Type { get; set; }

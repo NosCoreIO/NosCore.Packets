@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Inventory
 {
-    public class EquipmentSubPacket : PacketBase, IWorldPacket
+    public class EquipmentSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public EquipmentType EquipmentType { get; set; }

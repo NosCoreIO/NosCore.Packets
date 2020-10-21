@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Login
 {
-    [PacketHeader("mz")]
-    public class MzPacket : PacketBase, IWorldPacket
+    [PacketHeader("mz", Scope.InGame)]
+    public class MzPacket : PacketBase
     {
         [PacketIndex(0)]
         public string Ip { get; set; } = null!;

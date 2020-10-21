@@ -11,8 +11,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Visibility
 {
-    [PacketHeader("in")]
-    public class InPacket : PacketBase, IWorldPacket
+    [PacketHeader("in", Scope.InGame)]
+    public class InPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

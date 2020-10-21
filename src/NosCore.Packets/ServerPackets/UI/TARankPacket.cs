@@ -6,12 +6,13 @@
 
 using NosCore.Packets.Attributes;
 using System.Collections.Generic;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("ta_rank")]
-    public class TARankPacket : PacketBase, IWorldPacket
+    [PacketHeader("ta_rank", Scope.InGame)]
+    public class TARankPacket : PacketBase
     {
         [PacketListIndex(0, SpecialSeparator = ".")]
         public List<TARankSubPacket?>? CharacterList { get; set; }

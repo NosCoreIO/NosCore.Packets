@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Bazaar
 {
-    [PacketHeader("c_skill", BlockedByTrading = true)]
-    public class CSkillPacket : PacketBase, IWorldPacket
+    [PacketHeader("c_skill", Scope.InGame)]
+    public class CSkillPacket : PacketBase
     {
     }
 }

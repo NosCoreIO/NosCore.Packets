@@ -6,12 +6,13 @@
 
 using System.Collections.Generic;
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Movement
 {
-    [PacketHeader("rest")]
-    public class SitPacket : PacketBase, IWorldPacket
+    [PacketHeader("rest", Scope.InGame | Scope.InTrade)]
+    public class SitPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Amount { get; set; }

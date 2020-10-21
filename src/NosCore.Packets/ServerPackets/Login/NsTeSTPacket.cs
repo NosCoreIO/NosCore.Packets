@@ -12,8 +12,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Login
 {
-    [PacketHeader("NsTeST")]
-    public class NsTestPacket : PacketBase, ILoginPacket
+    [PacketHeader("NsTeST", Scope.OnLoginScreen)]
+    public class NsTestPacket : PacketBase
     {
         [PacketIndex(0)]
         public RegionType RegionType { get; set; }

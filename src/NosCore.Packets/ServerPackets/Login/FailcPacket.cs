@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Login
 {
-    [PacketHeader("failc")]
-    public class FailcPacket : PacketBase, ILoginPacket
+    [PacketHeader("failc", Scope.OnLoginScreen)]
+    public class FailcPacket : PacketBase
     {
         [PacketIndex(0)]
         public LoginFailType Type { get; set; }

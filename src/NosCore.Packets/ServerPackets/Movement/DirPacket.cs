@@ -11,8 +11,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Movement
 {
-    [PacketHeader("dir")]
-    public class DirPacket : PacketBase, IWorldPacket
+    [PacketHeader("dir", Scope.InGame)]
+    public class DirPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }

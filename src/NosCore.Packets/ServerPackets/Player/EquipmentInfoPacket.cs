@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    [PacketHeader("eqinfo")]
-    public class EquipmentInfoPacket : PacketBase, IWorldPacket
+    [PacketHeader("eqinfo", Scope.InGame)]
+    public class EquipmentInfoPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Type { get; set; } // todo more information

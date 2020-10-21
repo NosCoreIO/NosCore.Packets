@@ -6,12 +6,13 @@
 
 using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.CharacterSelectionScreen
 {
-    [PacketHeader("select", AnonymousAccess = true)]
-    public class SelectPacket : PacketBase, IWorldPacket
+    [PacketHeader("select", Scope.OnCharacterScreen)]
+    public class SelectPacket : PacketBase
     {
         [PacketIndex(0)]
         [Range(0, 3)]

@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Families
 {
-    [PacketHeader("gjoin")]
-    public class JoinFamilyPacket : PacketBase, IWorldPacket
+    [PacketHeader("gjoin", Scope.InGame)]
+    public class JoinFamilyPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Type { get; set; }

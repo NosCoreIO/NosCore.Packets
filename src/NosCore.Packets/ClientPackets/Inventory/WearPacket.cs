@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Inventory
 {
-    [PacketHeader("wear")]
-    public class WearPacket : PacketBase, IWorldPacket
+    [PacketHeader("wear", Scope.InGame)]
+    public class WearPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte InventorySlot { get; set; }

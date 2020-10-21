@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Battle
 {
-    [PacketHeader("u_as")]
-    public class UseAoeSkillPacket : PacketBase, IWorldPacket
+    [PacketHeader("u_as", Scope.InGame)]
+    public class UseAoeSkillPacket : PacketBase
     {
         [PacketIndex(0)]
         public long CastId { get; set; }

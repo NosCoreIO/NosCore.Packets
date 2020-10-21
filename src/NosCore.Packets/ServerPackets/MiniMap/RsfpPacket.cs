@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.MiniMap
 {
-    [PacketHeader("rsfp")]
-    public class RsfpPacket : PacketBase, IWorldPacket
+    [PacketHeader("rsfp", Scope.InGame)]
+    public class RsfpPacket : PacketBase
     {
         [PacketIndex(0)]
         public long MapX { get; set; }

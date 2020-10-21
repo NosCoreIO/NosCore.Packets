@@ -9,7 +9,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Visibility
 {
-    public class InItemSubPacket : PacketBase, IWorldPacket
+    public class InItemSubPacket : PacketBase
     {
         [PacketIndex(0)]
         public int Amount { get; set; }

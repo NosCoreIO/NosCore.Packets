@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Commands
 {
-    [PacketHeader("%Familydismiss")]
+    [PacketHeader("%Familydismiss", Scope.InGame | Scope.InTrade)]
     [PacketHeaderAlias("%Rejetdefamille", Flag = nameof(RegionType.FR))]
     [PacketHeaderAlias("%Familienentlassung", Flag = nameof(RegionType.DE))]
     [PacketHeaderAlias("%Allontana", Flag = nameof(RegionType.IT))]
@@ -19,7 +20,7 @@ namespace NosCore.Packets.ClientPackets.Commands
     [PacketHeaderAlias("%Выгнать", Flag = nameof(RegionType.RU))]
     [PacketHeaderAlias("%AiledenÇýkma", Flag = nameof(RegionType.TR))]
     [PacketHeaderAlias("%Vyhození", Flag = nameof(RegionType.CS))]
-    public class FamilyDismissPacket : PacketBase, IWorldPacket
+    public class FamilyDismissPacket : PacketBase
     {
         [PacketIndex(0)]
         public string? CharacterName { get; set; }

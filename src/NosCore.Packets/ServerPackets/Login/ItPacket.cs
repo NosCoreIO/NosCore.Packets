@@ -5,12 +5,13 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Login
 {
-    [PacketHeader("it")]
-    public class ItPacket : PacketBase, IWorldPacket
+    [PacketHeader("it", Scope.InGame)]
+    public class ItPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Mode { get; set; }

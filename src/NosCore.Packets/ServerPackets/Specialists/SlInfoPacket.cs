@@ -10,8 +10,8 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Specialists
 {
-    [PacketHeader("slinfo")]
-    public class SlInfoPacket : PacketBase, IWorldPacket
+    [PacketHeader("slinfo", Scope.InGame)]
+    public class SlInfoPacket : PacketBase
     {
         [PacketIndex(0)]
         public PocketType InventoryType { get; set; }

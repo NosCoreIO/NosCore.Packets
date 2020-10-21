@@ -6,12 +6,13 @@
 
 using System.Collections.Generic;
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Relations
 {
-    [PacketHeader("blinit")]
-    public class BlinitPacket : PacketBase, IWorldPacket
+    [PacketHeader("blinit", Scope.InGame)]
+    public class BlinitPacket : PacketBase
     {
         [PacketListIndex(0, SpecialSeparator = "|")]
         public List<BlinitSubPacket?>? SubPackets { get; set; }
