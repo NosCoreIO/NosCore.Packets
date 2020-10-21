@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Exchanges
 {
-    [PacketHeader("req_exc", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("req_exc", Scope.InGame)]
     public class ExchangeRequestPacket : PacketBase
     {
         [PacketIndex(0)]

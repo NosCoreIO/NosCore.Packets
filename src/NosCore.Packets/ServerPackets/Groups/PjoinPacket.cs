@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Groups
 {
-    [PacketHeader("pjoin", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("pjoin", Scope.InGame)]
     public class PjoinPacket : PacketBase
     {
         [PacketIndex(0)]

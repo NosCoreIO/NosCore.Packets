@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.CharacterSelectionScreen
 {
-    [PacketHeader("success", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("success", Scope.InGame)]
     public class SuccessPacket : PacketBase
     {
     }

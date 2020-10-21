@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Bazaar
 {
-    [PacketHeader("c_skill", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("c_skill", Scope.InGame)]
     public class CSkillPacket : PacketBase
     {
     }

@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Mates
 {
-    [PacketHeader("u_ps", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("u_ps", Scope.InGame)]
     public class UpsPacket : PacketBase
     {
         [PacketIndex(0)]

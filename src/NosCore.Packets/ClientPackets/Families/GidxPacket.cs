@@ -12,7 +12,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Families
 {
-    [PacketHeader("gidx", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("gidx", Scope.InGame | Scope.InTrade)]
     public class GidxPacket : PacketBase
     {
         [PacketIndex(0)]

@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.MiniMap
 {
-    [PacketHeader("at", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("at", Scope.InGame)]
     public class AtPacket : PacketBase
     {
         [PacketIndex(0)]

@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    [PacketHeader("eff", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("eff", Scope.InGame)]
     public class EffectPacket : PacketBase
     {
         [PacketIndex(0)]

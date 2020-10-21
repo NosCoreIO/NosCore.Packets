@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Groups
 {
-    [PacketHeader("pleave", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("pleave", Scope.InGame | Scope.InTrade)]
     public class PleavePacket : PacketBase
     {
     }

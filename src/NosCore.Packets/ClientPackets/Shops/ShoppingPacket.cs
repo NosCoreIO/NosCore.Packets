@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Shops
 {
-    [PacketHeader("shopping", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("shopping", Scope.InGame)]
     public class ShoppingPacket : PacketBase
     {
         [PacketIndex(0)]

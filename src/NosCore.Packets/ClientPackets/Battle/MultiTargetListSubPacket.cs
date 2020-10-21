@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Battle
 {
-    [PacketHeader("multi_target_list_sub_packet", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("multi_target_list_sub_packet", Scope.InGame)]
     public class MultiTargetListSubPacket : PacketBase
     {
         [PacketIndex(0)]

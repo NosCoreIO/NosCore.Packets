@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("p_clear", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("p_clear", Scope.InGame)]
     public class PclearPacket : PacketBase
     {
     }

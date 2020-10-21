@@ -2,23 +2,23 @@
 ## ClientPackets :
 
 ### Bank
-- [gbox](src/NosCore.Packets/ClientPackets/Bank/NosCore.Packets.ClientPackets.Bank.GboxPacket.cs) *InExchange | InGame*
+- [gbox](src/NosCore.Packets/ClientPackets/Bank/NosCore.Packets.ClientPackets.Bank.GboxPacket.cs) *InGame*
 
 ### Battle
-- [mtlist](src/NosCore.Packets/ClientPackets/Battle/NosCore.Packets.ClientPackets.Battle.MultiTargetListPacket.cs) *InExchange | InGame*
-- [multi_target_list_sub_packet](src/NosCore.Packets/ClientPackets/Battle/NosCore.Packets.ClientPackets.Battle.MultiTargetListSubPacket.cs) *InExchange | InGame*
-- [ncif](src/NosCore.Packets/ClientPackets/Battle/NosCore.Packets.ClientPackets.Battle.NcifPacket.cs) *InExchange | InGame*
-- [u_as](src/NosCore.Packets/ClientPackets/Battle/NosCore.Packets.ClientPackets.Battle.UseAoeSkillPacket.cs) *InExchange | InGame*
-- [u_s](src/NosCore.Packets/ClientPackets/Battle/NosCore.Packets.ClientPackets.Battle.UseSkillPacket.cs) *InExchange | InGame*
+- [mtlist](src/NosCore.Packets/ClientPackets/Battle/NosCore.Packets.ClientPackets.Battle.MultiTargetListPacket.cs) *InGame*
+- [multi_target_list_sub_packet](src/NosCore.Packets/ClientPackets/Battle/NosCore.Packets.ClientPackets.Battle.MultiTargetListSubPacket.cs) *InGame*
+- [ncif](src/NosCore.Packets/ClientPackets/Battle/NosCore.Packets.ClientPackets.Battle.NcifPacket.cs) *InTrade | InGame*
+- [u_as](src/NosCore.Packets/ClientPackets/Battle/NosCore.Packets.ClientPackets.Battle.UseAoeSkillPacket.cs) *InGame*
+- [u_s](src/NosCore.Packets/ClientPackets/Battle/NosCore.Packets.ClientPackets.Battle.UseSkillPacket.cs) *InGame*
 
 ### Bazaar
-- [c_blist](src/NosCore.Packets/ClientPackets/Bazaar/NosCore.Packets.ClientPackets.Bazaar.CBListPacket.cs) *InExchange | InGame*
-- [c_buy](src/NosCore.Packets/ClientPackets/Bazaar/NosCore.Packets.ClientPackets.Bazaar.CBuyPacket.cs) *InExchange | InGame*
-- [c_mod](src/NosCore.Packets/ClientPackets/Bazaar/NosCore.Packets.ClientPackets.Bazaar.CModPacket.cs) *InExchange | InGame*
-- [c_reg](src/NosCore.Packets/ClientPackets/Bazaar/NosCore.Packets.ClientPackets.Bazaar.CRegPacket.cs) *InExchange | InGame*
-- [c_scalc](src/NosCore.Packets/ClientPackets/Bazaar/NosCore.Packets.ClientPackets.Bazaar.CScalcPacket.cs) *InExchange | InGame*
-- [c_skill](src/NosCore.Packets/ClientPackets/Bazaar/NosCore.Packets.ClientPackets.Bazaar.CSkillPacket.cs) *InExchange | InGame*
-- [c_slist](src/NosCore.Packets/ClientPackets/Bazaar/NosCore.Packets.ClientPackets.Bazaar.CSListPacket.cs) *InExchange | InGame*
+- [c_blist](src/NosCore.Packets/ClientPackets/Bazaar/NosCore.Packets.ClientPackets.Bazaar.CBListPacket.cs) *InTrade | InGame*
+- [c_buy](src/NosCore.Packets/ClientPackets/Bazaar/NosCore.Packets.ClientPackets.Bazaar.CBuyPacket.cs) *InGame*
+- [c_mod](src/NosCore.Packets/ClientPackets/Bazaar/NosCore.Packets.ClientPackets.Bazaar.CModPacket.cs) *InGame*
+- [c_reg](src/NosCore.Packets/ClientPackets/Bazaar/NosCore.Packets.ClientPackets.Bazaar.CRegPacket.cs) *InGame*
+- [c_scalc](src/NosCore.Packets/ClientPackets/Bazaar/NosCore.Packets.ClientPackets.Bazaar.CScalcPacket.cs) *InGame*
+- [c_skill](src/NosCore.Packets/ClientPackets/Bazaar/NosCore.Packets.ClientPackets.Bazaar.CSkillPacket.cs) *InGame*
+- [c_slist](src/NosCore.Packets/ClientPackets/Bazaar/NosCore.Packets.ClientPackets.Bazaar.CSListPacket.cs) *InTrade | InGame*
 
 ### CharacterSelectionScreen
 - [Char_DEL](src/NosCore.Packets/ClientPackets/CharacterSelectionScreen/NosCore.Packets.ClientPackets.CharacterSelectionScreen.CharacterDeletePacket.cs) *OnCharacterScreen*
@@ -29,359 +29,358 @@
 - [select](src/NosCore.Packets/ClientPackets/CharacterSelectionScreen/NosCore.Packets.ClientPackets.CharacterSelectionScreen.SelectPacket.cs) *OnCharacterScreen*
 
 ### Chat
-- [btk](src/NosCore.Packets/ClientPackets/Chat/NosCore.Packets.ClientPackets.Chat.BtkPacket.cs) *InExchange | InGame*
-- [say](src/NosCore.Packets/ClientPackets/Chat/NosCore.Packets.ClientPackets.Chat.ClientSayPacket.cs) *InExchange | InGame*
-- [:](src/NosCore.Packets/ClientPackets/Chat/NosCore.Packets.ClientPackets.Chat.FamilyChatPacket.cs) *InExchange | InGame*
-- [;](src/NosCore.Packets/ClientPackets/Chat/NosCore.Packets.ClientPackets.Chat.GroupTalkPacket.cs) *InExchange | InGame*
-- [hero](src/NosCore.Packets/ClientPackets/Chat/NosCore.Packets.ClientPackets.Chat.HeroPacket.cs) *InExchange | InGame*
-- [!](src/NosCore.Packets/ClientPackets/Chat/NosCore.Packets.ClientPackets.Chat.TimeSpaceTalkPacket.cs) *InExchange | InGame*
-- [/](src/NosCore.Packets/ClientPackets/Chat/NosCore.Packets.ClientPackets.Chat.WhisperPacket.cs) *InExchange | InGame*
+- [btk](src/NosCore.Packets/ClientPackets/Chat/NosCore.Packets.ClientPackets.Chat.BtkPacket.cs) *InTrade | InGame*
+- [say](src/NosCore.Packets/ClientPackets/Chat/NosCore.Packets.ClientPackets.Chat.ClientSayPacket.cs) *InTrade | InGame*
+- [:](src/NosCore.Packets/ClientPackets/Chat/NosCore.Packets.ClientPackets.Chat.FamilyChatPacket.cs) *InTrade | InGame*
+- [;](src/NosCore.Packets/ClientPackets/Chat/NosCore.Packets.ClientPackets.Chat.GroupTalkPacket.cs) *InTrade | InGame*
+- [hero](src/NosCore.Packets/ClientPackets/Chat/NosCore.Packets.ClientPackets.Chat.HeroPacket.cs) *InTrade | InGame*
+- [!](src/NosCore.Packets/ClientPackets/Chat/NosCore.Packets.ClientPackets.Chat.TimeSpaceTalkPacket.cs) *InGame*
+- [/](src/NosCore.Packets/ClientPackets/Chat/NosCore.Packets.ClientPackets.Chat.WhisperPacket.cs) *InTrade | InGame*
 
 ### ClientPackets
-- [lbs](src/NosCore.Packets/ClientPackets/ClientPackets/NosCore.Packets.ClientPackets.LbsPacket.cs) *InExchange | InGame*
+- [lbs](src/NosCore.Packets/ClientPackets/ClientPackets/NosCore.Packets.ClientPackets.LbsPacket.cs) *InTrade | InGame*
 
 ### Commands
-- [%Familydeputy](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.FamilyDeputyPacket.cs) *InExchange | InGame*
-- [%Familydismiss](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.FamilyDismissPacket.cs) *InExchange | InGame*
-- [%Familyhead](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.FamilyHeadPacket.cs) *InExchange | InGame*
-- [%Familyinvite](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.FamilyInvitePacket.cs) *InExchange | InGame*
-- [%Familykeeper](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.FamilyKeeperPacket.cs) *InExchange | InGame*
-- [%Familyleave](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.FamilyLeavePacket.cs) *InExchange | InGame*
-- [%Familyshout](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.FamilyShoutPacket.cs) *InExchange | InGame*
-- [$Adding](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.FriendInvitePacket.cs) *InExchange | InGame*
-- [$Party](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.GroupInvitePacket.cs) *InExchange | InGame*
-- [$Invite](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.MinilandInvitePacket.cs) *InExchange | InGame*
-- [$Partylocation](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.PartyLocationPacket.cs) *InExchange | InGame*
-- [$Accompany](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.TimeSpaceInvitePacket.cs) *InExchange | InGame*
+- [%Familydeputy](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.FamilyDeputyPacket.cs) *InTrade | InGame*
+- [%Familydismiss](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.FamilyDismissPacket.cs) *InTrade | InGame*
+- [%Familyhead](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.FamilyHeadPacket.cs) *InTrade | InGame*
+- [%Familyinvite](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.FamilyInvitePacket.cs) *InTrade | InGame*
+- [%Familykeeper](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.FamilyKeeperPacket.cs) *InTrade | InGame*
+- [%Familyleave](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.FamilyLeavePacket.cs) *InTrade | InGame*
+- [%Familyshout](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.FamilyShoutPacket.cs) *InTrade | InGame*
+- [$Adding](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.FriendInvitePacket.cs) *InTrade | InGame*
+- [$Party](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.GroupInvitePacket.cs) *InTrade | InGame*
+- [$Invite](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.MinilandInvitePacket.cs) *InTrade | InGame*
+- [$Partylocation](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.PartyLocationPacket.cs) *InTrade | InGame*
+- [$Accompany](src/NosCore.Packets/ClientPackets/Commands/NosCore.Packets.ClientPackets.Commands.TimeSpaceInvitePacket.cs) *InTrade | InGame*
 
 ### Drops
-- [drop](src/NosCore.Packets/ClientPackets/Drops/NosCore.Packets.ClientPackets.Drops.DropPacket.cs) *InExchange | InGame*
-- [get](src/NosCore.Packets/ClientPackets/Drops/NosCore.Packets.ClientPackets.Drops.GetPacket.cs) *InExchange | InGame*
+- [drop](src/NosCore.Packets/ClientPackets/Drops/NosCore.Packets.ClientPackets.Drops.DropPacket.cs) *InGame*
+- [get](src/NosCore.Packets/ClientPackets/Drops/NosCore.Packets.ClientPackets.Drops.GetPacket.cs) *InGame*
 
 ### Exchanges
-- [req_exc](src/NosCore.Packets/ClientPackets/Exchanges/NosCore.Packets.ClientPackets.Exchanges.ExchangeRequestPacket.cs) *InExchange | InGame*
-- [exc_list](src/NosCore.Packets/ClientPackets/Exchanges/NosCore.Packets.ClientPackets.Exchanges.ExcListPacket.cs) *InExchange | InGame*
+- [req_exc](src/NosCore.Packets/ClientPackets/Exchanges/NosCore.Packets.ClientPackets.Exchanges.ExchangeRequestPacket.cs) *InGame*
+- [exc_list](src/NosCore.Packets/ClientPackets/Exchanges/NosCore.Packets.ClientPackets.Exchanges.ExcListPacket.cs) *InTrade | InGame*
 
 ### Families
-- [glmk](src/NosCore.Packets/ClientPackets/Families/NosCore.Packets.ClientPackets.Families.CreateFamilyPacket.cs) *InExchange | InGame*
-- [glrm](src/NosCore.Packets/ClientPackets/Families/NosCore.Packets.ClientPackets.Families.FamilyDismissPacket.cs) *InExchange | InGame*
-- [fmg](src/NosCore.Packets/ClientPackets/Families/NosCore.Packets.ClientPackets.Families.FamilyManagementPacket.cs) *InExchange | InGame*
-- [fauth](src/NosCore.Packets/ClientPackets/Families/NosCore.Packets.ClientPackets.Families.FAuthPacket.cs) *InExchange | InGame*
-- [fhis_cts](src/NosCore.Packets/ClientPackets/Families/NosCore.Packets.ClientPackets.Families.FhistCtsPacket.cs) *InExchange | InGame*
-- [frank_cts](src/NosCore.Packets/ClientPackets/Families/NosCore.Packets.ClientPackets.Families.FrankCtsPacket.cs) *InExchange | InGame*
-- [gidx](src/NosCore.Packets/ClientPackets/Families/NosCore.Packets.ClientPackets.Families.GidxPacket.cs) *InExchange | InGame*
-- [glist](src/NosCore.Packets/ClientPackets/Families/NosCore.Packets.ClientPackets.Families.GListPacket.cs) *InExchange | InGame*
-- [gjoin](src/NosCore.Packets/ClientPackets/Families/NosCore.Packets.ClientPackets.Families.JoinFamilyPacket.cs) *InExchange | InGame*
-- [today_cts](src/NosCore.Packets/ClientPackets/Families/NosCore.Packets.ClientPackets.Families.TodayPacket.cs) *InExchange | InGame*
+- [glmk](src/NosCore.Packets/ClientPackets/Families/NosCore.Packets.ClientPackets.Families.CreateFamilyPacket.cs) *InGame*
+- [glrm](src/NosCore.Packets/ClientPackets/Families/NosCore.Packets.ClientPackets.Families.FamilyDismissPacket.cs) *InGame*
+- [fmg](src/NosCore.Packets/ClientPackets/Families/NosCore.Packets.ClientPackets.Families.FamilyManagementPacket.cs) *InGame*
+- [fauth](src/NosCore.Packets/ClientPackets/Families/NosCore.Packets.ClientPackets.Families.FAuthPacket.cs) *InGame*
+- [fhis_cts](src/NosCore.Packets/ClientPackets/Families/NosCore.Packets.ClientPackets.Families.FhistCtsPacket.cs) *InGame*
+- [frank_cts](src/NosCore.Packets/ClientPackets/Families/NosCore.Packets.ClientPackets.Families.FrankCtsPacket.cs) *InGame*
+- [gidx](src/NosCore.Packets/ClientPackets/Families/NosCore.Packets.ClientPackets.Families.GidxPacket.cs) *InTrade | InGame*
+- [glist](src/NosCore.Packets/ClientPackets/Families/NosCore.Packets.ClientPackets.Families.GListPacket.cs) *InTrade | InGame*
+- [gjoin](src/NosCore.Packets/ClientPackets/Families/NosCore.Packets.ClientPackets.Families.JoinFamilyPacket.cs) *InGame*
+- [today_cts](src/NosCore.Packets/ClientPackets/Families/NosCore.Packets.ClientPackets.Families.TodayPacket.cs) *InGame*
 
 ### Groups
-- [pleave](src/NosCore.Packets/ClientPackets/Groups/NosCore.Packets.ClientPackets.Groups.PleavePacket.cs) *InExchange | InGame*
+- [pleave](src/NosCore.Packets/ClientPackets/Groups/NosCore.Packets.ClientPackets.Groups.PleavePacket.cs) *InTrade | InGame*
 
 ### Infrastructure
 - [DAC](src/NosCore.Packets/ClientPackets/Infrastructure/NosCore.Packets.ClientPackets.Infrastructure.DacPacket.cs) *OnCharacterScreen*
-- [0](src/NosCore.Packets/ClientPackets/Infrastructure/NosCore.Packets.ClientPackets.Infrastructure.ZeroPacket.cs) *OnCharacterScreen | InExchange | InGame*
+- [0](src/NosCore.Packets/ClientPackets/Infrastructure/NosCore.Packets.ClientPackets.Infrastructure.ZeroPacket.cs) *OnCharacterScreen | InTrade | InGame*
 
 ### Inventory
-- [b_i](src/NosCore.Packets/ClientPackets/Inventory/NosCore.Packets.ClientPackets.Inventory.BiPacket.cs) *InExchange | InGame*
-- [mve](src/NosCore.Packets/ClientPackets/Inventory/NosCore.Packets.ClientPackets.Inventory.MvePacket.cs) *InExchange | InGame*
-- [mvi](src/NosCore.Packets/ClientPackets/Inventory/NosCore.Packets.ClientPackets.Inventory.MviPacket.cs) *InExchange | InGame*
-- [pdti](src/NosCore.Packets/ClientPackets/Inventory/NosCore.Packets.ClientPackets.Inventory.PdtiPacket.cs) *InExchange | InGame*
-- [put](src/NosCore.Packets/ClientPackets/Inventory/NosCore.Packets.ClientPackets.Inventory.PutPacket.cs) *InExchange | InGame*
-- [remove](src/NosCore.Packets/ClientPackets/Inventory/NosCore.Packets.ClientPackets.Inventory.RemovePacket.cs) *InExchange | InGame*
-- [u_i](src/NosCore.Packets/ClientPackets/Inventory/NosCore.Packets.ClientPackets.Inventory.UseItemPacket.cs) *InExchange | InGame*
-- [wear](src/NosCore.Packets/ClientPackets/Inventory/NosCore.Packets.ClientPackets.Inventory.WearPacket.cs) *InExchange | InGame*
+- [b_i](src/NosCore.Packets/ClientPackets/Inventory/NosCore.Packets.ClientPackets.Inventory.BiPacket.cs) *InGame*
+- [mve](src/NosCore.Packets/ClientPackets/Inventory/NosCore.Packets.ClientPackets.Inventory.MvePacket.cs) *InGame*
+- [mvi](src/NosCore.Packets/ClientPackets/Inventory/NosCore.Packets.ClientPackets.Inventory.MviPacket.cs) *InGame*
+- [pdti](src/NosCore.Packets/ClientPackets/Inventory/NosCore.Packets.ClientPackets.Inventory.PdtiPacket.cs) *InGame*
+- [put](src/NosCore.Packets/ClientPackets/Inventory/NosCore.Packets.ClientPackets.Inventory.PutPacket.cs) *InGame*
+- [remove](src/NosCore.Packets/ClientPackets/Inventory/NosCore.Packets.ClientPackets.Inventory.RemovePacket.cs) *InGame*
+- [u_i](src/NosCore.Packets/ClientPackets/Inventory/NosCore.Packets.ClientPackets.Inventory.UseItemPacket.cs) *InGame*
+- [wear](src/NosCore.Packets/ClientPackets/Inventory/NosCore.Packets.ClientPackets.Inventory.WearPacket.cs) *InGame*
 
 ### Login
 - [NoS0575](src/NosCore.Packets/ClientPackets/Login/NosCore.Packets.ClientPackets.Login.NoS0575Packet.cs) *OnLoginScreen*
 - [NoS0577](src/NosCore.Packets/ClientPackets/Login/NosCore.Packets.ClientPackets.Login.NoS0577Packet.cs) *OnLoginScreen*
 
 ### Mates
-- [psl](src/NosCore.Packets/ClientPackets/Mates/NosCore.Packets.ClientPackets.Mates.PslPacket.cs) *InExchange | InGame*
-- [ps_op](src/NosCore.Packets/ClientPackets/Mates/NosCore.Packets.ClientPackets.Mates.PsopPacket.cs) *InExchange | InGame*
-- [suctl](src/NosCore.Packets/ClientPackets/Mates/NosCore.Packets.ClientPackets.Mates.SuCtlPacket.cs) *InExchange | InGame*
-- [u_pet](src/NosCore.Packets/ClientPackets/Mates/NosCore.Packets.ClientPackets.Mates.UpetPacket.cs) *InExchange | InGame*
-- [u_ps](src/NosCore.Packets/ClientPackets/Mates/NosCore.Packets.ClientPackets.Mates.UpsPacket.cs) *InExchange | InGame*
+- [psl](src/NosCore.Packets/ClientPackets/Mates/NosCore.Packets.ClientPackets.Mates.PslPacket.cs) *InGame*
+- [ps_op](src/NosCore.Packets/ClientPackets/Mates/NosCore.Packets.ClientPackets.Mates.PsopPacket.cs) *InGame*
+- [suctl](src/NosCore.Packets/ClientPackets/Mates/NosCore.Packets.ClientPackets.Mates.SuCtlPacket.cs) *InGame*
+- [u_pet](src/NosCore.Packets/ClientPackets/Mates/NosCore.Packets.ClientPackets.Mates.UpetPacket.cs) *InGame*
+- [u_ps](src/NosCore.Packets/ClientPackets/Mates/NosCore.Packets.ClientPackets.Mates.UpsPacket.cs) *InGame*
 
 ### Miniland
-- [addobj](src/NosCore.Packets/ClientPackets/Miniland/NosCore.Packets.ClientPackets.Miniland.AddobjPacket.cs) *InExchange | InGame*
-- [mg](src/NosCore.Packets/ClientPackets/Miniland/NosCore.Packets.ClientPackets.Miniland.MinigamePacket.cs) *InExchange | InGame*
-- [mjoin](src/NosCore.Packets/ClientPackets/Miniland/NosCore.Packets.ClientPackets.Miniland.MJoinPacket.cs) *InExchange | InGame*
-- [mledit](src/NosCore.Packets/ClientPackets/Miniland/NosCore.Packets.ClientPackets.Miniland.MLEditPacket.cs) *InExchange | InGame*
-- [rmvobj](src/NosCore.Packets/ClientPackets/Miniland/NosCore.Packets.ClientPackets.Miniland.RmvobjPacket.cs) *InExchange | InGame*
+- [addobj](src/NosCore.Packets/ClientPackets/Miniland/NosCore.Packets.ClientPackets.Miniland.AddobjPacket.cs) *InGame*
+- [mg](src/NosCore.Packets/ClientPackets/Miniland/NosCore.Packets.ClientPackets.Miniland.MinigamePacket.cs) *InGame*
+- [mjoin](src/NosCore.Packets/ClientPackets/Miniland/NosCore.Packets.ClientPackets.Miniland.MJoinPacket.cs) *InGame*
+- [mledit](src/NosCore.Packets/ClientPackets/Miniland/NosCore.Packets.ClientPackets.Miniland.MLEditPacket.cs) *InGame*
+- [rmvobj](src/NosCore.Packets/ClientPackets/Miniland/NosCore.Packets.ClientPackets.Miniland.RmvobjPacket.cs) *InGame*
 
 ### Movement
-- [dir](src/NosCore.Packets/ClientPackets/Movement/NosCore.Packets.ClientPackets.Movement.ClientDirPacket.cs) *InExchange | InGame*
-- [preq](src/NosCore.Packets/ClientPackets/Movement/NosCore.Packets.ClientPackets.Movement.PreqPacket.cs) *InExchange | InGame*
-- [pulse](src/NosCore.Packets/ClientPackets/Movement/NosCore.Packets.ClientPackets.Movement.PulsePacket.cs) *InExchange | InGame*
-- [rest](src/NosCore.Packets/ClientPackets/Movement/NosCore.Packets.ClientPackets.Movement.SitPacket.cs) *InExchange | InGame*
-- [walk](src/NosCore.Packets/ClientPackets/Movement/NosCore.Packets.ClientPackets.Movement.WalkPacket.cs) *InExchange | InGame*
+- [dir](src/NosCore.Packets/ClientPackets/Movement/NosCore.Packets.ClientPackets.Movement.ClientDirPacket.cs) *InTrade | InGame*
+- [preq](src/NosCore.Packets/ClientPackets/Movement/NosCore.Packets.ClientPackets.Movement.PreqPacket.cs) *InTrade | InGame*
+- [pulse](src/NosCore.Packets/ClientPackets/Movement/NosCore.Packets.ClientPackets.Movement.PulsePacket.cs) *InTrade | InGame*
+- [rest](src/NosCore.Packets/ClientPackets/Movement/NosCore.Packets.ClientPackets.Movement.SitPacket.cs) *InTrade | InGame*
+- [walk](src/NosCore.Packets/ClientPackets/Movement/NosCore.Packets.ClientPackets.Movement.WalkPacket.cs) *InGame*
 
 ### Npcs
-- [n_run](src/NosCore.Packets/ClientPackets/Npcs/NosCore.Packets.ClientPackets.Npcs.NrunPacket.cs) *InExchange | InGame*
-- [npc_req](src/NosCore.Packets/ClientPackets/Npcs/NosCore.Packets.ClientPackets.Npcs.RequestNpcPacket.cs) *InExchange | InGame*
+- [n_run](src/NosCore.Packets/ClientPackets/Npcs/NosCore.Packets.ClientPackets.Npcs.NrunPacket.cs) *InGame*
+- [npc_req](src/NosCore.Packets/ClientPackets/Npcs/NosCore.Packets.ClientPackets.Npcs.RequestNpcPacket.cs) *InGame*
 
 ### Parcel
-- [pcl](src/NosCore.Packets/ClientPackets/Parcel/NosCore.Packets.ClientPackets.Parcel.PclPacket.cs) *InExchange | InGame*
-- [pst](src/NosCore.Packets/ClientPackets/Parcel/NosCore.Packets.ClientPackets.Parcel.PstClientPacket.cs) *InExchange | InGame*
+- [pcl](src/NosCore.Packets/ClientPackets/Parcel/NosCore.Packets.ClientPackets.Parcel.PclPacket.cs) *InGame*
+- [pst](src/NosCore.Packets/ClientPackets/Parcel/NosCore.Packets.ClientPackets.Parcel.PstClientPacket.cs) *InGame*
 
 ### Player
-- [rsfi](src/NosCore.Packets/ClientPackets/Player/NosCore.Packets.ClientPackets.Player.RsfiPacket.cs) *InExchange | InGame*
-- [snap](src/NosCore.Packets/ClientPackets/Player/NosCore.Packets.ClientPackets.Player.SnapPacket.cs) *InExchange | InGame*
-- [tit_eq](src/NosCore.Packets/ClientPackets/Player/NosCore.Packets.ClientPackets.Player.TitEqPacket.cs) *InExchange | InGame*
-- [up_gr](src/NosCore.Packets/ClientPackets/Player/NosCore.Packets.ClientPackets.Player.UpgradePacket.cs) *InExchange | InGame*
+- [rsfi](src/NosCore.Packets/ClientPackets/Player/NosCore.Packets.ClientPackets.Player.RsfiPacket.cs) *InGame*
+- [snap](src/NosCore.Packets/ClientPackets/Player/NosCore.Packets.ClientPackets.Player.SnapPacket.cs) *InTrade | InGame*
+- [tit_eq](src/NosCore.Packets/ClientPackets/Player/NosCore.Packets.ClientPackets.Player.TitEqPacket.cs) *InTrade | InGame*
+- [up_gr](src/NosCore.Packets/ClientPackets/Player/NosCore.Packets.ClientPackets.Player.UpgradePacket.cs) *InGame*
 
 ### Quest
-- [qt](src/NosCore.Packets/ClientPackets/Quest/NosCore.Packets.ClientPackets.Quest.QtPacket.cs) *InExchange | InGame*
-- [script](src/NosCore.Packets/ClientPackets/Quest/NosCore.Packets.ClientPackets.Quest.ScriptClientPacket.cs) *InExchange | InGame*
+- [qt](src/NosCore.Packets/ClientPackets/Quest/NosCore.Packets.ClientPackets.Quest.QtPacket.cs) *InGame*
+- [script](src/NosCore.Packets/ClientPackets/Quest/NosCore.Packets.ClientPackets.Quest.ScriptClientPacket.cs) *InGame*
 
 ### Quicklist
-- [qset](src/NosCore.Packets/ClientPackets/Quicklist/NosCore.Packets.ClientPackets.Quicklist.QsetPacket.cs) *InExchange | InGame*
+- [qset](src/NosCore.Packets/ClientPackets/Quicklist/NosCore.Packets.ClientPackets.Quicklist.QsetPacket.cs) *InTrade | InGame*
 
 ### Relations
-- [bldel](src/NosCore.Packets/ClientPackets/Relations/NosCore.Packets.ClientPackets.Relations.BlDelPacket.cs) *InExchange | InGame*
-- [blins](src/NosCore.Packets/ClientPackets/Relations/NosCore.Packets.ClientPackets.Relations.BlInsPacket.cs) *InExchange | InGame*
-- [$bl](src/NosCore.Packets/ClientPackets/Relations/NosCore.Packets.ClientPackets.Relations.BlPacket.cs) *InExchange | InGame*
-- [fdel](src/NosCore.Packets/ClientPackets/Relations/NosCore.Packets.ClientPackets.Relations.FdelPacket.cs) *InExchange | InGame*
-- [fins](src/NosCore.Packets/ClientPackets/Relations/NosCore.Packets.ClientPackets.Relations.FinsPacket.cs) *InExchange | InGame*
-- [$fl](src/NosCore.Packets/ClientPackets/Relations/NosCore.Packets.ClientPackets.Relations.FlPacket.cs) *InExchange | InGame*
-- [reloadfinfo](src/NosCore.Packets/ClientPackets/Relations/NosCore.Packets.ClientPackets.Relations.ReloadFinfoPacket.cs) *InExchange | InGame*
+- [bldel](src/NosCore.Packets/ClientPackets/Relations/NosCore.Packets.ClientPackets.Relations.BlDelPacket.cs) *InTrade | InGame*
+- [blins](src/NosCore.Packets/ClientPackets/Relations/NosCore.Packets.ClientPackets.Relations.BlInsPacket.cs) *InTrade | InGame*
+- [$bl](src/NosCore.Packets/ClientPackets/Relations/NosCore.Packets.ClientPackets.Relations.BlPacket.cs) *InTrade | InGame*
+- [fdel](src/NosCore.Packets/ClientPackets/Relations/NosCore.Packets.ClientPackets.Relations.FdelPacket.cs) *InTrade | InGame*
+- [fins](src/NosCore.Packets/ClientPackets/Relations/NosCore.Packets.ClientPackets.Relations.FinsPacket.cs) *InTrade | InGame*
+- [reloadfinfo](src/NosCore.Packets/ClientPackets/Relations/NosCore.Packets.ClientPackets.Relations.ReloadFinfoPacket.cs) *InTrade | InGame*
 
 ### Shops
-- [buy](src/NosCore.Packets/ClientPackets/Shops/NosCore.Packets.ClientPackets.Shops.BuyPacket.cs) *InExchange | InGame*
-- [c_close](src/NosCore.Packets/ClientPackets/Shops/NosCore.Packets.ClientPackets.Shops.CClosePacket.cs) *OnCharacterScreen | InExchange | InGame*
-- [m_shop](src/NosCore.Packets/ClientPackets/Shops/NosCore.Packets.ClientPackets.Shops.MShopPacket.cs) *InExchange | InGame*
-- [sell_list](src/NosCore.Packets/ClientPackets/Shops/NosCore.Packets.ClientPackets.Shops.SellListPacket.cs) *InExchange | InGame*
-- [sell](src/NosCore.Packets/ClientPackets/Shops/NosCore.Packets.ClientPackets.Shops.SellPacket.cs) *InExchange | InGame*
-- [shopping](src/NosCore.Packets/ClientPackets/Shops/NosCore.Packets.ClientPackets.Shops.ShoppingPacket.cs) *InExchange | InGame*
+- [buy](src/NosCore.Packets/ClientPackets/Shops/NosCore.Packets.ClientPackets.Shops.BuyPacket.cs) *InGame*
+- [c_close](src/NosCore.Packets/ClientPackets/Shops/NosCore.Packets.ClientPackets.Shops.CClosePacket.cs) *OnCharacterScreen | InTrade | InGame*
+- [m_shop](src/NosCore.Packets/ClientPackets/Shops/NosCore.Packets.ClientPackets.Shops.MShopPacket.cs) *InGame*
+- [sell_list](src/NosCore.Packets/ClientPackets/Shops/NosCore.Packets.ClientPackets.Shops.SellListPacket.cs) *InTrade | InGame*
+- [sell](src/NosCore.Packets/ClientPackets/Shops/NosCore.Packets.ClientPackets.Shops.SellPacket.cs) *InGame*
+- [shopping](src/NosCore.Packets/ClientPackets/Shops/NosCore.Packets.ClientPackets.Shops.ShoppingPacket.cs) *InGame*
 
 ### Specialists
-- [sl](src/NosCore.Packets/ClientPackets/Specialists/NosCore.Packets.ClientPackets.Specialists.SpTransformPacket.cs) *InExchange | InGame*
+- [sl](src/NosCore.Packets/ClientPackets/Specialists/NosCore.Packets.ClientPackets.Specialists.SpTransformPacket.cs) *InGame*
 
 ### UI
-- [guri](src/NosCore.Packets/ClientPackets/UI/NosCore.Packets.ClientPackets.UI.GuriPacket.cs) *InExchange | InGame*
+- [guri](src/NosCore.Packets/ClientPackets/UI/NosCore.Packets.ClientPackets.UI.GuriPacket.cs) *InGame*
 
 ### Warehouse
-- [deposit](src/NosCore.Packets/ClientPackets/Warehouse/NosCore.Packets.ClientPackets.Warehouse.DepositPacket.cs) *InExchange | InGame*
-- [f_deposit](src/NosCore.Packets/ClientPackets/Warehouse/NosCore.Packets.ClientPackets.Warehouse.FDepositPacket.cs) *InExchange | InGame*
-- [f_repos](src/NosCore.Packets/ClientPackets/Warehouse/NosCore.Packets.ClientPackets.Warehouse.FReposPacket.cs) *InExchange | InGame*
-- [f_stash_end](src/NosCore.Packets/ClientPackets/Warehouse/NosCore.Packets.ClientPackets.Warehouse.FStashEndPacket.cs) *OnCharacterScreen | InExchange | InGame*
-- [f_withdraw](src/NosCore.Packets/ClientPackets/Warehouse/NosCore.Packets.ClientPackets.Warehouse.FWithdrawPacket.cs) *InExchange | InGame*
-- [repos](src/NosCore.Packets/ClientPackets/Warehouse/NosCore.Packets.ClientPackets.Warehouse.ReposPacket.cs) *InExchange | InGame*
-- [stash_end](src/NosCore.Packets/ClientPackets/Warehouse/NosCore.Packets.ClientPackets.Warehouse.StashEndPacket.cs) *OnCharacterScreen | InExchange | InGame*
-- [withdraw](src/NosCore.Packets/ClientPackets/Warehouse/NosCore.Packets.ClientPackets.Warehouse.WithdrawPacket.cs) *InExchange | InGame*
+- [deposit](src/NosCore.Packets/ClientPackets/Warehouse/NosCore.Packets.ClientPackets.Warehouse.DepositPacket.cs) *InTrade | InGame*
+- [f_deposit](src/NosCore.Packets/ClientPackets/Warehouse/NosCore.Packets.ClientPackets.Warehouse.FDepositPacket.cs) *InTrade | InGame*
+- [f_repos](src/NosCore.Packets/ClientPackets/Warehouse/NosCore.Packets.ClientPackets.Warehouse.FReposPacket.cs) *InTrade | InGame*
+- [f_stash_end](src/NosCore.Packets/ClientPackets/Warehouse/NosCore.Packets.ClientPackets.Warehouse.FStashEndPacket.cs) *OnCharacterScreen | InTrade | InGame*
+- [f_withdraw](src/NosCore.Packets/ClientPackets/Warehouse/NosCore.Packets.ClientPackets.Warehouse.FWithdrawPacket.cs) *InTrade | InGame*
+- [repos](src/NosCore.Packets/ClientPackets/Warehouse/NosCore.Packets.ClientPackets.Warehouse.ReposPacket.cs) *InTrade | InGame*
+- [stash_end](src/NosCore.Packets/ClientPackets/Warehouse/NosCore.Packets.ClientPackets.Warehouse.StashEndPacket.cs) *OnCharacterScreen | InTrade | InGame*
+- [withdraw](src/NosCore.Packets/ClientPackets/Warehouse/NosCore.Packets.ClientPackets.Warehouse.WithdrawPacket.cs) *InTrade | InGame*
 
 ## ServerPackets :
 
 ### Auction
-- [rc_blist](src/NosCore.Packets/ServerPackets/Auction/NosCore.Packets.ServerPackets.Auction.RcbListPacket.cs) *InExchange | InGame*
-- [rc_slist](src/NosCore.Packets/ServerPackets/Auction/NosCore.Packets.ServerPackets.Auction.RcsListPacket.cs) *InExchange | InGame*
+- [rc_blist](src/NosCore.Packets/ServerPackets/Auction/NosCore.Packets.ServerPackets.Auction.RcbListPacket.cs) *InGame*
+- [rc_slist](src/NosCore.Packets/ServerPackets/Auction/NosCore.Packets.ServerPackets.Auction.RcsListPacket.cs) *InGame*
 
 ### Bank
-- [gb](src/NosCore.Packets/ServerPackets/Bank/NosCore.Packets.ServerPackets.Bank.GbPacket.cs) *InExchange | InGame*
+- [gb](src/NosCore.Packets/ServerPackets/Bank/NosCore.Packets.ServerPackets.Bank.GbPacket.cs) *InGame*
 
 ### Battle
-- [bf](src/NosCore.Packets/ServerPackets/Battle/NosCore.Packets.ServerPackets.Battle.BfPacket.cs) *InExchange | InGame*
-- [cancel](src/NosCore.Packets/ServerPackets/Battle/NosCore.Packets.ServerPackets.Battle.CancelPacket.cs) *InExchange | InGame*
-- [ct](src/NosCore.Packets/ServerPackets/Battle/NosCore.Packets.ServerPackets.Battle.CtPacket.cs) *InExchange | InGame*
-- [ms_c](src/NosCore.Packets/ServerPackets/Battle/NosCore.Packets.ServerPackets.Battle.MscPacket.cs) *InExchange | InGame*
-- [mslot](src/NosCore.Packets/ServerPackets/Battle/NosCore.Packets.ServerPackets.Battle.MslotPacket.cs) *InExchange | InGame*
-- [su](src/NosCore.Packets/ServerPackets/Battle/NosCore.Packets.ServerPackets.Battle.SuPacket.cs) *InExchange | InGame*
+- [bf](src/NosCore.Packets/ServerPackets/Battle/NosCore.Packets.ServerPackets.Battle.BfPacket.cs) *InGame*
+- [cancel](src/NosCore.Packets/ServerPackets/Battle/NosCore.Packets.ServerPackets.Battle.CancelPacket.cs) *InGame*
+- [ct](src/NosCore.Packets/ServerPackets/Battle/NosCore.Packets.ServerPackets.Battle.CtPacket.cs) *InGame*
+- [ms_c](src/NosCore.Packets/ServerPackets/Battle/NosCore.Packets.ServerPackets.Battle.MscPacket.cs) *InGame*
+- [mslot](src/NosCore.Packets/ServerPackets/Battle/NosCore.Packets.ServerPackets.Battle.MslotPacket.cs) *InGame*
+- [su](src/NosCore.Packets/ServerPackets/Battle/NosCore.Packets.ServerPackets.Battle.SuPacket.cs) *InGame*
 
 ### Bazaar
-- [rc_buy](src/NosCore.Packets/ServerPackets/Bazaar/NosCore.Packets.ServerPackets.Bazaar.RCBuyPacket.cs) *InExchange | InGame*
-- [rc_reg](src/NosCore.Packets/ServerPackets/Bazaar/NosCore.Packets.ServerPackets.Bazaar.RCRegPacket.cs) *InExchange | InGame*
-- [rc_scalc](src/NosCore.Packets/ServerPackets/Bazaar/NosCore.Packets.ServerPackets.Bazaar.RCScalcPacket.cs) *InExchange | InGame*
+- [rc_buy](src/NosCore.Packets/ServerPackets/Bazaar/NosCore.Packets.ServerPackets.Bazaar.RCBuyPacket.cs) *InGame*
+- [rc_reg](src/NosCore.Packets/ServerPackets/Bazaar/NosCore.Packets.ServerPackets.Bazaar.RCRegPacket.cs) *InGame*
+- [rc_scalc](src/NosCore.Packets/ServerPackets/Bazaar/NosCore.Packets.ServerPackets.Bazaar.RCScalcPacket.cs) *InGame*
 
 ### CharacterSelectionScreen
-- [clist_end](src/NosCore.Packets/ServerPackets/CharacterSelectionScreen/NosCore.Packets.ServerPackets.CharacterSelectionScreen.ClistEndPacket.cs) *OnCharacterScreen | InExchange | InGame*
+- [clist_end](src/NosCore.Packets/ServerPackets/CharacterSelectionScreen/NosCore.Packets.ServerPackets.CharacterSelectionScreen.ClistEndPacket.cs) *OnCharacterScreen | InGame*
 - [clist](src/NosCore.Packets/ServerPackets/CharacterSelectionScreen/NosCore.Packets.ServerPackets.CharacterSelectionScreen.ClistPacket.cs) *OnCharacterScreen*
-- [clist_start](src/NosCore.Packets/ServerPackets/CharacterSelectionScreen/NosCore.Packets.ServerPackets.CharacterSelectionScreen.ClistStartPacket.cs) *InExchange | InGame*
-- [OK](src/NosCore.Packets/ServerPackets/CharacterSelectionScreen/NosCore.Packets.ServerPackets.CharacterSelectionScreen.OkPacket.cs) *InExchange | InGame*
-- [scene](src/NosCore.Packets/ServerPackets/CharacterSelectionScreen/NosCore.Packets.ServerPackets.CharacterSelectionScreen.ScenePacket.cs) *InExchange | InGame*
-- [success](src/NosCore.Packets/ServerPackets/CharacterSelectionScreen/NosCore.Packets.ServerPackets.CharacterSelectionScreen.SuccessPacket.cs) *InExchange | InGame*
+- [clist_start](src/NosCore.Packets/ServerPackets/CharacterSelectionScreen/NosCore.Packets.ServerPackets.CharacterSelectionScreen.ClistStartPacket.cs) *InGame*
+- [OK](src/NosCore.Packets/ServerPackets/CharacterSelectionScreen/NosCore.Packets.ServerPackets.CharacterSelectionScreen.OkPacket.cs) *InGame*
+- [scene](src/NosCore.Packets/ServerPackets/CharacterSelectionScreen/NosCore.Packets.ServerPackets.CharacterSelectionScreen.ScenePacket.cs) *InGame*
+- [success](src/NosCore.Packets/ServerPackets/CharacterSelectionScreen/NosCore.Packets.ServerPackets.CharacterSelectionScreen.SuccessPacket.cs) *InGame*
 
 ### Chats
-- [IconInfo](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.IconInfoPacket.cs) *InExchange | InGame*
-- [sayi2](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.Sayi2Packet.cs) *InExchange | InGame*
-- [sayi](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SayiPacket.cs) *InExchange | InGame*
-- [sayitem](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SayItemPacket.cs) *InExchange | InGame*
-- [sayitemt](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SayItemtPacket.cs) *InExchange | InGame*
-- [say](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SayPacket.cs) *InExchange | InGame*
-- [say_p](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SayPetPacket.cs) *InExchange | InGame*
-- [sayt](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SaytPacket.cs) *InExchange | InGame*
-- [spk](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SpeakPacket.cs) *InExchange | InGame*
-- [talk](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.TalkPacket.cs) *InExchange | InGame*
+- [IconInfo](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.IconInfoPacket.cs) *InGame*
+- [sayi2](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.Sayi2Packet.cs) *InGame*
+- [sayi](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SayiPacket.cs) *InGame*
+- [sayitem](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SayItemPacket.cs) *InGame*
+- [sayitemt](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SayItemtPacket.cs) *InGame*
+- [say](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SayPacket.cs) *InGame*
+- [say_p](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SayPetPacket.cs) *InGame*
+- [sayt](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SaytPacket.cs) *InGame*
+- [spk](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.SpeakPacket.cs) *InGame*
+- [talk](src/NosCore.Packets/ServerPackets/Chats/NosCore.Packets.ServerPackets.Chats.TalkPacket.cs) *InGame*
 
 ### Entities
-- [char_sc](src/NosCore.Packets/ServerPackets/Entities/NosCore.Packets.ServerPackets.Entities.CharScPacket.cs) *InExchange | InGame*
-- [drop](src/NosCore.Packets/ServerPackets/Entities/NosCore.Packets.ServerPackets.Entities.DropPacket.cs) *InExchange | InGame*
-- [mv](src/NosCore.Packets/ServerPackets/Entities/NosCore.Packets.ServerPackets.Entities.MovePacket.cs) *InExchange | InGame*
-- [out](src/NosCore.Packets/ServerPackets/Entities/NosCore.Packets.ServerPackets.Entities.OutPacket.cs) *InExchange | InGame*
-- [req_info](src/NosCore.Packets/ServerPackets/Entities/NosCore.Packets.ServerPackets.Entities.ReqInfoPacket.cs) *InExchange | InGame*
-- [rest](src/NosCore.Packets/ServerPackets/Entities/NosCore.Packets.ServerPackets.Entities.RestPacket.cs) *InExchange | InGame*
-- [st](src/NosCore.Packets/ServerPackets/Entities/NosCore.Packets.ServerPackets.Entities.StPacket.cs) *InExchange | InGame*
-- [tp](src/NosCore.Packets/ServerPackets/Entities/NosCore.Packets.ServerPackets.Entities.TpPacket.cs) *InExchange | InGame*
+- [char_sc](src/NosCore.Packets/ServerPackets/Entities/NosCore.Packets.ServerPackets.Entities.CharScPacket.cs) *InGame*
+- [drop](src/NosCore.Packets/ServerPackets/Entities/NosCore.Packets.ServerPackets.Entities.DropPacket.cs) *InGame*
+- [mv](src/NosCore.Packets/ServerPackets/Entities/NosCore.Packets.ServerPackets.Entities.MovePacket.cs) *InGame*
+- [out](src/NosCore.Packets/ServerPackets/Entities/NosCore.Packets.ServerPackets.Entities.OutPacket.cs) *InGame*
+- [req_info](src/NosCore.Packets/ServerPackets/Entities/NosCore.Packets.ServerPackets.Entities.ReqInfoPacket.cs) *InGame*
+- [rest](src/NosCore.Packets/ServerPackets/Entities/NosCore.Packets.ServerPackets.Entities.RestPacket.cs) *InGame*
+- [st](src/NosCore.Packets/ServerPackets/Entities/NosCore.Packets.ServerPackets.Entities.StPacket.cs) *InGame*
+- [tp](src/NosCore.Packets/ServerPackets/Entities/NosCore.Packets.ServerPackets.Entities.TpPacket.cs) *InGame*
 
 ### Event
-- [rbr](src/NosCore.Packets/ServerPackets/Event/NosCore.Packets.ServerPackets.Event.RbrPacket.cs) *InExchange | InGame*
+- [rbr](src/NosCore.Packets/ServerPackets/Event/NosCore.Packets.ServerPackets.Event.RbrPacket.cs) *InGame*
 
 ### Exchanges
-- [exc_close](src/NosCore.Packets/ServerPackets/Exchanges/NosCore.Packets.ServerPackets.Exchanges.ExcClosePacket.cs) *InExchange | InGame*
-- [exc_list](src/NosCore.Packets/ServerPackets/Exchanges/NosCore.Packets.ServerPackets.Exchanges.ServerExcListPacket.cs) *InExchange | InGame*
+- [exc_close](src/NosCore.Packets/ServerPackets/Exchanges/NosCore.Packets.ServerPackets.Exchanges.ExcClosePacket.cs) *InGame*
+- [exc_list](src/NosCore.Packets/ServerPackets/Exchanges/NosCore.Packets.ServerPackets.Exchanges.ServerExcListPacket.cs) *InGame*
 
 ### Families
-- [ginfo](src/NosCore.Packets/ServerPackets/Families/NosCore.Packets.ServerPackets.Families.GInfoPacket.cs) *InExchange | InGame*
+- [ginfo](src/NosCore.Packets/ServerPackets/Families/NosCore.Packets.ServerPackets.Families.GInfoPacket.cs) *InGame*
 
 ### Groups
-- [pinit](src/NosCore.Packets/ServerPackets/Groups/NosCore.Packets.ServerPackets.Groups.PinitPacket.cs) *InExchange | InGame*
-- [pinit_sub_packet](src/NosCore.Packets/ServerPackets/Groups/NosCore.Packets.ServerPackets.Groups.PinitSubPacket.cs) *InExchange | InGame*
-- [pjoin](src/NosCore.Packets/ServerPackets/Groups/NosCore.Packets.ServerPackets.Groups.PjoinPacket.cs) *InExchange | InGame*
+- [pinit](src/NosCore.Packets/ServerPackets/Groups/NosCore.Packets.ServerPackets.Groups.PinitPacket.cs) *InGame*
+- [pinit_sub_packet](src/NosCore.Packets/ServerPackets/Groups/NosCore.Packets.ServerPackets.Groups.PinitSubPacket.cs) *InGame*
+- [pjoin](src/NosCore.Packets/ServerPackets/Groups/NosCore.Packets.ServerPackets.Groups.PjoinPacket.cs) *InGame*
 
 ### Inventory
-- [e_info](src/NosCore.Packets/ServerPackets/Inventory/NosCore.Packets.ServerPackets.Inventory.EInfoPacket.cs) *InExchange | InGame*
-- [eq](src/NosCore.Packets/ServerPackets/Inventory/NosCore.Packets.ServerPackets.Inventory.EqPacket.cs) *InExchange | InGame*
-- [equip](src/NosCore.Packets/ServerPackets/Inventory/NosCore.Packets.ServerPackets.Inventory.EquipPacket.cs) *InExchange | InGame*
-- [exts](src/NosCore.Packets/ServerPackets/Inventory/NosCore.Packets.ServerPackets.Inventory.ExtsPacket.cs) *InExchange | InGame*
-- [gold](src/NosCore.Packets/ServerPackets/Inventory/NosCore.Packets.ServerPackets.Inventory.GoldPacket.cs) *InExchange | InGame*
-- [inv](src/NosCore.Packets/ServerPackets/Inventory/NosCore.Packets.ServerPackets.Inventory.InvPacket.cs) *InExchange | InGame*
-- [ivn](src/NosCore.Packets/ServerPackets/Inventory/NosCore.Packets.ServerPackets.Inventory.IvnPacket.cs) *InExchange | InGame*
-- [pairy](src/NosCore.Packets/ServerPackets/Inventory/NosCore.Packets.ServerPackets.Inventory.PairyPacket.cs) *InExchange | InGame*
-- [get](src/NosCore.Packets/ServerPackets/Inventory/NosCore.Packets.ServerPackets.Inventory.ServerGetPacket.cs) *InExchange | InGame*
-- [slinfo](src/NosCore.Packets/ServerPackets/Inventory/NosCore.Packets.ServerPackets.Inventory.SlInfoPacket.cs) *InExchange | InGame*
+- [e_info](src/NosCore.Packets/ServerPackets/Inventory/NosCore.Packets.ServerPackets.Inventory.EInfoPacket.cs) *InGame*
+- [eq](src/NosCore.Packets/ServerPackets/Inventory/NosCore.Packets.ServerPackets.Inventory.EqPacket.cs) *InGame*
+- [equip](src/NosCore.Packets/ServerPackets/Inventory/NosCore.Packets.ServerPackets.Inventory.EquipPacket.cs) *InGame*
+- [exts](src/NosCore.Packets/ServerPackets/Inventory/NosCore.Packets.ServerPackets.Inventory.ExtsPacket.cs) *InGame*
+- [gold](src/NosCore.Packets/ServerPackets/Inventory/NosCore.Packets.ServerPackets.Inventory.GoldPacket.cs) *InGame*
+- [inv](src/NosCore.Packets/ServerPackets/Inventory/NosCore.Packets.ServerPackets.Inventory.InvPacket.cs) *InGame*
+- [ivn](src/NosCore.Packets/ServerPackets/Inventory/NosCore.Packets.ServerPackets.Inventory.IvnPacket.cs) *InGame*
+- [pairy](src/NosCore.Packets/ServerPackets/Inventory/NosCore.Packets.ServerPackets.Inventory.PairyPacket.cs) *InGame*
+- [get](src/NosCore.Packets/ServerPackets/Inventory/NosCore.Packets.ServerPackets.Inventory.ServerGetPacket.cs) *InGame*
+- [slinfo](src/NosCore.Packets/ServerPackets/Inventory/NosCore.Packets.ServerPackets.Inventory.SlInfoPacket.cs) *InGame*
 
 ### Login
 - [failc](src/NosCore.Packets/ServerPackets/Login/NosCore.Packets.ServerPackets.Login.FailcPacket.cs) *OnLoginScreen*
-- [it](src/NosCore.Packets/ServerPackets/Login/NosCore.Packets.ServerPackets.Login.ItPacket.cs) *InExchange | InGame*
-- [mz](src/NosCore.Packets/ServerPackets/Login/NosCore.Packets.ServerPackets.Login.MzPacket.cs) *InExchange | InGame*
+- [it](src/NosCore.Packets/ServerPackets/Login/NosCore.Packets.ServerPackets.Login.ItPacket.cs) *InGame*
+- [mz](src/NosCore.Packets/ServerPackets/Login/NosCore.Packets.ServerPackets.Login.MzPacket.cs) *InGame*
 - [NsTeST](src/NosCore.Packets/ServerPackets/Login/NosCore.Packets.ServerPackets.Login.NsTestPacket.cs) *OnLoginScreen*
 - [NsTeST_sub_packet](src/NosCore.Packets/ServerPackets/Login/NosCore.Packets.ServerPackets.Login.NsTeStSubPacket.cs) *OnLoginScreen*
 
 ### Map
-- [eff_g](src/NosCore.Packets/ServerPackets/Map/NosCore.Packets.ServerPackets.Map.GroundEffectPacket.cs) *InExchange | InGame*
-- [mapout](src/NosCore.Packets/ServerPackets/Map/NosCore.Packets.ServerPackets.Map.MapOutPacket.cs) *InExchange | InGame*
+- [eff_g](src/NosCore.Packets/ServerPackets/Map/NosCore.Packets.ServerPackets.Map.GroundEffectPacket.cs) *InGame*
+- [mapout](src/NosCore.Packets/ServerPackets/Map/NosCore.Packets.ServerPackets.Map.MapOutPacket.cs) *InGame*
 
 ### Mates
-- [pski](src/NosCore.Packets/ServerPackets/Mates/NosCore.Packets.ServerPackets.Mates.PSkiPacket.cs) *InExchange | InGame*
-- [say_p](src/NosCore.Packets/ServerPackets/Mates/NosCore.Packets.ServerPackets.Mates.SayPetPacket.cs) *InExchange | InGame*
-- [sc_n](src/NosCore.Packets/ServerPackets/Mates/NosCore.Packets.ServerPackets.Mates.ScnPacket.cs) *InExchange | InGame*
-- [sc_p](src/NosCore.Packets/ServerPackets/Mates/NosCore.Packets.ServerPackets.Mates.ScpPacket.cs) *InExchange | InGame*
+- [pski](src/NosCore.Packets/ServerPackets/Mates/NosCore.Packets.ServerPackets.Mates.PSkiPacket.cs) *InGame*
+- [say_p](src/NosCore.Packets/ServerPackets/Mates/NosCore.Packets.ServerPackets.Mates.SayPetPacket.cs) *InGame*
+- [sc_n](src/NosCore.Packets/ServerPackets/Mates/NosCore.Packets.ServerPackets.Mates.ScnPacket.cs) *InGame*
+- [sc_p](src/NosCore.Packets/ServerPackets/Mates/NosCore.Packets.ServerPackets.Mates.ScpPacket.cs) *InGame*
 
 ### Miniland
-- [mlpt](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MinilandPointPacket.cs) *InExchange | InGame*
-- [mlinfobr](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MlInfoBrPacket.cs) *InExchange | InGame*
-- [mlinfo](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MlinfoPacket.cs) *InExchange | InGame*
-- [mlintro](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MlintroPacket.cs) *InExchange | InGame*
-- [mlobjlst](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MlobjlstPacket.cs) *InExchange | InGame*
-- [mlobj](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MlobjPacket.cs) *InExchange | InGame*
-- [mlo_info](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MloInfoPacket.cs) *InExchange | InGame*
-- [mlo_lv](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MloLvPacket.cs) *InExchange | InGame*
-- [mlo_mg](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MloMgPacket.cs) *InExchange | InGame*
-- [mlo_pmg](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MloPmgPacket.cs) *InExchange | InGame*
-- [mlo_rw](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MloRwPacket.cs) *InExchange | InGame*
-- [mlo_st](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MloStPacket.cs) *InExchange | InGame*
-- [useobj](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.UseObjPacket.cs) *InExchange | InGame*
+- [mlpt](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MinilandPointPacket.cs) *InGame*
+- [mlinfobr](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MlInfoBrPacket.cs) *InGame*
+- [mlinfo](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MlinfoPacket.cs) *InGame*
+- [mlintro](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MlintroPacket.cs) *InGame*
+- [mlobjlst](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MlobjlstPacket.cs) *InGame*
+- [mlobj](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MlobjPacket.cs) *InGame*
+- [mlo_info](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MloInfoPacket.cs) *InGame*
+- [mlo_lv](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MloLvPacket.cs) *InGame*
+- [mlo_mg](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MloMgPacket.cs) *InGame*
+- [mlo_pmg](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MloPmgPacket.cs) *InGame*
+- [mlo_rw](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MloRwPacket.cs) *InGame*
+- [mlo_st](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.MloStPacket.cs) *InGame*
+- [useobj](src/NosCore.Packets/ServerPackets/Miniland/NosCore.Packets.ServerPackets.Miniland.UseObjPacket.cs) *InGame*
 
 ### MiniMap
-- [at](src/NosCore.Packets/ServerPackets/MiniMap/NosCore.Packets.ServerPackets.MiniMap.AtPacket.cs) *InExchange | InGame*
-- [c_map](src/NosCore.Packets/ServerPackets/MiniMap/NosCore.Packets.ServerPackets.MiniMap.CMapPacket.cs) *InExchange | InGame*
-- [rsfp](src/NosCore.Packets/ServerPackets/MiniMap/NosCore.Packets.ServerPackets.MiniMap.RsfpPacket.cs) *InExchange | InGame*
+- [at](src/NosCore.Packets/ServerPackets/MiniMap/NosCore.Packets.ServerPackets.MiniMap.AtPacket.cs) *InGame*
+- [c_map](src/NosCore.Packets/ServerPackets/MiniMap/NosCore.Packets.ServerPackets.MiniMap.CMapPacket.cs) *InGame*
+- [rsfp](src/NosCore.Packets/ServerPackets/MiniMap/NosCore.Packets.ServerPackets.MiniMap.RsfpPacket.cs) *InGame*
 
 ### Movement
-- [dir](src/NosCore.Packets/ServerPackets/Movement/NosCore.Packets.ServerPackets.Movement.DirPacket.cs) *InExchange | InGame*
+- [dir](src/NosCore.Packets/ServerPackets/Movement/NosCore.Packets.ServerPackets.Movement.DirPacket.cs) *InGame*
 
 ### Parcel
-- [parcel](src/NosCore.Packets/ServerPackets/Parcel/NosCore.Packets.ServerPackets.Parcel.ParcelPacket.cs) *InExchange | InGame*
-- [post](src/NosCore.Packets/ServerPackets/Parcel/NosCore.Packets.ServerPackets.Parcel.PostPacket.cs) *InExchange | InGame*
-- [pst](src/NosCore.Packets/ServerPackets/Parcel/NosCore.Packets.ServerPackets.Parcel.PstPacket.cs) *InExchange | InGame*
+- [parcel](src/NosCore.Packets/ServerPackets/Parcel/NosCore.Packets.ServerPackets.Parcel.ParcelPacket.cs) *InGame*
+- [post](src/NosCore.Packets/ServerPackets/Parcel/NosCore.Packets.ServerPackets.Parcel.PostPacket.cs) *InGame*
+- [pst](src/NosCore.Packets/ServerPackets/Parcel/NosCore.Packets.ServerPackets.Parcel.PstPacket.cs) *InGame*
 
 ### Player
-- [bn](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.BnPacket.cs) *InExchange | InGame*
-- [c_info](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.CInfoPacket.cs) *InExchange | InGame*
-- [c_mode](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.CModePacket.cs) *InExchange | InGame*
-- [cond](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.CondPacket.cs) *InExchange | InGame*
-- [eff](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.EffectPacket.cs) *InExchange | InGame*
-- [eqinfo](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.EquipmentInfoPacket.cs) *InExchange | InGame*
-- [fd](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.FdPacket.cs) *InExchange | InGame*
-- [fs](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.FsPacket.cs) *InExchange | InGame*
-- [levelup](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.LevelUpPacket.cs) *InExchange | InGame*
-- [lev](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.LevPacket.cs) *InExchange | InGame*
-- [npinfo](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.NpInfoPacket.cs) *InExchange | InGame*
-- [pflag](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.PFlagPacket.cs) *InExchange | InGame*
-- [rage](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.RagePacket.cs) *InExchange | InGame*
-- [sc](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.ScPacket.cs) *InExchange | InGame*
-- [scr](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.ScrPacket.cs) *InExchange | InGame*
-- [stat](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.StatPacket.cs) *InExchange | InGame*
-- [tc_info](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.TcInfoPacket.cs) *InExchange | InGame*
-- [titinfo](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.TitleInfoPacket.cs) *InExchange | InGame*
-- [title](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.TitlePacket.cs) *InExchange | InGame*
-- [tit](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.TitPacket.cs) *InExchange | InGame*
+- [bn](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.BnPacket.cs) *InGame*
+- [c_info](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.CInfoPacket.cs) *InGame*
+- [c_mode](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.CModePacket.cs) *InGame*
+- [cond](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.CondPacket.cs) *InGame*
+- [eff](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.EffectPacket.cs) *InGame*
+- [eqinfo](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.EquipmentInfoPacket.cs) *InGame*
+- [fd](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.FdPacket.cs) *InGame*
+- [fs](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.FsPacket.cs) *InGame*
+- [levelup](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.LevelUpPacket.cs) *InGame*
+- [lev](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.LevPacket.cs) *InGame*
+- [npinfo](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.NpInfoPacket.cs) *InGame*
+- [pflag](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.PFlagPacket.cs) *InGame*
+- [rage](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.RagePacket.cs) *InGame*
+- [sc](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.ScPacket.cs) *InGame*
+- [scr](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.ScrPacket.cs) *InGame*
+- [stat](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.StatPacket.cs) *InGame*
+- [tc_info](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.TcInfoPacket.cs) *InGame*
+- [titinfo](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.TitleInfoPacket.cs) *InGame*
+- [title](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.TitlePacket.cs) *InGame*
+- [tit](src/NosCore.Packets/ServerPackets/Player/NosCore.Packets.ServerPackets.Player.TitPacket.cs) *InGame*
 
 ### Portals
-- [gp](src/NosCore.Packets/ServerPackets/Portals/NosCore.Packets.ServerPackets.Portals.GpPacket.cs) *InExchange | InGame*
+- [gp](src/NosCore.Packets/ServerPackets/Portals/NosCore.Packets.ServerPackets.Portals.GpPacket.cs) *InGame*
 
 ### Quest
-- [qsti](src/NosCore.Packets/ServerPackets/Quest/NosCore.Packets.ServerPackets.Quest.QstiPacket.cs) *InExchange | InGame*
-- [qstlist](src/NosCore.Packets/ServerPackets/Quest/NosCore.Packets.ServerPackets.Quest.QstlistPacket.cs) *InExchange | InGame*
-- [script](src/NosCore.Packets/ServerPackets/Quest/NosCore.Packets.ServerPackets.Quest.ScriptPacket.cs) *InExchange | InGame*
-- [targetoff](src/NosCore.Packets/ServerPackets/Quest/NosCore.Packets.ServerPackets.Quest.TargetOffPacket.cs) *InExchange | InGame*
-- [target](src/NosCore.Packets/ServerPackets/Quest/NosCore.Packets.ServerPackets.Quest.TargetPacket.cs) *InExchange | InGame*
+- [qsti](src/NosCore.Packets/ServerPackets/Quest/NosCore.Packets.ServerPackets.Quest.QstiPacket.cs) *InGame*
+- [qstlist](src/NosCore.Packets/ServerPackets/Quest/NosCore.Packets.ServerPackets.Quest.QstlistPacket.cs) *InGame*
+- [script](src/NosCore.Packets/ServerPackets/Quest/NosCore.Packets.ServerPackets.Quest.ScriptPacket.cs) *InGame*
+- [targetoff](src/NosCore.Packets/ServerPackets/Quest/NosCore.Packets.ServerPackets.Quest.TargetOffPacket.cs) *InGame*
+- [target](src/NosCore.Packets/ServerPackets/Quest/NosCore.Packets.ServerPackets.Quest.TargetPacket.cs) *InGame*
 
 ### Quicklist
-- [qset](src/NosCore.Packets/ServerPackets/Quicklist/NosCore.Packets.ServerPackets.Quicklist.QsetClientPacket.cs) *InExchange | InGame*
-- [qslot](src/NosCore.Packets/ServerPackets/Quicklist/NosCore.Packets.ServerPackets.Quicklist.QSlotPacket.cs) *InExchange | InGame*
+- [qset](src/NosCore.Packets/ServerPackets/Quicklist/NosCore.Packets.ServerPackets.Quicklist.QsetClientPacket.cs) *InGame*
+- [qslot](src/NosCore.Packets/ServerPackets/Quicklist/NosCore.Packets.ServerPackets.Quicklist.QSlotPacket.cs) *InGame*
 
 ### Relations
-- [blinit](src/NosCore.Packets/ServerPackets/Relations/NosCore.Packets.ServerPackets.Relations.BlinitPacket.cs) *InExchange | InGame*
-- [finfo](src/NosCore.Packets/ServerPackets/Relations/NosCore.Packets.ServerPackets.Relations.FinfoPacket.cs) *InExchange | InGame*
-- [finfo_sub_packets](src/NosCore.Packets/ServerPackets/Relations/NosCore.Packets.ServerPackets.Relations.FinfoSubPackets.cs) *InExchange | InGame*
-- [finit](src/NosCore.Packets/ServerPackets/Relations/NosCore.Packets.ServerPackets.Relations.FinitPacket.cs) *InExchange | InGame*
+- [blinit](src/NosCore.Packets/ServerPackets/Relations/NosCore.Packets.ServerPackets.Relations.BlinitPacket.cs) *InGame*
+- [finfo](src/NosCore.Packets/ServerPackets/Relations/NosCore.Packets.ServerPackets.Relations.FinfoPacket.cs) *InGame*
+- [finfo_sub_packets](src/NosCore.Packets/ServerPackets/Relations/NosCore.Packets.ServerPackets.Relations.FinfoSubPackets.cs) *InGame*
+- [finit](src/NosCore.Packets/ServerPackets/Relations/NosCore.Packets.ServerPackets.Relations.FinitPacket.cs) *InGame*
 
 ### Shop
-- [ishop](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.IshopPacket.cs) *InExchange | InGame*
-- [n_inv_skills](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.NInvFamilySkillSubPacket.cs) *InExchange | InGame*
-- [n_inv_item](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.NInvItemSubPacket.cs) *InExchange | InGame*
-- [n_inv](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.NInvPacket.cs) *InExchange | InGame*
-- [pflag](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.PflagPacket.cs) *InExchange | InGame*
-- [pidx](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.PidxPacket.cs) *InExchange | InGame*
-- [pidx_sub_packet](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.PidxSubPacket.cs) *InExchange | InGame*
-- [shop_end](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.ShopEndPacket.cs) *InExchange | InGame*
-- [shop](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.ShopPacket.cs) *InExchange | InGame*
-- [s_memoi2](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.SMemoi2Packet.cs) *InExchange | InGame*
-- [s_memo](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.SMemoPacket.cs) *InExchange | InGame*
+- [ishop](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.IshopPacket.cs) *InGame*
+- [n_inv_skills](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.NInvFamilySkillSubPacket.cs) *InGame*
+- [n_inv_item](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.NInvItemSubPacket.cs) *InGame*
+- [n_inv](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.NInvPacket.cs) *InGame*
+- [pflag](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.PflagPacket.cs) *InGame*
+- [pidx](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.PidxPacket.cs) *InGame*
+- [pidx_sub_packet](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.PidxSubPacket.cs) *InGame*
+- [shop_end](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.ShopEndPacket.cs) *InGame*
+- [shop](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.ShopPacket.cs) *InGame*
+- [s_memoi2](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.SMemoi2Packet.cs) *InGame*
+- [s_memo](src/NosCore.Packets/ServerPackets/Shop/NosCore.Packets.ServerPackets.Shop.SMemoPacket.cs) *InGame*
 
 ### Specialists
-- [sd](src/NosCore.Packets/ServerPackets/Specialists/NosCore.Packets.ServerPackets.Specialists.SdPacket.cs) *InExchange | InGame*
-- [slinfo](src/NosCore.Packets/ServerPackets/Specialists/NosCore.Packets.ServerPackets.Specialists.SlInfoPacket.cs) *InExchange | InGame*
-- [sp](src/NosCore.Packets/ServerPackets/Specialists/NosCore.Packets.ServerPackets.Specialists.SpPacket.cs) *InExchange | InGame*
+- [sd](src/NosCore.Packets/ServerPackets/Specialists/NosCore.Packets.ServerPackets.Specialists.SdPacket.cs) *InGame*
+- [slinfo](src/NosCore.Packets/ServerPackets/Specialists/NosCore.Packets.ServerPackets.Specialists.SlInfoPacket.cs) *InGame*
+- [sp](src/NosCore.Packets/ServerPackets/Specialists/NosCore.Packets.ServerPackets.Specialists.SpPacket.cs) *InGame*
 
 ### UI
-- [act6](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.Act6Packet.cs) *InExchange | InGame*
-- [bsinfo](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.BSInfoPacket.cs) *InExchange | InGame*
-- [ch_dm](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.ChDMPacket.cs) *InExchange | InGame*
-- [delay](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.DelayPacket.cs) *InExchange | InGame*
-- [dlg](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.DlgPacket.cs) *InExchange | InGame*
-- [guri](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.GuriPacket.cs) *InExchange | InGame*
-- [icon](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.IconPacket.cs) *InExchange | InGame*
-- [infoi](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.InfoiPacket.cs) *InExchange | InGame*
-- [info](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.InfoPacket.cs) *InExchange | InGame*
-- [modal](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.ModalPacket.cs) *InExchange | InGame*
-- [msgi](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.MsgiPacket.cs) *InExchange | InGame*
-- [msg](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.MsgPacket.cs) *InExchange | InGame*
-- [p_clear](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.PclearPacket.cs) *InExchange | InGame*
-- [qnai2](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.Qnai2Packet.cs) *InExchange | InGame*
-- [qna](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.QnaPacket.cs) *InExchange | InGame*
-- [ta_rank](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.TARankPacket.cs) *InExchange | InGame*
-- [wopen](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.WopenPacket.cs) *InExchange | InGame*
-- [zzim](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.ZzimPacket.cs) *InExchange | InGame*
+- [act6](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.Act6Packet.cs) *InGame*
+- [bsinfo](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.BSInfoPacket.cs) *InGame*
+- [ch_dm](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.ChDMPacket.cs) *InGame*
+- [delay](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.DelayPacket.cs) *InGame*
+- [dlg](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.DlgPacket.cs) *InGame*
+- [guri](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.GuriPacket.cs) *InGame*
+- [icon](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.IconPacket.cs) *InGame*
+- [infoi](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.InfoiPacket.cs) *InGame*
+- [info](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.InfoPacket.cs) *InGame*
+- [modal](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.ModalPacket.cs) *InGame*
+- [msgi](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.MsgiPacket.cs) *InGame*
+- [msg](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.MsgPacket.cs) *InGame*
+- [p_clear](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.PclearPacket.cs) *InGame*
+- [qnai2](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.Qnai2Packet.cs) *InGame*
+- [qna](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.QnaPacket.cs) *InGame*
+- [ta_rank](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.TARankPacket.cs) *InGame*
+- [wopen](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.WopenPacket.cs) *InGame*
+- [zzim](src/NosCore.Packets/ServerPackets/UI/NosCore.Packets.ServerPackets.UI.ZzimPacket.cs) *InGame*
 
 ### Visibility
-- [cl](src/NosCore.Packets/ServerPackets/Visibility/NosCore.Packets.ServerPackets.Visibility.ClPacket.cs) *InExchange | InGame*
-- [in](src/NosCore.Packets/ServerPackets/Visibility/NosCore.Packets.ServerPackets.Visibility.InPacket.cs) *InExchange | InGame*
+- [cl](src/NosCore.Packets/ServerPackets/Visibility/NosCore.Packets.ServerPackets.Visibility.ClPacket.cs) *InGame*
+- [in](src/NosCore.Packets/ServerPackets/Visibility/NosCore.Packets.ServerPackets.Visibility.InPacket.cs) *InGame*
 
 ### Warehouse
-- [f_stash_all](src/NosCore.Packets/ServerPackets/Warehouse/NosCore.Packets.ServerPackets.Warehouse.FStashAllPacket.cs) *InExchange | InGame*
-- [f_stash](src/NosCore.Packets/ServerPackets/Warehouse/NosCore.Packets.ServerPackets.Warehouse.FStashClientPacket.cs) *InExchange | InGame*
-- [p_stash_all](src/NosCore.Packets/ServerPackets/Warehouse/NosCore.Packets.ServerPackets.Warehouse.PStashAllPacket.cs) *InExchange | InGame*
-- [p_stash](src/NosCore.Packets/ServerPackets/Warehouse/NosCore.Packets.ServerPackets.Warehouse.PStashClientPacket.cs) *InExchange | InGame*
-- [stash_all](src/NosCore.Packets/ServerPackets/Warehouse/NosCore.Packets.ServerPackets.Warehouse.StashAllPacket.cs) *InExchange | InGame*
-- [stash](src/NosCore.Packets/ServerPackets/Warehouse/NosCore.Packets.ServerPackets.Warehouse.StashClientPacket.cs) *InExchange | InGame*
+- [f_stash_all](src/NosCore.Packets/ServerPackets/Warehouse/NosCore.Packets.ServerPackets.Warehouse.FStashAllPacket.cs) *InGame*
+- [f_stash](src/NosCore.Packets/ServerPackets/Warehouse/NosCore.Packets.ServerPackets.Warehouse.FStashClientPacket.cs) *InGame*
+- [p_stash_all](src/NosCore.Packets/ServerPackets/Warehouse/NosCore.Packets.ServerPackets.Warehouse.PStashAllPacket.cs) *InGame*
+- [p_stash](src/NosCore.Packets/ServerPackets/Warehouse/NosCore.Packets.ServerPackets.Warehouse.PStashClientPacket.cs) *InGame*
+- [stash_all](src/NosCore.Packets/ServerPackets/Warehouse/NosCore.Packets.ServerPackets.Warehouse.StashAllPacket.cs) *InGame*
+- [stash](src/NosCore.Packets/ServerPackets/Warehouse/NosCore.Packets.ServerPackets.Warehouse.StashClientPacket.cs) *InGame*

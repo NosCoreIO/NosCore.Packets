@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Drops
 {
-    [PacketHeader("drop", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("drop", Scope.InGame)]
     internal class DropPacket : PacketBase
     {
         [PacketIndex(0)]

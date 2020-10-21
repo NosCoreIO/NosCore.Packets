@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Relations
 {
-    [PacketHeader("finfo_sub_packets", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("finfo_sub_packets", Scope.InGame)]
     public class FinfoSubPackets : PacketBase
     {
         [PacketIndex(0)]

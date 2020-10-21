@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Mates
 {
-    [PacketHeader("psl", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("psl", Scope.InGame)]
     public class PslPacket : PacketBase
     {
         [PacketIndex(0)]

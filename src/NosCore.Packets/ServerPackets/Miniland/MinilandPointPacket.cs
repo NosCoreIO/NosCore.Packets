@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Miniland
 {
-    [PacketHeader("mlpt", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("mlpt", Scope.InGame)]
     public class MinilandPointPacket : PacketBase
     {
         [PacketIndex(0)]

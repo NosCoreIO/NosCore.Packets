@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Quest
 {
-    [PacketHeader("qt", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("qt", Scope.InGame)]
     public class QtPacket : PacketBase
     {
         [PacketIndex(0)]

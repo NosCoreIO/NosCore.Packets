@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Battle
 {
-    [PacketHeader("mslot", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("mslot", Scope.InGame)]
     public class MslotPacket : PacketBase
     {
 		[PacketIndex(0)]

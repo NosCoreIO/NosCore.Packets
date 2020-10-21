@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Relations
 {
-    [PacketHeader("reloadfinfo", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("reloadfinfo", Scope.InGame | Scope.InTrade)]
     public class ReloadFinfoPacket : PacketBase
     {
     }

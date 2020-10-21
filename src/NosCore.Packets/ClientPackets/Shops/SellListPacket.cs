@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Shops
 {
-    [PacketHeader("sell_list", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("sell_list", Scope.InGame | Scope.InTrade)]
     public class SellListPacket : PacketBase
     {
         [PacketIndex(0)]

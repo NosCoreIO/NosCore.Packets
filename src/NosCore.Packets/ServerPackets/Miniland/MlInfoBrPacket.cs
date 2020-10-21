@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Miniland
 {
-    [PacketHeader("mlinfobr", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("mlinfobr", Scope.InGame)]
     public class MlInfoBrPacket : PacketBase
     {
         [PacketIndex(0)]

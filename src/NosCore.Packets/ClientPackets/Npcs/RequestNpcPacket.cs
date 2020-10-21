@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Npcs
 {
-    [PacketHeader("npc_req", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("npc_req", Scope.InGame)]
     public class RequestNpcPacket : PacketBase
     {
         [PacketIndex(0)]

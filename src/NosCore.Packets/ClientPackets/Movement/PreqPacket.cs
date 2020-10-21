@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Movement
 {
-    [PacketHeader("preq", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("preq", Scope.InGame | Scope.InTrade)]
     public class PreqPacket : PacketBase
     {
     }

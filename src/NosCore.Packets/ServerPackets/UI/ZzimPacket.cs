@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("zzim", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("zzim", Scope.InGame)]
     public class ZzimPacket : PacketBase
     {
     }

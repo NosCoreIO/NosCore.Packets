@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Inventory
 {
-    [PacketHeader("slinfo", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("slinfo", Scope.InGame)]
     public class SlInfoPacket : PacketBase
     {
         [PacketIndex(0)]

@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    [PacketHeader("titinfo", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("titinfo", Scope.InGame)]
     public class TitleInfoPacket : PacketBase
     {
         [PacketIndex(0)]

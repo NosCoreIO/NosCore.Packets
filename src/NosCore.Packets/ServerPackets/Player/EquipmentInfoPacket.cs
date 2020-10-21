@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    [PacketHeader("eqinfo", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("eqinfo", Scope.InGame)]
     public class EquipmentInfoPacket : PacketBase
     {
         [PacketIndex(0)]

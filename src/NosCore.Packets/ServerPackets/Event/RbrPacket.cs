@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Event
 {
-    [PacketHeader("rbr", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("rbr", Scope.InGame)]
     public class RbrPacket : PacketBase
     {
         [PacketIndex(0, SpecialSeparator = ".")]

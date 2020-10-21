@@ -13,7 +13,7 @@ namespace NosCore.Packets.ServerPackets.Mates
     /// <summary>
     ///     Packets for partners
     /// </summary>
-    [PacketHeader("sc_n", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("sc_n", Scope.InGame)]
     public class ScnPacket : PacketBase
     {
         [PacketIndex(0)]

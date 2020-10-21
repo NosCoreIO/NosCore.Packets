@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Bazaar
 {
-    [PacketHeader("c_reg", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("c_reg", Scope.InGame)]
     public class CRegPacket : PacketBase
     {
         [PacketIndex(0)]

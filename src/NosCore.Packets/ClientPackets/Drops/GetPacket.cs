@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Drops
 {
-    [PacketHeader("get", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("get", Scope.InGame)]
     public class GetPacket : PacketBase
     {
         [PacketIndex(0)]

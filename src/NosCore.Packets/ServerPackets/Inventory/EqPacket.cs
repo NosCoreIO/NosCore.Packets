@@ -12,7 +12,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Inventory
 {
-    [PacketHeader("eq", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("eq", Scope.InGame)]
     public class EqPacket : PacketBase
     {
         [PacketIndex(0)]

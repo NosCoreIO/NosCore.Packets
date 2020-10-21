@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets
 {
-    [PacketHeader("lbs", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("lbs", Scope.InGame | Scope.InTrade)]
     public class LbsPacket : PacketBase
     {
         [PacketIndex(0)]

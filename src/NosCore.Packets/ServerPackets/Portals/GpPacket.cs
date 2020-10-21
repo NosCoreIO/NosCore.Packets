@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Portals
 {
-    [PacketHeader("gp", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("gp", Scope.InGame)]
     public class GpPacket : PacketBase
     {
         [PacketIndex(0)]

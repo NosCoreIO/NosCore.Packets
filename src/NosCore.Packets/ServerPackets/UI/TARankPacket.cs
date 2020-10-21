@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("ta_rank", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("ta_rank", Scope.InGame)]
     public class TARankPacket : PacketBase
     {
         [PacketListIndex(0, SpecialSeparator = ".")]

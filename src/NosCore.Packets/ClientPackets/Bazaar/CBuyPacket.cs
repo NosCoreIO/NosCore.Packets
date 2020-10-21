@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Bazaar
 {
-    [PacketHeader("c_buy", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("c_buy", Scope.InGame)]
     public class CBuyPacket : PacketBase
     {
         [PacketIndex(0)]

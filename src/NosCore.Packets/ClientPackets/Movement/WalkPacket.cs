@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Movement
 {
-    [PacketHeader("walk", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("walk", Scope.InGame)]
     public class WalkPacket : PacketBase
     {
         [PacketIndex(0)]

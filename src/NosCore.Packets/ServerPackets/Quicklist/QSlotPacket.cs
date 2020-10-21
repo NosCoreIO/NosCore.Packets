@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Quicklist
 {
-    [PacketHeader("qslot", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("qslot", Scope.InGame)]
     public class QSlotPacket : PacketBase
     {
         [PacketIndex(0)]

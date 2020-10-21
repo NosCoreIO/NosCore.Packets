@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 namespace NosCore.Packets.ServerPackets.Inventory
 {
     //todo cleanup this messy packet
-    [PacketHeader("e_info", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("e_info", Scope.InGame)]
     public class EInfoPacket : PacketBase
     {
         [PacketIndex(0)]

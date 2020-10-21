@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Commands
 {
-    [PacketHeader("%Familyinvite", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("%Familyinvite", Scope.InGame | Scope.InTrade)]
     [PacketHeaderAlias("%Invitationdefamille", Flag = nameof(RegionType.FR))]
     [PacketHeaderAlias("%Familieneinladung", Flag = nameof(RegionType.DE))]
     [PacketHeaderAlias("%Invita", Flag = nameof(RegionType.IT))]

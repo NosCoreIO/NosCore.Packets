@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Miniland
 {
-    [PacketHeader("mlobjlst", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("mlobjlst", Scope.InGame)]
     public class MlobjlstPacket : PacketBase
     {
         [PacketListIndex(0, SpecialSeparator = ".")]

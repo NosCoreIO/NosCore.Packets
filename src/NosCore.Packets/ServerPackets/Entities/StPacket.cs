@@ -12,7 +12,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Entities
 {
-    [PacketHeader("st", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("st", Scope.InGame)]
     public class StPacket : PacketBase
     {
         [PacketIndex(0)]

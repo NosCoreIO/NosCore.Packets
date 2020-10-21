@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("infoi", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("infoi", Scope.InGame)]
     public class InfoiPacket : PacketBase
     {
         [PacketIndex(0)]

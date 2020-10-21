@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Chat
 {
-    [PacketHeader("btk", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("btk", Scope.InGame | Scope.InTrade)]
     public class BtkPacket : PacketBase
     {
         [PacketIndex(0)]

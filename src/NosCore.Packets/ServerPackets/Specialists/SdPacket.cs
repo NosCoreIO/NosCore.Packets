@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Specialists
 {
-    [PacketHeader("sd", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("sd", Scope.InGame)]
     public class SdPacket : PacketBase
     {
         [PacketIndex(0)]

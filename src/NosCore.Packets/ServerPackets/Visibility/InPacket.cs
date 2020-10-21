@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Visibility
 {
-    [PacketHeader("in", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("in", Scope.InGame)]
     public class InPacket : PacketBase
     {
         [PacketIndex(0)]

@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Npcs
 {
-    [PacketHeader("n_run", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("n_run", Scope.InGame)]
     public class NrunPacket : PacketBase
     {
         [PacketIndex(0)]

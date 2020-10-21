@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Infrastructure
 {
-    [PacketHeader("0", Scope.InGame | Scope.InExchange | Scope.OnCharacterScreen)]
+    [PacketHeader("0", Scope.InGame | Scope.InTrade | Scope.OnCharacterScreen)]
     public class ZeroPacket : PacketBase
     {
     }

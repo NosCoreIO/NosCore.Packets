@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Parcel
 {
-    [PacketHeader("pcl", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("pcl", Scope.InGame)]
     public class PclPacket : PacketBase
     {
         [PacketIndex(0)]

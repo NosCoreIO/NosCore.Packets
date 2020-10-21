@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Relations
 {
-    [PacketHeader("blinit", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("blinit", Scope.InGame)]
     public class BlinitPacket : PacketBase
     {
         [PacketListIndex(0, SpecialSeparator = "|")]

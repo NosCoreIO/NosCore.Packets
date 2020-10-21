@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Quicklist
 {
-    [PacketHeader("qset", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("qset", Scope.InGame | Scope.InTrade)]
     public class QsetPacket : PacketBase
     {
         [PacketIndex(0)]

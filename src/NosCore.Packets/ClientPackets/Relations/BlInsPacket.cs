@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Relations
 {
-    [PacketHeader("blins", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("blins", Scope.InGame | Scope.InTrade)]
     public class BlInsPacket : PacketBase
     {
         [PacketIndex(0)]

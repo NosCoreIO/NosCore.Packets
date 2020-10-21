@@ -12,7 +12,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Groups
 {
-    [PacketHeader("pinit_sub_packet", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("pinit_sub_packet", Scope.InGame)]
     public class PinitSubPacket : PacketBase
     {
         [PacketIndex(0)]

@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Families
 {
-    [PacketHeader("gjoin", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("gjoin", Scope.InGame)]
     public class JoinFamilyPacket : PacketBase
     {
         [PacketIndex(0)]

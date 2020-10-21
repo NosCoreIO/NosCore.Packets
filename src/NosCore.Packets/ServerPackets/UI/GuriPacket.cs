@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("guri", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("guri", Scope.InGame)]
     public class GuriPacket : PacketBase
     {
         [PacketIndex(0)]

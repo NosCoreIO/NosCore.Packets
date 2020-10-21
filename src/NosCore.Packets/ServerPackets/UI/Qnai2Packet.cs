@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("qnai2", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("qnai2", Scope.InGame)]
     public class Qnai2Packet : PacketBase
     {
         [PacketIndex(0)]

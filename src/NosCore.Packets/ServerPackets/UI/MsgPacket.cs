@@ -12,7 +12,7 @@ using NosCore.Packets.Interfaces;
 namespace NosCore.Packets.ServerPackets.UI
 {
     [Obsolete("this packet is obsolete please use MsgiPacket")]
-    [PacketHeader("msg", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("msg", Scope.InGame)]
     public class MsgPacket : PacketBase
     {
         [PacketIndex(0)]

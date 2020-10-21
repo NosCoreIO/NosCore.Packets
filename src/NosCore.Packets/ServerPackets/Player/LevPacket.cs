@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    [PacketHeader("lev", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("lev", Scope.InGame)]
     public class LevPacket : PacketBase
     {
         [PacketIndex(0)]

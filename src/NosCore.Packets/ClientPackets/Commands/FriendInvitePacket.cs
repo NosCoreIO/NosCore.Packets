@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Commands
 {
-    [PacketHeader("$Adding", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("$Adding", Scope.InGame | Scope.InTrade)]
     [PacketHeaderAlias("$Ajouter", Flag = nameof(RegionType.FR))]
     [PacketHeaderAlias("$Hinzufügen", Flag = nameof(RegionType.DE))]
     [PacketHeaderAlias("$Aggiungi", Flag = nameof(RegionType.IT))]

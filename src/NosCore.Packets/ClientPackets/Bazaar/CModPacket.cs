@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Bazaar
 {
-    [PacketHeader("c_mod", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("c_mod", Scope.InGame)]
     public class CModPacket : PacketBase
     {
         [PacketIndex(0)]

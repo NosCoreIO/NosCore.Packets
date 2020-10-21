@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    [PacketHeader("title", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("title", Scope.InGame)]
     public class TitlePacket : PacketBase
     {
         [PacketListIndex(0, IsOptional = true)]

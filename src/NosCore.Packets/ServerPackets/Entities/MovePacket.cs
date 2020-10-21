@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Entities
 {
-    [PacketHeader("mv", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("mv", Scope.InGame)]
     public class MovePacket : PacketBase
     {
         [PacketIndex(0)]

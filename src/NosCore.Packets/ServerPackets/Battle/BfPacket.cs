@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Battle
 {
-    [PacketHeader("bf", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("bf", Scope.InGame)]
     public class BfPacket : PacketBase
     {
         [PacketIndex(0)]

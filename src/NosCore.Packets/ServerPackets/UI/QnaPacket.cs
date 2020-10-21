@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("qna", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("qna", Scope.InGame)]
     public class QnaPacket : PacketBase
     {
         [PacketIndex(0)]

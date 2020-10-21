@@ -12,7 +12,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Battle
 {
-    [PacketHeader("ncif", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("ncif", Scope.InGame | Scope.InTrade)]
     public class NcifPacket : PacketBase
     {
         [PacketIndex(0)]

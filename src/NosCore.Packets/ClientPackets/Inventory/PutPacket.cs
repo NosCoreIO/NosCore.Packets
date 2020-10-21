@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Inventory
 {
-    [PacketHeader("put", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("put", Scope.InGame)]
     public class PutPacket : PacketBase
     {
         [PacketIndex(0)]

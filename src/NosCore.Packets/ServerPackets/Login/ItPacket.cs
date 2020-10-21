@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Login
 {
-    [PacketHeader("it", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("it", Scope.InGame)]
     public class ItPacket : PacketBase
     {
         [PacketIndex(0)]

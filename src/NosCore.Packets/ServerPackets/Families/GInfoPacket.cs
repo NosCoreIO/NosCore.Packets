@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Families
 {
-    [PacketHeader("ginfo", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("ginfo", Scope.InGame)]
     public class GInfoPacket : PacketBase
     {
         [PacketIndex(0)]

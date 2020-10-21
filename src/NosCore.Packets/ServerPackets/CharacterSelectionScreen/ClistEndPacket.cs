@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.CharacterSelectionScreen
 {
-    [PacketHeader("clist_end", Scope.InGame | Scope.InExchange | Scope.OnCharacterScreen)]
+    [PacketHeader("clist_end", Scope.InGame | Scope.OnCharacterScreen)]
     public class ClistEndPacket : PacketBase
     {
     }

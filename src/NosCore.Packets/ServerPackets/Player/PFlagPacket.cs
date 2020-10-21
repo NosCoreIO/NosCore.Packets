@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    [PacketHeader("pflag", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("pflag", Scope.InGame)]
     public class PFlagPacket : PacketBase
     {
         [PacketIndex(0)]

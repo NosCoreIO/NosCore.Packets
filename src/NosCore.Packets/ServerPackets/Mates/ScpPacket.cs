@@ -13,7 +13,7 @@ namespace NosCore.Packets.ServerPackets.Mates
     /// <summary>
     ///     Packets for pets
     /// </summary>
-    [PacketHeader("sc_p", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("sc_p", Scope.InGame)]
     public class ScpPacket : PacketBase
     {
         [PacketIndex(0)]

@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Chat
 {
-    [PacketHeader("say", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("say", Scope.InGame | Scope.InTrade)]
     public class ClientSayPacket : PacketBase
     {
         [PacketIndex(0)]

@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Relations
 {
-    [PacketHeader("finfo", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("finfo", Scope.InGame)]
     public class FinfoPacket : PacketBase
     {
         [PacketListIndex(0)]

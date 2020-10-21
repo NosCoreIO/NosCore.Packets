@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Shop
 {
-    [PacketHeader("n_inv_skills", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("n_inv_skills", Scope.InGame)]
     public class NInvFamilySkillSubPacket : PacketBase
     {
         [PacketIndex(0)]

@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Families
 {
-    [PacketHeader("fauth", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("fauth", Scope.InGame)]
     public class FAuthPacket : PacketBase
     {
         [PacketIndex(0)]

@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Warehouse
 {
-    [PacketHeader("f_withdraw", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("f_withdraw", Scope.InGame | Scope.InTrade)]
     public class FWithdrawPacket : PacketBase
     {
         [PacketIndex(0)]

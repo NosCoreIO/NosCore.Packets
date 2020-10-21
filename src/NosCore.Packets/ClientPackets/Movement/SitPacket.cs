@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Movement
 {
-    [PacketHeader("rest", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("rest", Scope.InGame | Scope.InTrade)]
     public class SitPacket : PacketBase
     {
         [PacketIndex(0)]

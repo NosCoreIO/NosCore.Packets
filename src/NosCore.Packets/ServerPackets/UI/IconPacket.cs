@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("icon", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("icon", Scope.InGame)]
     public class IconPacket : PacketBase
     {
         [PacketIndex(0)]

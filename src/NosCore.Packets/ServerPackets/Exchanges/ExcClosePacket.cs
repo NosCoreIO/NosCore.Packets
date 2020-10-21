@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Exchanges
 {
-    [PacketHeader("exc_close", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("exc_close", Scope.InGame)]
     public class ExcClosePacket : PacketBase
     {
         [PacketIndex(0)]

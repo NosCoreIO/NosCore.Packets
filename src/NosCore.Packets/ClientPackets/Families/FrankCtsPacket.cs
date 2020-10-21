@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Families
 {
-    [PacketHeader("frank_cts", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("frank_cts", Scope.InGame)]
     public class FrankCtsPacket : PacketBase
     {
         [PacketIndex(0)]

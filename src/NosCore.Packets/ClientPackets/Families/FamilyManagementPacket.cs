@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Families
 {
-    [PacketHeader("fmg", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("fmg", Scope.InGame)]
     public class FamilyManagementPacket : PacketBase
     {
         [PacketIndex(0)]

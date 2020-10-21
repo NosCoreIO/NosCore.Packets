@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Chats
 {
-    [PacketHeader("sayi", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("sayi", Scope.InGame)]
     public class SayiPacket : PacketBase
     {
         [PacketIndex(0)]

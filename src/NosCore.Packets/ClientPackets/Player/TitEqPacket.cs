@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Player
 {
-    [PacketHeader("tit_eq", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("tit_eq", Scope.InGame | Scope.InTrade)]
     public class TitEqPacket : PacketBase
     {
         [PacketIndex(0)]

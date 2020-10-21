@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Quest
 {
-    [PacketHeader("script", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("script", Scope.InGame)]
     public class ScriptClientPacket : PacketBase
     {
         [PacketIndex(0)]

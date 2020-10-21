@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    [PacketHeader("sc", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("sc", Scope.InGame)]
     public class ScPacket : PacketBase
     {
         [PacketIndex(0)]

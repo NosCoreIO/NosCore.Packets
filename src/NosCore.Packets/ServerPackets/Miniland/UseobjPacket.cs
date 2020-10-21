@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Miniland
 {
-    [PacketHeader("useobj", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("useobj", Scope.InGame)]
     public class UseObjPacket : PacketBase
     {
         [PacketIndex(0)]

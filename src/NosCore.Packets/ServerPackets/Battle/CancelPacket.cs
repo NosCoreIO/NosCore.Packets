@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Battle
 {
-    [PacketHeader("cancel", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("cancel", Scope.InGame)]
     public class CancelPacket : PacketBase
     {
         [PacketIndex(0)]

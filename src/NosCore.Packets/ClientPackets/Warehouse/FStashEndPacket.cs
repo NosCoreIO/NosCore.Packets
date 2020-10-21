@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Warehouse
 {
-    [PacketHeader("f_stash_end", Scope.InGame | Scope.InExchange | Scope.OnCharacterScreen)]
+    [PacketHeader("f_stash_end", Scope.InGame | Scope.InTrade | Scope.OnCharacterScreen)]
     public class FStashEndPacket : PacketBase
     {
     }

@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Inventory
 {
-    [PacketHeader("wear", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("wear", Scope.InGame)]
     public class WearPacket : PacketBase
     {
         [PacketIndex(0)]

@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Bazaar
 {
-    [PacketHeader("c_scalc", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("c_scalc", Scope.InGame)]
     public class CScalcPacket : PacketBase
     {
         [PacketIndex(0)]

@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Shop
 {
-    [PacketHeader("s_memo", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("s_memo", Scope.InGame)]
     public class SMemoPacket : PacketBase
     {
         [PacketIndex(0)]

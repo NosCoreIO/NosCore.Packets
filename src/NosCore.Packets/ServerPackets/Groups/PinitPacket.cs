@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Groups
 {
-    [PacketHeader("pinit", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("pinit", Scope.InGame)]
     public class PinitPacket : PacketBase
     {
         [PacketIndex(0)]

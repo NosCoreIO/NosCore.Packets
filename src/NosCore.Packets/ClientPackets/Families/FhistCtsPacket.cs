@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Families
 {
-    [PacketHeader("fhis_cts", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("fhis_cts", Scope.InGame)]
     public class FhistCtsPacket : PacketBase
     {
     }

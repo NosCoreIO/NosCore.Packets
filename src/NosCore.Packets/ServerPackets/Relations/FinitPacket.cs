@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Relations
 {
-    [PacketHeader("finit", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("finit", Scope.InGame)]
     public class FinitPacket : PacketBase
     {
         [PacketListIndex(0, SpecialSeparator = "|")]

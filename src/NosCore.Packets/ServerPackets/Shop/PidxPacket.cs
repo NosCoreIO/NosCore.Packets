@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Shop
 {
-    [PacketHeader("pidx", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("pidx", Scope.InGame)]
     public class PidxPacket : PacketBase
     {
         [PacketIndex(0)]

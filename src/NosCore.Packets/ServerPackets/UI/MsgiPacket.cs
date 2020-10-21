@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("msgi", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("msgi", Scope.InGame)]
     public class MsgiPacket : PacketBase
     {
         [PacketIndex(0)]

@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    [PacketHeader("levelup", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("levelup", Scope.InGame)]
     public class LevelUpPacket : PacketBase
     {
         [PacketIndex(0)]

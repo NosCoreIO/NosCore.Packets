@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Mates
 {
-    [PacketHeader("pski", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("pski", Scope.InGame)]
     public class PSkiPacket : PacketBase
     {
         [PacketIndex(0)]

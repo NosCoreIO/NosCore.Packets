@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    [PacketHeader("tc_info", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("tc_info", Scope.InGame)]
     public class TcInfoPacket : PacketBase
     {
         // return $"tc_info {Level} {Name} {fairy?.Item.Element ?? 0} {ElementRate + (Buff.Any(s => s.Card.CardId == 131) ? 30 : 0)}

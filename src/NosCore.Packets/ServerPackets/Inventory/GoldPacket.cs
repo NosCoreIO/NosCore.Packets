@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Inventory
 {
-    [PacketHeader("gold", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("gold", Scope.InGame)]
     public class GoldPacket : PacketBase
     {
         [PacketIndex(0)]

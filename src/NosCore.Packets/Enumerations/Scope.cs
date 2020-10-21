@@ -13,7 +13,7 @@ namespace NosCore.Packets.Enumerations
     {
         Unknown = 0,
         OnCharacterScreen = 1,
-        InExchange = 2,
+        InTrade = 2,
         InGame = 4,
         OnLoginScreen = 8,
     }

@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("delay", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("delay", Scope.InGame)]
     public class DelayPacket : PacketBase
     {
         [PacketIndex(0)]

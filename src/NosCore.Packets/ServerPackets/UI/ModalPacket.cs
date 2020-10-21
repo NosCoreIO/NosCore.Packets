@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("modal", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("modal", Scope.InGame)]
     public class ModalPacket : PacketBase
     {
         [PacketIndex(0)]

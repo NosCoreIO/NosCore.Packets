@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Map
 {
-    [PacketHeader("mapout", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("mapout", Scope.InGame)]
     public class MapOutPacket : PacketBase
     {
     }

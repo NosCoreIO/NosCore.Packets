@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Map
 {  
-    [PacketHeader("eff_g", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("eff_g", Scope.InGame)]
     public class GroundEffectPacket : PacketBase
     {
         [PacketIndex(0)]

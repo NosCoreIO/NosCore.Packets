@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Shop
 {
-    [PacketHeader("ishop", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("ishop", Scope.InGame)]
     public class IshopPacket : PacketBase
     {
     }

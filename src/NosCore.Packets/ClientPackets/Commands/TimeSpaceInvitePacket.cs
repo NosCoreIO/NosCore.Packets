@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Commands
 {
-    [PacketHeader("$Accompany", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("$Accompany", Scope.InGame | Scope.InTrade)]
     [PacketHeaderAlias("$Accompagner", Flag = nameof(RegionType.FR))]
     [PacketHeaderAlias("$Begleiten", Flag = nameof(RegionType.DE))]
     [PacketHeaderAlias("$Accompagna", Flag = nameof(RegionType.IT))]

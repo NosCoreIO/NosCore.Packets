@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Inventory
 {
-    [PacketHeader("equip", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("equip", Scope.InGame)]
     public class EquipPacket : PacketBase
     {
         [PacketIndex(0, SpecialSeparator = "")]

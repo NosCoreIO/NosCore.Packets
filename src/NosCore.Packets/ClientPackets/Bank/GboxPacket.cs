@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Bank
 {
-    [PacketHeader("gbox", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("gbox", Scope.InGame)]
     public class GboxPacket : PacketBase
     {
         [PacketIndex(0)]

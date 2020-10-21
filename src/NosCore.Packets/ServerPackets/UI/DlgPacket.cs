@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("dlg", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("dlg", Scope.InGame)]
     public class DlgPacket : PacketBase
     {
         [PacketIndex(0)]

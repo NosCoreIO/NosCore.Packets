@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Player
 {
-    [PacketHeader("rsfi", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("rsfi", Scope.InGame)]
     public class RsfiPacket : PacketBase
     {
         //TODO make this real packet, it's just here to fix a dialog issue with client

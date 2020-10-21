@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Movement
 {
-    [PacketHeader("pulse", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("pulse", Scope.InGame | Scope.InTrade)]
     public class PulsePacket : PacketBase
     {
         [PacketIndex(0)]

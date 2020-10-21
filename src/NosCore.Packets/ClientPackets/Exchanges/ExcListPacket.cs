@@ -12,7 +12,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Exchanges
 {
-    [PacketHeader("exc_list", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("exc_list", Scope.InGame | Scope.InTrade)]
     public class ExcListPacket : PacketBase
     {
         [PacketIndex(0)]

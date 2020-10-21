@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Families
 {
-    [PacketHeader("today_cts", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("today_cts", Scope.InGame)]
     public class TodayPacket : PacketBase
     {
     }

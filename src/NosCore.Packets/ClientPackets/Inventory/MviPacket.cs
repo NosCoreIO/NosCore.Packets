@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Inventory
 {
-    [PacketHeader("mvi", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("mvi", Scope.InGame)]
     public class MviPacket : PacketBase
     {
         [PacketIndex(0)]

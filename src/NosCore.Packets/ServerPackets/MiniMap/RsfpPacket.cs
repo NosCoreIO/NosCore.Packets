@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.MiniMap
 {
-    [PacketHeader("rsfp", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("rsfp", Scope.InGame)]
     public class RsfpPacket : PacketBase
     {
         [PacketIndex(0)]

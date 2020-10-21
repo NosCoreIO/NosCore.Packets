@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Families
 {
-    [PacketHeader("glrm", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("glrm", Scope.InGame)]
     public class FamilyDismissPacket : PacketBase
     {
     }

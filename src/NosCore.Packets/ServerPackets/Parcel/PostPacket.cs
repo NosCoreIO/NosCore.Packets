@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Parcel
 {
-    [PacketHeader("post", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("post", Scope.InGame)]
     public class PostPacket : PacketBase
     {
         [PacketIndex(0)]

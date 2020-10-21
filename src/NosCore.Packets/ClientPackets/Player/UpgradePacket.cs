@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Player
 {
-    [PacketHeader("up_gr", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("up_gr", Scope.InGame)]
     public class UpgradePacket : PacketBase
     {
         [PacketIndex(0)]

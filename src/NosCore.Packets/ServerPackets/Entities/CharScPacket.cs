@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Entities
 {
-    [PacketHeader("char_sc", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("char_sc", Scope.InGame)]
     public class CharScPacket : PacketBase
     {
         [PacketIndex(0)]

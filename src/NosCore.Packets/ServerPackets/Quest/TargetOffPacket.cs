@@ -9,7 +9,7 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Quest
 {
-    [PacketHeader("targetoff", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("targetoff", Scope.InGame)]
     public class TargetOffPacket : TargetPacket
     {
 

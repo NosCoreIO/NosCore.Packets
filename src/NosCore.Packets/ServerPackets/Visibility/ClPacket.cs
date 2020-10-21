@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Visibility
 {
-    [PacketHeader("cl", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("cl", Scope.InGame)]
     public class ClPacket : PacketBase
     {
         [PacketIndex(0)]

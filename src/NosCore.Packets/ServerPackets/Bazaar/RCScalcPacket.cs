@@ -12,7 +12,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Bazaar
 {
-    [PacketHeader("rc_scalc", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("rc_scalc", Scope.InGame)]
     public class RCScalcPacket : PacketBase
     {
         [PacketIndex(0)]

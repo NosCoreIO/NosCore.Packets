@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Shops
 {
-    [PacketHeader("c_close", Scope.InGame | Scope.InExchange | Scope.OnCharacterScreen)]
+    [PacketHeader("c_close", Scope.InGame | Scope.InTrade | Scope.OnCharacterScreen)]
     public class CClosePacket : PacketBase
     {
         [PacketIndex(0)]

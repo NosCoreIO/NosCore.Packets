@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Miniland
 {
-    [PacketHeader("mjoin", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("mjoin", Scope.InGame)]
     public class MJoinPacket : PacketBase
     {
         [PacketIndex(0)]

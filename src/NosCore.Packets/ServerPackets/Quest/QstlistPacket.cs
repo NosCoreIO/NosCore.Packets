@@ -12,7 +12,7 @@ using NosCore.Packets.Interfaces;
 namespace NosCore.Packets.ServerPackets.Quest
 {
 
-    [PacketHeader("qstlist", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("qstlist", Scope.InGame)]
     public class QstlistPacket : PacketBase
     {
         [PacketListIndex(0, RemoveHeader = true)]

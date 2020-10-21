@@ -12,7 +12,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Bank
 {
-    [PacketHeader("gb", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("gb", Scope.InGame)]
     public class GbPacket : PacketBase
     {
         [PacketIndex(0)]

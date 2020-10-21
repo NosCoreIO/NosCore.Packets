@@ -12,7 +12,7 @@ using NosCore.Packets.ServerPackets.Inventory;
 
 namespace NosCore.Packets.ServerPackets.Warehouse
 {
-    [PacketHeader("stash_all", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("stash_all", Scope.InGame)]
     public class StashAllPacket : PacketBase
     {
         [PacketIndex(0)]

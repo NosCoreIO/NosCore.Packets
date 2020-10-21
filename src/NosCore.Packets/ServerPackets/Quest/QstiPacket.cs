@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 namespace NosCore.Packets.ServerPackets.Quest
 {
 
-    [PacketHeader("qsti", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("qsti", Scope.InGame)]
     public class QstiPacket : PacketBase
     {
         [PacketIndex(0, SpecialSeparator = ".")]

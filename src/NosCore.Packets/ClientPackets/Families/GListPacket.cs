@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Families
 {
-    [PacketHeader("glist", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("glist", Scope.InGame | Scope.InTrade)]
     public class GListPacket : PacketBase
     {
         [PacketIndex(1)]

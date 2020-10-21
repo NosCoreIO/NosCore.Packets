@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Warehouse
 {
-    [PacketHeader("deposit", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("deposit", Scope.InGame | Scope.InTrade)]
     public class DepositPacket : PacketBase
     {     
         [PacketIndex(0)]

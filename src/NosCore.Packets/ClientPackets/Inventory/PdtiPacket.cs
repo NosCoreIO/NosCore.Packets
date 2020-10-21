@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Inventory
 {
-    [PacketHeader("pdti", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("pdti", Scope.InGame)]
     public class PdtiPacket : PacketBase
     {
         [PacketIndex(0)]

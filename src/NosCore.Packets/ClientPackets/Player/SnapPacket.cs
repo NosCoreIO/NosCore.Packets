@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Player
 {
-    [PacketHeader("snap", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("snap", Scope.InGame | Scope.InTrade)]
     public class SnapPacket : PacketBase
     {
     }

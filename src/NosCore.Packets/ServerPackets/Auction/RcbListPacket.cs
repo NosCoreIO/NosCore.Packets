@@ -12,7 +12,7 @@ using NosCore.Packets.ServerPackets.Inventory;
 
 namespace NosCore.Packets.ServerPackets.Auction
 {
-    [PacketHeader("rc_blist", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("rc_blist", Scope.InGame)]
     public class RcbListPacket : PacketBase
     {
         [PacketIndex(0)]

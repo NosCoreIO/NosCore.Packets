@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Mates
 {
-    [PacketHeader("say_p", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("say_p", Scope.InGame)]
     public class SayPetPacket : PacketBase
     {
         [PacketIndex(0)]

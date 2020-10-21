@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Battle
 {
-    [PacketHeader("mtlist", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("mtlist", Scope.InGame)]
     public class MultiTargetListPacket : PacketBase
     {
         [PacketIndex(0)]

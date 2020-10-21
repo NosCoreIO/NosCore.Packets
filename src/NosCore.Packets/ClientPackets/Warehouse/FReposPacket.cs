@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Warehouse
 {
-    [PacketHeader("f_repos", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("f_repos", Scope.InGame | Scope.InTrade)]
     public class FReposPacket : PacketBase
     {
         [PacketIndex(0)]

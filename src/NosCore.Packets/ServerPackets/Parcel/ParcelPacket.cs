@@ -11,7 +11,7 @@ using NosCore.Packets.ServerPackets.Movement;
 
 namespace NosCore.Packets.ServerPackets.Parcel
 {
-    [PacketHeader("parcel", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("parcel", Scope.InGame)]
     public class ParcelPacket : PacketBase
     {
         [PacketIndex(0)]

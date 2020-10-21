@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.MiniMap
 {
-    [PacketHeader("c_map", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("c_map", Scope.InGame)]
     public class CMapPacket : PacketBase
     {
         [PacketIndex(0)]

@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Bazaar
 {
-    [PacketHeader("rc_buy", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("rc_buy", Scope.InGame)]
     public class RCBuyPacket : PacketBase
     {
         [PacketIndex(0)]

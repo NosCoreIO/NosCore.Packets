@@ -11,7 +11,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Inventory
 {
-    [PacketHeader("inv", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("inv", Scope.InGame)]
     public class InvPacket : PacketBase
     {
         [PacketIndex(0)]

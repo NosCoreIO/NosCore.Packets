@@ -10,7 +10,7 @@ using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Inventory
 {
-    [PacketHeader("remove", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("remove", Scope.InGame)]
     public class RemovePacket : PacketBase
     {
         [PacketIndex(0)]

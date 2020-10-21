@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Mates
 {
-    [PacketHeader("u_pet", Scope.InGame | Scope.InExchange)]
+    [PacketHeader("u_pet", Scope.InGame)]
     public class UpetPacket : PacketBase
     {
         [PacketIndex(0)]
