@@ -48,7 +48,7 @@ namespace NosCore.Packets.Tests
         }
         public List<string> ListScopes(Scope scope)
         {
-            List<string> result = new List<string>();
+            var result = new List<string>();
             foreach (Scope sc in Enum.GetValues(typeof(Scope)))
             {
                 if ((scope & sc) != 0)
@@ -65,12 +65,12 @@ namespace NosCore.Packets.Tests
             var builder = new StringBuilder();
             builder.AppendLine("# NosCore.Packets's Documentation");
             builder.AppendLine("## ClientPackets :");
-            foreach (IGrouping<string, Type> packetGroup in GetPacketsWithinNamespace("ClientPackets"))
+            foreach (var packetGroup in GetPacketsWithinNamespace("ClientPackets"))
             {
                 builder.AppendLine();
                 builder.AppendLine($"### {packetGroup.Key}");
 
-                foreach (Type packet in GetPackets(packetGroup))
+                foreach (var packet in GetPackets(packetGroup))
                 {
                     builder.AppendLine(
                         $"- [{packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification}](src/NosCore.Packets/ClientPackets/{packetGroup.Key}/{packet}.cs) *{string.Join(" | ", ListScopes((packet.GetCustomAttributes(typeof(PacketHeaderAttribute))?.FirstOrDefault() as PacketHeaderAttribute)?.Scopes ?? Scope.Unknown))}*");
@@ -79,11 +79,11 @@ namespace NosCore.Packets.Tests
 
             builder.AppendLine();
             builder.AppendLine("## ServerPackets :");
-            foreach (IGrouping<string, Type> packetGroup in GetPacketsWithinNamespace("ServerPackets"))
+            foreach (var packetGroup in GetPacketsWithinNamespace("ServerPackets"))
             {
                 builder.AppendLine();
                 builder.AppendLine($"### {packetGroup.Key}");
-                foreach (Type packet in GetPackets(packetGroup))
+                foreach (var packet in GetPackets(packetGroup))
                 {
                     builder.AppendLine(
                         $"- [{packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification}](src/NosCore.Packets/ServerPackets/{packetGroup.Key}/{packet}.cs) *{string.Join(" | ", ListScopes((packet.GetCustomAttributes(typeof(PacketHeaderAttribute))?.FirstOrDefault() as PacketHeaderAttribute)?.Scopes ?? Scope.Unknown))}*");
@@ -115,7 +115,7 @@ namespace NosCore.Packets.Tests
             var fileInfo =
                 new FileInfo($".{Path.DirectorySeparatorChar}output{Path.DirectorySeparatorChar}{name}");
             await extractor.ExtractAsync(fileInfo, dest, true);
-            string text = await File.ReadAllTextAsync($"{dest}conststring_UK.dat");
+            var text = await File.ReadAllTextAsync($"{dest}conststring_UK.dat");
             var split = text.Split('\r');
             var dictionary = new Dictionary<int, string>();
             foreach (var line in split)

@@ -17,12 +17,18 @@ namespace NosCore.Packets.ServerPackets.UI
         public GuriPacketType Type { get; set; }
 
         [PacketIndex(1)]
-        public uint Unknown { get; set; } // seems to be a visual type or something
+        public uint Argument { get; set; }
 
-        [PacketIndex(2)]
-        public long EntityId { get; set; }
+        [PacketIndex(2, IsOptional = true)]
+        public uint? SecondArgument { get; set; }
 
         [PacketIndex(3)]
-        public uint Value { get; set; }
+        public long EntityId { get; set; }
+
+        [PacketIndex(4, IsOptional = true)]
+        public uint? Value { get; set; }
+
+        [PacketIndex(5, IsOptional = true)]
+        public uint? SecondValue { get; set; }
     }
 }

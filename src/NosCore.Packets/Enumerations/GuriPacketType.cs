@@ -8,8 +8,8 @@ namespace NosCore.Packets.Enumerations
 {
     public enum GuriPacketType
     {
-        Unknow = 2,
-        Unknow2 = 6,
+        Dance = 2,
+        Unknow = 6,
         TextInput = 4,
         Effect = 10,
         Unknow4 = 15,

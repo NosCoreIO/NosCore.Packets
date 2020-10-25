@@ -33,7 +33,7 @@ namespace NosCore.Packets
         public static object GetDefaultValue(this Type type)
         {
             if (type == null) throw new ArgumentNullException("type");
-            Expression<Func<object>> e = Expression.Lambda<Func<object>>(
+            var e = Expression.Lambda<Func<object>>(
                 Expression.Convert(
                     Expression.Default(type), typeof(object)
                 )
@@ -105,7 +105,7 @@ namespace NosCore.Packets
             }
 
             var types = typeof(T).GetProperties()
-                    .Where(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().Any());
+                    .Where(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().Any()).ToList();
             var propertyAmount = types.Any() ? types.Max(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First().Index) : 0;
 
             var creator = new TypeCreator
@@ -131,11 +131,11 @@ namespace NosCore.Packets
 
         private Delegate GetPropSetter(Type typeObj, Type typeProperty, string propertyName)
         {
-            ParameterExpression paramExpression = Expression.Parameter(typeObj);
+            var paramExpression = Expression.Parameter(typeObj);
 
-            ParameterExpression paramExpression2 = Expression.Parameter(typeProperty, propertyName);
+            var paramExpression2 = Expression.Parameter(typeProperty, propertyName);
 
-            MemberExpression propertyGetterExpression = Expression.Property(paramExpression, propertyName);
+            var propertyGetterExpression = Expression.Property(paramExpression, propertyName);
 
             return Expression.Lambda
             (
@@ -165,7 +165,7 @@ namespace NosCore.Packets
         {
             try
             {
-                bool isSpecial = false;
+                var isSpecial = false;
                 var packetstring = packetContent.Replace('^', ' ').TrimEnd();
                 var packetsplit = packetstring.Split(' ');
                 if (packetsplit.Length < 1)
@@ -173,7 +173,7 @@ namespace NosCore.Packets
                     throw new InvalidOperationException();
                 }
 
-                bool includesKeepAliveIdentity = ushort.TryParse(packetsplit[0], out var keepalive);
+                var includesKeepAliveIdentity = ushort.TryParse(packetsplit[0], out var keepalive);
                 var header = includesKeepAliveIdentity ? 1 : 0;
                 if (packetsplit[header].Length >= 1
                     && (packetsplit[header][0] == '/' || packetsplit[header][0] == ':' || packetsplit[header][0] == ';' || packetsplit[header][0] == '#'))
@@ -261,7 +261,7 @@ namespace NosCore.Packets
                     }
                     else if (isMaxIndex && packetBasePropertyInfo.Key.Item1 == typeof(string))
                     {
-                        packetBasePropertyInfo.Value.DynamicInvoke(deg, string.Empty);
+                        packetBasePropertyInfo.Value.DynamicInvoke(deg, packetBasePropertyInfo.Key.Item1.GetCustomAttributes().Any(s => s.ToString() == "System.Runtime.CompilerServices.NullableAttribute") ? null : string.Empty);
                     }
                     else
                     {
@@ -302,7 +302,7 @@ namespace NosCore.Packets
 
         private object? DeserializeList(Type subType, PacketIndexAttribute packetIndexAttribute, string[] matches, ref int currentIndex, bool isMaxIndex)
         {
-            int newIndex = currentIndex;
+            var newIndex = currentIndex;
             var length = packetIndexAttribute is PacketListIndexAttribute listIndex ? listIndex.Length : 0;
             string[]? splited = null;
 
@@ -344,7 +344,7 @@ namespace NosCore.Packets
                             continue;
                         }
 
-                        string toConvert = "";
+                        var toConvert = "";
 
                         if (matches[currentIndex + i].Contains(packetIndexAttribute.SpecialSeparator ?? "."))
                         {
@@ -355,7 +355,7 @@ namespace NosCore.Packets
 
                             for (var index = 0; index < packSeperators.Count; index++)
                             {
-                                var c = index == packSeperators.Count - 1 ? -1 : subpacket.IndexOf(packSeperators[index + 1].SpecialSeparator ?? ".");
+                                var c = index == packSeperators.Count - 1 ? -1 : subpacket.IndexOf(packSeperators[index + 1].SpecialSeparator ?? ".", StringComparison.Ordinal);
                                 if (c == -1)
                                 {
                                     toConvert += subpacket;
@@ -426,8 +426,8 @@ namespace NosCore.Packets
         {
             if (isMaxIndex)
             {
-                StringBuilder packet = new StringBuilder();
-                for (int i = currentIndex; i < matches.Length; i++)
+                var packet = new StringBuilder();
+                for (var i = currentIndex; i < matches.Length; i++)
                 {
                     if (i != currentIndex)
                     {
