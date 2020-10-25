@@ -35,24 +35,24 @@ namespace NosCore.Packets.Benchmark.SaltyEmu
             try
             {
                 // load pregenerated serialization information
-                PacketInformation serializationInformation = GetSerializationInformation(type);
+                var serializationInformation = GetSerializationInformation(type);
 
                 var builder = new StringBuilder();
                 builder.Append(serializationInformation.Header);
 
-                int lastIndex = 0;
+                var lastIndex = 0;
 
-                foreach (PacketPropertyContainer property in serializationInformation.PacketProps!)
+                foreach (var property in serializationInformation.PacketProps!)
                 {
-                    PacketIndexAttribute? packetIndex = property.PacketIndex;
-                    PropertyInfo? propertyType = property.PropertyInfo;
-                    IEnumerable<ValidationAttribute?>? validations = property.Validations;
+                    var packetIndex = property.PacketIndex;
+                    var propertyType = property.PropertyInfo;
+                    var validations = property.Validations;
                     // check if we need to add a non mapped values (pseudovalues)
                     if (packetIndex!.Index > lastIndex + 1)
                     {
-                        int amountOfEmptyValuesToAdd = packetIndex.Index - (lastIndex + 1);
+                        var amountOfEmptyValuesToAdd = packetIndex.Index - (lastIndex + 1);
 
-                        for (int j = 0; j < amountOfEmptyValuesToAdd; j++)
+                        for (var j = 0; j < amountOfEmptyValuesToAdd; j++)
                         {
                             builder.Append(" 0");
                         }
@@ -120,13 +120,13 @@ namespace NosCore.Packets.Benchmark.SaltyEmu
 
             if (value is IPacket)
             {
-                PacketInformation subpacketSerializationInfo = GetSerializationInformation(value.GetType());
+                var subpacketSerializationInfo = GetSerializationInformation(value.GetType());
                 return SerializeSubpacket(value, subpacketSerializationInfo, packetIndexAttribute?.IsOptional ?? false);
             }
 
             if (propertyType.BaseType?.Equals(typeof(IPacket)) == true)
             {
-                PacketInformation subpacketSerializationInfo = GetSerializationInformation(propertyType);
+                var subpacketSerializationInfo = GetSerializationInformation(propertyType);
                 return SerializeSubpacket(value, subpacketSerializationInfo, packetIndexAttribute?.IsOptional ?? false);
             }
 
@@ -146,8 +146,8 @@ namespace NosCore.Packets.Benchmark.SaltyEmu
 
         private string SerializeSimpleList(IList? listValues, Type propertyType, PacketIndexAttribute? index)
         {
-            string resultListPacket = string.Empty;
-            int listValueCount = listValues?.Count ?? 0;
+            var resultListPacket = string.Empty;
+            var listValueCount = listValues?.Count ?? 0;
             if (listValueCount <= 0)
             {
                 return resultListPacket;
@@ -155,7 +155,7 @@ namespace NosCore.Packets.Benchmark.SaltyEmu
 
             resultListPacket += SerializeValue(propertyType.GenericTypeArguments[0], listValues![0], propertyType.GenericTypeArguments[0].GetCustomAttributes<ValidationAttribute>());
 
-            for (int i = 1; i < listValueCount; i++)
+            for (var i = 1; i < listValueCount; i++)
             {
                 resultListPacket +=
                     $"{index!.SpecialSeparator}{SerializeValue(propertyType.GenericTypeArguments[0], listValues[i], propertyType.GenericTypeArguments[0].GetCustomAttributes<ValidationAttribute>()).Replace(" ", "")}";
@@ -166,13 +166,13 @@ namespace NosCore.Packets.Benchmark.SaltyEmu
 
         private string SerializeSubpacket(object? value, PacketInformation subpacketSerializationInfo, bool isReturnPacket)
         {
-            string serializedSubpacket = isReturnPacket ? $" #{subpacketSerializationInfo.Header}^" : " ";
+            var serializedSubpacket = isReturnPacket ? $" #{subpacketSerializationInfo.Header}^" : " ";
 
             // iterate thru configure subpacket properties
-            foreach (PacketPropertyContainer tmp in subpacketSerializationInfo.PacketProps!)
+            foreach (var tmp in subpacketSerializationInfo.PacketProps!)
             {
-                PacketIndexAttribute key = tmp.PacketIndex!;
-                PropertyInfo propertyInfo = tmp.PropertyInfo!;
+                var key = tmp.PacketIndex!;
+                var propertyInfo = tmp.PropertyInfo!;
                 // first element
                 if (key.Index != 0)
                 {
@@ -187,19 +187,19 @@ namespace NosCore.Packets.Benchmark.SaltyEmu
 
         private PacketInformation GenerateSerializationInformations(Type serializationType)
         {
-            string? header = serializationType.GetCustomAttribute<PacketHeaderAttribute>()?.Identification;
+            var header = serializationType.GetCustomAttribute<PacketHeaderAttribute>()?.Identification;
 
             if (string.IsNullOrEmpty(header))
             {
                 throw new Exception($"Packet header cannot be empty. PacketType: {serializationType.Name}");
             }
 
-            Dictionary<PacketIndexAttribute, PropertyInfo> packetsForPacketDefinition = new Dictionary<PacketIndexAttribute, PropertyInfo>();
+            var packetsForPacketDefinition = new Dictionary<PacketIndexAttribute, PropertyInfo>();
 
             IEnumerable<PropertyInfo> packetIndexProperties = serializationType.GetProperties().Where(x => x.GetCustomAttributes(false).OfType<PacketIndexAttribute>().Any()).ToArray();
 
 
-            List<PacketPropertyContainer> packetProperties =
+            var packetProperties =
                 (from packetBasePropertyInfo in packetIndexProperties.OrderBy(s => s.GetCustomAttribute<PacketIndexAttribute>(false)!.Index)
                  let indexAttribute = packetBasePropertyInfo.GetCustomAttributes(false).OfType<PacketIndexAttribute>().FirstOrDefault()
                  where indexAttribute != null
@@ -228,7 +228,7 @@ namespace NosCore.Packets.Benchmark.SaltyEmu
 
         private PacketInformation GetSerializationInformation(Type serializationType)
         {
-            if (_deserializationInformations.TryGetValue(serializationType, out PacketInformation? packetInfo))
+            if (_deserializationInformations.TryGetValue(serializationType, out var packetInfo))
             {
                 return packetInfo;
             }
@@ -238,8 +238,8 @@ namespace NosCore.Packets.Benchmark.SaltyEmu
 
         private string SerializeSubpackets(ICollection? listValues, Type packetBasePropertyType)
         {
-            string serializedSubPacket = string.Empty;
-            PacketInformation subpacketSerializationInfo = GetSerializationInformation(packetBasePropertyType.GetGenericArguments()[0]);
+            var serializedSubPacket = string.Empty;
+            var subpacketSerializationInfo = GetSerializationInformation(packetBasePropertyType.GetGenericArguments()[0]);
 
             if (listValues?.Count > 0)
             {

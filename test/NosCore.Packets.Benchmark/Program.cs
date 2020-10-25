@@ -49,7 +49,7 @@ namespace NosCore.Packets.Benchmark
         [Benchmark(Description = "NosCore.Packets' Serializer (Expression tree)")]
         public bool ChickenAPI_Serializer_Serialize_X_Packets()
         {
-            for (int i = 0; i < NumberOfItems; i++)
+            for (var i = 0; i < NumberOfItems; i++)
             {
                 _chickenApiSerializer.Serialize(_testPacket!);
             }
@@ -60,7 +60,7 @@ namespace NosCore.Packets.Benchmark
         [Benchmark(Description = "SaltyEmu's Packet Factory, forked from OpenNos")]
         public bool SaltyEmu_Serializer_Serialize_X_Packets()
         {
-            for (int i = 0; i < NumberOfItems; i++)
+            for (var i = 0; i < NumberOfItems; i++)
             {
                 _saltyEmuPacketSerializer.Serialize(_testPacket!);
             }

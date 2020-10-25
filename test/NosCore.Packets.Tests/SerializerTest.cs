@@ -58,7 +58,8 @@ namespace NosCore.Packets.Tests
                 typeof(RbrPacket),
                 typeof(MlobjlstPacket),
                 typeof(SuccessPacket),
-                typeof(TargetOffPacket)
+                typeof(TargetOffPacket),
+                typeof(GuriPacket)
             });
 
         [TestMethod]
@@ -68,6 +69,7 @@ namespace NosCore.Packets.Tests
                 .Where(p => p.GetInterfaces().Contains(typeof(IPacket)) && p.IsClass && !p.IsAbstract).ToList());
             Assert.IsTrue(serializer != null);
         }
+
         [TestMethod]
         public void SerializePacketWithNullableOptional()
         {
@@ -90,6 +92,46 @@ namespace NosCore.Packets.Tests
             var packet = Serializer.Serialize(testPacket);
             Assert.AreEqual("n_inv 0 0 0 0.0.0.-1.0", packet);
         }
+
+        [TestMethod]
+        public void SerializePacketWithNullableOptionalInside()
+        {
+            var testPacket = new GuriPacket
+            {
+                Type = GuriPacketType.Dance,
+                Argument = 1,
+                EntityId = 2,
+                SecondArgument = null,
+                Value = null,
+            };
+
+            var packet = Serializer.Serialize(testPacket);
+            Assert.AreEqual("guri 2 1 2", packet);
+
+            testPacket = new GuriPacket
+            {
+                Type = GuriPacketType.Unknow,
+                Argument = 1,
+                EntityId = 2,
+                Value = 0,
+                SecondValue = 0
+            };
+
+            packet = Serializer.Serialize(testPacket);
+            Assert.AreEqual("guri 6 1 2 0 0", packet);
+
+            testPacket = new GuriPacket
+            {
+                Type = GuriPacketType.Effect,
+                Argument = 1,
+                EntityId = 2,
+                SecondArgument = 0,
+            };
+
+            packet = Serializer.Serialize(testPacket);
+            Assert.AreEqual("guri 10 1 0 2", packet);
+        }
+
 
         [TestMethod]
         public void SerializePacketWithNonPacketListNonSplitted()

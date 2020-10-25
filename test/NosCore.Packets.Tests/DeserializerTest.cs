@@ -61,6 +61,7 @@ namespace NosCore.Packets.Tests
                 typeof(CScalcPacket),
                 typeof(NsTestPacket),
                 typeof(NsTeStSubPacket),
+                typeof(CreateFamilyPacket),
             });
 
         [TestMethod]
@@ -288,6 +289,17 @@ namespace NosCore.Packets.Tests
             Assert.IsTrue(packet.Question == "test");
         }
 
+
+        [TestMethod]
+        public void DeserializeNullStringPacket()
+        {
+            var packet = (CreateFamilyPacket)Deserializer.Deserialize(
+                "glmk"
+            );
+            Assert.IsNull(packet.FamilyName);
+        }
+
+        
         [TestMethod]
         public void DeserializeInvalidValidationIsNotValidAndValidationResultIsFilled()
         {

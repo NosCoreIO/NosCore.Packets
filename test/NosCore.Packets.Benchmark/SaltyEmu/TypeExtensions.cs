@@ -47,10 +47,10 @@ namespace NosCore.Packets.Benchmark.SaltyEmu
                 throw new ArgumentNullException(nameof(delegateType));
             }
 
-            Type[] genericArguments = delegateType.GetGenericArguments();
-            Type[] argTypes = genericArguments.Length > 1 ? genericArguments.Take(genericArguments.Length - 1).ToArray() : Type.EmptyTypes;
+            var genericArguments = delegateType.GetGenericArguments();
+            var argTypes = genericArguments.Length > 1 ? genericArguments.Take(genericArguments.Length - 1).ToArray() : Type.EmptyTypes;
 
-            ConstructorInfo? constructor = type.GetConstructor(argTypes);
+            var constructor = type.GetConstructor(argTypes);
             if (constructor == null)
             {
                 if (argTypes.Length == 0)
@@ -62,8 +62,8 @@ namespace NosCore.Packets.Benchmark.SaltyEmu
             }
 
             var dynamicMethod = new DynamicMethod("DM$OBJ_FACTORY_" + type.Name, type, argTypes, type);
-            ILGenerator ilGen = dynamicMethod.GetILGenerator();
-            for (int i = 0; i < argTypes.Length; i++)
+            var ilGen = dynamicMethod.GetILGenerator();
+            for (var i = 0; i < argTypes.Length; i++)
             {
                 ilGen.Emit(OpCodes.Ldarg, i);
             }
@@ -80,7 +80,7 @@ namespace NosCore.Packets.Benchmark.SaltyEmu
         /// <returns></returns>
         public static object? CreateInstance(this Type type)
         {
-            if (Constructors.TryGetValue(type, out Func<object?>? constructor))
+            if (Constructors.TryGetValue(type, out var constructor))
             {
                 return constructor!();
             }
