@@ -85,7 +85,7 @@ namespace NosCore.Packets.Benchmark.SaltyEmu
 
         private string SerializeValue(Type? propertyType, object? value, IEnumerable<ValidationAttribute?>? validationAttributes, PacketIndexAttribute? packetIndexAttribute = null)
         {
-            if (propertyType == null && validationAttributes.All(a => a!.IsValid(value)))
+            if (propertyType == null && validationAttributes!.All(a => a!.IsValid(value)))
             {
                 return string.Empty;
             }

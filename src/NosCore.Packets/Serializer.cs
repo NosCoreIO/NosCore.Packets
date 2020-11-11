@@ -26,7 +26,7 @@ namespace NosCore.Packets
             var serializerMethod = typeof(Serializer).GetMethod(nameof(Initialize));
             foreach (var type in types)
             {
-                serializerMethod.MakeGenericMethod(type).Invoke(this, null);
+                serializerMethod!.MakeGenericMethod(type).Invoke(this, null);
             }
         }
 
@@ -37,7 +37,7 @@ namespace NosCore.Packets
             {
                 if (_packetSerializerDictionary.ContainsKey(typeof(T).Name))
                 {
-                    if (typeof(T).Namespace.Contains("ClientPackets"))
+                    if (typeof(T).Namespace!.Contains("ClientPackets"))
                     {
                         return;
                     }
@@ -52,18 +52,18 @@ namespace NosCore.Packets
         {
             var realType = packet.GetType();
             var deg = _packetSerializerDictionary[packet.GetType().Name];
-            var fullString = (string)deg.DynamicInvoke(packet, false);
+            var fullString = (string)deg.DynamicInvoke(packet, false)!;
             if (fullString.Contains(InjectionKey))
             {
                 //unfortunately some packets like DLG, DELAY can handle multiple type packet we can't build the full serializer at init, instead we inject serializer with reflection
                 foreach (var prop in realType.GetProperties().Where(p => p.PropertyType == typeof(IPacket)))
                 {
                     var place = fullString.IndexOf(InjectionKey, StringComparison.Ordinal);
-                    var value = realType.GetProperty(prop.Name).GetValue(packet, null);
+                    var value = realType.GetProperty(prop.Name)!.GetValue(packet, null);
                     fullString = fullString
                         .Remove(place, InjectionKey.Length)
                         .Insert(place,
-                            (string)_packetSerializerDictionary[value.GetType().Name].DynamicInvoke(value, true));
+                            (string)_packetSerializerDictionary[value!.GetType().Name].DynamicInvoke(value, true)!);
                 }
             }
 
@@ -83,13 +83,13 @@ namespace NosCore.Packets
         private Expression StringSerializer(Expression exp, bool isLastIndex, bool isOptional, Expression splitter)
         {
             var replace = Expression.Call(exp,
-                typeof(string).GetMethod("Replace", new[] { typeof(string), typeof(string) }),
+                typeof(string).GetMethod("Replace", new[] { typeof(string), typeof(string) })!,
                 Expression.Convert(splitter, typeof(string)),
                 Expression.Constant("^", typeof(string))
             );
 
             var nullOrEmpty = Expression.Call(null,
-                typeof(string).GetMethod("IsNullOrEmpty", new[] { typeof(string) }),
+                typeof(string).GetMethod("IsNullOrEmpty", new[] { typeof(string) })!,
                 Expression.Convert(splitter, typeof(string))
             );
 
@@ -126,7 +126,7 @@ namespace NosCore.Packets
         private Expression ConcatExpression(Expression left, Expression right)
         {
             return Expression.Convert(Expression.Call(
-                typeof(string).GetMethod("Concat", new[] { typeof(object), typeof(object) }),
+                typeof(string).GetMethod("Concat", new[] { typeof(object), typeof(object) })!,
                 Expression.Convert(left, typeof(object)),
                 Expression.Convert(right, typeof(object))), typeof(object));
         }
@@ -154,7 +154,7 @@ namespace NosCore.Packets
             PacketIndexAttribute indexAttr, Type type, string packetSplitter, Expression propertySplitter)
         {
             var subtype = type.GenericTypeArguments.Any() ? type.GenericTypeArguments[0] : type.GetElementType();
-            var param = Expression.Parameter(subtype);
+            var param = Expression.Parameter(subtype!);
             var isPacketList = false;
             if (typeof(IPacket).IsAssignableFrom(subtype))
             {
@@ -165,17 +165,17 @@ namespace NosCore.Packets
             var selectExp = Expression.Call(
                 typeof(Enumerable),
                 "Select",
-                new[] { subtype, typeof(string) },
+                new[] { subtype, typeof(string) }!,
                 specificTypeExpression,
                 Expression.Lambda(
                     Expression.Convert(isPacketList
-                        ? PacketSerializer(injectedPacket, indexAttr, param, subtype, 0, propertySplitter, "", true)
-                        : PropertySerializer(injectedPacket, indexAttr, subtype, param, 0,
+                        ? PacketSerializer(injectedPacket, indexAttr, param, subtype!, 0, propertySplitter, "", true)
+                        : PropertySerializer(injectedPacket, indexAttr, subtype!, param, 0,
                             Expression.Constant("")), typeof(string)), param)
             );
 
             var listJoin = Expression.Convert(Expression.Call(
-                    typeof(string).GetMethod("Join", new[] { typeof(string), typeof(IEnumerable<string>) }),
+                    typeof(string).GetMethod("Join", new[] { typeof(string), typeof(IEnumerable<string>) })!,
                     isPacketList || indexAttr is PacketListIndexAttribute ? Expression.Constant(packetSplitter, typeof(string)) : propertySplitter,
                     selectExp),
                 typeof(object));
