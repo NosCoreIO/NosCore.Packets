@@ -56,16 +56,16 @@ namespace NosCore.Packets
             // for internal variables
             var instance = Expression.Variable(listGenericType, "list");
 
-            var assign = Expression.Assign(instance, Expression.New(ctor));
+            var assign = Expression.Assign(instance, Expression.New(ctor!));
 
             var addMethod = listGenericType.GetMethod("AddRange", new[] { typeof(IEnumerable<>).MakeGenericType(genericType) });
 
             // Enumerable.Cast<T>
-            var castMethod = typeof(Enumerable).GetMethod("Cast", new[] { typeof(IEnumerable) }).MakeGenericMethod(genericType);
+            var castMethod = typeof(Enumerable).GetMethod("Cast", new[] { typeof(IEnumerable) })!.MakeGenericMethod(genericType);
 
             // For the parameters there is a params Expression[], so no explicit array necessary
             var castCall = Expression.Call(castMethod, values);
-            var addCall = Expression.Call(instance, addMethod, castCall);
+            var addCall = Expression.Call(instance, addMethod!, castCall);
 
             var block = Expression.Block(
                 new[] { instance },
@@ -87,7 +87,7 @@ namespace NosCore.Packets
             var deserializerMethod = typeof(Deserializer).GetMethod(nameof(Initialize));
             foreach (var type in types)
             {
-                deserializerMethod.MakeGenericMethod(type).Invoke(this, null);
+                deserializerMethod!.MakeGenericMethod(type).Invoke(this, null);
             }
         }
 
@@ -96,7 +96,7 @@ namespace NosCore.Packets
             var header = typeof(T).GetCustomAttribute<PacketHeaderAttribute>()?.Identification;
             if (_packetDeserializerDictionary.ContainsKey(header ?? typeof(T).Name))
             {
-                if (typeof(T).Namespace.Contains("ServerPackets"))
+                if (typeof(T).Namespace!.Contains("ServerPackets"))
                 {
                     return;
                 }
@@ -246,13 +246,13 @@ namespace NosCore.Packets
                             deg.ValidationResult ??= validate;
                         }
 
-                        if (packetBasePropertyInfo.Key.Item1.IsEnum && !Enum.IsDefined(packetBasePropertyInfo.Key.Item1, value))
+                        if (packetBasePropertyInfo.Key.Item1.IsEnum && !Enum.IsDefined(packetBasePropertyInfo.Key.Item1, value!))
                         {
                             deg.ValidationResult = new ValidationResult("Invalid Enum value",
                                 new[] { packetBasePropertyInfo.Key.Item3 });
                         }
 
-                        if (deg.ValidationResult?.ErrorMessage.Length > 0)
+                        if (deg.ValidationResult?.ErrorMessage!.Length > 0)
                         {
                             deg.IsValid = false;
                         }
@@ -355,7 +355,7 @@ namespace NosCore.Packets
 
                             for (var index = 0; index < packSeperators.Count; index++)
                             {
-                                var c = index == packSeperators.Count - 1 ? -1 : subpacket.IndexOf(packSeperators[index + 1].SpecialSeparator ?? ".", StringComparison.Ordinal);
+                                var c = index == packSeperators.Count - 1 ? -1 : subpacket.IndexOf(packSeperators[index + 1]!.SpecialSeparator ?? ".", StringComparison.Ordinal);
                                 if (c == -1)
                                 {
                                     toConvert += subpacket;
