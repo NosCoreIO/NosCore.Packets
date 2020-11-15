@@ -33,13 +33,16 @@ namespace NosCore.Packets.ServerPackets.Inventory
         [PacketIndex(5)]
         public CharacterClassType ClassType { get; set; }
 
-        [PacketIndex(6)]
+        [PacketIndex(6, SpecialSeparator = ".")]
         public InEquipmentSubPacket? EqSubPacket { get; set; }
 
-        [PacketIndex(7, SpecialSeparator = "")]
-        public UpgradeRareSubPacket? WeaponUpgradeRarePacket { get; set; }
+        [PacketIndex(7)]
+        public byte Unknown { get; set; }
 
         [PacketIndex(8, SpecialSeparator = "")]
+        public UpgradeRareSubPacket? WeaponUpgradeRarePacket { get; set; }
+
+        [PacketIndex(9, SpecialSeparator = "")]
         public UpgradeRareSubPacket? ArmorUpgradeRarePacket { get; set; }
     }
 }
