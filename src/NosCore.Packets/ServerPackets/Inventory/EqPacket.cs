@@ -36,13 +36,13 @@ namespace NosCore.Packets.ServerPackets.Inventory
         [PacketIndex(6, SpecialSeparator = ".")]
         public InEquipmentSubPacket? EqSubPacket { get; set; }
 
-        [PacketIndex(7)]
-        public byte Unknown { get; set; }
-
-        [PacketIndex(8, SpecialSeparator = "")]
+        [PacketIndex(7, SpecialSeparator = "")]
         public UpgradeRareSubPacket? WeaponUpgradeRarePacket { get; set; }
 
-        [PacketIndex(9, SpecialSeparator = "")]
+        [PacketIndex(8, SpecialSeparator = "")]
         public UpgradeRareSubPacket? ArmorUpgradeRarePacket { get; set; }
+
+        [PacketIndex(9)]
+        public byte Size { get; set; }
     }
 }
