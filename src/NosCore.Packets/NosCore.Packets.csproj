@@ -27,7 +27,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="NosCore.Shared" Version="1.10.0" />
+		<PackageReference Include="NosCore.Shared" Version="1.11.2" />
 		<PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
 	</ItemGroup>
 
