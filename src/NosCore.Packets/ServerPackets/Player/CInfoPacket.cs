@@ -33,7 +33,7 @@ namespace NosCore.Packets.ServerPackets.Player
         public long CharacterId { get; set; }
 
         [PacketIndex(6)]
-        public AuthorityUIType Authority { get; set; }
+        public AuthorityType Authority { get; set; }
 
         [PacketIndex(7)]
         public GenderType Gender { get; set; }
