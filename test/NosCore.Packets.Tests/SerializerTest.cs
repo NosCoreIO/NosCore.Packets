@@ -514,7 +514,7 @@ namespace NosCore.Packets.Tests
                 FamilyId = 0,
                 FamilyName = null,
                 CharacterId = 1,
-                Authority = AuthorityUIType.User,
+                Authority = AuthorityType.User,
                 Gender = GenderType.Male,
                 HairStyle = HairStyleType.HairStyleA,
                 HairColor = HairColorType.DarkPurple,
@@ -680,7 +680,7 @@ namespace NosCore.Packets.Tests
                 Direction = 0,
                 InCharacterSubPacket = new InCharacterSubPacket
                 {
-                    Authority = AuthorityUIType.GameMaster,
+                    Authority = AuthorityType.GameMaster,
                     Gender = 0,
                     HairStyle = 0,
                     HairColor = 0,

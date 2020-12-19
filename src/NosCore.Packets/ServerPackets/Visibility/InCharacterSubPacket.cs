@@ -16,7 +16,7 @@ namespace NosCore.Packets.ServerPackets.Visibility
     public class InCharacterSubPacket : PacketBase
     {
         [PacketIndex(0)]
-        public AuthorityUIType Authority { get; set; }
+        public AuthorityType Authority { get; set; }
 
         [PacketIndex(1)]
         public GenderType Gender { get; set; }
