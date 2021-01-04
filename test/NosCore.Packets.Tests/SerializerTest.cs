@@ -59,7 +59,8 @@ namespace NosCore.Packets.Tests
                 typeof(MlobjlstPacket),
                 typeof(SuccessPacket),
                 typeof(TargetOffPacket),
-                typeof(GuriPacket)
+                typeof(GuriPacket),
+                typeof(BiPacket)
             });
 
         [TestMethod]
@@ -353,6 +354,30 @@ namespace NosCore.Packets.Tests
                 }
             );
             Assert.AreEqual($"delay 3000 3 #u_i^1^0^1^1^2^0", packet);
+        }
+
+        [TestMethod]
+        public void SerializeWithPacketAsPropertyWithNullable()
+        {
+            var packet = Serializer.Serialize(
+                    new DlgPacket
+                    {
+                        YesPacket = new BiPacket
+                        {
+                            PocketType = PocketType.Etc,
+                            Slot = 1,
+                            Option = RequestDeletionType.Requested
+                        },
+                        NoPacket = new BiPacket
+                        {
+                            PocketType = PocketType.Etc,
+                            Slot = 1,
+                            Option = RequestDeletionType.Declined
+                        },
+                        Question = "test"
+                    });
+
+            Assert.AreEqual($"dlg #b_i^2^1^1 #b_i^2^1^5 test", packet);
         }
 
         [TestMethod]
