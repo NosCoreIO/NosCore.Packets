@@ -222,12 +222,12 @@ namespace NosCore.Packets
                         property.PropertyType,
                         Expression.Property(specificTypeExpression, property.Name),
                         maxIndex,
-                        Expression.Condition(injectedPacket, Expression.Constant("^", typeof(object)),
+                        Expression.Condition(injectedPacket, Expression.Constant(string.Empty, typeof(object)),
                             Expression.Constant(index.SpecialSeparator, typeof(object))))
                     , typeof(object));
 
                 var splitter = Expression.Condition(injectedPacket,
-                    Expression.Constant(string.Empty, typeof(object)),
+                    Expression.Constant("^", typeof(object)),
                     index.SpecialSeparator != null
                         ? Expression.Constant(indexAttr.SpecialSeparator ?? string.Empty, typeof(object))
                         : (Expression)Expression.Convert(propertySplitter, typeof(object)));
