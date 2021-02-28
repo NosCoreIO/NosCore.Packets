@@ -3885,7 +3885,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         MaskDoesNotMatchPartner = 968,
         // <summary>
-        // You're already wearing the same mask.
+        // You're already wearing the same skin.
         // <summary>
         AlreadyWearingSameMask = 969,
         // <summary>

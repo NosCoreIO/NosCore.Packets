@@ -36,6 +36,9 @@ namespace NosCore.Packets.Tests
     {
         static readonly IDeserializer Deserializer = new Deserializer(
             new[] {
+                typeof(NsTestPacket),
+                typeof(NsTeStSubPacket),
+                typeof(WorldCharacterCount),
                 typeof(ClistPacket),
                 typeof(MinilandInvitePacket),
                 typeof(WhisperPacket),
@@ -59,8 +62,6 @@ namespace NosCore.Packets.Tests
                 typeof(FinfoSubPackets),
                 typeof(ClientVersionSubPacket),
                 typeof(CScalcPacket),
-                typeof(NsTestPacket),
-                typeof(NsTeStSubPacket),
                 typeof(CreateFamilyPacket),
             });
 
@@ -82,7 +83,7 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void PacketNsTestLogin()
         {
-            var packet = (NsTestPacket)Deserializer.Deserialize("NsTeST 4 gorlik 2 31135 79.110.84.132:4016:1:1.7.Feniks 79.110.84.132:4014:1:1.5.Feniks 79.110.84.132:4015:0:1.6.Feniks 79.110.84.132:4011:7:1.2.Feniks 79.110.84.132:4012:1:1.3.Feniks 79.110.84.132:4013:1:1.4.Feniks 79.110.84.132:4010:1:1.1.Feniks -1:-1:-1:10000.10000.1");
+            var packet = (NsTestPacket)Deserializer.Deserialize("NsTeST 4 gorlik 2 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 1 3 2 2 7 1 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 31135 79.110.84.132:4016:1:1.7.Feniks 79.110.84.132:4014:1:1.5.Feniks 79.110.84.132:4015:0:1.6.Feniks 79.110.84.132:4011:7:1.2.Feniks 79.110.84.132:4012:1:1.3.Feniks 79.110.84.132:4013:1:1.4.Feniks 79.110.84.132:4010:1:1.1.Feniks -1:-1:-1:10000.10000.1");
             Assert.AreEqual("gorlik", packet.AccountName);
             Assert.AreEqual(8, packet.SubPacket!.Count);
         }
