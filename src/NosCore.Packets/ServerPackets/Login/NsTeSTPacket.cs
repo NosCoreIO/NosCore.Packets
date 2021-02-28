@@ -26,9 +26,15 @@ namespace NosCore.Packets.ServerPackets.Login
         [PacketIndex(2, IsOptional = true)]
         public int? Unknown { get; set; } = 2;
 
-        [PacketListIndex(3, Length = 35, SpecialSeparator = " ")]
+        //0-3 English / International
+        //4-7 German
+        //8-11 French
+        //12-15 Italian
+        //16-19 Polish
+        //20-23 Spanish
+        [PacketListIndex(3, Length = 36, SpecialSeparator = " ")]
         public List<WorldCharacterCount> ServerCharacters { get; set; } =
-            Enumerable.Repeat(0, 35).Select(_ => new WorldCharacterCount()).ToList();
+            Enumerable.Repeat(0, 36).Select(_ => new WorldCharacterCount()).ToList();
 
         [PacketIndex(4)]
         public int SessionId { get; set; }
