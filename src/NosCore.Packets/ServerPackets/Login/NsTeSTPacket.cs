@@ -28,7 +28,7 @@ namespace NosCore.Packets.ServerPackets.Login
 
         [PacketListIndex(3, Length = 35, SpecialSeparator = " ")]
         public List<WorldCharacterCount> ServerCharacters { get; set; } =
-            Enumerable.Repeat(new WorldCharacterCount(), 35).ToList();
+            Enumerable.Repeat(0, 35).Select(_ => new WorldCharacterCount()).ToList();
 
         [PacketIndex(4)]
         public int SessionId { get; set; }
