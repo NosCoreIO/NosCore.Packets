@@ -23,8 +23,8 @@ namespace NosCore.Packets.ServerPackets.Login
         public string? AccountName { get; set; }
 
         //this seems to be always 2 in case of new auth and null else
-        [PacketIndex(2)] 
-        public int Unknown { get; set; } = 2;
+        [PacketIndex(2, IsOptional = true)]
+        public int? Unknown { get; set; } = 2;
 
         [PacketListIndex(3, Length = 35, SpecialSeparator = " ")]
         public List<WorldCharacterCount> ServerCharacters { get; set; } =
