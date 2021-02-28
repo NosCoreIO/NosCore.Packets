@@ -512,10 +512,10 @@ namespace NosCore.Packets.Tests
                 AccountName = "test",
                 SubPacket = subpacket,
                 SessionId = 1,
-                RegionType = RegionType.EN
+                RegionType = RegionType.EN,
             };
             var packet = Serializer.Serialize(nstestpacket);
-            Assert.AreEqual("NsTeST 0 test 1 -1:-1:-1:10000.10000.1", packet);
+            Assert.AreEqual("NsTeST 0 test 2 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 1 -1:-1:-1:10000.10000.1", packet);
         }
 
         [TestMethod]

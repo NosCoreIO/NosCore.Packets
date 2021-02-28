@@ -207,9 +207,9 @@ namespace NosCore.Packets
                     Body = bodyIndex >= packetContent.Length ? "" : packetContent.Substring(bodyIndex)
                 };
             }
-            catch
+            catch (Exception ex)
             {
-                var exc = new ArgumentException();
+                var exc = new ArgumentException(null, ex);
                 exc.Data["Packet"] = packetContent;
                 throw exc;
             }
@@ -287,7 +287,7 @@ namespace NosCore.Packets
                     (Nullable.GetUnderlyingType(prop)?.IsEnum ?? false):
                     return DeserializeEnum(item1, matches[currentIndex++]);
                 case var prop when typeof(ICollection).IsAssignableFrom(prop):
-                    return DeserializeList(packetBasePropertyInfo.Item1.GetGenericArguments()[0], packetBasePropertyInfo.Item2, matches, ref currentIndex, isMaxIndex);
+                    return DeserializeList(packetBasePropertyInfo.Item1.GetElementType() ?? packetBasePropertyInfo.Item1.GetGenericArguments()[0], packetBasePropertyInfo.Item2, matches, ref currentIndex, isMaxIndex);
                 case var prop when prop == typeof(IPacket):
                     return Deserialize(matches[currentIndex++]);
                 case var prop when typeof(IPacket).IsAssignableFrom(prop):

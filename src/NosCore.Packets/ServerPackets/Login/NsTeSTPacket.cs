@@ -5,6 +5,7 @@
 // -----------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
@@ -22,14 +23,18 @@ namespace NosCore.Packets.ServerPackets.Login
         public string? AccountName { get; set; }
 
         //this seems to be always 2 in case of new auth and null else
-        [PacketIndex(2, IsOptional = true)]
-        public int? Unknown { get; set; }
+        [PacketIndex(2)] 
+        public int Unknown { get; set; } = 2;
 
-        [PacketIndex(3)]
+        [PacketListIndex(3, Length = 35, SpecialSeparator = " ")]
+        public List<WorldCharacterCount> ServerCharacters { get; set; } =
+            Enumerable.Repeat(new WorldCharacterCount(), 35).ToList();
+
+        [PacketIndex(4)]
         public int SessionId { get; set; }
 
 
-        [PacketListIndex(4)]
+        [PacketListIndex(5)]
         public List<NsTeStSubPacket?>? SubPacket { get; set; }
     }
 }

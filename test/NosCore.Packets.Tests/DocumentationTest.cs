@@ -96,6 +96,10 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public async Task I18NDocumentation()
         {
+            if (Directory.Exists("output"))
+            {
+                Directory.Delete("output", true);
+            }
             var extractor = new Extractor(new Mock<ILogger<Extractor>>().Object);
             var clientfactory = new Mock<IHttpClientFactory>();
             var httpClient = new HttpClient();
@@ -110,7 +114,6 @@ namespace NosCore.Packets.Tests
             var name = $"NostaleData{Path.DirectorySeparatorChar}NScliData_UK.NOS";
             manifest.Entries = manifest.Entries.Where(s => name == s.File).ToArray();
             await client.DownloadClientAsync(manifest);
-
             var dest = $".{Path.DirectorySeparatorChar}output{Path.DirectorySeparatorChar}parser{Path.DirectorySeparatorChar}";
             var fileInfo =
                 new FileInfo($".{Path.DirectorySeparatorChar}output{Path.DirectorySeparatorChar}{name}");
