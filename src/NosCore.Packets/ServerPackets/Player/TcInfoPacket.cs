@@ -44,7 +44,7 @@ namespace NosCore.Packets.ServerPackets.Player
         public string? Family { get; set; }
 
         [PacketIndex(7)]
-        public CharacterRep ReputationIco { get; set; }
+        public ExtendedReputationType ReputationIco { get; set; }
 
         [PacketIndex(8)]
         public CharacterDignity DignityIco { get; set; }
