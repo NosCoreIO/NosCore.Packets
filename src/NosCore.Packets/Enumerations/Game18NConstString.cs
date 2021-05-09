@@ -10068,5 +10068,57 @@ namespace NosCore.Packets.Enumerations
         // Congratulations! %s is now a Master Angler!<NEW_TYPE><0>
         // <summary>
         MasterAngler = 2517,
+        // <summary>
+        // Cooking cancelled.
+        // <summary>
+        CookingCancelled = 2518,
+        // <summary>
+        // Cannot cook when requirements have not been met.
+        // <summary>
+        CannotCookRequirementNotMet = 2519,
+        // <summary>
+        // Excellent! Looks like your culinary skills worked.
+        // <summary>
+        CulinarySkillsWorked = 2520,
+        // <summary>
+        // Oh... I haven't cooked it through.
+        // <summary>
+        HaveNotCookedIt = 2521,
+        // <summary>
+        // Oops, I've made a mess!
+        // <summary>
+        HaveMadeMess = 2522,
+        // <summary>
+        // Your side job is already the same one the specialist currently has.
+        // <summary>
+        SideJobAlreadySame = 2523,
+        // <summary>
+        // Your side job will be changed to the specialist's job.
+        // <summary>
+        SideJobWillBeChanged = 2524,
+        // <summary>
+        // You need to choose your specialist as your side job first in order to change it.
+        // <summary>
+        ChooseSpecialistAsSideJobFirst = 2525,
+        // <summary>
+        // Do you want to change your side job to your specialist's job?
+        // <summary>
+        AskChangeSideJob = 2526,
+        // <summary>
+        // Item cannot be used at current satiety level.
+        // <summary>
+        ItemCannotBeUsedCurrentSasiety = 2527,
+        // <summary>
+        // Fullness points: + [%d]<NEW_TYPE><0>
+        // <summary>
+        PositiveFullnessPoints = 2528,
+        // <summary>
+        // Fullness points: - [%d]<NEW_TYPE><0>
+        // <summary>
+        NegativeFullNessPoints = 2529,
+        // <summary>
+        // I'm full, I couldn't eat another morsel!
+        // <summary>
+        FullMorsel = 2530,
     }
 }
