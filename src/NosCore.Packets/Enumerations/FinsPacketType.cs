@@ -9,6 +9,8 @@ namespace NosCore.Packets.Enumerations
     public enum FinsPacketType : byte
     {
         Accepted = 1,
-        Rejected = 2
+        Rejected = 2,
+        MarriageRequestAccepted = 34,
+        MarriageRequestDenied = 69
     }
 }
