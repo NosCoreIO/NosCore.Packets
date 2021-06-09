@@ -73,7 +73,7 @@ namespace NosCore.Packets.Tests
                 foreach (var packet in GetPackets(packetGroup))
                 {
                     builder.AppendLine(
-                        $"- [{packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification}](src/NosCore.Packets/ClientPackets/{packetGroup.Key}/{packet}.cs) *{string.Join(" | ", ListScopes((packet.GetCustomAttributes(typeof(PacketHeaderAttribute))?.FirstOrDefault() as PacketHeaderAttribute)?.Scopes ?? Scope.Unknown))}*");
+                        $"- [{packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification}](../src/NosCore.Packets/ClientPackets/{packetGroup.Key}/{packet.Name}.cs) *{string.Join(" | ", ListScopes((packet.GetCustomAttributes(typeof(PacketHeaderAttribute))?.FirstOrDefault() as PacketHeaderAttribute)?.Scopes ?? Scope.Unknown))}*");
                 }
             }
 
@@ -86,7 +86,7 @@ namespace NosCore.Packets.Tests
                 foreach (var packet in GetPackets(packetGroup))
                 {
                     builder.AppendLine(
-                        $"- [{packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification}](src/NosCore.Packets/ServerPackets/{packetGroup.Key}/{packet}.cs) *{string.Join(" | ", ListScopes((packet.GetCustomAttributes(typeof(PacketHeaderAttribute))?.FirstOrDefault() as PacketHeaderAttribute)?.Scopes ?? Scope.Unknown))}*");
+                        $"- [{packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification}](../src/NosCore.Packets/ServerPackets/{packetGroup.Key}/{packet.Name}.cs) *{string.Join(" | ", ListScopes((packet.GetCustomAttributes(typeof(PacketHeaderAttribute))?.FirstOrDefault() as PacketHeaderAttribute)?.Scopes ?? Scope.Unknown))}*");
                 }
             }
 
