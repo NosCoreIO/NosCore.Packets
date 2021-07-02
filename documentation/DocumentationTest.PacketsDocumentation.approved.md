@@ -83,6 +83,7 @@
 
 ### Inventory
 - [b_i](../src/NosCore.Packets/ClientPackets/Inventory/BiPacket.cs) *InGame*
+- [isort](../src/NosCore.Packets/ClientPackets/Inventory/ISortPacket.cs) *InGame*
 - [mve](../src/NosCore.Packets/ClientPackets/Inventory/MvePacket.cs) *InGame*
 - [mvi](../src/NosCore.Packets/ClientPackets/Inventory/MviPacket.cs) *InGame*
 - [pdti](../src/NosCore.Packets/ClientPackets/Inventory/PdtiPacket.cs) *InGame*
