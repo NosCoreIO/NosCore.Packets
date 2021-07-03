@@ -18,5 +18,8 @@ namespace NosCore.Packets.ServerPackets.Battle
 
         [PacketIndex(1)]
         public long TargetId { get; set; }
+        
+        [PacketIndex(2)]
+        public short Unknow { get; set; } // TODO : Find what is it
     }
 }
