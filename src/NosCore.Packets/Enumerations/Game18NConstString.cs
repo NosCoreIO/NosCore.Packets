@@ -10120,5 +10120,9 @@ namespace NosCore.Packets.Enumerations
         // I'm full, I couldn't eat another morsel!
         // <summary>
         FullMorsel = 2530,
+        // <summary>
+        // You receive an extra raid box from the current Raid Box Event.
+        // <summary>
+        ExtraRaidBox = 2531,
     }
 }
