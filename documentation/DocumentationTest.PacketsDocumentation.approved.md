@@ -369,6 +369,7 @@
 - [ch_dm](../src/NosCore.Packets/ServerPackets/UI/ChDMPacket.cs) *InGame*
 - [delay](../src/NosCore.Packets/ServerPackets/UI/DelayPacket.cs) *InGame*
 - [dlg](../src/NosCore.Packets/ServerPackets/UI/DlgPacket.cs) *InGame*
+- [fishopen](../src/NosCore.Packets/ServerPackets/UI/FishOpenPacket.cs) *InGame*
 - [guri](../src/NosCore.Packets/ServerPackets/UI/GuriPacket.cs) *InGame*
 - [icon](../src/NosCore.Packets/ServerPackets/UI/IconPacket.cs) *InGame*
 - [infoi](../src/NosCore.Packets/ServerPackets/UI/InfoiPacket.cs) *InGame*
