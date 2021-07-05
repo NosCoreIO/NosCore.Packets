@@ -81,6 +81,9 @@
 - [DAC](../src/NosCore.Packets/ClientPackets/Infrastructure/DacPacket.cs) *OnCharacterScreen*
 - [0](../src/NosCore.Packets/ClientPackets/Infrastructure/ZeroPacket.cs) *OnCharacterScreen | InTrade | InGame*
 
+### Instance
+- [hidn](../src/NosCore.Packets/ClientPackets/Instance/HidnPacket.cs) *InGame*
+
 ### Inventory
 - [b_i](../src/NosCore.Packets/ClientPackets/Inventory/BiPacket.cs) *InGame*
 - [isort](../src/NosCore.Packets/ClientPackets/Inventory/ISortPacket.cs) *InGame*
@@ -124,6 +127,10 @@
 ### Parcel
 - [pcl](../src/NosCore.Packets/ClientPackets/Parcel/PclPacket.cs) *InGame*
 - [pst](../src/NosCore.Packets/ClientPackets/Parcel/PstClientPacket.cs) *InGame*
+
+### Passion
+- [fish](../src/NosCore.Packets/ClientPackets/Passion/FishPacket.cs) *InGame*
+- [food](../src/NosCore.Packets/ClientPackets/Passion/FoodPacket.cs) *InGame*
 
 ### Player
 - [rsfi](../src/NosCore.Packets/ClientPackets/Player/RsfiPacket.cs) *InGame*
@@ -285,6 +292,7 @@
 - [at](../src/NosCore.Packets/ServerPackets/MiniMap/AtPacket.cs) *InGame*
 - [c_map](../src/NosCore.Packets/ServerPackets/MiniMap/CMapPacket.cs) *InGame*
 - [rsfp](../src/NosCore.Packets/ServerPackets/MiniMap/RsfpPacket.cs) *InGame*
+- [wp](../src/NosCore.Packets/ServerPackets/MiniMap/WpPacket.cs) *InGame*
 
 ### Movement
 - [dir](../src/NosCore.Packets/ServerPackets/Movement/DirPacket.cs) *InGame*
