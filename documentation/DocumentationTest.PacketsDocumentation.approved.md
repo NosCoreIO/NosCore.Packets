@@ -83,6 +83,7 @@
 - [0](../src/NosCore.Packets/ClientPackets/Infrastructure/ZeroPacket.cs) *OnCharacterScreen | InTrade | InGame*
 
 ### Instance
+- [escape](../src/NosCore.Packets/ClientPackets/Instance/EscapePacket.cs) *InGame*
 - [hidn](../src/NosCore.Packets/ClientPackets/Instance/HidnPacket.cs) *InGame*
 - [score](../src/NosCore.Packets/ClientPackets/Instance/ScorePacket.cs) *InGame*
 
