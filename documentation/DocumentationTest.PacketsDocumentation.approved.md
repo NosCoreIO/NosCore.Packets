@@ -207,6 +207,7 @@
 - [success](../src/NosCore.Packets/ServerPackets/CharacterSelectionScreen/SuccessPacket.cs) *InGame*
 
 ### Chats
+- [csp](../src/NosCore.Packets/ServerPackets/Chats/BubblePacket.cs) *InGame*
 - [IconInfo](../src/NosCore.Packets/ServerPackets/Chats/IconInfoPacket.cs) *InGame*
 - [sayi2](../src/NosCore.Packets/ServerPackets/Chats/Sayi2Packet.cs) *InGame*
 - [sayi](../src/NosCore.Packets/ServerPackets/Chats/SayiPacket.cs) *InGame*
