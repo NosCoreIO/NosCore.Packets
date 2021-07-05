@@ -381,6 +381,7 @@
 - [qnai2](../src/NosCore.Packets/ServerPackets/UI/Qnai2Packet.cs) *InGame*
 - [qna](../src/NosCore.Packets/ServerPackets/UI/QnaPacket.cs) *InGame*
 - [ta_rank](../src/NosCore.Packets/ServerPackets/UI/TARankPacket.cs) *InGame*
+- [ta_close](../src/NosCore.Packets/ServerPackets/UI/TeamArenaClosePacket.cs) *InGame*
 - [wopen](../src/NosCore.Packets/ServerPackets/UI/WopenPacket.cs) *InGame*
 - [zzim](../src/NosCore.Packets/ServerPackets/UI/ZzimPacket.cs) *InGame*
 
