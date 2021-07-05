@@ -84,6 +84,7 @@
 
 ### Instance
 - [escape](../src/NosCore.Packets/ClientPackets/Instance/EscapePacket.cs) *InGame*
+- [git](../src/NosCore.Packets/ClientPackets/Instance/GitPacket.cs) *InGame*
 - [hidn](../src/NosCore.Packets/ClientPackets/Instance/HidnPacket.cs) *InGame*
 - [score](../src/NosCore.Packets/ClientPackets/Instance/ScorePacket.cs) *InGame*
 
