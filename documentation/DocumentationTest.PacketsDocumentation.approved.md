@@ -84,6 +84,7 @@
 
 ### Instance
 - [hidn](../src/NosCore.Packets/ClientPackets/Instance/HidnPacket.cs) *InGame*
+- [score](../src/NosCore.Packets/ClientPackets/Instance/ScorePacket.cs) *InGame*
 
 ### Inventory
 - [b_i](../src/NosCore.Packets/ClientPackets/Inventory/BiPacket.cs) *InGame*
