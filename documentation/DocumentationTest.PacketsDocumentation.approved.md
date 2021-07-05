@@ -119,6 +119,7 @@
 - [preq](../src/NosCore.Packets/ClientPackets/Movement/PreqPacket.cs) *InTrade | InGame*
 - [pulse](../src/NosCore.Packets/ClientPackets/Movement/PulsePacket.cs) *InTrade | InGame*
 - [rest](../src/NosCore.Packets/ClientPackets/Movement/SitPacket.cs) *InTrade | InGame*
+- [sreq](../src/NosCore.Packets/ClientPackets/Movement/SreqPacket.cs) *InGame*
 - [walk](../src/NosCore.Packets/ClientPackets/Movement/WalkPacket.cs) *InGame*
 
 ### Npcs
