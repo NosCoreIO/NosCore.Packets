@@ -129,10 +129,6 @@
 - [pcl](../src/NosCore.Packets/ClientPackets/Parcel/PclPacket.cs) *InGame*
 - [pst](../src/NosCore.Packets/ClientPackets/Parcel/PstClientPacket.cs) *InGame*
 
-### Passion
-- [fish](../src/NosCore.Packets/ClientPackets/Passion/FishPacket.cs) *InGame*
-- [food](../src/NosCore.Packets/ClientPackets/Passion/FoodPacket.cs) *InGame*
-
 ### Player
 - [rsfi](../src/NosCore.Packets/ClientPackets/Player/RsfiPacket.cs) *InGame*
 - [snap](../src/NosCore.Packets/ClientPackets/Player/SnapPacket.cs) *InTrade | InGame*
@@ -311,6 +307,8 @@
 - [eff](../src/NosCore.Packets/ServerPackets/Player/EffectPacket.cs) *InGame*
 - [eqinfo](../src/NosCore.Packets/ServerPackets/Player/EquipmentInfoPacket.cs) *InGame*
 - [fd](../src/NosCore.Packets/ServerPackets/Player/FdPacket.cs) *InGame*
+- [fish](../src/NosCore.Packets/ServerPackets/Player/FishPacket.cs) *InGame*
+- [food](../src/NosCore.Packets/ServerPackets/Player/FoodPacket.cs) *InGame*
 - [fs](../src/NosCore.Packets/ServerPackets/Player/FsPacket.cs) *InGame*
 - [levelup](../src/NosCore.Packets/ServerPackets/Player/LevelUpPacket.cs) *InGame*
 - [lev](../src/NosCore.Packets/ServerPackets/Player/LevPacket.cs) *InGame*

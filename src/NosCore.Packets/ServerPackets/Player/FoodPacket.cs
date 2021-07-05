@@ -1,7 +1,7 @@
 ﻿using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 
-namespace NosCore.Packets.ClientPackets.Passion
+namespace NosCore.Packets.ServerPackets.Player
 {
     [PacketHeader("food", Scope.InGame)]
     public class FoodPacket : PacketBase
