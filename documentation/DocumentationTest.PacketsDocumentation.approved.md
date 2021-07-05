@@ -9,6 +9,7 @@
 - [multi_target_list_sub_packet](../src/NosCore.Packets/ClientPackets/Battle/MultiTargetListSubPacket.cs) *InGame*
 - [ncif](../src/NosCore.Packets/ClientPackets/Battle/NcifPacket.cs) *InTrade | InGame*
 - [u_as](../src/NosCore.Packets/ClientPackets/Battle/UseAoeSkillPacket.cs) *InGame*
+- [ob_a](../src/NosCore.Packets/ClientPackets/Battle/UseIconFalconSkillPacket.cs) *InGame*
 - [u_s](../src/NosCore.Packets/ClientPackets/Battle/UseSkillPacket.cs) *InGame*
 
 ### Bazaar
