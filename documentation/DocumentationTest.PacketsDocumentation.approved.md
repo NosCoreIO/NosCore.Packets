@@ -9,6 +9,7 @@
 - [multi_target_list_sub_packet](../src/NosCore.Packets/ClientPackets/Battle/MultiTargetListSubPacket.cs) *InGame*
 - [ncif](../src/NosCore.Packets/ClientPackets/Battle/NcifPacket.cs) *InTrade | InGame*
 - [u_as](../src/NosCore.Packets/ClientPackets/Battle/UseAoeSkillPacket.cs) *InGame*
+- [ob_a](../src/NosCore.Packets/ClientPackets/Battle/UseIconFalconSkillPacket.cs) *InGame*
 - [u_s](../src/NosCore.Packets/ClientPackets/Battle/UseSkillPacket.cs) *InGame*
 
 ### Bazaar
@@ -81,6 +82,12 @@
 - [DAC](../src/NosCore.Packets/ClientPackets/Infrastructure/DacPacket.cs) *OnCharacterScreen*
 - [0](../src/NosCore.Packets/ClientPackets/Infrastructure/ZeroPacket.cs) *OnCharacterScreen | InTrade | InGame*
 
+### Instance
+- [escape](../src/NosCore.Packets/ClientPackets/Instance/EscapePacket.cs) *InGame*
+- [git](../src/NosCore.Packets/ClientPackets/Instance/GitPacket.cs) *InGame*
+- [hidn](../src/NosCore.Packets/ClientPackets/Instance/HidnPacket.cs) *InGame*
+- [score](../src/NosCore.Packets/ClientPackets/Instance/ScorePacket.cs) *InGame*
+
 ### Inventory
 - [b_i](../src/NosCore.Packets/ClientPackets/Inventory/BiPacket.cs) *InGame*
 - [isort](../src/NosCore.Packets/ClientPackets/Inventory/ISortPacket.cs) *InGame*
@@ -115,6 +122,7 @@
 - [preq](../src/NosCore.Packets/ClientPackets/Movement/PreqPacket.cs) *InTrade | InGame*
 - [pulse](../src/NosCore.Packets/ClientPackets/Movement/PulsePacket.cs) *InTrade | InGame*
 - [rest](../src/NosCore.Packets/ClientPackets/Movement/SitPacket.cs) *InTrade | InGame*
+- [sreq](../src/NosCore.Packets/ClientPackets/Movement/SreqPacket.cs) *InGame*
 - [walk](../src/NosCore.Packets/ClientPackets/Movement/WalkPacket.cs) *InGame*
 
 ### Npcs
@@ -201,6 +209,7 @@
 - [success](../src/NosCore.Packets/ServerPackets/CharacterSelectionScreen/SuccessPacket.cs) *InGame*
 
 ### Chats
+- [csp](../src/NosCore.Packets/ServerPackets/Chats/BubblePacket.cs) *InGame*
 - [IconInfo](../src/NosCore.Packets/ServerPackets/Chats/IconInfoPacket.cs) *InGame*
 - [sayi2](../src/NosCore.Packets/ServerPackets/Chats/Sayi2Packet.cs) *InGame*
 - [sayi](../src/NosCore.Packets/ServerPackets/Chats/SayiPacket.cs) *InGame*
@@ -285,6 +294,7 @@
 - [at](../src/NosCore.Packets/ServerPackets/MiniMap/AtPacket.cs) *InGame*
 - [c_map](../src/NosCore.Packets/ServerPackets/MiniMap/CMapPacket.cs) *InGame*
 - [rsfp](../src/NosCore.Packets/ServerPackets/MiniMap/RsfpPacket.cs) *InGame*
+- [wp](../src/NosCore.Packets/ServerPackets/MiniMap/WpPacket.cs) *InGame*
 
 ### Movement
 - [dir](../src/NosCore.Packets/ServerPackets/Movement/DirPacket.cs) *InGame*
@@ -302,6 +312,8 @@
 - [eff](../src/NosCore.Packets/ServerPackets/Player/EffectPacket.cs) *InGame*
 - [eqinfo](../src/NosCore.Packets/ServerPackets/Player/EquipmentInfoPacket.cs) *InGame*
 - [fd](../src/NosCore.Packets/ServerPackets/Player/FdPacket.cs) *InGame*
+- [fish](../src/NosCore.Packets/ServerPackets/Player/FishPacket.cs) *InGame*
+- [food](../src/NosCore.Packets/ServerPackets/Player/FoodPacket.cs) *InGame*
 - [fs](../src/NosCore.Packets/ServerPackets/Player/FsPacket.cs) *InGame*
 - [levelup](../src/NosCore.Packets/ServerPackets/Player/LevelUpPacket.cs) *InGame*
 - [lev](../src/NosCore.Packets/ServerPackets/Player/LevPacket.cs) *InGame*
@@ -360,6 +372,7 @@
 - [ch_dm](../src/NosCore.Packets/ServerPackets/UI/ChDMPacket.cs) *InGame*
 - [delay](../src/NosCore.Packets/ServerPackets/UI/DelayPacket.cs) *InGame*
 - [dlg](../src/NosCore.Packets/ServerPackets/UI/DlgPacket.cs) *InGame*
+- [fishopen](../src/NosCore.Packets/ServerPackets/UI/FishOpenPacket.cs) *InGame*
 - [guri](../src/NosCore.Packets/ServerPackets/UI/GuriPacket.cs) *InGame*
 - [icon](../src/NosCore.Packets/ServerPackets/UI/IconPacket.cs) *InGame*
 - [infoi](../src/NosCore.Packets/ServerPackets/UI/InfoiPacket.cs) *InGame*
@@ -371,6 +384,7 @@
 - [qnai2](../src/NosCore.Packets/ServerPackets/UI/Qnai2Packet.cs) *InGame*
 - [qna](../src/NosCore.Packets/ServerPackets/UI/QnaPacket.cs) *InGame*
 - [ta_rank](../src/NosCore.Packets/ServerPackets/UI/TARankPacket.cs) *InGame*
+- [ta_close](../src/NosCore.Packets/ServerPackets/UI/TeamArenaClosePacket.cs) *InGame*
 - [wopen](../src/NosCore.Packets/ServerPackets/UI/WopenPacket.cs) *InGame*
 - [zzim](../src/NosCore.Packets/ServerPackets/UI/ZzimPacket.cs) *InGame*
 
