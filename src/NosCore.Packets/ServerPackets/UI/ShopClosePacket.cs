@@ -7,10 +7,12 @@
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 
-namespace NosCore.Packets.ClientPackets.Instance
+namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("escape", Scope.InGame)]
-    public class EscapePacket : PacketBase
+    [PacketHeader("shopclose", Scope.InGame)]
+    public class ShopClosePacket : PacketBase
     {
+        [PacketIndex(0, IsOptional = true)]
+        public byte Type { get; set; }
     }
 }

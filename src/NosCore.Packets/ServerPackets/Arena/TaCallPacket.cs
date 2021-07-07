@@ -7,10 +7,12 @@
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 
-namespace NosCore.Packets.ClientPackets.Instance
+namespace NosCore.Packets.ServerPackets.Arena
 {
-    [PacketHeader("escape", Scope.InGame)]
-    public class EscapePacket : PacketBase
+    [PacketHeader("ta_call", Scope.InGame)]
+    public class TaCallPacket : PacketBase
     {
+        [PacketIndex(0)]
+        public byte CalledIndex { get; set; }
     }
 }

@@ -7,18 +7,15 @@
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 
-namespace NosCore.Packets.ClientPackets.Instance
+namespace NosCore.Packets.ServerPackets.Arena
 {
-    [PacketHeader("hidn", Scope.InGame)]
-    public class HidnPacket : PacketBase
+    [PacketHeader("bsc", Scope.InGame)]
+    public class BscPacket : PacketBase
     {
         [PacketIndex(0)]
-        public short Angle { get; set; }
+        public byte Type { get; set; }
 
         [PacketIndex(1)]
-        public short PositionX { get; set; }
-
-        [PacketIndex(2)]
-        public short PositionY { get; set; }
+        public byte? Option { get; set; }
     }
 }
