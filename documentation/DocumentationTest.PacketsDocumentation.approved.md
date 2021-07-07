@@ -180,6 +180,10 @@
 
 ## ServerPackets :
 
+### Arena
+- [bsc](../src/NosCore.Packets/ServerPackets/Arena/BscPacket.cs) *InGame*
+- [ta_call](../src/NosCore.Packets/ServerPackets/Arena/TaCallPacket.cs) *InGame*
+
 ### Auction
 - [rc_blist](../src/NosCore.Packets/ServerPackets/Auction/RcbListPacket.cs) *InGame*
 - [rc_slist](../src/NosCore.Packets/ServerPackets/Auction/RcsListPacket.cs) *InGame*
@@ -383,6 +387,7 @@
 - [p_clear](../src/NosCore.Packets/ServerPackets/UI/PclearPacket.cs) *InGame*
 - [qnai2](../src/NosCore.Packets/ServerPackets/UI/Qnai2Packet.cs) *InGame*
 - [qna](../src/NosCore.Packets/ServerPackets/UI/QnaPacket.cs) *InGame*
+- [shopclose](../src/NosCore.Packets/ServerPackets/UI/ShopClosePacket.cs) *InGame*
 - [ta_rank](../src/NosCore.Packets/ServerPackets/UI/TARankPacket.cs) *InGame*
 - [ta_close](../src/NosCore.Packets/ServerPackets/UI/TeamArenaClosePacket.cs) *InGame*
 - [wopen](../src/NosCore.Packets/ServerPackets/UI/WopenPacket.cs) *InGame*
