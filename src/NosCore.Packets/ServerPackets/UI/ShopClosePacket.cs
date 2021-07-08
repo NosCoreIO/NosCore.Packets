@@ -12,7 +12,7 @@ namespace NosCore.Packets.ServerPackets.UI
     [PacketHeader("shopclose", Scope.InGame)]
     public class ShopClosePacket : PacketBase
     {
-        [PacketIndex(0, IsOptional = true)]
-        public byte Type { get; set; }
+        [PacketIndex(0)]
+        public byte? Type { get; set; }
     }
 }
