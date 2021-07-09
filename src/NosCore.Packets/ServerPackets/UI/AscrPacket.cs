@@ -31,6 +31,6 @@ namespace NosCore.Packets.ServerPackets.UI
         public int DieGroup { get; set; }
 
         [PacketIndex(8)]
-        public AscrPacket? Type { get; set; }
+        public AscrPacketType Type { get; set; }
     }
 }
