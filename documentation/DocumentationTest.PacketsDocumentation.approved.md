@@ -372,6 +372,7 @@
 
 ### UI
 - [act6](../src/NosCore.Packets/ServerPackets/UI/Act6Packet.cs) *InGame*
+- [ascr](../src/NosCore.Packets/ServerPackets/UI/AscrPacket.cs) *InGame*
 - [bsinfo](../src/NosCore.Packets/ServerPackets/UI/BSInfoPacket.cs) *InGame*
 - [ch_dm](../src/NosCore.Packets/ServerPackets/UI/ChDMPacket.cs) *InGame*
 - [delay](../src/NosCore.Packets/ServerPackets/UI/DelayPacket.cs) *InGame*
