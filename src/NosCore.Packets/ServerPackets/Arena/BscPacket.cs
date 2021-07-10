@@ -13,7 +13,7 @@ namespace NosCore.Packets.ServerPackets.Arena
     public class BscPacket : PacketBase
     {
         [PacketIndex(0)]
-        public byte Type { get; set; }
+        public BscPacketType Type { get; set; }
 
         [PacketIndex(1)]
         public byte? Option { get; set; }
