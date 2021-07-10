@@ -86,8 +86,12 @@
 - [escape](../src/NosCore.Packets/ClientPackets/Instance/EscapePacket.cs) *InGame*
 - [git](../src/NosCore.Packets/ClientPackets/Instance/GitPacket.cs) *InGame*
 - [hidn](../src/NosCore.Packets/ClientPackets/Instance/HidnPacket.cs) *InGame*
+- [rstart](../src/NosCore.Packets/ClientPackets/Instance/RStartPacket.cs) *InGame*
+- [rxit](../src/NosCore.Packets/ClientPackets/Instance/RxitPacket.cs) *InGame*
 - [score](../src/NosCore.Packets/ClientPackets/Instance/ScorePacket.cs) *InGame*
 - [sreq](../src/NosCore.Packets/ClientPackets/Instance/SreqPacket.cs) *InGame*
+- [taw](../src/NosCore.Packets/ClientPackets/Instance/TawPacket.cs) *InGame*
+- [wreq](../src/NosCore.Packets/ClientPackets/Instance/WreqPacket.cs) *InGame*
 
 ### Inventory
 - [b_i](../src/NosCore.Packets/ClientPackets/Inventory/BiPacket.cs) *InGame*
