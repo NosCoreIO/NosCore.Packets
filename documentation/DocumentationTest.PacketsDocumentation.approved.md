@@ -87,6 +87,7 @@
 - [git](../src/NosCore.Packets/ClientPackets/Instance/GitPacket.cs) *InGame*
 - [hidn](../src/NosCore.Packets/ClientPackets/Instance/HidnPacket.cs) *InGame*
 - [score](../src/NosCore.Packets/ClientPackets/Instance/ScorePacket.cs) *InGame*
+- [sreq](../src/NosCore.Packets/ClientPackets/Instance/SreqPacket.cs) *InGame*
 
 ### Inventory
 - [b_i](../src/NosCore.Packets/ClientPackets/Inventory/BiPacket.cs) *InGame*
@@ -122,7 +123,6 @@
 - [preq](../src/NosCore.Packets/ClientPackets/Movement/PreqPacket.cs) *InTrade | InGame*
 - [pulse](../src/NosCore.Packets/ClientPackets/Movement/PulsePacket.cs) *InTrade | InGame*
 - [rest](../src/NosCore.Packets/ClientPackets/Movement/SitPacket.cs) *InTrade | InGame*
-- [sreq](../src/NosCore.Packets/ClientPackets/Movement/SreqPacket.cs) *InGame*
 - [walk](../src/NosCore.Packets/ClientPackets/Movement/WalkPacket.cs) *InGame*
 
 ### Npcs
@@ -179,6 +179,10 @@
 - [withdraw](../src/NosCore.Packets/ClientPackets/Warehouse/WithdrawPacket.cs) *InTrade | InGame*
 
 ## ServerPackets :
+
+### Arena
+- [bsc](../src/NosCore.Packets/ServerPackets/Arena/BscPacket.cs) *InGame*
+- [ta_call](../src/NosCore.Packets/ServerPackets/Arena/TaCallPacket.cs) *InGame*
 
 ### Auction
 - [rc_blist](../src/NosCore.Packets/ServerPackets/Auction/RcbListPacket.cs) *InGame*
@@ -368,6 +372,7 @@
 
 ### UI
 - [act6](../src/NosCore.Packets/ServerPackets/UI/Act6Packet.cs) *InGame*
+- [ascr](../src/NosCore.Packets/ServerPackets/UI/AscrPacket.cs) *InGame*
 - [bsinfo](../src/NosCore.Packets/ServerPackets/UI/BSInfoPacket.cs) *InGame*
 - [ch_dm](../src/NosCore.Packets/ServerPackets/UI/ChDMPacket.cs) *InGame*
 - [delay](../src/NosCore.Packets/ServerPackets/UI/DelayPacket.cs) *InGame*
@@ -383,6 +388,7 @@
 - [p_clear](../src/NosCore.Packets/ServerPackets/UI/PclearPacket.cs) *InGame*
 - [qnai2](../src/NosCore.Packets/ServerPackets/UI/Qnai2Packet.cs) *InGame*
 - [qna](../src/NosCore.Packets/ServerPackets/UI/QnaPacket.cs) *InGame*
+- [shopclose](../src/NosCore.Packets/ServerPackets/UI/ShopClosePacket.cs) *InGame*
 - [ta_rank](../src/NosCore.Packets/ServerPackets/UI/TARankPacket.cs) *InGame*
 - [ta_close](../src/NosCore.Packets/ServerPackets/UI/TeamArenaClosePacket.cs) *InGame*
 - [wopen](../src/NosCore.Packets/ServerPackets/UI/WopenPacket.cs) *InGame*
