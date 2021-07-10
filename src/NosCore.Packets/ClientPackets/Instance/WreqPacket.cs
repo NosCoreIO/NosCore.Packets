@@ -7,7 +7,7 @@ namespace NosCore.Packets.ClientPackets.Instance
     public class WreqPacket : PacketBase
     {
         [PacketIndex(0)]
-        public byte Value { get; set; }
+        public WreqPacketType Value { get; set; }
 
         [PacketIndex(1)]
         public long? Param { get; set; }
