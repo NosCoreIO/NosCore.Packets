@@ -7,6 +7,6 @@ namespace NosCore.Packets.ClientPackets.Instance
     public class RxitPacket : PacketBase
     {
         [PacketIndex(0)]
-        public byte State { get; set; }
+        public RxitPacketType State { get; set; }
     }
 }

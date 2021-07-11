@@ -9,10 +9,10 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Instance
 {
-    [PacketHeader("taw", Scope.InGame)]
-    public class TawPacket : PacketBase
+    [PacketHeader("rstart", Scope.InGame)]
+    public class RStartPacket : PacketBase
     {
         [PacketIndex(0)]
-        public string Username { get; set; } = null!;
+        public RStartPacketType Type { get; set; }
     }
 }
