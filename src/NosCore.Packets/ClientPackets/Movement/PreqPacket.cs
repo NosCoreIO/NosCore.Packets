@@ -6,12 +6,13 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
-using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ClientPackets.Movement
 {
     [PacketHeader("preq", Scope.InGame | Scope.InTrade)]
     public class PreqPacket : PacketBase
     {
+        [PacketIndex(0, IsOptional = true)]
+        public bool Mode { get; set; }
     }
 }
