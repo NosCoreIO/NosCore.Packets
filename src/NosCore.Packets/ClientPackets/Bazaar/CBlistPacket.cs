@@ -38,7 +38,10 @@ namespace NosCore.Packets.ClientPackets.Bazaar
         [PacketIndex(7)]
         public byte Unknown1 { get; set; }
 
-        [PacketListIndex(8)]
+        [PacketIndex(8)]
+        public byte Unknown2 { get; set; }
+
+        [PacketListIndex(9)]
         public List<short>? ItemVNumFilter { get; set; }
     }
 }

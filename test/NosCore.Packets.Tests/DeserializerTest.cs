@@ -62,6 +62,7 @@ namespace NosCore.Packets.Tests
                 typeof(FinfoSubPackets),
                 typeof(ClientVersionSubPacket),
                 typeof(CScalcPacket),
+                typeof(CBListPacket),
                 typeof(CreateFamilyPacket),
             });
 
@@ -71,6 +72,13 @@ namespace NosCore.Packets.Tests
             var deserializer = new Deserializer(typeof(IPacket).Assembly.GetTypes()
                 .Where(p => p.GetInterfaces().Contains(typeof(IPacket)) && p.IsClass && !p.IsAbstract).ToList());
             Assert.IsTrue(deserializer != null);
+        }
+
+        [TestMethod]
+        public void PacketCBlistTest()
+        {
+            var packet = (CBListPacket)Deserializer.Deserialize("c_blist  0 0 0 0 0 0 0 0 0");
+            Assert.AreEqual(0, packet.Index);
         }
 
         [TestMethod]
