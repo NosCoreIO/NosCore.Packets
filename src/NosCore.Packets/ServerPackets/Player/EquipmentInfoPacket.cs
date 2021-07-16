@@ -15,7 +15,7 @@ namespace NosCore.Packets.ServerPackets.Player
     {
         [PacketIndex(0)]
         public byte Type { get; set; } // todo more information
-        
+
         [PacketIndex(1)]
         public short Slot { get; set; }
 
