@@ -20,6 +20,9 @@ namespace NosCore.Packets.ServerPackets.Player
         public short Slot { get; set; }
 
         [PacketIndex(2)]
+        public short MateSlot { get; set; }
+
+        [PacketIndex(3)]
         public long? ShopOwnerId { get; set; }
     }
 }
