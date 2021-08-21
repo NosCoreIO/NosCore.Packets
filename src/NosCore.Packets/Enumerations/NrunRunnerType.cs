@@ -22,6 +22,7 @@ namespace NosCore.Packets.Enumerations
         Teleport = 16,
         GoToArena = 17, // Types. 0 = Arena, 1 = Family Arena
         TimeCircleSkill = 18,
+        FinishedTs = 19,
         FamilyStartOrDisband = 23,
         TeleportActV = 26,
         OldExchangeForXGift = 31,
@@ -61,16 +62,18 @@ namespace NosCore.Packets.Enumerations
         GetDailyQuestHalloweenMalcolmMix = 79,
         GetDailyQuestHalloweenTeomanTopp = 80,
         GetDailyQuestHalloweenEric = 81,
+        GetSantaClausDailyChristmasQuest = 82,
         Unknown = 83, //Related with Christmas Mysterious Bell Bag
         ExchangeForSealedChristmasVessel = 84, //30 Fresh cake
         ExchangeForSealedChristmasVessel2 = 85, //30 Chocolate cake
         ExchangeForChristmasSnowmanRaidSeal = 86, //30 Fresh cake
         ExchangeForChristmasSnowmanRaidSeal2 = 87, //30 Chocolate cake
         ExchangeForChristmasGiftBox = 88, //5 Christmas Stockings
-        GetDailyQuestChristmasSlugg = 89,
-        GetDailyQuestChristmasEvaEnergy = 90, //Defeat Snowman Raid.
-        GetDailyQuestChristmasMalcolmMix = 91,
+        GetDailyQuestChristmasSlugg = 30021,
+        GetDailyQuestChristmasEvaEnergy = 30023, //Defeat Snowman Raid.
+        GetDailyQuestChristmasMalcolmMix = 30024,
         GetDailyQuestChristmasTeodorTopp = 92,
+        GetDailyQuestChristmasSorayaStyle = 93,
         GetDailyQuestEasterMimiMentor = 94, //Kill Chicken Queen
         ExchangeForEasterBox = 95, //Requires: 5 Golden Easter Eggs.
         ExchangeForEasterChickenQueenSeal = 96, //Requires: 30 Chocolate Rabbits.
@@ -93,7 +96,7 @@ namespace NosCore.Packets.Enumerations
         ArenaEnterAsSpectatorTalent = 138,
         ArenaEnterAsSpectatorMaster = 139,
         ArenaGetRecordMaster = 140,
-        FinishedTS = 144,
+        FinishedTS2 = 144,
         ExchangeForSP5 = 145,
         ExchangeForRubyOfCompletion = 146,
         ExchangeForSP6 = 147,
@@ -107,7 +110,7 @@ namespace NosCore.Packets.Enumerations
             195, //Requires: five Seeds of Damnation. You can collect them in the Cave of Ghosts.
         GetQuestForTheRealmOfHeroes = 196,
         GetQuestRaphaelStory = 197,
-        Unknown2 = 200, //Related with GetXQuest
+        GetXQuestFromDialog2Quest = 200, //Related with GetXQuest
         GetQuestGingsengDagger = 201,
         GetQuestGrahamCrusarder = 300,
         GoToForgottenArchipelago = 301,
@@ -115,7 +118,7 @@ namespace NosCore.Packets.Enumerations
         QuestMissingScoutOption1 = 303,
         QuestMissingScoutOption2 = 304,
 
-        //GoToShip = 305,
+        GoToShip = 305,
         //GoToAncelloansWill = 306,
         //GoToCylloan = 307,
         GetQuestBarnisSoul = 308,
@@ -128,14 +131,16 @@ namespace NosCore.Packets.Enumerations
         OpenBankFacilities = 321,
         GetSavingsBook = 322,
         GetBuffTartHapendamMartialArts = 323,
-        Unknown5 = 324, //Related with Martial Artist - The Water Heroine
+        GetSecondMartialArtistQuest = 324, //Related with Martial Artist - The Water Heroine
         ExchangeForChristmasRedNosedReindeerMagicSleigh = 325,
         GetQuestChristmasDestroyFiends = 326,
         GetQuestAmoraStory = 327,
         GetDailyQuestEasterEvaEnergy2 = 328, //March Hare one, requires: 10 Cleansed Eggs
         ExchangeForCleansedEggs = 330, //Required: 10 Rotten Eggs and Soul Gem Refiner.
         TriggerDialogHistoryMarchHare = 331, //Generates the Dialog 466
-        GetXSPQuest2 = 340, //Used to obtain the Martial Artist SP3, type = quest id = 6332
+        SkyTower = 338, // Gneugneu tg fils de pute
+        GetThirdMartialArtistQuest = 340, //Used to obtain the Martial Artist SP3, type = quest id = 6332
+        ChangePassion = 580,
         OpenShop = 900,
         GoToXTimeSpace = 1000, //Types = TS id. The ones used are: 518-524, 608.
         GetQuestFromNPC = 1500,
@@ -156,8 +161,8 @@ namespace NosCore.Packets.Enumerations
         OpenFamilyWarehouseHistory = 1601,
         OldPurchaseWarehouse = 1602, //21 slots. Requires: 500k gold and Family Level 2
         OldExpandWarehouse = 1603, //Expands to 28 slots. Requires: 2kk gold and Family Level 7
-        OldExtendNumberOfFamilyMembersBy20 = 1604, //Requires: 5kk gold and Family Level 5
-        OldExtendNumberOfFamilyMembersBy30 = 1605, //Requires: 10kk gold and Family Level 9
+        ExtendNumberOfFamilyMembersBy20 = 1604, //Requires: 5kk gold and Family Level 5
+        ExtendNumberOfFamilyMembersBy30 = 1605, //Requires: 10kk gold and Family Level 9
 
         GetXSPQuest =
             2000, //Types = quest ids. Types/ids used for: SP1 (2008), SP2 (2014), The Laboratory's Secret (2022), Jajamaru (2030), Sakura's Seal (2048), SP3 (2060), SP4 (2100).
@@ -186,6 +191,7 @@ namespace NosCore.Packets.Enumerations
         ExchangeForHappyNewYearBox = 6014, //Required letters: 'N', 'E', 'W', 'Y', 'E', 'A', 'R',
         ExchangeForChristmasBell = 6015,
         OldExchangeForChristmasGiftBox2 = 6016,
-        ExchangeForNewYearGiftBox = 6017 //Requires: 5 Stolen Gift Bags and 5 Stolen Lucky Charms.
+        ExchangeForNewYearGiftBox = 6017, //Requires: 5 Stolen Gift Bags and 5 Stolen Lucky Charms.
+
     }
 }
