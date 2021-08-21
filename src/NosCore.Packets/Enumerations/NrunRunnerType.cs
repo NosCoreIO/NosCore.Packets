@@ -138,7 +138,7 @@ namespace NosCore.Packets.Enumerations
         GetDailyQuestEasterEvaEnergy2 = 328, //March Hare one, requires: 10 Cleansed Eggs
         ExchangeForCleansedEggs = 330, //Required: 10 Rotten Eggs and Soul Gem Refiner.
         TriggerDialogHistoryMarchHare = 331, //Generates the Dialog 466
-        SkyTower = 338, // Gneugneu tg fils de pute
+        SkyTower = 338,
         GetThirdMartialArtistQuest = 340, //Used to obtain the Martial Artist SP3, type = quest id = 6332
         ChangePassion = 580,
         OpenShop = 900,
