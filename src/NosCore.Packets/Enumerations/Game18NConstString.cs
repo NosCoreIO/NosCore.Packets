@@ -4789,7 +4789,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         SpecialistMedalExpired = 1194,
         // <summary>
-        // This item cannot be traded.#13#10Would you like to wear it?#13#10
+        // Equipping this item makes it untradeable.#13#10Are you sure you want to equip it?#13#10
         // <summary>
         CannotTradeAskWearing = 1195,
         // <summary>
@@ -7297,15 +7297,15 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         PhantomAppears = 1822,
         // <summary>
-        // The 13th Anniversary Buff is now active!
+        // The 14th Anniversary Buff is now active!
         // <summary>
         AnniversaryBuffActivated = 1823,
         // <summary>
-        // The effect of the 13th Anniversary Medal is still active.
+        // The effect of the 14th Anniversary Medal is still active.
         // <summary>
         AnniversaryMedalActivated = 1824,
         // <summary>
-        // The effect of the 13th Anniversary Medal is now over.
+        // The effect of the 14th Anniversary Medal is now over.
         // <summary>
         AnniversaryMedalOver = 1825,
         // <summary>
@@ -10124,5 +10124,21 @@ namespace NosCore.Packets.Enumerations
         // You receive an extra raid box from the current Raid Box Event.
         // <summary>
         ExtraRaidBox = 2531,
+        // <summary>
+        // Cannot be used as the current Battle Pass season is over.
+        // <summary>
+        CannotUseAsBattlePassSeasonOver = 2532,
+        // <summary>
+        // You have received %d Battle Points.<NEW_TYPE><0>
+        // <summary>
+        ReceivedBattlePoint = 2533,
+        // <summary>
+        // This item is currently unavailable.
+        // <summary>
+        ItemCurrentlyUnavailable = 2534,
+        // <summary>
+        // This Battle Pass season has finished.
+        // <summary>
+        BattlePassSeasonFinished = 2535,
     }
 }
