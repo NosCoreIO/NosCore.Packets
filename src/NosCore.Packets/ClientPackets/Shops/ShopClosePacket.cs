@@ -10,7 +10,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ClientPackets.Shops
 {
     [PacketHeader("shopclose", Scope.InGame)]
-    public class ShopCLosePacket : PacketBase
+    public class ShopClosePacket : PacketBase
     {
     }
 }
