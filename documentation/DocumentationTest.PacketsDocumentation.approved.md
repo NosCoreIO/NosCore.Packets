@@ -40,6 +40,8 @@
 
 ### ClientPackets
 - [lbs](../src/NosCore.Packets/ClientPackets/ClientPackets/LbsPacket.cs) *InTrade | InGame*
+- [pdtclose](../src/NosCore.Packets/ClientPackets/ClientPackets/PdtClosePacket.cs) *InGame*
+- [sc_p_cts](../src/NosCore.Packets/ClientPackets/ClientPackets/ScpCtsPacket.cs) *InGame*
 
 ### Commands
 - [%Familydeputy](../src/NosCore.Packets/ClientPackets/Commands/FamilyDeputyPacket.cs) *InTrade | InGame*
@@ -164,6 +166,7 @@
 - [m_shop](../src/NosCore.Packets/ClientPackets/Shops/MShopPacket.cs) *InGame*
 - [sell_list](../src/NosCore.Packets/ClientPackets/Shops/SellListPacket.cs) *InTrade | InGame*
 - [sell](../src/NosCore.Packets/ClientPackets/Shops/SellPacket.cs) *InGame*
+- [shopclose](../src/NosCore.Packets/ClientPackets/Shops/ShopCLosePacket.cs) *InGame*
 - [shopping](../src/NosCore.Packets/ClientPackets/Shops/ShoppingPacket.cs) *InGame*
 
 ### Specialists
