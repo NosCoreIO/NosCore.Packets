@@ -123,6 +123,7 @@
 - [mjoin](../src/NosCore.Packets/ClientPackets/Miniland/MJoinPacket.cs) *InGame*
 - [mledit](../src/NosCore.Packets/ClientPackets/Miniland/MLEditPacket.cs) *InGame*
 - [rmvobj](../src/NosCore.Packets/ClientPackets/Miniland/RmvobjPacket.cs) *InGame*
+- [useobj](../src/NosCore.Packets/ClientPackets/Miniland/UseObjPacket.cs) *InGame*
 
 ### Movement
 - [dir](../src/NosCore.Packets/ClientPackets/Movement/ClientDirPacket.cs) *InTrade | InGame*
