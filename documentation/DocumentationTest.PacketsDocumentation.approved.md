@@ -286,7 +286,6 @@
 
 ### Mates
 - [pski](../src/NosCore.Packets/ServerPackets/Mates/PSkiPacket.cs) *InGame*
-- [say_p](../src/NosCore.Packets/ServerPackets/Mates/SayPetPacket.cs) *InGame*
 - [sc_n](../src/NosCore.Packets/ServerPackets/Mates/ScnPacket.cs) *InGame*
 - [sc_p](../src/NosCore.Packets/ServerPackets/Mates/ScpPacket.cs) *InGame*
 
@@ -333,7 +332,6 @@
 - [levelup](../src/NosCore.Packets/ServerPackets/Player/LevelUpPacket.cs) *InGame*
 - [lev](../src/NosCore.Packets/ServerPackets/Player/LevPacket.cs) *InGame*
 - [npinfo](../src/NosCore.Packets/ServerPackets/Player/NpInfoPacket.cs) *InGame*
-- [pflag](../src/NosCore.Packets/ServerPackets/Player/PFlagPacket.cs) *InGame*
 - [rage](../src/NosCore.Packets/ServerPackets/Player/RagePacket.cs) *InGame*
 - [sc](../src/NosCore.Packets/ServerPackets/Player/ScPacket.cs) *InGame*
 - [scr](../src/NosCore.Packets/ServerPackets/Player/ScrPacket.cs) *InGame*
@@ -378,7 +376,6 @@
 
 ### Specialists
 - [sd](../src/NosCore.Packets/ServerPackets/Specialists/SdPacket.cs) *InGame*
-- [slinfo](../src/NosCore.Packets/ServerPackets/Specialists/SlInfoPacket.cs) *InGame*
 - [sp](../src/NosCore.Packets/ServerPackets/Specialists/SpPacket.cs) *InGame*
 
 ### UI

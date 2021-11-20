@@ -59,6 +59,31 @@ namespace NosCore.Packets.Tests
 
             return result;
         }
+
+        [TestMethod]
+        public void ServerPacketHeadersShouldBeUnique()
+        {
+            var serverPackets = GetPacketsWithinNamespace("ServerPackets")
+                .SelectMany(GetPackets)
+                .GroupBy(packet => packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification);
+            foreach (var packet in serverPackets.Where(x=>x.Count() > 1))
+            {
+                Assert.Fail($"header {packet.Key} has duplicate server packet definition");
+            }
+        }
+
+        [TestMethod]
+        public void ClientPacketHeadersShouldBeUnique()
+        {
+            var clientPackets = GetPacketsWithinNamespace("ClientPackets")
+                .SelectMany(GetPackets)
+                .GroupBy(packet => packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification);
+            foreach (var packet in clientPackets.Where(x => x.Count() > 1))
+            {
+                Assert.Fail($"header {packet.Key} has duplicate client packet definition");
+            }
+        }
+
         [TestMethod]
         public void PacketsDocumentation()
         {

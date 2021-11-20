@@ -23,6 +23,6 @@ namespace NosCore.Packets.ClientPackets.Commands
     public class FamilyShoutPacket : PacketBase
     {
         [PacketIndex(0)]
-        public string? CharacterName { get; set; }
+        public string? Message { get; set; }
     }
 }
