@@ -113,6 +113,8 @@
 ### Mates
 - [psl](../src/NosCore.Packets/ClientPackets/Mates/PslPacket.cs) *InGame*
 - [ps_op](../src/NosCore.Packets/ClientPackets/Mates/PsopPacket.cs) *InGame*
+- [ptctl](../src/NosCore.Packets/ClientPackets/Mates/PtctlPacket.cs) *InGame*
+- [say_p](../src/NosCore.Packets/ClientPackets/Mates/SayPPacket.cs) *InGame*
 - [suctl](../src/NosCore.Packets/ClientPackets/Mates/SuCtlPacket.cs) *InGame*
 - [u_pet](../src/NosCore.Packets/ClientPackets/Mates/UpetPacket.cs) *InGame*
 - [u_ps](../src/NosCore.Packets/ClientPackets/Mates/UpsPacket.cs) *InGame*
