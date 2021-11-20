@@ -72,6 +72,7 @@
 - [fauth](../src/NosCore.Packets/ClientPackets/Families/FAuthPacket.cs) *InGame*
 - [fhis_cts](../src/NosCore.Packets/ClientPackets/Families/FhistCtsPacket.cs) *InGame*
 - [frank_cts](../src/NosCore.Packets/ClientPackets/Families/FrankCtsPacket.cs) *InGame*
+- [fws](../src/NosCore.Packets/ClientPackets/Families/FwsPacket.cs) *InGame*
 - [gidx](../src/NosCore.Packets/ClientPackets/Families/GidxPacket.cs) *InTrade | InGame*
 - [glist](../src/NosCore.Packets/ClientPackets/Families/GListPacket.cs) *InTrade | InGame*
 - [gjoin](../src/NosCore.Packets/ClientPackets/Families/JoinFamilyPacket.cs) *InGame*
