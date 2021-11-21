@@ -4,16 +4,18 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
+using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
-namespace NosCore.Packets.ClientPackets.Movement
+namespace NosCore.Packets.ClientPackets.Groups
 {
-    [PacketHeader("preq", Scope.InGame | Scope.InTrade)]
-    public class PreqPacket : PacketBase
+    [PacketHeader("pinv", Scope.InGame)]
+    public class PinvPacket : PacketBase
     {
         [PacketIndex(0)]
-        public short? Parameter { get; set; }
+        [Required]
+        public string CharacterName { get; set; } = null!;
     }
 }

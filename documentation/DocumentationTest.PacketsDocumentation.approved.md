@@ -61,6 +61,15 @@
 - [drop](../src/NosCore.Packets/ClientPackets/Drops/DropPacket.cs) *InGame*
 - [get](../src/NosCore.Packets/ClientPackets/Drops/GetPacket.cs) *InGame*
 
+### Event
+- [fb](../src/NosCore.Packets/ClientPackets/Event/FbPacket.cs) *InGame*
+- [mkraid](../src/NosCore.Packets/ClientPackets/Event/MkRaidPacket.cs) *InGame*
+- [rd](../src/NosCore.Packets/ClientPackets/Event/RdPacket.cs) *InGame*
+- [revival](../src/NosCore.Packets/ClientPackets/Event/RevivalPacket.cs) *InGame*
+- [rl](../src/NosCore.Packets/ClientPackets/Event/RlPacket.cs) *InGame*
+- [rsel](../src/NosCore.Packets/ClientPackets/Event/RselPacket.cs) *InGame*
+- [treq](../src/NosCore.Packets/ClientPackets/Event/TreqPacket.cs) *InGame*
+
 ### Exchanges
 - [req_exc](../src/NosCore.Packets/ClientPackets/Exchanges/ExchangeRequestPacket.cs) *InGame*
 - [exc_list](../src/NosCore.Packets/ClientPackets/Exchanges/ExcListPacket.cs) *InTrade | InGame*
@@ -79,6 +88,7 @@
 - [today_cts](../src/NosCore.Packets/ClientPackets/Families/TodayPacket.cs) *InGame*
 
 ### Groups
+- [pinv](../src/NosCore.Packets/ClientPackets/Groups/PinvPacket.cs) *InGame*
 - [pleave](../src/NosCore.Packets/ClientPackets/Groups/PleavePacket.cs) *InTrade | InGame*
 
 ### Infrastructure
@@ -144,6 +154,7 @@
 - [pst](../src/NosCore.Packets/ClientPackets/Parcel/PstClientPacket.cs) *InGame*
 
 ### Player
+- [compl](../src/NosCore.Packets/ClientPackets/Player/ComplPacket.cs) *InGame*
 - [rsfi](../src/NosCore.Packets/ClientPackets/Player/RsfiPacket.cs) *InGame*
 - [snap](../src/NosCore.Packets/ClientPackets/Player/SnapPacket.cs) *InTrade | InGame*
 - [tit_eq](../src/NosCore.Packets/ClientPackets/Player/TitEqPacket.cs) *InTrade | InGame*
@@ -162,12 +173,14 @@
 - [$bl](../src/NosCore.Packets/ClientPackets/Relations/BlPacket.cs) *InTrade | InGame*
 - [fdel](../src/NosCore.Packets/ClientPackets/Relations/FdelPacket.cs) *InTrade | InGame*
 - [fins](../src/NosCore.Packets/ClientPackets/Relations/FinsPacket.cs) *InTrade | InGame*
+- [fl](../src/NosCore.Packets/ClientPackets/Relations/FlPacket.cs) *InGame*
 - [reloadfinfo](../src/NosCore.Packets/ClientPackets/Relations/ReloadFinfoPacket.cs) *InTrade | InGame*
 
 ### Shops
 - [buy](../src/NosCore.Packets/ClientPackets/Shops/BuyPacket.cs) *InGame*
 - [c_close](../src/NosCore.Packets/ClientPackets/Shops/CClosePacket.cs) *OnCharacterScreen | InTrade | InGame*
 - [m_shop](../src/NosCore.Packets/ClientPackets/Shops/MShopPacket.cs) *InGame*
+- [pdtse](../src/NosCore.Packets/ClientPackets/Shops/PdtsePacket.cs) *InGame*
 - [sell_list](../src/NosCore.Packets/ClientPackets/Shops/SellListPacket.cs) *InTrade | InGame*
 - [sell](../src/NosCore.Packets/ClientPackets/Shops/SellPacket.cs) *InGame*
 - [shopclose](../src/NosCore.Packets/ClientPackets/Shops/ShopClosePacket.cs) *InGame*
@@ -177,6 +190,7 @@
 - [sl](../src/NosCore.Packets/ClientPackets/Specialists/SpTransformPacket.cs) *InGame*
 
 ### UI
+- [gop](../src/NosCore.Packets/ClientPackets/UI/GopPacket.cs) *InGame*
 - [guri](../src/NosCore.Packets/ClientPackets/UI/GuriPacket.cs) *InGame*
 
 ### Warehouse
