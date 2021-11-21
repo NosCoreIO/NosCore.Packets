@@ -8,12 +8,12 @@ using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
-namespace NosCore.Packets.ClientPackets.Movement
+namespace NosCore.Packets.ClientPackets.Player
 {
-    [PacketHeader("preq", Scope.InGame | Scope.InTrade)]
-    public class PreqPacket : PacketBase
+    [PacketHeader("compl", Scope.InGame)]
+    public class ComplPacket : PacketBase
     {
-        [PacketIndex(0)]
-        public short? Parameter { get; set; }
+        [PacketIndex(1)]
+        public long CharacterId { get; set; }
     }
 }

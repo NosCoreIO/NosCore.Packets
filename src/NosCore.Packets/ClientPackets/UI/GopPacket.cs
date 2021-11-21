@@ -8,12 +8,15 @@ using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
-namespace NosCore.Packets.ClientPackets.Movement
+namespace NosCore.Packets.ClientPackets.UI
 {
-    [PacketHeader("preq", Scope.InGame | Scope.InTrade)]
-    public class PreqPacket : PacketBase
+    [PacketHeader("gop", Scope.InGame)]
+    public class GopPacket : PacketBase
     {
         [PacketIndex(0)]
-        public short? Parameter { get; set; }
+        public GopPacketType Option { get; set; }
+
+        [PacketIndex(1)]
+        public bool IsActive { get; set; }
     }
 }

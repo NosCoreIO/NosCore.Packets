@@ -6,14 +6,16 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
-using NosCore.Packets.Interfaces;
 
-namespace NosCore.Packets.ClientPackets.Movement
+namespace NosCore.Packets.ClientPackets.Event
 {
-    [PacketHeader("preq", Scope.InGame | Scope.InTrade)]
-    public class PreqPacket : PacketBase
+    [PacketHeader("rl", Scope.InGame)]
+    public class RlPacket : PacketBase
     {
         [PacketIndex(0)]
-        public short? Parameter { get; set; }
+        public short Type { get; set; }
+
+        [PacketIndex(1)]
+        public string? CharacterName { get; set; }
     }
 }
