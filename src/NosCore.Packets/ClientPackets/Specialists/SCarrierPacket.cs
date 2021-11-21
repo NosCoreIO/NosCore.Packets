@@ -7,23 +7,19 @@
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
-using NosCore.Shared.Enumerations;
 
-namespace NosCore.Packets.ClientPackets.Drops
+namespace NosCore.Packets.ClientPackets.Specialists
 {
-    [PacketHeader("get", Scope.InGame)]
-    public class GetPacket : PacketBase
+    [PacketHeader("s_carrier", Scope.InGame)]
+    public class SCarrierPacket : PacketBase
     {
         [PacketIndex(0)]
-        public VisualType PickerType { get; set; }
+        public short Slot { get; set; }
 
         [PacketIndex(1)]
-        public long PickerId { get; set; }
+        public byte HolderSlot { get; set; }
 
         [PacketIndex(2)]
-        public long VisualId { get; set; }
-
-        [PacketIndex(3)]
-        public long IsDelayed { get; set; }
+        public byte HolderType { get; set; }
     }
 }
