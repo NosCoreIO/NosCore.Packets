@@ -114,6 +114,7 @@
 - [pdti](../src/NosCore.Packets/ClientPackets/Inventory/PdtiPacket.cs) *InGame*
 - [put](../src/NosCore.Packets/ClientPackets/Inventory/PutPacket.cs) *InGame*
 - [remove](../src/NosCore.Packets/ClientPackets/Inventory/RemovePacket.cs) *InGame*
+- [sortopen](../src/NosCore.Packets/ClientPackets/Inventory/SortOpenPacket.cs) *InGame*
 - [u_i](../src/NosCore.Packets/ClientPackets/Inventory/UseItemPacket.cs) *InGame*
 - [wear](../src/NosCore.Packets/ClientPackets/Inventory/WearPacket.cs) *InGame*
 
@@ -155,6 +156,7 @@
 
 ### Player
 - [compl](../src/NosCore.Packets/ClientPackets/Player/ComplPacket.cs) *InGame*
+- [eqinfo](../src/NosCore.Packets/ClientPackets/Player/EquipmentInfoPacket.cs) *InGame*
 - [rsfi](../src/NosCore.Packets/ClientPackets/Player/RsfiPacket.cs) *InGame*
 - [snap](../src/NosCore.Packets/ClientPackets/Player/SnapPacket.cs) *InTrade | InGame*
 - [tit_eq](../src/NosCore.Packets/ClientPackets/Player/TitEqPacket.cs) *InTrade | InGame*
@@ -187,6 +189,7 @@
 - [shopping](../src/NosCore.Packets/ClientPackets/Shops/ShoppingPacket.cs) *InGame*
 
 ### Specialists
+- [s_carrier](../src/NosCore.Packets/ClientPackets/Specialists/SCarrierPacket.cs) *InGame*
 - [sl](../src/NosCore.Packets/ClientPackets/Specialists/SpTransformPacket.cs) *InGame*
 
 ### UI
@@ -338,7 +341,6 @@
 - [c_mode](../src/NosCore.Packets/ServerPackets/Player/CModePacket.cs) *InGame*
 - [cond](../src/NosCore.Packets/ServerPackets/Player/CondPacket.cs) *InGame*
 - [eff](../src/NosCore.Packets/ServerPackets/Player/EffectPacket.cs) *InGame*
-- [eqinfo](../src/NosCore.Packets/ServerPackets/Player/EquipmentInfoPacket.cs) *InGame*
 - [fd](../src/NosCore.Packets/ServerPackets/Player/FdPacket.cs) *InGame*
 - [fish](../src/NosCore.Packets/ServerPackets/Player/FishPacket.cs) *InGame*
 - [food](../src/NosCore.Packets/ServerPackets/Player/FoodPacket.cs) *InGame*

@@ -6,9 +6,8 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
-using NosCore.Packets.Interfaces;
 
-namespace NosCore.Packets.ServerPackets.Player
+namespace NosCore.Packets.ClientPackets.Player
 {
     [PacketHeader("eqinfo", Scope.InGame)]
     public class EquipmentInfoPacket : PacketBase
