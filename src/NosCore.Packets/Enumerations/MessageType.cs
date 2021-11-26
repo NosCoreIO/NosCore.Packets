@@ -8,10 +8,11 @@ namespace NosCore.Packets.Enumerations
 {
     public enum MessageType : byte
     {
-        Whisper = 0,
-        PrivateChat = 1,
+        Default = 0,
+        Notification = 1,
         Shout = 2,
-        White = 3,
-        FamilyChat = 4
+        Center = 3,
+        Hero = 4,
+        DefaultAndNotification
     }
 }
