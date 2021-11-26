@@ -8,17 +8,22 @@ namespace NosCore.Packets.Enumerations
 {
     public enum SayColorType
     {
-        White = 0,
+        Default = 0,
+        BubbleOnly = 1,
         LightGreen = 3,
         DarkGrey = 4,
-        RedWhisper = 5,
+        Orange = 5,
         Blue = 6,
         LightYellow = 7,
-        Red = 8,
+        OrangeWithName = 8,
         Yellow = 10,
-        Purple = 11,
+        Red = 11,
         Green = 12,
-        DarkPurple = 13,
-        LightPurple = 17
+        LightPurple = 13,
+        LightPurpleWithName = 14,
+        DarkPurpleWithName = 15,
+        WhiteTimeout = 20,
+        PurpleFromNosville = 30,
+        PurpleFromCylloan = 31,
     }
 }
