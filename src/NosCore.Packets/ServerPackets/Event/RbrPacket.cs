@@ -29,14 +29,14 @@ namespace NosCore.Packets.ServerPackets.Event
         [PacketIndex(4)]
         public short RequiredSeeds { get; set; }
 
-        [PacketListIndex(5)]
-        public List<RbrSubPacketItem?>? DrawRewards { get; set; } //Length = 5
+        [PacketListIndex(5, Length = 5)]
+        public List<RbrSubPacketItem?>? DrawRewards { get; set; }
 
-        [PacketListIndex(6)]
-        public List<RbrSubPacketItem?>? SpecialRewards { get; set; } //Length = 2
+        [PacketListIndex(6, Length = 2)]
+        public List<RbrSubPacketItem?>? SpecialRewards { get; set; }
 
-        [PacketListIndex(7)]
-        public List<RbrSubPacketItem?>? BonusRewards { get; set; } //Length = 3
+        [PacketListIndex(7, Length = 3)]
+        public List<RbrSubPacketItem?>? BonusRewards { get; set; }
 
         [PacketIndex(8, SpecialSeparator = ".")]
         public RbrSubPacketHighScore? HighScore { get; set; }
