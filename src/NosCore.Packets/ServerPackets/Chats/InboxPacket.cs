@@ -9,14 +9,13 @@ using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 using System.ComponentModel.DataAnnotations;
 
-namespace NosCore.Packets.ServerPackets.Quest
+namespace NosCore.Packets.ServerPackets.Chats
 {
-
-    [PacketHeader("qsti", Scope.InGame)]
-    public class QstiPacket : PacketBase
+    [PacketHeader("inbox", Scope.InGame)]
+    public class InboxPacket : PacketBase
     {
-        [PacketIndex(0, SpecialSeparator = ".")]
+        [PacketIndex(0)]
         [Required]
-        public QuestSubPacket QuestSubPacket { get; set; } = null!;
+        public IPacket BoxPacket { get; set; } = null!;
     }
 }

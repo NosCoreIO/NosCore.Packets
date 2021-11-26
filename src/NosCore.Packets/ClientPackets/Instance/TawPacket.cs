@@ -6,6 +6,7 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using System.ComponentModel.DataAnnotations;
 
 namespace NosCore.Packets.ClientPackets.Instance
 {
@@ -13,6 +14,7 @@ namespace NosCore.Packets.ClientPackets.Instance
     public class TawPacket : PacketBase
     {
         [PacketIndex(0)]
+        [Required]
         public string Username { get; set; } = null!;
     }
 }

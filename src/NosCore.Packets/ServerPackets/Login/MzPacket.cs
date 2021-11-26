@@ -7,6 +7,7 @@
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace NosCore.Packets.ServerPackets.Login
 {
@@ -14,6 +15,7 @@ namespace NosCore.Packets.ServerPackets.Login
     public class MzPacket : PacketBase
     {
         [PacketIndex(0)]
+        [Required]
         public string Ip { get; set; } = null!;
 
         [PacketIndex(1)]
