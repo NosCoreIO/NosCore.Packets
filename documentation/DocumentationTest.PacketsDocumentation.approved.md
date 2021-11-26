@@ -223,6 +223,7 @@
 - [bf](../src/NosCore.Packets/ServerPackets/Battle/BfPacket.cs) *InGame*
 - [cancel](../src/NosCore.Packets/ServerPackets/Battle/CancelPacket.cs) *InGame*
 - [ct](../src/NosCore.Packets/ServerPackets/Battle/CtPacket.cs) *InGame*
+- [die](../src/NosCore.Packets/ServerPackets/Battle/DiePacket.cs) *InGame*
 - [ms_c](../src/NosCore.Packets/ServerPackets/Battle/MscPacket.cs) *InGame*
 - [mslot](../src/NosCore.Packets/ServerPackets/Battle/MslotPacket.cs) *InGame*
 - [su](../src/NosCore.Packets/ServerPackets/Battle/SuPacket.cs) *InGame*
@@ -243,6 +244,7 @@
 ### Chats
 - [csp](../src/NosCore.Packets/ServerPackets/Chats/BubblePacket.cs) *InGame*
 - [IconInfo](../src/NosCore.Packets/ServerPackets/Chats/IconInfoPacket.cs) *InGame*
+- [inbox](../src/NosCore.Packets/ServerPackets/Chats/InboxPacket.cs) *InGame*
 - [sayi2](../src/NosCore.Packets/ServerPackets/Chats/Sayi2Packet.cs) *InGame*
 - [sayi](../src/NosCore.Packets/ServerPackets/Chats/SayiPacket.cs) *InGame*
 - [sayitem](../src/NosCore.Packets/ServerPackets/Chats/SayItemPacket.cs) *InGame*

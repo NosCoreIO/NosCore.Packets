@@ -15,6 +15,7 @@ namespace NosCore.Packets.ClientPackets.Infrastructure
     public class DacPacket : PacketBase
     {
         [PacketIndex(0)]
+        [Required]
         public string AccountName { get; set; } = null!;
 
         [PacketIndex(1)]
