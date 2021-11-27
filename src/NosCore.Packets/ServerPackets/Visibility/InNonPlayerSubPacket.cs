@@ -69,5 +69,14 @@ namespace NosCore.Packets.ServerPackets.Visibility
 
         [PacketIndex(19)]
         public byte Unknow4 { get; set; }
+
+        [PacketIndex(20)]
+        public Game18NConstString Title { get; set; }
+
+        [PacketIndex(21)]
+        public byte Unknow5 { get; set; }
+
+        [PacketIndex(22)]
+        public byte Unknow6 { get; set; }
     }
 }

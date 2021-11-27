@@ -19,5 +19,8 @@ namespace NosCore.Packets.ServerPackets.Visibility
 
         [PacketIndex(2)]
         public long Owner { get; set; }
+
+        [PacketIndex(3)]
+        public byte Unknown { get; set; }
     }
 }
