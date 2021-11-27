@@ -159,10 +159,8 @@
 - [pst](../src/NosCore.Packets/ClientPackets/Parcel/PstClientPacket.cs) *InGame*
 
 ### Player
-- [bp_close](../src/NosCore.Packets/ClientPackets/Player/BpClosePacket.cs) *InGame*
 - [bpm](../src/NosCore.Packets/ClientPackets/Player/BpmPacket.cs) *InGame*
 - [bp_close](../src/NosCore.Packets/ClientPackets/Player/BpoPacket.cs) *InGame*
-- [bp_open](../src/NosCore.Packets/ClientPackets/Player/BpOpenPacket.cs) *InGame*
 - [bpp](../src/NosCore.Packets/ClientPackets/Player/BppPacket.cs) *InGame*
 - [bpt](../src/NosCore.Packets/ClientPackets/Player/BptPacket.cs) *InGame*
 - [rsfi](../src/NosCore.Packets/ClientPackets/Player/RsfiPacket.cs) *InGame*
@@ -348,6 +346,8 @@
 
 ### Player
 - [bn](../src/NosCore.Packets/ServerPackets/Player/BnPacket.cs) *InGame*
+- [bp_close](../src/NosCore.Packets/ServerPackets/Player/BpClosePacket.cs) *InGame*
+- [bp_open](../src/NosCore.Packets/ServerPackets/Player/BpOpenPacket.cs) *InGame*
 - [c_info](../src/NosCore.Packets/ServerPackets/Player/CInfoPacket.cs) *InGame*
 - [c_mode](../src/NosCore.Packets/ServerPackets/Player/CModePacket.cs) *InGame*
 - [cond](../src/NosCore.Packets/ServerPackets/Player/CondPacket.cs) *InGame*

@@ -7,7 +7,7 @@
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 
-namespace NosCore.Packets.ClientPackets.Player
+namespace NosCore.Packets.ServerPackets.Player
 {
     [PacketHeader("bp_close", Scope.InGame)]
     public class BpClosePacket : PacketBase
