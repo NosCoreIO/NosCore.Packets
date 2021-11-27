@@ -68,7 +68,7 @@ namespace NosCore.Packets.ServerPackets.Visibility
         public short SkillRank3 { get; set; }
 
         [PacketIndex(19)]
-        public byte Unknow4 { get; set; }
+        public bool IsInvisible { get; set; }
 
         [PacketIndex(20)]
         public Game18NConstString Title { get; set; }
