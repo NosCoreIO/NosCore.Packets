@@ -5,6 +5,7 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Player
 {
@@ -14,10 +15,10 @@ namespace NosCore.Packets.ClientPackets.Player
         public long QuestId { get; set; }
 
         [PacketIndex(1)]
-        public short MissionSubType { get; set; } // todo : to enum
+        public MissionType MissionSubType { get; set; }
 
         [PacketIndex(2)]
-        public short MissionType { get; set; } // todo : to enum
+        public TaskType TaskType { get; set; }
 
         [PacketIndex(3)]
         public long Advencement { get; set; }
