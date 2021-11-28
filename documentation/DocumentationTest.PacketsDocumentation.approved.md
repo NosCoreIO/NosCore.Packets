@@ -304,6 +304,7 @@
 - [mapout](../src/NosCore.Packets/ServerPackets/Map/MapOutPacket.cs) *InGame*
 
 ### Mates
+- [psd](../src/NosCore.Packets/ServerPackets/Mates/PsdPacket.cs) *InGame*
 - [pski](../src/NosCore.Packets/ServerPackets/Mates/PSkiPacket.cs) *InGame*
 - [sc_n](../src/NosCore.Packets/ServerPackets/Mates/ScnPacket.cs) *InGame*
 - [sc_p](../src/NosCore.Packets/ServerPackets/Mates/ScpPacket.cs) *InGame*
