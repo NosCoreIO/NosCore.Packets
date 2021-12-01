@@ -1,6 +1,6 @@
 ﻿namespace NosCore.Packets.Enumerations
 {
-    public enum TaskType : byte
+    public enum FrequencyType : byte
     {
         Daily = 0,
         Weekly = 1,

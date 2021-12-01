@@ -15,10 +15,10 @@ namespace NosCore.Packets.ClientPackets.Player
         public long QuestId { get; set; }
 
         [PacketIndex(1)]
-        public MissionType MissionSubType { get; set; }
+        public MissionType MissionType { get; set; }
 
         [PacketIndex(2)]
-        public TaskType TaskType { get; set; }
+        public FrequencyType FrequencyType { get; set; }
 
         [PacketIndex(3)]
         public long Advencement { get; set; }
