@@ -226,6 +226,7 @@
 - [gb](../src/NosCore.Packets/ServerPackets/Bank/GbPacket.cs) *InGame*
 
 ### Battle
+- [vb](../src/NosCore.Packets/ServerPackets/Battle/VbPacket.cs) *InGame*
 - [bf](../src/NosCore.Packets/ServerPackets/Battle/BfPacket.cs) *InGame*
 - [cancel](../src/NosCore.Packets/ServerPackets/Battle/CancelPacket.cs) *InGame*
 - [ct](../src/NosCore.Packets/ServerPackets/Battle/CtPacket.cs) *InGame*

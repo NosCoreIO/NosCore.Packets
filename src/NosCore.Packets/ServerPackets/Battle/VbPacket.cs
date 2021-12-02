@@ -6,23 +6,19 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
-using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Battle
 {
-    [PacketHeader("dm", Scope.InGame)]
-    public class DmPacket
+    [PacketHeader("vb", Scope.InGame)]
+    public class VbPacket : PacketBase
     {
         [PacketIndex(0)]
-        public VisualType VisualType { get; set; }
+        public short CardId { get; set; }
 
         [PacketIndex(1)]
-        public long VisualId { get; set; }
+        public bool IsActivated { get; set; }
 
         [PacketIndex(2)]
-        public long Damages { get; set; }
-
-        [PacketIndex(3)]
-        public DamagePacketType DamageType { get; set; }
+        public int RemainingTime { get; set; }
     }
 }
