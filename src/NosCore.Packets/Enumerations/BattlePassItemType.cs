@@ -9,7 +9,7 @@ namespace NosCore.Packets.Enumerations
     public enum BattlePassItemType : byte
     {
         Free = 0,
-        Premmium = 1,
+        Premium = 1,
         All = 2
     }
 }
