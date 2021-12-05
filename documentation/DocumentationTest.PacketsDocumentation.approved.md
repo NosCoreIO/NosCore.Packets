@@ -163,6 +163,8 @@
 - [bp_close](../src/NosCore.Packets/ClientPackets/Player/BpoPacket.cs) *InGame*
 - [bpp](../src/NosCore.Packets/ClientPackets/Player/BppPacket.cs) *InGame*
 - [bpt](../src/NosCore.Packets/ClientPackets/Player/BptPacket.cs) *InGame*
+- [compl](../src/NosCore.Packets/ClientPackets/Player/ComplPacket.cs) *InGame*
+- [eqinfo](../src/NosCore.Packets/ClientPackets/Player/EquipmentInfoPacket.cs) *InGame*
 - [rsfi](../src/NosCore.Packets/ClientPackets/Player/RsfiPacket.cs) *InGame*
 - [snap](../src/NosCore.Packets/ClientPackets/Player/SnapPacket.cs) *InTrade | InGame*
 - [tit_eq](../src/NosCore.Packets/ClientPackets/Player/TitEqPacket.cs) *InTrade | InGame*
@@ -233,6 +235,7 @@
 - [ms_c](../src/NosCore.Packets/ServerPackets/Battle/MscPacket.cs) *InGame*
 - [mslot](../src/NosCore.Packets/ServerPackets/Battle/MslotPacket.cs) *InGame*
 - [su](../src/NosCore.Packets/ServerPackets/Battle/SuPacket.cs) *InGame*
+- [vb](../src/NosCore.Packets/ServerPackets/Battle/VbPacket.cs) *InGame*
 
 ### Bazaar
 - [rc_buy](../src/NosCore.Packets/ServerPackets/Bazaar/RCBuyPacket.cs) *InGame*
