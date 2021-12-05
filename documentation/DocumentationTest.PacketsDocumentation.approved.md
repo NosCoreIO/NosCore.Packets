@@ -12,6 +12,10 @@
 - [ob_a](../src/NosCore.Packets/ClientPackets/Battle/UseIconFalconSkillPacket.cs) *InGame*
 - [u_s](../src/NosCore.Packets/ClientPackets/Battle/UseSkillPacket.cs) *InGame*
 
+### BattlePassGift
+- [bp_msel](../src/NosCore.Packets/ClientPackets/BattlePassGift/BpMselPacket.cs) *InGame*
+- [bp_psel](../src/NosCore.Packets/ClientPackets/BattlePassGift/BpPselPacket.cs) *InGame*
+
 ### Bazaar
 - [c_blist](../src/NosCore.Packets/ClientPackets/Bazaar/CBListPacket.cs) *InTrade | InGame*
 - [c_buy](../src/NosCore.Packets/ClientPackets/Bazaar/CBuyPacket.cs) *InGame*
@@ -155,8 +159,10 @@
 - [pst](../src/NosCore.Packets/ClientPackets/Parcel/PstClientPacket.cs) *InGame*
 
 ### Player
-- [compl](../src/NosCore.Packets/ClientPackets/Player/ComplPacket.cs) *InGame*
-- [eqinfo](../src/NosCore.Packets/ClientPackets/Player/EquipmentInfoPacket.cs) *InGame*
+- [bpm](../src/NosCore.Packets/ClientPackets/Player/BpmPacket.cs) *InGame*
+- [bp_close](../src/NosCore.Packets/ClientPackets/Player/BpoPacket.cs) *InGame*
+- [bpp](../src/NosCore.Packets/ClientPackets/Player/BppPacket.cs) *InGame*
+- [bpt](../src/NosCore.Packets/ClientPackets/Player/BptPacket.cs) *InGame*
 - [rsfi](../src/NosCore.Packets/ClientPackets/Player/RsfiPacket.cs) *InGame*
 - [snap](../src/NosCore.Packets/ClientPackets/Player/SnapPacket.cs) *InTrade | InGame*
 - [tit_eq](../src/NosCore.Packets/ClientPackets/Player/TitEqPacket.cs) *InTrade | InGame*
@@ -340,6 +346,8 @@
 
 ### Player
 - [bn](../src/NosCore.Packets/ServerPackets/Player/BnPacket.cs) *InGame*
+- [bp_close](../src/NosCore.Packets/ServerPackets/Player/BpClosePacket.cs) *InGame*
+- [bp_open](../src/NosCore.Packets/ServerPackets/Player/BpOpenPacket.cs) *InGame*
 - [c_info](../src/NosCore.Packets/ServerPackets/Player/CInfoPacket.cs) *InGame*
 - [c_mode](../src/NosCore.Packets/ServerPackets/Player/CModePacket.cs) *InGame*
 - [cond](../src/NosCore.Packets/ServerPackets/Player/CondPacket.cs) *InGame*
