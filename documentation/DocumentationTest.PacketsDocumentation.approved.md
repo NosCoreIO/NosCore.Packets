@@ -100,6 +100,7 @@
 - [0](../src/NosCore.Packets/ClientPackets/Infrastructure/ZeroPacket.cs) *OnCharacterScreen | InTrade | InGame*
 
 ### Instance
+- [bc](../src/NosCore.Packets/ClientPackets/Instance/BcPacket.cs) *InGame*
 - [escape](../src/NosCore.Packets/ClientPackets/Instance/EscapePacket.cs) *InGame*
 - [git](../src/NosCore.Packets/ClientPackets/Instance/GitPacket.cs) *InGame*
 - [hidn](../src/NosCore.Packets/ClientPackets/Instance/HidnPacket.cs) *InGame*
@@ -228,6 +229,7 @@
 - [gb](../src/NosCore.Packets/ServerPackets/Bank/GbPacket.cs) *InGame*
 
 ### Battle
+- [sr](../src/NosCore.Packets/ServerPackets/Battle/SkillResetPacket.cs) *InGame*
 - [bf](../src/NosCore.Packets/ServerPackets/Battle/BfPacket.cs) *InGame*
 - [cancel](../src/NosCore.Packets/ServerPackets/Battle/CancelPacket.cs) *InGame*
 - [ct](../src/NosCore.Packets/ServerPackets/Battle/CtPacket.cs) *InGame*
@@ -313,6 +315,7 @@
 - [mapout](../src/NosCore.Packets/ServerPackets/Map/MapOutPacket.cs) *InGame*
 
 ### Mates
+- [ib](../src/NosCore.Packets/ServerPackets/Mates/IbPacket.cs) *InGame*
 - [psd](../src/NosCore.Packets/ServerPackets/Mates/PsdPacket.cs) *InGame*
 - [pski](../src/NosCore.Packets/ServerPackets/Mates/PSkiPacket.cs) *InGame*
 - [sc_n](../src/NosCore.Packets/ServerPackets/Mates/ScnPacket.cs) *InGame*
@@ -401,6 +404,7 @@
 - [pidx_sub_packet](../src/NosCore.Packets/ServerPackets/Shop/PidxSubPacket.cs) *InGame*
 - [shop_end](../src/NosCore.Packets/ServerPackets/Shop/ShopEndPacket.cs) *InGame*
 - [shop](../src/NosCore.Packets/ServerPackets/Shop/ShopPacket.cs) *InGame*
+- [s_memoi](../src/NosCore.Packets/ServerPackets/Shop/SMemoiPacket.cs) *InGame*
 - [s_memoi2](../src/NosCore.Packets/ServerPackets/Shop/SMemoi2Packet.cs) *InGame*
 - [s_memo](../src/NosCore.Packets/ServerPackets/Shop/SMemoPacket.cs) *InGame*
 
@@ -420,12 +424,14 @@
 - [icon](../src/NosCore.Packets/ServerPackets/UI/IconPacket.cs) *InGame*
 - [infoi](../src/NosCore.Packets/ServerPackets/UI/InfoiPacket.cs) *InGame*
 - [info](../src/NosCore.Packets/ServerPackets/UI/InfoPacket.cs) *InGame*
+- [modali](../src/NosCore.Packets/ServerPackets/UI/ModaliPacket.cs) *InGame*
 - [modal](../src/NosCore.Packets/ServerPackets/UI/ModalPacket.cs) *InGame*
 - [msgi](../src/NosCore.Packets/ServerPackets/UI/MsgiPacket.cs) *InGame*
 - [msg](../src/NosCore.Packets/ServerPackets/UI/MsgPacket.cs) *InGame*
 - [p_clear](../src/NosCore.Packets/ServerPackets/UI/PclearPacket.cs) *InGame*
 - [qnai2](../src/NosCore.Packets/ServerPackets/UI/Qnai2Packet.cs) *InGame*
 - [qna](../src/NosCore.Packets/ServerPackets/UI/QnaPacket.cs) *InGame*
+- [rdi](../src/NosCore.Packets/ServerPackets/UI/RdiPacket.cs) *InGame*
 - [shopclose](../src/NosCore.Packets/ServerPackets/UI/ShopClosePacket.cs) *InGame*
 - [ta_rank](../src/NosCore.Packets/ServerPackets/UI/TARankPacket.cs) *InGame*
 - [ta_close](../src/NosCore.Packets/ServerPackets/UI/TeamArenaClosePacket.cs) *InGame*
