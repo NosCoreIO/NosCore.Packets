@@ -13,9 +13,9 @@ namespace NosCore.Packets.ServerPackets.Mates
     public class IbPacket : PacketBase
     {
         [PacketIndex(0)]
-        public short FirstArgument { get; set; }
+        public short Unknown1 { get; set; }
 
         [PacketIndex(1)]
-        public byte SecondArgument { get; set; }
+        public byte Unknown2 { get; set; }
     }
 }

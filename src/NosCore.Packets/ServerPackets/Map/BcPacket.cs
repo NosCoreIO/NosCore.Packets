@@ -13,12 +13,12 @@ namespace NosCore.Packets.ServerPackets.Map
     public class BcPacket : PacketBase
     {
         [PacketIndex(0)]
-        public short FirstArgument { get; set; }
+        public short Unknown1 { get; set; }
 
         [PacketIndex(1)]
-        public short SecondArgument { get; set; }
+        public short Unknown2 { get; set; }
 
         [PacketIndex(2)]
-        public short ThirdArgument { get; set; }
+        public short Unknown3 { get; set; }
     }
 }
