@@ -340,7 +340,7 @@ namespace NosCore.Packets.Tests
             var packet = Serializer.Serialize(
                 new DelayPacket
                 {
-                    Type = 3,
+                    Type = DelayPacketType.Locomotion,
                     Delay = 3000,
                     Packet = new UseItemPacket()
                     {

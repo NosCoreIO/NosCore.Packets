@@ -6,20 +6,16 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
-using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("delay", Scope.InGame)]
-    public class DelayPacket : PacketBase
+    [PacketHeader("umi", Scope.InGame)]
+    public class UmiPacket : PacketBase
     {
         [PacketIndex(0)]
-        public short Delay { get; set; }
+        public short ItemVNum { get; set; }
 
         [PacketIndex(1)]
-        public DelayPacketType Type { get; set; }
-
-        [PacketIndex(2)]
-        public IPacket? Packet { get; set; }
+        public int Time { get; set; }
     }
 }

@@ -18,6 +18,8 @@ namespace NosCore.Packets.Enumerations
         Identify = 8,
         OpenChest = 9,
         BackToMiniland = 10,
-        Invocation = 11
+        Invocation = 11,
+        CancelThornBushInvocation = 12,
+        CancelTransformation = 13
     }
 }
