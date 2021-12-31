@@ -10221,7 +10221,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         ReceivedChampionExperiencePointsForThisPhase = 2556,
         // <summary>
-        // You received %d champion experience points as a reward for this phase.<NEW_TYPE><0>
+        // You received %d job experience points as a reward for this phase.<NEW_TYPE><0>
         // <summary>
         ReceivedJobExperiencePointsForThisPhase = 2557,
         // <summary>
