@@ -10227,7 +10227,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You no longer have a chance. Please wait until the attack ends.
         // <summary>
-        NoLongerHaveChnaceWaitAttackEnds = 2558,
+        NoLongerHaveChanceWaitAttackEnds = 2558,
         // <summary>
         // Asgobas flies higher into the air to recover.
         // <summary>
@@ -10247,6 +10247,6 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You will be revived in 20 seconds. You can them resume battle against Asgobas.
         // <summary>
-        WillBeRevivedInTwentySeconds = 2564,
+        WillBeRevivedInTwentySecondsAsgobas = 2564,
     }
 }
