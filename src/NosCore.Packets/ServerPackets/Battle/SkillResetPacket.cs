@@ -8,15 +8,12 @@ using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 
-namespace NosCore.Packets.ClientPackets.Mates
+namespace NosCore.Packets.ServerPackets.Battle
 {
-    [PacketHeader("ib", Scope.InGame)]
-    public class IbPacket : PacketBase
+    [PacketHeader("sr", Scope.InGame)]
+    public class SkillResetPacket : PacketBase
     {
         [PacketIndex(0)]
-        public short FirstArgument { get; set; }
-
-        [PacketIndex(1)]
-        public byte SecondArgument { get; set; }
+        public long CastId { get; set; }
     }
 }

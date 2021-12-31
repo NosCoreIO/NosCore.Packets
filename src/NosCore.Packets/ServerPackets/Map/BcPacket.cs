@@ -7,7 +7,7 @@
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 
-namespace NosCore.Packets.ClientPackets.Instance
+namespace NosCore.Packets.ServerPackets.Map
 {
     [PacketHeader("bc", Scope.InGame)]
     public class BcPacket : PacketBase

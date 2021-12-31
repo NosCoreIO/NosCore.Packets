@@ -100,7 +100,6 @@
 - [0](../src/NosCore.Packets/ClientPackets/Infrastructure/ZeroPacket.cs) *OnCharacterScreen | InTrade | InGame*
 
 ### Instance
-- [bc](../src/NosCore.Packets/ClientPackets/Instance/BcPacket.cs) *InGame*
 - [escape](../src/NosCore.Packets/ClientPackets/Instance/EscapePacket.cs) *InGame*
 - [git](../src/NosCore.Packets/ClientPackets/Instance/GitPacket.cs) *InGame*
 - [hidn](../src/NosCore.Packets/ClientPackets/Instance/HidnPacket.cs) *InGame*
@@ -229,13 +228,13 @@
 - [gb](../src/NosCore.Packets/ServerPackets/Bank/GbPacket.cs) *InGame*
 
 ### Battle
-- [sr](../src/NosCore.Packets/ServerPackets/Battle/SkillResetPacket.cs) *InGame*
 - [bf](../src/NosCore.Packets/ServerPackets/Battle/BfPacket.cs) *InGame*
 - [cancel](../src/NosCore.Packets/ServerPackets/Battle/CancelPacket.cs) *InGame*
 - [ct](../src/NosCore.Packets/ServerPackets/Battle/CtPacket.cs) *InGame*
 - [die](../src/NosCore.Packets/ServerPackets/Battle/DiePacket.cs) *InGame*
 - [ms_c](../src/NosCore.Packets/ServerPackets/Battle/MscPacket.cs) *InGame*
 - [mslot](../src/NosCore.Packets/ServerPackets/Battle/MslotPacket.cs) *InGame*
+- [sr](../src/NosCore.Packets/ServerPackets/Battle/SkillResetPacket.cs) *InGame*
 - [su](../src/NosCore.Packets/ServerPackets/Battle/SuPacket.cs) *InGame*
 - [vb](../src/NosCore.Packets/ServerPackets/Battle/VbPacket.cs) *InGame*
 
@@ -311,6 +310,7 @@
 - [NsTeST_sub_packet](../src/NosCore.Packets/ServerPackets/Login/NsTeStSubPacket.cs) *OnLoginScreen*
 
 ### Map
+- [bc](../src/NosCore.Packets/ServerPackets/Map/BcPacket.cs) *InGame*
 - [eff_g](../src/NosCore.Packets/ServerPackets/Map/GroundEffectPacket.cs) *InGame*
 - [mapout](../src/NosCore.Packets/ServerPackets/Map/MapOutPacket.cs) *InGame*
 
@@ -404,8 +404,8 @@
 - [pidx_sub_packet](../src/NosCore.Packets/ServerPackets/Shop/PidxSubPacket.cs) *InGame*
 - [shop_end](../src/NosCore.Packets/ServerPackets/Shop/ShopEndPacket.cs) *InGame*
 - [shop](../src/NosCore.Packets/ServerPackets/Shop/ShopPacket.cs) *InGame*
-- [s_memoi](../src/NosCore.Packets/ServerPackets/Shop/SMemoiPacket.cs) *InGame*
 - [s_memoi2](../src/NosCore.Packets/ServerPackets/Shop/SMemoi2Packet.cs) *InGame*
+- [s_memoi](../src/NosCore.Packets/ServerPackets/Shop/SMemoiPacket.cs) *InGame*
 - [s_memo](../src/NosCore.Packets/ServerPackets/Shop/SMemoPacket.cs) *InGame*
 
 ### Specialists
