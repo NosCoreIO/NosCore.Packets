@@ -10140,5 +10140,113 @@ namespace NosCore.Packets.Enumerations
         // This Battle Pass season has finished.
         // <summary>
         BattlePassSeasonFinished = 2535,
+        // <summary>
+        // The specialist card can only be upgraded further from job level 61.
+        // <summary>
+        SpFurtherJobLevelSixtyOne = 2536,
+        // <summary>
+        // Can be used to upgrade cards from level 15-19.
+        // <summary>
+        UpgradeCardFromFifteenToNineteen = 2537,
+        // <summary>
+        // Only specialist cards of level +20 can be enchanted with a dragon item.
+        // <summary>
+        SpLevelTwentyEnchantedDragonItem = 2538,
+        // <summary>
+        // The specialist card already has this dragon item.
+        // <summary>
+        SpAlreadyHasDragonItem = 2539,
+        // <summary>
+        // This specialist card has been enchanted with the following item: %s.<NEW_TYPE><0>
+        // <summary>
+        SpHasBeenEnchantedWithTheFollowingItem = 2540,
+        // <summary>
+        // Defeat all summoned monsters to remove the fog shield.
+        // <summary>
+        DefeatMonstersToRemoveFogShield = 2541,
+        // <summary>
+        // Use the energy of the zombie dragon captured from monsters to remove the fog of fear.
+        // <summary>
+        UseEnergyOfZombieDragonToRemoveFogOfFear = 2542,
+        // <summary>
+        // Alzanor is preparing a powerful ice attack. Go to the nearest frost deflector to avoid any damage.
+        // <summary>
+        AlzanorPreparingPowerfulIceAttack = 2543,
+        // <summary>
+        // You didn't manage to defend Dragonveil.
+        // <summary>
+        YouDidntManageToDefendDragonveil = 2544,
+        // <summary>
+        // Asgobas' Instant Combat has started.
+        // <summary>
+        AsgobasInstantCombatStarted = 2545,
+        // <summary>
+        // Asgobas' Instant Combat is about to start.
+        // <summary>
+        AsgobasInstantCombatAboutToStart = 2546,
+        // <summary>
+        // Do you want to join Asgobas' Instant Combat?
+        // <summary>
+        DoYouWantToJoinAsgobasInstantCombat = 2547,
+        // <summary>
+        // Asgobas' Instant Combat is ending.
+        // <summary>
+        AsgobasInstantCombatIsEnding = 2548,
+        // <summary>
+        // Asgobas' Instant Combat (Single) is activated.
+        // <summary>
+        AsgobasInstantCombatSingleActivated = 2549,
+        // <summary>
+        // Cancel Asgobas' Instant Combat (Single) to be able to start a regular Asgobas' Instant Combat.
+        // <summary>
+        CancelAsgobasInstantCombat = 2550,
+        // <summary>
+        // Asgobas is approaching.
+        // <summary>
+        AsgobasIsApproaching = 2552,
+        // <summary>
+        // Asgobas' attack will end in 20 seconds.
+        // <summary>
+        AsgobasAttackEndInTwentySeconds = 2553,
+        // <summary>
+        // Asgobas' attack is about to start.
+        // <summary>
+        AsgobasAttackAboutToStart = 2554,
+        // <summary>
+        // You received %d battle experience points as a reward for this phase.<NEW_TYPE><0>
+        // <summary>
+        ReceivedBattleExperiencePointsForThisPhase = 2555,
+        // <summary>
+        // You received %d champion experience points as a reward for this phase.<NEW_TYPE><0>
+        // <summary>
+        ReceivedChampionExperiencePointsForThisPhase = 2556,
+        // <summary>
+        // You received %d champion experience points as a reward for this phase.<NEW_TYPE><0>
+        // <summary>
+        ReceivedJobExperiencePointsForThisPhase = 2557,
+        // <summary>
+        // You no longer have a chance. Please wait until the attack ends.
+        // <summary>
+        NoLongerHaveChnaceWaitAttackEnds = 2558,
+        // <summary>
+        // Asgobas flies higher into the air to recover.
+        // <summary>
+        AsgobasFliesHigher = 2559,
+        // <summary>
+        // Asgobas' magic makes him stronger.
+        // <summary>
+        AsgobasMagicStronger = 2560,
+        // <summary>
+        // Asgobas will only come down once you have defeated the summoned ice dragon.
+        // <summary>
+        AsgobasOnlyComeDownOnceDefeatIceDragon = 2561,
+        // <summary>
+        // The injured Asgobas retreats.
+        // <summary>
+        TheInjuredAsgobasRetreats = 2562,
+        // <summary>
+        // You will be revived in 20 seconds. You can them resume battle against Asgobas.
+        // <summary>
+        WillBeRevivedInTwentySeconds = 2564,
     }
 }
