@@ -8,6 +8,7 @@ namespace NosCore.Packets.Enumerations
 {
     public enum DelayPacketType
     {
+        OpeningBox = 0,
         Button = 1,
         Exploration = 2,
         Locomotion = 3,
