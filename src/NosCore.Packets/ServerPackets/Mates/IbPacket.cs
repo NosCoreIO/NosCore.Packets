@@ -7,10 +7,15 @@
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 
-namespace NosCore.Packets.ClientPackets.Player
+namespace NosCore.Packets.ServerPackets.Mates
 {
-    [PacketHeader("bpo", Scope.InGame)]
-    public class BpoPacket : PacketBase
+    [PacketHeader("ib", Scope.InGame)]
+    public class IbPacket : PacketBase
     {
+        [PacketIndex(0)]
+        public short Unknown1 { get; set; }
+
+        [PacketIndex(1)]
+        public byte Unknown2 { get; set; }
     }
 }

@@ -6,11 +6,14 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
-namespace NosCore.Packets.ClientPackets.Player
+namespace NosCore.Packets.ServerPackets.Battle
 {
-    [PacketHeader("bpo", Scope.InGame)]
-    public class BpoPacket : PacketBase
+    [PacketHeader("sr", Scope.InGame)]
+    public class SkillResetPacket : PacketBase
     {
+        [PacketIndex(0)]
+        public long CastId { get; set; }
     }
 }

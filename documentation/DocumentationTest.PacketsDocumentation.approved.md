@@ -159,8 +159,10 @@
 - [pst](../src/NosCore.Packets/ClientPackets/Parcel/PstClientPacket.cs) *InGame*
 
 ### Player
+- [bp_close](../src/NosCore.Packets/ClientPackets/Player/BpClosePacket.cs) *InGame*
 - [bpm](../src/NosCore.Packets/ClientPackets/Player/BpmPacket.cs) *InGame*
-- [bp_close](../src/NosCore.Packets/ClientPackets/Player/BpoPacket.cs) *InGame*
+- [bpo](../src/NosCore.Packets/ClientPackets/Player/BpoPacket.cs) *InGame*
+- [bp_open](../src/NosCore.Packets/ClientPackets/Player/BpOpenPacket.cs) *InGame*
 - [bpp](../src/NosCore.Packets/ClientPackets/Player/BppPacket.cs) *InGame*
 - [bpt](../src/NosCore.Packets/ClientPackets/Player/BptPacket.cs) *InGame*
 - [compl](../src/NosCore.Packets/ClientPackets/Player/ComplPacket.cs) *InGame*
@@ -234,6 +236,7 @@
 - [die](../src/NosCore.Packets/ServerPackets/Battle/DiePacket.cs) *InGame*
 - [ms_c](../src/NosCore.Packets/ServerPackets/Battle/MscPacket.cs) *InGame*
 - [mslot](../src/NosCore.Packets/ServerPackets/Battle/MslotPacket.cs) *InGame*
+- [sr](../src/NosCore.Packets/ServerPackets/Battle/SkillResetPacket.cs) *InGame*
 - [su](../src/NosCore.Packets/ServerPackets/Battle/SuPacket.cs) *InGame*
 - [vb](../src/NosCore.Packets/ServerPackets/Battle/VbPacket.cs) *InGame*
 
@@ -309,10 +312,12 @@
 - [NsTeST_sub_packet](../src/NosCore.Packets/ServerPackets/Login/NsTeStSubPacket.cs) *OnLoginScreen*
 
 ### Map
+- [bc](../src/NosCore.Packets/ServerPackets/Map/BcPacket.cs) *InGame*
 - [eff_g](../src/NosCore.Packets/ServerPackets/Map/GroundEffectPacket.cs) *InGame*
 - [mapout](../src/NosCore.Packets/ServerPackets/Map/MapOutPacket.cs) *InGame*
 
 ### Mates
+- [ib](../src/NosCore.Packets/ServerPackets/Mates/IbPacket.cs) *InGame*
 - [psd](../src/NosCore.Packets/ServerPackets/Mates/PsdPacket.cs) *InGame*
 - [pski](../src/NosCore.Packets/ServerPackets/Mates/PSkiPacket.cs) *InGame*
 - [sc_n](../src/NosCore.Packets/ServerPackets/Mates/ScnPacket.cs) *InGame*
@@ -349,8 +354,6 @@
 
 ### Player
 - [bn](../src/NosCore.Packets/ServerPackets/Player/BnPacket.cs) *InGame*
-- [bp_close](../src/NosCore.Packets/ServerPackets/Player/BpClosePacket.cs) *InGame*
-- [bp_open](../src/NosCore.Packets/ServerPackets/Player/BpOpenPacket.cs) *InGame*
 - [c_info](../src/NosCore.Packets/ServerPackets/Player/CInfoPacket.cs) *InGame*
 - [c_mode](../src/NosCore.Packets/ServerPackets/Player/CModePacket.cs) *InGame*
 - [cond](../src/NosCore.Packets/ServerPackets/Player/CondPacket.cs) *InGame*
@@ -402,6 +405,7 @@
 - [shop_end](../src/NosCore.Packets/ServerPackets/Shop/ShopEndPacket.cs) *InGame*
 - [shop](../src/NosCore.Packets/ServerPackets/Shop/ShopPacket.cs) *InGame*
 - [s_memoi2](../src/NosCore.Packets/ServerPackets/Shop/SMemoi2Packet.cs) *InGame*
+- [s_memoi](../src/NosCore.Packets/ServerPackets/Shop/SMemoiPacket.cs) *InGame*
 - [s_memo](../src/NosCore.Packets/ServerPackets/Shop/SMemoPacket.cs) *InGame*
 
 ### Specialists
@@ -420,12 +424,14 @@
 - [icon](../src/NosCore.Packets/ServerPackets/UI/IconPacket.cs) *InGame*
 - [infoi](../src/NosCore.Packets/ServerPackets/UI/InfoiPacket.cs) *InGame*
 - [info](../src/NosCore.Packets/ServerPackets/UI/InfoPacket.cs) *InGame*
+- [modali](../src/NosCore.Packets/ServerPackets/UI/ModaliPacket.cs) *InGame*
 - [modal](../src/NosCore.Packets/ServerPackets/UI/ModalPacket.cs) *InGame*
 - [msgi](../src/NosCore.Packets/ServerPackets/UI/MsgiPacket.cs) *InGame*
 - [msg](../src/NosCore.Packets/ServerPackets/UI/MsgPacket.cs) *InGame*
 - [p_clear](../src/NosCore.Packets/ServerPackets/UI/PclearPacket.cs) *InGame*
 - [qnai2](../src/NosCore.Packets/ServerPackets/UI/Qnai2Packet.cs) *InGame*
 - [qna](../src/NosCore.Packets/ServerPackets/UI/QnaPacket.cs) *InGame*
+- [rdi](../src/NosCore.Packets/ServerPackets/UI/RdiPacket.cs) *InGame*
 - [shopclose](../src/NosCore.Packets/ServerPackets/UI/ShopClosePacket.cs) *InGame*
 - [ta_rank](../src/NosCore.Packets/ServerPackets/UI/TARankPacket.cs) *InGame*
 - [ta_close](../src/NosCore.Packets/ServerPackets/UI/TeamArenaClosePacket.cs) *InGame*
