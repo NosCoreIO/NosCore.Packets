@@ -9,7 +9,7 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Player
 {
-    [PacketHeader("bp_close", Scope.InGame)]
+    [PacketHeader("bpo", Scope.InGame)]
     public class BpoPacket : PacketBase
     {
     }
