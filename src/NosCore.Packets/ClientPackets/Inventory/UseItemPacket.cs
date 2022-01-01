@@ -7,7 +7,6 @@
 using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
-using NosCore.Packets.Interfaces;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Inventory
@@ -32,6 +31,6 @@ namespace NosCore.Packets.ClientPackets.Inventory
         public short Mode { get; set; }
 
         [PacketIndex(5)]
-        public short Parameter { get; set; }
+        public short? Parameter { get; set; }
     }
 }
