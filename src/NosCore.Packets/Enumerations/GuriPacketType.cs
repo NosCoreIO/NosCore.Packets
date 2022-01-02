@@ -14,6 +14,7 @@ namespace NosCore.Packets.Enumerations
         HPMPBonus = 4,
         DanceAnimationPercent = 5,
         CharacterAnimation = 6,
+        FreezeTimer = 8,
         TextInput = 10,
         CancelTarget = 11,
         Unknow4 = 15,
