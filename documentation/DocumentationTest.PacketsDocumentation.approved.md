@@ -268,6 +268,7 @@
 - [talk](../src/NosCore.Packets/ServerPackets/Chats/TalkPacket.cs) *InGame*
 
 ### Entities
+- [ca_t](../src/NosCore.Packets/ServerPackets/Entities/CatPacket.cs) *InGame*
 - [char_sc](../src/NosCore.Packets/ServerPackets/Entities/CharScPacket.cs) *InGame*
 - [drop](../src/NosCore.Packets/ServerPackets/Entities/DropPacket.cs) *InGame*
 - [mv](../src/NosCore.Packets/ServerPackets/Entities/MovePacket.cs) *InGame*

@@ -8,17 +8,20 @@ namespace NosCore.Packets.Enumerations
 {
     public enum GuriPacketType
     {
+        Shadow = 0,
         Dance = 2,
         Script = 3,
         HPMPBonus = 4,
         DanceAnimationPercent = 5,
         CharacterAnimation = 6,
         TextInput = 10,
+        CancelTarget = 11,
         Unknow4 = 15,
         PerfumAndIdentification = 18,
         AfterSumming = 19,
         AddMountInPearl = 24,
         AddFairyInPearl = 26,
+        TattooInfo = 40,
         FlipCamera = 41,
         FriendshipWings = 199,
         PetBasket = 201,
