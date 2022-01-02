@@ -20,6 +20,7 @@ namespace NosCore.Packets.Enumerations
         AfterSumming = 19,
         AddMountInPearl = 24,
         AddFairyInPearl = 26,
+        TattooInfo = 40,
         FlipCamera = 41,
         FriendshipWings = 199,
         PetBasket = 201,
