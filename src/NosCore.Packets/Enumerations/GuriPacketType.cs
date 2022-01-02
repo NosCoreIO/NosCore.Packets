@@ -14,6 +14,7 @@ namespace NosCore.Packets.Enumerations
         DanceAnimationPercent = 5,
         CharacterAnimation = 6,
         TextInput = 10,
+        CancelTarget = 11,
         Unknow4 = 15,
         PerfumAndIdentification = 18,
         AfterSumming = 19,
