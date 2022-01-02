@@ -111,7 +111,7 @@ namespace NosCore.Packets.Tests
 
             testPacket = new GuriPacket
             {
-                Type = GuriPacketType.Unknow,
+                Type = GuriPacketType.CharacterAnimation,
                 Argument = 1,
                 EntityId = 2,
                 Value = 0,
@@ -123,7 +123,7 @@ namespace NosCore.Packets.Tests
 
             testPacket = new GuriPacket
             {
-                Type = GuriPacketType.Effect,
+                Type = GuriPacketType.TextInput,
                 Argument = 1,
                 EntityId = 2,
                 SecondArgument = 0,
