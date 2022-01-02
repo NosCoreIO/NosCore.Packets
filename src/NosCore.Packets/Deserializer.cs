@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -80,10 +81,12 @@ namespace NosCore.Packets
 
     public class Deserializer : IDeserializer
     {
+        private readonly ConcurrentDictionary<Type, Func<IEnumerable<object?>, object>> _getAndFillListMethods;
         private readonly Dictionary<string, TypeCreator> _packetDeserializerDictionary = new Dictionary<string, TypeCreator>();
 
         public Deserializer(IEnumerable<Type> types)
         {
+            _getAndFillListMethods = new ConcurrentDictionary<Type, Func<IEnumerable<object?>, object>>();
             var deserializerMethod = typeof(Deserializer).GetMethod(nameof(Initialize));
             foreach (var type in types)
             {
@@ -396,7 +399,7 @@ namespace NosCore.Packets
                 }
 
                 currentIndex = newIndex;
-                return subType.GetAndFillListMethod()(list);
+                return _getAndFillListMethods.GetOrAdd(subType, (type) => type.GetAndFillListMethod())(list);
             }
 
             return null;
