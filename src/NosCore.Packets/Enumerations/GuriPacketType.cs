@@ -8,6 +8,7 @@ namespace NosCore.Packets.Enumerations
 {
     public enum GuriPacketType
     {
+        Shadow = 0,
         Dance = 2,
         Script = 3,
         HPMPBonus = 4,
