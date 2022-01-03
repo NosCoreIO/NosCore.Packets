@@ -9,22 +9,16 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("modali", Scope.InGame)]
-    public class ModaliPacket : PacketBase
+    [PacketHeader("infoi2", Scope.InGame)]
+    public class Infoi2Packet : PacketBase
     {
         [PacketIndex(0)]
-        public byte Type { get; set; } //TODO: find modal types
-
-        [PacketIndex(1)]
         public Game18NConstString Message { get; set; }
 
-        [PacketIndex(2)]
+        [PacketIndex(1)]
         public short FirstArgument { get; set; }
 
-        [PacketIndex(3)]
-        public int SecondArgument { get; set; }
-
-        [PacketIndex(4)]
-        public short ThirdArgument { get; set; }
+        [PacketIndex(2)]
+        public string SecondArgument { get; set; } = null!;
     }
 }
