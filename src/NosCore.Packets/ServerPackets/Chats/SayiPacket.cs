@@ -30,7 +30,7 @@ namespace NosCore.Packets.ServerPackets.Chats
         public short FirstArgument { get; set; }
 
         [PacketIndex(5)]
-        public short SecondArgument { get; set; }
+        public int SecondArgument { get; set; }
 
         [PacketIndex(6)]
         public short ThirdArgument { get; set; }
