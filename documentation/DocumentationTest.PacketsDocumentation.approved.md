@@ -314,6 +314,8 @@
 
 ### Map
 - [bc](../src/NosCore.Packets/ServerPackets/Map/BcPacket.cs) *InGame*
+- [bgm2](../src/NosCore.Packets/ServerPackets/Map/Bgm2Packet.cs) *InGame*
+- [bgm](../src/NosCore.Packets/ServerPackets/Map/BgmPacket.cs) *InGame*
 - [eff_g](../src/NosCore.Packets/ServerPackets/Map/GroundEffectPacket.cs) *InGame*
 - [mapout](../src/NosCore.Packets/ServerPackets/Map/MapOutPacket.cs) *InGame*
 
@@ -358,6 +360,7 @@
 - [c_info](../src/NosCore.Packets/ServerPackets/Player/CInfoPacket.cs) *InGame*
 - [c_mode](../src/NosCore.Packets/ServerPackets/Player/CModePacket.cs) *InGame*
 - [cond](../src/NosCore.Packets/ServerPackets/Player/CondPacket.cs) *InGame*
+- [dance](../src/NosCore.Packets/ServerPackets/Player/DancePacket.cs) *InGame*
 - [eff](../src/NosCore.Packets/ServerPackets/Player/EffectPacket.cs) *InGame*
 - [fd](../src/NosCore.Packets/ServerPackets/Player/FdPacket.cs) *InGame*
 - [fish](../src/NosCore.Packets/ServerPackets/Player/FishPacket.cs) *InGame*
