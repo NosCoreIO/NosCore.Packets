@@ -426,6 +426,7 @@
 - [fishopen](../src/NosCore.Packets/ServerPackets/UI/FishOpenPacket.cs) *InGame*
 - [guri](../src/NosCore.Packets/ServerPackets/UI/GuriPacket.cs) *InGame*
 - [icon](../src/NosCore.Packets/ServerPackets/UI/IconPacket.cs) *InGame*
+- [infoi2](../src/NosCore.Packets/ServerPackets/UI/Infoi2Packet.cs) *InGame*
 - [infoi](../src/NosCore.Packets/ServerPackets/UI/InfoiPacket.cs) *InGame*
 - [info](../src/NosCore.Packets/ServerPackets/UI/InfoPacket.cs) *InGame*
 - [modali](../src/NosCore.Packets/ServerPackets/UI/ModaliPacket.cs) *InGame*
