@@ -6,6 +6,7 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using System.ComponentModel.DataAnnotations;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
@@ -19,6 +20,7 @@ namespace NosCore.Packets.ServerPackets.UI
         public short FirstArgument { get; set; }
 
         [PacketIndex(2)]
+        [Required]
         public string SecondArgument { get; set; } = null!;
     }
 }
