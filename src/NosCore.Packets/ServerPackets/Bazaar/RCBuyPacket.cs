@@ -8,6 +8,7 @@ using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 using NosCore.Shared.Enumerations;
+using System.ComponentModel.DataAnnotations;
 
 namespace NosCore.Packets.ServerPackets.Bazaar
 {
@@ -21,6 +22,7 @@ namespace NosCore.Packets.ServerPackets.Bazaar
         public short VNum { get; set; }
 
         [PacketIndex(2)]
+        [Required]
         public string Owner { get; set; } = null!;
 
         [PacketIndex(3)]
