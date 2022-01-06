@@ -23,9 +23,9 @@ namespace NosCore.Packets.ServerPackets.UI
         public Game18NConstString Question { get; set; }
 
         [PacketIndex(3)]
-        public short Unknown { get; set; }
+        public short FirstArgument { get; set; }
 
         [PacketIndex(4)]
-        public short ItemVNum { get; set; }
+        public short SecondArgument { get; set; }
     }
 }
