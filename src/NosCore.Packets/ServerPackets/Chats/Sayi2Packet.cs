@@ -8,6 +8,7 @@ using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 using NosCore.Shared.Enumerations;
+using System.ComponentModel.DataAnnotations;
 
 namespace NosCore.Packets.ServerPackets.Chats
 {
@@ -33,6 +34,7 @@ namespace NosCore.Packets.ServerPackets.Chats
         public int SecondArgument { get; set; }
 
         [PacketIndex(6)]
+        [Required]
         public string Arguments { get; set; } = null!;
     }
 }
