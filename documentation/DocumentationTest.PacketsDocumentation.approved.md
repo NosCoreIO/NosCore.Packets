@@ -436,6 +436,7 @@
 - [msg](../src/NosCore.Packets/ServerPackets/UI/MsgPacket.cs) *InGame*
 - [p_clear](../src/NosCore.Packets/ServerPackets/UI/PclearPacket.cs) *InGame*
 - [qnai2](../src/NosCore.Packets/ServerPackets/UI/Qnai2Packet.cs) *InGame*
+- [qnai](../src/NosCore.Packets/ServerPackets/UI/QnaiPacket.cs) *InGame*
 - [qna](../src/NosCore.Packets/ServerPackets/UI/QnaPacket.cs) *InGame*
 - [rdi](../src/NosCore.Packets/ServerPackets/UI/RdiPacket.cs) *InGame*
 - [shopclose](../src/NosCore.Packets/ServerPackets/UI/ShopClosePacket.cs) *InGame*
