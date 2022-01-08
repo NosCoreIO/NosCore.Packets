@@ -24,7 +24,7 @@ namespace NosCore.Packets.ServerPackets.Login
 
         //this seems to be always 2 in case of new auth and null else
         [PacketIndex(2, IsOptional = true)]
-        public int? Unknown { get; set; } = 2;
+        public int? Unknown { get; set; }
 
         //0-3 English / International
         //4-7 German
@@ -38,7 +38,6 @@ namespace NosCore.Packets.ServerPackets.Login
 
         [PacketIndex(4)]
         public int SessionId { get; set; }
-
 
         [PacketListIndex(5)]
         public List<NsTeStSubPacket?>? SubPacket { get; set; }
