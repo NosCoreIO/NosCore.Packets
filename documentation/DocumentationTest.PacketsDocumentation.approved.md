@@ -432,10 +432,12 @@
 - [info](../src/NosCore.Packets/ServerPackets/UI/InfoPacket.cs) *InGame*
 - [modali](../src/NosCore.Packets/ServerPackets/UI/ModaliPacket.cs) *InGame*
 - [modal](../src/NosCore.Packets/ServerPackets/UI/ModalPacket.cs) *InGame*
+- [msgi2](../src/NosCore.Packets/ServerPackets/UI/Msgi2Packet.cs) *InGame*
 - [msgi](../src/NosCore.Packets/ServerPackets/UI/MsgiPacket.cs) *InGame*
 - [msg](../src/NosCore.Packets/ServerPackets/UI/MsgPacket.cs) *InGame*
 - [p_clear](../src/NosCore.Packets/ServerPackets/UI/PclearPacket.cs) *InGame*
 - [qnai2](../src/NosCore.Packets/ServerPackets/UI/Qnai2Packet.cs) *InGame*
+- [qnai](../src/NosCore.Packets/ServerPackets/UI/QnaiPacket.cs) *InGame*
 - [qna](../src/NosCore.Packets/ServerPackets/UI/QnaPacket.cs) *InGame*
 - [rdi](../src/NosCore.Packets/ServerPackets/UI/RdiPacket.cs) *InGame*
 - [shopclose](../src/NosCore.Packets/ServerPackets/UI/ShopClosePacket.cs) *InGame*
