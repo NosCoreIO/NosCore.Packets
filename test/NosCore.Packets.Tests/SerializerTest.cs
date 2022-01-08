@@ -683,7 +683,7 @@ namespace NosCore.Packets.Tests
                 Game18NArguments = new object[] { "test 123", 0 }
             };
             var packet = Serializer.Serialize(mapItem);
-            Assert.AreEqual($"msgi 3 77 test 123 0", packet);
+            Assert.AreEqual($"msgi 3 77 0 test 123 0", packet);
         }
 
         [TestMethod]
