@@ -5,6 +5,7 @@
 // -----------------------------------
 
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
@@ -21,13 +22,11 @@ namespace NosCore.Packets.ServerPackets.UI
         public Game18NConstString Question { get; set; }
 
         [PacketIndex(2)]
-        public short FirstArgument { get; set; }
+        public byte ArgumentType { get; set; }
 
+        [Required]
         [PacketIndex(3)]
-        public short SecondArgument { get; set; }
-
-        [PacketIndex(3)]
-        public short ThirdArgument { get; set; }
+        public object[] Game18NArguments { get; set; } = null!;
 
     }
 }
