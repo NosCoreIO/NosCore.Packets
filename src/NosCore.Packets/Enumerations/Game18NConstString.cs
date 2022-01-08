@@ -4,6 +4,8 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
+using NosCore.Packets.Attributes;
+
 namespace NosCore.Packets.Enumerations
 {
     public enum Game18NConstString : short
@@ -99,10 +101,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You have lost the %s effect.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         LostSideEffect = 22,
         // <summary>
         // The side effects of %s have started.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         SideEffectStarted = 23,
         // <summary>
         // No effect because of immunity.
@@ -111,10 +115,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Buff lifted: %s<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         BuffLifted = 25,
         // <summary>
         // You are under the effect of %s.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         UnderEffect = 26,
         // <summary>
         // Training is only possible in the Miniland.
@@ -223,6 +229,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You can be revived %d more times.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         YouCanBeRevivedMoreTime = 53,
         // <summary>
         // Your magic items have expired.
@@ -315,18 +322,22 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Current punishment for '%s': %d<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         CurrentPunishment = 76,
         // <summary>
         // Current '%s' remaining time (mins.): %d<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         CurrentRemainingTime = 77,
         // <summary>
         // %s has been punished for %d minutes.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         HasBeenPunished = 78,
         // <summary>
         // %s now has %d criminal records.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         HasCriminalRecord = 79,
         // <summary>
         // Unknown person.
@@ -335,10 +346,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Current experience rate: %d<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         CurrentExperienceRate = 81,
         // <summary>
         // Current Time Circle Damage Rate: %d%%<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         CurrentTimeCircleDamageRate = 82,
         // <summary>
         // Time remaining:
@@ -411,6 +424,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // *** Unavailable: Level %d or higher ***<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         UnavailableForHigherLevel = 100,
         // <summary>
         // *** Lacking Pieces of Reality ***
@@ -443,6 +457,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Oh! I need %d Seeds of Power for the mission.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         SeedsOfPowerNeededForMission = 108,
         // <summary>
         // You cannot enter a mission which has already started.
@@ -599,6 +614,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Gamble successful! Rarity level: %d <NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         GambleSuccessful = 147,
         // <summary>
         // You need five Cellons from the previous level.
@@ -651,6 +667,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Cannot find %s.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         CannotFind = 160,
         // <summary>
         // Trade is only possible on general maps.
@@ -675,10 +692,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s is trading with someone else.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         TradingWithSomeoneElse = 166,
         // <summary>
         // %s is blocking trades.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         BlockingTrades = 167,
         // <summary>
         // You are already trading.
@@ -687,14 +706,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Accept trade from %s %s?<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
         WantAcceptTrade = 169,
         // <summary>
         // You have invited %s to trade.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         YouInvitedToTrade = 170,
         // <summary>
         // %s is trading with someone else.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         TradingWithSomeoneElse2 = 171,
         // <summary>
         // Your partner has not confirmed the item yet.
@@ -719,6 +741,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s - cancelled the trade.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         CancelledTrade = 177,
         // <summary>
         // Trade cancelled
@@ -811,6 +834,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Time Circle will be available in %d seconds.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         TimeCircleWillBeAvailableShortly = 200,
         // <summary>
         // You cannot join because you do not meet the minimum level requirements.
@@ -835,6 +859,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // [Notice] %s has entered.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         SomeoneEntered = 206,
         // <summary>
         // This battle no longer exists. Click refresh.
@@ -899,6 +924,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Punishment remaining: %d<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         PunishmentRemaining = 222,
         // <summary>
         // You are not playing.
@@ -911,6 +937,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s is not playing.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         IsNotPlaying = 225,
         // <summary>
         // Cannot form a party while in a battle.
@@ -943,10 +970,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s has invited you to join their party.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         GroupInvite = 233,
         // <summary>
         // %s has been invited to join.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         YouInvitedToGroup = 234,
         // <summary>
         // Not found.
@@ -959,6 +988,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s rejected your invitation.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         GroupInviteRejected = 237,
         // <summary>
         // You are blocked.
@@ -975,14 +1005,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s is in combat.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         IsInCombat = 241,
         // <summary>
         // %s has blocked being chosen as a friend.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         HAsFriendRequestBlocked = 242,
         // <summary>
         // Become friends with %s?<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         AskBecomeFriend = 243,
         // <summary>
         // Deleted.
@@ -1035,6 +1068,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You need three members in your party. %d <NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         NeedThreeMember = 256,
         // <summary>
         // One or more members of your party already have a family.
@@ -1051,6 +1085,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s cannot found a family yet.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         CannotFoundFamily = 260,
         // <summary>
         // That family name already exists.
@@ -1059,6 +1094,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Congratulations! The '%s' Family has been created!<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         FamilyCreated = 262,
         // <summary>
         // Family creation failed.
@@ -1111,10 +1147,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Do you want to become a member of %s's family?<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         AskMemberFamily = 275,
         // <summary>
         // %s has joined your family.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         JoinedFamily = 276,
         // <summary>
         // You can no longer accept.
@@ -1131,10 +1169,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You cannot find %s.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         CanNotFind = 280,
         // <summary>
         // %s is completely authorised.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         IsCompletlyAuthorized = 281,
         // <summary>
         // A new family deputy has been appointed.
@@ -1259,6 +1299,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s has invited you to their Miniland. Accept?<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         HasInvitedToMiniland = 312,
         // <summary>
         // Miniland is full. You cannot invite any more.
@@ -1391,10 +1432,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %d hours have passed.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         HoursHavePassed = 345,
         // <summary>
         // %d hours have passed. Please have a break.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         HoursHavePassedTakeABreak = 346,
         // <summary>
         // Thank you for participating.
@@ -1403,6 +1446,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // The server will be disconnected in %d seconds.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         ServerWillBeDisonnected = 348,
         // <summary>
         // Returning to village because you died during a Quick Mission.
@@ -1455,14 +1499,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // In %d minute(s)<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         InMinutes = 361,
         // <summary>
         // In %d seconds<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         InSeconds = 362,
         // <summary>
         // %d~%d Icebreaker will start for all levels.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(long), typeof(long))]
         IceBreakerWillStartForLevels = 363,
         // <summary>
         // Icebreaker has started.
@@ -1471,6 +1518,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Do you want to join Icebreaker? You must pay %d Gold<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         AskJoinIcebreaker = 365,
         // <summary>
         // Gold
@@ -1511,6 +1559,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You earned reputation and a reward: %d Gold<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         EarnedReputationAndReward = 375,
         // <summary>
         // Gold
@@ -1519,6 +1568,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // an Instant Combat for all levels will start. %s <NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         InstantCombatWillStart = 377,
         // <summary>
         // An Instant Combat has started.
@@ -1563,6 +1613,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // The server will be disconnected in %d minutes.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         ServerWillDisconnectShortly = 388,
         // <summary>
         // You don't have enough Gold to withdraw.
@@ -1591,6 +1642,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You have used %dx %s.<NEW_TYPE><1,0>
         // <summary>
+        [Game18NArguments(typeof(long), typeof(string))]
         YouHaveUsed = 395,
         // <summary>
         // Ammo reloaded.
@@ -1687,6 +1739,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You have acquired Cella Powder: Amount %d <NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         CellaPowderItemAcquired = 419,
         // <summary>
         // Installation is only possible in lock mode.
@@ -1767,14 +1820,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Total visitors: %d<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         TotalVisitors = 439,
         // <summary>
         // Today's visitors: %d<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         TodayVisitors = 440,
         // <summary>
         // You've already set up a signpost. Time remaining: %d seconds<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         AlreadyASignPost = 441,
         // <summary>
         // You already have a better land.
@@ -1835,6 +1891,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Congratulations! You have a further member to your party: %s<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         SomeoneJoinGroup = 456,
         // <summary>
         // Monsters cannot be captured.
@@ -1899,6 +1956,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s ...'s attack level increased:<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         PetAttackLevelIncreased = 472,
         // <summary>
         // Your pet smiled during the attack. It seems to weather it!
@@ -1907,6 +1965,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s ...'s defence level increased:<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         PetDefenceLevelIncreased = 474,
         // <summary>
         // The partner cannot use this equipment.
@@ -1959,14 +2018,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Talk: %d times<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         Talk = 487,
         // <summary>
         // Operation: %d times<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         Operation = 488,
         // <summary>
         // If you die more than %d times.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         IfMoreThanDeath = 489,
         // <summary>
         // Protected NPCs:
@@ -1979,6 +2041,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Difficulty %s:<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         Difficulty2 = 492,
         // <summary>
         // [Conditions of Success]
@@ -2019,6 +2082,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Remaining conversations: %d<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         RemainingConversations = 502,
         // <summary>
         // Talking mission -> [Successful]
@@ -2027,6 +2091,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Remaining operations: %d<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         RemainingOperations = 504,
         // <summary>
         // Operation mission -> [Successful]
@@ -2111,6 +2176,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // (Party) [%s], Priority: <NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         GroupPriority = 525,
         // <summary>
         // ], Priority:
@@ -2139,6 +2205,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You are missing an item for the skill: %s<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         MissingItemForSkill = 532,
         // <summary>
         // Battle Result#13#10------------------------#13#10
@@ -2147,6 +2214,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // [Notice] %s has left.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         NoticeHasLeft = 534,
         // <summary>
         // Receive a coupon: get a higher score and obtain a bonus item!
@@ -2203,6 +2271,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s is not frozen.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         IsNotFrozen = 548,
         // <summary>
         // You aren't authorised to invite anybody!
@@ -2267,18 +2336,22 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s is frozen.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         IsFrozen = 564,
         // <summary>
         // %s is out!<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         IsOut = 565,
         // <summary>
         // Remaining punishment: %d minutes<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         RemainingPunishment = 566,
         // <summary>
         // %d parcels have arrived.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         ParcelHaveArrived = 567,
         // <summary>
         // Mission will continue here. No penalty for level 10 or lower.
@@ -2391,6 +2464,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s's [Miniland]<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         UserMiniland = 595,
         // <summary>
         // You are the party master.
@@ -2431,6 +2505,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %d Gold is required to challenge a record. Do you want to try it?<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         GoldRequiredToChallengeRecord = 605,
         // <summary>
         // Do you want to transform into a specialist?
@@ -2463,6 +2538,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s declined to be accompanied.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         DeclinedAccompanied = 613,
         // <summary>
         // A party with completed dowsing exploration cannot accept others with different results.
@@ -2479,6 +2555,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Time required: %d<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         TimeRequired = 617,
         // <summary>
         // No quest for your level.
@@ -2539,6 +2616,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Will you accept the request from %s to accompany them?<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         AcceptRequestAccompany = 632,
         // <summary>
         // Company was requested.
@@ -2587,10 +2665,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s- has discovered an energy field.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         UserHasDiscoveredEnergyField = 644,
         // <summary>
         // %s- has discovered an energy field on another map.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         UserHasDiscoveredEnergyFieldOtherMap = 645,
         // <summary>
         // Cannot receive any signal because it's too far away.
@@ -2599,10 +2679,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // [Hidden Time-Space] of %s <NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         HiddenTimeSpaceOf = 647,
         // <summary>
         // [Parcel] %d of %s received. Sender:<NEW_TYPE><1,0>
         // <summary>
+        [Game18NArguments(typeof(long), typeof(string))]
         ParcelReceivedFromSender = 648,
         // <summary>
         // Your postbox is full so you cannot receive any more parcels. Please empty it.
@@ -2615,6 +2697,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Quest reward [%d Gold]<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         QuestRewardGold = 651,
         // <summary>
         // Quest reward [Experience points]
@@ -2627,10 +2710,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Quest reward [%s x %d]<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         QuestRewardItem = 654,
         // <summary>
         // Quest reward [Reputation %d]<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         QuestRewardReputation = 655,
         // <summary>
         // No quest reward
@@ -2667,34 +2752,42 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // [%s] hunting:<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         Hunting = 664,
         // <summary>
         // [%s] collecting:<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         Collecting = 665,
         // <summary>
         // %s collected:<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         Collected = 666,
         // <summary>
         // %s delivered to:<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         Delivered = 667,
         // <summary>
         // [%s] captured:<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         Captured2 = 668,
         // <summary>
         // [%s] currently captured:<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         CurrentlyCaptured = 669,
         // <summary>
         // [%d Level ] Time-Space Stone complete<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         TimeSpaceCompleted = 670,
         // <summary>
         // [%s] produced:<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         Produced = 671,
         // <summary>
         // [Increases the kills] :
@@ -2719,10 +2812,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Reward for mission completion [%d Gold]<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         RewardForCompletion = 677,
         // <summary>
         // %d%% of points reduced because of level penalty.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         PointsReducedLevelPenalty = 678,
         // <summary>
         // The enemies are getting reinforcements!
@@ -2763,6 +2858,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // [Piece] %d of %s<NEW_TYPE><1,0>
         // <summary>
+        [Game18NArguments(typeof(long), typeof(string))]
         PieceOfItem = 688,
         // <summary>
         // Equipment
@@ -2795,14 +2891,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Reputation increased: +%d<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         ReputationIncreased = 696,
         // <summary>
         // Dignity increased: +%d<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         DignityIncreased = 697,
         // <summary>
         // Dignity reduced: %d<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         DignityReduced = 698,
         // <summary>
         // Dignity is at maximum.
@@ -2875,6 +2974,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %d Gold is required to enter. Continue?<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         GoldRequiredToEnterQuestion = 716,
         // <summary>
         // Player is not qualified to complete here.
@@ -2915,6 +3015,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Continue here? %d Gold will be required.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         ContinueGoldRequired = 726,
         // <summary>
         // Cannot be used because it exceeds the capacity.
@@ -2923,6 +3024,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Basic specialist points increased by %d.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         BasicSpecialistPointsIncreased = 728,
         // <summary>
         // You have 0 specialist points. Transformation cancelled.
@@ -2999,10 +3101,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // increases: +%d<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         Increases = 747,
         // <summary>
         // decreases: -%d<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         Decreases = 748,
         // <summary>
         // Already completing same quest type.
@@ -3027,6 +3131,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Duration of transformation side effects: %d seconds<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         DurationOfSideEffect = 754,
         // <summary>
         // Not enough points. Cannot remove Specialist Card.
@@ -3059,6 +3164,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Cannot transform because of transformation side effects: %d seconds<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         CantTrasformWithSideEffect = 762,
         // <summary>
         // Can be transformed once the cooldown of all skills is complete.
@@ -3083,34 +3189,42 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s has reached the maximum level.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         ReachedMaxLeve = 768,
         // <summary>
         // %s has levelled up.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         HasLevelledUp = 769,
         // <summary>
         // %s feels normal again.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         FeelNormal = 770,
         // <summary>
         // %s feels good again.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         FeelGoodAgain = 771,
         // <summary>
         // %s feels better.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         FeelBetter = 772,
         // <summary>
         // %s rummages through your food.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         RummagesFood = 773,
         // <summary>
         // Hungry %s feels bad.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         Hungry = 774,
         // <summary>
         // Cannot remove Specialist Card during transformation side effects: %d seconds<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         CantRemoveSpecialistWithSideEffect = 775,
         // <summary>
         // You cannot remove the Specialist Card because of a bad effect.
@@ -3119,10 +3233,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Teammate died: [%s]<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         TeammateDied = 777,
         // <summary>
         // Item %s has expired and disappeared.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         ItemDisappeared = 778,
         // <summary>
         // Team member cannot enter Time-Space Stone.
@@ -3187,6 +3303,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Left %s team because you were not at the map starting point.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         NotAtTheStartPoint = 794,
         // <summary>
         // Failed because the team leader left.
@@ -3195,6 +3312,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s has left the team.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         PlayerLeftTeam1 = 796,
         // <summary>
         // Cannot form a party as a team member.
@@ -3215,10 +3333,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s has logged in.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         PlayerLoggedIn = 801,
         // <summary>
         // Current NosDollars: %d<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         NosdolarAmount = 802,
         // <summary>
         // Thanks for your purchase in the NosMall.#13#10The following package is ready for collection
@@ -3235,6 +3355,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Send the gift to %s.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         SendGift = 806,
         // <summary>
         // Gift has been delivered.
@@ -3243,10 +3364,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s' is currently resting.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         CurrentlyResting = 808,
         // <summary>
         // Cannot find '%s'.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         CantFind = 809,
         // <summary>
         // Cannot find the player.
@@ -3295,18 +3418,22 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Number of teammates (%d/15)<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         TeammatesNumber = 821,
         // <summary>
         // Do you want to join %s's team?<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         AskJoinToTeam = 822,
         // <summary>
         // Joined %s's team.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         JoinedToTeam = 823,
         // <summary>
         // %s has joined the team.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         PlayerJoinedToTeam = 824,
         // <summary>
         // You cannot leave your own team.
@@ -3315,22 +3442,27 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Do you want to leave %s's team?<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         AskLeaveTeam = 826,
         // <summary>
         // %s has left the team.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         PlayerHasLeftTeam = 827,
         // <summary>
         // Do you want to kick %s from the team?<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         AskKickPlayerFromTeam = 828,
         // <summary>
         // %s kicked from the team.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         PlayerKickedFromTeam = 829,
         // <summary>
         // You were kicked from %s's team.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         YouKickedFromTeam = 830,
         // <summary>
         // Disband team?
@@ -3339,6 +3471,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s's team was disbanded.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         UserTeamDisbanded = 832,
         // <summary>
         // No self-introduction message.
@@ -3347,14 +3480,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %d new note(s) have arrived.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         NewNoteArrived = 834,
         // <summary>
         // %d new parcels have arrived.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         NewParcelArrived = 835,
         // <summary>
         // Postbox for parcels is full. Check your postbox and collect Time-Space Stone and Quest rewards. Remaining parcels %d<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         ParcelIsFull = 836,
         // <summary>
         // Left the team because you died.
@@ -3367,6 +3503,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s has left the team.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         TeamPlayerDied = 839,
         // <summary>
         // You are already using this medal. Do you want to extend it?
@@ -3455,10 +3592,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Leader %s has left the team.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         LeaderLeftTeam2 = 861,
         // <summary>
         // %s has left the team.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         PlayerLeftTeam2 = 862,
         // <summary>
         // Note's recipient is not your friend.
@@ -3479,14 +3618,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Remaining time of %s is %d minutes.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         RemainingTimeMinutes = 867,
         // <summary>
         // Remaining time of %s is %d hours.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         RemainingTimeHours = 868,
         // <summary>
         // Remaining time of %s is %d days.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         RemainingTimeDays = 869,
         // <summary>
         // Item is already on Wish List.
@@ -3563,6 +3705,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Received %s item.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         ReceivedItem = 888,
         // <summary>
         // Can only be used on general maps.
@@ -3587,6 +3730,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s joined as a helper, because their level is higher than the raid's recommended level.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         PlayerXJoinedAsHelperBecauseOfHighLevel = 894,
         // <summary>
         // Helpers are not included in lives or rewards.
@@ -3603,6 +3747,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Do you want to send %d parcels to %s?<NEW_TYPE><1,0>
         // <summary>
+        [Game18NArguments(typeof(long), typeof(string))]
         AskSendParcel = 898,
         // <summary>
         // Died during Icebreaker and returned to the village.
@@ -3631,10 +3776,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // [%s's team] has successfully completed the %s raid.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
         TeamCompletedRaid = 905,
         // <summary>
         // has successfully completed the %s raid.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         CompletedRaid = 906,
         // <summary>
         // Can be used later.
@@ -3667,6 +3814,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Mission failed %d times and can be attempted in Loser Mode.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         LoserModeAvailable = 914,
         // <summary>
         // (Familyhead)
@@ -3755,6 +3903,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Cannot have Secret Partners because %s rejected it.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         CannotHavePartner = 936,
         // <summary>
         // Already registered as a friend.
@@ -3771,14 +3920,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s currently has %d/2 Secret Partners.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         TwoSecretPartner = 940,
         // <summary>
         // %s has Secret Partners already.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         HasSecretParnerAlready = 941,
         // <summary>
         // %s already has 2 Secret Partners.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         AlreadyTwoSecretPartner = 942,
         // <summary>
         // Friend is not online
@@ -3787,6 +3939,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Congratulations! You become a Secret Partner of %s.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         BecomedSecretPartner = 944,
         // <summary>
         // To cancel 'Secret Partner', type the command ' cancel Secret Partner'. You can only cancel it before completing the first Time-Space Mission.
@@ -3799,6 +3952,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Do you want to be %s's Secret Partner?<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         AskSecretPartner = 947,
         // <summary>
         // To cancel Secret Partners, type the command 'cancel secret partner'.
@@ -3811,10 +3965,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Secret Partner was cancelled: %s<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         SecretPartnerCancelled = 950,
         // <summary>
         // %s is not a Secret Partner any more.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         NotSecretPartnerAnymore = 951,
         // <summary>
         // Secret Partner
@@ -3835,10 +3991,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Cancel Secret Partnership with %s?<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         CancelSecretPartnership = 956,
         // <summary>
         // Received event item %s.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         ReceivedEventItem = 957,
         // <summary>
         // Adventurer's Medal effect persists.
@@ -3855,26 +4013,32 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s can have a Secret Partner among the existing players.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         CanHaveSecretPartnerAmmongPlayers = 961,
         // <summary>
         // %s already has a Secret Partner.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         AlreadyHasSecretPartner = 962,
         // <summary>
         // %s can have %d Secret Partners from new players.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         CanHaveSecretPartnerFromNewPlayers = 963,
         // <summary>
         // %s has 2 Secret Partners.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         HasTwoSecretPartner = 964,
         // <summary>
         // %s is online<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         IsOnline = 965,
         // <summary>
         // Do you want to start the Secret Partner Time-Space Stone? This will be entry number %d.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         StartSecretPartnerTimeSpaceStone = 966,
         // <summary>
         // Specialist Medal effect begins.
@@ -3903,14 +4067,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Following item is required: %s<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         FollowingItemRequired = 973,
         // <summary>
         // It just doesn't work! Try again in %d seconds.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         DoesNotWorkRetryInSeconds = 974,
         // <summary>
         // You have received this item - %s x %d<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         ReceivedThisItem = 975,
         // <summary>
         // Attempt failed!
@@ -3935,6 +4102,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // [%s] collected from Time-Space Stone:<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         CollectedFromTimeSpace = 981,
         // <summary>
         // The items to be delivered are insufficient.
@@ -3943,6 +4111,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Talked to %s<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         TalkedTo = 983,
         // <summary>
         // You're not wearing this item.
@@ -3951,6 +4120,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Gold given to %s<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         GoldGivenTo = 985,
         // <summary>
         // Learned Beginner Course for Physical Strength.
@@ -4079,14 +4249,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s- rejected the Valentine's Day gift.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         PlayerRejectedValentine = 1017,
         // <summary>
         // %s- has accepted the Valentine's Day gift.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         PlayerAcceptedValentine = 1018,
         // <summary>
         // %s's Valentine's Day Gift does not exist.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         ValentineGiftNotExist = 1019,
         // <summary>
         // You can only declare your love to the other gender.
@@ -4095,10 +4268,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Do you want to accept %s's Valentine's Day Gift?<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         AskAcceptValentine = 1021,
         // <summary>
         // %s has been asked to accept the gift.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         AskedToAcceptGift = 1022,
         // <summary>
         // Sniff!
@@ -4119,10 +4294,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s effect activated<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         EffectActivated = 1027,
         // <summary>
         // Parcel received >> %s x %d <NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         ParcelReceived = 1028,
         // <summary>
         // Contains an invalid character. Choose another name.
@@ -4131,6 +4308,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s' : Cannot be purchased in the NosMall.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         CantPurchasedFromNosmall = 1030,
         // <summary>
         // Error during purchase. Please contact the admin.
@@ -4183,14 +4361,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s has rejected your gift.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         RejectedGift = 1043,
         // <summary>
         // %s has accepted your gift.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         AcceptedGift = 1044,
         // <summary>
         // %s's White Day Gift Box does not exist.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         WhiteDayGiftBoxDoesNotExist = 1045,
         // <summary>
         // Do not use
@@ -4199,6 +4380,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Do you wish to accept %s's White Day Gift Box?<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         AskAcceptWhiteDayGiftBox = 1047,
         // <summary>
         // Cannot be raised any more with food.
@@ -4331,10 +4513,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Send the message to '%s' in channel %d.<NEW_TYPE><1,0>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         SendMessageToCharacterInChannel = 1080,
         // <summary>
         // <Channel: %d><NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         Channel = 1081,
         // <summary>
         // Do not use
@@ -4439,10 +4623,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s conquered points: %d<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         ConqueredPoints = 1107,
         // <summary>
         // Leader %s has left the raid team.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         LeaderLeftTeam = 1108,
         // <summary>
         // The battle is over! You won because the opponent's leader left.
@@ -4451,10 +4637,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You receive %d specialist points.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         ReceiveSpecialistPoints = 1110,
         // <summary>
         // %s left the team.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         PlayerLeftTeam = 1111,
         // <summary>
         // The Rainbow Battle function is currently off.
@@ -4471,14 +4659,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Would you like to join %s's team?<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         CharacterWantToJoin = 1115,
         // <summary>
         // You have joined %s's team.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         YouJoinedTeam = 1116,
         // <summary>
         // %s joined the team.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         JoinedTeam = 1117,
         // <summary>
         // Team is full
@@ -4491,22 +4682,27 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Would you like to leave %s's team?<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         AskLeaveTeamRainbowBattle = 1120,
         // <summary>
         // %s has left the team.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         CharacterHasLeft = 1121,
         // <summary>
         // Would you like to kick %s from the team?<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         AskKickCharacter = 1122,
         // <summary>
         // %s has been kicked from the team.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         CharacterHasBeenKickedFromTeam = 1123,
         // <summary>
         // You have been kicked from %s's team.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         KickedFromLeaderTeam = 1124,
         // <summary>
         // Would you like to disband your team?
@@ -4519,6 +4715,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s's team has been disbanded.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         PersonTeamDisbanded = 1127,
         // <summary>
         // Only the Rainbow Battle team leader can Request & Cancel.
@@ -4563,6 +4760,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Ice effect for %d seconds<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         IceEffect = 1138,
         // <summary>
         // Draw
@@ -4579,10 +4777,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You will be teleported to the starting position after %d seconds.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         TeleportToStartPoint = 1142,
         // <summary>
         // The battle will start in %d seconds<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         BattleStartInSeconds = 1143,
         // <summary>
         // The battle starts NOW!
@@ -4595,14 +4795,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // The battle ends in %d minutes<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         BattleEndInMinutes = 1146,
         // <summary>
         // You can sign up for the Rainbow Battle now! %d <NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         RainbowRegisterStarted = 1147,
         // <summary>
         // The Rainbow Battle will start in %d minute(s)!<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         RainbowBattleStartInMinutes = 1148,
         // <summary>
         // Your request was automatically cancelled because your team has been disbanded.
@@ -4627,10 +4830,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Rainbow Crystal(s) held � the red team has earned %d points.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         RedEarnedPoints = 1154,
         // <summary>
         // Rainbow Crystal(s) held � the blue team has earned %d points.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         BlueEarnedPoints = 1155,
         // <summary>
         // You cannot be the member of two raid teams at the same time.
@@ -4655,6 +4860,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // The Rainbow Battle will start in %d second(s)!<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         RainbowBattleWillStart = 1161,
         // <summary>
         // You are in the Red Team.
@@ -4727,6 +4933,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Would you like to use %s?#13#10<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         AskWantToUse = 1179,
         // <summary>
         // You will be returned to the entrance of the Land of Death.
@@ -4735,6 +4942,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Your NosMate was killed. Resurrecting in %d minutes.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         NosmateKilledWillReviveS = 1181,
         // <summary>
         // The Land of Death will be closed soon.
@@ -4775,6 +4983,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s has received an item:<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         CharacterHasReceivedItem = 1191,
         // <summary>
         // You are now out of the Land of Death
@@ -4827,6 +5036,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You received %d points.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         ReceivedPoints = 1204,
         // <summary>
         // This game offers no rewards.
@@ -4883,10 +5093,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You have topped up %d points.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         ToppedUpPoints = 1218,
         // <summary>
         // %d production point were topped up.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         ProductionPointsToppedUp = 1219,
         // <summary>
         // Do not use
@@ -4899,6 +5111,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // No required item: %s<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         NoRequiredItem = 1222,
         // <summary>
         // Your pet is dead. You cannot use it.
@@ -5159,10 +5372,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // The monsters will appear in %d seconds.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         MonsterWillAppearsInSeconds = 1287,
         // <summary>
         // %d people of the current members<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         PeopleOfTheCurrentMember = 1289,
         // <summary>
         // Time limit exceeded!
@@ -5207,10 +5422,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You have obtained the power of %s from Latheore's Egg.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         ObtainedPowerLatheoreEgg = 1300,
         // <summary>
         // Your family has obtained the power of %s from Latheore's Egg.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         FamillyObtainedPowerLatheoreEgg = 1301,
         // <summary>
         // The Specialist Card and Fairy have different attributes.
@@ -5267,6 +5484,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // The %s Camp has summoned Lord Mukraju.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         SummonedLordMukraju = 1315,
         // <summary>
         // Please log into the server again.
@@ -5443,10 +5661,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // The Angel Camp has taken the %s!<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         AngelCampHasTaken = 1359,
         // <summary>
         // The Demon Camp has taken the %s!<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         DemonCampHasTaken = 1360,
         // <summary>
         // Only shell items are usable.
@@ -5527,6 +5747,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // The item is now exclusive to %s.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         ItemNowExclusiveToPlayerX = 1380,
         // <summary>
         // This is your exclusive item.
@@ -5647,6 +5868,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s is currently unavailable.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         CurrentlyUnavailable = 1410,
         // <summary>
         // When you are revived, your HP and MP are fully restored and in PvP mode you are invincible for 5 seconds.#13#10Instead, the durability of your armour is reduced.#13#10Do you want to be revived?#13#10
@@ -5691,6 +5913,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Cannot be removed before the materials have grown. - %d seconds<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         CannotBeRemovedUntilGrowth = 1421,
         // <summary>
         // Cannot remove the structure as it is being used by someone.
@@ -5711,6 +5934,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Players receive %s only once per account.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         ReciveOnePerAccount = 1426,
         // <summary>
         // ] by [
@@ -5987,6 +6211,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Your level is too low. You can complete this quest after level %d.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         LevelTooLowToCompleteQuest = 1495,
         // <summary>
         // *
@@ -6027,6 +6252,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Do you want to set %s as your point of return?<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         ConfirmSetPointOfReturn = 1505,
         // <summary>
         // You have requested to share your point of return with your party members.
@@ -6035,6 +6261,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s has changed the point of return.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         SomeoneChangedPointOfReturn = 1507,
         // <summary>
         // You have changed the same point of return for party members.
@@ -6043,6 +6270,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s refused to share the point of return with party members.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         SomeoneRefusedToSharePointOfReturn = 1509,
         // <summary>
         // You refused to share the point of return with party members.
@@ -6063,18 +6291,22 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s has defeated a Demon Guardian.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         SomeoneDefeatDemon = 1514,
         // <summary>
         // %s's power has been stolen by an Angel Guardian.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         SomeonePowerStolenByAngel = 1515,
         // <summary>
         // %s has defeated an Angel Guardian.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         SomeoneDefeatAngel = 1516,
         // <summary>
         // %s's power has been stolen by a Devil Guardian.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         SomeonePowerStolenByDevil = 1517,
         // <summary>
         // There are not enough players to play together.
@@ -6083,14 +6315,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %d Gold received as reward for victory.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         VictoryReceivedGold = 1519,
         // <summary>
         // %d fame received as reward for victory.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         VictoryReceivedFame = 1520,
         // <summary>
         // %d additional SP received as reward for victory.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         VictoryReceivedAdditionalSP = 1521,
         // <summary>
         // *
@@ -6235,6 +6470,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Remaining HP from %s : %d%%<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         RemainingHP = 1557,
         // <summary>
         // Your reputation has increased due to group member activity.
@@ -6367,10 +6603,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s: Map no. %d <NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         MapNo = 1590,
         // <summary>
         // %s: The party member is in an unknown place.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         GroupMemberInUnknownPlace = 1591,
         // <summary>
         // You are not in a party.
@@ -6379,6 +6617,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // The ship will leave in %d minutes.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         ShipLeaveInMinutes = 1593,
         // <summary>
         // The ship will leave in 1 minute.
@@ -6395,6 +6634,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You can board the ship at %s.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         BoardShipAt = 1597,
         // <summary>
         // Would you like to trade 6 Christmas Vouchers for Santa's Big Gift Box?
@@ -6419,6 +6659,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %d reputation points are required. Do you want to enter?<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         ReputationPointsRequiredToEnter = 1603,
         // <summary>
         // Only players who are members of a family can enter the raid dungeon.
@@ -6451,10 +6692,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Warm body. For %d minutes you will be able to get items and experience as if you were in a normal state.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         WarmBody = 1611,
         // <summary>
         // Your body temperature slowly drops. For %d minutes you'll be able to obtain items and experience as if you were in a normal state.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         BodyIsGettingCold = 1612,
         // <summary>
         // The warm energy around your body disappears. The experience gain and probability of obtaining an item are decreased by the cold.
@@ -6467,6 +6710,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You need %d reputation points to revive at the place where you died.#13#10 Do you want to revive now? #13#10<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         AmountOfReputationNeededToRevive = 1615,
         // <summary>
         // Congratulations! You defeated the boss!
@@ -6591,6 +6835,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Following player seeks members for the %s Raid:<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         PlayerSearchingMembersForRaidX = 1646,
         // <summary>
         // Only the leader who registered the raid can delete it.
@@ -6631,6 +6876,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You are in %s's raid team.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         MessageTakingPartOfPlayersRaid = 1656,
         // <summary>
         // You will be revived in 20 seconds.#13#10If you die again, the raid will be cancelled.
@@ -6679,6 +6925,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You and %s have received the friendship blessing buff.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         PlayerAndFriendXReceivedFriendshipBuff = 1668,
         // <summary>
         // Since your friend has not logged in, you cannot receive the buff.#13#10Call your friend.
@@ -7103,6 +7350,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Number of love testimonials received: %d<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         LoveRecived = 1774,
         // <summary>
         // Do you want to transform back?
@@ -7219,6 +7467,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Would you like to propose to %s with Cupid's Arrow?#13#10(Warning: Cupid's Arrow will be consumed regardless of the result.)<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         AskPropose = 1803,
         // <summary>
         // You cannot delete your spouse!
@@ -7231,10 +7480,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You have proposed to %s.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         HaveProposed = 1806,
         // <summary>
         // %s has proposed to you. Would you like to accept the proposal?<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         AskAcceptPropose = 1807,
         // <summary>
         // Cannot be used.
@@ -7247,10 +7498,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s has declined %s's proposal.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
         ProposalDeclined = 1810,
         // <summary>
         // %s and %s are now married.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
         PlayersMarried = 1811,
         // <summary>
         // Do you want to separate from your spouse?
@@ -7323,6 +7576,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // The price per piece must not exceed %d Gold. (Using the NosMerchant Medal you can enter a higher price.)<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         UseMedalToEnterHigherPrice = 1829,
         // <summary>
         // Insufficient Gold available.
@@ -7359,6 +7613,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You have bought the following item: %s x %d<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         BoughtItem = 1838,
         // <summary>
         // This item cannot be listed.
@@ -7375,10 +7630,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // The total price must not exceed %d Gold.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         NotExceedMaxPrice = 1842,
         // <summary>
         // The purchase has been completed. Gold - %d<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         PurchaseCompletedWithGoldUsed = 1843,
         // <summary>
         // Your NosMerchant Medal has expired. Close the NosBazaar menu and open it again.
@@ -7403,6 +7660,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You receive the following item: %s<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         MessageReceiveFollowingItem = 1849,
         // <summary>
         // You receive a bell.
@@ -7419,6 +7677,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // The purchase has been completed successfully. %s x %d<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         PurchaseCompleted = 1853,
         // <summary>
         // *
@@ -7431,6 +7690,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s has been appointed raid leader.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         PlayerBecameNewRaidLeader = 1856,
         // <summary>
         // As the recommended level does not correspond to that of the raid, a raidbox cannot be issued even if the raid is completed successfully.
@@ -7439,6 +7699,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // As %s's level does not correspond to that of the raid, the player will not be included in the lives or rewards received.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         PlayerLevelDoesNotMatchRaidRequirementsToReceiveReward = 1858,
         // <summary>
         // You have successfully completed this raid as a raid helper.
@@ -7447,6 +7708,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // The raid helper's mission has been completed successfully. %d reputation received.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         HelperMissionDone = 1860,
         // <summary>
         // The raid helper's mission has failed.
@@ -7503,10 +7765,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You cannot use it while your NosMate is unsettled. Time remaining: %d minutes<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         CannotUseItemWhilePetIsUpsetAndTimeRemaining = 1874,
         // <summary>
         // You cannot use it while your NosMate is very unsettled. Time remaining: %d minutes<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         CannotUseItemWhilePetIsVeryUpsetAndTimeRemaining = 1875,
         // <summary>
         // Chicken Queen
@@ -7515,6 +7779,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // NosMates with negative loyality cannot follow you. Time remaining: %d minutes<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         MateNegativeLoyality = 1877,
         // <summary>
         // The Little Chick has successfully grown into a Grumbly Chicky.
@@ -7535,6 +7800,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // [%s]'s Grumbly Chicky has successfully grown into a Chick Norris.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         GrumblyChickyEvolveInfo = 1882,
         // <summary>
         // The first time you successfully complete the Chicken Queen Raid, everyone will have a 100% chance of receiving a Chicken Queen's Egg once per account.
@@ -7547,6 +7813,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // 1 %s has been consumed.
         // <summary>
+        [Game18NArguments(typeof(string))]
         OneAlreadyBeingUsed = 1885,
         // <summary>
         // Can only be used if you are mounted.
@@ -7559,10 +7826,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Do you want to permanently increase your pet slots by %d?<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         AskIncreasePetSlots = 1888,
         // <summary>
         // Pet slots permanently increased by %d slots.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         PetSlotsIncreased = 1889,
         // <summary>
         // Smileys will now be hidden.
@@ -7603,6 +7872,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You have used the NosMate Summoning Book for %s.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         UsedMateSummoningBook = 1899,
         // <summary>
         // That is not currently possible.
@@ -7619,6 +7889,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s has been sent back to the Miniland.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         SentBackToMiniland = 1903,
         // <summary>
         // The NosMate has been summoned.
@@ -7687,6 +7958,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s sacrifices themselves for %s.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
         PlayerSacrificesThemselvesForX = 1920,
         // <summary>
         // The Spanish riding cockerel has successfully hatched and you have received Marco Pollo.
@@ -7727,6 +7999,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Perfecting the SP successful: +%d (%s)<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(long), typeof(string))]
         PerfectingSpecialistSuccessful = 1930,
         // <summary>
         // Perfecting the SP failed
@@ -7735,6 +8008,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s has defeated %s.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
         PlayerHasDefeteadPlayerX = 1932,
         // <summary>
         // If you leave the team now, you will receive a punishment before entering the team arena. Do you really wish to cancel?
@@ -7747,18 +8021,22 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // If you own %s (item) already, you cannot receive %s.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
         IfYouAlreadyOwnTheItemYouCannotReceiveThatAgain = 1935,
         // <summary>
         // The Arena of Talents is opening now on channel %s.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         TalentArenaOpening = 1936,
         // <summary>
         // The Arena of Talents is open from %s-%s.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
         TalentArenaOpen = 1937,
         // <summary>
         // The Arena of Masters is opening now on channel %s.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         MasterArenaOpening = 1938,
         // <summary>
         // Sunday
@@ -7791,14 +8069,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // The Arena of Masters is open every week on %s.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         ArenaMastersEveryWeek = 1946,
         // <summary>
         // %s-%s.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
         Dash = 1947,
         // <summary>
         // %s has left the team arena.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         LeftArenaTeam = 1948,
         // <summary>
         // You cannot create groups during registration.
@@ -7811,6 +8092,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Another %d minutes until the start of the battle. Good luck!<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         AnotherMinuteToStartTheBattle = 1951,
         // <summary>
         // Choose the sequence of the fighting participants, otherwise it will be set randomly.
@@ -7831,14 +8113,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %d Gold<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         Gold = 1956,
         // <summary>
         // You have received %s as a reward from the Arena of Talents.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         RewardFromArenaTalents = 1957,
         // <summary>
         // Points earned %d<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         PointsEarned = 1958,
         // <summary>
         // The number of entries for the Arena of Masters has been increased by 1.
@@ -7851,10 +8136,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // The penalty will last for another %d seconds.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         PenaltyLastInSeconds = 1961,
         // <summary>
         // You can only register %d times a day.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         RegisterDailyLimit = 1962,
         // <summary>
         // You cannot register if you are in a group.
@@ -7867,6 +8154,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Family level increased to %d!<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         FamilyLevelIncreased = 1965,
         // <summary>
         // You cannot talk to others while you are using the warehouse.
@@ -7875,6 +8163,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s Gold is required.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         GoldRequired = 1967,
         // <summary>
         // It is not possible to use the warehouse right now.
@@ -7911,42 +8200,52 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Family reward: %d FXP<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         FamilyReward = 1976,
         // <summary>
         // (%d per player)<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         PerNewPlayer = 1977,
         // <summary>
         // Reward: %d action points<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         RewardActionPoints = 1978,
         // <summary>
         // Do you want to purchase a warehouse (%d slots)?#13#10<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         AskPurchaseWarehouse = 1979,
         // <summary>
         // %d slots are available.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         SlotsAvailable = 1980,
         // <summary>
         // %d more slots available.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         MoreSlotsAvailable = 1981,
         // <summary>
         // Item has been removed from warehouse - %d x %s<NEW_TYPE><1,0>
         // <summary>
+        [Game18NArguments(typeof(long), typeof(string))]
         RemovedFromWarehouse = 1982,
         // <summary>
         // Item has been added to warehouse - %d x %s<NEW_TYPE><1,0>
         // <summary>
+        [Game18NArguments(typeof(long), typeof(string))]
         AddedToWarehouse = 1983,
         // <summary>
         // An error occurred whilst listing in the warehouse - %d x %s<NEW_TYPE><1,0>
         // <summary>
+        [Game18NArguments(typeof(long), typeof(string))]
         ErrorWhileWarehouse = 1984,
         // <summary>
         // Do you want to expand the warehouse by %d slots?#13#10<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         AskExpandWarehouse = 1985,
         // <summary>
         // No family warehouse available.
@@ -7963,6 +8262,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Do you want to increase the maximum number of family members (%d more players)?#13#10<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         AskExpandFamily = 1989,
         // <summary>
         // The maximum number of family members has been increased.
@@ -7971,10 +8271,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         User = 1991,
         // <summary>
         // %s has logged in.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         UserHasLoggedIn = 1992,
         // <summary>
         // *
@@ -8051,6 +8353,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s has started to gather his strength.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         GatheringStrength = 2011,
         // <summary>
         // Grenigas has absorbed the Crystal of Life and earned new vitality.
@@ -8067,6 +8370,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // 1 %s has been bought for %d Gold<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         HasBeenBoughtForGold = 2015,
         // <summary>
         // You have put the mount in the bead.
@@ -8099,6 +8403,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s are already being used.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         BeingUsed = 2023,
         // <summary>
         // You can only use it if your pet is accompanying you.
@@ -8115,6 +8420,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s's pet has successfully developed into a %s.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
         PetDevelopedIntoX = 2027,
         // <summary>
         // Your pet's development has failed. It is now unsettled.
@@ -8127,6 +8433,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Your level is too low. You can only enter from level %d.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         TooLowLevelToEntry = 2030,
         // <summary>
         // Click anywhere with your mouse to get up immediately.
@@ -8143,14 +8450,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You can take part in the %s raid %d times today.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         DailyEntriesLimitInfo = 2034,
         // <summary>
         // (Daily limit %d times + event %d times)<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(long), typeof(long))]
         DailyLimitEventTime = 2035,
         // <summary>
         // You need this item: %s<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         NeedThisItem = 2036,
         // <summary>
         // You cannot take part in the raid because you are not carrying the Hero's Amulet of Fire.
@@ -8171,18 +8481,22 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // The daily limit for participating in the %s raid has been reset.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         RaidEntriesLimitReset = 2041,
         // <summary>
         // You have reached your daily limit and cannot take part in the %s raid anymore.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         RaidEntriesLimitReached = 2042,
         // <summary>
         // If you use %s you can take part in the raid again.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         UseItemToJoinRaid = 2043,
         // <summary>
         // You need the following item to take part in the raid: %s<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         NeedItemToJoinRaid = 2044,
         // <summary>
         // You can only use the Handkerchief of Separation when your partner is not carrying any more equipment.
@@ -8299,6 +8613,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // May participate in the Arena of Talents %d more times.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         MayParticipateArenaOfTalent = 2073,
         // <summary>
         // The maximum number of participants has been reached.
@@ -8351,14 +8666,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You are in team %s.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         InTeam = 2086,
         // <summary>
         // Winner! %s [%s]<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
         Winner2087 = 2087,
         // <summary>
         // Winner! %s<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         Winner2088 = 2088,
         // <summary>
         // The game of hide-and-seek is coming to a close. Good item!
@@ -8383,6 +8701,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Will be called by another participant after a short time: %d<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         CalledByAnotherParticipant = 2094,
         // <summary>
         // Opposing team found
@@ -8395,10 +8714,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You cannot play the mini-game because your level is too low. It can only be played from level %d.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         LevelTooLowForMinigame = 2097,
         // <summary>
         // You cannot play the mini-game because your reputation is too low. It can only be played with a reputation of %d.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         ReputationTooLowForMinigame = 2098,
         // <summary>
         // The Golden Equipment Protection Scroll was successfully used.
@@ -8455,6 +8776,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %d minutes remaining to explore Caligor's Realm.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         RemainingMinutesCaligor = 2112,
         // <summary>
         // The entrance to Caligor's Realm is closed.
@@ -8583,6 +8905,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Only %d seconds until the next one appears.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         NumberOfSecondsUntilNextOneAppears = 2144,
         // <summary>
         // Yay! Carrots!
@@ -8635,10 +8958,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You have commended %s.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         HaveCommendedPercentZero = 2157,
         // <summary>
         // You have been commended by %s.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         HaveBeenCommendedByPercentZero = 2158,
         // <summary>
         // You cannot criticise that player any more.
@@ -8647,10 +8972,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You have criticised %s.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         HaveCriticisedPercentZero = 2160,
         // <summary>
         // You have been criticised by %s.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         HaveBeenCriticisedByPercentZero = 2161,
         // <summary>
         // Popularity rankings have been reset.
@@ -8679,6 +9006,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Reputation reduced: -%d<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         ReputationReduced = 2168,
         // <summary>
         // Only the top three players from the rankings can use it.
@@ -8687,6 +9015,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Remaining hero message(s): %d<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         RemainingHeroMessages = 2170,
         // <summary>
         // You have used all hero messages.
@@ -8727,6 +9056,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You can commend someone again in %d minute(s).<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         CantCommendNow = 2180,
         // <summary>
         // Cowgirl Chloe
@@ -8735,10 +9065,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // The number of entries to the Arena of Talents has been increased by 1. (Remaining: %d)<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         ArenaTalenEntriesIncreased = 2182,
         // <summary>
         // (+Arena Booster %d)<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         ArenaBooster = 2183,
         // <summary>
         // Your reputation is not high enough.
@@ -8747,6 +9079,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You have received %s from the Arena Booster.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         RecivedFromArenaBooster = 2185,
         // <summary>
         // You have received an additional reward from the Arena Booster.
@@ -8787,6 +9120,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You cannot enter because your reputation is too low. You can only enter with a reputation greater than %d.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         CantEnterTooLowReputation = 2195,
         // <summary>
         // Ice Princess Eliza
@@ -8979,6 +9313,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s defeated %s.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
         Defeated = 2243,
         // <summary>
         // Failed to upgrade the status to 'phenomenal'.
@@ -8991,6 +9326,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You have %d more minutes for the Time-Space.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         MoreTimeForTimeSpace = 2246,
         // <summary>
         // You have passed Zenas' second test. The final test will soon begin.
@@ -8999,10 +9335,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s defeated Erenia's Guardian.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         PlayerDefeatedEreniaGuardian = 2248,
         // <summary>
         // Zenas' Guardian defeated %s.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         ZenasGuardianDefeated = 2249,
         // <summary>
         // You have been ejected from the Time-Space because you were defeated at the enemy's hand.
@@ -9011,10 +9349,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s defeated Zenas' Guardian.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         PlayerDefeatedZenasGuardian = 2251,
         // <summary>
         // Erenia's Guardian defeated %s.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         EreniaGuardianDefeated = 2252,
         // <summary>
         // Palina Puppet Master
@@ -9071,6 +9411,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // The entrance to the Temple Site is still open for %d minutes.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         EntranceToTempleOpened = 2266,
         // <summary>
         // It isn't time to journey to the Temple Site yet.
@@ -9103,6 +9444,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %d minutes remain to explore the Combat Arena.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         ExploreArenaTime = 2274,
         // <summary>
         // The portal to the Combat Arena has been created.
@@ -9131,6 +9473,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s has activated %s.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
         PlayerHasActivatedXObject = 2281,
         // <summary>
         // You cannot receive the reward because you don't have enough action points.
@@ -9139,6 +9482,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Action points [%d]<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         ActionPoints = 2283,
         // <summary>
         // (Limited)
@@ -9175,10 +9519,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Do you want to permanently increase your partner slots by %d?<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         AskMorePartnerSlots = 2292,
         // <summary>
         // Partner slots will be permanently increased by %d.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         PartnerSlotsIncreased = 2293,
         // <summary>
         // Registration for the Sheep Farm raid was withdrawn.
@@ -9251,6 +9597,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You receive the following item: Acorn x%d<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         YouReceiveItemAcorn = 2311,
         // <summary>
         // 10 seconds later the meteor comes crashing down again.
@@ -9279,10 +9626,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s has successfully completed the Royal Battle raid.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         RoyalRaidSuccessed = 2318,
         // <summary>
         // You receive the following item: %s x%d<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         YouWillReceiveTheFollowingObjectX = 2319,
         // <summary>
         // Cannot be changed after registration.
@@ -9291,6 +9640,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Registration starts in %d second(s).<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         RegistrationStartsInSeconds = 2321,
         // <summary>
         // You have been defeated.
@@ -9303,6 +9653,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You are too far away. It can only be used within %d spaces.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         ToFarAway = 2324,
         // <summary>
         // You can't hunt your own group members.
@@ -9379,14 +9730,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You deposit %s,000 Gold.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         DepositBank = 2343,
         // <summary>
         // You withdraw %s,000 Gold. (Fee: %s Gold)<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
         WithdrawBank = 2344,
         // <summary>
         // Balance: %s,000 Gold; Carrying: %s Gold<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
         BalanceBank = 2345,
         // <summary>
         // Please enter how much Gold you wish to deposit or withdraw.
@@ -9395,10 +9749,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Do you want to deposit %s,000 Gold?<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         AskDeposit = 2347,
         // <summary>
         // Do you want to withdraw %s,000 Gold? (Fee: %s Gold)<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
         AskWithdraw = 2348,
         // <summary>
         // Your credit rating at the Cuarry Bank depends on your reputation. This credit rating determines how large the fees are when you withdraw Gold. If you are a VIP, you are exempted from any fees. If you do not have enough Gold to pay the fees, you cannot withdraw the desired amount.
@@ -9407,6 +9763,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Welcome to the Cuarry Bank! We accept deposits or withdrawals of between 1,000 and 100,000,000,000 Gold.%s <NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         WelcomeToQuarry = 2350,
         // <summary>
         // Unfortunately an error has occurred.
@@ -9427,6 +9784,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You have to wait %d minutes before you can be invited.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         CannotBeInvited = 2355,
         // <summary>
         // UI elements are now unlocked
@@ -9443,6 +9801,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You cannot send the invitation. Please try again in %d seconds.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         CannotSendInvite = 2359,
         // <summary>
         // You've received a "welcome back" gift!
@@ -9455,6 +9814,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You must wait before creating a new Martial Artist character (%d days remaining).<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         CreateMartialTimeRemaining = 2362,
         // <summary>
         // Guardian Lucifer
@@ -9475,14 +9835,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // The reward for level %d has been placed in your inventory.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         LevelRewardInInventory = 2367,
         // <summary>
         // You have sold %dx %s in the NosBazaar.<NEW_TYPE><1,0>
         // <summary>
+        [Game18NArguments(typeof(long), typeof(string))]
         SoldItemBazar = 2368,
         // <summary>
         // The selling price has been changed to %d Gold.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         NewSellingPrice = 2369,
         // <summary>
         // Amora
@@ -9491,6 +9854,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Do you want to open the treasure chest with %d Skeleton Keys?<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         UseSkeletonKeyToOpenChest = 2371,
         // <summary>
         // You don't have enough Skeleton Keys.
@@ -9499,6 +9863,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s received {%s} in the jackpot.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
         JackpotRecived = 2373,
         // <summary>
         // <Note>
@@ -9519,26 +9884,32 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Family %s unlocked achievement: %s<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
         FamilyUnlockAchievement = 2378,
         // <summary>
         // Family %s used a skill to increase experience earned.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         FamilyUsedSkillExperience = 2379,
         // <summary>
         // Family %s used a skill to increase gold earned.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         FamilyUsedSkillGold = 2380,
         // <summary>
         // Family %s used a skill to receive the Stamina Boost effect.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         FamilyUsedSkillStamina = 2381,
         // <summary>
         // Family %s used a skill to fill the Angels' raid bar.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         FamilyUsedSkillFillAngel = 2382,
         // <summary>
         // Family %s used a skill to fill the Demons' raid bar.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         FamilyUsedSkillFillDemon = 2383,
         // <summary>
         // Mad March Hare
@@ -9547,14 +9918,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You have received %d action points.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         RecivedActionPoints = 2385,
         // <summary>
         // Purchased: %s<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         PurchasedItemX = 2386,
         // <summary>
         // %s has been used.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         ItemXHasBeenUsed = 2387,
         // <summary>
         // This item can no longer be used as the maximum duration has been reached.
@@ -9575,14 +9949,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Rainbow Battle Monthly Stats: %d Wins / %d Losses<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(long), typeof(long))]
         RainbowBattleMonthlyPlayerStatsList = 2392,
         // <summary>
         // %s has captured: %s<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
         PlayerHasCapturedMobX = 2393,
         // <summary>
         // Our team's %s has been captured.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         FlagCapturedByEnemies = 2394,
         // <summary>
         // You cannot activate this function as the Rainbow Battle has already started.
@@ -9595,6 +9972,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Rainbow Battle activated. Starting in %d seconds.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         RainbowBattleActivatedStartingMessageTime = 2397,
         // <summary>
         // Rainbow Battle:
@@ -9607,6 +9985,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s has received the following effect: %s!<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
         PlayerHasReceivedTheEffectX = 2400,
         // <summary>
         // You will be revealed if you try to rescue a frozen player.
@@ -9619,46 +9998,57 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s freed %s from the ice.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
         PlayerFreedPlayerXFromTheIce = 2403,
         // <summary>
         // %s defeated %d players.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         AmoutOfPlayersDefeatedByPlayerX = 2404,
         // <summary>
         // Frozen: %d<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         Frozen = 2405,
         // <summary>
         // Rescued: %d<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         Rescued = 2406,
         // <summary>
         // (Kill Streak: %d)<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         KillStreak = 2407,
         // <summary>
         // %s has captured: %s<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
         PlayerHasCaputeredTheXEnemyFlag = 2408,
         // <summary>
         // Enemy has captured: %s<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         EnemyHasCapturedTheFlagX = 2409,
         // <summary>
         // If you can hold your bases for %d minutes, you'll win.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         MessageWithTimeAvailableToWinHoldingBase = 2410,
         // <summary>
         // If you don't capture the enemy bases within %d minutes, you'll lose.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         MessageWithTimeAvailableToCaptureEnemyBaseToWin = 2411,
         // <summary>
         // If you can hold your bases for %d seconds, you'll win.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         MessageWithTimeAvailableToWinHoldingBase2 = 2412,
         // <summary>
         // If you don't capture the enemy bases within %d seconds, you'll lose.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         MessageWithTimeAvailableToCaptureEnemyBaseToWin2 = 2413,
         // <summary>
         // You have received a new emoticon!
@@ -9691,6 +10081,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // The battle ends in %d seconds.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         TheBattleEndsShortly = 2421,
         // <summary>
         // Do you want to add this title?
@@ -9731,6 +10122,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You can use the Renaming Card again in %d day(s).<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         YouCanUseRenamingCardLater = 2431,
         // <summary>
         // You have not changed your character name. Are you sure you want to continue?
@@ -9739,6 +10131,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Applied the %s tattoo.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         TattooAplied = 2433,
         // <summary>
         // Tattooing failed.
@@ -9767,10 +10160,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Removed the %s tattoo.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         TattooRemoved = 2440,
         // <summary>
         // Upgraded the %s tattoo! +%d<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         TattooUpgraded = 2441,
         // <summary>
         // You can't carve any more runes as it is already at the highest level.
@@ -9779,6 +10174,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // This weapon is damaged. You'll need a %s before you can equip runes onto it again.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         WeaponIsDamaged = 2443,
         // <summary>
         // This weapon is bound to another player. You can only carve runes into your own weapons. 
@@ -9791,6 +10187,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Rune upgrade failed, but the weapon wasn't damaged thanks to the %s.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         RuneUpFailWeaponNoDamaged = 2446,
         // <summary>
         // Rune upgrade failed. The weapon was damaged in the process. You can't upgrade a damaged weapon.
@@ -9799,6 +10196,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Upgraded the %s rune! +%d<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
         RuneUpgraded = 2448,
         // <summary>
         // You can't pass through here without the chief's permission.
@@ -9815,6 +10213,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Rune upgrade failed, but none of the materials were consumed thanks to the %s.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         RuneUpFailButProtectedMaterials = 2452,
         // <summary>
         // Can only be used on damaged weapons.
@@ -9839,6 +10238,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You'll be transported to Moritius in %d seconds.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         TransportToMoritiusShortly = 2458,
         // <summary>
         // Quest Reward [Champion Experience]
@@ -9867,6 +10267,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %s's %s<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
         Is = 2465,
         // <summary>
         // You must be champion level 10 to enter this area.
@@ -9879,6 +10280,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // %d Job experience points<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         JobExperiencePoints = 2468,
         // <summary>
         // The Infinite Celestial Spire challenge cannot be started.
@@ -10031,14 +10433,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You've caught the following bigger fish: %s <NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         CaughtBiggerFish = 2508,
         // <summary>
         // You've caught the following fish for the first time: %s <NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         CaughtFishFirstTime = 2509,
         // <summary>
         // You've caught all the fish in this region (levels %d-%d). Your reward for this achievement will be sent to you.<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(long), typeof(long))]
         CaughtAllFish = 2510,
         // <summary>
         // Your Encyclopaedia of Fish is complete. Your reward for this achievement will be sent to you.
@@ -10055,6 +10460,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Available daily (%d/%d)<NEW_TYPE><0,1>
         // <summary>
+        [Game18NArguments(typeof(long), typeof(long))]
         AvailableDaily = 2514,
         // <summary>
         // You cannot use the warehouse while fishing.
@@ -10067,6 +10473,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Congratulations! %s is now a Master Angler!<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         MasterAngler = 2517,
         // <summary>
         // Cooking cancelled.
@@ -10111,10 +10518,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // Fullness points: + [%d]<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         PositiveFullnessPoints = 2528,
         // <summary>
         // Fullness points: - [%d]<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         NegativeFullNessPoints = 2529,
         // <summary>
         // I'm full, I couldn't eat another morsel!
@@ -10131,6 +10540,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You have received %d Battle Points.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         ReceivedBattlePoint = 2533,
         // <summary>
         // This item is currently unavailable.
@@ -10159,6 +10569,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // This specialist card has been enchanted with the following item: %s.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(string))]
         SpHasBeenEnchantedWithTheFollowingItem = 2540,
         // <summary>
         // Defeat all summoned monsters to remove the fog shield.
@@ -10215,14 +10626,17 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         // You received %d battle experience points as a reward for this phase.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         ReceivedBattleExperiencePointsForThisPhase = 2555,
         // <summary>
         // You received %d champion experience points as a reward for this phase.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         ReceivedChampionExperiencePointsForThisPhase = 2556,
         // <summary>
         // You received %d job experience points as a reward for this phase.<NEW_TYPE><0>
         // <summary>
+        [Game18NArguments(typeof(long))]
         ReceivedJobExperiencePointsForThisPhase = 2557,
         // <summary>
         // You no longer have a chance. Please wait until the attack ends.

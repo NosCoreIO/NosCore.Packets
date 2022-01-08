@@ -4,6 +4,7 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using NosCore.Packets.ClientPackets.Chat;
@@ -60,7 +61,8 @@ namespace NosCore.Packets.Tests
                 typeof(SuccessPacket),
                 typeof(TargetOffPacket),
                 typeof(GuriPacket),
-                typeof(BiPacket)
+                typeof(BiPacket),
+                typeof(MsgiPacket)
             });
 
         [TestMethod]
@@ -669,6 +671,19 @@ namespace NosCore.Packets.Tests
             };
             var packet = Serializer.Serialize(mapItem);
             Assert.AreEqual($"in 9 - {mapItem.VisualId} 0 0 {mapItem.InItemSubPacket.Amount} 0 0 0", packet);
+        }
+
+        [TestMethod]
+        public void I18NargumentAreWellFormated()
+        {
+            var mapItem = new MsgiPacket
+            {
+                Type = MessageType.Center,
+                Message = Game18NConstString.CurrentRemainingTime,
+                Game18NArguments = new object[] { "test 123", 0 }
+            };
+            var packet = Serializer.Serialize(mapItem);
+            Assert.AreEqual($"msgi 3 77 0 test 123 0", packet);
         }
 
         [TestMethod]

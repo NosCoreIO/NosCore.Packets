@@ -166,6 +166,8 @@ namespace NosCore.Packets.Tests
             builder.AppendLine(@"// |_|\__|\__/ |___/ \__/\__/|_|_\___|");
             builder.AppendLine(@"// -----------------------------------");
             builder.AppendLine("");
+            builder.AppendLine("using NosCore.Packets.Attributes;");
+            builder.AppendLine("");
             builder.AppendLine(@"namespace NosCore.Packets.Enumerations");
             builder.AppendLine(@"{");
             builder.AppendLine(@"    public enum Game18NConstString : short");
@@ -184,6 +186,30 @@ namespace NosCore.Packets.Tests
                 builder.AppendLine("        // <summary>");
                 builder.AppendLine($"        // {value.Value}");
                 builder.AppendLine("        // <summary>");
+                if (value.Value.Contains("%s") || value.Value.Contains("%d"))
+                {
+                    List<string> arguments = new();
+                    bool keepNext = false;
+                    foreach (var t in value.Value)
+                    {
+                        switch (t, keepNext)
+                        {
+                            case ('%', _):
+                                keepNext = true;
+                                break;
+                            case ('s', true):
+                                arguments.Add("typeof(string)");
+                                break;
+                            case ('d', true):
+                                arguments.Add("typeof(long)");
+                                break;
+                            default:
+                                keepNext = false;
+                                break;
+                        }
+                    }
+                    builder.AppendLine(@$"        [Game18NArguments({string.Join(", ", arguments)})]");
+                }
                 builder.AppendLine(@$"        {enumeration} = {(int)enumeration!},");
             }
             builder.AppendLine(@"    }");
