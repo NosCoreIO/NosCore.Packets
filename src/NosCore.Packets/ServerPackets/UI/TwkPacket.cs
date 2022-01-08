@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 namespace NosCore.Packets.ServerPackets.UI
 {
     [PacketHeader("twk", Scope.InGame)]
-    public class TwkPacket
+    public class TwkPacket : PacketBase
     {
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }
