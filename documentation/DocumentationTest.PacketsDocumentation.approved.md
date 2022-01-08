@@ -441,6 +441,7 @@
 - [shopclose](../src/NosCore.Packets/ServerPackets/UI/ShopClosePacket.cs) *InGame*
 - [ta_rank](../src/NosCore.Packets/ServerPackets/UI/TARankPacket.cs) *InGame*
 - [ta_close](../src/NosCore.Packets/ServerPackets/UI/TeamArenaClosePacket.cs) *InGame*
+- [twk](../src/NosCore.Packets/ServerPackets/UI/TwkPacket.cs) *InGame*
 - [umi](../src/NosCore.Packets/ServerPackets/UI/UmiPacket.cs) *InGame*
 - [wopen](../src/NosCore.Packets/ServerPackets/UI/WopenPacket.cs) *InGame*
 - [zzim](../src/NosCore.Packets/ServerPackets/UI/ZzimPacket.cs) *InGame*
