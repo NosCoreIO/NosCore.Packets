@@ -16,8 +16,11 @@ namespace NosCore.Packets.ServerPackets.UI
         [PacketIndex(0)]
         public Game18NConstString Message { get; set; }
 
-        [Required]
         [PacketIndex(1)]
+        public byte ArgumentType { get; set; }
+
+        [Required]
+        [PacketIndex(2)]
         public object[] Game18NArguments { get; set; } = null!;
     }
 }
