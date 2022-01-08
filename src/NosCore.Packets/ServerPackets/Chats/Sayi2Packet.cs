@@ -28,13 +28,10 @@ namespace NosCore.Packets.ServerPackets.Chats
         public Game18NConstString Message { get; set; }
 
         [PacketIndex(4)]
-        public short FirstArgument { get; set; }
+        public byte ArgumentType { get; set; }
 
-        [PacketIndex(6)]
         [Required]
-        public string SecondArgument { get; set; } = null!;
-
         [PacketIndex(5)]
-        public int ThirdArgument { get; set; }
+        public object[] Game18NArguments { get; set; } = null!;
     }
 }
