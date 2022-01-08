@@ -4,6 +4,7 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
+using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
@@ -16,13 +17,11 @@ namespace NosCore.Packets.ServerPackets.UI
         [PacketIndex(0)]
         public Game18NConstString Message { get; set; }
 
-        [PacketIndex(1)]
-        public short FirstArgument { get; set; }
-
         [PacketIndex(2)]
-        public short SecondArgument { get; set; }
+        public byte ArgumentType { get; set; }
 
-        [PacketIndex(3)]
-        public short ThirdArgument { get; set; }
+        [Required]
+        [PacketIndex(1)]
+        public object[] Game18NArguments { get; set; } = null!;
     }
 }
