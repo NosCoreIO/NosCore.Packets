@@ -25,20 +25,24 @@ namespace NosCore.Packets.ServerPackets.UI
 
         [PacketIndex(3)]
         [Required]
-        public string Salt { get; set; } = "shtmxpdlfeoqkr";
+        public string CharacterName { get; set; } = null!;
 
         [PacketIndex(4)]
+        [Required]
+        public string Salt { get; set; } = "shtmxpdlfeoqkr";
+
+        [PacketIndex(5)]
         public string ClientLanguageString
         {
             get => ClientLanguage.ToString().ToLowerInvariant();
-            set => throw new ArgumentException("do not set this use the RegionType Instead");
+            set => throw new ArgumentException("do not set this set the ClientLanguage instead");
         }
 
-        [PacketIndex(5)]
+        [PacketIndex(6)]
         public string ServerLanguageString
         {
             get => ServerLanguage.ToString().ToLowerInvariant();
-            set => throw new ArgumentException("do not set this use the RegionType Instead");
+            set => throw new ArgumentException("do not set this set the ServerLanguage instead");
         }
 
         public RegionType ServerLanguage { get; set; }
