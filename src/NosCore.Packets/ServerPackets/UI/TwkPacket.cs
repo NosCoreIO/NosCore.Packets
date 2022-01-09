@@ -28,10 +28,18 @@ namespace NosCore.Packets.ServerPackets.UI
         public string Salt { get; set; } = "shtmxpdlfeoqkr";
 
         [PacketIndex(4)]
-        public string ClientLanguageString => ClientLanguage.ToString().ToLowerInvariant();
+        public string ClientLanguageString
+        {
+            get => ClientLanguage.ToString().ToLowerInvariant();
+            set => throw new ArgumentException("do not set this use the RegionType Instead");
+        }
 
         [PacketIndex(5)]
-        public string ServerLanguageString => ServerLanguage.ToString().ToLowerInvariant();
+        public string ServerLanguageString
+        {
+            get => ServerLanguage.ToString().ToLowerInvariant();
+            set => throw new ArgumentException("do not set this use the RegionType Instead");
+        }
 
         public RegionType ServerLanguage { get; set; }
         public RegionType ClientLanguage { get; set; }
