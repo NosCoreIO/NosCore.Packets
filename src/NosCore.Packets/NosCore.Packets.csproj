@@ -21,6 +21,7 @@
 		<PackageIcon>icon.png</PackageIcon>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<WarningsNotAsErrors>CS1570</WarningsNotAsErrors>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<NoWarn>CS1591</NoWarn>
 	</PropertyGroup>
 
