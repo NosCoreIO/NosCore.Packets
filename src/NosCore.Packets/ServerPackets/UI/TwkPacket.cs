@@ -35,14 +35,14 @@ namespace NosCore.Packets.ServerPackets.UI
         public string ClientLanguageString
         {
             get => ClientLanguage.ToString().ToLowerInvariant();
-            set => throw new ArgumentException("do not set this use the RegionType Instead");
+            set => throw new ArgumentException("do not set this set the ClientLanguage instead");
         }
 
         [PacketIndex(6)]
         public string ServerLanguageString
         {
             get => ServerLanguage.ToString().ToLowerInvariant();
-            set => throw new ArgumentException("do not set this use the RegionType Instead");
+            set => throw new ArgumentException("do not set this set the ServerLanguage instead");
         }
 
         public RegionType ServerLanguage { get; set; }
