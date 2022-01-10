@@ -4,10 +4,6 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace NosCore.Packets.Enumerations
 {
     public enum QuestType : short
@@ -38,5 +34,6 @@ namespace NosCore.Packets.Enumerations
         Inspect = 24,
         WinRaid = 25,
         FlowerQuest = 26,
+        Battlepass = 27
     }
 }
