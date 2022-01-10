@@ -8,9 +8,10 @@ namespace NosCore.Packets.Enumerations
 {
     public enum SMemoType : byte
     {
-        Success = 1,
-        Error = 2,
-        FatalError = 3,
+        SuccessNpc = 0,
+        SuccessPlayer = 1,
+        FailNpc = 2,
+        FailPlayer = 3,
         BankSuccess = 4,
         BankError = 5,
         BankNormal = 6
