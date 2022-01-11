@@ -681,10 +681,10 @@ namespace NosCore.Packets.Tests
             {
                 Type = MessageType.Center,
                 Message = Game18NConstString.CurrentRemainingTime,
-                Game18NArguments = new object[] { "test 123", 0 }
+                Game18NArguments = { "test 123", 0 }
             };
             var packet = Serializer.Serialize(mapItem);
-            Assert.AreEqual($"msgi 3 77 0 test 123 0", packet);
+            Assert.AreEqual($"msgi 3 77 0 test 123 0 0 0", packet);
         }
 
         [TestMethod]
