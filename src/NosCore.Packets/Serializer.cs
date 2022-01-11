@@ -154,7 +154,11 @@ namespace NosCore.Packets
         private Expression ListSerializer(Expression injectedPacket, Expression specificTypeExpression,
             PacketIndexAttribute indexAttr, Type type, string packetSplitter, Expression propertySplitter)
         {
-            var subtype = type.GenericTypeArguments.Any() ? type.GenericTypeArguments[0] : type.GetElementType();
+            var subtype = type.GenericTypeArguments.Any() ? type.GenericTypeArguments[0] : type.GetElementType() ?? typeof(object);
+            if (subtype == typeof(object))
+            {
+                packetSplitter = " ";
+            }
             var param = Expression.Parameter(subtype!);
             var isPacketList = false;
             if (typeof(IPacket).IsAssignableFrom(subtype))

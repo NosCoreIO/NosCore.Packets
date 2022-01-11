@@ -9,6 +9,7 @@ using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
+using NosCore.Packets.ServerPackets.Chats;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
@@ -25,6 +26,6 @@ namespace NosCore.Packets.ServerPackets.UI
         public byte ArgumentType { get; set; }
         
         [PacketIndex(3)]
-        public object[] Game18NArguments { get; set; } = Array.Empty<object>();
+        public Game18NArguments Game18NArguments { get; set; } = new(4);
     }
 }
