@@ -4,6 +4,7 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace NosCore.Packets.Interfaces
@@ -12,7 +13,7 @@ namespace NosCore.Packets.Interfaces
     {
         string? Header { get; set; }
         ushort? KeepAliveId { get; set; }
-        ValidationResult? ValidationResult { get; set; }
-        bool IsValid { get; set; }
+        List<ValidationResult> ValidationResult { get; }
+        bool IsValid { get; }
     }
 }

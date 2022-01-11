@@ -4,7 +4,10 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets
@@ -15,8 +18,40 @@ namespace NosCore.Packets
 
         public ushort? KeepAliveId { get; set; }
 
-        public ValidationResult? ValidationResult { get; set; }
+        private readonly List<ValidationResult> _validationResult = new ();
+        public List<ValidationResult> ValidationResult
+        {
+            get
+            {
+                if (_validationResult.Count == 0)
+                {
+                    var _ = IsValid;
+                }
 
-        public bool IsValid { get; set; } = true;
+                return _validationResult;
+            }
+        }
+
+        public bool IsValid
+        {
+            get
+            {
+                foreach (var prop in GetType().GetProperties()
+                             .Where(x=> !typeof(PacketBase).GetProperties().Select(o=>o.Name).Contains(x.Name)))
+                {
+                    var value = prop.GetValue(this);
+                    if (prop.PropertyType.IsEnum && value != null && !Enum.IsDefined(prop.PropertyType, value))
+                    {
+                        _validationResult.Add(new ValidationResult("Invalid Enum value",
+                            new[] { prop.Name }));
+                    }
+
+                }
+
+                var vc = new ValidationContext(this);
+                Validator.TryValidateObject(this, vc, _validationResult, true);
+                return !_validationResult.Any();
+            }
+        }
     }
 }

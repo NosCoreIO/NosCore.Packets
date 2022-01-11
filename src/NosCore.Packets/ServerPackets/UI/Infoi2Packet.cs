@@ -4,6 +4,7 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
+using System;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 using System.ComponentModel.DataAnnotations;
@@ -18,9 +19,8 @@ namespace NosCore.Packets.ServerPackets.UI
 
         [PacketIndex(1)]
         public byte ArgumentType { get; set; }
-
-        [Required]
+        
         [PacketIndex(2)]
-        public object[] Game18NArguments { get; set; } = null!;
+        public object[] Game18NArguments { get; set; } = Array.Empty<object>();
     }
 }
