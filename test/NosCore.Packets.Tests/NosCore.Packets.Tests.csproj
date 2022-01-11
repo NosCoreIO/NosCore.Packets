@@ -25,4 +25,10 @@
 		<ProjectReference Include="..\..\src\NosCore.Packets\NosCore.Packets.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<PackageReference Include="NosCore.Analyzers" Version="0.0.4">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 </Project>

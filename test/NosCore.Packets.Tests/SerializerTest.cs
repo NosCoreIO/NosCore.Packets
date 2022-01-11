@@ -62,7 +62,8 @@ namespace NosCore.Packets.Tests
                 typeof(TargetOffPacket),
                 typeof(GuriPacket),
                 typeof(BiPacket),
-                typeof(MsgiPacket)
+                typeof(MsgiPacket),
+                typeof(SayiPacket)
             });
 
         [TestMethod]
@@ -680,11 +681,25 @@ namespace NosCore.Packets.Tests
             {
                 Type = MessageType.Center,
                 Message = Game18NConstString.CurrentRemainingTime,
-                Game18NArguments = new object[] { "test 123", 0 }
+                Game18NArguments = { "test 123", 0 }
             };
             var packet = Serializer.Serialize(mapItem);
-            Assert.AreEqual($"msgi 3 77 0 test 123 0", packet);
+            Assert.AreEqual($"msgi 3 77 0 test 123 0 0 0", packet);
         }
+
+        [TestMethod]
+        public void I18NargumentAreWellFormatedWithLength()
+        {
+            var mapItem = new SayiPacket
+            {
+                Type = SayColorType.Blue,
+                Message = Game18NConstString.IceBreakerWillStartForLevels,
+                Game18NArguments = { 1, 2 }
+            };
+            var packet = Serializer.Serialize(mapItem);
+            Assert.AreEqual($"sayi 0 0 6 363 0 1 2 0 0", packet);
+        }
+
 
         [TestMethod]
         public void GenerateGidxPacketIsNotCorrupted()
