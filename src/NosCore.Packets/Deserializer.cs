@@ -212,8 +212,13 @@ namespace NosCore.Packets
             }
             catch (Exception ex)
             {
-                var exc = new ArgumentException(null, ex);
-                exc.Data["Packet"] = packetContent;
+                var exc = new ArgumentException(null, ex)
+                {
+                    Data =
+                    {
+                        ["Packet"] = packetContent
+                    }
+                };
                 throw exc;
             }
         }
@@ -239,27 +244,7 @@ namespace NosCore.Packets
                     {
                         var value = DeserializeValue(packetBasePropertyInfo.Key, packetBasePropertyInfo.Key.Item1,
                             matches, ref trueIndex, isMaxIndex);
-                        foreach (var validation in packetBasePropertyInfo.Key.Item4)
-                        {
-                            var validate = validation.GetValidationResult(value, new ValidationContext(deg)
-                            {
-                                MemberName = packetBasePropertyInfo.Key.Item3,
-                            });
-
-                            deg.ValidationResult ??= validate;
-                        }
-
-                        if (packetBasePropertyInfo.Key.Item1.IsEnum && !Enum.IsDefined(packetBasePropertyInfo.Key.Item1, value!))
-                        {
-                            deg.ValidationResult = new ValidationResult("Invalid Enum value",
-                                new[] { packetBasePropertyInfo.Key.Item3 });
-                        }
-
-                        if (deg.ValidationResult?.ErrorMessage!.Length > 0)
-                        {
-                            deg.IsValid = false;
-                        }
-
+                        
                         packetBasePropertyInfo.Value.DynamicInvoke(deg, value);
                     }
                     else if (isMaxIndex && packetBasePropertyInfo.Key.Item1 == typeof(string))

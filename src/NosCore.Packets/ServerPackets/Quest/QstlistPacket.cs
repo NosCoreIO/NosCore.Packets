@@ -4,6 +4,7 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
@@ -18,6 +19,6 @@ namespace NosCore.Packets.ServerPackets.Quest
     {
         [PacketListIndex(0, RemoveHeader = true)]
         [Required]
-        public List<QuestSubPacket> QuestSubPackets { get; set; } = null!;
+        public List<QuestSubPacket> QuestSubPackets { get; set; } = new(0);
     }
 }
