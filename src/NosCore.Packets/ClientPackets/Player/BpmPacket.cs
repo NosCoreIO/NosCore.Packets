@@ -17,7 +17,7 @@ namespace NosCore.Packets.ClientPackets.Player
         public byte Unknow { get; set; } = 70; // todo : to find
 
         [PacketIndex(1)]
-        public bool IsBattlePassIconEnabled { get; set; }
+        public bool IsBattlePassEnabled { get; set; }
 
         [PacketIndex(2)]
         public int MaxBattlePassPoints { get; set; }

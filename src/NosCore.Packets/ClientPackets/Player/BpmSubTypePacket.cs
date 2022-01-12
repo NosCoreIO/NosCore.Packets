@@ -21,7 +21,7 @@ namespace NosCore.Packets.ClientPackets.Player
         public FrequencyType FrequencyType { get; set; }
 
         [PacketIndex(3)]
-        public long Advencement { get; set; }
+        public long Advancement { get; set; }
 
         [PacketIndex(4)]
         public long MaxObjectiveValue { get; set; }
