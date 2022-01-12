@@ -4,6 +4,6 @@
     {
         Daily = 0,
         Weekly = 1,
-        Seasonal = 2
+        OneOff = 2
     }
 }
