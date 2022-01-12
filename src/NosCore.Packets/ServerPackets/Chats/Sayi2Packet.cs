@@ -32,6 +32,6 @@ namespace NosCore.Packets.ServerPackets.Chats
         public byte ArgumentType { get; set; }
 
         [PacketIndex(5)]
-        public Game18NArguments Game18NArguments { get; set; } = new(4);
+        public Game18NArguments Game18NArguments { get; set; } = new(1);
     }
 }

@@ -4,12 +4,8 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
-using System;
-using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
-using NosCore.Packets.Interfaces;
-using NosCore.Packets.ServerPackets.Chats;
 
 namespace NosCore.Packets.ServerPackets.Shop
 {
@@ -26,6 +22,6 @@ namespace NosCore.Packets.ServerPackets.Shop
         public byte ArgumentType { get; set; }
         
         [PacketIndex(3)]
-        public Game18NArguments Game18NArguments { get; set; } = new(4);
+        public Game18NArguments Game18NArguments { get; set; } = new(3);
     }
 }
