@@ -20,8 +20,5 @@ namespace NosCore.Packets.ServerPackets.Shop
 
         [PacketIndex(2)]
         public byte ArgumentType { get; set; }
-        
-        [PacketIndex(3)]
-        public Game18NArguments Game18NArguments { get; set; } = new(4);
     }
 }
