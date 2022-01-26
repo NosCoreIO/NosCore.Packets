@@ -104,6 +104,14 @@ namespace NosCore.Packets.Tests
             Assert.AreEqual("0Lucifer0 this is a long message", packet.Message);
         }
 
+
+        [TestMethod]
+        public void PacketEndingWithParenthesisShouldDeserialize()
+        {
+            var packet = (WhisperPacket)Deserializer.Deserialize("/0Lucifer0 this is a long (message)");
+            Assert.AreEqual("0Lucifer0 this is a long (message)", packet.Message);
+        }
+
         [TestMethod]
         public void UnknownPacketAreUnresolved()
         {
