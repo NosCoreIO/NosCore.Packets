@@ -227,8 +227,8 @@ namespace NosCore.Packets
         {
             var deg = (IPacket)dic.Constructor!.DynamicInvoke()!;
 
-            var matches = Regex.Matches(packetContent.Replace("  ", " EMPTY_SPACE "), @"([^\s\v]+\.+[\s\v]+)+((?=(\s\v))|$)|([^\s\v]+)((?=\s)|$)")
-                .Select(s => s.Value == "EMPTY_SPACE" ? "" : s.Value).ToArray();
+            var matches = Regex.Matches(packetContent, @"([^\s\v]+)|(?<=\s)((?=\s)|$)")
+                .Select(s => s.Value).ToArray();
 
             if (matches.Length > 0 && dic.PacketDeserializerDictionary.Count > 0)
             {
