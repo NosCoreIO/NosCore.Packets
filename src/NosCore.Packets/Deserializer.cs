@@ -227,7 +227,7 @@ namespace NosCore.Packets
         {
             var deg = (IPacket)dic.Constructor!.DynamicInvoke()!;
 
-            var matches = Regex.Matches(packetContent, @"([^\s\v]+)|(?<=\s)((?=\s)|$)")
+            var matches = Regex.Matches(packetContent, @"([^\s\v]+)|(?<=\s)(?=\s|$)")
                 .Select(s => s.Value).ToArray();
 
             if (matches.Length > 0 && dic.PacketDeserializerDictionary.Count > 0)
