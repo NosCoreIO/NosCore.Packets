@@ -113,6 +113,20 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
+        public void PacketEndingWithCaretShouldDeserialize()
+        {
+            var packet = (WhisperPacket)Deserializer.Deserialize("/0Lucifer0 this is a long (message)^");
+            Assert.AreEqual("0Lucifer0 this is a long (message)^", packet.Message);
+        }
+
+        [TestMethod]
+        public void PacketEndingWithDotShouldDeserialize()
+        {
+            var packet = (WhisperPacket)Deserializer.Deserialize("/0Lucifer0 this is a long .");
+            Assert.AreEqual("0Lucifer0 this is a long .", packet.Message);
+        }
+
+        [TestMethod]
         public void UnknownPacketAreUnresolved()
         {
             var packet = (UnresolvedPacket)Deserializer.Deserialize("unres 123");
@@ -156,7 +170,7 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void DeserializationLastStringCanNotBeNull()
         {
-            var serializedPacket = (FamilyChatPacket)Deserializer.Deserialize(": ");
+            var serializedPacket = (FamilyChatPacket)Deserializer.Deserialize(":");
             Assert.AreEqual(serializedPacket.Message, "");
         }
 
