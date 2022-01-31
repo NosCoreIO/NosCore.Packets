@@ -4,9 +4,7 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NosCore.Packets.ClientPackets.Chat;
 using NosCore.Packets.ClientPackets.Families;
 using NosCore.Packets.ClientPackets.Inventory;
@@ -14,21 +12,23 @@ using NosCore.Packets.ClientPackets.Relations;
 using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 using NosCore.Packets.ServerPackets.Auction;
+using NosCore.Packets.ServerPackets.CharacterSelectionScreen;
 using NosCore.Packets.ServerPackets.Chats;
 using NosCore.Packets.ServerPackets.Event;
 using NosCore.Packets.ServerPackets.Inventory;
 using NosCore.Packets.ServerPackets.Login;
 using NosCore.Packets.ServerPackets.Miniland;
 using NosCore.Packets.ServerPackets.Player;
+using NosCore.Packets.ServerPackets.Quest;
 using NosCore.Packets.ServerPackets.Quicklist;
 using NosCore.Packets.ServerPackets.Relations;
 using NosCore.Packets.ServerPackets.Shop;
 using NosCore.Packets.ServerPackets.UI;
 using NosCore.Packets.ServerPackets.Visibility;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NosCore.Packets.ServerPackets.CharacterSelectionScreen;
-using NosCore.Packets.ServerPackets.Quest;
 using NosCore.Shared.Enumerations;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace NosCore.Packets.Tests
 {

@@ -7,6 +7,7 @@
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace NosCore.Packets.ClientPackets.Player
 {
@@ -28,7 +29,8 @@ namespace NosCore.Packets.ClientPackets.Player
         [PacketIndex(4)]
         public int Unknow3 { get; set; } = 21111111; // todo : to find
 
-        [PacketIndex(5)]
-        public List<BpmSubTypePacket>? QuestList { get; set; }
+        [Required]
+        [PacketListIndex(5, SpecialSeparator = " ")]
+        public List<BpmSubTypePacket> QuestList { get; set; } = null!;
     }
 }
