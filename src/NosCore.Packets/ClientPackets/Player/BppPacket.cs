@@ -7,6 +7,7 @@
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace NosCore.Packets.ClientPackets.Player
 {
@@ -22,7 +23,8 @@ namespace NosCore.Packets.ClientPackets.Player
         [PacketIndex(2)]
         public bool IsPremium { get; set; }
 
+        [Required]
         [PacketListIndex(3, SpecialSeparator = " ")]
-        public List<BppSubTypePacket>? ItemList { get; set; }
+        public List<BppSubTypePacket> ItemList { get; set; } = null!;
     }
 }
