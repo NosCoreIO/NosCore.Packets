@@ -13,25 +13,25 @@ namespace NosCore.Packets.ClientPackets.Player
         [PacketIndex(0)]
         public short BearingId { get; set; }
 
-        [PacketIndex(1, SpecialSeparator = " ")]
+        [PacketIndex(1)]
         public short FreeItemVNum { get; set; }
 
-        [PacketIndex(2, SpecialSeparator = " ")]
+        [PacketIndex(2)]
         public short FreeItemAmount { get; set; }
 
-        [PacketIndex(3, SpecialSeparator = " ")]
+        [PacketIndex(3)]
         public short PremiumItemVNum { get; set; }
 
-        [PacketIndex(4, SpecialSeparator = " ")]
+        [PacketIndex(4)]
         public short PremiumItemAmount { get; set; }
 
-        [PacketIndex(5, SpecialSeparator = " ")]
+        [PacketIndex(5)]
         public bool CanGetFreeItem { get; set; }
 
-        [PacketIndex(6, SpecialSeparator = " ")]
+        [PacketIndex(6)]
         public bool CanGetPremiumItem { get; set; }
 
-        [PacketIndex(7, SpecialSeparator = " ")]
+        [PacketIndex(7)]
         public bool IsSuperReward { get; set; }
     }
 }

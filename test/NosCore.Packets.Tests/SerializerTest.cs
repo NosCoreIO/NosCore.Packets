@@ -4,9 +4,7 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NosCore.Packets.ClientPackets.Chat;
 using NosCore.Packets.ClientPackets.Families;
 using NosCore.Packets.ClientPackets.Inventory;
@@ -14,22 +12,23 @@ using NosCore.Packets.ClientPackets.Relations;
 using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 using NosCore.Packets.ServerPackets.Auction;
+using NosCore.Packets.ServerPackets.CharacterSelectionScreen;
 using NosCore.Packets.ServerPackets.Chats;
 using NosCore.Packets.ServerPackets.Event;
 using NosCore.Packets.ServerPackets.Inventory;
 using NosCore.Packets.ServerPackets.Login;
 using NosCore.Packets.ServerPackets.Miniland;
 using NosCore.Packets.ServerPackets.Player;
+using NosCore.Packets.ServerPackets.Quest;
 using NosCore.Packets.ServerPackets.Quicklist;
 using NosCore.Packets.ServerPackets.Relations;
 using NosCore.Packets.ServerPackets.Shop;
 using NosCore.Packets.ServerPackets.UI;
 using NosCore.Packets.ServerPackets.Visibility;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NosCore.Packets.ServerPackets.CharacterSelectionScreen;
-using NosCore.Packets.ServerPackets.Quest;
 using NosCore.Shared.Enumerations;
-using NosCore.Packets.ClientPackets.Player;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace NosCore.Packets.Tests
 {
@@ -64,9 +63,7 @@ namespace NosCore.Packets.Tests
                 typeof(GuriPacket),
                 typeof(BiPacket),
                 typeof(MsgiPacket),
-                typeof(SayiPacket),
-                typeof(BpmPacket),
-                typeof(BppPacket)
+                typeof(SayiPacket)
             });
 
         [TestMethod]
@@ -780,55 +777,6 @@ namespace NosCore.Packets.Tests
             Assert.AreEqual(
                 $"in 1 characterTest - 0 0 0 0 {(byte)characterTest.InCharacterSubPacket.Authority} 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 0 0 0 -1.-1 - 1 0 0 0 0 1 0 0|0|0 0 0 {(byte)characterTest.InCharacterSubPacket.Size} 0 0",
                 packet);
-        }
-
-        [TestMethod]
-        public void TestBattlepassPackets()
-        {
-            var bpmTest = new BpmPacket
-            {
-                IsBattlePassEnabled = true,
-                MaxBattlePassPoints = 150000,
-                QuestList = new List<BpmSubTypePacket>
-                {
-                    new BpmSubTypePacket
-                    {
-                        QuestId = 1,
-                        MissionType = MissionType.CompleteAOT,
-                        FrequencyType = FrequencyType.Daily,
-                        Advancement = 0,
-                        MaxObjectiveValue = 3000,
-                        Reward = 5,
-                        MissionMinutesRemaining = 2000
-                    }
-                }
-            };
-
-            var bppTest = new BppPacket
-            {
-                BearingCount = 1,
-                IsPremium = true,
-                ItemList = new List<BppSubTypePacket>
-                {
-                    new BppSubTypePacket
-                    {
-                        BearingId = 1,
-                        FreeItemVNum = 1,
-                        FreeItemAmount = 1,
-                        PremiumItemVNum = 1,
-                        PremiumItemAmount = 1,
-                        CanGetFreeItem = true,
-                        CanGetPremiumItem = false,
-                        IsSuperReward = false
-                    }
-                }
-            };
-
-            var bpmPacket = Serializer.Serialize(bpmTest);
-            Assert.AreEqual("bpm 70 1 150000 21093011 21111111 1 7 0 0 3000 5 2000", bpmPacket);
-
-            var bppPacket = Serializer.Serialize(bppTest);
-            Assert.AreEqual("bpp 1 0 1 1 1 1 1 1 1 0 0", bppPacket);
         }
     }
 }

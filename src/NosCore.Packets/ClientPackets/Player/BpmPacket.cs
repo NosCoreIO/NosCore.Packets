@@ -28,7 +28,7 @@ namespace NosCore.Packets.ClientPackets.Player
         [PacketIndex(4)]
         public int Unknow3 { get; set; } = 21111111; // todo : to find
 
-        [PacketListIndex(5)]
+        [PacketListIndex(5, SpecialSeparator = " ")]
         public List<BpmSubTypePacket>? QuestList { get; set; }
     }
 }

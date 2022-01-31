@@ -14,22 +14,22 @@ namespace NosCore.Packets.ClientPackets.Player
         [PacketIndex(0)]
         public long QuestId { get; set; }
 
-        [PacketIndex(1, SpecialSeparator = " ")]
+        [PacketIndex(1)]
         public MissionType MissionType { get; set; }
 
-        [PacketIndex(2, SpecialSeparator = " ")]
+        [PacketIndex(2)]
         public FrequencyType FrequencyType { get; set; }
 
-        [PacketIndex(3, SpecialSeparator = " ")]
+        [PacketIndex(3)]
         public long Advancement { get; set; }
 
-        [PacketIndex(4, SpecialSeparator = " ")]
+        [PacketIndex(4)]
         public long MaxObjectiveValue { get; set; }
 
-        [PacketIndex(5, SpecialSeparator = " ")]
+        [PacketIndex(5)]
         public byte Reward { get; set; }
 
-        [PacketIndex(6, SpecialSeparator = " ")]
+        [PacketIndex(6)]
         public long MissionMinutesRemaining { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace NosCore.Packets.ClientPackets.Player
         [PacketIndex(2)]
         public bool IsPremium { get; set; }
 
-        [PacketIndex(3)]
+        [PacketListIndex(3, SpecialSeparator = " ")]
         public List<BppSubTypePacket>? ItemList { get; set; }
     }
 }
