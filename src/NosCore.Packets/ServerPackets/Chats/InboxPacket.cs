@@ -14,8 +14,12 @@ namespace NosCore.Packets.ServerPackets.Chats
     [PacketHeader("inbox", Scope.InGame)]
     public class InboxPacket : PacketBase
     {
+        public InboxPacket(IPacket boxPacket)
+        {
+            BoxPacket = boxPacket;
+        }
+
         [PacketIndex(0)]
-        [Required]
-        public IPacket BoxPacket { get; set; } = null!;
+        public IPacket BoxPacket { get; set; }
     }
 }

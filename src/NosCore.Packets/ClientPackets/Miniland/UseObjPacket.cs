@@ -14,9 +14,13 @@ namespace NosCore.Packets.ClientPackets.Miniland
     [PacketHeader("useobj", Scope.InGame)]
     public class UseObjPacket : PacketBase
     {
+        public UseObjPacket(string characterName)
+        {
+            CharacterName = characterName;
+        }
+
         [PacketIndex(0)]
-        [Required]
-        public string CharacterName { get; set; } = null!;
+        public string CharacterName { get; set; }
 
         [PacketIndex(1)]
         public short Slot { get; set; }

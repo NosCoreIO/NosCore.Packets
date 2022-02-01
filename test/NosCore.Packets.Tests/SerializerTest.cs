@@ -171,50 +171,15 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void SerializeRecursiveListSubPackets()
         {
-            var testPacket = new QstlistPacket()
+            var testPacket = new QstlistPacket(new List<QuestSubPacket>
             {
-                QuestSubPackets = new List<QuestSubPacket>
+                new QuestSubPacket
                 {
-                    new QuestSubPacket {
-                        ObjectiveCount = 5,
-                        QuestId = 1500,
-                        InfoId = 1500,
-                        GoalType = QuestType.Hunt,
-                        QuestObjectiveSubPackets = new List<QuestObjectiveSubPacket>()
-                           {
-                               new QuestObjectiveSubPacket
-                               {
-                                   CurrentCount = 0,
-                                   IsFinished = false,
-                                   MaxCount = 5
-                               }
-                               , new QuestObjectiveSubPacket()
-                               , new QuestObjectiveSubPacket()
-                               , new QuestObjectiveSubPacket()
-                               , new QuestObjectiveSubPacket()
-                           },
-                        ShowDialog = true
-                    }
-                }
-            };
-
-            var packet = Serializer.Serialize(testPacket);
-            Assert.AreEqual("qstlist 5.1500.1500.1.0.5.0.0.0.0.0.0.0.0.0.1", packet);
-        }
-
-        [TestMethod]
-        public void SerializeRecursiveSubPackets()
-        {
-            var testPacket =
-                new QstiPacket()
-                {
-                    QuestSubPacket = new QuestSubPacket()
-                    {
-                        ObjectiveCount = 5,
-                        QuestId = 1500,
-                        InfoId = 1500,
-                        GoalType = QuestType.Hunt,
-                        QuestObjectiveSubPackets = new List<QuestObjectiveSubPacket>()
+                    ObjectiveCount = 5,
+                    QuestId = 1500,
+                    InfoId = 1500,
+                    GoalType = QuestType.Hunt,
+                    QuestObjectiveSubPackets = new List<QuestObjectiveSubPacket>()
                     {
                         new QuestObjectiveSubPacket
                         {
@@ -225,9 +190,45 @@ namespace NosCore.Packets.Tests
                         new QuestObjectiveSubPacket(), new QuestObjectiveSubPacket(), new QuestObjectiveSubPacket(),
                         new QuestObjectiveSubPacket()
                     },
-                        ShowDialog = true
-                    }
-                };
+                    ShowDialog = true
+                }
+            });
+
+            var packet = Serializer.Serialize(testPacket);
+            Assert.AreEqual("qstlist 5.1500.1500.1.0.5.0.0.0.0.0.0.0.0.0.1", packet);
+        }
+
+        [TestMethod]
+        public void NullableReferenceInferRequiredAttribute()
+        {
+            var testPacket = new QstlistPacket(null!);
+            Assert.AreEqual(false, testPacket.IsValid);
+            Assert.AreEqual("The QstlistPacket field is required.", testPacket.ValidationResult.Single().ErrorMessage);
+        }
+
+        [TestMethod]
+        public void SerializeRecursiveSubPackets()
+        {
+            var testPacket =
+                new QstiPacket(new QuestSubPacket()
+                {
+                    ObjectiveCount = 5,
+                    QuestId = 1500,
+                    InfoId = 1500,
+                    GoalType = QuestType.Hunt,
+                    QuestObjectiveSubPackets = new List<QuestObjectiveSubPacket>()
+                    {
+                        new QuestObjectiveSubPacket
+                        {
+                            CurrentCount = 0,
+                            IsFinished = false,
+                            MaxCount = 5
+                        },
+                        new QuestObjectiveSubPacket(), new QuestObjectiveSubPacket(), new QuestObjectiveSubPacket(),
+                        new QuestObjectiveSubPacket()
+                    },
+                    ShowDialog = true
+                });
 
             var packet = Serializer.Serialize(testPacket);
             Assert.AreEqual("qsti 5.1500.1500.1.0.5.0.0.0.0.0.0.0.0.0.1", packet);

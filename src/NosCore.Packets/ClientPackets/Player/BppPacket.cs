@@ -14,6 +14,11 @@ namespace NosCore.Packets.ClientPackets.Player
     [PacketHeader("bpp", Scope.InGame)]
     public class BppPacket : PacketBase
     {
+        public BppPacket(List<BppSubTypePacket> itemList)
+        {
+            ItemList = itemList;
+        }
+
         [PacketIndex(0)]
         public byte BearingCount { get; set; }
 
@@ -22,9 +27,8 @@ namespace NosCore.Packets.ClientPackets.Player
 
         [PacketIndex(2)]
         public bool IsPremium { get; set; }
-
-        [Required]
+        
         [PacketListIndex(3, SpecialSeparator = " ")]
-        public List<BppSubTypePacket> ItemList { get; set; } = null!;
+        public List<BppSubTypePacket> ItemList { get; set; }
     }
 }

@@ -13,8 +13,12 @@ namespace NosCore.Packets.ClientPackets.Instance
     [PacketHeader("taw", Scope.InGame)]
     public class TawPacket : PacketBase
     {
+        public TawPacket(string username)
+        {
+            Username = username;
+        }
+
         [PacketIndex(0)]
-        [Required]
-        public string Username { get; set; } = null!;
+        public string Username { get; set; }
     }
 }

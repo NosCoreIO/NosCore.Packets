@@ -14,9 +14,13 @@ namespace NosCore.Packets.ServerPackets.Login
     [PacketHeader("mz", Scope.InGame)]
     public class MzPacket : PacketBase
     {
+        public MzPacket(string ip)
+        {
+            Ip = ip;
+        }
+
         [PacketIndex(0)]
-        [Required]
-        public string Ip { get; set; } = null!;
+        public string Ip { get; set; }
 
         [PacketIndex(1)]
         public ushort Port { get; set; }

@@ -51,13 +51,16 @@ namespace NosCore.Packets
 
             var values = Expression.Parameter(typeof(IEnumerable<object?>), "values");
 
-            var ctor = listGenericType.GetConstructor(BindingFlags.Instance | BindingFlags.Public, null, new Type[0], null);
+            var ctor = listGenericType.GetConstructors(BindingFlags.Instance | BindingFlags.Public)
+                .OrderBy(x=>x.GetParameters().Length).First();
 
             // I prefer using Expression.Variable to Expression.Parameter
             // for internal variables
             var instance = Expression.Variable(listGenericType, "list");
 
-            var assign = Expression.Assign(instance, Expression.New(ctor!));
+            var parameters = ctor!.GetParameters();
+            var parameterExpression = parameters.Select(p => Expression.Default(p.ParameterType)).ToArray();
+            var assign = Expression.Assign(instance, Expression.New(ctor, parameterExpression));
 
             var addMethod = listGenericType.GetMethod("AddRange", new[] { typeof(IEnumerable<>).MakeGenericType(genericType) });
 
@@ -111,11 +114,18 @@ namespace NosCore.Packets
                     .Where(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().Any()).ToList();
             var propertyAmount = types.Any() ? types.Max(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First().Index) : 0;
 
+            var ctor = typeof(T).GetConstructors(BindingFlags.Instance | BindingFlags.Public)
+                .OrderBy(x => x.GetParameters().Length).First();
+
+            var parameters = ctor.GetParameters();
+            var parameterExpression = parameters.Select(p => Expression.Default(p.ParameterType)).ToArray();
+
+
             var creator = new TypeCreator
             {
                 PacketType = typeof(T),
                 PropertyAmount = propertyAmount,
-                Constructor = Expression.Lambda(Expression.New(typeof(T))).Compile(),
+                Constructor = Expression.Lambda(Expression.New(ctor, parameterExpression)).Compile(),
                 PacketDeserializerDictionary = GeneratePacketDeserializerDictionary(typeof(T))
             };
 
@@ -123,12 +133,12 @@ namespace NosCore.Packets
             var aliases = typeof(T).GetCustomAttributes<PacketHeaderAliasAttribute>().Select(s => s.Identification);
             foreach (var alias in aliases)
             {
-                if (_packetDeserializerDictionary.ContainsKey(alias ?? typeof(T).Name) &&
-                    _packetDeserializerDictionary[alias ?? typeof(T).Name].PacketType == creator.PacketType)
+                if (_packetDeserializerDictionary.ContainsKey(alias) &&
+                    _packetDeserializerDictionary[alias].PacketType == creator.PacketType)
                 {
                     continue;
                 }
-                _packetDeserializerDictionary.Add(alias ?? typeof(T).Name, creator);
+                _packetDeserializerDictionary.Add(alias, creator);
             }
         }
 

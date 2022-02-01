@@ -15,6 +15,11 @@ namespace NosCore.Packets.ServerPackets.Bazaar
     [PacketHeader("rc_buy", Scope.InGame)]
     public class RCBuyPacket : PacketBase
     {
+        public RCBuyPacket(string owner)
+        {
+            Owner = owner;
+        }
+
         [PacketIndex(0)]
         public VisualType Type { get; set; }
 
@@ -22,8 +27,7 @@ namespace NosCore.Packets.ServerPackets.Bazaar
         public short VNum { get; set; }
 
         [PacketIndex(2)]
-        [Required]
-        public string Owner { get; set; } = null!;
+        public string Owner { get; set; }
 
         [PacketIndex(3)]
         public short Amount { get; set; }

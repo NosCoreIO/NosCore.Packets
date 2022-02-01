@@ -13,22 +13,25 @@ namespace NosCore.Packets.ServerPackets.UI
     [PacketHeader("twk", Scope.InGame)]
     public class TwkPacket : PacketBase
     {
+        public TwkPacket(string accountName, string characterName)
+        {
+            AccountName = accountName;
+            CharacterName = characterName;
+        }
+
         [PacketIndex(0)]
         public VisualType VisualType { get; set; }
 
         [PacketIndex(1)]
         public long VisualId { get; set; }
 
-        [PacketIndex(2)] 
-        [Required]
-        public string AccountName { get; set; } = null!;
+        [PacketIndex(2)]
+        public string AccountName { get; set; }
 
         [PacketIndex(3)]
-        [Required]
-        public string CharacterName { get; set; } = null!;
+        public string CharacterName { get; set; }
 
         [PacketIndex(4)]
-        [Required]
         public string Salt { get; set; } = "shtmxpdlfeoqkr";
 
         [PacketIndex(5)]

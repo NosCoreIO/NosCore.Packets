@@ -23,6 +23,7 @@ using System.Linq;
 using NosCore.Packets.ServerPackets.Relations;
 using NosCore.Packets.ClientPackets.Bazaar;
 using NosCore.Packets.ClientPackets.Commands;
+using NosCore.Packets.ClientPackets.Player;
 using NosCore.Packets.ClientPackets.Warehouse;
 using NosCore.Packets.ServerPackets.CharacterSelectionScreen;
 using NosCore.Packets.ServerPackets.Login;
@@ -63,7 +64,7 @@ namespace NosCore.Packets.Tests
                 typeof(ClientVersionSubPacket),
                 typeof(CBListPacket),
                 typeof(CScalcPacket),
-                typeof(CreateFamilyPacket),
+                typeof(CreateFamilyPacket)
             });
 
         [TestMethod]
