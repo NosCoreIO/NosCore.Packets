@@ -14,9 +14,13 @@ namespace NosCore.Packets.ClientPackets.Infrastructure
     [PacketHeader("DAC", Scope.OnCharacterScreen)]
     public class DacPacket : PacketBase
     {
+        public DacPacket(string accountName)
+        {
+            AccountName = accountName;
+        }
+
         [PacketIndex(0)]
-        [Required]
-        public string AccountName { get; set; } = null!;
+        public string AccountName { get; set; }
 
         [PacketIndex(1)]
         [Range(0, 3)]

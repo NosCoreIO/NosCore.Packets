@@ -36,6 +36,7 @@ namespace NosCore.Packets
         {
             get
             {
+                var vc = new ValidationContext(this);
                 foreach (var prop in GetType().GetProperties()
                              .Where(x=> !typeof(PacketBase).GetProperties().Select(o=>o.Name).Contains(x.Name)))
                 {
@@ -46,9 +47,18 @@ namespace NosCore.Packets
                             new[] { prop.Name }));
                     }
 
+                    if (prop.PropertyType.GetCustomAttributes(true)
+                        .Any(s => s.ToString() == "System.Runtime.CompilerServices.NullableAttribute"))
+                    {
+                        var attr = new RequiredAttribute();
+                        var result = attr.GetValidationResult(value, vc);
+                        if (result != null)
+                        {
+                            _validationResult.Add(result);
+                        }
+                    }
                 }
 
-                var vc = new ValidationContext(this);
                 Validator.TryValidateObject(this, vc, _validationResult, true);
                 return !_validationResult.Any();
             }

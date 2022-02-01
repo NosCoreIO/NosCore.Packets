@@ -14,8 +14,12 @@ namespace NosCore.Packets.ClientPackets.Groups
     [PacketHeader("pinv", Scope.InGame)]
     public class PinvPacket : PacketBase
     {
+        public PinvPacket(string characterName)
+        {
+            CharacterName = characterName;
+        }
+
         [PacketIndex(0)]
-        [Required]
-        public string CharacterName { get; set; } = null!;
+        public string CharacterName { get; set; }
     }
 }

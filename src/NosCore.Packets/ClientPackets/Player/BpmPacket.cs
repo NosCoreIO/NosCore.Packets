@@ -14,6 +14,11 @@ namespace NosCore.Packets.ClientPackets.Player
     [PacketHeader("bpm", Scope.InGame)]
     public class BpmPacket : PacketBase
     {
+        public BpmPacket(List<BpmSubTypePacket> questList)
+        {
+            QuestList = questList;
+        }
+
         [PacketIndex(0)]
         public byte Unknow { get; set; } = 70; // todo : to find
 
@@ -28,9 +33,8 @@ namespace NosCore.Packets.ClientPackets.Player
 
         [PacketIndex(4)]
         public int Unknow3 { get; set; } = 21111111; // todo : to find
-
-        [Required]
+        
         [PacketListIndex(5, SpecialSeparator = " ")]
-        public List<BpmSubTypePacket> QuestList { get; set; } = null!;
+        public List<BpmSubTypePacket> QuestList { get; set; }
     }
 }

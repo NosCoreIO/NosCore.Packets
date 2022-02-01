@@ -14,8 +14,12 @@ namespace NosCore.Packets.ClientPackets.Relations
     [PacketHeader("fl", Scope.InGame)]
     public class FlPacket : PacketBase
     {
-        [PacketIndex(0)] 
-        [Required] 
-        public string CharacterName { get; set; } = null!;
+        public FlPacket(string characterName)
+        {
+            CharacterName = characterName;
+        }
+
+        [PacketIndex(0)]
+        public string CharacterName { get; set; }
     }
 }
