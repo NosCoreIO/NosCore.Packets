@@ -1910,7 +1910,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         CaptureToHighLevel = 460,
         // <summary>
-        // You can only capture animals whose HP is 50%% or lower.
+        // You can only capture animals whose HP is 50% or lower.
         // <summary>
         CaptureTooMuchLife = 461,
         // <summary>
@@ -4315,7 +4315,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         ErrorDuringPurchase = 1031,
         // <summary>
-        // Can only be used if the target's HP is less than 20%%.
+        // Can only be used if the target's HP is less than 20%.
         // <summary>
         CanBeUsedIfHpLessTwentyPercent = 1032,
         // <summary>
@@ -6137,9 +6137,9 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         Undefined1476 = 1476,
         // <summary>
-        // *
+        // Cannot be transformed because the level is too low.
         // <summary>
-        Undefined1477 = 1477,
+        CannotBeTransformedLevelTooLow = 1477,
         // <summary>
         // *
         // <summary>
@@ -7510,11 +7510,11 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         AskSeparateSpouse = 1812,
         // <summary>
-        // Do you want to save your position and return to the village?#13#10Click on 'Return' to go back to the village without saving your position.#13#10
+        // Do you want to save your position and return to the village?#13#10Click Cancel to go back to the village without saving your position.#13#10
         // <summary>
         AmuletMessageToSavePositionAndReturnToVillage = 1813,
         // <summary>
-        // Do you want to save your position and return to the desert village?#13#10Click on 'Return' to go back to the desert village without saving your position.#13#10
+        // Do you want to save your position and return to the desert village?#13#10Click Cancel to go back to the desert village without saving your position.#13#10
         // <summary>
         AmuletMessageToSavePositionAndReturnToDesertVillage = 1814,
         // <summary>
@@ -7550,15 +7550,15 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         PhantomAppears = 1822,
         // <summary>
-        // The 14th Anniversary Buff is now active!
+        // The 15th Anniversary Buff is now active!
         // <summary>
         AnniversaryBuffActivated = 1823,
         // <summary>
-        // The effect of the 14th Anniversary Medal is still active.
+        // The effect of the 15th Anniversary Medal is still active.
         // <summary>
         AnniversaryMedalActivated = 1824,
         // <summary>
-        // The effect of the 14th Anniversary Medal is now over.
+        // The effect of the 15th Anniversary Medal is now over.
         // <summary>
         AnniversaryMedalOver = 1825,
         // <summary>
@@ -10185,7 +10185,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         RuneUpFailMaterialsConsumed = 2445,
         // <summary>
-        // Rune upgrade failed, but the weapon wasn't damaged thanks to the %s.<NEW_TYPE><0>
+        // Rune upgrade failed, but the gear wasn't damaged thanks to the %s.<NEW_TYPE><0>
         // <summary>
         [Game18NArguments(typeof(string))]
         RuneUpFailWeaponNoDamaged = 2446,
@@ -10216,7 +10216,7 @@ namespace NosCore.Packets.Enumerations
         [Game18NArguments(typeof(string))]
         RuneUpFailButProtectedMaterials = 2452,
         // <summary>
-        // Can only be used on damaged weapons.
+        // Can only be used on damaged gear.
         // <summary>
         OnlyUseOnDamagedWeapon = 2453,
         // <summary>
@@ -10232,7 +10232,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         RuneRemoved = 2456,
         // <summary>
-        // This weapon doesn't have any runes.
+        // This gear doesn't have any runes.
         // <summary>
         WeaponHaveNoRunes = 2457,
         // <summary>
@@ -10274,7 +10274,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         YouNeedHeroTenToGetIntoThatArea = 2466,
         // <summary>
-        // You cannot exchange weapons equipped with runes for partner equipment.
+        // You can't exchange gear equipped with runes for partner equipment.
         // <summary>
         YouCantTradeRuneWeaponsForPartnerEquipment = 2467,
         // <summary>
@@ -10662,5 +10662,157 @@ namespace NosCore.Packets.Enumerations
         // You will be revived in 20 seconds. You can them resume battle against Asgobas.
         // <summary>
         WillBeRevivedInTwentySecondsAsgobas = 2564,
+        // <summary>
+        // Wounded Asgobas has disappeared.
+        // <summary>
+        AsgobasDisappeared = 2566,
+        // <summary>
+        // The Land of Life will be closed soon.
+        // <summary>
+        LandOfLifeWillBeClosed = 2567,
+        // <summary>
+        // Wounded Asgobas has started hunting!
+        // <summary>
+        AsgobasHunting = 2568,
+        // <summary>
+        // Only family members can enter the Land of Life.
+        // <summary>
+        LandOfLifeOnlyFamilyMember = 2569,
+        // <summary>
+        // Revitalised Asgobas has started hunting!
+        // <summary>
+        RevitalizedAsgobasHunting = 2570,
+        // <summary>
+        // You will soon return to the Portal to the Land of Life.
+        // <summary>
+        ReturnPortalLandOfLife = 2571,
+        // <summary>
+        // Revitalised Asgobas has disappeared.
+        // <summary>
+        RevitalisedAsgobasDisappeared = 2572,
+        // <summary>
+        // You are now out of the Land of Life.
+        // <summary>
+        OutOfLandofLife = 2573,
+        // <summary>
+        // Remaining Land of Life Time: %d min.
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        RemainingLandOfLifeTime = 2574,
+        // <summary>
+        // You cannot enter the Land of Life as you have used up all your time. 
+        // <summary>
+        YouCannotEnterLandOfLife = 2575,
+        // <summary>
+        // You must leave the Land of Life as your time has run out. 
+        // <summary>
+        MustLeaveLandOfLife = 2576,
+        // <summary>
+        // Would you like to move to the Land of Life?
+        // <summary>
+        EnterLandOfLifeQuestion = 2577,
+        // <summary>
+        // Are you sure you want to change this tattoo loa skill?
+        // <summary>
+        ChangeTatooLoaSkill = 2578,
+        // <summary>
+        // Switched to the %s tattoo.
+        // <summary>
+        [Game18NArguments(typeof(string))]
+        SwitchedToTattoo = 2579,
+        // <summary>
+        // Your skills need to be off cooldown before you can switch your loa or tattoo.
+        // <summary>
+        SkillNeedToBeOffToChangeTattoo = 2580,
+        // <summary>
+        // Are you sure you wish to remove all Cellon options from this item?
+        // <summary>
+        AreYouSureRemoveCellon = 2582,
+        // <summary>
+        // You did not receive a raid box as your level is too low for the rewards.
+        // <summary>
+        NotReceiveRaidBox = 2583,
+        // <summary>
+        // An altar has appeared somewhere.
+        // <summary>
+        AltarHasAppeared = 2584,
+        // <summary>
+        // Are you sure you want to sort your inventory?
+        // <summary>
+        SortInventoryQuestion = 2585,
+        // <summary>
+        // Are you sure you want to change the appearance of your wings?
+        // <summary>
+        AreYouSureChangeAppearanceWing = 2586,
+        // <summary>
+        // Are you sure you want to change the colour of your Retro Wings?
+        // <summary>
+        AreYouSureChangeColorRetroWings = 2587,
+        // <summary>
+        // Cannot be used with your currently equipped wings.
+        // <summary>
+        CannotUseEquippedWings = 2588,
+        // <summary>
+        // Your wings' appearance has been changed to: %s<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(string))]
+        WingsAppearanceHasChanged = 2589,
+        // <summary>
+        // You need to transform into a specialist first before resetting your wings' appearance.
+        // <summary>
+        NeedToTransformIntoSpecialistBeforeResetWings = 2590,
+        // <summary>
+        // Your wings' appearance has been reset to their original form.
+        // <summary>
+        WingsAppearanceReset = 2591,
+        // <summary>
+        // Do you want to reset your wings' appearance?
+        // <summary>
+        DoYouWantToResetWings = 2592,
+        // <summary>
+        // Skill cooldowns will be hidden.
+        // <summary>
+        SkillCooldownHidden = 2594,
+        // <summary>
+        // Skill cooldowns will be shown.
+        // <summary>
+        SkillCooldownSHown = 2595,
+        // <summary>
+        // Target HP will be hidden.
+        // <summary>
+        TargetHpHidden = 2596,
+        // <summary>
+        // Target HP will be shown.
+        // <summary>
+        TargetHpShown = 2597,
+        // <summary>
+        // Quest Reward [Level Up]
+        // <summary>
+        QuestRewardLevelUp = 2598,
+        // <summary>
+        // Quest Reward [Level/Job Level Up]
+        // <summary>
+        QuestRewardLevelJobLevelUp = 2599,
+        // <summary>
+        // Quest Reward [Job Level Up]
+        // <summary>
+        QuestRewardJobLevelUp = 2600,
+        // <summary>
+        // Quest Reward [Champion Level Up]
+        // <summary>
+        QuestRewardChampionLevelUp = 2601,
+        // <summary>
+        // You have received %d NosJewels.
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        YouHaveReceivedNosJewels = 2602,
+        // <summary>
+        // Alitus XV
+        // <summary>
+        AlitusXV = 2603,
+        // <summary>
+        // Alitus Prototype
+        // <summary>
+        AlitusPrototype = 2604,
     }
 }
