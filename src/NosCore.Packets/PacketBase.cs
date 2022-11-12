@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection;
 using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets
@@ -47,7 +48,9 @@ namespace NosCore.Packets
                             new[] { prop.Name }));
                     }
 
-                    if (prop.PropertyType.GetCustomAttributes(true).All(s => s.ToString() != "System.Runtime.CompilerServices.NullableAttribute"))
+                    var nullabilityContext = new NullabilityInfoContext();
+                    var nullabilityInfo = nullabilityContext.Create(prop);
+                    if (nullabilityInfo.WriteState is not NullabilityState.Nullable)
                     {
                         var attr = new RequiredAttribute();
                         var result = attr.GetValidationResult(value, vc);
