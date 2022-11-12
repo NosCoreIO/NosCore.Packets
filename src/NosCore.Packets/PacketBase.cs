@@ -47,8 +47,7 @@ namespace NosCore.Packets
                             new[] { prop.Name }));
                     }
 
-                    if (prop.PropertyType.GetCustomAttributes(true)
-                        .Any(s => s.ToString() == "System.Runtime.CompilerServices.NullableAttribute"))
+                    if (prop.PropertyType.GetCustomAttributes(true).All(s => s.ToString() != "System.Runtime.CompilerServices.NullableAttribute"))
                     {
                         var attr = new RequiredAttribute();
                         var result = attr.GetValidationResult(value, vc);

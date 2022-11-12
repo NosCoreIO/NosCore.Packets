@@ -64,7 +64,8 @@ namespace NosCore.Packets.Tests
                 typeof(ClientVersionSubPacket),
                 typeof(CBListPacket),
                 typeof(CScalcPacket),
-                typeof(CreateFamilyPacket)
+                typeof(CreateFamilyPacket),
+                typeof(UnresolvedPacket)
             });
 
         [TestMethod]
@@ -73,6 +74,13 @@ namespace NosCore.Packets.Tests
             var deserializer = new Deserializer(typeof(IPacket).Assembly.GetTypes()
                 .Where(p => p.GetInterfaces().Contains(typeof(IPacket)) && p.IsClass && !p.IsAbstract).ToList());
             Assert.IsTrue(deserializer != null);
+        }
+        
+        [TestMethod]
+        public void UnresolvedPacketsAreValid()
+        {
+            var packet = (UnresolvedPacket)Deserializer.Deserialize("unresolved");
+            Assert.IsTrue(packet.IsValid);
         }
 
         [TestMethod]
