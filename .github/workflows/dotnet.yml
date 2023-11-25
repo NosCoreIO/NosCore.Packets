@@ -16,7 +16,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 7.0.x
+        dotnet-version: 8.0.x
         
     - name: Check Tag
       id: check-tag
@@ -47,13 +47,13 @@ jobs:
       id: latest_release_info
       uses: jossef/action-latest-release-info@v1.1.0
       env:
-        GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
+        GITHUB_TOKEN: ${{ github.token }}
         
     - name: Upload Release Asset
       if: steps.check-tag.outputs.match == 'true'
       uses: actions/upload-release-asset@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
+        GITHUB_TOKEN: ${{ github.token }}
       with:
         upload_url: ${{ steps.latest_release_info.outputs.upload_url }} 
         asset_path: ${{ steps.build_artifact.outputs.ARTIFACT_PATH }}
