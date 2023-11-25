@@ -10814,5 +10814,188 @@ namespace NosCore.Packets.Enumerations
         // Alitus Prototype
         // <summary>
         AlitusPrototype = 2604,
+        // <summary>
+        // You should move into the blue area.
+        // <summary>
+        YouShouldMoveIntoTheBlueArea = 2605,
+        // <summary>
+        // You should move into the red area.
+        // <summary>
+        YouShouldMoveIntoTheRedArea = 2606,
+        // <summary>
+        // You should move into the yellow area.
+        // <summary>
+        YouShouldMoveIntoTheYellowArea = 2607,
+        // <summary>
+        // You should move into the black area.
+        // <summary>
+        YouShouldMoveIntoTheBlackArea = 2608,
+        // <summary>
+        // This object is already in use.
+        // <summary>
+        ThisObjectIsAlreadyInUse = 2609,
+        // <summary>
+        // This object has not been used yet.
+        // <summary>
+        ThisObjectHasNotBeenUsedYet = 2610,
+        // <summary>
+        // Interaction cancelled as you moved.
+        // <summary>
+        InteractionCancelledAsYouMoved = 2611,
+        // <summary>
+        // Can only be used on items that are bound to your character.
+        // <summary>
+        CanOnlyBeUsedOnBoundItems = 2612,
+        // <summary>
+        // This item cannot be traded at the moment.
+        // <summary>
+        ItemCannotBeTraded = 2613,
+        // <summary>
+        // Taming successful.
+        // <summary>
+        TamingSuccessful = 2614,
+        // <summary>
+        // No other actions can be carried out while casting.
+        // <summary>
+        NoOtherActionsWhileCasting = 2615,
+        // <summary>
+        // Highest star rating already reached.
+        // <summary>
+        HighestStarRatingReached = 2616,
+        // <summary>
+        // Cannot be used on pets without a star rating.
+        // <summary>
+        CannotBeUsedOnPetsWithoutStarRating = 2617,
+        // <summary>
+        // Star rating increased to %d.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        StarRatingIncreased = 2618,
+        // <summary>
+        // Training level reset to %d.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        TrainingLevelReset = 2619,
+        // <summary>
+        // Training level increased.
+        // <summary>
+        TrainingLevelIncreased = 2620,
+        // <summary>
+        // Can only upgrade once the maximum training level has been reached.
+        // <summary>
+        CanOnlyUpgradeAtMaxTrainingLevel = 2621,
+        // <summary>
+        // Can only upgrade in your Miniland.
+        // <summary>
+        CanOnlyUpgradeInMiniland = 2622,
+        // <summary>
+        // Monsters cannot be tamed with this skill.
+        // <summary>
+        MonstersCannotBeTamed = 2623,
+        // <summary>
+        // Essence can only be extracted in your Miniland.
+        // <summary>
+        EssenceCanOnlyBeExtractedInMiniland = 2624,
+        // <summary>
+        // Essence can only be extracted from pets which have reached the maximum training level.
+        // <summary>
+        EssenceExtractionFromMaxTrainingLevelPets = 2625,
+        // <summary>
+        // This skill cannot be used on pets. 
+        // <summary>
+        SkillCannotBeUsedOnPets = 2626,
+        // <summary>
+        // You have received pet essence and released the animal.
+        // <summary>
+        ReceivedPetEssenceAndReleasedAnimal = 2627,
+        // <summary>
+        // Are you sure you want to extract the essence of this pet? The pet will be released when you extract its essence.
+        // <summary>
+        ConfirmPetEssenceExtraction = 2628,
+        // <summary>
+        // Are you sure you want to reset this pet's training level? The training level will be set back to 0 and all skills will be removed.
+        // <summary>
+        ConfirmPetTrainingLevelReset = 2629,
+        // <summary>
+        // The pet's training level is already at 0.
+        // <summary>
+        PetTrainingLevelIsZero = 2630,
+        // <summary>
+        // Taming failed.
+        // <summary>
+        TamingFailed = 2631,
+        // <summary>
+        // Tame pets as a Pet Trainer.
+        // <summary>
+        TamePetsAsPetTrainer = 2632,
+        // <summary>
+        // Increase the training level of your pet.
+        // <summary>
+        IncreasePetTrainingLevel = 2633,
+        // <summary>
+        // You cannot train your pet any more as it has already reached the maximum training level.
+        // <summary>
+        PetMaxTrainingLevelReached = 2634,
+        // <summary>
+        // You cannot train pets without a star rating.
+        // <summary>
+        CannotTrainPetsWithoutStarRating = 2635,
+        // <summary>
+        // Can only be reset in your Miniland.
+        // <summary>
+        CanOnlyResetInMiniland = 2636,
+        // <summary>
+        // Cannot be used because the pet is currently training or fighting.
+        // <summary>
+        CannotUseWhilePetTrainingOrFighting = 2637,
+        // <summary>
+        // The bead cannot contain a 6-star pet.
+        // <summary>
+        BeadCannotContainSixStarPet = 2638,
+        // <summary>
+        // You can only reset pets which have reached the maximum training level.
+        // <summary>
+        CanOnlyResetMaxTrainingLevelPets = 2639,
+        // <summary>
+        // Can only contain 6-star pets.
+        // <summary>
+        CanOnlyContainSixStarPets = 2640,
+        // <summary>
+        // [%s] has reached the maximum training level.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(string))]
+        PetReachedMaxTrainingLevel = 2641,
+        // <summary>
+        // %s has completed a Pet Book mission and received {%s}.<NEW_TYPE><0,1>
+        // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
+        PetCompletedBookMission = 2642,
+        // <summary>
+        // %s has successfully increased the star rating of %s to 6 stars.<NEW_TYPE><0,1>
+        // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
+        PetStarRatingIncreased = 2643,
+        // <summary>
+        // %s has successfully upgraded {%s} to +%s. <NEW_TYPE><0,1,2>
+        // <summary>
+        [Game18NArguments(typeof(string), typeof(string), typeof(string))]
+        PetUpgradedSkill = 2644,
+        // <summary>
+        // If you put the pet in the bead, it will keep its star rating, but its training level will be reset to 0. Do you want to put it in the bead?
+        // <summary>
+        ConfirmPutPetInBead = 2645,
+        // <summary>
+        // Wood Elf Archer
+        // <summary>
+        WoodElfArcher = 2646,
+        // <summary>
+        // This NosMate does not have the NosMate Summoning Book effect.
+        // <summary>
+        NosMateWithoutSummoningBookEffect = 2647,
+        // <summary>
+        // You have removed the NosMate Summoning Book effect from %s.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(string))]
+        RemovedNosMateSummoningBookEffect = 2648,
     }
 }
