@@ -2,7 +2,7 @@
 [forked from ChickenAPI/ChickenAPI.Packets](https://github.com/ChickenAPI/ChickenAPI.Packets)
 
 <p align="center">
-  <img width="250px" src="https://cdn.discordapp.com/attachments/319565884454731795/426892646288457728/N2.png"/>
+  <img width="250px" src="https://github.com/NosCoreIO/NosCore.Packets/blob/15.0.1/icon.png?raw=true"/>
   <img src="docs/_media/logo.png"></img>
 </p>
 
