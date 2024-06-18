@@ -26,7 +26,6 @@ using NosCore.Packets.ServerPackets.Shop;
 using NosCore.Packets.ServerPackets.UI;
 using NosCore.Packets.ServerPackets.Visibility;
 using NosCore.Shared.Enumerations;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -519,7 +518,7 @@ namespace NosCore.Packets.Tests
                 RegionType = RegionType.EN,
             };
             var packet = Serializer.Serialize(nstestpacket);
-            Assert.AreEqual("NsTeST 0 test 2 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 1 -1:-1:-1:10000.10000.1", packet);
+            Assert.AreEqual("NsTeST 0 test 2 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 1 -1:-1:-1:10000.10000.1", packet);
         }
 
         [TestMethod]

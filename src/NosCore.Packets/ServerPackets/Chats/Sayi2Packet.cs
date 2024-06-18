@@ -4,12 +4,9 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
-using System;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
-using NosCore.Packets.Interfaces;
 using NosCore.Shared.Enumerations;
-using System.ComponentModel.DataAnnotations;
 
 namespace NosCore.Packets.ServerPackets.Chats
 {

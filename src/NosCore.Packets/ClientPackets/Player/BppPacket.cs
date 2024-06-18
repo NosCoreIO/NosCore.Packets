@@ -7,7 +7,6 @@
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace NosCore.Packets.ClientPackets.Player
 {

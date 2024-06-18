@@ -199,11 +199,11 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         CanNotChangeJobAtThisLevel = 45,
         // <summary>
-        // Job transfer requires job level 20 and combat level 15.
+        // Changing jobs requires job level 20 and combat level 15.
         // <summary>
         CanNotChangeJobAtThisJobLevel = 46,
         // <summary>
-        // Disband your party before transferring.
+        // Disband your party before changing.
         // <summary>
         DisbandYourParty = 47,
         // <summary>
@@ -211,7 +211,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         RemoveEquipment = 48,
         // <summary>
-        // Congratulations. Transfer complete.
+        // Congratulations. Job change complete.
         // <summary>
         ClassChanged = 49,
         // <summary>
@@ -560,7 +560,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         CanNotFindItem = 133,
         // <summary>
-        // Your partner is disarmed.
+        // Your partner has been disarmed.
         // <summary>
         PartnerDisadmed = 134,
         // <summary>
@@ -898,7 +898,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         CannotMinilandInShop = 215,
         // <summary>
-        // Cannot find opposite number.
+        // Your friend's Miniland is not accessible.
         // <summary>
         CannotFindOppositeNumber = 216,
         // <summary>
@@ -2118,7 +2118,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         LevelIncreased = 510,
         // <summary>
-        // You have reached the level required for a job transfer.
+        // You have reached the level required for a job change.
         // <summary>
         LevelForClassChangeReached = 511,
         // <summary>
@@ -2877,11 +2877,11 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         Structure = 692,
         // <summary>
-        // Transformation is not possible when you transform into a Specialist.
+        // You cannot change class while transformed into a Specialist.
         // <summary>
         TransformationImpossibleWhenTransformingIntoSpecialist = 693,
         // <summary>
-        // Defeating adventurers of level 20 or lower does not count.
+        // Defeating Adventurers of level 20 or lower does not count.
         // <summary>
         DefeatingAdventurerLevelTwentyDoesNotCount = 694,
         // <summary>
@@ -2936,7 +2936,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         AdventurerCannotWearSpecialist = 706,
         // <summary>
-        // Cannot be worn it because the job is different.
+        // Cannot be worn because the job is different.
         // <summary>
         CanNotBeWornDifferentClass = 707,
         // <summary>
@@ -3362,7 +3362,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         GiftDelivered = 807,
         // <summary>
-        // %s' is currently resting.<NEW_TYPE><0>
+        // '%s' is currently resting.<NEW_TYPE><0>
         // <summary>
         [Game18NArguments(typeof(string))]
         CurrentlyResting = 808,
@@ -4306,7 +4306,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         InvalidCharacterInName = 1029,
         // <summary>
-        // %s' : Cannot be purchased in the NosMall.<NEW_TYPE><0>
+        // '%s' : Cannot be purchased in the NosMall.<NEW_TYPE><0>
         // <summary>
         [Game18NArguments(typeof(string))]
         CantPurchasedFromNosmall = 1030,
@@ -4511,7 +4511,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         RarityUnchangedProtectionScroll = 1079,
         // <summary>
-        // Send the message to '%s' in channel %d.<NEW_TYPE><1,0>
+        // Message sent to %s in channel %d.<NEW_TYPE><1,0>
         // <summary>
         [Game18NArguments(typeof(string), typeof(long))]
         SendMessageToCharacterInChannel = 1080,
@@ -4828,12 +4828,12 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         UndeservedVictory = 1153,
         // <summary>
-        // Rainbow Crystal(s) held � the red team has earned %d points.<NEW_TYPE><0>
+        // Rainbow Crystal(s) held ?the red team has earned %d points.<NEW_TYPE><0>
         // <summary>
         [Game18NArguments(typeof(long))]
         RedEarnedPoints = 1154,
         // <summary>
-        // Rainbow Crystal(s) held � the blue team has earned %d points.<NEW_TYPE><0>
+        // Rainbow Crystal(s) held ?the blue team has earned %d points.<NEW_TYPE><0>
         // <summary>
         [Game18NArguments(typeof(long))]
         BlueEarnedPoints = 1155,
@@ -5096,7 +5096,7 @@ namespace NosCore.Packets.Enumerations
         [Game18NArguments(typeof(long))]
         ToppedUpPoints = 1218,
         // <summary>
-        // %d production point were topped up.<NEW_TYPE><0>
+        // Topped up %d production points.<NEW_TYPE><0>
         // <summary>
         [Game18NArguments(typeof(long))]
         ProductionPointsToppedUp = 1219,
@@ -10177,7 +10177,7 @@ namespace NosCore.Packets.Enumerations
         [Game18NArguments(typeof(string))]
         WeaponIsDamaged = 2443,
         // <summary>
-        // This weapon is bound to another player. You can only carve runes into your own weapons. 
+        // This weapon is bound to another player. You can only carve runes into your own weapons.
         // <summary>
         CannotCarveNotYourWeapon = 2444,
         // <summary>
@@ -10700,11 +10700,11 @@ namespace NosCore.Packets.Enumerations
         [Game18NArguments(typeof(long))]
         RemainingLandOfLifeTime = 2574,
         // <summary>
-        // You cannot enter the Land of Life as you have used up all your time. 
+        // You cannot enter the Land of Life as you have used up all your time.
         // <summary>
         YouCannotEnterLandOfLife = 2575,
         // <summary>
-        // You must leave the Land of Life as your time has run out. 
+        // You must leave the Land of Life as your time has run out.
         // <summary>
         MustLeaveLandOfLife = 2576,
         // <summary>
@@ -10901,7 +10901,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         EssenceExtractionFromMaxTrainingLevelPets = 2625,
         // <summary>
-        // This skill cannot be used on pets. 
+        // This skill cannot be used on pets.
         // <summary>
         SkillCannotBeUsedOnPets = 2626,
         // <summary>
@@ -10997,5 +10997,129 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         [Game18NArguments(typeof(string))]
         RemovedNosMateSummoningBookEffect = 2648,
+        // <summary>
+        // This fairy already has the max. upgrade level and cannot be upgraded any further.
+        // <summary>
+        ThisFairyAlreadyMax = 2649,
+        // <summary>
+        // The update has failed. The materials have been consumed.
+        // <summary>
+        UpdateHasFailed = 2650,
+        // <summary>
+        // %s has successfully been levelled up to +%d.<NEW_TYPE><0,1>
+        // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
+        PercentageHasLeveledUp = 2651,
+        // <summary>
+        // You can try it with +1 fairies or higher.
+        // <summary>
+        YouCanTryWithPlus1Fairy = 2652,
+        // <summary>
+        // The fairy is bound to someone else. Betting is only possible with own fairies.
+        // <summary>
+        FairyBoundToSomeoneElseBetting = 2653,
+        // <summary>
+        // The fairy is bound to someone else. Levelling up is only possible with own fairies.
+        // <summary>
+        FairyBoundToSomeoneElseLevelling = 2654,
+        // <summary>
+        // Changed the option effects of fairies.
+        // <summary>
+        ChangedFairyOptionEffects = 2655,
+        // <summary>
+        // The Fairy Restoration Set cannot be used on this fairy.
+        // <summary>
+        FairyRestorationSetCannotBeUsed = 2656,
+        // <summary>
+        // The fairy level has been reduced by 1 and the latest effect removed.
+        // <summary>
+        FairyLevelReducedAndEffectRemoved = 2657,
+        // <summary>
+        // A Fairy Restoration Set has already been used on this fairy. You can try it again after another fairy upgrade.
+        // <summary>
+        FairyRestorationSetAlreadyUsed = 2658,
+        // <summary>
+        // This fairy is bound to someone else. You can only use the Fairy Restoration Set on your own fairies.
+        // <summary>
+        FairyBoundToSomeoneElse = 2659,
+        // <summary>
+        // The below effect will be deleted and the fairy level reduced by 1. Are you sure?
+        // <summary>
+        ConfirmEffectDeletionAndLevelReduction = 2660,
+        // <summary>
+        // The level of %s has been reduced to +%d and the below effect has been removed.<NEW_TYPE><0,1>
+        // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
+        FairyLevelReducedAndEffectRemovedSpecific = 2661,
+        // <summary>
+        // The fairy has become overcharged. Use %s before you make your next attempt.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(string))]
+        FairyOverchargedUseItem = 2662,
+        // <summary>
+        // The upgrade has failed but the fairy was not overcharged thanks to the %s.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(string))]
+        UpgradeFailedButNotOvercharged = 2663,
+        // <summary>
+        // The upgrade has failed and the fairy has become overcharged. Cannot be upgraded further.
+        // <summary>
+        UpgradeFailedAndFairyOvercharged = 2664,
+        // <summary>
+        // Can only be used on overcharged fairies.
+        // <summary>
+        OnlyForOverchargedFairies = 2665,
+        // <summary>
+        // The fairy is not overcharged.
+        // <summary>
+        FairyNotOvercharged = 2666,
+        // <summary>
+        // The fairy is no longer overcharged. You can try to upgrade again.
+        // <summary>
+        FairyNoLongerOvercharged = 2667,
+        // <summary>
+        // A Motion Detection Bomb has been activated! If you're still attacking or moving in 3 sec., you'll be killed!
+        // <summary>
+        MotionDetectionBombActivated = 2668,
+        // <summary>
+        // You must be champion level 60 or above to enter this region.
+        // <summary>
+        ChampionLevelRequirement = 2669,
+        // <summary>
+        // A Motion Detection Bomb has been activated! If you're still attacking or moving in 3 sec., you'll be killed!
+        // <summary>
+        MotionDetectionBombActivatedDuplicate = 2688,
+        // <summary>
+        // The Fairy Reset Hammer cannot be used on this item.
+        // <summary>
+        FairyResetHammerCannotBeUsed = 2700,
+        // <summary>
+        // The fairy's level and effects will be reset. Do you wish to use the Fairy Reset Hammer??e
+        // <summary>
+        ConfirmFairyResetHammerUse = 2701,
+        // <summary>
+        // The fairy's level and effects have been reset.
+        // <summary>
+        FairyResetSuccessful = 2702,
+        // <summary>
+        // The following effect will be removed. Do you want to continue anyway?
+        // <summary>
+        ConfirmEffectRemoval = 2703,
+        // <summary>
+        // Can be entered after completing all low-level Time-Spaces in the Act.
+        // <summary>
+        TimeSpaceEntryRequirement = 2704,
+        // <summary>
+        // Restored Asgobas has started hunting!
+        // <summary>
+        RestoredAsgobasStartedHunting = 2705,
+        // <summary>
+        // Restored Asgobas has disappeared.
+        // <summary>
+        RestoredAsgobasDisappeared = 2706,
+        // <summary>
+        // Do you want to change the colour of your Mecha Flame Wings?
+        // <summary>
+        ConfirmMechaFlameWingsColorChange = 2714,
     }
 }

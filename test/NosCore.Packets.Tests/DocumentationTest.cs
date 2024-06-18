@@ -12,11 +12,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using ApprovalTests;
-using ApprovalTests.Writers;
-using Microsoft.Extensions.Http;
 using Microsoft.Extensions.Logging;
-using Microsoft.VisualStudio.TestPlatform.Common.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Newtonsoft.Json;
@@ -25,11 +21,13 @@ using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 using NosCore.ParserInputGenerator.Downloader;
 using NosCore.ParserInputGenerator.Extractor;
+using VerifyMSTest;
+using VerifyTests;
 
 namespace NosCore.Packets.Tests
 {
     [TestClass]
-    public class DocumentationTest
+    public class DocumentationTest : VerifyBase
     {
         private static IEnumerable<IGrouping<string, Type>> GetPacketsWithinNamespace(string name)
         {
@@ -66,7 +64,7 @@ namespace NosCore.Packets.Tests
             var serverPackets = GetPacketsWithinNamespace("ServerPackets")
                 .SelectMany(GetPackets)
                 .GroupBy(packet => packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification);
-            foreach (var packet in serverPackets.Where(x=>x.Count() > 1))
+            foreach (var packet in serverPackets.Where(x => x.Count() > 1))
             {
                 Assert.Fail($"header {packet.Key} has duplicate server packet definition");
             }
@@ -85,7 +83,7 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
-        public void PacketsDocumentation()
+        public Task PacketsDocumentation()
         {
             var builder = new StringBuilder();
             builder.AppendLine("# NosCore.Packets's Documentation");
@@ -114,8 +112,8 @@ namespace NosCore.Packets.Tests
                         $"- [{packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification}](../src/NosCore.Packets/ServerPackets/{packetGroup.Key}/{packet.Name}.cs) *{string.Join(" | ", ListScopes((packet.GetCustomAttributes(typeof(PacketHeaderAttribute))?.FirstOrDefault() as PacketHeaderAttribute)?.Scopes ?? Scope.Unknown))}*");
                 }
             }
-
-            Approvals.Verify(WriterFactory.CreateTextWriter(builder.ToString(), "md"));
+            Verifier.UseProjectRelativeDirectory("../../documentation");
+            return Verifier.Verify(builder.ToString(), "md");
         }
 
         [TestMethod]
@@ -215,10 +213,14 @@ namespace NosCore.Packets.Tests
             builder.AppendLine(@"    }");
             builder.AppendLine(@"}");
             var path = Path.Combine(Directory.GetCurrentDirectory(), $"..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}src{Path.DirectorySeparatorChar}NosCore.Packets{Path.DirectorySeparatorChar}Enumerations{Path.DirectorySeparatorChar}");
-            var file = $"{path}Game18NConstString.cs";
+            var fileName = "Game18NConstString";
+            var file = $"{path}{fileName}.verified.cs";
             var result = await File.ReadAllTextAsync(file);
-            Approvals.AssertText(result, builder.ToString());
             Assert.AreEqual("[]", JsonConvert.SerializeObject(nullvalues));
+            var settings = new VerifySettings();
+            settings.UseDirectory(path);
+            settings.UseFileName(fileName);
+            await Verifier.Verify(builder.ToString(), "cs", settings);
         }
     }
 }

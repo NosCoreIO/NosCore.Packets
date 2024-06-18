@@ -6,8 +6,6 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
-using NosCore.Packets.Interfaces;
-using System.ComponentModel.DataAnnotations;
 
 namespace NosCore.Packets.ServerPackets.Login
 {

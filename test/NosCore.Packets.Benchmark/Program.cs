@@ -6,7 +6,6 @@
 
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Jobs;
-using BenchmarkDotNet.Reports;
 using BenchmarkDotNet.Running;
 using NosCore.Packets.Benchmark.SaltyEmu;
 using NosCore.Packets.ClientPackets.Relations;

@@ -1,4 +1,4 @@
-# NosCore.Packets's Documentation
+﻿# NosCore.Packets's Documentation
 ## ClientPackets :
 
 ### Bank

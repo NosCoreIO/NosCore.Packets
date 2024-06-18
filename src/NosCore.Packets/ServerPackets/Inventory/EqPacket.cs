@@ -6,7 +6,6 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
-using NosCore.Packets.Interfaces;
 using NosCore.Packets.ServerPackets.Visibility;
 using NosCore.Shared.Enumerations;
 

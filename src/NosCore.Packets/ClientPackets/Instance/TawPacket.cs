@@ -6,7 +6,6 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
-using System.ComponentModel.DataAnnotations;
 
 namespace NosCore.Packets.ClientPackets.Instance
 {

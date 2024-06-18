@@ -5,7 +5,6 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
-using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Login
 {

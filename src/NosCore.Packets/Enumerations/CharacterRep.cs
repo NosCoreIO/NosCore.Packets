@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NosCore.Shared.Enumerations;
-
-namespace NosCore.Packets.Enumerations
+﻿namespace NosCore.Packets.Enumerations
 {
     public enum ExtendedReputationType
     {
