@@ -201,7 +201,7 @@ namespace NosCore.Packets.Tests
         public void NullableReferenceInferRequiredAttribute()
         {
             var testPacket = new QstlistPacket(null!);
-            Assert.AreEqual(false, testPacket.IsValid);
+            Assert.IsFalse(testPacket.IsValid);
             Assert.AreEqual("The QstlistPacket field is required.", testPacket.ValidationResult.Single().ErrorMessage);
         }
 

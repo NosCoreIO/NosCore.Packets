@@ -86,7 +86,7 @@ namespace NosCore.Packets.Tests
         {
             var packet = (CBListPacket)Deserializer.Deserialize("c_blist  0 0 0 0 0 0 0 0 0");
             Assert.AreEqual(0, packet.Index);
-            Assert.AreEqual(null, packet.ItemVNumFilter);
+            Assert.IsNull(packet.ItemVNumFilter);
         }
 
         [TestMethod]
@@ -101,7 +101,7 @@ namespace NosCore.Packets.Tests
         {
             var packet = (NsTestPacket)Deserializer.Deserialize("NsTeST 4 gorlik 2 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 1 3 2 2 7 1 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 31135 79.110.84.132:4016:1:1.7.Feniks 79.110.84.132:4014:1:1.5.Feniks 79.110.84.132:4015:0:1.6.Feniks 79.110.84.132:4011:7:1.2.Feniks 79.110.84.132:4012:1:1.3.Feniks 79.110.84.132:4013:1:1.4.Feniks 79.110.84.132:4010:1:1.1.Feniks -1:-1:-1:10000.10000.1");
             Assert.AreEqual("gorlik", packet.AccountName);
-            Assert.AreEqual(8, packet.SubPacket!.Count);
+            Assert.HasCount(packet.SubPacket!, 8);
         }
 
         [TestMethod]
@@ -178,7 +178,7 @@ namespace NosCore.Packets.Tests
         public void DeserializationLastStringCanNotBeNull()
         {
             var serializedPacket = (FamilyChatPacket)Deserializer.Deserialize(":");
-            Assert.AreEqual(serializedPacket.Message, "");
+            Assert.AreEqual("", serializedPacket.Message);
         }
 
         [TestMethod]
@@ -239,8 +239,8 @@ namespace NosCore.Packets.Tests
                 "m_shop 0 0 20 1 2400 0 21 1 10692 2 0 8 2500 2 3 2 480 0 0 0 0 0 0 0 0 0 0 0 0 0 0" +
                 " 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 admin Stand"
                 );
-            Assert.AreEqual(0, packet.Type);
-            Assert.AreEqual(0, packet.ItemList![1]!.Type);
+            Assert.AreEqual((CreateShopPacketType)0, packet.Type);
+            Assert.AreEqual((byte)0, packet.ItemList![1]!.Type);
             Assert.AreEqual(21, packet.ItemList[1]!.Slot);
             Assert.AreEqual(1, packet.ItemList[1]!.Amount);
             Assert.AreEqual(10692, packet.ItemList[1]!.Price);
@@ -264,7 +264,7 @@ namespace NosCore.Packets.Tests
             var packet = (StPacket)Deserializer.Deserialize(
                 "st 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16"
                 );
-            Assert.AreEqual(8, packet.BuffIds!.Count);
+            Assert.HasCount(packet.BuffIds!, 8);
         }
 
         [TestMethod]
@@ -293,7 +293,7 @@ namespace NosCore.Packets.Tests
             var packet = (FinfoPacket)Deserializer.Deserialize(
                 "finfo 2.1.Friend1 3.0.Friend2"
             );
-            Assert.AreEqual(2, packet.FriendList!.Count);
+            Assert.HasCount(packet.FriendList!, 2);
             Assert.AreEqual(2, packet.FriendList.First()!.CharacterId);
             Assert.IsTrue(packet.FriendList.First()!.IsConnected);
             Assert.AreEqual("Friend1", packet.FriendList.First()!.CharacterName);
@@ -308,7 +308,7 @@ namespace NosCore.Packets.Tests
             var packet = (SitPacket)Deserializer.Deserialize(
                 "rest 2 1 5 1 4"
             );
-            Assert.AreEqual(2, packet.Users!.Count);
+            Assert.HasCount(packet.Users!, 2);
             Assert.AreEqual(VisualType.Player, packet.Users.First()!.VisualType);
             Assert.AreEqual(5, packet.Users.First()!.VisualId);
             Assert.AreEqual(VisualType.Player, packet.Users.Skip(1).First()!.VisualType);
