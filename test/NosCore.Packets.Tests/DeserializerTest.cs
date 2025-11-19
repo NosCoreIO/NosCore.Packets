@@ -240,7 +240,7 @@ namespace NosCore.Packets.Tests
                 " 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 admin Stand"
                 );
             Assert.AreEqual(CreateShopPacketType.Open, packet.Type);
-            Assert.AreEqual(PocketType.Main, packet.ItemList![1]!.Type);
+            Assert.AreEqual(PocketType.Equipment, packet.ItemList![1]!.Type);
             Assert.AreEqual(21, packet.ItemList[1]!.Slot);
             Assert.AreEqual(1, packet.ItemList[1]!.Amount);
             Assert.AreEqual(10692, packet.ItemList[1]!.Price);
