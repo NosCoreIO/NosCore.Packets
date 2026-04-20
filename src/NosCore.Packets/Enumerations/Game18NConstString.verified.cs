@@ -584,7 +584,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         CombinationNumExceeded = 139,
         // <summary>
-        // You don't have enough Gold to pay the reward!
+        // You don't have enough Gold to pay the fee!
         // <summary>
         NotEnoughGoldForReward = 140,
         // <summary>
@@ -608,7 +608,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         NotEnoughCella = 145,
         // <summary>
-        // The item has disappeared because gamble failed!
+        // The item was destroyed as the rarity level change failed!
         // <summary>
         GambleItemDisappeared = 146,
         // <summary>
@@ -1058,7 +1058,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         TryAgain = 253,
         // <summary>
-        // You need 200,000 Gold to create a family.
+        // You need 200000 Gold to create a family.
         // <summary>
         NeedMoneyForFamily = 254,
         // <summary>
@@ -1713,7 +1713,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         BoxIsEmpty = 412,
         // <summary>
-        // You have received an item -
+        // You have received:
         // <summary>
         ItemReceived = 413,
         // <summary>
@@ -1721,7 +1721,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         FullInventory3 = 414,
         // <summary>
-        // You have produced an item -
+        // You have produced:
         // <summary>
         ItemProduced = 415,
         // <summary>
@@ -2166,7 +2166,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         CellonDisapearedFailedUpgrade = 522,
         // <summary>
-        // Options added.
+        // You have successfully added an option.
         // <summary>
         OptionAdded = 523,
         // <summary>
@@ -2948,7 +2948,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         CanNotBeWornReputationLow = 709,
         // <summary>
-        // Removing the Specialist Card costs 1,000 SP. Continue?
+        // Removing the Specialist Card costs 1000 SP. Continue?
         // <summary>
         RemovingSpecialistCardCostsOneThousandSpecialistPointQuestion = 710,
         // <summary>
@@ -3774,7 +3774,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         TimesUp = 904,
         // <summary>
-        // [%s's team] has successfully completed the %s raid.<NEW_TYPE><0,1>
+        // %s's team has successfully completed the %s raid.<NEW_TYPE><0,1>
         // <summary>
         [Game18NArguments(typeof(string), typeof(string))]
         TeamCompletedRaid = 905,
@@ -4075,9 +4075,9 @@ namespace NosCore.Packets.Enumerations
         [Game18NArguments(typeof(long))]
         DoesNotWorkRetryInSeconds = 974,
         // <summary>
-        // You have received this item - %s x %d<NEW_TYPE><0,1>
+        // You have received: %dx %s<NEW_TYPE><1,0>
         // <summary>
-        [Game18NArguments(typeof(string), typeof(long))]
+        [Game18NArguments(typeof(long), typeof(string))]
         ReceivedThisItem = 975,
         // <summary>
         // Attempt failed!
@@ -4088,11 +4088,11 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         CanNotJoinStartedIceBreaker = 977,
         // <summary>
-        // MouseTrap deactivated
+        // Cursor Assist deactivated
         // <summary>
         MouseTrapDeactivated = 978,
         // <summary>
-        // MouseTrap activated
+        // Cursor Assist activated
         // <summary>
         MouseTrapActivated = 979,
         // <summary>
@@ -4891,7 +4891,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         CantUseTwice = 1168,
         // <summary>
-        // The 3,000 basic SP were replenished with the event item.
+        // The 3000 basic SP were replenished with the event item.
         // <summary>
         ThreeThousandsSpPointsReplenished = 1169,
         // <summary>
@@ -5338,7 +5338,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         OnlyOncePerDay = 1278,
         // <summary>
-        // 10,000 basic SP have been added.
+        // 10000 basic SP have been added.
         // <summary>
         AddedTenThousandSpecialistPoint = 1279,
         // <summary>
@@ -5374,6 +5374,10 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         [Game18NArguments(typeof(long))]
         MonsterWillAppearsInSeconds = 1287,
+        // <summary>
+        // 11288
+        // <summary>
+        Undefined1288 = 1288,
         // <summary>
         // %d people of the current members<NEW_TYPE><0>
         // <summary>
@@ -5478,7 +5482,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         PowerFromEnemyStollen = 1313,
         // <summary>
-        // The curse of Glacernon has transformed you into a seal for 30 seconds!
+        // The curse of Glacernon has transformed you into a seal for 15 seconds!
         // <summary>
         UnderCurseOfGlacernon = 1314,
         // <summary>
@@ -5547,11 +5551,11 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         ItemRarityTooLow = 1330,
         // <summary>
-        // Do you want to add an option to the item?#13#10Other people won't be able to use it#13#10because it becomes your exclusive item when you add an option.#13#10
+        // Do you want to add a shell to the item?#13#10Other players will no longer be able to use the item as it will become bound to you upon adding the shell.#13#10
         // <summary>
         AskAddOptions = 1331,
         // <summary>
-        // The existing option will be removed and a new option added.#13#10In this case, you have a 50%% chance of succeeding.#13#10Do you want to continue?#13#10
+        // This item already has a shell.#13#10There is a 50% chance that the existing shell will be changed.#13#10The new shell will be destroyed upon failure.#13#10Do you want to continue?#13#10
         // <summary>
         ExistingOptionsWillBeRemoved = 1332,
         // <summary>
@@ -5583,7 +5587,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         NeedHigherLevelShell = 1339,
         // <summary>
-        // The item option has been changed.
+        // The item's shell has been changed
         // <summary>
         OptionChanged = 1340,
         // <summary>
@@ -6033,7 +6037,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         Undefined1450 = 1450,
         // <summary>
-        // You need 2,000 contribution points to revive at this location.#13#10Would you like to revive now?#13#10
+        // You need 2000 contribution points to revive at this location.#13#10Would you like to revive now?#13#10
         // <summary>
         TwoThousandsContributionPointsToGetRevived = 1451,
         // <summary>
@@ -6153,7 +6157,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         ItemBoundToAnotherPlayer = 1480,
         // <summary>
-        // You don't have enough reputation points to be revived.
+        // You don't have enough contribution points to be revived.
         // <summary>
         NotEnoughReputationToRevived = 1481,
         // <summary>
@@ -6161,7 +6165,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         Undefined1482 = 1482,
         // <summary>
-        // You need 3,000 contribution points. Do you want to enter?
+        // You need 3000 contribution points. Do you want to enter?
         // <summary>
         Confirm3000ContributionToEnter = 1483,
         // <summary>
@@ -6657,7 +6661,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         EnterCommandToSeeList = 1602,
         // <summary>
-        // %d reputation points are required. Do you want to enter?<NEW_TYPE><0>
+        // Requires %d contribution points. Do you want to enter?<NEW_TYPE><0>
         // <summary>
         [Game18NArguments(typeof(long))]
         ReputationPointsRequiredToEnter = 1603,
@@ -6708,7 +6712,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         ColdBody = 1614,
         // <summary>
-        // You need %d reputation points to revive at the place where you died.#13#10 Do you want to revive now? #13#10<NEW_TYPE><0>
+        // You need %d contribution points to revive at the place where you died.#13#10Do you want to revive now?#13#10<NEW_TYPE><0>
         // <summary>
         [Game18NArguments(typeof(long))]
         AmountOfReputationNeededToRevive = 1615,
@@ -7550,15 +7554,15 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         PhantomAppears = 1822,
         // <summary>
-        // The 15th Anniversary Buff is now active!
+        // The 18th Anniversary Buff is now active!
         // <summary>
         AnniversaryBuffActivated = 1823,
         // <summary>
-        // The effect of the 15th Anniversary Medal is still active.
+        // The effect of the 18th Anniversary Medal is still active.
         // <summary>
         AnniversaryMedalActivated = 1824,
         // <summary>
-        // The effect of the 15th Anniversary Medal is now over.
+        // The effect of the 17th Anniversary Medal is now over.
         // <summary>
         AnniversaryMedalOver = 1825,
         // <summary>
@@ -7834,19 +7838,19 @@ namespace NosCore.Packets.Enumerations
         [Game18NArguments(typeof(long))]
         PetSlotsIncreased = 1889,
         // <summary>
-        // Smileys will now be hidden.
+        // Some visual effects will now be hidden.
         // <summary>
         SmileysDisabled = 1890,
         // <summary>
-        // Smileys will now be displayed.
+        // Some visual effects will now be displayed.
         // <summary>
         SmileysEnabled = 1891,
         // <summary>
-        // HP status will now be hidden.
+        // Damage/healing will now be hidden.
         // <summary>
         HpStatusDisabled = 1892,
         // <summary>
-        // HP status will now be displayed.
+        // Damage/healing will now be displayed.
         // <summary>
         HpStatusEnabled = 1893,
         // <summary>
@@ -8436,7 +8440,7 @@ namespace NosCore.Packets.Enumerations
         [Game18NArguments(typeof(long))]
         TooLowLevelToEntry = 2030,
         // <summary>
-        // Click anywhere with your mouse to get up immediately.
+        // You immediately get up from resting when clicking anywhere with the mouse.
         // <summary>
         ClickToGetUp = 2031,
         // <summary>
@@ -9761,7 +9765,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         AFeeWillBeChargedToNonVIPsAtTheBank = 2349,
         // <summary>
-        // Welcome to the Cuarry Bank! We accept deposits or withdrawals of between 1,000 and 100,000,000,000 Gold.%s <NEW_TYPE><0>
+        // Welcome to the Cuarry Bank! We accept deposits or withdrawals of between 1000 and 100000000000 Gold.%s <NEW_TYPE><0>
         // <summary>
         [Game18NArguments(typeof(string))]
         WelcomeToQuarry = 2350,
@@ -10725,7 +10729,11 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         SkillNeedToBeOffToChangeTattoo = 2580,
         // <summary>
-        // Are you sure you wish to remove all Cellon options from this item?
+        // Can only be used on accessories.
+        // <summary>
+        CanOnlyBeUsedOnAccessories = 2581,
+        // <summary>
+        // Are you sure you wish to remove all options from this item?
         // <summary>
         AreYouSureRemoveCellon = 2582,
         // <summary>
@@ -10745,7 +10753,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         AreYouSureChangeAppearanceWing = 2586,
         // <summary>
-        // Are you sure you want to change the colour of your Retro Wings?
+        // Are you sure you want to change the appearance of your wings?
         // <summary>
         AreYouSureChangeColorRetroWings = 2587,
         // <summary>
@@ -11118,8 +11126,616 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         RestoredAsgobasDisappeared = 2706,
         // <summary>
-        // Do you want to change the colour of your Mecha Flame Wings?
+        // The boss has appeared in area 3. Defeat him quickly.
+        // <summary>
+        TheBossHasAppearedInArea = 2707,
+        // <summary>
+        // Team A has secured area %d.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        TeamAHasSecuredArea = 2708,
+        // <summary>
+        // Team B has secured area %d.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        TeamBHasSecuredArea = 2709,
+        // <summary>
+        // The portal to the boss will open soon. Get ready!
+        // <summary>
+        ThePortalToTheBossWill = 2710,
+        // <summary>
+        // The portal to the lab where Ultimate Giant Arma is located is now open.
+        // <summary>
+        ThePortalToTheLabWhere = 2711,
+        // <summary>
+        // The raid in area %d starts soon. Defeat all the monsters there.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        TheRaidInAreaStartsSoon = 2712,
+        // <summary>
+        // Area %d is secure. The portal to area %d will open soon.<NEW_TYPE><0,1>
+        // <summary>
+        [Game18NArguments(typeof(long), typeof(long))]
+        AreaIsSecureThePortalTo = 2713,
+        // <summary>
+        // Are you sure you want to change the appearance of your wings?
         // <summary>
         ConfirmMechaFlameWingsColorChange = 2714,
+        // <summary>
+        // The Fairy Effect Lock cannot be used with this item.
+        // <summary>
+        TheFairyEffectLockCannotBe = 2715,
+        // <summary>
+        // The fairy is bound to someone else. The Fairy Effect Lock can only be used on your own fairies.
+        // <summary>
+        TheFairyIsBoundToSomeone = 2716,
+        // <summary>
+        // Do you want to use the Fairy Effect Lock to keep one of the fairy's effects when enchanting?
+        // <summary>
+        DoYouWantToUseThe = 2717,
+        // <summary>
+        // Cannot be used as the item already has a locked effect.
+        // <summary>
+        CannotBeUsedAsTheItem = 2718,
+        // <summary>
+        // The following effect has been locked by the Fairy Effect Lock.
+        // <summary>
+        TheFollowingEffectHasBeenLocked = 2719,
+        // <summary>
+        // Raid completion reward (Fairy XP %d).<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        RaidCompletionRewardFairyXp = 2720,
+        // <summary>
+        // Attempt to upgrade %s (%s) to (%s). Do you want to continue?<NEW_TYPE><0,1,2>
+        // <summary>
+        [Game18NArguments(typeof(string), typeof(string), typeof(string))]
+        AttemptToUpgradeToDoYou = 2721,
+        // <summary>
+        // Successfully upgraded to %s (%s).<NEW_TYPE><0,1>
+        // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
+        SuccessfullyUpgradedTo = 2722,
+        // <summary>
+        // Vampire Marie
+        // <summary>
+        VampireMarie = 2723,
+        // <summary>
+        // %s's team has completed the %s hardcore raid.<NEW_TYPE><0,1>
+        // <summary>
+        [Game18NArguments(typeof(string), typeof(string))]
+        STeamHasCompletedTheHardcore = 2724,
+        // <summary>
+        // You may take part in the %s hardcore raid up to %d times this week.<NEW_TYPE><0,1>
+        // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
+        YouMayTakePartInThe = 2725,
+        // <summary>
+        // You have reached your weekly limit and cannot take part in the %s hardcore raid any more.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(string))]
+        YouHaveReachedYourWeeklyLimit = 2726,
+        // <summary>
+        // The Order of Heroes effect is active.
+        // <summary>
+        TheOrderOfHeroesEffectIs = 2727,
+        // <summary>
+        // The Order of Discipline effect is active.
+        // <summary>
+        TheOrderOfDisciplineEffectIs = 2728,
+        // <summary>
+        // You receive an additional box because of the effect.
+        // <summary>
+        YouReceiveAnAdditionalBoxBecause = 2729,
+        // <summary>
+        // You are now the leader of the hardcore raid. Invite members.
+        // <summary>
+        YouAreNowTheLeaderOf = 2730,
+        // <summary>
+        // Would you like to create the hardcore raid map?
+        // <summary>
+        WouldYouLikeToCreateThe = 2731,
+        // <summary>
+        // You can only start a hardcore raid with a complete team.
+        // <summary>
+        YouCanOnlyStartAHardcore = 2732,
+        // <summary>
+        // All raid members should be on the same map at the start.
+        // <summary>
+        AllRaidMembersShouldBeOn = 2733,
+        // <summary>
+        // You have dealt the boss the minimum damage necessary to earn a reward.
+        // <summary>
+        YouHaveDealtTheBossThe = 2734,
+        // <summary>
+        // You receive an additional token because of the effect.
+        // <summary>
+        YouReceiveAnAdditionalTokenBecause = 2735,
+        // <summary>
+        // Shell upgrade not possible.
+        // <summary>
+        ShellUpgradeNotPossible = 2736,
+        // <summary>
+        // The upgrade has failed and the material has been consumed.
+        // <summary>
+        TheUpgradeHasFailedAndThe = 2737,
+        // <summary>
+        // Major failure! However the %s prevented the upgrade level from dropping.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(string))]
+        MajorFailureHoweverThePreventedThe = 2738,
+        // <summary>
+        // Major failure! The upgrade level has dropped.
+        // <summary>
+        MajorFailureTheUpgradeLevelHas = 2739,
+        // <summary>
+        // Success! The shell on %s has been upgraded to +%d.<NEW_TYPE><0,1>
+        // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
+        SuccessTheShellOnHasBeen = 2740,
+        // <summary>
+        // The shell cannot be upgraded as it is already at the highest level.
+        // <summary>
+        TheShellCannotBeUpgradedAs = 2741,
+        // <summary>
+        // The Shell Upgrade Purifier cannot be used on this equipment.
+        // <summary>
+        TheShellUpgradePurifierCannotBe = 2742,
+        // <summary>
+        // The shell upgrade level will be reset. Do you want to use the Shell Upgrade Purifier?
+        // <summary>
+        TheShellUpgradeLevelWillBe = 2743,
+        // <summary>
+        // The shell upgrade level has been reset by the Shell Upgrade Purifier.
+        // <summary>
+        TheShellUpgradeLevelHasBeen = 2744,
+        // <summary>
+        // Lord Mukraju has appeared in the Angel Camp.
+        // <summary>
+        LordMukrajuHasAppearedInThe = 2745,
+        // <summary>
+        // Lord Mukraju has appeared in the Demon Camp.
+        // <summary>
+        LordMukrajuHasAppearedInThe2 = 2746,
+        // <summary>
+        // Cannot be used as a Shell Upgrade Solvent has already been used on the equipment. It can be used again once the item has been upgraded.
+        // <summary>
+        CannotBeUsedAsAShell = 2747,
+        // <summary>
+        // The shell upgrade level has been reduced and the most recently upgraded effect has been downgraded.
+        // <summary>
+        TheShellUpgradeLevelHasBeen2 = 2748,
+        // <summary>
+        // Do you want to reduce the shell upgrade level? This would downgrade the following effect:
+        // <summary>
+        DoYouWantToReduceThe = 2749,
+        // <summary>
+        // The shell upgrade level on %s has been reduced to +%d and the effect indicated has been downgraded.<NEW_TYPE><0,1>
+        // <summary>
+        [Game18NArguments(typeof(string), typeof(long))]
+        TheShellUpgradeLevelOnHas = 2750,
+        // <summary>
+        // The shell upgrade can only be applied to champion level equipment.
+        // <summary>
+        TheShellUpgradeCanOnlyBe = 2751,
+        // <summary>
+        // If you don't earn any contribution points within %d minutes, you will be kicked out of Glacernon.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        IfYouDonTEarnAny = 2752,
+        // <summary>
+        // You will be kicked out of Glacernon as you have not earned any contribution points for 60 minutes.
+        // <summary>
+        YouWillBeKickedOutOf = 2753,
+        // <summary>
+        // The Order of the Frozen King buff is active.
+        // <summary>
+        TheOrderOfTheFrozenKing = 2754,
+        // <summary>
+        // The Order of the Frozen Conqueror buff is active.
+        // <summary>
+        TheOrderOfTheFrozenConqueror = 2755,
+        // <summary>
+        // The Order of the Frozen Protector buff is active.
+        // <summary>
+        TheOrderOfTheFrozenProtector = 2756,
+        // <summary>
+        // You must be champion level %d or above to enter this region.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        YouMustBeChampionLevelOr = 2757,
+        // <summary>
+        // Requires %d contribution points. Do you want to enter the hardcore raid?<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        RequiresContributionPointsDoYouWant = 2758,
+        // <summary>
+        // Amarok's Hideout is closed.
+        // <summary>
+        AmarokSHideoutIsClosed = 2760,
+        // <summary>
+        // Amarok's Hideout is open.
+        // <summary>
+        AmarokSHideoutIsOpen = 2761,
+        // <summary>
+        // %d minutes remain to explore Amarok's Hideout.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        MinutesRemainToExploreAmarokS = 2762,
+        // <summary>
+        // The entrance to Amarok's Hideout is closed.
+        // <summary>
+        TheEntranceToAmarokSHideout = 2763,
+        // <summary>
+        // You cannot enter Amarok's Hideout as the maximum number of players has been reached.
+        // <summary>
+        YouCannotEnterAmarokSHideout = 2764,
+        // <summary>
+        // You can only enter twice per run.
+        // <summary>
+        YouCanOnlyEnterTwicePer = 2765,
+        // <summary>
+        // You cannot escape because of Amarok's Curse.
+        // <summary>
+        YouCannotEscapeBecauseOfAmarok = 2766,
+        // <summary>
+        // Respawn at the entrance to Amarok's Hideout.
+        // <summary>
+        RespawnAtTheEntranceToAmarok = 2767,
+        // <summary>
+        // Shell Upgrade Solvent cannot be used on this equipment.
+        // <summary>
+        ShellUpgradeSolventCannotBeUsed = 2768,
+        // <summary>
+        // This item increases the specialist card's upgrade level to 9. Do you want to use it?
+        // <summary>
+        ThisItemIncreasesTheSpecialistCard = 2769,
+        // <summary>
+        // The specialist card's upgrade level has been increased to 9.
+        // <summary>
+        TheSpecialistCardSUpgradeLevel = 2770,
+        // <summary>
+        // You have reached your daily limit and cannot take part in the Time-Space any more.
+        // <summary>
+        YouHaveReachedYourDailyLimit = 2771,
+        // <summary>
+        // You can enter up to %d Time-Spaces today.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        YouCanEnterUpToTime = 2772,
+        // <summary>
+        // The shell upgrade failed, but none of the materials were consumed thanks to the %s.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(string))]
+        TheShellUpgradeFailedButNone = 2773,
+        // <summary>
+        // Wasp Knight Feraspa
+        // <summary>
+        WaspKnightFeraspa = 2774,
+        // <summary>
+        // Fairy EXP: +%d<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        FairyExp = 2775,
+        // <summary>
+        // Your reputation is not high enough.
+        // <summary>
+        YourReputationIsNotHighEnough = 2776,
+        // <summary>
+        // Requires %d reputation points. Do you want to enter?<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        RequiresReputationPointsDoYouWant = 2777,
+        // <summary>
+        // There are Melonballs growing on the ground. Push 10 of them into the marked area to deal damage to the boss.
+        // <summary>
+        ThereAreMelonballsGrowingOnThe = 2778,
+        // <summary>
+        // You must have reached at least champion level 80 to join the family raid team.
+        // <summary>
+        YouMustHaveReachedAtLeast = 2779,
+        // <summary>
+        // The following player is looking for members for Celestial Spire Catacombs Level -%s.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(string))]
+        TheFollowingPlayerIsLookingFor = 2780,
+        // <summary>
+        // Only family members can play the Celestial Spire Catacombs.
+        // <summary>
+        OnlyFamilyMembersCanPlayThe = 2781,
+        // <summary>
+        // The Celestial Spire Catacombs have started. Defeat all monsters and protect the totem.
+        // <summary>
+        TheCelestialSpireCatacombsHaveStarted = 2782,
+        // <summary>
+        // Only family raid teams can play the Celestial Spire Catacombs.
+        // <summary>
+        OnlyFamilyRaidTeamsCanPlay = 2783,
+        // <summary>
+        // At least 8 family raid members are required.
+        // <summary>
+        AtLeast8FamilyRaidMembers = 2784,
+        // <summary>
+        // All family raid members should be on the same map at the start.
+        // <summary>
+        AllFamilyRaidMembersShouldBe = 2785,
+        // <summary>
+        // You cannot participate in the family raid as you cannot enter the level.
+        // <summary>
+        YouCannotParticipateInTheFamily = 2786,
+        // <summary>
+        // The applicant's champion level is too low to join the team.
+        // <summary>
+        TheApplicantSChampionLevelIs = 2787,
+        // <summary>
+        // You cannot participate in the family raid as you are not a family member.
+        // <summary>
+        YouCannotParticipateInTheFamily2 = 2788,
+        // <summary>
+        // Only team leaders can start the Celestial Spire Catacombs.
+        // <summary>
+        OnlyTeamLeadersCanStartThe = 2789,
+        // <summary>
+        // You are now leader of a family raid team. Recruit team members!
+        // <summary>
+        YouAreNowLeaderOfA = 2790,
+        // <summary>
+        // You have reached the maximum number of weekly entries for the Celestial Spire Catacombs.
+        // <summary>
+        YouHaveReachedTheMaximumNumber = 2791,
+        // <summary>
+        // You will soon return to town. You can respawn if you have a Celestial Spire Catacombs First-Aid Kit.
+        // <summary>
+        YouWillSoonReturnToTown = 2792,
+        // <summary>
+        // Celestial Spire Catacombs levels left (%d/%d)<NEW_TYPE><0,1>
+        // <summary>
+        [Game18NArguments(typeof(long), typeof(long))]
+        CelestialSpireCatacombsLevelsLeft = 2793,
+        // <summary>
+        // Celestial Spire Catacombs weekly entries left (%d/%d)<NEW_TYPE><0,1>
+        // <summary>
+        [Game18NArguments(typeof(long), typeof(long))]
+        CelestialSpireCatacombsWeeklyEntriesLeft = 2794,
+        // <summary>
+        // The level cannot be changed after creating a family raid.
+        // <summary>
+        TheLevelCannotBeChangedAfter = 2795,
+        // <summary>
+        // Cannot be used as you are currently member of a family raid in the Celestial Spire Catacombs.
+        // <summary>
+        CannotBeUsedAsYouAre = 2796,
+        // <summary>
+        // Cannot be used as you are currently member of a raid.
+        // <summary>
+        CannotBeUsedAsYouAre2 = 2797,
+        // <summary>
+        // Your family has disbanded. You will now leave the Celestial Spire Catacombs.
+        // <summary>
+        YourFamilyHasDisbandedYouWill = 2798,
+        // <summary>
+        // You cannot leave the family during a Celestial Spire Catacombs raid.
+        // <summary>
+        YouCannotLeaveTheFamilyDuring = 2799,
+        // <summary>
+        // Family %s used a skill to increase champion experience earned.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(string))]
+        FamilyUsedASkillToIncrease = 2800,
+        // <summary>
+        // Family %s used a skill to increase the chance of receiving an additional raid box.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(string))]
+        FamilyUsedASkillToIncrease2 = 2801,
+        // <summary>
+        // You need this item: %dx %s<NEW_TYPE><1,0>
+        // <summary>
+        [Game18NArguments(typeof(long), typeof(string))]
+        YouNeedThisItemX = 2802,
+        // <summary>
+        // You need the following item to join the team: %dx %s<NEW_TYPE><1,0>
+        // <summary>
+        [Game18NArguments(typeof(long), typeof(string))]
+        YouNeedTheFollowingItemTo = 2803,
+        // <summary>
+        // You cannot start as a team member is missing %dx %s<NEW_TYPE><1,0>
+        // <summary>
+        [Game18NArguments(typeof(long), typeof(string))]
+        YouCannotStartAsATeam = 2804,
+        // <summary>
+        // Family %s used a skill to increase the Gold earned by its members.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(string))]
+        FamilyUsedASkillToIncrease3 = 2805,
+        // <summary>
+        // Family %s used a skill to increase the chance of its members gaining an additional item.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(string))]
+        FamilyUsedASkillToIncrease4 = 2806,
+        // <summary>
+        // The glowing dimensional force in your surroundings is increasing. Head to Doctor Dimensio's safe zone.
+        // <summary>
+        TheGlowingDimensionalForceInYour = 2807,
+        // <summary>
+        // Glowing dimensional force is radiating from Nezarun's dimensional pillar. Run!
+        // <summary>
+        GlowingDimensionalForceIsRadiatingFrom = 2808,
+        // <summary>
+        // Nezarun is gathering his dimensional force. Get to the dimensional pillar if you want to survive.
+        // <summary>
+        NezarunIsGatheringHisDimensionalForce = 2809,
+        // <summary>
+        // Now's the time to change your specialist to match the dimensional portal's element. You cannot change once you have passed through the portal. All dimensions must be completed before you can face Crusher Nezarun.
+        // <summary>
+        NowSTheTimeToChange = 2810,
+        // <summary>
+        // Use the red portal to reach Thrudheim and avoid taking huge damage.
+        // <summary>
+        UseTheRedPortalToReach = 2811,
+        // <summary>
+        // Use the blue portal to reach the Joseon Dynasty and avoid taking huge damage.
+        // <summary>
+        UseTheBluePortalToReach = 2812,
+        // <summary>
+        // Use the yellow portal to reach Troy and avoid taking huge damage.
+        // <summary>
+        UseTheYellowPortalToReach = 2813,
+        // <summary>
+        // Use the purple portal to reach Britain and avoid taking huge damage.
+        // <summary>
+        UseThePurplePortalToReach = 2814,
+        // <summary>
+        // You can only pass through the portal as a specialist.
+        // <summary>
+        YouCanOnlyPassThroughThe = 2815,
+        // <summary>
+        // Your specialist doesn't match the element of the portal and cannot enter.
+        // <summary>
+        YourSpecialistDoesnTMatchThe = 2816,
+        // <summary>
+        // You cannot transform during this raid.
+        // <summary>
+        YouCannotTransformDuringThisRaid = 2817,
+        // <summary>
+        // The Stag Dragon has appeared in Thrudheim. It must be defeated within 1 minute, otherwise Nezarun's strength will increase.
+        // <summary>
+        TheStagDragonHasAppearedIn = 2818,
+        // <summary>
+        // The Hideyoshi Samurai has appeared in the Joseon Dynasty. He must be defeated within 1 minute, otherwise Nezarun's strength will increase.
+        // <summary>
+        TheHideyoshiSamuraiHasAppearedIn = 2819,
+        // <summary>
+        // The Malachite Warrior has appeared in Troy. He must be defeated within 1 minute, otherwise Nezarun's strength will increase.
+        // <summary>
+        TheMalachiteWarriorHasAppearedIn = 2820,
+        // <summary>
+        // The Guardian of the Lake has appeared in Britain. She must be defeated within 1 minute, otherwise Nezarun's strength will increase.
+        // <summary>
+        TheGuardianOfTheLakeHas = 2821,
+        // <summary>
+        // You have defeated the Stag Dragon in Thrudheim.
+        // <summary>
+        YouHaveDefeatedTheStagDragon = 2822,
+        // <summary>
+        // You have defeated the Hideyoshi Samurai in the Joseon Dynasty.
+        // <summary>
+        YouHaveDefeatedTheHideyoshiSamurai = 2823,
+        // <summary>
+        // You have defeated the Malachite Warrior in Troy.
+        // <summary>
+        YouHaveDefeatedTheMalachiteWarrior = 2824,
+        // <summary>
+        // You have defeated the Guardian of the Lake in Britain.
+        // <summary>
+        YouHaveDefeatedTheGuardianOf = 2825,
+        // <summary>
+        // Dimension Rift %d/%d.<NEW_TYPE><0,1>
+        // <summary>
+        [Game18NArguments(typeof(long), typeof(long))]
+        DimensionRift = 2826,
+        // <summary>
+        // Thrudheim %d/%d.<NEW_TYPE><0,1>
+        // <summary>
+        [Game18NArguments(typeof(long), typeof(long))]
+        Thrudheim = 2827,
+        // <summary>
+        // Joseon Dynasty %d/%d.<NEW_TYPE><0,1>
+        // <summary>
+        [Game18NArguments(typeof(long), typeof(long))]
+        JoseonDynasty = 2828,
+        // <summary>
+        // Troy %d/%d.<NEW_TYPE><0,1>
+        // <summary>
+        [Game18NArguments(typeof(long), typeof(long))]
+        Troy = 2829,
+        // <summary>
+        // Britain %d/%d.<NEW_TYPE><0,1>
+        // <summary>
+        [Game18NArguments(typeof(long), typeof(long))]
+        Britain = 2830,
+        // <summary>
+        // You lost the battle against the Stag Dragon in Thrudheim (fire element). Nezarun's strength has increased.
+        // <summary>
+        YouLostTheBattleAgainstThe = 2831,
+        // <summary>
+        // You lost the battle against the Hideyoshi Samurai in the Joseon Dynasty (water element). Nezarun's strength has increased.
+        // <summary>
+        YouLostTheBattleAgainstThe2 = 2832,
+        // <summary>
+        // You lost the battle against the Malachite Warrior in Troy (light element). Nezarun's strength has increased.
+        // <summary>
+        YouLostTheBattleAgainstThe3 = 2833,
+        // <summary>
+        // You lost the battle against the Guardian of the Lake in Britain (shadow element). Nezarun's strength has increased.
+        // <summary>
+        YouLostTheBattleAgainstThe4 = 2834,
+        // <summary>
+        // The Revenant Crusher Nezarun has appeared.
+        // <summary>
+        TheRevenantCrusherNezarunHasAppeared = 2835,
+        // <summary>
+        // Enter any elemental zone except fire or water.
+        // <summary>
+        EnterAnyElementalZoneExceptFire = 2836,
+        // <summary>
+        // Enter any elemental zone except light or shadow.
+        // <summary>
+        EnterAnyElementalZoneExceptLight = 2837,
+        // <summary>
+        // Enter any elemental zone except fire or light.
+        // <summary>
+        EnterAnyElementalZoneExceptFire2 = 2838,
+        // <summary>
+        // Enter any elemental zone except water or shadow.
+        // <summary>
+        EnterAnyElementalZoneExceptWater = 2839,
+        // <summary>
+        // Enter an elemental zone which has the opposite element to your specialist.
+        // <summary>
+        EnterAnElementalZoneWhichHas = 2840,
+        // <summary>
+        // Enter the elemental zone with the opposite element to what you were told in the last task.
+        // <summary>
+        EnterTheElementalZoneWithThe = 2841,
+        // <summary>
+        // Benevolent Nezarun
+        // <summary>
+        BenevolentNezarun = 2842,
+        // <summary>
+        // O mighty pillars, give me the power of the dimensions! (Destroy the Dimensional Pillars.)
+        // <summary>
+        OMightyPillarsGiveMeThe = 2843,
+        // <summary>
+        // You must be champion level 80 to enter this area.
+        // <summary>
+        YouMustBeChampionLevel80 = 2844,
+        // <summary>
+        // Do you want to invite the members of the last raid again?
+        // <summary>
+        DoYouWantToInviteThe = 2845,
+        // <summary>
+        // You cannot use the general chat because your level is too low. You must be at least level %d.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        YouCannotUseTheGeneralChat = 2846,
+        // <summary>
+        // You cannot use the item because your level is too low. You must be at least level %d.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        YouCannotUseTheItemBecause = 2847,
+        // <summary>
+        // Remaining cooldown: %d seconds<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        RemainingCooldownSeconds = 2848,
+        // <summary>
+        // You can whisper to others in %d seconds.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        YouCanWhisperToOthersIn = 2849,
+        // <summary>
+        // A party member's level is too low to continue.
+        // <summary>
+        APartyMemberSLevelIs = 2850,
     }
 }

@@ -221,6 +221,12 @@
 ### Arena
 - [bsc](../src/NosCore.Packets/ServerPackets/Arena/BscPacket.cs) *InGame*
 - [ta_call](../src/NosCore.Packets/ServerPackets/Arena/TaCallPacket.cs) *InGame*
+- [ta_fc](../src/NosCore.Packets/ServerPackets/Arena/TaFcPacket.cs) *InGame*
+- [ta_f](../src/NosCore.Packets/ServerPackets/Arena/TaFPacket.cs) *InGame*
+- [ta_m](../src/NosCore.Packets/ServerPackets/Arena/TaMPacket.cs) *InGame*
+- [ta_p](../src/NosCore.Packets/ServerPackets/Arena/TaPPacket.cs) *InGame*
+- [ta_ps](../src/NosCore.Packets/ServerPackets/Arena/TaPsPacket.cs) *InGame*
+- [ta_st](../src/NosCore.Packets/ServerPackets/Arena/TaStPacket.cs) *InGame*
 
 ### Auction
 - [rc_blist](../src/NosCore.Packets/ServerPackets/Auction/RcbListPacket.cs) *InGame*
@@ -230,12 +236,14 @@
 - [gb](../src/NosCore.Packets/ServerPackets/Bank/GbPacket.cs) *InGame*
 
 ### Battle
+- [bfe](../src/NosCore.Packets/ServerPackets/Battle/BfePacket.cs) *InGame*
 - [bf](../src/NosCore.Packets/ServerPackets/Battle/BfPacket.cs) *InGame*
 - [cancel](../src/NosCore.Packets/ServerPackets/Battle/CancelPacket.cs) *InGame*
 - [ct](../src/NosCore.Packets/ServerPackets/Battle/CtPacket.cs) *InGame*
 - [die](../src/NosCore.Packets/ServerPackets/Battle/DiePacket.cs) *InGame*
 - [ms_c](../src/NosCore.Packets/ServerPackets/Battle/MscPacket.cs) *InGame*
 - [mslot](../src/NosCore.Packets/ServerPackets/Battle/MslotPacket.cs) *InGame*
+- [revive](../src/NosCore.Packets/ServerPackets/Battle/RevivePacket.cs) *InGame*
 - [sr](../src/NosCore.Packets/ServerPackets/Battle/SkillResetPacket.cs) *InGame*
 - [su](../src/NosCore.Packets/ServerPackets/Battle/SuPacket.cs) *InGame*
 - [vb](../src/NosCore.Packets/ServerPackets/Battle/VbPacket.cs) *InGame*
@@ -279,13 +287,20 @@
 - [tp](../src/NosCore.Packets/ServerPackets/Entities/TpPacket.cs) *InGame*
 
 ### Event
+- [dg](../src/NosCore.Packets/ServerPackets/Event/DgPacket.cs) *InGame*
+- [raidbf](../src/NosCore.Packets/ServerPackets/Event/RaidbfPacket.cs) *InGame*
+- [raid](../src/NosCore.Packets/ServerPackets/Event/RaidPacket.cs) *InGame*
+- [rboss](../src/NosCore.Packets/ServerPackets/Event/RbossPacket.cs) *InGame*
 - [rbr](../src/NosCore.Packets/ServerPackets/Event/RbrPacket.cs) *InGame*
+- [rp](../src/NosCore.Packets/ServerPackets/Event/RpPacket.cs) *InGame*
 
 ### Exchanges
 - [exc_close](../src/NosCore.Packets/ServerPackets/Exchanges/ExcClosePacket.cs) *InGame*
 - [exc_list](../src/NosCore.Packets/ServerPackets/Exchanges/ServerExcListPacket.cs) *InGame*
 
 ### Families
+- [fc](../src/NosCore.Packets/ServerPackets/Families/FcPacket.cs) *InGame*
+- [fslog_stc](../src/NosCore.Packets/ServerPackets/Families/FslogStcPacket.cs) *InGame*
 - [ginfo](../src/NosCore.Packets/ServerPackets/Families/GInfoPacket.cs) *InGame*
 
 ### Groups
@@ -369,9 +384,11 @@
 - [levelup](../src/NosCore.Packets/ServerPackets/Player/LevelUpPacket.cs) *InGame*
 - [lev](../src/NosCore.Packets/ServerPackets/Player/LevPacket.cs) *InGame*
 - [npinfo](../src/NosCore.Packets/ServerPackets/Player/NpInfoPacket.cs) *InGame*
+- [p_sex](../src/NosCore.Packets/ServerPackets/Player/PSexPacket.cs) *InGame*
 - [rage](../src/NosCore.Packets/ServerPackets/Player/RagePacket.cs) *InGame*
 - [sc](../src/NosCore.Packets/ServerPackets/Player/ScPacket.cs) *InGame*
 - [scr](../src/NosCore.Packets/ServerPackets/Player/ScrPacket.cs) *InGame*
+- [ski](../src/NosCore.Packets/ServerPackets/Player/SkiPacket.cs) *InGame*
 - [stat](../src/NosCore.Packets/ServerPackets/Player/StatPacket.cs) *InGame*
 - [tc_info](../src/NosCore.Packets/ServerPackets/Player/TcInfoPacket.cs) *InGame*
 - [titinfo](../src/NosCore.Packets/ServerPackets/Player/TitleInfoPacket.cs) *InGame*
@@ -413,6 +430,7 @@
 - [s_memo](../src/NosCore.Packets/ServerPackets/Shop/SMemoPacket.cs) *InGame*
 
 ### Specialists
+- [sc_p_stc](../src/NosCore.Packets/ServerPackets/Specialists/ScPStcPacket.cs) *InGame*
 - [sd](../src/NosCore.Packets/ServerPackets/Specialists/SdPacket.cs) *InGame*
 - [sp](../src/NosCore.Packets/ServerPackets/Specialists/SpPacket.cs) *InGame*
 
