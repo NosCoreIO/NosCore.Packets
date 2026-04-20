@@ -71,9 +71,9 @@ namespace NosCore.Packets.Tests
         {
             var deserializer = new Deserializer(typeof(IPacket).Assembly.GetTypes()
                 .Where(p => p.GetInterfaces().Contains(typeof(IPacket)) && p.IsClass && !p.IsAbstract).ToList());
-            Assert.IsTrue(deserializer != null);
+            Assert.IsNotNull(deserializer);
         }
-        
+
         [TestMethod]
         public void UnresolvedPacketsAreValid()
         {
@@ -86,7 +86,7 @@ namespace NosCore.Packets.Tests
         {
             var packet = (CBListPacket)Deserializer.Deserialize("c_blist  0 0 0 0 0 0 0 0 0");
             Assert.AreEqual(0, packet.Index);
-            Assert.AreEqual(null, packet.ItemVNumFilter);
+            Assert.IsNull(packet.ItemVNumFilter);
         }
 
         [TestMethod]
@@ -101,7 +101,7 @@ namespace NosCore.Packets.Tests
         {
             var packet = (NsTestPacket)Deserializer.Deserialize("NsTeST 4 gorlik 2 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 1 3 2 2 7 1 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 31135 79.110.84.132:4016:1:1.7.Feniks 79.110.84.132:4014:1:1.5.Feniks 79.110.84.132:4015:0:1.6.Feniks 79.110.84.132:4011:7:1.2.Feniks 79.110.84.132:4012:1:1.3.Feniks 79.110.84.132:4013:1:1.4.Feniks 79.110.84.132:4010:1:1.1.Feniks -1:-1:-1:10000.10000.1");
             Assert.AreEqual("gorlik", packet.AccountName);
-            Assert.AreEqual(8, packet.SubPacket!.Count);
+            Assert.HasCount(8, packet.SubPacket!);
         }
 
         [TestMethod]
@@ -178,7 +178,7 @@ namespace NosCore.Packets.Tests
         public void DeserializationLastStringCanNotBeNull()
         {
             var serializedPacket = (FamilyChatPacket)Deserializer.Deserialize(":");
-            Assert.AreEqual(serializedPacket.Message, "");
+            Assert.AreEqual("", serializedPacket.Message);
         }
 
         [TestMethod]
@@ -193,14 +193,14 @@ namespace NosCore.Packets.Tests
         public void DeserializeListSeparator()
         {
             var packet = (GidxPacket)Deserializer.Deserialize("gidx 0 1 2 familyname customrank 3 1|1|1|0");
-            Assert.IsTrue(packet.VisualType == VisualType.Map);
-            Assert.IsTrue(packet.VisualId == 1);
-            Assert.IsTrue(packet.FamilyId == 2);
-            Assert.IsTrue(packet.FamilyName == "familyname");
-            Assert.IsTrue(packet.FamilyCustomRank == "customrank");
-            Assert.IsTrue(packet.FamilyLevel == 3);
-            Assert.IsTrue(packet.FamilyIcons.Count(s => s) == 3);
-            Assert.IsTrue(packet.FamilyIcons.Count(s => !s) == 1);
+            Assert.AreEqual(VisualType.Map, packet.VisualType);
+            Assert.AreEqual(1, packet.VisualId);
+            Assert.AreEqual(2, packet.FamilyId);
+            Assert.AreEqual("familyname", packet.FamilyName);
+            Assert.AreEqual("customrank", packet.FamilyCustomRank);
+            Assert.AreEqual(3, packet.FamilyLevel);
+            Assert.AreEqual(3, packet.FamilyIcons.Count(s => s));
+            Assert.AreEqual(1, packet.FamilyIcons.Count(s => !s));
         }
 
         [TestMethod]
@@ -215,21 +215,21 @@ namespace NosCore.Packets.Tests
         public void DeserializeSpecial()
         {
             var packet = (UseItemPacket)Deserializer.Deserialize("u_i 2 3 4 5 6");
-            Assert.IsTrue(packet.Mode == 6);
+            Assert.AreEqual(6, packet.Mode);
         }
 
         [TestMethod]
         public void DeserializeSpecialWithKeepalive()
         {
             var packet = (UseItemPacket)Deserializer.Deserialize("12345 u_i 2 3 4 5 6");
-            Assert.IsTrue(packet.Mode == 6);
+            Assert.AreEqual(6, packet.Mode);
         }
 
         [TestMethod]
         public void DeserializeOptionalListPacket()
         {
             var packet = (MShopPacket)Deserializer.Deserialize("m_shop 1");
-            Assert.IsTrue(packet.Type == CreateShopPacketType.Close);
+            Assert.AreEqual(CreateShopPacketType.Close, packet.Type);
         }
 
         [TestMethod]
@@ -239,12 +239,12 @@ namespace NosCore.Packets.Tests
                 "m_shop 0 0 20 1 2400 0 21 1 10692 2 0 8 2500 2 3 2 480 0 0 0 0 0 0 0 0 0 0 0 0 0 0" +
                 " 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 admin Stand"
                 );
-            Assert.IsTrue(packet.Type == 0
-                && packet.ItemList![1]!.Type == 0
-                && packet.ItemList[1]!.Slot == 21
-                && packet.ItemList[1]!.Amount == 1
-                && packet.ItemList[1]!.Price == 10692
-                && packet.Name == "admin Stand");
+            Assert.AreEqual(CreateShopPacketType.Open, packet.Type);
+            Assert.AreEqual(PocketType.Equipment, packet.ItemList![1]!.Type);
+            Assert.AreEqual(21, packet.ItemList[1]!.Slot);
+            Assert.AreEqual(1, packet.ItemList[1]!.Amount);
+            Assert.AreEqual(10692, packet.ItemList[1]!.Price);
+            Assert.AreEqual("admin Stand", packet.Name);
         }
 
         [TestMethod]
@@ -253,9 +253,9 @@ namespace NosCore.Packets.Tests
             var packet = (SitPacket)Deserializer.Deserialize(
                 "rest 1 2 3"
                 );
-            Assert.IsTrue(packet.Amount == 1
-                && packet.Users![0]!.VisualType == VisualType.Npc
-                && packet.Users[0]!.VisualId == 3);
+            Assert.AreEqual(1, packet.Amount);
+            Assert.AreEqual(VisualType.Npc, packet.Users![0]!.VisualType);
+            Assert.AreEqual(3, packet.Users[0]!.VisualId);
         }
 
         [TestMethod]
@@ -264,7 +264,7 @@ namespace NosCore.Packets.Tests
             var packet = (StPacket)Deserializer.Deserialize(
                 "st 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16"
                 );
-            Assert.IsTrue(packet.BuffIds!.Count == 8);
+            Assert.HasCount(8, packet.BuffIds!);
         }
 
         [TestMethod]
@@ -273,8 +273,8 @@ namespace NosCore.Packets.Tests
             var packet = (FinsPacket)Deserializer.Deserialize(
                 "#fins^1^2"
             );
-            Assert.IsTrue(packet.Type == FinsPacketType.Accepted);
-            Assert.IsTrue(packet.CharacterId == 2);
+            Assert.AreEqual(FinsPacketType.Accepted, packet.Type);
+            Assert.AreEqual(2, packet.CharacterId);
         }
 
         [TestMethod]
@@ -283,8 +283,8 @@ namespace NosCore.Packets.Tests
             var packet = (FinsPacket)Deserializer.Deserialize(
                 "123 #fins^1^2"
             );
-            Assert.IsTrue(packet.Type == FinsPacketType.Accepted);
-            Assert.IsTrue(packet.CharacterId == 2);
+            Assert.AreEqual(FinsPacketType.Accepted, packet.Type);
+            Assert.AreEqual(2, packet.CharacterId);
         }
 
         [TestMethod]
@@ -293,13 +293,13 @@ namespace NosCore.Packets.Tests
             var packet = (FinfoPacket)Deserializer.Deserialize(
                 "finfo 2.1.Friend1 3.0.Friend2"
             );
-            Assert.IsTrue(packet.FriendList!.Count == 2);
-            Assert.IsTrue(packet.FriendList.First()!.CharacterId == 2);
-            Assert.IsTrue(packet.FriendList.First()!.IsConnected);
-            Assert.IsTrue(packet.FriendList.First()!.CharacterName == "Friend1");
-            Assert.IsTrue(packet.FriendList.Skip(1).First()!.CharacterId == 3);
-            Assert.IsFalse(packet.FriendList.Skip(1).First()!.IsConnected);
-            Assert.IsTrue(packet.FriendList.Skip(1).First()!.CharacterName == "Friend2");
+            Assert.HasCount(2, packet.FriendList!);
+            Assert.AreEqual(2, packet.FriendList!.First()!.CharacterId);
+            Assert.IsTrue(packet.FriendList!.First()!.IsConnected);
+            Assert.AreEqual("Friend1", packet.FriendList!.First()!.CharacterName);
+            Assert.AreEqual(3, packet.FriendList!.Skip(1).First()!.CharacterId);
+            Assert.IsFalse(packet.FriendList!.Skip(1).First()!.IsConnected);
+            Assert.AreEqual("Friend2", packet.FriendList!.Skip(1).First()!.CharacterName);
         }
 
         [TestMethod]
@@ -308,11 +308,11 @@ namespace NosCore.Packets.Tests
             var packet = (SitPacket)Deserializer.Deserialize(
                 "rest 2 1 5 1 4"
             );
-            Assert.IsTrue(packet.Users!.Count == 2);
-            Assert.IsTrue(packet.Users.First()!.VisualType == VisualType.Player);
-            Assert.IsTrue(packet.Users.First()!.VisualId == 5);
-            Assert.IsTrue(packet.Users.Skip(1).First()!.VisualType == VisualType.Player);
-            Assert.IsTrue(packet.Users.Skip(1).First()!.VisualId == 4);
+            Assert.HasCount(2, packet.Users!);
+            Assert.AreEqual(VisualType.Player, packet.Users!.First()!.VisualType);
+            Assert.AreEqual(5, packet.Users!.First()!.VisualId);
+            Assert.AreEqual(VisualType.Player, packet.Users!.Skip(1).First()!.VisualType);
+            Assert.AreEqual(4, packet.Users!.Skip(1).First()!.VisualId);
         }
 
         [TestMethod]
@@ -321,11 +321,11 @@ namespace NosCore.Packets.Tests
             var packet = (DlgPacket)Deserializer.Deserialize(
                 "dlg #fins^1^2 #fins^2^2 test"
             );
-            Assert.IsTrue(((FinsPacket)packet.YesPacket!).Type == FinsPacketType.Accepted);
-            Assert.IsTrue(((FinsPacket)packet.YesPacket!).CharacterId == 2);
-            Assert.IsTrue(((FinsPacket)packet.NoPacket!).Type == FinsPacketType.Rejected);
-            Assert.IsTrue(((FinsPacket)packet.NoPacket).CharacterId == 2);
-            Assert.IsTrue(packet.Question == "test");
+            Assert.AreEqual(FinsPacketType.Accepted, ((FinsPacket)packet.YesPacket!).Type);
+            Assert.AreEqual(2, ((FinsPacket)packet.YesPacket!).CharacterId);
+            Assert.AreEqual(FinsPacketType.Rejected, ((FinsPacket)packet.NoPacket!).Type);
+            Assert.AreEqual(2, ((FinsPacket)packet.NoPacket).CharacterId);
+            Assert.AreEqual("test", packet.Question);
         }
 
 
@@ -374,7 +374,7 @@ namespace NosCore.Packets.Tests
             var packet = (NrunPacket)Deserializer.Deserialize(
                 "n_run 1"
             );
-            Assert.IsTrue(packet.Runner == NrunRunnerType.ChangeClass);
+            Assert.AreEqual(NrunRunnerType.ChangeClass, packet.Runner);
         }
 
         [TestMethod]
@@ -383,17 +383,17 @@ namespace NosCore.Packets.Tests
             var packet = (NoS0577Packet)Deserializer.Deserialize(
                 "NoS0577 37633936363633662D633332352D346461612D383933612D373031346639653063646463  c437f3f4-06cb-405d-b3c8-73e5c7772c80 0034F3E8 00.9.3.3123 0 BC4AE02D9759A1C83532D7B5C861D2D2"
             );
-            Assert.IsTrue(packet.Header == "NoS0577");
-            Assert.IsTrue(packet.AuthToken == "37633936363633662D633332352D346461612D383933612D373031346639653063646463");
-            Assert.IsTrue(packet.ClientId == Guid.Parse("c437f3f4-06cb-405d-b3c8-73e5c7772c80"));
-            Assert.IsTrue(packet.UnknownYet == "0034F3E8");
-            Assert.IsTrue(packet.ClientVersion!.Major == 0);
-            Assert.IsTrue(packet.ClientVersion.Minor == 9);
-            Assert.IsTrue(packet.ClientVersion.Fix == 3);
-            Assert.IsTrue(packet.RegionType == RegionType.EN);
-            Assert.IsTrue(packet.ClientVersion.SubFix == 3123);
-            Assert.IsTrue(packet.UnknownConstant == 0);
-            Assert.IsTrue(packet.Md5String == "BC4AE02D9759A1C83532D7B5C861D2D2");
+            Assert.AreEqual("NoS0577", packet.Header);
+            Assert.AreEqual("37633936363633662D633332352D346461612D383933612D373031346639653063646463", packet.AuthToken);
+            Assert.AreEqual(Guid.Parse("c437f3f4-06cb-405d-b3c8-73e5c7772c80"), packet.ClientId);
+            Assert.AreEqual("0034F3E8", packet.UnknownYet);
+            Assert.AreEqual(0, packet.ClientVersion!.Major);
+            Assert.AreEqual(9, packet.ClientVersion.Minor);
+            Assert.AreEqual(3, packet.ClientVersion.Fix);
+            Assert.AreEqual(RegionType.EN, packet.RegionType);
+            Assert.AreEqual(3123, packet.ClientVersion.SubFix);
+            Assert.AreEqual(0, packet.UnknownConstant);
+            Assert.AreEqual("BC4AE02D9759A1C83532D7B5C861D2D2", packet.Md5String);
         }
 
         [TestMethod]
@@ -402,19 +402,19 @@ namespace NosCore.Packets.Tests
             var packet = (NoS0575Packet)Deserializer.Deserialize(
                 "NoS0575 1468578 admin EE26B0DD4AF7E749AA1A8EE3C10AE9923F618980772E473F8819A5D4940E0DB27AC185F8A0E1D5F84F88BC887FD67B143732C304CC5FA9AD8E6F57F50028A8FF c437f3f4-06cb-405d-b3c8-73e5c7772c80 006548C6 00.9.3.3125 0 458E0876581FA9A6EFE00A28AA8E75F2"
                 );
-            Assert.IsTrue(packet.Header == "NoS0575");
-            Assert.IsTrue(packet.SessionId == 1468578);
-            Assert.IsTrue(packet.Username == "admin");
-            Assert.IsTrue(packet.Password == "EE26B0DD4AF7E749AA1A8EE3C10AE9923F618980772E473F8819A5D4940E0DB27AC185F8A0E1D5F84F88BC887FD67B143732C304CC5FA9AD8E6F57F50028A8FF");
-            Assert.IsTrue(packet.ClientId == Guid.Parse("c437f3f4-06cb-405d-b3c8-73e5c7772c80"));
-            Assert.IsTrue(packet.UnknownYet == "006548C6");
-            Assert.IsTrue(packet.Unknown2 == 0);
-            Assert.IsTrue(packet.ClientVersion!.Major == 0);
-            Assert.IsTrue(packet.ClientVersion.Minor == 9);
-            Assert.IsTrue(packet.ClientVersion.Fix == 3);
-            Assert.IsTrue(packet.ClientVersion.SubFix == 3125);
-            Assert.IsTrue(packet.RegionType == RegionType.EN);
-            Assert.IsTrue(packet.Md5String == "458E0876581FA9A6EFE00A28AA8E75F2");
+            Assert.AreEqual("NoS0575", packet.Header);
+            Assert.AreEqual(1468578, packet.SessionId);
+            Assert.AreEqual("admin", packet.Username);
+            Assert.AreEqual("EE26B0DD4AF7E749AA1A8EE3C10AE9923F618980772E473F8819A5D4940E0DB27AC185F8A0E1D5F84F88BC887FD67B143732C304CC5FA9AD8E6F57F50028A8FF", packet.Password);
+            Assert.AreEqual(Guid.Parse("c437f3f4-06cb-405d-b3c8-73e5c7772c80"), packet.ClientId);
+            Assert.AreEqual("006548C6", packet.UnknownYet);
+            Assert.AreEqual(0, packet.Unknown2);
+            Assert.AreEqual(0, packet.ClientVersion!.Major);
+            Assert.AreEqual(9, packet.ClientVersion.Minor);
+            Assert.AreEqual(3, packet.ClientVersion.Fix);
+            Assert.AreEqual(3125, packet.ClientVersion.SubFix);
+            Assert.AreEqual(RegionType.EN, packet.RegionType);
+            Assert.AreEqual("458E0876581FA9A6EFE00A28AA8E75F2", packet.Md5String);
         }
     }
 }

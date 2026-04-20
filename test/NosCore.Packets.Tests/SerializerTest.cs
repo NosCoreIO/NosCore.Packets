@@ -70,7 +70,7 @@ namespace NosCore.Packets.Tests
         {
             var serializer = new Serializer(typeof(IPacket).Assembly.GetTypes()
                 .Where(p => p.GetInterfaces().Contains(typeof(IPacket)) && p.IsClass && !p.IsAbstract).ToList());
-            Assert.IsTrue(serializer != null);
+            Assert.IsNotNull(serializer);
         }
 
         [TestMethod]
@@ -201,7 +201,7 @@ namespace NosCore.Packets.Tests
         public void NullableReferenceInferRequiredAttribute()
         {
             var testPacket = new QstlistPacket(null!);
-            Assert.AreEqual(false, testPacket.IsValid);
+            Assert.IsFalse(testPacket.IsValid);
             Assert.AreEqual("The QstlistPacket field is required.", testPacket.ValidationResult.Single().ErrorMessage);
         }
 

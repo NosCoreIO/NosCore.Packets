@@ -3,7 +3,6 @@ name: .NET
 on:
   push:
     branches: [ master ]
-  create:
     tags:
       - '*.*.*'
   pull_request:
@@ -12,17 +11,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v5
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: '10.0.x'
         
     - name: Check Tag
       id: check-tag
       run: |
-        if [[ v${{ github.event.ref }} =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-            echo ::set-output name=match::true
+        if [[ ${{ github.ref }} =~ ^refs/tags/[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "match=true" >> $GITHUB_OUTPUT
         fi
         
     - name: Run Unit Tests
@@ -35,27 +34,18 @@ jobs:
       if: steps.check-tag.outputs.match == 'true'
       id: build_artifact
       run: |
+        TAG_NAME=${GITHUB_REF#refs/tags/}
         dotnet restore
         dotnet build -c Release
         dotnet pack -c Release -o /tmp/nupkgs -v m -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg
-        dotnet nuget push /tmp/nupkgs/NosCore.Packets.${{github.event.ref}}.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET_API_KEY}}
-        echo ::set-output name=ARTIFACT_PATH::/tmp/nupkgs/NosCore.Packets.${{github.event.ref}}.nupkg
-        echo ::set-output name=ARTIFACT_NAME::NosCore.Packets.${{github.event.ref}}.nupkg
-        
-    - name: Gets Latest Release
-      if: steps.check-tag.outputs.match == 'true'
-      id: latest_release_info
-      uses: jossef/action-latest-release-info@v1.1.0
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
+        dotnet nuget push /tmp/nupkgs/NosCore.Packets.${TAG_NAME}.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET_API_KEY}}
+        echo "ARTIFACT_PATH=/tmp/nupkgs/NosCore.Packets.${TAG_NAME}.nupkg" >> $GITHUB_OUTPUT
+        echo "ARTIFACT_NAME=NosCore.Packets.${TAG_NAME}.nupkg" >> $GITHUB_OUTPUT
         
     - name: Upload Release Asset
       if: steps.check-tag.outputs.match == 'true'
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
+      uses: softprops/action-gh-release@v2
       with:
-        upload_url: ${{ steps.latest_release_info.outputs.upload_url }} 
-        asset_path: ${{ steps.build_artifact.outputs.ARTIFACT_PATH }}
-        asset_name: ${{ steps.build_artifact.outputs.ARTIFACT_NAME }}
-        asset_content_type: application/zip
+        files: ${{ steps.build_artifact.outputs.ARTIFACT_PATH }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
