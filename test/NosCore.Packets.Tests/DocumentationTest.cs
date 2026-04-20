@@ -66,6 +66,17 @@ namespace NosCore.Packets.Tests
                 .GroupBy(packet => packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification);
             foreach (var packet in serverPackets.Where(x => x.Count() > 1))
             {
+                // Opt-in duplicates: classes decorated with AllowDuplicateHeader=true model
+                // OpenNos headers that legitimately carry multiple shapes discriminated by
+                // a leading subtype field (e.g. e_info). All shapes under the header must
+                // set the flag — otherwise we fail, because a silent duplicate likely
+                // signals a copy-paste mistake.
+                var duplicates = packet.ToList();
+                if (duplicates.All(t => t.GetCustomAttribute<PacketHeaderAttribute>()!.AllowDuplicateHeader))
+                {
+                    continue;
+                }
+
                 Assert.Fail($"header {packet.Key} has duplicate server packet definition");
             }
         }
