@@ -10,7 +10,10 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ServerPackets.Inventory
 {
     //todo cleanup this messy packet
-    [PacketHeader("e_info", Scope.InGame)]
+    // e_info is shared with EInfoNpcMonsterPacket (subtype 10). The leading EInfoType
+    // byte acts as the discriminator on the wire — item subtypes 0-5/8 route here,
+    // monster/mate subtype 10 routes to the sibling class.
+    [PacketHeader("e_info", Scope.InGame, AllowDuplicateHeader = true)]
     public class EInfoPacket : PacketBase
     {
         [PacketIndex(0)]

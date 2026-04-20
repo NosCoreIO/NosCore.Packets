@@ -14,7 +14,7 @@ namespace NosCore.Packets.ServerPackets.Inventory
     // same 26-field layout from NpcMonster.GenerateEInfo / Mate.GenerateEInfo,
     // so we share a single packet class. Field order and types match the
     // OpenNos format string verbatim — reordering will break the client tooltip.
-    [PacketHeader("e_info", Scope.InGame)]
+    [PacketHeader("e_info", Scope.InGame, AllowDuplicateHeader = true)]
     public class EInfoNpcMonsterPacket : PacketBase
     {
         [PacketIndex(0)]
