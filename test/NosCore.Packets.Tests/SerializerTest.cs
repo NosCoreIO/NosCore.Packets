@@ -198,6 +198,49 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
+        public void SerializeListPadsToMinimumLength()
+        {
+            var testPacket = new QstlistPacket(new List<QuestSubPacket>
+            {
+                new QuestSubPacket
+                {
+                    ObjectiveCount = 5,
+                    QuestId = 1500,
+                    InfoId = 1500,
+                    GoalType = QuestType.Hunt,
+                    QuestObjectiveSubPackets = new List<QuestObjectiveSubPacket>
+                    {
+                        new QuestObjectiveSubPacket { CurrentCount = 0, MaxCount = 5, IsFinished = false }
+                    },
+                    ShowDialog = true
+                }
+            });
+
+            var packet = Serializer.Serialize(testPacket);
+            Assert.AreEqual("qstlist 5.1500.1500.1.0.5.0.0.0.0.0.0.0.0.0.1", packet);
+        }
+
+        [TestMethod]
+        public void SerializeListPadsEmptyToMinimumLength()
+        {
+            var testPacket = new QstlistPacket(new List<QuestSubPacket>
+            {
+                new QuestSubPacket
+                {
+                    ObjectiveCount = 0,
+                    QuestId = 1997,
+                    InfoId = 1997,
+                    GoalType = QuestType.GoTo,
+                    QuestObjectiveSubPackets = new List<QuestObjectiveSubPacket>(),
+                    ShowDialog = true
+                }
+            });
+
+            var packet = Serializer.Serialize(testPacket);
+            Assert.AreEqual("qstlist 0.1997.1997.19.0.0.0.0.0.0.0.0.0.0.1", packet);
+        }
+
+        [TestMethod]
         public void NullableReferenceInferRequiredAttribute()
         {
             var testPacket = new QstlistPacket(null!);

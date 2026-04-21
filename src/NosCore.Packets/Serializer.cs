@@ -150,6 +150,16 @@ namespace NosCore.Packets
                 isFalse);
         }
 
+        private static IEnumerable<T> PadToMinimumLength<T>(IEnumerable<T>? source, int minimum) where T : new()
+        {
+            var list = source?.ToList() ?? new List<T>();
+            while (list.Count < minimum)
+            {
+                list.Add(new T());
+            }
+            return list;
+        }
+
         private Expression ListSerializer(Expression injectedPacket, Expression specificTypeExpression,
             PacketIndexAttribute indexAttr, Type type, string packetSplitter, Expression propertySplitter)
         {
@@ -164,6 +174,16 @@ namespace NosCore.Packets
             {
                 indexAttr.IsOptional = false;
                 isPacketList = true;
+            }
+
+            if (indexAttr is PacketListIndexAttribute padIndex && padIndex.Length > 0
+                && subtype!.GetConstructor(Type.EmptyTypes) != null)
+            {
+                var padMethod = typeof(Serializer).GetMethod(nameof(PadToMinimumLength),
+                    BindingFlags.NonPublic | BindingFlags.Static)!.MakeGenericMethod(subtype);
+                specificTypeExpression = Expression.Call(padMethod,
+                    specificTypeExpression,
+                    Expression.Constant((int)padIndex.Length));
             }
 
             var selectExp = Expression.Call(
