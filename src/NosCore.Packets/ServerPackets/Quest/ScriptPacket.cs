@@ -13,7 +13,7 @@ namespace NosCore.Packets.ServerPackets.Quest
     public class ScriptPacket : PacketBase
     {
         [PacketIndex(0, IsOptional = true)]
-        public byte? Zero { get; set; }
+        public byte? Unknown { get; set; }
 
         [PacketIndex(1)]
         public int ScriptId { get; set; }

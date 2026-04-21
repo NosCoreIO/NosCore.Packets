@@ -186,7 +186,7 @@ namespace NosCore.Packets.Tests
         {
             var testPacket = new ScriptPacket
             {
-                Zero = 0,
+                Unknown = 0,
                 ScriptId = 1,
                 ScriptStepId = 80
             };
