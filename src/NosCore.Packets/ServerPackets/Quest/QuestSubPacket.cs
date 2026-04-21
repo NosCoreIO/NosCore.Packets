@@ -24,7 +24,7 @@ namespace NosCore.Packets.ServerPackets.Quest
         [PacketIndex(3)]
         public QuestType GoalType { get; set; }
 
-        [PacketListIndex(4, ListSeparator = ".")]
+        [PacketListIndex(4, ListSeparator = ".", Length = 5)]
         public List<QuestObjectiveSubPacket>? QuestObjectiveSubPackets { get; set; }
 
         [PacketIndex(5)]
