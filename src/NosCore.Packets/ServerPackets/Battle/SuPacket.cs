@@ -57,5 +57,11 @@ namespace NosCore.Packets.ServerPackets.Battle
 
         [PacketIndex(14)]
         public int SkillTypeMinusOne { get; set; }
+
+        [PacketIndex(15)]
+        public int TargetCurrentHp { get; set; }
+
+        [PacketIndex(16)]
+        public int TargetMaxHp { get; set; }
     }
 }
