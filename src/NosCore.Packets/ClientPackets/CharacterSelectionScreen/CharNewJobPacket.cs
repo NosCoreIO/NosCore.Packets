@@ -12,9 +12,7 @@ namespace NosCore.Packets.ClientPackets.CharacterSelectionScreen
     [PacketHeader("Char_NEW_JOB", Scope.OnCharacterScreen)]
     public class CharNewJobPacket : CharNewPacket
     {
-        public CharNewJobPacket()
-        {
-            IsMartialArtist = true;
-        }
+        [PacketIndex(5)]
+        public byte? JobClass { get; set; }
     }
 }

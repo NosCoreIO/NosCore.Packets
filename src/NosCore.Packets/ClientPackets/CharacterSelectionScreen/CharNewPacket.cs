@@ -30,6 +30,6 @@ namespace NosCore.Packets.ClientPackets.CharacterSelectionScreen
         [PacketIndex(4)]
         public HairColorType HairColor { get; set; }
 
-        public bool IsMartialArtist { get; set; }
+        public byte? TargetClass { get; set; }
     }
 }
