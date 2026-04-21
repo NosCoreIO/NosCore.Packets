@@ -59,6 +59,7 @@ namespace NosCore.Packets.Tests
                 typeof(MlobjlstPacket),
                 typeof(SuccessPacket),
                 typeof(TargetOffPacket),
+                typeof(ScriptCompletePacket),
                 typeof(GuriPacket),
                 typeof(BiPacket),
                 typeof(MsgiPacket),
@@ -165,6 +166,20 @@ namespace NosCore.Packets.Tests
 
             var packet = Serializer.Serialize(testPacket);
             Assert.AreEqual("targetoff 57 149 1 1997", packet);
+        }
+
+        [TestMethod]
+        public void SerializeScriptCompletePacket()
+        {
+            var testPacket = new ScriptCompletePacket
+            {
+                Zero = 0,
+                ScriptId = 1,
+                ScriptStepId = 80
+            };
+
+            var packet = Serializer.Serialize(testPacket);
+            Assert.AreEqual("script 0 1 80", packet);
         }
 
         [TestMethod]
