@@ -38,5 +38,11 @@ namespace NosCore.Packets.ServerPackets.MiniMap
 
         [PacketIndex(8)]
         public short Unknown3 { get; set; } //TODO to find
+
+        [PacketIndex(9)]
+        public short Unknown4 { get; set; } //TODO to find
+
+        [PacketIndex(10)]
+        public short Unknown5 { get; set; } //TODO to find
     }
 }

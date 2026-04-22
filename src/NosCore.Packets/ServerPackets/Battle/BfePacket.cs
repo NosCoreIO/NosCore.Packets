@@ -13,7 +13,7 @@ namespace NosCore.Packets.ServerPackets.Battle
     // Sent to the target and the surrounding map when a buff/debuff expires so the
     // client drops the icon + any applied visual effect. Mirror of BfPacket which
     // signals the inverse (buff applied / refreshed).
-    [PacketHeader("bfe", Scope.InGame)]
+    [PacketHeader("bf_e", Scope.InGame)]
     public class BfePacket : PacketBase
     {
         [PacketIndex(0)]
@@ -24,5 +24,8 @@ namespace NosCore.Packets.ServerPackets.Battle
 
         [PacketIndex(2)]
         public short CardId { get; set; }
+
+        [PacketIndex(3)]
+        public short Unknown { get; set; } //TODO to find
     }
 }

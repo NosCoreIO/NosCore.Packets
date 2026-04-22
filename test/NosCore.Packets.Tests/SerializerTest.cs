@@ -12,17 +12,23 @@ using NosCore.Packets.ClientPackets.Relations;
 using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 using NosCore.Packets.ServerPackets.Auction;
+using NosCore.Packets.ServerPackets.Battle;
 using NosCore.Packets.ServerPackets.CharacterSelectionScreen;
 using NosCore.Packets.ServerPackets.Chats;
 using NosCore.Packets.ServerPackets.Event;
 using NosCore.Packets.ServerPackets.Inventory;
 using NosCore.Packets.ServerPackets.Login;
+using NosCore.Packets.ServerPackets.Map;
+using NosCore.Packets.ServerPackets.Mates;
 using NosCore.Packets.ServerPackets.Miniland;
+using NosCore.Packets.ServerPackets.MiniMap;
+using NosCore.Packets.ServerPackets.Groups;
 using NosCore.Packets.ServerPackets.Player;
 using NosCore.Packets.ServerPackets.Quest;
 using NosCore.Packets.ServerPackets.Quicklist;
 using NosCore.Packets.ServerPackets.Relations;
 using NosCore.Packets.ServerPackets.Shop;
+using NosCore.Packets.ServerPackets.Specialists;
 using NosCore.Packets.ServerPackets.UI;
 using NosCore.Packets.ServerPackets.Visibility;
 using NosCore.Shared.Enumerations;
@@ -63,7 +69,38 @@ namespace NosCore.Packets.Tests
                 typeof(GuriPacket),
                 typeof(BiPacket),
                 typeof(MsgiPacket),
-                typeof(SayiPacket)
+                typeof(SayiPacket),
+                typeof(AtPacket),
+                typeof(LevPacket),
+                typeof(EventbPacket),
+                typeof(ScPStcPacket),
+                typeof(BfePacket),
+                typeof(MallPacket),
+                typeof(FtptPacket),
+                typeof(ScpIndicatorPacket),
+                typeof(EsfPacket),
+                typeof(SopenPacket),
+                typeof(StbmPacket),
+                typeof(MinipetPacket),
+                typeof(PetskiPacket),
+                typeof(DpskiPacket),
+                typeof(RaidopenPacket),
+                typeof(CInfoResetPacket),
+                typeof(EffTPacket),
+                typeof(EffObPacket),
+                typeof(RankCoolPacket),
+                typeof(PetCool2Packet),
+                typeof(CtlPacket),
+                typeof(StpmPacket),
+                typeof(ClinitPacket),
+                typeof(FlinitPacket),
+                typeof(KdlinitPacket),
+                typeof(SkyinitPacket),
+                typeof(StpPacket),
+                typeof(Stp2Packet),
+                typeof(TbfPacket),
+                typeof(QrPacket),
+                typeof(SqstPacket)
             });
 
         [TestMethod]
@@ -627,7 +664,7 @@ namespace NosCore.Packets.Tests
                 ArenaWinner = false
 
             });
-            Assert.AreEqual("c_info test - -1 0 - 1 0 0 0 0 0 0 0 0 0 0 0 0", packet);
+            Assert.AreEqual("c_info test - -1 0 - 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0", packet);
         }
 
         [TestMethod]
@@ -848,6 +885,334 @@ namespace NosCore.Packets.Tests
             Assert.AreEqual(
                 $"in 1 characterTest - 0 0 0 0 {(byte)characterTest.InCharacterSubPacket.Authority} 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 0 0 0 -1.-1 - 1 0 0 0 0 1 0 0|0|0 0 0 {(byte)characterTest.InCharacterSubPacket.Size} 0 0",
                 packet);
+        }
+
+        [TestMethod]
+        public void SerializeAtPacketMatchesTrace()
+        {
+            var p = new AtPacket
+            {
+                CharacterId = 116489,
+                MapId = 1,
+                PositionX = 76,
+                PositionY = 114,
+                Direction = 2,
+                Unknown1 = 0,
+                Music = 0,
+                Unknown2 = 1,
+                Unknown3 = -1,
+                Unknown4 = 0,
+                Unknown5 = 0
+            };
+            Assert.AreEqual("at 116489 1 76 114 2 0 0 1 -1 0 0", Serializer.Serialize(p));
+        }
+
+        [TestMethod]
+        public void SerializeLevPacketMatchesTrace()
+        {
+            var p = new LevPacket
+            {
+                Level = 2,
+                LevelXp = 60,
+                JobLevel = 1,
+                JobLevelXp = 720,
+                XpLoad = 840,
+                JobXpLoad = 2200,
+                Reputation = 0,
+                SkillCp = 2,
+                HeroXp = 0,
+                HeroLevel = 0,
+                HeroXpLoad = 1,
+                Unknown = 0
+            };
+            Assert.AreEqual("lev 2 60 1 720 840 2200 0 2 0 0 1 0", Serializer.Serialize(p));
+        }
+
+        [TestMethod]
+        public void SerializeEventbPacketHasNoDuplicateIndices()
+        {
+            var p = new EventbPacket
+            {
+                SealedVesselEventIsActive = true,
+                IncreaseExperienceEarned = 3,
+                IncreaseGoldEarned = 7
+            };
+            var wire = Serializer.Serialize(p);
+            Assert.AreEqual(28, wire.Split(' ').Length - 1);
+            Assert.IsTrue(wire.StartsWith("evtb "));
+            Assert.IsTrue(wire.Contains(" 1 3 7 "));
+        }
+
+        [TestMethod]
+        public void SerializeScPStcPacketMatchesTrace()
+        {
+            var p = new ScPStcPacket { MaxMateCountTenths = 0, Unknown = 0 };
+            Assert.AreEqual("sc_p_stc 0 0", Serializer.Serialize(p));
+        }
+
+        [TestMethod]
+        public void SerializeBfePacketUsesUnderscoreHeader()
+        {
+            var p = new BfePacket
+            {
+                VisualType = VisualType.Player,
+                VisualId = 11396565,
+                CardId = 4002,
+                Unknown = 0
+            };
+            Assert.AreEqual("bf_e 1 11396565 4002 0", Serializer.Serialize(p));
+        }
+
+        [TestMethod]
+        public void SerializeMallPacketMatchesTrace()
+        {
+            Assert.AreEqual("mall 50", Serializer.Serialize(new MallPacket { State = 50 }));
+        }
+
+        [TestMethod]
+        public void SerializeFtptPacketMatchesTrace()
+        {
+            Assert.AreEqual("ftpt -1", Serializer.Serialize(new FtptPacket { LeaderId = null }));
+        }
+
+        [TestMethod]
+        public void SerializeScpIndicatorPacketMatchesTrace()
+        {
+            Assert.AreEqual("scp 1", Serializer.Serialize(new ScpIndicatorPacket { Value = 1 }));
+        }
+
+        [TestMethod]
+        public void SerializeEsfPacketMatchesTrace()
+        {
+            Assert.AreEqual("esf 4", Serializer.Serialize(new EsfPacket { Value = 4 }));
+        }
+
+        [TestMethod]
+        public void SerializeSopenPacketMatchesTrace()
+        {
+            Assert.AreEqual("sopen 1", Serializer.Serialize(new SopenPacket { Type = 1 }));
+        }
+
+        [TestMethod]
+        public void SerializeStbmPacketMatchesTrace()
+        {
+            Assert.AreEqual("stbm -3", Serializer.Serialize(new StbmPacket { Value = -3 }));
+        }
+
+        [TestMethod]
+        public void SerializeMinipetPacketMatchesTrace()
+        {
+            var p = new MinipetPacket { Type = 1, VisualId = 116489, MateTransportId = null };
+            Assert.AreEqual("minipet 1 116489 -1", Serializer.Serialize(p));
+        }
+
+        [TestMethod]
+        public void SerializePetskiPacketMatchesTrace()
+        {
+            Assert.AreEqual("petski -2", Serializer.Serialize(new PetskiPacket { MateTransportId = -2 }));
+        }
+
+        [TestMethod]
+        public void SerializeDpskiPacketMatchesTrace()
+        {
+            Assert.AreEqual("dpski 1", Serializer.Serialize(new DpskiPacket { State = 1 }));
+        }
+
+        [TestMethod]
+        public void SerializeRaidopenPacketMatchesTrace()
+        {
+            Assert.AreEqual("raidopen", Serializer.Serialize(new RaidopenPacket()));
+        }
+
+        [TestMethod]
+        public void SerializeCInfoResetPacketMatchesTrace()
+        {
+            Assert.AreEqual("c_info_reset", Serializer.Serialize(new CInfoResetPacket()));
+        }
+
+        [TestMethod]
+        public void SerializeEffTPacketMatchesTrace()
+        {
+            var p = new EffTPacket
+            {
+                VisualType = VisualType.Npc,
+                VisualId = 1095824,
+                Unknown1 = 1,
+                Unknown2 = 14267,
+                Unknown3 = 4766
+            };
+            Assert.AreEqual("eff_t 2 1095824 1 14267 4766", Serializer.Serialize(p));
+        }
+
+        [TestMethod]
+        public void SerializeEffObPacketMatchesTrace()
+        {
+            var p = new EffObPacket
+            {
+                ExtraSpace = string.Empty,
+                MapX = -1,
+                MapY = -1,
+                Unknown = 0,
+                EffectId = 4269
+            };
+            Assert.AreEqual("eff_ob  -1 -1 0 4269", Serializer.Serialize(p));
+        }
+
+        [TestMethod]
+        public void SerializeRankCoolPacketMatchesTrace()
+        {
+            var p = new RankCoolPacket { Unknown1 = 0, Unknown2 = 0, Cooldown = 18000 };
+            Assert.AreEqual("rank_cool 0 0 18000", Serializer.Serialize(p));
+        }
+
+        [TestMethod]
+        public void SerializePetCool2PacketMatchesTrace()
+        {
+            var p = new PetCool2Packet { ExtraSpace = string.Empty, Cooldown1 = 0, Cooldown2 = 0, Cooldown3 = 0 };
+            Assert.AreEqual("pet_cool2  0 0 0", Serializer.Serialize(p));
+        }
+
+        [TestMethod]
+        public void SerializeCtlPacketMatchesTrace()
+        {
+            var p = new CtlPacket { Type = 2, PetId = 1454169, Action = 3, Unknown = 0 };
+            Assert.AreEqual("ctl 2 1454169 3 0", Serializer.Serialize(p));
+        }
+
+        [TestMethod]
+        public void SerializeStpmPacketMatchesTrace()
+        {
+            var p = new StpmPacket();
+            Assert.AreEqual("stpm 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0", Serializer.Serialize(p));
+        }
+
+        [TestMethod]
+        public void SerializeClinitPacketMatchesTrace()
+        {
+            var p = new ClinitPacket
+            {
+                SubPackets = new List<ClinitSubPacket?>
+                {
+                    new() { CharacterId = 14531, Level = 94, HeroLevel = 0, Compliment = 396, CharacterName = "Raizen°" },
+                    new() { CharacterId = 3011, Level = 99, HeroLevel = 0, Compliment = 346, CharacterName = "Thanos" }
+                }
+            };
+            Assert.AreEqual("clinit 14531|94|0|396|Raizen° 3011|99|0|346|Thanos", Serializer.Serialize(p));
+        }
+
+        [TestMethod]
+        public void SerializeFlinitPacketMatchesTrace()
+        {
+            var p = new FlinitPacket
+            {
+                SubPackets = new List<FlinitSubPacket?>
+                {
+                    new() { CharacterId = 5177016, Level = 99, HeroLevel = 99, Reputation = 24862442, CharacterName = "Claw" }
+                }
+            };
+            Assert.AreEqual("flinit 5177016|99|99|24862442|Claw", Serializer.Serialize(p));
+        }
+
+        [TestMethod]
+        public void SerializeKdlinitPacketMatchesTrace()
+        {
+            var p = new KdlinitPacket
+            {
+                SubPackets = new List<KdlinitSubPacket?>
+                {
+                    new() { CharacterId = 26277, Level = 93, HeroLevel = 0, Act4Points = 261238, CharacterName = "______________" }
+                }
+            };
+            Assert.AreEqual("kdlinit 26277|93|0|261238|______________", Serializer.Serialize(p));
+        }
+
+        [TestMethod]
+        public void SerializeSkyinitPacketMatchesTrace()
+        {
+            var p = new SkyinitPacket
+            {
+                Type = 0,
+                SubPackets = new List<SkyinitSubPacket?>
+                {
+                    new() { CharacterId = 9650, Level = 99, HeroLevel = 0, Points = 27332, CharacterName = "Gemstone" }
+                }
+            };
+            Assert.AreEqual("skyinit 0 9650|99|0|27332|Gemstone", Serializer.Serialize(p));
+        }
+
+        [TestMethod]
+        public void SerializeStpPacketMatchesTrace()
+        {
+            var p = new StpPacket
+            {
+                SubPackets = new List<StpSubPacket?>
+                {
+                    new() { SkillId = 0, Rank1 = 1, Rank2 = 1, Unknown = -1 },
+                    new() { SkillId = 1, Rank1 = 1, Rank2 = 1, Unknown = -1 },
+                    new() { SkillId = 2, Rank1 = 1, Rank2 = 1, Unknown = -1 }
+                }
+            };
+            Assert.AreEqual("stp 0 1 1 -1 1 1 1 -1 2 1 1 -1", Serializer.Serialize(p));
+        }
+
+        [TestMethod]
+        public void SerializeStp2PacketMatchesTrace()
+        {
+            var p = new Stp2Packet
+            {
+                SubPackets = new List<StpSubPacket?>
+                {
+                    new() { SkillId = 784, Rank1 = 3, Rank2 = 3, Unknown = -1 }
+                }
+            };
+            Assert.AreEqual("stp2 784 3 3 -1", Serializer.Serialize(p));
+        }
+
+        [TestMethod]
+        public void SerializeTbfPacketMatchesTrace()
+        {
+            var p = new TbfPacket
+            {
+                ExtraSpace = string.Empty,
+                SubPackets = new List<TbfSubPacket?>
+                {
+                    new() { Major = 1, Minor = 0 },
+                    new() { Major = 2, Minor = 0 },
+                    new() { Major = 3, Minor = 0 },
+                    new() { Major = 4, Minor = 0 },
+                    new() { Major = 5, Minor = 0 }
+                }
+            };
+            Assert.AreEqual("tbf  1.0 2.0 3.0 4.0 5.0", Serializer.Serialize(p));
+        }
+
+        [TestMethod]
+        public void SerializeQrPacketMatchesTrace()
+        {
+            var p = new QrPacket
+            {
+                Type = 8,
+                Unknown1 = 13,
+                Unknown2 = 1,
+                Unknown3 = 0,
+                Unknown4 = 0,
+                Unknown5 = 0,
+                Unknown6 = 0,
+                Unknown7 = 0,
+                Unknown8 = 0,
+                Unknown9 = 0,
+                Unknown10 = 0,
+                Unknown11 = 0,
+                QuestId = 1500
+            };
+            Assert.AreEqual("qr 8 13 1 0 0 0 0 0 0 0 0 0 1500", Serializer.Serialize(p));
+        }
+
+        [TestMethod]
+        public void SerializeSqstPacketMatchesTrace()
+        {
+            var p = new SqstPacket { ExtraSpace = string.Empty, Type = 0, Bitmap = "0000" };
+            Assert.AreEqual("sqst  0 0000", Serializer.Serialize(p));
         }
     }
 }

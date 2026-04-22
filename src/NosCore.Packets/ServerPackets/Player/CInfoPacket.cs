@@ -66,5 +66,11 @@ namespace NosCore.Packets.ServerPackets.Player
 
         [PacketIndex(17)]
         public bool ArenaWinner { get; set; }
+
+        [PacketIndex(18)]
+        public byte Unknown2 { get; set; } //TODO to find
+
+        [PacketIndex(19)]
+        public short Unknown3 { get; set; } //TODO to find
     }
 }
