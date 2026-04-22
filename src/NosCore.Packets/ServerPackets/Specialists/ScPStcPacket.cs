@@ -16,5 +16,8 @@ namespace NosCore.Packets.ServerPackets.Specialists
     {
         [PacketIndex(0)]
         public int MaxMateCountTenths { get; set; }
+
+        [PacketIndex(1)]
+        public byte Unknown { get; set; } //TODO to find
     }
 }

@@ -44,5 +44,8 @@ namespace NosCore.Packets.ServerPackets.Player
 
         [PacketIndex(10)]
         public long HeroXpLoad { get; set; }
+
+        [PacketIndex(11)]
+        public byte Unknown { get; set; } //TODO to find
     }
 }
