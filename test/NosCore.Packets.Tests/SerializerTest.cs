@@ -49,6 +49,7 @@ namespace NosCore.Packets.Tests
                 typeof(SayItemPacket),
                 typeof(MloInfoPacket),
                 typeof(NInvPacket),
+                typeof(InvPacket),
                 typeof(QSlotPacket),
                 typeof(RcbListPacket),
                 typeof(DelayPacket),
@@ -1213,6 +1214,22 @@ namespace NosCore.Packets.Tests
         {
             var p = new SqstPacket { ExtraSpace = string.Empty, Type = 0, Bitmap = "0000" };
             Assert.AreEqual("sqst  0 0000", Serializer.Serialize(p));
+        }
+
+        [TestMethod]
+        [DataRow(PocketType.Mount, (byte)9)]
+        [DataRow(PocketType.Raid, (byte)10)]
+        public void SerializeInvPacketWithExtendedPocketTypesIsValid(PocketType type, byte expectedWireValue)
+        {
+            var packet = new InvPacket
+            {
+                Type = type,
+                IvnSubPackets = new List<IvnSubPacket?>()
+            };
+
+            Assert.IsTrue(packet.IsValid, string.Join("; ",
+                packet.ValidationResult.Select(v => $"{string.Join(",", v.MemberNames)}: {v.ErrorMessage}")));
+            Assert.AreEqual($"inv {expectedWireValue} ", Serializer.Serialize(packet));
         }
     }
 }
