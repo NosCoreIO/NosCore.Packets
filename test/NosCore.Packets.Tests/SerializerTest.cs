@@ -1221,10 +1221,6 @@ namespace NosCore.Packets.Tests
         [DataRow(PocketType.Raid, (byte)10)]
         public void SerializeInvPacketWithExtendedPocketTypesIsValid(PocketType type, byte expectedWireValue)
         {
-            // Mount=9 and Raid=10 confirmed from official server traces (inv 9 = mount pocket,
-            // inv 10 = raid pocket). Mount/Raid sub-packets use a different shape than Equipment's
-            // IvnSubPacket; here we only assert the enum header value so the protocol-level
-            // mismatch that triggers "Invalid Enum value" on the server is covered.
             var packet = new InvPacket
             {
                 Type = type,
