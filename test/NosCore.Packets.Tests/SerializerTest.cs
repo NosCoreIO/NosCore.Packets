@@ -49,6 +49,7 @@ namespace NosCore.Packets.Tests
                 typeof(SayItemPacket),
                 typeof(MloInfoPacket),
                 typeof(NInvPacket),
+                typeof(InvPacket),
                 typeof(QSlotPacket),
                 typeof(RcbListPacket),
                 typeof(DelayPacket),
@@ -1213,6 +1214,26 @@ namespace NosCore.Packets.Tests
         {
             var p = new SqstPacket { ExtraSpace = string.Empty, Type = 0, Bitmap = "0000" };
             Assert.AreEqual("sqst  0 0000", Serializer.Serialize(p));
+        }
+
+        [TestMethod]
+        [DataRow(PocketType.Mount, (byte)9)]
+        [DataRow(PocketType.Raid, (byte)10)]
+        public void SerializeInvPacketWithExtendedPocketTypesIsValid(PocketType type, byte expectedWireValue)
+        {
+            // Mount=9 and Raid=10 confirmed from official server traces (inv 9 = mount pocket,
+            // inv 10 = raid pocket). Mount/Raid sub-packets use a different shape than Equipment's
+            // IvnSubPacket; here we only assert the enum header value so the protocol-level
+            // mismatch that triggers "Invalid Enum value" on the server is covered.
+            var packet = new InvPacket
+            {
+                Type = type,
+                IvnSubPackets = new List<IvnSubPacket?>()
+            };
+
+            Assert.IsTrue(packet.IsValid, string.Join("; ",
+                packet.ValidationResult.Select(v => $"{string.Join(",", v.MemberNames)}: {v.ErrorMessage}")));
+            Assert.AreEqual($"inv {expectedWireValue} ", Serializer.Serialize(packet));
         }
     }
 }
