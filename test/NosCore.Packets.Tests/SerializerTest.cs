@@ -50,6 +50,7 @@ namespace NosCore.Packets.Tests
                 typeof(MloInfoPacket),
                 typeof(NInvPacket),
                 typeof(InvPacket),
+                typeof(IvnPacket),
                 typeof(QSlotPacket),
                 typeof(RcbListPacket),
                 typeof(DelayPacket),
@@ -1224,12 +1225,27 @@ namespace NosCore.Packets.Tests
             var packet = new InvPacket
             {
                 Type = type,
-                IvnSubPackets = new List<IvnSubPacket?>()
+                IvnSubPackets = new List<IvnSubPacket>()
             };
 
             Assert.IsTrue(packet.IsValid, string.Join("; ",
                 packet.ValidationResult.Select(v => $"{string.Join(",", v.MemberNames)}: {v.ErrorMessage}")));
             Assert.AreEqual($"inv {expectedWireValue} ", Serializer.Serialize(packet));
+        }
+
+        [TestMethod]
+        public void SerializeIvnPacketWithClearedSlotUsesZeroVNum()
+        {
+            var packet = new IvnPacket
+            {
+                Type = PocketType.Equipment,
+                IvnSubPackets = new List<IvnSubPacket>
+                {
+                    new() { Slot = 19, VNum = 0, RareAmount = 0, UpgradeDesign = 0, SecondUpgrade = 0 }
+                }
+            };
+
+            Assert.AreEqual("ivn 0 19.0.0.0.0", Serializer.Serialize(packet));
         }
     }
 }

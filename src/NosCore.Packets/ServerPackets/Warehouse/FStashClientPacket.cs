@@ -15,6 +15,6 @@ namespace NosCore.Packets.ServerPackets.Warehouse
     public class FStashClientPacket : PacketBase
     {
         [PacketListIndex(0)]
-        public List<IvnSubPacket?>? IvnSubPackets { get; set; }
+        public List<IvnSubPacket>? IvnSubPackets { get; set; }
     }
 }
