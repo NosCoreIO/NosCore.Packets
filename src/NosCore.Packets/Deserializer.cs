@@ -322,7 +322,13 @@ namespace NosCore.Packets
                 var separator = packetIndexAttribute.SpecialSeparator;
                 if (packetIndexAttribute is PacketListIndexAttribute ind)
                 {
-                    separator = ind.ListSeparator ?? (typeof(IPacket).IsAssignableFrom(subType) ? separator : ".");
+                    // For IPacket (sub-packet) lists, SpecialSeparator on the list names
+                    // the *inner field* separator inside each sub-packet — not the list
+                    // item separator. The list items are tokenised by the outer packet's
+                    // whitespace. Only ListSeparator (when explicitly set) defines how
+                    // items are joined. For primitive lists, SpecialSeparator remains the
+                    // inter-item separator, defaulting to ".".
+                    separator = ind.ListSeparator ?? (typeof(IPacket).IsAssignableFrom(subType) ? null : separator ?? ".");
                 }
                 if (isMaxIndex && string.IsNullOrWhiteSpace(separator))
                 {
@@ -359,9 +365,17 @@ namespace NosCore.Packets
                             var packSeperators = subType.GetProperties()
                                 .Select(prop => prop.GetCustomAttribute<PacketIndexAttribute>()).Where(s => s != null).ToList();
 
+                            // Fall back to the outer list's SpecialSeparator when the next property
+                            // doesn't override it. Sub-packets like ClinitSubPacket don't decorate
+                            // their own properties, so without this fallback the IndexOf looks for
+                            // "." in strings like "5130502|99|68|547|Trippybell" (not present) and
+                            // every loop iteration appends the whole subpacket — producing
+                            // "X|..X|..X|..X|..X|.." that then fails to parse.
+                            var fieldSeparator = packetIndexAttribute.SpecialSeparator ?? ".";
                             for (var index = 0; index < packSeperators.Count; index++)
                             {
-                                var c = index == packSeperators.Count - 1 ? -1 : subpacket.IndexOf(packSeperators[index + 1]!.SpecialSeparator ?? ".", StringComparison.Ordinal);
+                                var isLast = index == packSeperators.Count - 1;
+                                var c = isLast ? -1 : subpacket.IndexOf(packSeperators[index + 1]!.SpecialSeparator ?? fieldSeparator, StringComparison.Ordinal);
                                 if (c == -1)
                                 {
                                     toConvert += subpacket;
