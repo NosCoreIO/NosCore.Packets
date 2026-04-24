@@ -28,7 +28,7 @@ namespace NosCore.Packets.ServerPackets.Entities
         public short Amount { get; set; }
 
         [PacketIndex(5)]
-        public byte Unknown { get; set; }
+        public bool IsQuest { get; set; }
 
         [PacketIndex(6)]
         public long? OwnerId { get; set; }

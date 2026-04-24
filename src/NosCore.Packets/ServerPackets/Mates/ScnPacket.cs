@@ -118,10 +118,10 @@ namespace NosCore.Packets.ServerPackets.Mates
         public int MpMax { get; set; }
 
         [PacketIndex(34)]
-        public int Unknown21 { get; set; }
+        public bool IsTeamMember { get; set; }
 
         [PacketIndex(35)]
-        public int Unknown22 { get; set; }
+        public int LevelXp { get; set; }
 
         /// <summary>
         ///     Spaces should be replaced by "^"

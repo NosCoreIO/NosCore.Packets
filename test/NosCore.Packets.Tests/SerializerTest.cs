@@ -860,10 +860,10 @@ namespace NosCore.Packets.Tests
                     GroupId = null,
                     Fairy = 0,
                     FairyElement = 0,
-                    Unknown = 0,
+                    FairyBooster = false,
+                    FairyMorph = 0,
+                    ShowInEffect = false,
                     Morph = 0,
-                    Unknown2 = 0,
-                    Unknown3 = 0,
                     WeaponUpgradeRareSubPacket = new UpgradeRareSubPacket(),
                     ArmorUpgradeRareSubPacket = new UpgradeRareSubPacket(),
                     FamilySubPacket = new FamilySubPacket(),
@@ -1261,6 +1261,28 @@ namespace NosCore.Packets.Tests
             };
 
             Assert.AreEqual("ivn 0 20.4998.0.0.0.0.0", Serializer.Serialize(packet));
+        }
+
+        [TestMethod]
+        public void SerializeInPacketForItemPutsOwnerAfterUnknownZero()
+        {
+            var packet = new InPacket
+            {
+                VisualType = VisualType.Object,
+                VNum = "1046",
+                VisualId = 6467573,
+                PositionX = 52,
+                PositionY = 154,
+                InItemSubPacket = new InItemSubPacket
+                {
+                    Amount = 10,
+                    IsQuestRelative = false,
+                    Unknown = 0,
+                    Owner = 14643732
+                }
+            };
+
+            Assert.AreEqual("in 9 1046 6467573 52 154 10 0 0 14643732", Serializer.Serialize(packet));
         }
     }
 }
