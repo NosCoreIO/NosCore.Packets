@@ -312,8 +312,10 @@
 ### Families
 - [fc](../src/NosCore.Packets/ServerPackets/Families/FcPacket.cs) *InGame*
 - [fslog_stc](../src/NosCore.Packets/ServerPackets/Families/FslogStcPacket.cs) *InGame*
+- [gexp](../src/NosCore.Packets/ServerPackets/Families/GexpPacket.cs) *InGame*
 - [gidx](../src/NosCore.Packets/ServerPackets/Families/GidxPacket.cs) *InTrade | InGame*
 - [ginfo](../src/NosCore.Packets/ServerPackets/Families/GInfoPacket.cs) *InGame*
+- [gmsg](../src/NosCore.Packets/ServerPackets/Families/GmsgPacket.cs) *InGame*
 
 ### Groups
 - [ftpt](../src/NosCore.Packets/ServerPackets/Groups/FtptPacket.cs) *InGame*
@@ -445,6 +447,9 @@
 - [qset](../src/NosCore.Packets/ServerPackets/Quicklist/QsetClientPacket.cs) *InGame*
 - [qslot](../src/NosCore.Packets/ServerPackets/Quicklist/QSlotPacket.cs) *InGame*
 
+### RainbowBattle
+- [fbs](../src/NosCore.Packets/ServerPackets/RainbowBattle/FbsPacket.cs) *InGame*
+
 ### Relations
 - [blinit](../src/NosCore.Packets/ServerPackets/Relations/BlinitPacket.cs) *InGame*
 - [finfo](../src/NosCore.Packets/ServerPackets/Relations/FinfoPacket.cs) *InGame*
@@ -471,6 +476,10 @@
 - [sc_p_stc](../src/NosCore.Packets/ServerPackets/Specialists/ScPStcPacket.cs) *InGame*
 - [sd](../src/NosCore.Packets/ServerPackets/Specialists/SdPacket.cs) *InGame*
 - [sp](../src/NosCore.Packets/ServerPackets/Specialists/SpPacket.cs) *InGame*
+
+### TimeSpaces
+- [minfo](../src/NosCore.Packets/ServerPackets/TimeSpaces/MinfoPacket.cs) *InGame*
+- [rsfn](../src/NosCore.Packets/ServerPackets/TimeSpaces/RsfnPacket.cs) *InGame*
 
 ### UI
 - [act6](../src/NosCore.Packets/ServerPackets/UI/Act6Packet.cs) *InGame*
