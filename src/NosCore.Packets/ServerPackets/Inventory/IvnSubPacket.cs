@@ -24,5 +24,11 @@ namespace NosCore.Packets.ServerPackets.Inventory
 
         [PacketIndex(4)]
         public byte SecondUpgrade { get; set; }
+
+        [PacketIndex(5)]
+        public byte Unknown5 { get; set; }
+
+        [PacketIndex(6)]
+        public short Unknown6 { get; set; }
     }
 }

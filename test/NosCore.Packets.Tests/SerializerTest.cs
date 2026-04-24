@@ -1241,11 +1241,26 @@ namespace NosCore.Packets.Tests
                 Type = PocketType.Equipment,
                 IvnSubPackets = new List<IvnSubPacket>
                 {
-                    new() { Slot = 19, VNum = 0, RareAmount = 0, UpgradeDesign = 0, SecondUpgrade = 0 }
+                    new() { Slot = 19 }
                 }
             };
 
-            Assert.AreEqual("ivn 0 19.0.0.0.0", Serializer.Serialize(packet));
+            Assert.AreEqual("ivn 0 19.0.0.0.0.0.0", Serializer.Serialize(packet));
+        }
+
+        [TestMethod]
+        public void SerializeIvnPacketWithPopulatedEquipmentSlotMatchesTrace()
+        {
+            var packet = new IvnPacket
+            {
+                Type = PocketType.Equipment,
+                IvnSubPackets = new List<IvnSubPacket>
+                {
+                    new() { Slot = 20, VNum = 4998 }
+                }
+            };
+
+            Assert.AreEqual("ivn 0 20.4998.0.0.0.0.0", Serializer.Serialize(packet));
         }
     }
 }
