@@ -396,6 +396,7 @@
 
 ### Player
 - [bn](../src/NosCore.Packets/ServerPackets/Player/BnPacket.cs) *InGame*
+- [bpm](../src/NosCore.Packets/ServerPackets/Player/BpmPacket.cs) *InGame*
 - [c_info](../src/NosCore.Packets/ServerPackets/Player/CInfoPacket.cs) *InGame*
 - [c_info_reset](../src/NosCore.Packets/ServerPackets/Player/CInfoResetPacket.cs) *InGame*
 - [c_mode](../src/NosCore.Packets/ServerPackets/Player/CModePacket.cs) *InGame*
@@ -429,6 +430,7 @@
 - [gp](../src/NosCore.Packets/ServerPackets/Portals/GpPacket.cs) *InGame*
 
 ### Quest
+- [qnamli2](../src/NosCore.Packets/ServerPackets/Quest/Qnamli2Packet.cs) *InGame*
 - [qnamli](../src/NosCore.Packets/ServerPackets/Quest/QnamliPacket.cs) *InGame*
 - [qr](../src/NosCore.Packets/ServerPackets/Quest/QrPacket.cs) *InGame*
 - [qsti](../src/NosCore.Packets/ServerPackets/Quest/QstiPacket.cs) *InGame*
