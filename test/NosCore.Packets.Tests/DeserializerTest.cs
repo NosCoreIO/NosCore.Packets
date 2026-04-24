@@ -447,6 +447,33 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
+        public void PacketWithSubPacketShorterThanSchemaLeavesTrailingFieldsDefault()
+        {
+            // IvnSubPacket has seven [PacketIndex] properties, but `inv 1` packets
+            // only carry `<slot>.<vnum>.<amount>` (three tokens). Prior to 17.2.0
+            // the inner field-split loop kept iterating seven times — once the
+            // separator was exhausted it appended the tail onto every remaining
+            // iteration, producing "1 9023 33333" that overflowed RareAmount
+            // (short). Break on first exhausted separator.
+            var deserializer = new Deserializer(new[]
+            {
+                typeof(ServerPackets.Inventory.InvPacket),
+                typeof(ServerPackets.Inventory.IvnSubPacket),
+            });
+
+            var packet = (ServerPackets.Inventory.InvPacket)deserializer.Deserialize("inv 1 0.5110.1 1.9023.3");
+
+            Assert.IsNotNull(packet.IvnSubPackets);
+            Assert.HasCount(2, packet.IvnSubPackets!);
+            Assert.AreEqual((short)0, packet.IvnSubPackets[0].Slot);
+            Assert.AreEqual((short)5110, packet.IvnSubPackets[0].VNum);
+            Assert.AreEqual((short)1, packet.IvnSubPackets[0].RareAmount);
+            Assert.AreEqual((short)1, packet.IvnSubPackets[1].Slot);
+            Assert.AreEqual((short)9023, packet.IvnSubPackets[1].VNum);
+            Assert.AreEqual((short)3, packet.IvnSubPackets[1].RareAmount);
+        }
+
+        [TestMethod]
         public void PacketWithEmptySpecialSeparatorSplitsEachCharIntoField()
         {
             // UpgradeRareSubPacket has two fields (Upgrade, Rare). The wire joins

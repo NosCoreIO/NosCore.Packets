@@ -378,13 +378,18 @@ namespace NosCore.Packets
                                 var c = isLast ? -1 : subpacket.IndexOf(packSeperators[index + 1]!.SpecialSeparator ?? fieldSeparator, StringComparison.Ordinal);
                                 if (c == -1)
                                 {
+                                    // Wire item has fewer fields than the sub-packet schema (common
+                                    // for optional trailing fields — e.g. IvnSubPacket has 7 indexes
+                                    // but `inv 1 0.5110.1` carries only 3). Emit the remaining
+                                    // subpacket once and stop; without this break the same tail got
+                                    // appended once per remaining schema property — producing
+                                    // "1 9023 33333" that overflowed Int16 or hit index-out-of-bounds.
                                     toConvert += subpacket;
+                                    break;
                                 }
-                                else
-                                {
-                                    toConvert += subpacket.Substring(0, c) + " ";
-                                    subpacket = subpacket.Substring(c + 1);
-                                }
+
+                                toConvert += subpacket.Substring(0, c) + " ";
+                                subpacket = subpacket.Substring(c + 1);
                             }
                         }
                         else
