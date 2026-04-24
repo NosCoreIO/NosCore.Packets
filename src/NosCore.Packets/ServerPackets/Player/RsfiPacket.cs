@@ -9,11 +9,6 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    /// <summary>
-    /// Server-side timespace progression packet, observed as e.g.
-    /// <c>rsfi 3 3 0 1 0 1</c>. Mirrors the client-side
-    /// <see cref="NosCore.Packets.ClientPackets.Player.RsfiPacket"/>.
-    /// </summary>
     [PacketHeader("rsfi", Scope.InGame)]
     public class RsfiPacket : PacketBase
     {

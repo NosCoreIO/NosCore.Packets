@@ -10,15 +10,6 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Chats
 {
-    /// <summary>
-    /// Chat bubble advertising a specific item/character, observed on the wire as:
-    /// <c>sayitemt 1 &lt;visualId&gt; &lt;oratorSlot&gt; &lt;type&gt; &lt;messageKey&gt; &lt;visualName&gt; &lt;argument&gt; &lt;subPacket...&gt;</c>
-    /// where <c>subPacket</c> is one of <c>IconInfo …</c>, <c>e_info …</c>,
-    /// <c>slinfo …</c> or <c>pslinfo …</c>. Because only one sub-packet shape
-    /// appears per wire line and the dispatch depends on the header token,
-    /// the whole tail is captured as a single raw string — consumers that need
-    /// structure should deserialise <see cref="SubPacketRaw"/> separately.
-    /// </summary>
     [PacketHeader("sayitemt", Scope.InGame)]
     public class SayItemtPacket : PacketBase
     {

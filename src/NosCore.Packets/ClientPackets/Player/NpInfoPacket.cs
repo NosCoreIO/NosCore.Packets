@@ -9,10 +9,6 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Player
 {
-    /// <summary>
-    /// Client-side request for the "new player info" page, e.g. <c>npinfo 0</c>.
-    /// Mirrors the server-side <see cref="NosCore.Packets.ServerPackets.Player.NpInfoPacket"/>.
-    /// </summary>
     [PacketHeader("npinfo", Scope.InGame)]
     public class NpInfoPacket : PacketBase
     {

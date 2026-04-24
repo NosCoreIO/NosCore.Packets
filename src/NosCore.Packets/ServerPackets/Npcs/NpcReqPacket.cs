@@ -10,10 +10,6 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Npcs
 {
-    /// <summary>
-    /// Server-side NPC request packet, observed as e.g. <c>npc_req 2 5140 16</c>.
-    /// Mirrors the client-side <see cref="NosCore.Packets.ClientPackets.Npcs.RequestNpcPacket"/>.
-    /// </summary>
     [PacketHeader("npc_req", Scope.InGame)]
     public class NpcReqPacket : PacketBase
     {

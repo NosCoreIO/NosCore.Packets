@@ -9,11 +9,6 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Quest
 {
-    /// <summary>
-    /// Flat quest entry used by <see cref="QstlistPacket"/> and <see cref="QstiPacket"/>.
-    /// On the wire it is a 16-field dotted tuple:
-    /// <c>&lt;slot&gt;.&lt;questId&gt;.&lt;questLineId&gt;.&lt;type&gt;.&lt;obj1Cur&gt;.&lt;obj1Req&gt;.&lt;status&gt;.&lt;obj2Cur&gt;.&lt;obj2Req&gt;.&lt;obj3Cur&gt;.&lt;obj3Req&gt;.&lt;obj4Cur&gt;.&lt;obj4Req&gt;.&lt;obj5Cur&gt;.&lt;obj5Req&gt;.&lt;showInfo&gt;</c>.
-    /// </summary>
     public class QuestSubPacket : PacketBase
     {
         [PacketIndex(0)]
