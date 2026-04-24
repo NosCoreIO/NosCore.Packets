@@ -1011,7 +1011,14 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void SerializePetskiPacketMatchesTrace()
         {
-            Assert.AreEqual("petski -2", Serializer.Serialize(new PetskiPacket { MateTransportId = -2 }));
+            Assert.AreEqual(
+                "petski 790 -1 -1",
+                Serializer.Serialize(new PetskiPacket
+                {
+                    MateTransportId = 790,
+                    FirstSkillVNum = -1,
+                    SecondSkillVNum = -1,
+                }));
         }
 
         [TestMethod]

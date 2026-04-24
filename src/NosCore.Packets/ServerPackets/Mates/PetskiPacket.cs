@@ -7,6 +7,12 @@ namespace NosCore.Packets.ServerPackets.Mates
     public class PetskiPacket : PacketBase
     {
         [PacketIndex(0)]
-        public sbyte MateTransportId { get; set; }
+        public int MateTransportId { get; set; }
+
+        [PacketIndex(1)]
+        public short FirstSkillVNum { get; set; }
+
+        [PacketIndex(2)]
+        public short SecondSkillVNum { get; set; }
     }
 }

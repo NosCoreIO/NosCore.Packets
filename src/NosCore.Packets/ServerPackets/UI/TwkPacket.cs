@@ -33,14 +33,14 @@ namespace NosCore.Packets.ServerPackets.UI
         public string ClientLanguageString
         {
             get => ClientLanguage.ToString().ToLowerInvariant();
-            set => throw new ArgumentException("do not set this set the ClientLanguage instead");
+            set => ClientLanguage = Enum.Parse<RegionType>(value, ignoreCase: true);
         }
 
         [PacketIndex(6)]
         public string ServerLanguageString
         {
             get => ServerLanguage.ToString().ToLowerInvariant();
-            set => throw new ArgumentException("do not set this set the ServerLanguage instead");
+            set => ServerLanguage = Enum.Parse<RegionType>(value, ignoreCase: true);
         }
 
         public RegionType ServerLanguage { get; set; }
