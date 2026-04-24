@@ -1,4 +1,4 @@
-﻿using NosCore.Packets.Attributes;
+using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.UI
@@ -7,30 +7,33 @@ namespace NosCore.Packets.ServerPackets.UI
     public class AscrPacket : PacketBase
     {
         [PacketIndex(0)]
-        public int CurrentKill { get; set; }
+        public string LeadingBlank { get; set; } = string.Empty;
 
         [PacketIndex(1)]
-        public int CurrentDie { get; set; }
+        public int CurrentKill { get; set; }
 
         [PacketIndex(2)]
-        public int CurrentTc { get; set; }
+        public int CurrentDie { get; set; }
 
         [PacketIndex(3)]
-        public int ArenaKill { get; set; }
+        public int CurrentTc { get; set; }
 
         [PacketIndex(4)]
-        public int ArenaDie { get; set; }
+        public int ArenaKill { get; set; }
 
         [PacketIndex(5)]
-        public int ArenaTc { get; set; }
+        public int ArenaDie { get; set; }
 
         [PacketIndex(6)]
-        public int KillGroup { get; set; }
+        public int ArenaTc { get; set; }
 
         [PacketIndex(7)]
-        public int DieGroup { get; set; }
+        public int KillGroup { get; set; }
 
         [PacketIndex(8)]
+        public int DieGroup { get; set; }
+
+        [PacketIndex(9)]
         public AscrPacketType Type { get; set; }
     }
 }
