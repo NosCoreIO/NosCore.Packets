@@ -17,6 +17,6 @@ namespace NosCore.Packets.ServerPackets.Inventory
         public PocketType Type { get; set; }
 
         [PacketListIndex(1)]
-        public List<IvnSubPacket?>? IvnSubPackets { get; set; }
+        public List<IvnSubPacket>? IvnSubPackets { get; set; }
     }
 }

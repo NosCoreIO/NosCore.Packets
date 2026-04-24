@@ -290,7 +290,15 @@ namespace NosCore.Packets
                     return Deserialize(matches[currentIndex++]);
                 case var prop when typeof(IPacket).IsAssignableFrom(prop):
                     var dic = _packetDeserializerDictionary[prop.Name];
-                    var packet = DeserializeIPacket(dic, matches[currentIndex].Replace((packetBasePropertyInfo.Item2 is PacketListIndexAttribute ind ? ind.ListSeparator : packetBasePropertyInfo.Item2.SpecialSeparator) ?? ".", " "), false, false);
+                    var subPacketSeparator = packetBasePropertyInfo.Item2 is PacketListIndexAttribute ind ? ind.ListSeparator : packetBasePropertyInfo.Item2.SpecialSeparator;
+                    // SpecialSeparator = "" means "no character between fields on the wire" (e.g. UpgradeRareSubPacket
+                    // packs Upgrade + Rare into a single 2-digit token like "75"). The serializer joins them with no
+                    // separator, so on the read side we insert a space between every character to re-split. We can't
+                    // use string.Replace("", " ") — .NET throws ArgumentException when oldValue is empty.
+                    var subPacketContent = subPacketSeparator == ""
+                        ? string.Join(' ', matches[currentIndex].ToCharArray())
+                        : matches[currentIndex].Replace(subPacketSeparator ?? ".", " ");
+                    var packet = DeserializeIPacket(dic, subPacketContent, false, false);
                     currentIndex++;
                     return packet;
                 default:

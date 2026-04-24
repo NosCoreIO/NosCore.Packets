@@ -50,6 +50,7 @@ namespace NosCore.Packets.Tests
                 typeof(MloInfoPacket),
                 typeof(NInvPacket),
                 typeof(InvPacket),
+                typeof(IvnPacket),
                 typeof(QSlotPacket),
                 typeof(RcbListPacket),
                 typeof(DelayPacket),
@@ -859,10 +860,10 @@ namespace NosCore.Packets.Tests
                     GroupId = null,
                     Fairy = 0,
                     FairyElement = 0,
-                    Unknown = 0,
+                    FairyBooster = false,
+                    FairyMorph = 0,
+                    ShowInEffect = false,
                     Morph = 0,
-                    Unknown2 = 0,
-                    Unknown3 = 0,
                     WeaponUpgradeRareSubPacket = new UpgradeRareSubPacket(),
                     ArmorUpgradeRareSubPacket = new UpgradeRareSubPacket(),
                     FamilySubPacket = new FamilySubPacket(),
@@ -1224,12 +1225,64 @@ namespace NosCore.Packets.Tests
             var packet = new InvPacket
             {
                 Type = type,
-                IvnSubPackets = new List<IvnSubPacket?>()
+                IvnSubPackets = new List<IvnSubPacket>()
             };
 
             Assert.IsTrue(packet.IsValid, string.Join("; ",
                 packet.ValidationResult.Select(v => $"{string.Join(",", v.MemberNames)}: {v.ErrorMessage}")));
             Assert.AreEqual($"inv {expectedWireValue} ", Serializer.Serialize(packet));
+        }
+
+        [TestMethod]
+        public void SerializeIvnPacketWithClearedSlotUsesZeroVNum()
+        {
+            var packet = new IvnPacket
+            {
+                Type = PocketType.Equipment,
+                IvnSubPackets = new List<IvnSubPacket>
+                {
+                    new() { Slot = 19 }
+                }
+            };
+
+            Assert.AreEqual("ivn 0 19.0.0.0.0.0.0", Serializer.Serialize(packet));
+        }
+
+        [TestMethod]
+        public void SerializeIvnPacketWithPopulatedEquipmentSlotMatchesTrace()
+        {
+            var packet = new IvnPacket
+            {
+                Type = PocketType.Equipment,
+                IvnSubPackets = new List<IvnSubPacket>
+                {
+                    new() { Slot = 20, VNum = 4998 }
+                }
+            };
+
+            Assert.AreEqual("ivn 0 20.4998.0.0.0.0.0", Serializer.Serialize(packet));
+        }
+
+        [TestMethod]
+        public void SerializeInPacketForItemPutsOwnerAfterUnknownZero()
+        {
+            var packet = new InPacket
+            {
+                VisualType = VisualType.Object,
+                VNum = "1046",
+                VisualId = 6467573,
+                PositionX = 52,
+                PositionY = 154,
+                InItemSubPacket = new InItemSubPacket
+                {
+                    Amount = 10,
+                    IsQuestRelative = false,
+                    Unknown = 0,
+                    Owner = 14643732
+                }
+            };
+
+            Assert.AreEqual("in 9 1046 6467573 52 154 10 0 0 14643732", Serializer.Serialize(packet));
         }
     }
 }

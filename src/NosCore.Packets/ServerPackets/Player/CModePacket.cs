@@ -35,6 +35,6 @@ namespace NosCore.Packets.ServerPackets.Player
         public byte Size { get; set; }
 
         [PacketIndex(7)]
-        public byte MorphSkin { get; set; }
+        public short MorphSkin { get; set; }
     }
 }

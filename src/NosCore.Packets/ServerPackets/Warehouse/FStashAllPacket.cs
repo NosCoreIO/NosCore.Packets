@@ -18,6 +18,6 @@ namespace NosCore.Packets.ServerPackets.Warehouse
         public byte WarehouseSize { get; set; }
 
         [PacketListIndex(1)]
-        public List<IvnSubPacket?>? IvnSubPackets { get; set; }
+        public List<IvnSubPacket>? IvnSubPackets { get; set; }
     }
 }

@@ -48,17 +48,16 @@ namespace NosCore.Packets.ServerPackets.Visibility
         public byte FairyElement { get; set; }
 
         [PacketIndex(11)]
-        public byte Unknown { get; set; } //TODO to find
+        public bool FairyBooster { get; set; }
 
         [PacketIndex(12)]
-        public byte Morph { get; set; }
+        public byte FairyMorph { get; set; }
 
-        //TODO: Find what GroupId & 3 are made for
         [PacketIndex(13)]
-        public byte Unknown2 { get; set; }
+        public bool ShowInEffect { get; set; }
 
         [PacketIndex(14)]
-        public byte Unknown3 { get; set; }
+        public byte Morph { get; set; }
 
         [PacketIndex(15, SpecialSeparator = "")]
         public UpgradeRareSubPacket? WeaponUpgradeRareSubPacket { get; set; }

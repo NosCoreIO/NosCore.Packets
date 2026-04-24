@@ -17,9 +17,9 @@ namespace NosCore.Packets.ServerPackets.Visibility
         public bool IsQuestRelative { get; set; }
 
         [PacketIndex(2)]
-        public long Owner { get; set; }
+        public byte Unknown { get; set; }
 
         [PacketIndex(3)]
-        public byte Unknown { get; set; }
+        public long Owner { get; set; }
     }
 }
