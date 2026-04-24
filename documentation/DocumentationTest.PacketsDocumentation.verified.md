@@ -422,6 +422,7 @@
 - [gp](../src/NosCore.Packets/ServerPackets/Portals/GpPacket.cs) *InGame*
 
 ### Quest
+- [qnamli](../src/NosCore.Packets/ServerPackets/Quest/QnamliPacket.cs) *InGame*
 - [qr](../src/NosCore.Packets/ServerPackets/Quest/QrPacket.cs) *InGame*
 - [qsti](../src/NosCore.Packets/ServerPackets/Quest/QstiPacket.cs) *InGame*
 - [qstlist](../src/NosCore.Packets/ServerPackets/Quest/QstlistPacket.cs) *InGame*
