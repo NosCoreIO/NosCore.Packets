@@ -16,7 +16,7 @@ namespace NosCore.Packets.ServerPackets.Login
     public class NsTestPacket : PacketBase
     {
         [PacketIndex(0)]
-        public string? LeadingBlank { get; set; }
+        public string LeadingBlank { get; set; } = string.Empty;
 
         [PacketIndex(1)]
         public RegionType RegionType { get; set; }
