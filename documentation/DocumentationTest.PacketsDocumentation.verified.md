@@ -167,6 +167,7 @@
 - [bpt](../src/NosCore.Packets/ClientPackets/Player/BptPacket.cs) *InGame*
 - [compl](../src/NosCore.Packets/ClientPackets/Player/ComplPacket.cs) *InGame*
 - [eqinfo](../src/NosCore.Packets/ClientPackets/Player/EquipmentInfoPacket.cs) *InGame*
+- [npinfo](../src/NosCore.Packets/ClientPackets/Player/NpInfoPacket.cs) *InGame*
 - [rsfi](../src/NosCore.Packets/ClientPackets/Player/RsfiPacket.cs) *InGame*
 - [snap](../src/NosCore.Packets/ClientPackets/Player/SnapPacket.cs) *InTrade | InGame*
 - [tit_eq](../src/NosCore.Packets/ClientPackets/Player/TitEqPacket.cs) *InTrade | InGame*
@@ -205,6 +206,7 @@
 ### UI
 - [gop](../src/NosCore.Packets/ClientPackets/UI/GopPacket.cs) *InGame*
 - [guri](../src/NosCore.Packets/ClientPackets/UI/GuriPacket.cs) *InGame*
+- [mall](../src/NosCore.Packets/ClientPackets/UI/MallPacket.cs) *InGame*
 
 ### Warehouse
 - [deposit](../src/NosCore.Packets/ClientPackets/Warehouse/DepositPacket.cs) *InTrade | InGame*
@@ -310,6 +312,7 @@
 ### Families
 - [fc](../src/NosCore.Packets/ServerPackets/Families/FcPacket.cs) *InGame*
 - [fslog_stc](../src/NosCore.Packets/ServerPackets/Families/FslogStcPacket.cs) *InGame*
+- [gidx](../src/NosCore.Packets/ServerPackets/Families/GidxPacket.cs) *InTrade | InGame*
 - [ginfo](../src/NosCore.Packets/ServerPackets/Families/GInfoPacket.cs) *InGame*
 
 ### Groups
@@ -383,6 +386,9 @@
 ### Movement
 - [dir](../src/NosCore.Packets/ServerPackets/Movement/DirPacket.cs) *InGame*
 
+### Npcs
+- [npc_req](../src/NosCore.Packets/ServerPackets/Npcs/NpcReqPacket.cs) *InGame*
+
 ### Parcel
 - [parcel](../src/NosCore.Packets/ServerPackets/Parcel/ParcelPacket.cs) *InGame*
 - [post](../src/NosCore.Packets/ServerPackets/Parcel/PostPacket.cs) *InGame*
@@ -405,6 +411,7 @@
 - [npinfo](../src/NosCore.Packets/ServerPackets/Player/NpInfoPacket.cs) *InGame*
 - [p_sex](../src/NosCore.Packets/ServerPackets/Player/PSexPacket.cs) *InGame*
 - [rage](../src/NosCore.Packets/ServerPackets/Player/RagePacket.cs) *InGame*
+- [rsfi](../src/NosCore.Packets/ServerPackets/Player/RsfiPacket.cs) *InGame*
 - [sc](../src/NosCore.Packets/ServerPackets/Player/ScPacket.cs) *InGame*
 - [scr](../src/NosCore.Packets/ServerPackets/Player/ScrPacket.cs) *InGame*
 - [ski](../src/NosCore.Packets/ServerPackets/Player/SkiPacket.cs) *InGame*
