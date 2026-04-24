@@ -1,4 +1,4 @@
-﻿//  __  _  __    __   ___ __  ___ ___
+//  __  _  __    __   ___ __  ___ ___
 // |  \| |/__\ /' _/ / _//__\| _ \ __|
 // | | ' | \/ |`._`.| \_| \/ | v / _|
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
@@ -7,18 +7,18 @@
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 
-namespace NosCore.Packets.ServerPackets.MiniMap
+namespace NosCore.Packets.ServerPackets.TimeSpaces
 {
-    [PacketHeader("c_map", Scope.InGame)]
-    public class CMapPacket : PacketBase
+    [PacketHeader("rsfn", Scope.InGame)]
+    public class RsfnPacket : PacketBase
     {
         [PacketIndex(0)]
-        public byte Type { get; set; }
+        public int MapIndexX { get; set; }
 
         [PacketIndex(1)]
-        public short Id { get; set; }
+        public int MapIndexY { get; set; }
 
         [PacketIndex(2)]
-        public bool IsEntering { get; set; }
+        public int Status { get; set; }
     }
 }
