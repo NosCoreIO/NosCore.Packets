@@ -412,6 +412,7 @@
 - [npinfo](../src/NosCore.Packets/ServerPackets/Player/NpInfoPacket.cs) *InGame*
 - [p_sex](../src/NosCore.Packets/ServerPackets/Player/PSexPacket.cs) *InGame*
 - [rage](../src/NosCore.Packets/ServerPackets/Player/RagePacket.cs) *InGame*
+- [rc](../src/NosCore.Packets/ServerPackets/Player/RcPacket.cs) *InGame*
 - [rsfi](../src/NosCore.Packets/ServerPackets/Player/RsfiPacket.cs) *InGame*
 - [sc](../src/NosCore.Packets/ServerPackets/Player/ScPacket.cs) *InGame*
 - [scr](../src/NosCore.Packets/ServerPackets/Player/ScrPacket.cs) *InGame*

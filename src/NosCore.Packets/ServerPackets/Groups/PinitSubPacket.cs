@@ -34,15 +34,18 @@ namespace NosCore.Packets.ServerPackets.Groups
         public int Unknown { get; set; } //TODO: Find what this is made for
 
         [PacketIndex(6)]
-        public GenderType Gender { get; set; }
+        public int Unknown2 { get; set; } //TODO: Find what this is made for. Observed 319 on live wire, shifts Gender/Race/Morph/HeroLevel by one.
 
         [PacketIndex(7)]
-        public short Race { get; set; }
+        public GenderType Gender { get; set; }
 
         [PacketIndex(8)]
-        public short Morph { get; set; }
+        public short Race { get; set; }
 
         [PacketIndex(9)]
+        public short Morph { get; set; }
+
+        [PacketIndex(10)]
         public byte HeroLevel { get; set; }
     }
 }

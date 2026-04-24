@@ -284,6 +284,20 @@ namespace NosCore.Packets
                 case var prop when (prop.BaseType?.Equals(typeof(Enum)) ?? false) ||
                     (Nullable.GetUnderlyingType(prop)?.IsEnum ?? false):
                     return DeserializeEnum(item1, matches[currentIndex++]);
+                case var prop when prop == typeof(Game18NArguments):
+                    // Game18NArguments is a custom non-generic IList<object>. The generic
+                    // list path can't figure out its element type (GetGenericArguments() is
+                    // empty) and can't assign List<object> to it, so sayi/msgi/msgi2 all
+                    // crashed with IndexOutOfRange. Consume the remaining tokens directly
+                    // into a fresh Game18NArguments; numeric tokens go in as long, the rest
+                    // as string.
+                    var g18n = new Game18NArguments(Math.Max(1, matches.Length - currentIndex));
+                    while (currentIndex < matches.Length)
+                    {
+                        var token = matches[currentIndex++];
+                        g18n.Add(long.TryParse(token, out var longValue) ? (object)longValue : token);
+                    }
+                    return g18n;
                 case var prop when typeof(ICollection).IsAssignableFrom(prop):
                     return DeserializeList(packetBasePropertyInfo.Item1.GetElementType() ?? packetBasePropertyInfo.Item1.GetGenericArguments()[0], packetBasePropertyInfo.Item2, matches, ref currentIndex, isMaxIndex);
                 case var prop when prop == typeof(IPacket):
