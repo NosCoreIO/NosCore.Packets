@@ -9,11 +9,6 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Quest
 {
-    /// <summary>
-    /// Server-side quest name list entry. Shape observed on the wire:
-    /// <c>qnamli &lt;questId&gt; #&lt;localizedRef&gt; &lt;targetId&gt; &lt;value1&gt; &lt;value2&gt; &lt;value3&gt;</c>
-    /// e.g. <c>qnamli 9 #guri^518 2308 0 0 0</c>.
-    /// </summary>
     [PacketHeader("qnamli", Scope.InGame)]
     public class QnamliPacket : PacketBase
     {

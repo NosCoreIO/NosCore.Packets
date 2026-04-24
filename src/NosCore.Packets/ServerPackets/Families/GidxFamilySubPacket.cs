@@ -8,12 +8,6 @@ using NosCore.Packets.Attributes;
 
 namespace NosCore.Packets.ServerPackets.Families
 {
-    /// <summary>
-    /// Server-side family identifier sub-packet used by <see cref="GidxPacket"/>:
-    /// <c>&lt;serverId&gt;.&lt;familyId&gt;</c>, e.g. <c>103.918</c>.
-    /// When the character has no family the whole field collapses to <c>-1</c>
-    /// on the wire, leaving <see cref="FamilyId"/> at its default value.
-    /// </summary>
     public class GidxFamilySubPacket : PacketBase
     {
         [PacketIndex(0)]

@@ -15,9 +15,6 @@ namespace NosCore.Packets.ServerPackets.Login
     [PacketHeader("NsTeST", Scope.OnLoginScreen)]
     public class NsTestPacket : PacketBase
     {
-        // Server emits "NsTeST  <region> ..." with a literal double space after the
-        // header (see vanosilla LoginPacketsExtensions), producing an empty token
-        // at index 0.
         [PacketIndex(0)]
         public string? LeadingBlank { get; set; }
 
@@ -27,13 +24,9 @@ namespace NosCore.Packets.ServerPackets.Login
         [PacketIndex(2)]
         public string? AccountName { get; set; }
 
-        //this seems to be always 2 in case of new auth and null else
         [PacketIndex(3, IsOptional = true)]
         public int? Unknown { get; set; } = 2;
 
-        // The six fields below were introduced in a newer client revision; their
-        // semantics aren't reverse-engineered yet. Observed wires start with
-        // `1 0 11 4 13 3` at this offset before the -99/0 character-count pairs.
         [PacketIndex(4)] public int Unknown2 { get; set; }
         [PacketIndex(5)] public int Unknown3 { get; set; }
         [PacketIndex(6)] public int Unknown4 { get; set; }

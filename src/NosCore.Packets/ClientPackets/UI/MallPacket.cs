@@ -9,10 +9,6 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.UI
 {
-    /// <summary>
-    /// Client-side request to open the in-game mall UI, e.g. <c>mall 50</c>.
-    /// Mirrors the server-side <see cref="NosCore.Packets.ServerPackets.UI.MallPacket"/>.
-    /// </summary>
     [PacketHeader("mall", Scope.InGame)]
     public class MallPacket : PacketBase
     {

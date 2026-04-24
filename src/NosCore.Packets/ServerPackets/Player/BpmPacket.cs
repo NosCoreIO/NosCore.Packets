@@ -9,12 +9,6 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Player
 {
-    /// <summary>
-    /// Server-side compact battle-pass marker, observed as <c>bpm 0 0 0</c>
-    /// (three bytes). Distinct from the large
-    /// <see cref="NosCore.Packets.ClientPackets.Player.BpmPacket"/> request that
-    /// carries the full quest list.
-    /// </summary>
     [PacketHeader("bpm", Scope.InGame)]
     public class BpmPacket : PacketBase
     {

@@ -9,11 +9,6 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Quest
 {
-    /// <summary>
-    /// Server-side variant of <see cref="QnamliPacket"/> with a trailing
-    /// character/target name. Observed wire:
-    /// <c>qnamli2 100 #rl 1646 13 2514 Gladi</c>.
-    /// </summary>
     [PacketHeader("qnamli2", Scope.InGame)]
     public class Qnamli2Packet : PacketBase
     {
