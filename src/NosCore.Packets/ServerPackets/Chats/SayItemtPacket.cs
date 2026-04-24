@@ -1,4 +1,4 @@
-﻿//  __  _  __    __   ___ __  ___ ___
+//  __  _  __    __   ___ __  ___ ___
 // |  \| |/__\ /' _/ / _//__\| _ \ __|
 // | | ' | \/ |`._`.| \_| \/ | v / _|
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
@@ -6,11 +6,19 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
-using NosCore.Packets.ServerPackets.Inventory;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Chats
 {
+    /// <summary>
+    /// Chat bubble advertising a specific item/character, observed on the wire as:
+    /// <c>sayitemt 1 &lt;visualId&gt; &lt;oratorSlot&gt; &lt;type&gt; &lt;messageKey&gt; &lt;visualName&gt; &lt;argument&gt; &lt;subPacket...&gt;</c>
+    /// where <c>subPacket</c> is one of <c>IconInfo …</c>, <c>e_info …</c>,
+    /// <c>slinfo …</c> or <c>pslinfo …</c>. Because only one sub-packet shape
+    /// appears per wire line and the dispatch depends on the header token,
+    /// the whole tail is captured as a single raw string — consumers that need
+    /// structure should deserialise <see cref="SubPacketRaw"/> separately.
+    /// </summary>
     [PacketHeader("sayitemt", Scope.InGame)]
     public class SayItemtPacket : PacketBase
     {
@@ -29,20 +37,13 @@ namespace NosCore.Packets.ServerPackets.Chats
         [PacketIndex(4)]
         public Game18NConstString Message { get; set; }
 
-        [PacketIndex(4)]
+        [PacketIndex(5)]
         public string? VisualName { get; set; }
 
-        [PacketIndex(3, IsOptional = true)]
+        [PacketIndex(6, IsOptional = true)]
         public string? Argument { get; set; } = "{%s}";
 
-        [PacketIndex(4, IsOptional = true, RemoveHash = true)]
-        public IconInfoPacket? IconInfo { get; set; }
-
-        [PacketIndex(5, IsOptional = true, RemoveHash = true)]
-        public EInfoPacket? EquipmentInfo { get; set; }
-
-        [PacketIndex(6, IsOptional = true, RemoveHash = true)]
-        public SlInfoPacket? SlInfo { get; set; }
-
+        [PacketIndex(7, IsOptional = true)]
+        public string? SubPacketRaw { get; set; }
     }
 }
