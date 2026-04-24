@@ -16,7 +16,7 @@ namespace NosCore.Packets.ServerPackets.Login
         public string? Host { get; set; }
 
         [PacketIndex(1, SpecialSeparator = ":")]
-        public ushort? Port { get; set; }
+        public int? Port { get; set; }  // int so the -1:-1:-1:10000.10000.1 sentinel round-trips without ushort overflow
 
         [PacketIndex(2, SpecialSeparator = ":")]
         public int? Color { get; set; }
