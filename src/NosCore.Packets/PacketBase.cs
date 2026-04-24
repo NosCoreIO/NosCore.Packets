@@ -52,7 +52,7 @@ namespace NosCore.Packets
                     var nullabilityInfo = nullabilityContext.Create(prop);
                     if (nullabilityInfo.WriteState is not NullabilityState.Nullable)
                     {
-                        var attr = new RequiredAttribute();
+                        var attr = new RequiredAttribute { AllowEmptyStrings = true };
                         var result = attr.GetValidationResult(value, vc);
                         if (result != null)
                         {
