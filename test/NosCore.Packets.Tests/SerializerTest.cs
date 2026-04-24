@@ -235,28 +235,19 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
-        public void SerializeRecursiveListSubPackets()
+        public void SerializeFlatQuestSubPacket()
         {
             var testPacket = new QstlistPacket(new List<QuestSubPacket>
             {
                 new QuestSubPacket
                 {
-                    ObjectiveCount = 5,
+                    QuestSlot = 5,
                     QuestId = 1500,
-                    InfoId = 1500,
-                    GoalType = QuestType.Hunt,
-                    QuestObjectiveSubPackets = new List<QuestObjectiveSubPacket>()
-                    {
-                        new QuestObjectiveSubPacket
-                        {
-                            CurrentCount = 0,
-                            IsFinished = false,
-                            MaxCount = 5
-                        },
-                        new QuestObjectiveSubPacket(), new QuestObjectiveSubPacket(), new QuestObjectiveSubPacket(),
-                        new QuestObjectiveSubPacket()
-                    },
-                    ShowDialog = true
+                    QuestLineId = 1500,
+                    QuestType = QuestType.Hunt,
+                    Objective1Current = 0,
+                    Objective1Required = 5,
+                    QuestToShowInfo = true,
                 }
             });
 
@@ -265,46 +256,22 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
-        public void SerializeListPadsToMinimumLength()
+        public void SerializeQuestSubPacketWithEmptyObjectives()
         {
             var testPacket = new QstlistPacket(new List<QuestSubPacket>
             {
                 new QuestSubPacket
                 {
-                    ObjectiveCount = 5,
-                    QuestId = 1500,
-                    InfoId = 1500,
-                    GoalType = QuestType.Hunt,
-                    QuestObjectiveSubPackets = new List<QuestObjectiveSubPacket>
-                    {
-                        new QuestObjectiveSubPacket { CurrentCount = 0, MaxCount = 5, IsFinished = false }
-                    },
-                    ShowDialog = true
-                }
-            });
-
-            var packet = Serializer.Serialize(testPacket);
-            Assert.AreEqual("qstlist 5.1500.1500.1.0.5.0.0.0.0.0.0.0.0.0.1", packet);
-        }
-
-        [TestMethod]
-        public void SerializeListPadsEmptyToMinimumLength()
-        {
-            var testPacket = new QstlistPacket(new List<QuestSubPacket>
-            {
-                new QuestSubPacket
-                {
-                    ObjectiveCount = 0,
+                    QuestSlot = 0,
                     QuestId = 1997,
-                    InfoId = 1997,
-                    GoalType = QuestType.GoTo,
-                    QuestObjectiveSubPackets = new List<QuestObjectiveSubPacket>(),
-                    ShowDialog = true
+                    QuestLineId = 1997,
+                    QuestType = QuestType.GoTo,
+                    QuestToShowInfo = true,
                 }
             });
 
             var packet = Serializer.Serialize(testPacket);
-            Assert.AreEqual("qstlist 0.1997.1997.19.0.0.0.0.0.0.0.0.0.0.1", packet);
+            Assert.AreEqual("qstlist 0.1997.1997.19.0.0.0.0.0.0.0.0.0.0.0.1", packet);
         }
 
         [TestMethod]
@@ -319,24 +286,15 @@ namespace NosCore.Packets.Tests
         public void SerializeRecursiveSubPackets()
         {
             var testPacket =
-                new QstiPacket(new QuestSubPacket()
+                new QstiPacket(new QuestSubPacket
                 {
-                    ObjectiveCount = 5,
+                    QuestSlot = 5,
                     QuestId = 1500,
-                    InfoId = 1500,
-                    GoalType = QuestType.Hunt,
-                    QuestObjectiveSubPackets = new List<QuestObjectiveSubPacket>()
-                    {
-                        new QuestObjectiveSubPacket
-                        {
-                            CurrentCount = 0,
-                            IsFinished = false,
-                            MaxCount = 5
-                        },
-                        new QuestObjectiveSubPacket(), new QuestObjectiveSubPacket(), new QuestObjectiveSubPacket(),
-                        new QuestObjectiveSubPacket()
-                    },
-                    ShowDialog = true
+                    QuestLineId = 1500,
+                    QuestType = QuestType.Hunt,
+                    Objective1Current = 0,
+                    Objective1Required = 5,
+                    QuestToShowInfo = true,
                 });
 
             var packet = Serializer.Serialize(testPacket);
@@ -628,7 +586,7 @@ namespace NosCore.Packets.Tests
                 RegionType = RegionType.EN,
             };
             var packet = Serializer.Serialize(nstestpacket);
-            Assert.AreEqual("NsTeST 0 test 2 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 1 -1:-1:-1:10000.10000.1", packet);
+            Assert.AreEqual("NsTeST 0 test 2 0 0 0 0 0 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 1 -1:-1:-1:10000.10000.1", packet);
         }
 
         [TestMethod]
