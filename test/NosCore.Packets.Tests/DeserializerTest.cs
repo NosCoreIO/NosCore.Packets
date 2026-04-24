@@ -416,5 +416,28 @@ namespace NosCore.Packets.Tests
             Assert.AreEqual(RegionType.EN, packet.RegionType);
             Assert.AreEqual("458E0876581FA9A6EFE00A28AA8E75F2", packet.Md5String);
         }
+
+        [TestMethod]
+        public void PacketWithEmptySpecialSeparatorSplitsEachCharIntoField()
+        {
+            // UpgradeRareSubPacket has two fields (Upgrade, Rare). The wire joins
+            // them with no separator — "75" on the wire means Upgrade=7, Rare=5.
+            // Prior to 16.11.0 the deserializer crashed on String.Replace("", " ").
+            var deserializer = new Deserializer(new[]
+            {
+                typeof(ServerPackets.Inventory.EquipPacket),
+                typeof(ServerPackets.Inventory.UpgradeRareSubPacket),
+                typeof(ServerPackets.Inventory.EquipmentSubPacket),
+            });
+
+            var packet = (ServerPackets.Inventory.EquipPacket)deserializer.Deserialize("equip 75 35");
+
+            Assert.IsNotNull(packet.WeaponUpgradeRareSubPacket);
+            Assert.AreEqual((byte)7, packet.WeaponUpgradeRareSubPacket!.Upgrade);
+            Assert.AreEqual((sbyte)5, packet.WeaponUpgradeRareSubPacket.Rare);
+            Assert.IsNotNull(packet.ArmorUpgradeRareSubPacket);
+            Assert.AreEqual((byte)3, packet.ArmorUpgradeRareSubPacket!.Upgrade);
+            Assert.AreEqual((sbyte)5, packet.ArmorUpgradeRareSubPacket.Rare);
+        }
     }
 }
