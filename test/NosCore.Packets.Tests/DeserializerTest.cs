@@ -418,6 +418,35 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
+        public void PacketWithListOfSubPacketsWithoutPerPropertySeparatorsSplitsCorrectly()
+        {
+            // ClinitPacket is `[PacketListIndex(0, SpecialSeparator = "|")]` over
+            // ClinitSubPacket whose five properties don't decorate their own
+            // SpecialSeparator. Prior to 17.1.0 the list-of-sub-packets path
+            // fell back to "." when looking for each field boundary, which
+            // wasn't present, so the full sub-packet was appended once per
+            // property — yielding "X|..X|..X|..X|..X|.." that then failed to parse.
+            var deserializer = new Deserializer(new[]
+            {
+                typeof(ClinitPacket),
+                typeof(ClinitSubPacket),
+            });
+
+            var packet = (ClinitPacket)deserializer.Deserialize(
+                "clinit 5130502|99|68|547|Trippybell 7170218|99|94|325|Hamu");
+
+            Assert.IsNotNull(packet.SubPackets);
+            Assert.HasCount(2, packet.SubPackets!);
+            Assert.AreEqual(5130502L, packet.SubPackets[0]!.CharacterId);
+            Assert.AreEqual((byte)99, packet.SubPackets[0]!.Level);
+            Assert.AreEqual((byte)68, packet.SubPackets[0]!.HeroLevel);
+            Assert.AreEqual(547, packet.SubPackets[0]!.Compliment);
+            Assert.AreEqual("Trippybell", packet.SubPackets[0]!.CharacterName);
+            Assert.AreEqual(7170218L, packet.SubPackets[1]!.CharacterId);
+            Assert.AreEqual("Hamu", packet.SubPackets[1]!.CharacterName);
+        }
+
+        [TestMethod]
         public void PacketWithEmptySpecialSeparatorSplitsEachCharIntoField()
         {
             // UpgradeRareSubPacket has two fields (Upgrade, Rare). The wire joins
