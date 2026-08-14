@@ -11737,5 +11737,65 @@ namespace NosCore.Packets.Enumerations
         // A party member's level is too low to continue.
         // <summary>
         APartyMemberSLevelIs = 2850,
+        // <summary>
+        // Destroy all the pillars by attacking them with the opposite element.
+        // <summary>
+        DestroyAllThePillarsByAttacking = 2851,
+        // <summary>
+        // Dodge the meteors! Try to avoid being hit as far as possible.
+        // <summary>
+        DodgeTheMeteorsTryToAvoid = 2852,
+        // <summary>
+        // Purify the twisted heroes!
+        // <summary>
+        PurifyTheTwistedHeroes = 2853,
+        // <summary>
+        // If you fail to purify them, everything is lost.
+        // <summary>
+        IfYouFailToPurifyThem = 2854,
+        // <summary>
+        // Defeat all mini-bosses. Only the opposite element can deal damage to them.
+        // <summary>
+        DefeatAllMiniBossesOnlyThe = 2855,
+        // <summary>
+        // Celine, Grand Master of the Petal Knights
+        // <summary>
+        CelineGrandMasterOfThePetal = 2856,
+        // <summary>
+        // Unequip the amulet first, then you can use the scroll for betting.
+        // <summary>
+        UnequipTheAmuletFirstThenYou = 2857,
+        // <summary>
+        // The shell engraving can only be applied to champion level equipment.
+        // <summary>
+        TheShellEngravingCanOnlyBe = 2861,
+        // <summary>
+        // That is someone else's exclusive item. Shell upgrades can only be performed on your own exclusive items.
+        // <summary>
+        ThatIsSomeoneElseSExclusive = 2862,
+        // <summary>
+        // The shell engraving is complete.
+        // <summary>
+        TheShellEngravingIsComplete = 2863,
+        // <summary>
+        // The effect stats could not be re-rolled.
+        // <summary>
+        TheEffectStatsCouldNotBe = 2864,
+        // <summary>
+        // Chat is accessible from rank NosBlue or level 65+.
+        // <summary>
+        ChatIsAccessibleFromRankNosBlue = 2865,
+        // <summary>
+        // This item can be used from rank NosBlue or level 65+.
+        // <summary>
+        ThisItemCanBeUsedFrom = 2866,
+        // <summary>
+        // NosMates can be summoned from rank NosBlue or level 65+.
+        // <summary>
+        NosMatesCanBeSummonedFromRank = 2867,
+        // <summary>
+        // Defeat all mini-bosses.
+        // <summary>
+        DefeatAllMiniBosses = 2868,
     }
 }
