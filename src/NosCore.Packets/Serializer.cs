@@ -271,10 +271,6 @@ namespace NosCore.Packets
                 incrementExpr = Expression.Constant(!isFromList || !isOptionalSerie);
             }
 
-            // A null sub-packet is written as -1, and it has to carry the same leading separator
-            // the non-null path gets from the discriminator. Without it the -1 is glued to the
-            // field before it and the client cannot split the packet into fields at all:
-            //     sc_n ... 1536-1-1-1 -1 ...   instead of   sc_n ... 1536 -1 -1 -1 ...
             return Expression.Condition(
                 Expression.Equal(specificTypeExpression, Expression.Constant(null, typeof(object))),
                 Expression.Constant(indexAttr.IsOptional ? null : $"{discriminator}-1", typeof(object)),
