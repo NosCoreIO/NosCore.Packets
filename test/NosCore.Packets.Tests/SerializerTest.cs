@@ -80,6 +80,7 @@ namespace NosCore.Packets.Tests
                 typeof(MallPacket),
                 typeof(FtptPacket),
                 typeof(ScpIndicatorPacket),
+                typeof(ScnPacket),
                 typeof(EsfPacket),
                 typeof(SopenPacket),
                 typeof(StbmPacket),
