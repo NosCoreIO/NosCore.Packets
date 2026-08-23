@@ -273,7 +273,7 @@ namespace NosCore.Packets
 
             return Expression.Condition(
                 Expression.Equal(specificTypeExpression, Expression.Constant(null, typeof(object))),
-                Expression.Constant(indexAttr.IsOptional ? null : $"{discriminator}-1", typeof(object)),
+                Expression.Constant(indexAttr.IsOptional ? null : "-1", typeof(object)),
                 Expression.Convert(propExp, typeof(object))
             );
         }
