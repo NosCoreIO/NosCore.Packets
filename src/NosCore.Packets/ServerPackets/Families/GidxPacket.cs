@@ -20,8 +20,8 @@ namespace NosCore.Packets.ServerPackets.Families
         [PacketIndex(1)]
         public long VisualId { get; set; }
 
-        [PacketIndex(2, SpecialSeparator = ".")]
-        public GidxFamilySubPacket? FamilyIdentifier { get; set; }
+        [PacketIndex(2)]
+        public long? FamilyId { get; set; }
 
         [PacketIndex(3)]
         public string? FamilyName { get; set; }

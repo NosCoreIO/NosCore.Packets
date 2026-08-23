@@ -42,7 +42,7 @@ namespace NosCore.Packets.ServerPackets.Mates
         [PacketIndex(8, SpecialSeparator = ".")]
         public ScEquipmentDetails? GauntletInstanceDetails { get; set; }
 
-        [PacketIndex(9)]
+        [PacketIndex(9, SpecialSeparator = ".")]
         public ScEquipmentDetails? BootsInstanceDetails { get; set; }
 
         [PacketIndex(10)]

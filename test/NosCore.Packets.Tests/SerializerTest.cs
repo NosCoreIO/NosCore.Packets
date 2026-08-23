@@ -34,6 +34,7 @@ using NosCore.Packets.ServerPackets.Visibility;
 using NosCore.Shared.Enumerations;
 using System.Collections.Generic;
 using System.Linq;
+using ServerGidxPacket = NosCore.Packets.ServerPackets.Families.GidxPacket;
 
 namespace NosCore.Packets.Tests
 {
@@ -519,24 +520,39 @@ namespace NosCore.Packets.Tests
                 packet);
         }
 
+        // gidx exists on both sides with different shapes, and the serializer keys on the simple
+        // type name, so the server one needs its own instance.
+        private static readonly ISerializer ServerSerializer =
+            new Serializer(new[] { typeof(ServerGidxPacket) });
+
         [TestMethod]
-        public void SerializeWithNullSubPacketKeepsTheSeparator()
+        public void SerializeGidxWithoutFamily()
         {
-            var packet = Serializer.Serialize(new ScnPacket
+            var packet = ServerSerializer.Serialize(new ServerGidxPacket
             {
-                PetId = 1,
-                NpcMonsterVNum = 319,
-                TransportId = 26719,
-                Level = 50,
-                Loyalty = 1000,
-                Experience = 1536,
-                WeaponInstanceDetails = new ScnPacket.ScEquipmentDetails { ItemId = 990 },
-                Name = "Kliff",
-                MorphId = -1
+                VisualType = VisualType.Player,
+                VisualId = 741328,
+                FamilyId = null,
+                FamilyName = "-",
+                FamilyLevel = 0
             });
 
-            Assert.IsTrue(packet.StartsWith("sc_n 1 319 26719 50 1000 1536 990.0.0 -1 -1 -1 "),
-                $"the -1 of a null sub-packet must not be glued to the field before it: {packet}");
+            Assert.AreEqual("gidx 1 741328 -1 - 0 ", packet);
+        }
+
+        [TestMethod]
+        public void SerializeGidxWithFamily()
+        {
+            var packet = ServerSerializer.Serialize(new ServerGidxPacket
+            {
+                VisualType = VisualType.Player,
+                VisualId = 741328,
+                FamilyId = 5052,
+                FamilyName = "-Nemesis-",
+                FamilyLevel = 7
+            });
+
+            Assert.AreEqual("gidx 1 741328 5052 -Nemesis- 7 ", packet);
         }
 
         [TestMethod]
