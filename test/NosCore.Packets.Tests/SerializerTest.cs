@@ -80,6 +80,7 @@ namespace NosCore.Packets.Tests
                 typeof(MallPacket),
                 typeof(FtptPacket),
                 typeof(ScpIndicatorPacket),
+                typeof(ScnPacket),
                 typeof(EsfPacket),
                 typeof(SopenPacket),
                 typeof(StbmPacket),
@@ -516,6 +517,26 @@ namespace NosCore.Packets.Tests
             Assert.AreEqual(
                 "qslot 0 7.7.-1 7.7.-1",
                 packet);
+        }
+
+        [TestMethod]
+        public void SerializeWithNullSubPacketKeepsTheSeparator()
+        {
+            var packet = Serializer.Serialize(new ScnPacket
+            {
+                PetId = 1,
+                NpcMonsterVNum = 319,
+                TransportId = 26719,
+                Level = 50,
+                Loyalty = 1000,
+                Experience = 1536,
+                WeaponInstanceDetails = new ScnPacket.ScEquipmentDetails { ItemId = 990 },
+                Name = "Kliff",
+                MorphId = -1
+            });
+
+            Assert.IsTrue(packet.StartsWith("sc_n 1 319 26719 50 1000 1536 990.0.0 -1 -1 -1 "),
+                $"the -1 of a null sub-packet must not be glued to the field before it: {packet}");
         }
 
         [TestMethod]
