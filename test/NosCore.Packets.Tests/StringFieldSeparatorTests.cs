@@ -9,7 +9,10 @@ using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 using NosCore.Packets.ServerPackets.Mates;
+using NosCore.Packets.ServerPackets.Groups;
+using NosCore.Packets.ServerPackets.Miniland;
 using NosCore.Packets.ServerPackets.Visibility;
+using System.Collections.Generic;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.Tests
@@ -41,7 +44,8 @@ namespace NosCore.Packets.Tests
             new Serializer(new[]
             {
                 typeof(SeparatorProbePacket), typeof(DottedProbePacket),
-                typeof(ScpPacket), typeof(ScnPacket), typeof(InPacket)
+                typeof(ScpPacket), typeof(ScnPacket), typeof(InPacket),
+                typeof(PinitPacket), typeof(MlintroPacket), typeof(MlInfoBrPacket)
             });
 
         [TestMethod]
@@ -97,6 +101,33 @@ namespace NosCore.Packets.Tests
             });
             StringAssert.Contains(inp, "Joyeux^Mouton");
             Assert.IsFalse(inp.Contains("Joyeux Mouton"));
+        }
+
+        [TestMethod]
+        public void AStringInsideASubPacketEscapesTheOuterSeparatorToo()
+        {
+            // Its own separator is "|", but the sub-packet sits inside a space-separated field,
+            // so an unescaped space here splits the packet above it.
+            Assert.AreEqual("pinit 0 0|0|1|10|Joyeux^Mouton|0|0|0|0|0|0",
+                Serializer.Serialize(new PinitPacket
+                {
+                    PinitSubPackets = new List<PinitSubPacket?>
+                    {
+                        new() { GroupPosition = 1, Name = "Joyeux Mouton", Level = 10 }
+                    }
+                }));
+        }
+
+        [TestMethod]
+        public void AFieldThatOptsInIsEscapedEvenThoughItIsLast()
+        {
+            // Nothing would break without it - the client simply expects these encoded.
+            Assert.AreEqual("mlintro Bienvenue^chez^moi",
+                Serializer.Serialize(new MlintroPacket { Intro = "Bienvenue chez moi" }));
+
+            StringAssert.Contains(
+                Serializer.Serialize(new MlInfoBrPacket { Name = "Bob", MinilandMessage = "hello there" }),
+                "hello^there");
         }
     }
 }

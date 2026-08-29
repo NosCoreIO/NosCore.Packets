@@ -27,7 +27,7 @@ namespace NosCore.Packets.ServerPackets.Miniland
         [PacketIndex(4)]
         public byte Unknown2 { get; set; }
 
-        [PacketIndex(5)]
+        [PacketIndex(5, EscapeSpaces = true)]
         public string? MinilandMessage { get; set; }
     }
 }

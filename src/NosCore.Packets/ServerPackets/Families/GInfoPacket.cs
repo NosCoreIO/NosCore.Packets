@@ -66,7 +66,7 @@ namespace NosCore.Packets.ServerPackets.Families
         /// <summary>
         ///     Should replace ' ' by '^'
         /// </summary>
-        [PacketIndex(16)]
+        [PacketIndex(16, EscapeSpaces = true)]
         public string? FamilyMessage { get; set; }
     }
 }

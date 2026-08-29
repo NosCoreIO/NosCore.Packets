@@ -85,13 +85,24 @@ namespace NosCore.Packets
         // ordinary property declares no special separator, so escaping against that one left
         // every plain space-separated string free to split its own field in two.
         private Expression StringSerializer(Expression exp, bool isLastIndex, bool isOptional, Expression splitter,
-            Expression escapeSeparator)
+            Expression escapeSeparator, bool isNested, bool escapeSpaces)
         {
-            var replace = Expression.Call(exp,
-                typeof(string).GetMethod("Replace", new[] { typeof(string), typeof(string) })!,
+            var replaceMethod = typeof(string).GetMethod("Replace", new[] { typeof(string), typeof(string) })!;
+
+            // A nested value sits inside a field of the packet above it, so its own separator is
+            // not the only one it can break: a space in a sub-packet splits the outer field.
+            Expression escaped = Expression.Call(exp, replaceMethod,
                 Expression.Convert(escapeSeparator, typeof(string)),
-                Expression.Constant("^", typeof(string))
-            );
+                Expression.Constant("^", typeof(string)));
+
+            if (isNested || escapeSpaces)
+            {
+                escaped = Expression.Call(escaped, replaceMethod,
+                    Expression.Constant(" ", typeof(string)),
+                    Expression.Constant("^", typeof(string)));
+            }
+
+            var replace = escaped;
 
             var nullOrEmpty = Expression.Call(null,
                 typeof(string).GetMethod("IsNullOrEmpty", new[] { typeof(string) })!,
@@ -104,7 +115,7 @@ namespace NosCore.Packets
                 ConcatExpression(splitter,
                     Expression.Condition(nullOrEmpty,
                         Expression.Convert(exp, typeof(object)),
-                        Expression.Convert(isLastIndex ? exp : replace, typeof(object))))
+                        Expression.Convert(isLastIndex && !escapeSpaces ? exp : replace, typeof(object))))
             );
         }
 
@@ -261,7 +272,8 @@ namespace NosCore.Packets
                             Expression.Constant(index.SpecialSeparator, typeof(object))),
                         index.SpecialSeparator != null
                             ? Expression.Constant(index.SpecialSeparator, typeof(object))
-                            : splitter)
+                            : splitter,
+                        isFromList)
                     , typeof(object));
 
                 var trimfirst = Expression.Condition(
@@ -309,7 +321,8 @@ namespace NosCore.Packets
         }
 
         private Expression PropertySerializer(Expression injectedPacket, PacketIndexAttribute indexAttr, Type type,
-            Expression specificTypeExpression, int maxIndex, Expression propertySplitter, Expression escapeSeparator)
+            Expression specificTypeExpression, int maxIndex, Expression propertySplitter, Expression escapeSeparator,
+            bool isNested = false)
         {
             var useCustomSerializer = true;
             switch (type)
@@ -336,7 +349,8 @@ namespace NosCore.Packets
                 //handle string
                 case var t when t == typeof(string):
                     specificTypeExpression = StringSerializer(specificTypeExpression, indexAttr.Index == maxIndex,
-                        indexAttr.IsOptional, propertySplitter, escapeSeparator);
+                        indexAttr.IsOptional, propertySplitter, escapeSeparator, isNested,
+                        indexAttr.EscapeSpaces);
                     break;
                 //IPacket declared type
                 case var t when typeof(IPacket).IsAssignableFrom(t) && (t != typeof(IPacket)):
