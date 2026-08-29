@@ -12,7 +12,7 @@ namespace NosCore.Packets.ServerPackets.Miniland
     [PacketHeader("mlintro", Scope.InGame)]
     public class MlintroPacket : PacketBase
     {
-        [PacketIndex(0)]
+        [PacketIndex(0, EscapeSpaces = true)]
         public string? Intro { get; set; }
     }
 }

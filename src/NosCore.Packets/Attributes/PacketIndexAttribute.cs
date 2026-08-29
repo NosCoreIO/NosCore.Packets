@@ -31,5 +31,12 @@ namespace NosCore.Packets.Attributes
         public bool RemoveHeader { get; set; }
 
         public bool RemoveHash { get; set; }
+
+        /// <summary>
+        ///     Encode spaces as "^" even when nothing would break without it. The last field of a
+        ///     packet keeps its spaces by default, which is what chat lines need; a few fields
+        ///     carry text the client expects "^"-encoded regardless of where they sit.
+        /// </summary>
+        public bool EscapeSpaces { get; set; }
     }
 }
