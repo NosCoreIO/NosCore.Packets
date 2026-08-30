@@ -119,5 +119,21 @@ namespace NosCore.Packets.Tests
                 Serializer.Serialize(new MlInfoBrPacket { Name = "Bob", MinilandMessage = "hello there" }),
                 "hello^there");
         }
+
+        [TestMethod]
+        public void ASubPacketFieldIsNotTreatedAsLastBecauseTheParentEndsThere()
+        {
+            // InNonPlayerSubPacket.Name is index 9, and so is the sub-packet on InPacket, so
+            // the name used to inherit the parent's last-field exemption and keep its spaces.
+            var wire = Serializer.Serialize(new InPacket
+            {
+                VisualType = VisualType.Npc,
+                VNum = "333",
+                VisualId = 2000001,
+                InNonPlayerSubPacket = new InNonPlayerSubPacket { Name = "Joyeux Mouton" }
+            });
+
+            StringAssert.Contains(wire, "Joyeux^Mouton");
+        }
     }
 }
