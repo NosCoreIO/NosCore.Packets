@@ -4,7 +4,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ServerPackets.Event
 {
     [PacketHeader("evnt", Scope.InGame)]
-    public class EventPacket
+    public class EventPacket : PacketBase
     {
         [PacketIndex(0)]
         public EventPacketType Type { get; set; }

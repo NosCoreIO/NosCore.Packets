@@ -243,9 +243,11 @@
 - [cancel](../src/NosCore.Packets/ServerPackets/Battle/CancelPacket.cs) *InGame*
 - [ct](../src/NosCore.Packets/ServerPackets/Battle/CtPacket.cs) *InGame*
 - [die](../src/NosCore.Packets/ServerPackets/Battle/DiePacket.cs) *InGame*
+- [dm](../src/NosCore.Packets/ServerPackets/Battle/DmPacket.cs) *InGame*
 - [ms_c](../src/NosCore.Packets/ServerPackets/Battle/MscPacket.cs) *InGame*
 - [mslot](../src/NosCore.Packets/ServerPackets/Battle/MslotPacket.cs) *InGame*
 - [rank_cool](../src/NosCore.Packets/ServerPackets/Battle/RankCoolPacket.cs) *InGame*
+- [rc](../src/NosCore.Packets/ServerPackets/Battle/RcPacket.cs) *InGame*
 - [revive](../src/NosCore.Packets/ServerPackets/Battle/RevivePacket.cs) *InGame*
 - [sr](../src/NosCore.Packets/ServerPackets/Battle/SkillResetPacket.cs) *InGame*
 - [su](../src/NosCore.Packets/ServerPackets/Battle/SuPacket.cs) *InGame*
@@ -298,6 +300,8 @@
 - [dg](../src/NosCore.Packets/ServerPackets/Event/DgPacket.cs) *InGame*
 - [esf](../src/NosCore.Packets/ServerPackets/Event/EsfPacket.cs) *InGame*
 - [evtb](../src/NosCore.Packets/ServerPackets/Event/EventbPacket.cs) *InGame*
+- [evnt](../src/NosCore.Packets/ServerPackets/Event/EventPacket.cs) *InGame*
+- [fbt](../src/NosCore.Packets/ServerPackets/Event/FbtPacket.cs) *InGame*
 - [raidbf](../src/NosCore.Packets/ServerPackets/Event/RaidbfPacket.cs) *InGame*
 - [raidopen](../src/NosCore.Packets/ServerPackets/Event/RaidopenPacket.cs) *InGame*
 - [raid](../src/NosCore.Packets/ServerPackets/Event/RaidPacket.cs) *InGame*
@@ -414,7 +418,6 @@
 - [npinfo](../src/NosCore.Packets/ServerPackets/Player/NpInfoPacket.cs) *InGame*
 - [p_sex](../src/NosCore.Packets/ServerPackets/Player/PSexPacket.cs) *InGame*
 - [rage](../src/NosCore.Packets/ServerPackets/Player/RagePacket.cs) *InGame*
-- [rc](../src/NosCore.Packets/ServerPackets/Player/RcPacket.cs) *InGame*
 - [rsfi](../src/NosCore.Packets/ServerPackets/Player/RsfiPacket.cs) *InGame*
 - [sc](../src/NosCore.Packets/ServerPackets/Player/ScPacket.cs) *InGame*
 - [scr](../src/NosCore.Packets/ServerPackets/Player/ScrPacket.cs) *InGame*
