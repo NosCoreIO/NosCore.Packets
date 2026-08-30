@@ -34,9 +34,6 @@ namespace NosCore.Packets.Tests
         [PacketIndex(2)] public int After { get; set; }
     }
 
-    // A value that contains the field separator used to split its own field in two and shift
-    // every field after it. The escaping existed but was aimed at SpecialSeparator, which an
-    // ordinary property never declares.
     [TestClass]
     public class StringFieldSeparatorTests
     {
@@ -58,7 +55,6 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void TheLastFieldKeepsItsSpaces()
         {
-            // Nothing follows it, so nothing can shift - and chat lines rely on this.
             Assert.AreEqual("tstsep 1 - 2 hello there",
                 Serializer.Serialize(new SeparatorProbePacket { Before = 1, After = 2, Last = "hello there" }));
         }
@@ -85,9 +81,6 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void TheSameHoldsForTheOtherPacketsThatCarryAName()
         {
-            // ScnPacket.Name is index 36 of more, InPacket.Name is index 1 of many - neither is
-            // last, so both are escaped now. ScnPacket has said "Spaces should be replaced by ^"
-            // in a doc comment the whole time without anything enforcing it.
             var scn = Serializer.Serialize(new ScnPacket
             {
                 PetId = 1, NpcMonsterVNum = 333, Level = 15, Name = "Joyeux Mouton"
@@ -106,8 +99,6 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void AStringInsideASubPacketEscapesTheOuterSeparatorToo()
         {
-            // Its own separator is "|", but the sub-packet sits inside a space-separated field,
-            // so an unescaped space here splits the packet above it.
             Assert.AreEqual("pinit 0 0|0|1|10|Joyeux^Mouton|0|0|0|0|0|0",
                 Serializer.Serialize(new PinitPacket
                 {
@@ -121,7 +112,6 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void AFieldThatOptsInIsEscapedEvenThoughItIsLast()
         {
-            // Nothing would break without it - the client simply expects these encoded.
             Assert.AreEqual("mlintro Bienvenue^chez^moi",
                 Serializer.Serialize(new MlintroPacket { Intro = "Bienvenue chez moi" }));
 
