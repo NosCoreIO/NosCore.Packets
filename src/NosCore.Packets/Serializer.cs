@@ -18,7 +18,7 @@ namespace NosCore.Packets
     {
         private const string InjectionKey = "IPacketToInject";
 
-        private readonly Dictionary<string, Delegate> _packetSerializerDictionary = new Dictionary<string, Delegate>();
+        private readonly Dictionary<Type, Delegate> _packetSerializerDictionary = new Dictionary<Type, Delegate>();
 
 
         public Serializer(IEnumerable<Type> types)
@@ -35,23 +35,14 @@ namespace NosCore.Packets
             var packetSerializerExpressionFalse = PacketSerializerExpression<T>();
             if (packetSerializerExpressionFalse != null)
             {
-                if (_packetSerializerDictionary.ContainsKey(typeof(T).Name))
-                {
-                    if (typeof(T).Namespace!.Contains("ClientPackets"))
-                    {
-                        return;
-                    }
-
-                    _packetSerializerDictionary.Remove(typeof(T).Name);
-                }
-                _packetSerializerDictionary.Add(typeof(T).Name, packetSerializerExpressionFalse.Compile());
+                _packetSerializerDictionary[typeof(T)] = packetSerializerExpressionFalse.Compile();
             }
         }
 
         public string Serialize(IPacket packet)
         {
             var realType = packet.GetType();
-            var deg = _packetSerializerDictionary[packet.GetType().Name];
+            var deg = _packetSerializerDictionary[packet.GetType()];
             var fullString = (string)deg.DynamicInvoke(packet, false)!;
             if (fullString.Contains(InjectionKey))
             {
@@ -63,7 +54,7 @@ namespace NosCore.Packets
                     fullString = fullString
                         .Remove(place, InjectionKey.Length)
                         .Insert(place,
-                            (string)_packetSerializerDictionary[value!.GetType().Name].DynamicInvoke(value, true)!);
+                            (string)_packetSerializerDictionary[value!.GetType()].DynamicInvoke(value, true)!);
                 }
             }
 
