@@ -4,7 +4,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ServerPackets.Event
 {
     [PacketHeader("fbt", Scope.InGame)]
-    public class FbtPacket
+    public class FbtPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Type { get; set; }

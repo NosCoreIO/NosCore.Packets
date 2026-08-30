@@ -82,6 +82,19 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
+        public void EveryPacketHeaderIsSendable()
+        {
+            var notSendable = typeof(UnresolvedPacket).Assembly.GetTypes()
+                .Where(s => s.GetCustomAttribute<PacketHeaderAttribute>() != null)
+                .Where(s => !typeof(IPacket).IsAssignableFrom(s))
+                .Select(s => s.FullName!)
+                .OrderBy(s => s)
+                .ToList();
+            Assert.AreEqual(0, notSendable.Count,
+                $"not an IPacket, so Serializer.Serialize refuses them: {string.Join(", ", notSendable)}");
+        }
+
+        [TestMethod]
         public void ClientPacketHeadersShouldBeUnique()
         {
             var clientPackets = GetPacketsWithinNamespace("ClientPackets")
