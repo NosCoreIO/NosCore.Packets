@@ -80,21 +80,16 @@ namespace NosCore.Packets
             return ConcatExpression(splitter, specificTypeExpression);
         }
 
-        // escapeSeparator is the separator this field is joined to the packet with, which is
-        // what a value has to avoid containing. It is not the same expression as splitter: an
-        // ordinary property declares no special separator, so escaping against that one left
-        // every plain space-separated string free to split its own field in two.
         private Expression StringSerializer(Expression exp, bool isLastIndex, bool isOptional, Expression splitter,
             Expression escapeSeparator, bool isNested, bool escapeSpaces)
         {
             var replaceMethod = typeof(string).GetMethod("Replace", new[] { typeof(string), typeof(string) })!;
 
-            // A nested value sits inside a field of the packet above it, so its own separator is
-            // not the only one it can break: a space in a sub-packet splits the outer field.
             Expression escaped = Expression.Call(exp, replaceMethod,
                 Expression.Convert(escapeSeparator, typeof(string)),
                 Expression.Constant("^", typeof(string)));
 
+            // A nested value also sits inside a field of the packet above it.
             if (isNested || escapeSpaces)
             {
                 escaped = Expression.Call(escaped, replaceMethod,
