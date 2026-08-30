@@ -1054,13 +1054,15 @@ namespace NosCore.Packets.Tests
         {
             var p = new EffObPacket
             {
-                ExtraSpace = string.Empty,
-                MapX = -1,
-                MapY = -1,
-                Unknown = 0,
-                EffectId = 4269
+                VisualType = VisualType.Player,
+                VisualId = 2,
+                IsVisible = true,
+                EffectId = 4430
             };
-            Assert.AreEqual("eff_ob  -1 -1 0 4269", Serializer.Serialize(p));
+            Assert.AreEqual("eff_ob 1 2 1 4430", Serializer.Serialize(p));
+
+            p.IsVisible = false;
+            Assert.AreEqual("eff_ob 1 2 0 4430", Serializer.Serialize(p));
         }
 
         [TestMethod]
