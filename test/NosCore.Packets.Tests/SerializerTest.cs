@@ -104,8 +104,24 @@ namespace NosCore.Packets.Tests
                 typeof(Stp2Packet),
                 typeof(TbfPacket),
                 typeof(QrPacket),
-                typeof(SqstPacket)
+                typeof(SqstPacket),
+                typeof(EInfoNpcMonsterPacket)
             });
+
+        // The monster name ends the line, and a last field keeps its spaces unless it asks not
+        // to. 929 of the 1109 monster-info lines in a capture carry a name with a space in it.
+        [TestMethod]
+        public void SerializeEInfoNpcMonsterPacketEscapesTheName()
+        {
+            var testPacket = new EInfoNpcMonsterPacket
+            {
+                Unknown = -1,
+                Name = "Fire Cannoneer"
+            };
+
+            var packet = Serializer.Serialize(testPacket);
+            Assert.IsTrue(packet.EndsWith("-1 Fire^Cannoneer"), packet);
+        }
 
         [TestMethod]
         public void AllPacketsAreSerializable()
