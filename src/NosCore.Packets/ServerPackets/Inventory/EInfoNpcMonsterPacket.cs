@@ -92,7 +92,7 @@ namespace NosCore.Packets.ServerPackets.Inventory
         [PacketIndex(24)]
         public int Unknown { get; set; } = -1;
 
-        [PacketIndex(25)]
+        [PacketIndex(25, EscapeSpaces = true)]
         public string? Name { get; set; }
     }
 }
