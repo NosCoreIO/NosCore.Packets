@@ -522,7 +522,7 @@
 ### Warehouse
 - [f_stash_all](../src/NosCore.Packets/ServerPackets/Warehouse/FStashAllPacket.cs) *InGame*
 - [f_stash](../src/NosCore.Packets/ServerPackets/Warehouse/FStashClientPacket.cs) *InGame*
-- [p_stash_all](../src/NosCore.Packets/ServerPackets/Warehouse/PStashAllPacket.cs) *InGame*
-- [p_stash](../src/NosCore.Packets/ServerPackets/Warehouse/PStashClientPacket.cs) *InGame*
+- [pstash_all](../src/NosCore.Packets/ServerPackets/Warehouse/PStashAllPacket.cs) *InGame*
+- [pstash](../src/NosCore.Packets/ServerPackets/Warehouse/PStashClientPacket.cs) *InGame*
 - [stash_all](../src/NosCore.Packets/ServerPackets/Warehouse/StashAllPacket.cs) *InGame*
 - [stash](../src/NosCore.Packets/ServerPackets/Warehouse/StashClientPacket.cs) *InGame*
