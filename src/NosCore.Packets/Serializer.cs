@@ -368,7 +368,13 @@ namespace NosCore.Packets
                         header = " ";
                     }
 
-                    specificTypeExpression = PacketSerializer(injectedPacket, indexAttr, specificTypeExpression, t, maxIndex,
+                    // A sub-packet's fields are numbered from its own zero, so the parent's
+                    // maxIndex would mark whichever field happens to share that number as last.
+                    var subMaxIndex = t.GetProperties()
+                        .SelectMany(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>())
+                        .Select(x => x.Index).DefaultIfEmpty(0).Max();
+
+                    specificTypeExpression = PacketSerializer(injectedPacket, indexAttr, specificTypeExpression, t, subMaxIndex,
                         propertySplitter, indexAttr.RemoveHeader ? "" : header ?? "");
                     break;
                 case var t when t == typeof(IPacket):
