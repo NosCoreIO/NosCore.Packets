@@ -47,15 +47,9 @@ namespace NosCore.Packets.Tests
         private static string SnapshotDirectory => Path.Combine(
             Directory.GetCurrentDirectory(), "..", "..", "..");
 
-        // Serializer keys _packetSerializerDictionary by typeof(T).Name - the SIMPLE
-        // name - so two packets sharing a class name across namespaces overwrite each
-        // other, and Initialize resolves the clash by letting the non-ClientPackets one
-        // win. Serializing the loser then invokes the winner's delegate and throws
-        // ArgumentException. Each server currently registers a filtered subset of packet
-        // types, which is why this has not bitten in production.
-        //
-        // Pinned rather than fixed here: generated per-type methods cannot collide by
-        // simple name, so porting to the generator removes the failure mode outright.
+        // Ten packet class names exist in both a ClientPackets and a ServerPackets
+        // namespace. The serializer registry is keyed by Type, so both variants keep
+        // their own delegate; this pin only guards against new accidental duplicates.
         private static readonly string[] KnownSimpleNameCollisions =
         {
             "BpmPacket", "DropPacket", "FamilyDismissPacket", "GidxPacket", "GuriPacket",
@@ -63,7 +57,7 @@ namespace NosCore.Packets.Tests
         };
 
         [TestMethod]
-        public void OnlyTheKnownSimpleNameCollisionsFailToSerialize()
+        public void EveryPacketSerializes()
         {
             var failures = new List<string>();
 
@@ -75,18 +69,13 @@ namespace NosCore.Packets.Tests
                 }
                 catch (Exception ex)
                 {
-                    failures.Add($"{type.Name}: {ex.GetType().Name} {ex.Message}");
+                    failures.Add($"{type.FullName}: {ex.GetType().Name} {ex.Message}");
                 }
             }
 
-            var unexpected = failures
-                .Where(f => !KnownSimpleNameCollisions.Any(known =>
-                    f.StartsWith(known + ":", StringComparison.Ordinal)))
-                .ToList();
-
-            Assert.AreEqual(0, unexpected.Count,
-                $"{unexpected.Count} packets threw for a reason other than the known name " +
-                $"collisions:{Environment.NewLine}{string.Join(Environment.NewLine, unexpected)}");
+            Assert.AreEqual(0, failures.Count,
+                $"{failures.Count} packets failed to serialize:" +
+                $"{Environment.NewLine}{string.Join(Environment.NewLine, failures)}");
         }
 
         [TestMethod]
@@ -107,11 +96,15 @@ namespace NosCore.Packets.Tests
 
         // Two seeds per packet: one exercises the populated path, the other shifts every
         // value so an off-by-one in separator or optional-run handling cannot hide behind
-        // a coincidence.
+        // a coincidence. Colliding simple names are disambiguated by namespace so each
+        // snapshot line maps to exactly one type.
         private static IEnumerable<string> Corpus()
         {
             foreach (var type in PacketCorpus.PacketTypes)
             {
+                var id = KnownSimpleNameCollisions.Contains(type.Name)
+                    ? $"{type.Namespace}.{type.Name}"
+                    : type.Name;
                 foreach (var seed in new[] { 1, 7 })
                 {
                     string result;
@@ -124,7 +117,7 @@ namespace NosCore.Packets.Tests
                         result = $"<<THREW {ex.GetType().Name}>>";
                     }
 
-                    yield return $"{type.Name}#{seed} => {result}";
+                    yield return $"{id}#{seed} => {result}";
                 }
             }
         }
