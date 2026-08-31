@@ -41,6 +41,13 @@ namespace NosCore.Packets
 
         public string Serialize(IPacket packet)
         {
+            // Generated writers cover the flat packets; everything with a list, a sub-packet or
+            // an injected one still goes through the compiled expression tree below.
+            if (Generated.PacketWriters.TryWrite(packet, out var generated))
+            {
+                return generated;
+            }
+
             var realType = packet.GetType();
             var deg = _packetSerializerDictionary[packet.GetType()];
             var fullString = (string)deg.DynamicInvoke(packet, false)!;
