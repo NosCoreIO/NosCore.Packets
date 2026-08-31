@@ -1,24 +1,23 @@
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Map
 {
     [PacketHeader("eff_ob", Scope.InGame)]
     public class EffObPacket : PacketBase
     {
+        // The client reads only the FIRST CHARACTER of this field.
         [PacketIndex(0)]
-        public string ExtraSpace { get; set; } = string.Empty;
+        public VisualType VisualType { get; set; }
 
         [PacketIndex(1)]
-        public short MapX { get; set; }
+        public long VisualId { get; set; }
 
         [PacketIndex(2)]
-        public short MapY { get; set; }
+        public bool IsVisible { get; set; }
 
         [PacketIndex(3)]
-        public byte Unknown { get; set; } //TODO to find
-
-        [PacketIndex(4)]
         public int EffectId { get; set; }
     }
 }
