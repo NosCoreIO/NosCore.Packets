@@ -10,6 +10,7 @@ using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 using NosCore.Packets.ServerPackets.Mates;
 using NosCore.Packets.ServerPackets.Groups;
+using NosCore.Packets.ServerPackets.Inventory;
 using NosCore.Packets.ServerPackets.Miniland;
 using NosCore.Packets.ServerPackets.Visibility;
 using System.Collections.Generic;
@@ -42,7 +43,8 @@ namespace NosCore.Packets.Tests
             {
                 typeof(SeparatorProbePacket), typeof(DottedProbePacket),
                 typeof(ScpPacket), typeof(ScnPacket), typeof(InPacket),
-                typeof(PinitPacket), typeof(MlintroPacket), typeof(MlInfoBrPacket)
+                typeof(PinitPacket), typeof(MlintroPacket), typeof(MlInfoBrPacket),
+                typeof(EInfoNpcMonsterPacket)
             });
 
         [TestMethod]
@@ -118,6 +120,10 @@ namespace NosCore.Packets.Tests
             StringAssert.Contains(
                 Serializer.Serialize(new MlInfoBrPacket { Name = "Bob", MinilandMessage = "hello there" }),
                 "hello^there");
+
+            StringAssert.Contains(
+                Serializer.Serialize(new EInfoNpcMonsterPacket { Name = "Mother Cuby" }),
+                "Mother^Cuby");
         }
 
         [TestMethod]
