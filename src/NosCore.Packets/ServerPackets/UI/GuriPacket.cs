@@ -29,5 +29,14 @@ namespace NosCore.Packets.ServerPackets.UI
 
         [PacketIndex(5, IsOptional = true)]
         public uint? SecondValue { get; set; }
+
+        [PacketIndex(6, IsOptional = true)]
+        public int? ThirdValue { get; set; }
+
+        [PacketIndex(7, IsOptional = true)]
+        public int? FourthValue { get; set; }
+
+        [PacketIndex(8, IsOptional = true)]
+        public int? FifthValue { get; set; }
     }
 }

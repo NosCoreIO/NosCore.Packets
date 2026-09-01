@@ -193,6 +193,28 @@ namespace NosCore.Packets.Tests
             Assert.AreEqual("guri 10 1 0 2", packet);
         }
 
+        [TestMethod]
+        [DataRow(17, 2, -1)]
+        [DataRow(2, 2, 17)]
+        public void SerializeForcedMovementGuriPacket(int movementValue, int fourthValue, int fifthValue)
+        {
+            var packet = new GuriPacket
+            {
+                Type = GuriPacketType.Script,
+                Argument = 1,
+                SecondArgument = 42,
+                EntityId = 12,
+                Value = 13,
+                SecondValue = 3,
+                ThirdValue = movementValue,
+                FourthValue = fourthValue,
+                FifthValue = fifthValue,
+            };
+
+            var serialized = Serializer.Serialize(packet);
+            Assert.AreEqual($"guri 3 1 42 12 13 3 {movementValue} {fourthValue} {fifthValue}", serialized);
+        }
+
 
         [TestMethod]
         public void SerializePacketWithNonPacketListNonSplitted()
