@@ -64,7 +64,7 @@ jobs:
 
     - name: Upload Release Asset
       if: steps.check-tag.outputs.match == 'true'
-      uses: softprops/action-gh-release@v3
+      uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3
       with:
         files: ${{ steps.build_artifact.outputs.ARTIFACT_PATH }}
       env:
