@@ -1889,7 +1889,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         AlreadyInYourParty = 455,
         // <summary>
-        // Congratulations! You have a further member to your party: %s<NEW_TYPE><0>
+        // Congratulations! You have a new party member: %s<NEW_TYPE><0>
         // <summary>
         [Game18NArguments(typeof(string))]
         SomeoneJoinGroup = 456,
@@ -7554,15 +7554,15 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         PhantomAppears = 1822,
         // <summary>
-        // The 18th Anniversary Buff is now active!
+        // The Anniversary Buff is now active!
         // <summary>
         AnniversaryBuffActivated = 1823,
         // <summary>
-        // The effect of the 18th Anniversary Medal is still active.
+        // The effect of the Anniversary Medal is still active.
         // <summary>
         AnniversaryMedalActivated = 1824,
         // <summary>
-        // The effect of the 17th Anniversary Medal is now over.
+        // The effect of the Anniversary Medal is now over.
         // <summary>
         AnniversaryMedalOver = 1825,
         // <summary>
@@ -11742,7 +11742,7 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         DestroyAllThePillarsByAttacking = 2851,
         // <summary>
-        // Dodge the meteors! Try to avoid being hit as far as possible.
+        // Dodge the meteors! Try to avoid being hit as much as possible.
         // <summary>
         DodgeTheMeteorsTryToAvoid = 2852,
         // <summary>
@@ -11797,5 +11797,24 @@ namespace NosCore.Packets.Enumerations
         // Defeat all mini-bosses.
         // <summary>
         DefeatAllMiniBosses = 2868,
+        // <summary>
+        // Family %s used a skill to increase fairy experience earned by its members.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(string))]
+        FamilyUsedSkillFairyExperience = 2869,
+        // <summary>
+        // Family %s used a skill to increase the chance of its members receiving an additional raid token.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(string))]
+        FamilyUsedSkillRaidToken = 2870,
+        // <summary>
+        // The medal has expired. Effect deactivated.
+        // <summary>
+        MedalExpired = 2871,
+        // <summary>
+        // %s has expired. Effect deactivated.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(string))]
+        HasExpiredEffectDeactivated = 2872,
     }
 }
