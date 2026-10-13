@@ -346,7 +346,15 @@ namespace NosCore.Packets
                 }
                 if (isMaxIndex && string.IsNullOrWhiteSpace(separator))
                 {
-                    length = (sbyte)(matches.Length - currentIndex);
+                    var remainingTokens = matches.Length - currentIndex;
+                    // Sub-packets whose fields are space-separated span several tokens each
+                    // (exc_list's "type slot amount"), so the item count is tokens / fields.
+                    var subPacketCreator = typeof(IPacket).IsAssignableFrom(subType) && remainingTokens > 0
+                        && !matches[currentIndex].Contains(packetIndexAttribute.SpecialSeparator ?? ".")
+                        ? _packetDeserializerDictionary.Values.FirstOrDefault(s => s.PacketType == subType)
+                        : null;
+                    var tokensPerItem = subPacketCreator == null ? 1 : subPacketCreator.PropertyAmount + 1;
+                    length = (sbyte)((remainingTokens + tokensPerItem - 1) / tokensPerItem);
                 }
 
                 if (!string.IsNullOrWhiteSpace(separator))

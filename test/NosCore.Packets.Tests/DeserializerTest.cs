@@ -5,6 +5,9 @@
 // -----------------------------------
 
 using NosCore.Packets.ClientPackets.Chat;
+using NosCore.Packets.ClientPackets.Exchanges;
+using NosCore.Packets.Attributes;
+using System.Reflection;
 using NosCore.Packets.ClientPackets.Inventory;
 using NosCore.Packets.ClientPackets.Login;
 using NosCore.Packets.ClientPackets.Movement;
@@ -63,6 +66,8 @@ namespace NosCore.Packets.Tests
                 typeof(CBListPacket),
                 typeof(CScalcPacket),
                 typeof(CreateFamilyPacket),
+                typeof(ExcListPacket),
+                typeof(ExcListSubPacket),
                 typeof(UnresolvedPacket)
             });
 
@@ -494,6 +499,37 @@ namespace NosCore.Packets.Tests
             Assert.IsNotNull(packet.ArmorUpgradeRareSubPacket);
             Assert.AreEqual((byte)3, packet.ArmorUpgradeRareSubPacket!.Upgrade);
             Assert.AreEqual((sbyte)5, packet.ArmorUpgradeRareSubPacket.Rare);
+        }
+
+        [TestMethod]
+        public void DeserializeSpaceSeparatedSubPacketListYieldsOneItemPerSubPacket()
+        {
+            var packet = (ExcListPacket)Deserializer.Deserialize("exc_list 21 44 10 53 21 2 87 55");
+            Assert.AreEqual(21, packet.Gold);
+            Assert.AreEqual(44, packet.BankGold);
+            Assert.HasCount(2, packet.SubPackets!);
+            Assert.AreEqual(PocketType.Raid, packet.SubPackets![0]!.PocketType);
+            Assert.AreEqual(53, packet.SubPackets[0]!.Slot);
+            Assert.AreEqual(21, packet.SubPackets[0]!.Amount);
+            Assert.AreEqual(PocketType.Etc, packet.SubPackets[1]!.PocketType);
+            Assert.AreEqual(87, packet.SubPackets[1]!.Slot);
+            Assert.AreEqual(55, packet.SubPackets[1]!.Amount);
+        }
+
+        [TestMethod]
+        public void DeserializeSpaceSeparatedSubPacketListWithASingleSubPacket()
+        {
+            var packet = (ExcListPacket)Deserializer.Deserialize("exc_list 5000 0 0 3 2");
+            Assert.HasCount(1, packet.SubPackets!);
+            Assert.AreEqual(3, packet.SubPackets![0]!.Slot);
+            Assert.AreEqual(2, packet.SubPackets[0]!.Amount);
+        }
+
+        [TestMethod]
+        public void ExchangeRequestIsAcceptedWhileTrading()
+        {
+            var scopes = typeof(ExchangeRequestPacket).GetCustomAttribute<PacketHeaderAttribute>()!.Scopes;
+            Assert.IsTrue(scopes.HasFlag(Scope.InTrade));
         }
     }
 }

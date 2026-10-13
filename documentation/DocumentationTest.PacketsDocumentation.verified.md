@@ -75,7 +75,7 @@
 - [treq](../src/NosCore.Packets/ClientPackets/Event/TreqPacket.cs) *InGame*
 
 ### Exchanges
-- [req_exc](../src/NosCore.Packets/ClientPackets/Exchanges/ExchangeRequestPacket.cs) *InGame*
+- [req_exc](../src/NosCore.Packets/ClientPackets/Exchanges/ExchangeRequestPacket.cs) *InTrade | InGame*
 - [exc_list](../src/NosCore.Packets/ClientPackets/Exchanges/ExcListPacket.cs) *InTrade | InGame*
 
 ### Families
