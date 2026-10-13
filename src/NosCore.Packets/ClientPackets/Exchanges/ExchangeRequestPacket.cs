@@ -10,7 +10,7 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Exchanges
 {
-    [PacketHeader("req_exc", Scope.InGame)]
+    [PacketHeader("req_exc", Scope.InGame | Scope.InTrade)]
     public class ExchangeRequestPacket : PacketBase
     {
         [PacketIndex(0)]
