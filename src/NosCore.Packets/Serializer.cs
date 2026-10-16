@@ -277,9 +277,11 @@ namespace NosCore.Packets
                 incrementExpr = Expression.Constant(!isFromList || !isOptionalSerie);
             }
 
+            // A sub-packet with its own separator is written after a single-space discriminator; an absent one
+            // keeps that space, or "13458 -1 -1" (sc_n with no equipment) runs together as "13458-1-1".
             return Expression.Condition(
                 Expression.Equal(specificTypeExpression, Expression.Constant(null, typeof(object))),
-                Expression.Constant(indexAttr.IsOptional ? null : "-1", typeof(object)),
+                Expression.Constant(indexAttr.IsOptional ? null : discriminator == " " ? " -1" : "-1", typeof(object)),
                 Expression.Convert(propExp, typeof(object))
             );
         }

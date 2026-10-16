@@ -742,7 +742,7 @@ namespace NosCore.Packets.Tests
                 }
             };
             var packet = Serializer.Serialize(mapMonsterPacket);
-            Assert.AreEqual("in 3 - 0 0 0 0 0 0 0 0 0 -1 1 0 -1 - 2 -1 0 0 0 0 0 0 0 0 0 0 0", packet);
+            Assert.AreEqual("in 3 - 0 0 0 0 0 0 0 0 0 -1 1 0 -1 - 2 -1 0 0 0 0 0 0 0 0 0 0 0 0 0", packet);
         }
 
         [TestMethod]
@@ -771,7 +771,7 @@ namespace NosCore.Packets.Tests
                 }
             };
             var packet = Serializer.Serialize(mapNpcPacket);
-            Assert.AreEqual("in 2 - 0 0 0 0 0 0 0 0 0 -1 1 0 -1 - 2 -1 0 0 0 0 0 0 0 0 0 0 0", packet);
+            Assert.AreEqual("in 2 - 0 0 0 0 0 0 0 0 0 -1 1 0 -1 - 2 -1 0 0 0 0 0 0 0 0 0 0 0 0 0", packet);
         }
 
 
