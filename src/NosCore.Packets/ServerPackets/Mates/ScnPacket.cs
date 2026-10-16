@@ -165,6 +165,13 @@ namespace NosCore.Packets.ServerPackets.Mates
         [PacketIndex(42)]
         public ScSkillDetails? Skill3Details { get; set; }
 
+        [PacketIndex(43)]
+        public short Unknown4 { get; set; }
+
+        // 0 or 1 depending on the partner.
+        [PacketIndex(44)]
+        public short Unknown5 { get; set; }
+
         public class ScSpDetails : PacketBase
         {
             [PacketIndex(0)]
@@ -242,4 +249,6 @@ namespace NosCore.Packets.ServerPackets.Mates
         {(SkillId.SkillRank)  :) // unknown 23 SpRank1
         -1 // unknown 24 SpRank2
         -1  // unknown 25 SpRank3
+        0 // unknown 26
+        0 // unknown 27 (0 or 1)
  */

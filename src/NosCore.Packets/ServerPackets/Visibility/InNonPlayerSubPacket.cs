@@ -77,5 +77,12 @@ namespace NosCore.Packets.ServerPackets.Visibility
 
         [PacketIndex(22)]
         public byte Unknow6 { get; set; }
+
+        // Sent for every non-player: 1, 2 or 3 for a pet (as in its sc_p), 0 for partners, npcs and monsters.
+        [PacketIndex(23)]
+        public byte Unknow7 { get; set; }
+
+        [PacketIndex(24)]
+        public byte Unknow8 { get; set; }
     }
 }
