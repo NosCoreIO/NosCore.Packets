@@ -11816,5 +11816,9 @@ namespace NosCore.Packets.Enumerations
         // <summary>
         [Game18NArguments(typeof(string))]
         HasExpiredEffectDeactivated = 2872,
+        // <summary>
+        // This item increases the specialist card's upgrade level to 15. Do you want to use it?
+        // <summary>
+        SpecialistUpgradeToFifteenQuestion = 2884,
     }
 }
