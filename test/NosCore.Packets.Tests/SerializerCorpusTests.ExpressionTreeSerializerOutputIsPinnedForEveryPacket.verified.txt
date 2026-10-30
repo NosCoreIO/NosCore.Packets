@@ -454,8 +454,8 @@ RbrPacket#1 => rbr 21.0.2 53 0 82 87 55 52.90 80.24 -1.0 -1.0 -1.0 27.23 69.90 2
 s9768
 RbrPacket#7 => rbr 74.2.1 8 0 82 37 53 78.12 53.59 -1.0 -1.0 -1.0 96.45 47.58 74.95 71.58 -1.0 9.s2905 0 0 s29596
 s19655
-RpPacket#1 => rp 21 44 83 s15853
-RpPacket#7 => rp 74 75 77 s30408
+RpPacket#1 => rp 21 44 83 #gbox^1^21^1
+RpPacket#7 => rp 74 75 77 #gbox^0^43^1
 ExcClosePacket#1 => exc_close 1
 ExcClosePacket#7 => exc_close 0
 ServerExcListPacket#1 => exc_list 1 44 83 53 21.2.875552 90.6.242723

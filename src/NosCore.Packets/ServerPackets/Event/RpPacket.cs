@@ -6,12 +6,12 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 
 namespace NosCore.Packets.ServerPackets.Event
 {
-    // Raid portal placement. Tells the client to draw an orb at (x, y) on the given
-    // map that — when clicked — triggers `param` (usually a #raid/#... command string
-    // that the client echoes back as a UseObject).
+    // Marks (x, y) on the given map; clicking the mark sends `Packet` back, as the Amulet of
+    // Return does with its u_i.
     [PacketHeader("rp", Scope.InGame)]
     public class RpPacket : PacketBase
     {
@@ -25,6 +25,6 @@ namespace NosCore.Packets.ServerPackets.Event
         public int Y { get; set; }
 
         [PacketIndex(3)]
-        public string? Param { get; set; }
+        public IPacket? Packet { get; set; }
     }
 }

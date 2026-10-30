@@ -55,6 +55,7 @@ namespace NosCore.Packets.Tests
                 typeof(QSlotPacket),
                 typeof(RcbListPacket),
                 typeof(DelayPacket),
+                typeof(RpPacket),
                 typeof(UseItemPacket),
                 typeof(DlgPacket),
                 typeof(WhisperPacket),
@@ -421,6 +422,29 @@ namespace NosCore.Packets.Tests
                 }
             );
             Assert.AreEqual($"rc_blist 1 1|2|test|3|4|0|6|7|0|9|10|11|0^0^0^0^0 1|2|test|3|4|0|6|7|0|9|10|11|0^0^0^0^0", packet);
+        }
+
+        [TestMethod]
+        public void SerializeRpWithFollowUpPacket()
+        {
+            var packet = Serializer.Serialize(
+                new RpPacket
+                {
+                    MapId = 2550,
+                    X = 20,
+                    Y = 33,
+                    Packet = new UseItemPacket
+                    {
+                        VisualType = VisualType.Player,
+                        VisualId = 0,
+                        Type = PocketType.Main,
+                        Slot = 1,
+                        Mode = 1,
+                        Parameter = 0,
+                    }
+                }
+            );
+            Assert.AreEqual("rp 2550 20 33 #u_i^1^0^1^1^1^0", packet);
         }
 
         [TestMethod]
