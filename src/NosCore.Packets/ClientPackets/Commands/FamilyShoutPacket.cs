@@ -1,4 +1,4 @@
-﻿//  __  _  __    __   ___ __  ___ ___
+//  __  _  __    __   ___ __  ___ ___
 // |  \| |/__\ /' _/ / _//__\| _ \ __|
 // | | ' | \/ |`._`.| \_| \/ | v / _|
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
@@ -13,12 +13,12 @@ namespace NosCore.Packets.ClientPackets.Commands
     [PacketHeader("%Familyshout", Scope.InGame | Scope.InTrade)]
     [PacketHeaderAlias("%Cridefamille", Flag = nameof(RegionType.FR))]
     [PacketHeaderAlias("%Familienruf", Flag = nameof(RegionType.DE))]
-    [PacketHeaderAlias("%Chiamata", Flag = nameof(RegionType.IT))]
-    [PacketHeaderAlias("%Llamada", Flag = nameof(RegionType.ES))]
+    [PacketHeaderAlias("%Grido", Flag = nameof(RegionType.IT))]
+    [PacketHeaderAlias("%Familyshout", Flag = nameof(RegionType.ES))]
     [PacketHeaderAlias("%Familyshout", Flag = nameof(RegionType.PL))]
     [PacketHeaderAlias("%Объявление", Flag = nameof(RegionType.RU))]
-    [PacketHeaderAlias("%Ailecaðrýsýmetni", Flag = nameof(RegionType.TR))]
-    [PacketHeaderAlias("%Rodinná", Flag = nameof(RegionType.CS))]
+    [PacketHeaderAlias("%Aileçağrısı", Flag = nameof(RegionType.TR))]
+    [PacketHeaderAlias("%Familyshout", Flag = nameof(RegionType.CS))]
     public class FamilyShoutPacket : PacketBase
     {
         [PacketIndex(0)]
