@@ -1,4 +1,4 @@
-﻿//  __  _  __    __   ___ __  ___ ___
+//  __  _  __    __   ___ __  ___ ___
 // |  \| |/__\ /' _/ / _//__\| _ \ __|
 // | | ' | \/ |`._`.| \_| \/ | v / _|
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
@@ -14,11 +14,11 @@ namespace NosCore.Packets.ClientPackets.Commands
     [PacketHeaderAlias("%Assistantdefamille", Flag = nameof(RegionType.FR))]
     [PacketHeaderAlias("%Familienvertreter", Flag = nameof(RegionType.DE))]
     [PacketHeaderAlias("%Vicecapo", Flag = nameof(RegionType.IT))]
-    [PacketHeaderAlias("%Representante", Flag = nameof(RegionType.ES))]
+    [PacketHeaderAlias("%Familydeputy", Flag = nameof(RegionType.ES))]
     [PacketHeaderAlias("%Reprezentant", Flag = nameof(RegionType.PL))]
     [PacketHeaderAlias("%Представитель", Flag = nameof(RegionType.RU))]
-    [PacketHeaderAlias("%Aile", Flag = nameof(RegionType.TR))]
-    [PacketHeaderAlias("%Zástupce", Flag = nameof(RegionType.CS))]
+    [PacketHeaderAlias("%Ailetemsilcisi", Flag = nameof(RegionType.TR))]
+    [PacketHeaderAlias("%Familydeputy", Flag = nameof(RegionType.CS))]
     public class FamilyDeputyPacket : PacketBase
     {
         [PacketIndex(0)]

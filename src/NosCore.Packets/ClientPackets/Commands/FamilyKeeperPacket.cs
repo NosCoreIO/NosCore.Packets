@@ -1,4 +1,4 @@
-﻿//  __  _  __    __   ___ __  ___ ___
+//  __  _  __    __   ___ __  ___ ___
 // |  \| |/__\ /' _/ / _//__\| _ \ __|
 // | | ' | \/ |`._`.| \_| \/ | v / _|
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
@@ -14,11 +14,11 @@ namespace NosCore.Packets.ClientPackets.Commands
     [PacketHeaderAlias("%Gardiendefamille", Flag = nameof(RegionType.FR))]
     [PacketHeaderAlias("%Familienverwalter", Flag = nameof(RegionType.DE))]
     [PacketHeaderAlias("%Guardiano", Flag = nameof(RegionType.IT))]
-    [PacketHeaderAlias("%Nombrar", Flag = nameof(RegionType.ES))]
-    [PacketHeaderAlias("%Familykeeper", Flag = nameof(RegionType.PL))]
+    [PacketHeaderAlias("%Familykeeper", Flag = nameof(RegionType.ES))]
+    [PacketHeaderAlias("%Zarządca", Flag = nameof(RegionType.PL))]
     [PacketHeaderAlias("%Управляющий-назначить", Flag = nameof(RegionType.RU))]
-    [PacketHeaderAlias("%AileBabasý", Flag = nameof(RegionType.TR))]
-    [PacketHeaderAlias("%Správce", Flag = nameof(RegionType.CS))]
+    [PacketHeaderAlias("%Aileyöneticisi", Flag = nameof(RegionType.TR))]
+    [PacketHeaderAlias("%Familykeeper", Flag = nameof(RegionType.CS))]
     public class FamilyKeeperPacket : PacketBase
     {
         [PacketIndex(0)]
