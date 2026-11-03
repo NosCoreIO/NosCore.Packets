@@ -1,4 +1,4 @@
-﻿//  __  _  __    __   ___ __  ___ ___
+//  __  _  __    __   ___ __  ___ ___
 // |  \| |/__\ /' _/ / _//__\| _ \ __|
 // | | ' | \/ |`._`.| \_| \/ | v / _|
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
@@ -24,6 +24,7 @@ using NosCore.Packets.ServerPackets.Miniland;
 using NosCore.Packets.ServerPackets.MiniMap;
 using NosCore.Packets.ServerPackets.Groups;
 using NosCore.Packets.ServerPackets.Player;
+using NosCore.Packets.ServerPackets.Production;
 using NosCore.Packets.ServerPackets.Quest;
 using NosCore.Packets.ServerPackets.Quicklist;
 using NosCore.Packets.ServerPackets.Relations;
@@ -45,6 +46,9 @@ namespace NosCore.Packets.Tests
             new[]
             {
                 typeof(ClistPacket),
+                typeof(MlistPacket),
+                typeof(MlistMaterialsPacket),
+                typeof(MlistMaterialSubPacket),
                 typeof(QstlistPacket),
                 typeof(QstiPacket),
                 typeof(SayItemPacket),
@@ -1328,6 +1332,34 @@ namespace NosCore.Packets.Tests
             };
 
             Assert.AreEqual("in 9 1046 6467573 52 154 10 0 0 14643732", Serializer.Serialize(packet));
+        }
+
+        [TestMethod]
+        public void SerializeMlistPacketMatchesTrace()
+        {
+            var packet = new MlistPacket
+            {
+                ItemVNums = new List<short> { 2131, 2132, 2133, 2134 }
+            };
+
+            Assert.AreEqual("m_list 2 2131 2132 2133 2134 -100", Serializer.Serialize(packet));
+        }
+
+        [TestMethod]
+        public void SerializeMlistMaterialsPacketMatchesTrace()
+        {
+            var packet = new MlistMaterialsPacket
+            {
+                Amount = 10,
+                Materials = new List<MlistMaterialSubPacket>
+                {
+                    new() { VNum = 2029, Amount = 10 },
+                    new() { VNum = 2097, Amount = 10 },
+                    new() { VNum = 2102, Amount = 30 }
+                }
+            };
+
+            Assert.AreEqual("m_list 3 10 2029 10 2097 10 2102 30 -1", Serializer.Serialize(packet));
         }
     }
 }
