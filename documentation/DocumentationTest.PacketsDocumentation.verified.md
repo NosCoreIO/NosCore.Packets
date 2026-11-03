@@ -435,6 +435,10 @@
 ### Portals
 - [gp](../src/NosCore.Packets/ServerPackets/Portals/GpPacket.cs) *InGame*
 
+### Production
+- [m_list](../src/NosCore.Packets/ServerPackets/Production/MlistMaterialsPacket.cs) *InGame*
+- [m_list](../src/NosCore.Packets/ServerPackets/Production/MlistPacket.cs) *InGame*
+
 ### Quest
 - [qnamli2](../src/NosCore.Packets/ServerPackets/Quest/Qnamli2Packet.cs) *InGame*
 - [qnamli](../src/NosCore.Packets/ServerPackets/Quest/QnamliPacket.cs) *InGame*
