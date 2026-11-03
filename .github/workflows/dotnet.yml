@@ -35,6 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      id-token: write
     steps:
     - uses: actions/checkout@v7
       with:
@@ -51,6 +52,13 @@ jobs:
             echo "match=true" >> $GITHUB_OUTPUT
         fi
 
+    - name: NuGet login
+      if: steps.check-tag.outputs.match == 'true'
+      id: nuget-login
+      uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841 # v1.2.0
+      with:
+        user: 0Lucifer0
+
     - name: Pack and push to NuGet
       if: steps.check-tag.outputs.match == 'true'
       id: build_artifact
@@ -59,7 +67,7 @@ jobs:
         dotnet restore
         dotnet build -c Release
         dotnet pack -c Release -o /tmp/nupkgs -v m -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg -p:PackageVersion=${TAG_NAME}
-        dotnet nuget push /tmp/nupkgs/NosCore.Packets.${TAG_NAME}.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET_API_KEY}}
+        dotnet nuget push /tmp/nupkgs/NosCore.Packets.${TAG_NAME}.nupkg -s https://api.nuget.org/v3/index.json -k ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
         echo "ARTIFACT_PATH=/tmp/nupkgs/NosCore.Packets.${TAG_NAME}.nupkg" >> $GITHUB_OUTPUT
 
     - name: Upload Release Asset
