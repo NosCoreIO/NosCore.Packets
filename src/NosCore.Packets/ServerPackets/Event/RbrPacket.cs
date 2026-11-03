@@ -1,4 +1,4 @@
-﻿//  __  _  __    __   ___ __  ___ ___
+//  __  _  __    __   ___ __  ___ ___
 // |  \| |/__\ /' _/ / _//__\| _ \ __|
 // | | ' | \/ |`._`.| \_| \/ | v / _|
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
@@ -22,7 +22,7 @@ namespace NosCore.Packets.ServerPackets.Event
         [PacketIndex(2)]
         public bool Completed { get; set; }
 
-        [PacketIndex(3)]
+        [PacketIndex(3, SpecialSeparator = ".")]
         public RbrSubPacketMinMaxLevel? MinMaxLevel { get; set; }
 
         [PacketIndex(4)]
