@@ -319,6 +319,7 @@
 - [gexp](../src/NosCore.Packets/ServerPackets/Families/GexpPacket.cs) *InGame*
 - [gidx](../src/NosCore.Packets/ServerPackets/Families/GidxPacket.cs) *InTrade | InGame*
 - [ginfo](../src/NosCore.Packets/ServerPackets/Families/GInfoPacket.cs) *InGame*
+- [gmbr](../src/NosCore.Packets/ServerPackets/Families/GmbrPacket.cs) *InGame*
 - [gmsg](../src/NosCore.Packets/ServerPackets/Families/GmsgPacket.cs) *InGame*
 
 ### Groups
