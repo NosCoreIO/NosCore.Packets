@@ -50,11 +50,15 @@
 ### Commands
 - [%Familydeputy](../src/NosCore.Packets/ClientPackets/Commands/FamilyDeputyPacket.cs) *InTrade | InGame*
 - [%Familydismiss](../src/NosCore.Packets/ClientPackets/Commands/FamilyDismissPacket.cs) *InTrade | InGame*
+- [%Gender](../src/NosCore.Packets/ClientPackets/Commands/FamilyGenderPacket.cs) *InTrade | InGame*
 - [%Familyhead](../src/NosCore.Packets/ClientPackets/Commands/FamilyHeadPacket.cs) *InTrade | InGame*
 - [%Familyinvite](../src/NosCore.Packets/ClientPackets/Commands/FamilyInvitePacket.cs) *InTrade | InGame*
 - [%Familykeeper](../src/NosCore.Packets/ClientPackets/Commands/FamilyKeeperPacket.cs) *InTrade | InGame*
 - [%Familyleave](../src/NosCore.Packets/ClientPackets/Commands/FamilyLeavePacket.cs) *InTrade | InGame*
+- [%Notice](../src/NosCore.Packets/ClientPackets/Commands/FamilyNoticePacket.cs) *InTrade | InGame*
 - [%Familyshout](../src/NosCore.Packets/ClientPackets/Commands/FamilyShoutPacket.cs) *InTrade | InGame*
+- [%Title](../src/NosCore.Packets/ClientPackets/Commands/FamilyTitlePacket.cs) *InTrade | InGame*
+- [%Today](../src/NosCore.Packets/ClientPackets/Commands/FamilyTodayPacket.cs) *InTrade | InGame*
 - [$Adding](../src/NosCore.Packets/ClientPackets/Commands/FriendInvitePacket.cs) *InTrade | InGame*
 - [$Party](../src/NosCore.Packets/ClientPackets/Commands/GroupInvitePacket.cs) *InTrade | InGame*
 - [$Invite](../src/NosCore.Packets/ClientPackets/Commands/MinilandInvitePacket.cs) *InTrade | InGame*

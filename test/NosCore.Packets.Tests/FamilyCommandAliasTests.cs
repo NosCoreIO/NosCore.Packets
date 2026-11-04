@@ -22,6 +22,10 @@ namespace NosCore.Packets.Tests
             typeof(FamilyLeavePacket),
             typeof(FamilyShoutPacket),
             typeof(FamilyDismissPacket),
+            typeof(FamilyNoticePacket),
+            typeof(FamilyTodayPacket),
+            typeof(FamilyTitlePacket),
+            typeof(FamilyGenderPacket),
         });
 
         [TestMethod]
@@ -43,9 +47,40 @@ namespace NosCore.Packets.Tests
         [DataRow("%Caccia Buddy", typeof(FamilyDismissPacket))]
         [DataRow("%Ailedenatılma Buddy", typeof(FamilyDismissPacket))]
         [DataRow("%Familydismiss Buddy", typeof(FamilyDismissPacket))]
+        [DataRow("%Avertissement hello", typeof(FamilyNoticePacket))]
+        [DataRow("%Not hello", typeof(FamilyNoticePacket))]
+        [DataRow("%Aujourd'hui hello", typeof(FamilyTodayPacket))]
+        [DataRow("%Bugün hello", typeof(FamilyTodayPacket))]
+        [DataRow("%Titre Buddy 2", typeof(FamilyTitlePacket))]
+        [DataRow("%Tytuł Buddy 2", typeof(FamilyTitlePacket))]
+        [DataRow("%Sexe 1", typeof(FamilyGenderPacket))]
+        [DataRow("%Pohlaví 1", typeof(FamilyGenderPacket))]
         public void TheClientWordForEachLanguageReachesTheFamilyCommand(string packet, Type expected)
         {
             Assert.IsInstanceOfType(Deserializer.Deserialize(packet), expected);
+        }
+    
+
+        [TestMethod]
+        public void TheFamilyNoticeKeepsEveryWord()
+        {
+            var packet = (FamilyNoticePacket)Deserializer.Deserialize("%Notice meet at the bank tonight");
+            Assert.AreEqual("meet at the bank tonight", packet.Message);
+        }
+
+        [TestMethod]
+        public void TheTitleCarriesTheMemberAndTheRank()
+        {
+            var packet = (FamilyTitlePacket)Deserializer.Deserialize("%Title Buddy 2");
+            Assert.AreEqual("Buddy", packet.CharacterName);
+            Assert.AreEqual((Enumerations.FamilyMemberRank)2, packet.Rank);
+        }
+
+        [TestMethod]
+        public void TheGenderIsReadAsAGender()
+        {
+            var packet = (FamilyGenderPacket)Deserializer.Deserialize("%Gender 1");
+            Assert.AreEqual(Enumerations.GenderType.Female, packet.Gender);
         }
     }
 }
