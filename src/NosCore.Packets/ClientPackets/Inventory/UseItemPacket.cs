@@ -32,5 +32,11 @@ namespace NosCore.Packets.ClientPackets.Inventory
 
         [PacketIndex(5)]
         public short? Parameter { get; set; }
+
+        [PacketIndex(6, IsOptional = true)]
+        public PocketType? TargetType { get; set; }
+
+        [PacketIndex(7, IsOptional = true)]
+        public short? TargetSlot { get; set; }
     }
 }
