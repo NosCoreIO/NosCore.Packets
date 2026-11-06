@@ -1,4 +1,4 @@
-﻿//  __  _  __    __   ___ __  ___ ___
+//  __  _  __    __   ___ __  ___ ___
 // |  \| |/__\ /' _/ / _//__\| _ \ __|
 // | | ' | \/ |`._`.| \_| \/ | v / _|
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
@@ -20,5 +20,14 @@ namespace NosCore.Packets.ServerPackets.Chats
 
         [PacketIndex(0)]
         public IPacket BoxPacket { get; set; }
+
+        [PacketIndex(1)]
+        public byte MaxLength { get; set; }
+
+        [PacketIndex(2)]
+        public byte Type { get; set; }
+
+        [PacketIndex(3)]
+        public Game18NConstString Message { get; set; }
     }
 }

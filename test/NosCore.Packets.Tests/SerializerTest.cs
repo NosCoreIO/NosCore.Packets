@@ -1,4 +1,4 @@
-//  __  _  __    __   ___ __  ___ ___
+﻿//  __  _  __    __   ___ __  ___ ___
 // |  \| |/__\ /' _/ / _//__\| _ \ __|
 // | | ' | \/ |`._`.| \_| \/ | v / _|
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
@@ -110,7 +110,9 @@ namespace NosCore.Packets.Tests
                 typeof(TbfPacket),
                 typeof(QrPacket),
                 typeof(SqstPacket),
-                typeof(EInfoNpcMonsterPacket)
+                typeof(EInfoNpcMonsterPacket),
+                typeof(InboxPacket),
+                typeof(CreateFamilyPacket)
             });
 
         // The monster name ends the line, and a last field keeps its spaces unless it asks not
@@ -126,6 +128,19 @@ namespace NosCore.Packets.Tests
 
             var packet = Serializer.Serialize(testPacket);
             Assert.IsTrue(packet.EndsWith("-1 Fire^Cannoneer"), packet);
+        }
+
+        [TestMethod]
+        public void SerializeInboxAsksForAFamilyName()
+        {
+            var packet = Serializer.Serialize(new InboxPacket(new CreateFamilyPacket { FamilyName = string.Empty })
+            {
+                MaxLength = 14,
+                Type = 1,
+                Message = Game18NConstString.EnterFamilyName
+            });
+
+            Assert.AreEqual("inbox #glmk^ 14 1 191", packet);
         }
 
         [TestMethod]
@@ -568,6 +583,23 @@ namespace NosCore.Packets.Tests
         // type name, so the server one needs its own instance.
         private static readonly ISerializer ServerSerializer =
             new Serializer(new[] { typeof(ServerGidxPacket) });
+
+        [TestMethod]
+        public void SerializeGidxWithTheCurrentClientShape()
+        {
+            var packet = ServerSerializer.Serialize(new ServerGidxPacket
+            {
+                VisualType = VisualType.Player,
+                VisualId = 1,
+                FamilyId = 3,
+                Unknown = -1,
+                FamilyName = "testers(Familyhead)",
+                FamilyLevel = 1,
+                FamilyIcons = { false, false, false }
+            });
+
+            Assert.AreEqual("gidx 1 1 3.-1 testers(Familyhead) 1 0|0|0", packet);
+        }
 
         [TestMethod]
         public void SerializeGidxWithoutFamily()

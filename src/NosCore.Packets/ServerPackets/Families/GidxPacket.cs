@@ -23,13 +23,18 @@ namespace NosCore.Packets.ServerPackets.Families
         [PacketIndex(2)]
         public long? FamilyId { get; set; }
 
-        [PacketIndex(3)]
-        public string? FamilyName { get; set; }
+        // -1 whenever there is a family; without it the client prints a message after the
+        // player's own family tag.
+        [PacketIndex(3, SpecialSeparator = ".", IsOptional = true)]
+        public short? Unknown { get; set; }
 
         [PacketIndex(4)]
+        public string? FamilyName { get; set; }
+
+        [PacketIndex(5)]
         public byte FamilyLevel { get; set; }
 
-        [PacketListIndex(5, ListSeparator = "|")]
+        [PacketListIndex(6, ListSeparator = "|")]
         public List<bool> FamilyIcons { get; set; } = new();
     }
 }
