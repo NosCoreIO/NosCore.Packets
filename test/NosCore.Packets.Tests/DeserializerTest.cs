@@ -552,6 +552,25 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
+        public void UseItemWithTrailingSpaceLeavesOptionalTargetEmpty()
+        {
+            var packet = (UseItemPacket)Deserializer.Deserialize("u_i 1 1 1 5 0 0 ");
+            Assert.AreEqual(PocketType.Main, packet.Type);
+            Assert.AreEqual(5, packet.Slot);
+            Assert.IsNull(packet.TargetType);
+            Assert.IsNull(packet.TargetSlot);
+        }
+
+        [TestMethod]
+        public void PacketWithEmptyFieldsKeepsDefaults()
+        {
+            var deserializer = new Deserializer(new[] { typeof(NosCore.Packets.ClientPackets.Bank.GboxPacket) });
+            var packet = (NosCore.Packets.ClientPackets.Bank.GboxPacket)deserializer.Deserialize("gbox  ");
+            Assert.AreEqual(0, packet.Amount);
+            Assert.IsFalse(packet.Mode);
+        }
+
+        [TestMethod]
         public void ExchangeRequestIsAcceptedWhileTrading()
         {
             var scopes = typeof(ExchangeRequestPacket).GetCustomAttribute<PacketHeaderAttribute>()!.Scopes;
