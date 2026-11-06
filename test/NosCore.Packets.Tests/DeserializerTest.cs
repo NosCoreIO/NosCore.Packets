@@ -580,6 +580,28 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
+        public void SpecialistPointsReadTheTransportIdAfterTwoLeadingFields()
+        {
+            var deserializer = new Deserializer(new[] { typeof(NosCore.Packets.ClientPackets.Specialists.SpTransformPacket) });
+            var packet = (NosCore.Packets.ClientPackets.Specialists.SpTransformPacket)deserializer.Deserialize("sl 10 0 0 1728643072 25 1 2 3");
+            Assert.AreEqual(SlPacketType.ChangePoints, packet.Type);
+            Assert.AreEqual(1728643072, packet.TransportId);
+            Assert.AreEqual((short)25, packet.SpecialistDamage);
+            Assert.AreEqual((short)1, packet.SpecialistDefense);
+            Assert.AreEqual((short)2, packet.SpecialistElement);
+            Assert.AreEqual((short)3, packet.SpecialistHP);
+        }
+
+        [TestMethod]
+        public void SpecialistTransformCarriesOnlyItsType()
+        {
+            var deserializer = new Deserializer(new[] { typeof(NosCore.Packets.ClientPackets.Specialists.SpTransformPacket) });
+            var packet = (NosCore.Packets.ClientPackets.Specialists.SpTransformPacket)deserializer.Deserialize("sl 0");
+            Assert.AreEqual(SlPacketType.WearSp, packet.Type);
+            Assert.IsNull(packet.TransportId);
+        }
+
+        [TestMethod]
         public void ExchangeRequestIsAcceptedWhileTrading()
         {
             var scopes = typeof(ExchangeRequestPacket).GetCustomAttribute<PacketHeaderAttribute>()!.Scopes;
