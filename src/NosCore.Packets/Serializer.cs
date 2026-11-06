@@ -171,6 +171,7 @@ namespace NosCore.Packets
                 packetSplitter = " ";
             }
             var param = Expression.Parameter(subtype!);
+            var isOptional = indexAttr.IsOptional;
             var isPacketList = false;
             if (typeof(IPacket).IsAssignableFrom(subtype))
             {
@@ -206,8 +207,16 @@ namespace NosCore.Packets
                     selectExp),
                 typeof(object));
 
+            Expression isAbsent = Expression.Equal(specificTypeExpression, Expression.Constant(null, typeof(object)));
+            if (isOptional)
+            {
+                isAbsent = Expression.OrElse(isAbsent, Expression.Equal(
+                    Expression.Property(Expression.Convert(specificTypeExpression, typeof(System.Collections.ICollection)), "Count"),
+                    Expression.Constant(0)));
+            }
+
             return Expression.Condition(
-                Expression.Equal(specificTypeExpression, Expression.Constant(null, typeof(object))),
+                isAbsent,
                 Expression.Constant(null, typeof(object)),
                 ConcatExpression(Expression.Constant(indexAttr.SpecialSeparator != null ? " " : string.Empty), Expression.Convert(listJoin, typeof(object)))
             );

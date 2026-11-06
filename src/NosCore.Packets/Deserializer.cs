@@ -449,10 +449,16 @@ namespace NosCore.Packets
             return null;
         }
 
-        private object DeserializeEnum(Type type, string value)
+        private object? DeserializeEnum(Type type, string value)
         {
-            return value == "-1" ? type.GetDefaultValue() : Enum.Parse(Nullable.GetUnderlyingType(type) ?? type, value);
+            return value == "-1" || IsAbsentOptional(type, value)
+                ? type.GetDefaultValue()
+                : Enum.Parse(Nullable.GetUnderlyingType(type) ?? type, value);
         }
+
+        // The client ends some packets with a separator, which leaves an empty last field.
+        private static bool IsAbsentOptional(Type type, string value) =>
+            value.Length == 0 && Nullable.GetUnderlyingType(type) != null;
 
         private object? DeserializeBoolean(string value)
         {
@@ -466,7 +472,9 @@ namespace NosCore.Packets
 
         private object? DeserializeDefault(Type type, string value)
         {
-            return value == "-1" && !type.IsPrimitive ? type.GetDefaultValue() : Convert.ChangeType(value, Nullable.GetUnderlyingType(type) ?? type);
+            return (value == "-1" && !type.IsPrimitive) || IsAbsentOptional(type, value)
+                ? type.GetDefaultValue()
+                : Convert.ChangeType(value, Nullable.GetUnderlyingType(type) ?? type);
         }
 
         private object? DeserializeString(string[] matches, ref int currentIndex, bool isMaxIndex)

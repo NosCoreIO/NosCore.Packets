@@ -15,7 +15,8 @@ namespace NosCore.Packets.Enumerations
         Jewelery = 4,
         MainWeaponMagician = 5,
 
-        Specialist = 8
+        Specialist = 8,
+        Shell = 9
         // Box 7 - 11 - 12 - 13
     }
 }

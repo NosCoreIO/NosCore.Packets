@@ -61,5 +61,9 @@ namespace NosCore.Packets.ServerPackets.Inventory
 
         [PacketListIndex(15, IsOptional = true)]
         public List<EInfoShellOptionSubPacket>? ShellOptions { get; set; }
+
+        // Drawn as a per-mille bar in the window corner; the client cannot read the options without it.
+        [PacketIndex(16)]
+        public short Gauge { get; set; }
     }
 }

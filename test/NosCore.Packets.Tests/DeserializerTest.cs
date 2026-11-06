@@ -257,6 +257,15 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
+        public void DeserializeUseItemEndingWithASeparator()
+        {
+            var packet = (UseItemPacket)Deserializer.Deserialize("u_i 1 1 1 0 0 0 ");
+            Assert.AreEqual(PocketType.Main, packet.Type);
+            Assert.IsNull(packet.TargetType);
+            Assert.IsNull(packet.TargetSlot);
+        }
+
+        [TestMethod]
         public void DeserializeOptionalListPacket()
         {
             var packet = (MShopPacket)Deserializer.Deserialize("m_shop 1");
