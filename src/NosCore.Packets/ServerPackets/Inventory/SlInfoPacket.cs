@@ -79,10 +79,10 @@ namespace NosCore.Packets.ServerPackets.Inventory
         public int TransportId { get; set; }
 
         [PacketIndex(22)]
-        public int SlHit { get; set; }
+        public int FreeSpPoints { get; set; }
 
         [PacketIndex(23)]
-        public int FreeSpPoints { get; set; }
+        public int SlHit { get; set; }
 
         [PacketIndex(24)]
         public int SlDefense { get; set; }

@@ -16,18 +16,24 @@ namespace NosCore.Packets.ClientPackets.Specialists
         public SlPacketType Type { get; set; }
 
         [PacketIndex(1, IsOptional = true)]
-        public int? TransportId { get; set; }
+        public int? Unknown { get; set; }
 
         [PacketIndex(2, IsOptional = true)]
-        public short? SpecialistDamage { get; set; }
+        public int? Unknown2 { get; set; }
 
         [PacketIndex(3, IsOptional = true)]
-        public short? SpecialistDefense { get; set; }
+        public int? TransportId { get; set; }
 
         [PacketIndex(4, IsOptional = true)]
-        public short? SpecialistElement { get; set; }
+        public short? SpecialistDamage { get; set; }
 
         [PacketIndex(5, IsOptional = true)]
+        public short? SpecialistDefense { get; set; }
+
+        [PacketIndex(6, IsOptional = true)]
+        public short? SpecialistElement { get; set; }
+
+        [PacketIndex(7, IsOptional = true)]
         public short? SpecialistHP { get; set; }
     }
 }
