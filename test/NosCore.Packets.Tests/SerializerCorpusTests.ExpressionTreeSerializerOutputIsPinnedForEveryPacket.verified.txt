@@ -176,8 +176,8 @@ SortOpenPacket#1 => sortopen
 SortOpenPacket#7 => sortopen
 UseItemPacket#1 => u_i 1 44 10 53 21 82 10 55
 UseItemPacket#7 => u_i 9 75 7 8 43 82 1 53
-WearPacket#1 => wear 21 0
-WearPacket#7 => wear 74 3
+WearPacket#1 => wear 21 44
+WearPacket#7 => wear 74 75
 LbsPacket#1 => lbs 21
 LbsPacket#7 => lbs 74
 NoS0575Packet#1 => NoS0575 21 s30144 s12383 -1 s158531 82 87 55 52 90 s13380

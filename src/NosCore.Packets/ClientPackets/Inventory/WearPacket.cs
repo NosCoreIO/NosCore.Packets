@@ -15,7 +15,8 @@ namespace NosCore.Packets.ClientPackets.Inventory
         [PacketIndex(0)]
         public byte InventorySlot { get; set; }
 
+        /// <summary>0 for the character, otherwise the partner's slot plus one.</summary>
         [PacketIndex(1)]
-        public PocketType Type { get; set; }
+        public byte PartnerSlot { get; set; }
     }
 }

@@ -45,6 +45,7 @@ namespace NosCore.Packets.Tests
                 typeof(MinilandInvitePacket),
                 typeof(WhisperPacket),
                 typeof(UseItemPacket),
+                typeof(WearPacket),
                 typeof(MShopPacket),
                 typeof(SitPacket),
                 typeof(SitSubPacket),
@@ -228,6 +229,14 @@ namespace NosCore.Packets.Tests
         {
             var packet = (UseItemPacket)Deserializer.Deserialize("12345 u_i 2 3 4 5 6");
             Assert.AreEqual(6, packet.Mode);
+        }
+
+        [TestMethod]
+        public void DeserializeWearOnAPartner()
+        {
+            var packet = (WearPacket)Deserializer.Deserialize("wear 4 2");
+            Assert.AreEqual((byte)4, packet.InventorySlot);
+            Assert.AreEqual((byte)2, packet.PartnerSlot);
         }
 
         [TestMethod]
