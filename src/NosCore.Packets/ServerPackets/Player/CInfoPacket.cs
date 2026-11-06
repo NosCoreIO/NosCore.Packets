@@ -25,52 +25,57 @@ namespace NosCore.Packets.ServerPackets.Player
         [PacketIndex(3)]
         public int FamilyId { get; set; }
 
-        [PacketIndex(4)]
-        public string? FamilyName { get; set; }
+        // -1 whenever there is a family; without it the client prints a message after the
+        // player's own family tag.
+        [PacketIndex(4, SpecialSeparator = ".", IsOptional = true)]
+        public short? FamilyTitle { get; set; }
 
         [PacketIndex(5)]
-        public long CharacterId { get; set; }
+        public string? FamilyName { get; set; }
 
         [PacketIndex(6)]
-        public AuthorityType Authority { get; set; }
+        public long CharacterId { get; set; }
 
         [PacketIndex(7)]
-        public GenderType Gender { get; set; }
+        public AuthorityType Authority { get; set; }
 
         [PacketIndex(8)]
-        public HairStyleType HairStyle { get; set; }
+        public GenderType Gender { get; set; }
 
         [PacketIndex(9)]
-        public HairColorType HairColor { get; set; }
+        public HairStyleType HairStyle { get; set; }
 
         [PacketIndex(10)]
-        public CharacterClassType Class { get; set; }
+        public HairColorType HairColor { get; set; }
 
         [PacketIndex(11)]
-        public byte Icon { get; set; }
+        public CharacterClassType Class { get; set; }
 
         [PacketIndex(12)]
-        public short Compliment { get; set; }
+        public byte Icon { get; set; }
 
         [PacketIndex(13)]
-        public short Morph { get; set; }
+        public short Compliment { get; set; }
 
         [PacketIndex(14)]
-        public bool Invisible { get; set; }
+        public short Morph { get; set; }
 
         [PacketIndex(15)]
-        public byte FamilyLevel { get; set; }
+        public bool Invisible { get; set; }
 
         [PacketIndex(16)]
-        public byte MorphUpgrade { get; set; }
+        public byte FamilyLevel { get; set; }
 
         [PacketIndex(17)]
-        public bool ArenaWinner { get; set; }
+        public byte MorphUpgrade { get; set; }
 
         [PacketIndex(18)]
-        public byte Unknown2 { get; set; } //TODO to find
+        public bool ArenaWinner { get; set; }
 
         [PacketIndex(19)]
+        public byte Unknown2 { get; set; } //TODO to find
+
+        [PacketIndex(20)]
         public short Unknown3 { get; set; } //TODO to find
     }
 }

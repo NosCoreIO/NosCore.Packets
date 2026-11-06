@@ -32,6 +32,7 @@ using NosCore.Packets.ServerPackets.Shop;
 using NosCore.Packets.ServerPackets.Specialists;
 using NosCore.Packets.ServerPackets.UI;
 using NosCore.Packets.ServerPackets.Visibility;
+using NosCore.Packets.ServerPackets.Warehouse;
 using NosCore.Shared.Enumerations;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,6 +70,8 @@ namespace NosCore.Packets.Tests
                 typeof(FinsPacket),
                 typeof(GidxPacket),
                 typeof(CInfoPacket),
+                typeof(FStashAllPacket),
+                typeof(WarehouseSubPacket),
                 typeof(RbrPacket),
                 typeof(MlobjlstPacket),
                 typeof(SuccessPacket),
@@ -1434,6 +1437,43 @@ namespace NosCore.Packets.Tests
             };
 
             Assert.AreEqual("m_list 3 10 2029 10 2097 10 2102 30 -1", Serializer.Serialize(packet));
+        }
+
+        [TestMethod]
+        public void SerializeCInfoPacketWithFamilyMatchesTrace()
+        {
+            var packet = Serializer.Serialize(new CInfoPacket
+            {
+                Name = "Me",
+                GroupId = -1,
+                FamilyId = 5052,
+                FamilyTitle = -1,
+                FamilyName = "-Nemesis-(Membre)",
+                CharacterId = 1,
+                Authority = AuthorityType.User,
+                Gender = GenderType.Male,
+                HairStyle = HairStyleType.HairStyleA,
+                HairColor = HairColorType.DarkPurple,
+                Class = CharacterClassType.Adventurer
+            });
+
+            Assert.IsTrue(packet.StartsWith("c_info Me - -1 5052.-1 -Nemesis-(Membre) 1 "), packet);
+        }
+
+        [TestMethod]
+        public void SerializeFStashAllPacketMatchesTrace()
+        {
+            var packet = new FStashAllPacket
+            {
+                WarehouseSize = 21,
+                Items = new List<WarehouseSubPacket>
+                {
+                    new() { Slot = 0, VNum = 5920, Type = PocketType.Main, Amount = 23 },
+                    new() { Slot = 4, VNum = 2188, Type = PocketType.Etc, Amount = 20 }
+                }
+            };
+
+            Assert.AreEqual("f_stash_all 21 0.5920.1.23.0.0 4.2188.2.20.0.0", Serializer.Serialize(packet));
         }
     }
 }
