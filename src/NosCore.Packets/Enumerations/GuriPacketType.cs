@@ -28,6 +28,7 @@ namespace NosCore.Packets.Enumerations
         PetBasket = 201,
         PartnerBackpack = 202,
         SpPointInitializer = 203,
+        ShellIdentification = 204,
         UseBoxItem = 300,
         Title = 306,
         CollectItem = 400,

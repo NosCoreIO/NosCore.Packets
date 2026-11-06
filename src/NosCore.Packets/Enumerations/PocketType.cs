@@ -15,6 +15,9 @@ namespace NosCore.Packets.Enumerations
         Specialist = 6,
         Costume = 7,
         Mount = 9,
-        Raid = 10
+        Raid = 10,
+
+        // Worn equipment, as the client names it when an item is dropped onto it.
+        Wear = 100
     }
 }

@@ -112,7 +112,9 @@ namespace NosCore.Packets.Tests
                 typeof(SqstPacket),
                 typeof(EInfoNpcMonsterPacket),
                 typeof(InboxPacket),
-                typeof(CreateFamilyPacket)
+                typeof(CreateFamilyPacket),
+                typeof(EInfoWeaponPacket),
+                typeof(EInfoShellPacket)
             });
 
         // The monster name ends the line, and a last field keeps its spaces unless it asks not
@@ -141,6 +143,46 @@ namespace NosCore.Packets.Tests
             });
 
             Assert.AreEqual("inbox #glmk^ 14 1 191", packet);
+        }
+
+        [TestMethod]
+        public void SerializeEInfoWeaponPacketWithShellOptionsThenTheGauge()
+        {
+            var packet = Serializer.Serialize(new EInfoWeaponPacket
+            {
+                ItemVNum = 299,
+                ShellRarity = 5,
+                BoundCharacterId = 1,
+                ShellOptionCount = 2,
+                ShellOptions = new List<EInfoShellOptionSubPacket>
+                {
+                    new() { Level = 1, Type = 1, Value = 50 },
+                    new() { Level = 2, Type = 15, Value = 12 }
+                }
+            });
+            Assert.IsTrue(packet.EndsWith("-1 5 1 2 1.1.50 2.15.12 0"), packet);
+        }
+
+        [TestMethod]
+        public void AnEmptyOptionalListLeavesNoGap()
+        {
+            var packet = Serializer.Serialize(new EInfoWeaponPacket { ItemVNum = 299, ShellOptions = new List<EInfoShellOptionSubPacket>() });
+            Assert.IsTrue(packet.EndsWith("-1 0 0 0 0"), packet);
+        }
+
+        [TestMethod]
+        public void SerializeEInfoShellPacket()
+        {
+            var packet = Serializer.Serialize(new EInfoShellPacket
+            {
+                ItemVNum = 565,
+                Level = 60,
+                Rare = 5,
+                Price = 200,
+                ShellOptionCount = 1,
+                ShellOptions = new List<EInfoShellOptionSubPacket> { new() { Level = 1, Type = 1, Value = 50 } }
+            });
+            Assert.AreEqual("e_info 9 565 60 5 200 1 1.1.50", packet);
         }
 
         [TestMethod]

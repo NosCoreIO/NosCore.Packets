@@ -339,6 +339,7 @@
 - [e_info](../src/NosCore.Packets/ServerPackets/Inventory/EInfoJewelryPacket.cs) *InGame*
 - [e_info](../src/NosCore.Packets/ServerPackets/Inventory/EInfoNpcMonsterPacket.cs) *InGame*
 - [e_info](../src/NosCore.Packets/ServerPackets/Inventory/EInfoPacket.cs) *InGame*
+- [e_info](../src/NosCore.Packets/ServerPackets/Inventory/EInfoShellPacket.cs) *InGame*
 - [e_info](../src/NosCore.Packets/ServerPackets/Inventory/EInfoWeaponPacket.cs) *InGame*
 - [eq](../src/NosCore.Packets/ServerPackets/Inventory/EqPacket.cs) *InGame*
 - [equip](../src/NosCore.Packets/ServerPackets/Inventory/EquipPacket.cs) *InGame*
