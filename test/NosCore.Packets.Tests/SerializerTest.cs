@@ -163,14 +163,21 @@ namespace NosCore.Packets.Tests
                     new() { Level = 2, Type = 15, Value = 12 }
                 }
             });
-            Assert.IsTrue(packet.EndsWith("-1 5 1 2 1.1.50 2.15.12 0"), packet);
+            Assert.IsTrue(packet.EndsWith("-1 5 1 2 1.1.50 2.15.12 0 0"), packet);
+        }
+
+        [TestMethod]
+        public void ThePityGaugeComesAfterTheShellLevel()
+        {
+            var packet = Serializer.Serialize(new EInfoWeaponPacket { ItemVNum = 299, PityGauge = 350 });
+            Assert.IsTrue(packet.EndsWith("-1 0 0 0 0 350"), packet);
         }
 
         [TestMethod]
         public void AnEmptyOptionalListLeavesNoGap()
         {
             var packet = Serializer.Serialize(new EInfoWeaponPacket { ItemVNum = 299, ShellOptions = new List<EInfoShellOptionSubPacket>() });
-            Assert.IsTrue(packet.EndsWith("-1 0 0 0 0"), packet);
+            Assert.IsTrue(packet.EndsWith("-1 0 0 0 0 0"), packet);
         }
 
         [TestMethod]

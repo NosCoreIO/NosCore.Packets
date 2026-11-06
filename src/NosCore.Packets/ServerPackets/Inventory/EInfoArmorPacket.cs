@@ -62,8 +62,13 @@ namespace NosCore.Packets.ServerPackets.Inventory
         [PacketListIndex(15, IsOptional = true)]
         public List<EInfoShellOptionSubPacket>? ShellOptions { get; set; }
 
-        // Drawn as a per-mille bar in the window corner; the client cannot read the options without it.
+        // Required after the options. Despite its name it is not the bar: a non-zero value v adds a
+        // "Current Shell Level (v % 10/v / 10)" line.
         [PacketIndex(16)]
         public short Gauge { get; set; }
+
+        // Out of 1000, drawn as the pity gauge bar in the window's top corner; 0 draws none.
+        [PacketIndex(17)]
+        public short PityGauge { get; set; }
     }
 }
