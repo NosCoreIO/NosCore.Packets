@@ -70,7 +70,7 @@ namespace NosCore.Packets.ServerPackets.Inventory
         public long Xp { get; set; }
 
         [PacketIndex(19)]
-        public short SpXpData { get; set; }
+        public long SpXpData { get; set; }
 
         [PacketIndex(20)]
         public string? Skill { get; set; }
@@ -103,7 +103,7 @@ namespace NosCore.Packets.ServerPackets.Inventory
         public int Unknown9 { get; set; }
 
         [PacketIndex(30)]
-        public byte IsSpDestroyed { get; set; }
+        public bool IsSpDestroyed { get; set; }
 
         [PacketIndex(31)]
         public int ShellHit { get; set; }
