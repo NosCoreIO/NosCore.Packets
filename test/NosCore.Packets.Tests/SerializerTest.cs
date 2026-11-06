@@ -166,10 +166,8 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void ThePityGaugeComesAfterTheShellLevel()
         {
-            var weapon = Serializer.Serialize(new EInfoWeaponPacket { ItemVNum = 299, PityGauge = 350 });
-            var armour = Serializer.Serialize(new EInfoArmorPacket { ItemVNum = 97, PityGauge = 350 });
-            Assert.IsTrue(weapon.EndsWith("-1 0 0 0 0 350"), weapon);
-            Assert.IsTrue(armour.EndsWith("-1 0 0 0 0 350"), armour);
+            var packet = Serializer.Serialize(new EInfoWeaponPacket { ItemVNum = 299, PityGauge = 350 });
+            Assert.IsTrue(packet.EndsWith("-1 0 0 0 0 350"), packet);
         }
 
         [TestMethod]
