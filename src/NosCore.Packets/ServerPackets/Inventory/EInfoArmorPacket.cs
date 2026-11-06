@@ -61,5 +61,10 @@ namespace NosCore.Packets.ServerPackets.Inventory
 
         [PacketListIndex(15, IsOptional = true)]
         public List<EInfoShellOptionSubPacket>? ShellOptions { get; set; }
+
+        // Out of 1000; the tooltip shows it as a percentage. Left null below +10, where the
+        // client shows no gauge.
+        [PacketIndex(16, IsOptional = true)]
+        public short? PityGauge { get; set; }
     }
 }
