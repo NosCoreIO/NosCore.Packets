@@ -252,6 +252,12 @@ namespace NosCore.Packets
                     trueIndex = trueIndex == -1 ? currentIndex : trueIndex;
                     if (currentIndex < matches.Length)
                     {
+                        if (trueIndex < matches.Length && matches[trueIndex].Length == 0 && IsScalar(packetBasePropertyInfo.Key.Item1))
+                        {
+                            trueIndex++;
+                            continue;
+                        }
+
                         var value = DeserializeValue(packetBasePropertyInfo.Key, packetBasePropertyInfo.Key.Item1,
                             matches, ref trueIndex, isMaxIndex);
                         
@@ -269,6 +275,12 @@ namespace NosCore.Packets
             }
 
             return deg;
+        }
+
+        private static bool IsScalar(Type type)
+        {
+            var underlying = Nullable.GetUnderlyingType(type) ?? type;
+            return underlying.IsEnum || underlying.IsPrimitive || underlying == typeof(Guid);
         }
 
         private object? DeserializeValue(Tuple<Type, PacketIndexAttribute, string, IEnumerable<ValidationAttribute>> packetBasePropertyInfo, Type item1, string[] matches, ref int currentIndex, bool isMaxIndex)
