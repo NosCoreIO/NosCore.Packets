@@ -34,10 +34,10 @@ namespace NosCore.Packets.ClientPackets.Instance
         public short MonsterKilled { get; set; }
 
         [PacketIndex(7)]
-        public byte RemainingNpc { get; set; }
+        public short RoomsVisited { get; set; }
 
         [PacketIndex(8)]
-        public short RoomsVisited { get; set; }
+        public byte RemainingNpc { get; set; }
 
         [PacketIndex(9)]
         public bool IsAllMonstersKilled { get; set; }
