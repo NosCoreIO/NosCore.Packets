@@ -7,7 +7,6 @@
 using System.Collections.Generic;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
-using NosCore.Packets.ServerPackets.Inventory;
 
 namespace NosCore.Packets.ServerPackets.Warehouse
 {
@@ -18,6 +17,6 @@ namespace NosCore.Packets.ServerPackets.Warehouse
         public byte WarehouseSize { get; set; }
 
         [PacketListIndex(1)]
-        public List<IvnSubPacket>? IvnSubPackets { get; set; }
+        public List<WarehouseSubPacket>? Items { get; set; }
     }
 }
