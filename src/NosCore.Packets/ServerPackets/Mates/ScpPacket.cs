@@ -113,5 +113,29 @@ namespace NosCore.Packets.ServerPackets.Mates
 
         [PacketIndex(32)]
         public bool IsSummonable { get; set; }
+
+        // 33 to 39 are always sent; with only 33 fields the client's pet window shows no pictures.
+        [PacketIndex(33)]
+        public long Unknow2 { get; set; }
+
+        // 1, 2 or 3 depending on the pet (the same value as the pet's in packet field after Unknow6).
+        [PacketIndex(34)]
+        public long Unknow3 { get; set; }
+
+        [PacketIndex(35)]
+        public long Unknow4 { get; set; }
+
+        [PacketIndex(36)]
+        public long Unknow5 { get; set; }
+
+        [PacketIndex(37)]
+        public long Unknow6 { get; set; }
+
+        [PacketIndex(38)]
+        public long Unknow7 { get; set; }
+
+        // 1 for every pet seen so far.
+        [PacketIndex(39)]
+        public long Unknow8 { get; set; }
     }
 }
