@@ -13,6 +13,6 @@ namespace NosCore.Packets.ClientPackets.Families
     public class FrankCtsPacket : PacketBase
     {
         [PacketIndex(0)]
-        public byte Type { get; set; }
+        public FamilyRankingType Type { get; set; }
     }
 }

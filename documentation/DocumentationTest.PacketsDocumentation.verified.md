@@ -320,12 +320,16 @@
 
 ### Families
 - [fc](../src/NosCore.Packets/ServerPackets/Families/FcPacket.cs) *InGame*
+- [fhis_stc](../src/NosCore.Packets/ServerPackets/Families/FhisStcPacket.cs) *InGame*
+- [frank_stc](../src/NosCore.Packets/ServerPackets/Families/FrankStcPacket.cs) *InGame*
 - [fslog_stc](../src/NosCore.Packets/ServerPackets/Families/FslogStcPacket.cs) *InGame*
 - [gexp](../src/NosCore.Packets/ServerPackets/Families/GexpPacket.cs) *InGame*
+- [ghis](../src/NosCore.Packets/ServerPackets/Families/GhisPacket.cs) *InGame*
 - [gidx](../src/NosCore.Packets/ServerPackets/Families/GidxPacket.cs) *InTrade | InGame*
 - [ginfo](../src/NosCore.Packets/ServerPackets/Families/GInfoPacket.cs) *InGame*
 - [gmbr](../src/NosCore.Packets/ServerPackets/Families/GmbrPacket.cs) *InGame*
 - [gmsg](../src/NosCore.Packets/ServerPackets/Families/GmsgPacket.cs) *InGame*
+- [today_stc](../src/NosCore.Packets/ServerPackets/Families/TodayStcPacket.cs) *InGame*
 
 ### Groups
 - [ftpt](../src/NosCore.Packets/ServerPackets/Groups/FtptPacket.cs) *InGame*
