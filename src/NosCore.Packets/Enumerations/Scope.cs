@@ -1,4 +1,4 @@
-﻿//  __  _  __    __   ___ __  ___ ___
+//  __  _  __    __   ___ __  ___ ___
 // |  \| |/__\ /' _/ / _//__\| _ \ __|
 // | | ' | \/ |`._`.| \_| \/ | v / _|
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
@@ -16,5 +16,9 @@ namespace NosCore.Packets.Enumerations
         InTrade = 2,
         InGame = 4,
         OnLoginScreen = 8,
+
+        // Accepted while the sender is dead. The client keeps sending these from the death
+        // screen; anything that acts on the world is refused until the character is revived.
+        WhileDead = 16,
     }
 }

@@ -1,4 +1,4 @@
-﻿//  __  _  __    __   ___ __  ___ ___
+//  __  _  __    __   ___ __  ___ ___
 // |  \| |/__\ /' _/ / _//__\| _ \ __|
 // | | ' | \/ |`._`.| \_| \/ | v / _|
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
@@ -10,6 +10,7 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ClientPackets.Specialists
 {
     [PacketHeader("s_carrier", Scope.InGame)]
+    [RefusedWhile(SenderState.Transformed, Game18NConstString.CantPutSpecialistInHolderWhileTransformed)]
     public class SCarrierPacket : PacketBase
     {
         [PacketIndex(0)]

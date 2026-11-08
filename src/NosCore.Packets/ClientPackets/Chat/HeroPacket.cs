@@ -9,7 +9,8 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Chat
 {
-    [PacketHeader("hero", Scope.InGame | Scope.InTrade)]
+    [PacketHeader("hero", Scope.InGame | Scope.InTrade | Scope.WhileDead)]
+    [MinimumInterval(Milliseconds = 3000)]
     public class HeroPacket : PacketBase
     {
         [PacketIndex(0)]

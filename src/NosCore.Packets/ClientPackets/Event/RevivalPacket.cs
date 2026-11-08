@@ -1,4 +1,4 @@
-﻿//  __  _  __    __   ___ __  ___ ___
+//  __  _  __    __   ___ __  ___ ___
 // |  \| |/__\ /' _/ / _//__\| _ \ __|
 // | | ' | \/ |`._`.| \_| \/ | v / _|
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
@@ -9,10 +9,11 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Event
 {
-    [PacketHeader("revival", Scope.InGame)]
+    [PacketHeader("revival", Scope.InGame | Scope.WhileDead)]
+    [RefusedWhile(SenderState.Alive)]
     public class RevivalPacket : PacketBase
     {
         [PacketIndex(0)]
-        public byte Type { get; set; }
+        public RevivalType Type { get; set; }
     }
 }

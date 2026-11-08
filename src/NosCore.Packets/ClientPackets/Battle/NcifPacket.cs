@@ -1,4 +1,4 @@
-﻿//  __  _  __    __   ___ __  ___ ___
+//  __  _  __    __   ___ __  ___ ___
 // |  \| |/__\ /' _/ / _//__\| _ \ __|
 // | | ' | \/ |`._`.| \_| \/ | v / _|
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
@@ -11,7 +11,7 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Battle
 {
-    [PacketHeader("ncif", Scope.InGame | Scope.InTrade)]
+    [PacketHeader("ncif", Scope.InGame | Scope.InTrade | Scope.WhileDead)]
     public class NcifPacket : PacketBase
     {
         [PacketIndex(0)]

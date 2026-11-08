@@ -1,4 +1,4 @@
-﻿//  __  _  __    __   ___ __  ___ ___
+//  __  _  __    __   ___ __  ___ ___
 // |  \| |/__\ /' _/ / _//__\| _ \ __|
 // | | ' | \/ |`._`.| \_| \/ | v / _|
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
@@ -25,8 +25,7 @@ namespace NosCore.Packets.ClientPackets.Bazaar
         [PacketIndex(4)]
         public int Unknown2 { get; set; }
         [PacketIndex(5)]
-        [Range(0, 4)]
-        public byte Durability { get; set; }
+        public BazaarListingDuration Durability { get; set; }
         [PacketIndex(6)]
         public bool IsPackage { get; set; }
         [PacketIndex(7)]

@@ -7,10 +7,10 @@
 ### Battle
 - [mtlist](../src/NosCore.Packets/ClientPackets/Battle/MultiTargetListPacket.cs) *InGame*
 - [multi_target_list_sub_packet](../src/NosCore.Packets/ClientPackets/Battle/MultiTargetListSubPacket.cs) *InGame*
-- [ncif](../src/NosCore.Packets/ClientPackets/Battle/NcifPacket.cs) *InTrade | InGame*
+- [ncif](../src/NosCore.Packets/ClientPackets/Battle/NcifPacket.cs) *InTrade | InGame | WhileDead*
 - [u_as](../src/NosCore.Packets/ClientPackets/Battle/UseAoeSkillPacket.cs) *InGame*
 - [ob_a](../src/NosCore.Packets/ClientPackets/Battle/UseIconFalconSkillPacket.cs) *InGame*
-- [u_s](../src/NosCore.Packets/ClientPackets/Battle/UseSkillPacket.cs) *InGame*
+- [u_s](../src/NosCore.Packets/ClientPackets/Battle/UseSkillPacket.cs) *InGame* - refused while Vehicled, at least 100 ms apart
 
 ### BattlePassGift
 - [bp_msel](../src/NosCore.Packets/ClientPackets/BattlePassGift/BpMselPacket.cs) *InGame*
@@ -30,17 +30,17 @@
 - [Char_NEW_JOB](../src/NosCore.Packets/ClientPackets/CharacterSelectionScreen/CharNewJobPacket.cs) *OnCharacterScreen*
 - [Char_NEW](../src/NosCore.Packets/ClientPackets/CharacterSelectionScreen/CharNewPacket.cs) *OnCharacterScreen*
 - [Char_REN](../src/NosCore.Packets/ClientPackets/CharacterSelectionScreen/CharRenamePacket.cs) *OnCharacterScreen*
-- [game_start](../src/NosCore.Packets/ClientPackets/CharacterSelectionScreen/GameStartPacket.cs) *InGame*
+- [game_start](../src/NosCore.Packets/ClientPackets/CharacterSelectionScreen/GameStartPacket.cs) *InGame | WhileDead*
 - [select](../src/NosCore.Packets/ClientPackets/CharacterSelectionScreen/SelectPacket.cs) *OnCharacterScreen*
 
 ### Chat
-- [btk](../src/NosCore.Packets/ClientPackets/Chat/BtkPacket.cs) *InTrade | InGame*
-- [say](../src/NosCore.Packets/ClientPackets/Chat/ClientSayPacket.cs) *InTrade | InGame*
-- [:](../src/NosCore.Packets/ClientPackets/Chat/FamilyChatPacket.cs) *InTrade | InGame*
-- [;](../src/NosCore.Packets/ClientPackets/Chat/GroupTalkPacket.cs) *InTrade | InGame*
-- [hero](../src/NosCore.Packets/ClientPackets/Chat/HeroPacket.cs) *InTrade | InGame*
+- [btk](../src/NosCore.Packets/ClientPackets/Chat/BtkPacket.cs) *InTrade | InGame | WhileDead* - at least 500 ms apart
+- [say](../src/NosCore.Packets/ClientPackets/Chat/ClientSayPacket.cs) *InTrade | InGame | WhileDead* - at least 500 ms apart
+- [:](../src/NosCore.Packets/ClientPackets/Chat/FamilyChatPacket.cs) *InTrade | InGame | WhileDead* - at least 500 ms apart
+- [;](../src/NosCore.Packets/ClientPackets/Chat/GroupTalkPacket.cs) *InTrade | InGame | WhileDead* - at least 500 ms apart
+- [hero](../src/NosCore.Packets/ClientPackets/Chat/HeroPacket.cs) *InTrade | InGame | WhileDead* - at least 3000 ms apart
 - [!](../src/NosCore.Packets/ClientPackets/Chat/TimeSpaceTalkPacket.cs) *InGame*
-- [/](../src/NosCore.Packets/ClientPackets/Chat/WhisperPacket.cs) *InTrade | InGame*
+- [/](../src/NosCore.Packets/ClientPackets/Chat/WhisperPacket.cs) *InTrade | InGame | WhileDead* - at least 500 ms apart
 
 ### ClientPackets
 - [lbs](../src/NosCore.Packets/ClientPackets/ClientPackets/LbsPacket.cs) *InTrade | InGame*
@@ -73,7 +73,7 @@
 - [fb](../src/NosCore.Packets/ClientPackets/Event/FbPacket.cs) *InGame*
 - [mkraid](../src/NosCore.Packets/ClientPackets/Event/MkRaidPacket.cs) *InGame*
 - [rd](../src/NosCore.Packets/ClientPackets/Event/RdPacket.cs) *InGame*
-- [revival](../src/NosCore.Packets/ClientPackets/Event/RevivalPacket.cs) *InGame*
+- [revival](../src/NosCore.Packets/ClientPackets/Event/RevivalPacket.cs) *InGame | WhileDead* - refused while Alive
 - [rl](../src/NosCore.Packets/ClientPackets/Event/RlPacket.cs) *InGame*
 - [rsel](../src/NosCore.Packets/ClientPackets/Event/RselPacket.cs) *InGame*
 - [treq](../src/NosCore.Packets/ClientPackets/Event/TreqPacket.cs) *InGame*
@@ -97,11 +97,11 @@
 
 ### Groups
 - [pinv](../src/NosCore.Packets/ClientPackets/Groups/PinvPacket.cs) *InGame*
-- [pleave](../src/NosCore.Packets/ClientPackets/Groups/PleavePacket.cs) *InTrade | InGame*
+- [pleave](../src/NosCore.Packets/ClientPackets/Groups/PleavePacket.cs) *InTrade | InGame | WhileDead*
 
 ### Infrastructure
 - [DAC](../src/NosCore.Packets/ClientPackets/Infrastructure/DacPacket.cs) *OnCharacterScreen*
-- [0](../src/NosCore.Packets/ClientPackets/Infrastructure/ZeroPacket.cs) *OnCharacterScreen | InTrade | InGame*
+- [0](../src/NosCore.Packets/ClientPackets/Infrastructure/ZeroPacket.cs) *OnCharacterScreen | InTrade | InGame | WhileDead*
 
 ### Instance
 - [escape](../src/NosCore.Packets/ClientPackets/Instance/EscapePacket.cs) *InGame*
@@ -136,7 +136,7 @@
 - [ptctl](../src/NosCore.Packets/ClientPackets/Mates/PtctlPacket.cs) *InGame*
 - [say_p](../src/NosCore.Packets/ClientPackets/Mates/SayPPacket.cs) *InGame*
 - [suctl](../src/NosCore.Packets/ClientPackets/Mates/SuCtlPacket.cs) *InGame*
-- [u_pet](../src/NosCore.Packets/ClientPackets/Mates/UpetPacket.cs) *InGame*
+- [u_pet](../src/NosCore.Packets/ClientPackets/Mates/UpetPacket.cs) *InGame* - at least 100 ms apart
 - [u_ps](../src/NosCore.Packets/ClientPackets/Mates/UpsPacket.cs) *InGame*
 
 ### Miniland
@@ -148,11 +148,11 @@
 - [useobj](../src/NosCore.Packets/ClientPackets/Miniland/UseObjPacket.cs) *InGame*
 
 ### Movement
-- [dir](../src/NosCore.Packets/ClientPackets/Movement/ClientDirPacket.cs) *InTrade | InGame*
+- [dir](../src/NosCore.Packets/ClientPackets/Movement/ClientDirPacket.cs) *InTrade | InGame* - at least 100 ms apart
 - [preq](../src/NosCore.Packets/ClientPackets/Movement/PreqPacket.cs) *InTrade | InGame*
-- [pulse](../src/NosCore.Packets/ClientPackets/Movement/PulsePacket.cs) *InTrade | InGame*
+- [pulse](../src/NosCore.Packets/ClientPackets/Movement/PulsePacket.cs) *InTrade | InGame | WhileDead*
 - [rest](../src/NosCore.Packets/ClientPackets/Movement/SitPacket.cs) *InTrade | InGame*
-- [walk](../src/NosCore.Packets/ClientPackets/Movement/WalkPacket.cs) *InGame*
+- [walk](../src/NosCore.Packets/ClientPackets/Movement/WalkPacket.cs) *InGame* - at least 50 ms apart
 
 ### Npcs
 - [n_run](../src/NosCore.Packets/ClientPackets/Npcs/NrunPacket.cs) *InGame*
@@ -170,10 +170,10 @@
 - [bpp](../src/NosCore.Packets/ClientPackets/Player/BppPacket.cs) *InGame*
 - [bpt](../src/NosCore.Packets/ClientPackets/Player/BptPacket.cs) *InGame*
 - [compl](../src/NosCore.Packets/ClientPackets/Player/ComplPacket.cs) *InGame*
-- [eqinfo](../src/NosCore.Packets/ClientPackets/Player/EquipmentInfoPacket.cs) *InGame*
+- [eqinfo](../src/NosCore.Packets/ClientPackets/Player/EquipmentInfoPacket.cs) *InGame | WhileDead*
 - [npinfo](../src/NosCore.Packets/ClientPackets/Player/NpInfoPacket.cs) *InGame*
 - [rsfi](../src/NosCore.Packets/ClientPackets/Player/RsfiPacket.cs) *InGame*
-- [snap](../src/NosCore.Packets/ClientPackets/Player/SnapPacket.cs) *InTrade | InGame*
+- [snap](../src/NosCore.Packets/ClientPackets/Player/SnapPacket.cs) *InTrade | InGame | WhileDead*
 - [tit_eq](../src/NosCore.Packets/ClientPackets/Player/TitEqPacket.cs) *InTrade | InGame*
 - [up_gr](../src/NosCore.Packets/ClientPackets/Player/UpgradePacket.cs) *InGame*
 
@@ -182,20 +182,20 @@
 - [script](../src/NosCore.Packets/ClientPackets/Quest/ScriptClientPacket.cs) *InGame*
 
 ### Quicklist
-- [qset](../src/NosCore.Packets/ClientPackets/Quicklist/QsetPacket.cs) *InTrade | InGame*
+- [qset](../src/NosCore.Packets/ClientPackets/Quicklist/QsetPacket.cs) *InTrade | InGame | WhileDead*
 
 ### Relations
-- [bldel](../src/NosCore.Packets/ClientPackets/Relations/BlDelPacket.cs) *InTrade | InGame*
-- [blins](../src/NosCore.Packets/ClientPackets/Relations/BlInsPacket.cs) *InTrade | InGame*
+- [bldel](../src/NosCore.Packets/ClientPackets/Relations/BlDelPacket.cs) *InTrade | InGame | WhileDead*
+- [blins](../src/NosCore.Packets/ClientPackets/Relations/BlInsPacket.cs) *InTrade | InGame | WhileDead*
 - [$bl](../src/NosCore.Packets/ClientPackets/Relations/BlPacket.cs) *InTrade | InGame*
-- [fdel](../src/NosCore.Packets/ClientPackets/Relations/FdelPacket.cs) *InTrade | InGame*
-- [fins](../src/NosCore.Packets/ClientPackets/Relations/FinsPacket.cs) *InTrade | InGame*
+- [fdel](../src/NosCore.Packets/ClientPackets/Relations/FdelPacket.cs) *InTrade | InGame | WhileDead*
+- [fins](../src/NosCore.Packets/ClientPackets/Relations/FinsPacket.cs) *InTrade | InGame | WhileDead*
 - [fl](../src/NosCore.Packets/ClientPackets/Relations/FlPacket.cs) *InGame*
 - [reloadfinfo](../src/NosCore.Packets/ClientPackets/Relations/ReloadFinfoPacket.cs) *InTrade | InGame*
 
 ### Shops
 - [buy](../src/NosCore.Packets/ClientPackets/Shops/BuyPacket.cs) *InGame*
-- [c_close](../src/NosCore.Packets/ClientPackets/Shops/CClosePacket.cs) *OnCharacterScreen | InTrade | InGame*
+- [c_close](../src/NosCore.Packets/ClientPackets/Shops/CClosePacket.cs) *OnCharacterScreen | InTrade | InGame | WhileDead*
 - [m_shop](../src/NosCore.Packets/ClientPackets/Shops/MShopPacket.cs) *InGame*
 - [pdtse](../src/NosCore.Packets/ClientPackets/Shops/PdtsePacket.cs) *InGame*
 - [sell_list](../src/NosCore.Packets/ClientPackets/Shops/SellListPacket.cs) *InTrade | InGame*
@@ -204,7 +204,7 @@
 - [shopping](../src/NosCore.Packets/ClientPackets/Shops/ShoppingPacket.cs) *InGame*
 
 ### Specialists
-- [s_carrier](../src/NosCore.Packets/ClientPackets/Specialists/SCarrierPacket.cs) *InGame*
+- [s_carrier](../src/NosCore.Packets/ClientPackets/Specialists/SCarrierPacket.cs) *InGame* - refused while Transformed (CantPutSpecialistInHolderWhileTransformed)
 - [sl](../src/NosCore.Packets/ClientPackets/Specialists/SpTransformPacket.cs) *InGame*
 
 ### UI
@@ -296,7 +296,7 @@
 - [drop](../src/NosCore.Packets/ServerPackets/Entities/DropPacket.cs) *InGame*
 - [mv](../src/NosCore.Packets/ServerPackets/Entities/MovePacket.cs) *InGame*
 - [out](../src/NosCore.Packets/ServerPackets/Entities/OutPacket.cs) *InGame*
-- [req_info](../src/NosCore.Packets/ServerPackets/Entities/ReqInfoPacket.cs) *InGame*
+- [req_info](../src/NosCore.Packets/ServerPackets/Entities/ReqInfoPacket.cs) *InGame | WhileDead*
 - [rest](../src/NosCore.Packets/ServerPackets/Entities/RestPacket.cs) *InGame*
 - [st](../src/NosCore.Packets/ServerPackets/Entities/StPacket.cs) *InGame*
 - [tp](../src/NosCore.Packets/ServerPackets/Entities/TpPacket.cs) *InGame*
@@ -335,7 +335,7 @@
 - [ftpt](../src/NosCore.Packets/ServerPackets/Groups/FtptPacket.cs) *InGame*
 - [pinit](../src/NosCore.Packets/ServerPackets/Groups/PinitPacket.cs) *InGame*
 - [pinit_sub_packet](../src/NosCore.Packets/ServerPackets/Groups/PinitSubPacket.cs) *InGame*
-- [pjoin](../src/NosCore.Packets/ServerPackets/Groups/PjoinPacket.cs) *InGame*
+- [pjoin](../src/NosCore.Packets/ServerPackets/Groups/PjoinPacket.cs) *InGame | WhileDead*
 
 ### Inventory
 - [e_info](../src/NosCore.Packets/ServerPackets/Inventory/EInfoAccessoryPacket.cs) *InGame*
@@ -431,7 +431,7 @@
 - [fs](../src/NosCore.Packets/ServerPackets/Player/FsPacket.cs) *InGame*
 - [levelup](../src/NosCore.Packets/ServerPackets/Player/LevelUpPacket.cs) *InGame*
 - [lev](../src/NosCore.Packets/ServerPackets/Player/LevPacket.cs) *InGame*
-- [npinfo](../src/NosCore.Packets/ServerPackets/Player/NpInfoPacket.cs) *InGame*
+- [npinfo](../src/NosCore.Packets/ServerPackets/Player/NpInfoPacket.cs) *InGame | WhileDead*
 - [p_sex](../src/NosCore.Packets/ServerPackets/Player/PSexPacket.cs) *InGame*
 - [rage](../src/NosCore.Packets/ServerPackets/Player/RagePacket.cs) *InGame*
 - [rsfi](../src/NosCore.Packets/ServerPackets/Player/RsfiPacket.cs) *InGame*

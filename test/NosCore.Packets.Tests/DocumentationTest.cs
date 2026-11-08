@@ -1,4 +1,4 @@
-﻿//  __  _  __    __   ___ __  ___ ___
+//  __  _  __    __   ___ __  ___ ___
 // |  \| |/__\ /' _/ / _//__\| _ \ __|
 // | | ' | \/ |`._`.| \_| \/ | v / _|
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
@@ -56,6 +56,19 @@ namespace NosCore.Packets.Tests
             }
 
             return result;
+        }
+
+        private static string DescribeSendingRules(Type packet)
+        {
+            var rules = packet.GetCustomAttributes<RefusedWhileAttribute>()
+                .Select(r => $"refused while {r.States}" + (r.Message is { } message ? $" ({message})" : string.Empty))
+                .ToList();
+            if (packet.GetCustomAttribute<MinimumIntervalAttribute>() is { } interval)
+            {
+                rules.Add($"at least {interval.Milliseconds} ms apart");
+            }
+
+            return rules.Count == 0 ? string.Empty : $" - {string.Join(", ", rules)}";
         }
 
         [TestMethod]
@@ -120,7 +133,7 @@ namespace NosCore.Packets.Tests
                 foreach (var packet in GetPackets(packetGroup))
                 {
                     builder.AppendLine(
-                        $"- [{packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification}](../src/NosCore.Packets/ClientPackets/{packetGroup.Key}/{packet.Name}.cs) *{string.Join(" | ", ListScopes((packet.GetCustomAttributes(typeof(PacketHeaderAttribute))?.FirstOrDefault() as PacketHeaderAttribute)?.Scopes ?? Scope.Unknown))}*");
+                        $"- [{packet.GetCustomAttribute<PacketHeaderAttribute>()!.Identification}](../src/NosCore.Packets/ClientPackets/{packetGroup.Key}/{packet.Name}.cs) *{string.Join(" | ", ListScopes((packet.GetCustomAttributes(typeof(PacketHeaderAttribute))?.FirstOrDefault() as PacketHeaderAttribute)?.Scopes ?? Scope.Unknown))}*{DescribeSendingRules(packet)}");
                 }
             }
 
