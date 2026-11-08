@@ -1,4 +1,4 @@
-﻿//  __  _  __    __   ___ __  ___ ___
+//  __  _  __    __   ___ __  ___ ___
 // |  \| |/__\ /' _/ / _//__\| _ \ __|
 // | | ' | \/ |`._`.| \_| \/ | v / _|
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
@@ -7,6 +7,7 @@
 using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.CharacterSelectionScreen
 {
@@ -30,6 +31,6 @@ namespace NosCore.Packets.ClientPackets.CharacterSelectionScreen
         [PacketIndex(4)]
         public HairColorType HairColor { get; set; }
 
-        public byte? TargetClass { get; set; }
+        public CharacterClassType? TargetClass { get; set; }
     }
 }

@@ -38,19 +38,19 @@ namespace NosCore.Packets.Tests
         });
 
         [TestMethod]
-        [DataRow((byte)0, "revival 0")]
-        [DataRow((byte)1, "revival 1")]
-        [DataRow((byte)2, "revival 2")]
-        public void RevivalTypeKeepsItsWireValue(byte type, string wire)
+        [DataRow(RevivalType.InPlace, "revival 0")]
+        [DataRow(RevivalType.AtSavePoint, "revival 1")]
+        [DataRow(RevivalType.InArena, "revival 2")]
+        public void RevivalTypeKeepsItsWireValue(RevivalType type, string wire)
         {
             Assert.AreEqual(wire, Serializer.Serialize(new RevivalPacket { Type = type }));
             Assert.AreEqual(type, ((RevivalPacket)Deserializer.Deserialize(wire)).Type);
         }
 
         [TestMethod]
-        [DataRow((byte)1, "gjoin 1 42")]
-        [DataRow((byte)2, "gjoin 2 42")]
-        public void FamilyInviteAnswerKeepsItsWireValue(byte type, string wire)
+        [DataRow(FamilyInviteAnswerType.Accept, "gjoin 1 42")]
+        [DataRow(FamilyInviteAnswerType.Decline, "gjoin 2 42")]
+        public void FamilyInviteAnswerKeepsItsWireValue(FamilyInviteAnswerType type, string wire)
         {
             Assert.AreEqual(wire, Serializer.Serialize(new JoinFamilyPacket { Type = type, CharacterId = 42 }));
             Assert.AreEqual(type, ((JoinFamilyPacket)Deserializer.Deserialize(wire)).Type);
@@ -59,25 +59,25 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void MinilandIntroEditKeepsItsWireValue()
         {
-            Assert.AreEqual("mledit 1 Welcome", Serializer.Serialize(new MLEditPacket { Type = 1, MinilandInfo = "Welcome" }));
-            Assert.AreEqual((byte)1, ((MLEditPacket)Deserializer.Deserialize("mledit 1 -1 Welcome")).Type);
+            Assert.AreEqual("mledit 1 Welcome", Serializer.Serialize(new MLEditPacket { Type = MinilandEditType.Intro, MinilandInfo = "Welcome" }));
+            Assert.AreEqual(MinilandEditType.Intro, ((MLEditPacket)Deserializer.Deserialize("mledit 1 -1 Welcome")).Type);
         }
 
         [TestMethod]
         public void MinilandStateEditKeepsItsWireValue()
         {
             const string wire = "mledit 2 1";
-            Assert.AreEqual(wire, Serializer.Serialize(new MLEditPacket { Type = 2, Parameter = MinilandState.Private }));
+            Assert.AreEqual(wire, Serializer.Serialize(new MLEditPacket { Type = MinilandEditType.State, Parameter = MinilandState.Private }));
             var packet = (MLEditPacket)Deserializer.Deserialize(wire);
-            Assert.AreEqual((byte)2, packet.Type);
+            Assert.AreEqual(MinilandEditType.State, packet.Type);
             Assert.AreEqual(MinilandState.Private, packet.Parameter);
         }
 
         [TestMethod]
-        [DataRow(1, "pst 1 1 5 -1 0 Bob Title Hello^there")]
-        [DataRow(2, "pst 2 1 5 -1 0 Bob Title Hello^there")]
-        [DataRow(3, "pst 3 1 5 -1 0 Bob Title Hello^there")]
-        public void PostActionKeepsItsWireValue(int action, string wire)
+        [DataRow(PostActionType.Send, "pst 1 1 5 -1 0 Bob Title Hello^there")]
+        [DataRow(PostActionType.Delete, "pst 2 1 5 -1 0 Bob Title Hello^there")]
+        [DataRow(PostActionType.Read, "pst 3 1 5 -1 0 Bob Title Hello^there")]
+        public void PostActionKeepsItsWireValue(PostActionType action, string wire)
         {
             Assert.AreEqual(wire, Serializer.Serialize(new PstClientPacket
             {
@@ -87,11 +87,11 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
-        [DataRow((byte)1, "c_reg 0 1 3 0 0 1 0 2 500 25 0")]
-        [DataRow((byte)2, "c_reg 0 1 3 0 0 2 0 2 500 25 0")]
-        [DataRow((byte)3, "c_reg 0 1 3 0 0 3 0 2 500 25 0")]
-        [DataRow((byte)4, "c_reg 0 1 3 0 0 4 0 2 500 25 0")]
-        public void BazaarListingDurationKeepsItsWireValue(byte durability, string wire)
+        [DataRow(BazaarListingDuration.OneDay, "c_reg 0 1 3 0 0 1 0 2 500 25 0")]
+        [DataRow(BazaarListingDuration.SevenDays, "c_reg 0 1 3 0 0 2 0 2 500 25 0")]
+        [DataRow(BazaarListingDuration.FifteenDays, "c_reg 0 1 3 0 0 3 0 2 500 25 0")]
+        [DataRow(BazaarListingDuration.ThirtyDays, "c_reg 0 1 3 0 0 4 0 2 500 25 0")]
+        public void BazaarListingDurationKeepsItsWireValue(BazaarListingDuration durability, string wire)
         {
             Assert.AreEqual(wire, Serializer.Serialize(new CRegPacket
             {

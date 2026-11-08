@@ -1,4 +1,4 @@
-﻿//  __  _  __    __   ___ __  ___ ___
+//  __  _  __    __   ___ __  ___ ___
 // |  \| |/__\ /' _/ / _//__\| _ \ __|
 // | | ' | \/ |`._`.| \_| \/ | v / _|
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
@@ -13,7 +13,7 @@ namespace NosCore.Packets.ClientPackets.Parcel
     public class PstClientPacket : PacketBase
     {
         [PacketIndex(0)]
-        public int ActionType { get; set; }
+        public PostActionType ActionType { get; set; }
 
         [PacketIndex(1)]
         public int Type { get; set; }
