@@ -10,11 +10,14 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Families
 {
-    // Fills whichever tab of the family ranking the client last asked for with frank_cts.
     [PacketHeader("frank_stc", Scope.InGame)]
     public class FrankStcPacket : PacketBase
     {
-        [PacketListIndex(0)]
+        // The tab the entries fill; the client reads the first entry as this when it is missing.
+        [PacketIndex(0)]
+        public FamilyRankingType Type { get; set; }
+
+        [PacketListIndex(1)]
         public List<FrankStcSubPacket?>? Entries { get; set; }
     }
 }
