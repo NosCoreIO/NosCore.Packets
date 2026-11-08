@@ -9,7 +9,8 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Event
 {
-    [PacketHeader("revival", Scope.InGame)]
+    [PacketHeader("revival", Scope.InGame | Scope.WhileDead)]
+    [RefusedWhile(SenderState.Alive)]
     public class RevivalPacket : PacketBase
     {
         [PacketIndex(0)]

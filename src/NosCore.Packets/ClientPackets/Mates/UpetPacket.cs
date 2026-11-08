@@ -1,4 +1,4 @@
-﻿//  __  _  __    __   ___ __  ___ ___
+//  __  _  __    __   ___ __  ___ ___
 // |  \| |/__\ /' _/ / _//__\| _ \ __|
 // | | ' | \/ |`._`.| \_| \/ | v / _|
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
@@ -11,6 +11,7 @@ using NosCore.Shared.Enumerations;
 namespace NosCore.Packets.ClientPackets.Mates
 {
     [PacketHeader("u_pet", Scope.InGame)]
+    [MinimumInterval(Milliseconds = 100)]
     public class UpetPacket : PacketBase
     {
         [PacketIndex(0)]

@@ -1,4 +1,4 @@
-﻿//  __  _  __    __   ___ __  ___ ___
+//  __  _  __    __   ___ __  ___ ___
 // |  \| |/__\ /' _/ / _//__\| _ \ __|
 // | | ' | \/ |`._`.| \_| \/ | v / _|
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
@@ -9,7 +9,7 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Relations
 {
-    [PacketHeader("fins", Scope.InGame | Scope.InTrade)]
+    [PacketHeader("fins", Scope.InGame | Scope.InTrade | Scope.WhileDead)]
     public class FinsPacket : PacketBase
     {
         [PacketIndex(0)]
