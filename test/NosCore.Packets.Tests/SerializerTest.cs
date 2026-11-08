@@ -81,6 +81,7 @@ namespace NosCore.Packets.Tests
                 typeof(BiPacket),
                 typeof(MsgiPacket),
                 typeof(SayiPacket),
+                typeof(BsPacket),
                 typeof(AtPacket),
                 typeof(LevPacket),
                 typeof(EventbPacket),
@@ -133,6 +134,24 @@ namespace NosCore.Packets.Tests
 
             var packet = Serializer.Serialize(testPacket);
             Assert.IsTrue(packet.EndsWith("-1 Fire^Cannoneer"), packet);
+        }
+
+        [TestMethod]
+        public void SerializeBsPlaysAGroundSkillAtItsCell()
+        {
+            var packet = Serializer.Serialize(new BsPacket
+            {
+                VisualType = VisualType.Player,
+                VisualId = 5,
+                MapX = 30,
+                MapY = 40,
+                SkillVnum = 220,
+                SkillCooldown = 30,
+                AttackAnimation = 11,
+                SkillEffect = 4321
+            });
+
+            Assert.AreEqual("bs 1 5 30 40 220 30 11 4321 0 0 1 1 0 0 0", packet);
         }
 
         [TestMethod]

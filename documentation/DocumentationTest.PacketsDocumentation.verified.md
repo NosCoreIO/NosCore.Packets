@@ -244,6 +244,7 @@
 ### Battle
 - [bf_e](../src/NosCore.Packets/ServerPackets/Battle/BfePacket.cs) *InGame*
 - [bf](../src/NosCore.Packets/ServerPackets/Battle/BfPacket.cs) *InGame*
+- [bs](../src/NosCore.Packets/ServerPackets/Battle/BsPacket.cs) *InGame*
 - [cancel](../src/NosCore.Packets/ServerPackets/Battle/CancelPacket.cs) *InGame*
 - [ct](../src/NosCore.Packets/ServerPackets/Battle/CtPacket.cs) *InGame*
 - [die](../src/NosCore.Packets/ServerPackets/Battle/DiePacket.cs) *InGame*
