@@ -39,97 +39,101 @@ namespace NosCore.Packets.ServerPackets.Player
         [PacketIndex(5)]
         public GenderType Gender { get; set; }
 
+        // -1 without a family.
         [PacketIndex(6)]
-        public string? Family { get; set; }
+        public long FamilyId { get; set; } = -1;
 
         [PacketIndex(7)]
-        public ExtendedReputationType ReputationIco { get; set; }
+        public string? FamilyName { get; set; }
 
         [PacketIndex(8)]
-        public CharacterDignity DignityIco { get; set; }
+        public ExtendedReputationType ReputationIco { get; set; }
 
         [PacketIndex(9)]
-        public int HaveWeapon { get; set; }
+        public CharacterDignity DignityIco { get; set; }
 
         [PacketIndex(10)]
-        public long WeaponRare { get; set; }
+        public int HaveWeapon { get; set; }
 
         [PacketIndex(11)]
-        public long WeaponUpgrade { get; set; }
+        public long WeaponRare { get; set; }
 
         [PacketIndex(12)]
-        public int HaveSecondary { get; set; }
+        public long WeaponUpgrade { get; set; }
 
         [PacketIndex(13)]
-        public long SecondaryRare { get; set; }
+        public int HaveSecondary { get; set; }
 
         [PacketIndex(14)]
-        public long SecondaryUpgrade { get; set; }
+        public long SecondaryRare { get; set; }
 
         [PacketIndex(15)]
-        public int HaveArmor { get; set; }
+        public long SecondaryUpgrade { get; set; }
 
         [PacketIndex(16)]
-        public long ArmorRare { get; set; }
+        public int HaveArmor { get; set; }
 
         [PacketIndex(17)]
-        public long ArmorUpgrade { get; set; }
+        public long ArmorRare { get; set; }
 
         [PacketIndex(18)]
-        public long Act4Kill { get; set; }
+        public long ArmorUpgrade { get; set; }
 
         [PacketIndex(19)]
-        public long Act4Dead { get; set; }
+        public long Act4Kill { get; set; }
 
         [PacketIndex(20)]
-        public long Reputation { get; set; }
+        public long Act4Dead { get; set; }
 
         [PacketIndex(21)]
-        public long Unknow { get; set; } = 0; // Always 0
+        public long Reputation { get; set; }
 
         [PacketIndex(22)]
-        public long Unknow2 { get; set; } = 0; // Always 0
+        public long Unknow { get; set; } = 0; // Always 0
 
         [PacketIndex(23)]
-        public long Unknow3 { get; set; } = 0; // Always 0
+        public long Unknow2 { get; set; } = 0; // Always 0
 
         [PacketIndex(24)]
-        public long Morph { get; set; }
+        public long Unknow3 { get; set; } = 0; // Always 0
 
         [PacketIndex(25)]
-        public long TalentWin { get; set; }
+        public long Morph { get; set; }
 
         [PacketIndex(26)]
-        public long TalentLose { get; set; }
+        public long TalentWin { get; set; }
 
         [PacketIndex(27)]
-        public long TalentSurrender { get; set; }
+        public long TalentLose { get; set; }
 
         [PacketIndex(28)]
-        public long Unknow4 { get; set; } = 0; // always 0
+        public long TalentSurrender { get; set; }
 
         [PacketIndex(29)]
-        public long MasterPoints { get; set; }
+        public long Unknow4 { get; set; } = 0; // always 0
 
         [PacketIndex(30)]
-        public long Compliments { get; set; }
+        public long MasterPoints { get; set; }
 
         [PacketIndex(31)]
-        public long Act4Points { get; set; }
+        public long Compliments { get; set; }
 
         [PacketIndex(32)]
-        public bool IsPvpPrimary { get; set; }
+        public long Act4Points { get; set; }
 
         [PacketIndex(33)]
-        public bool IsPvpSecondary { get; set; }
+        public bool IsPvpPrimary { get; set; }
 
         [PacketIndex(34)]
-        public bool IsPvpArmor { get; set; }
+        public bool IsPvpSecondary { get; set; }
 
         [PacketIndex(35)]
-        public long HeroLevel { get; set; }
+        public bool IsPvpArmor { get; set; }
 
         [PacketIndex(36)]
+        public long HeroLevel { get; set; }
+
+        [PacketIndex(37, EscapeSpaces = true)]
         public string? Biography { get; set; }
     }
 }
