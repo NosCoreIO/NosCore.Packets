@@ -33,10 +33,11 @@ namespace NosCore.Packets.Tests
         });
 
         [TestMethod]
-        public void TheRankingListsRankNameLevelAndValuePerFamily()
+        public void TheRankingNamesItsTabThenListsRankNameLevelAndValuePerFamily()
         {
             var packet = Serializer.Serialize(new FrankStcPacket
             {
+                Type = FamilyRankingType.Reputation,
                 Entries = new List<FrankStcSubPacket?>
                 {
                     new() { Rank = 1, FamilyName = "Alpha", FamilyLevel = 5, Value = 1200 },
@@ -44,7 +45,7 @@ namespace NosCore.Packets.Tests
                 }
             });
 
-            Assert.AreEqual("frank_stc 1|Alpha|5|1200 2|Beta|3|40", packet);
+            Assert.AreEqual("frank_stc 3 1|Alpha|5|1200 2|Beta|3|40", packet);
         }
 
         [TestMethod]

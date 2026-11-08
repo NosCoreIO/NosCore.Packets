@@ -8,6 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NosCore.Packets.ClientPackets.Chat;
 using NosCore.Packets.ClientPackets.Families;
 using NosCore.Packets.ClientPackets.Inventory;
+using NosCore.Packets.ClientPackets.Mates;
 using NosCore.Packets.ClientPackets.Relations;
 using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
@@ -60,6 +61,8 @@ namespace NosCore.Packets.Tests
                 typeof(QSlotPacket),
                 typeof(RcbListPacket),
                 typeof(DelayPacket),
+                typeof(PdelayPacket),
+                typeof(PslPacket),
                 typeof(RpPacket),
                 typeof(UseItemPacket),
                 typeof(DlgPacket),
@@ -557,6 +560,20 @@ namespace NosCore.Packets.Tests
                 }
             );
             Assert.AreEqual($"delay 3000 3 #u_i^1^0^1^1^2^0", packet);
+        }
+
+        [TestMethod]
+        public void SerializePartnerDelayWithItsFollowUp()
+        {
+            var packet = Serializer.Serialize(
+                new PdelayPacket
+                {
+                    Type = DelayPacketType.Locomotion,
+                    Delay = 5000,
+                    Packet = new PslPacket { Type = PslPacketType.Wear }
+                }
+            );
+            Assert.AreEqual("pdelay 5000 3 #psl^1", packet);
         }
 
         [TestMethod]

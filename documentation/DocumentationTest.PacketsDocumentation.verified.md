@@ -526,6 +526,7 @@
 - [msgi](../src/NosCore.Packets/ServerPackets/UI/MsgiPacket.cs) *InGame*
 - [msg](../src/NosCore.Packets/ServerPackets/UI/MsgPacket.cs) *InGame*
 - [p_clear](../src/NosCore.Packets/ServerPackets/UI/PclearPacket.cs) *InGame*
+- [pdelay](../src/NosCore.Packets/ServerPackets/UI/PdelayPacket.cs) *InGame*
 - [qnai2](../src/NosCore.Packets/ServerPackets/UI/Qnai2Packet.cs) *InGame*
 - [qnai](../src/NosCore.Packets/ServerPackets/UI/QnaiPacket.cs) *InGame*
 - [qna](../src/NosCore.Packets/ServerPackets/UI/QnaPacket.cs) *InGame*
