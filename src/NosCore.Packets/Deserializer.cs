@@ -1,4 +1,4 @@
-﻿//  __  _  __    __   ___ __  ___ ___
+//  __  _  __    __   ___ __  ___ ___
 // |  \| |/__\ /' _/ / _//__\| _ \ __|
 // | | ' | \/ |`._`.| \_| \/ | v / _|
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
@@ -463,9 +463,13 @@ namespace NosCore.Packets
 
         private object? DeserializeEnum(Type type, string value)
         {
-            return value == "-1" || IsAbsentOptional(type, value)
+            var enumType = Nullable.GetUnderlyingType(type) ?? type;
+            // "-1" only means "absent" for enums that have no -1 member: AscrPacketType.Close and
+            // PortalType.MapPortal are real -1 values on the wire and must not collapse to the default.
+            var isAbsentMinusOne = value == "-1" && (enumType != type || !Enum.IsDefined(enumType, Enum.Parse(enumType, value)));
+            return isAbsentMinusOne || IsAbsentOptional(type, value)
                 ? type.GetDefaultValue()
-                : Enum.Parse(Nullable.GetUnderlyingType(type) ?? type, value);
+                : Enum.Parse(enumType, value);
         }
 
         // The client ends some packets with a separator, which leaves an empty last field.
