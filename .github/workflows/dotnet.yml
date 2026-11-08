@@ -7,6 +7,11 @@ on:
       - '*.*.*'
   pull_request:
     branches: [ master ]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release from the selected branch, as X.Y.Z'
+        required: true
 
 permissions:
   contents: read
@@ -31,7 +36,7 @@ jobs:
 
   release:
     needs: build
-    if: startsWith(github.ref, 'refs/tags/')
+    if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -45,11 +50,22 @@ jobs:
       with:
         dotnet-version: '10.0.x'
 
-    - name: Check Tag
+    - name: Check version
       id: check-tag
+      env:
+        INPUT_VERSION: ${{ inputs.version }}
       run: |
-        if [[ "$GITHUB_REF" =~ ^refs/tags/[0-9]+[.][0-9]+[.][0-9]+$ ]]; then
+        if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
+            VERSION="$INPUT_VERSION"
+        else
+            VERSION="${GITHUB_REF#refs/tags/}"
+        fi
+        if [[ "$VERSION" =~ ^[0-9]+[.][0-9]+[.][0-9]+$ ]]; then
             echo "match=true" >> $GITHUB_OUTPUT
+            echo "version=$VERSION" >> $GITHUB_OUTPUT
+        elif [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
+            echo "::error::version must be X.Y.Z, got '$VERSION'"
+            exit 1
         fi
 
     - name: NuGet login
@@ -62,18 +78,34 @@ jobs:
     - name: Pack and push to NuGet
       if: steps.check-tag.outputs.match == 'true'
       id: build_artifact
+      env:
+        VERSION: ${{ steps.check-tag.outputs.version }}
       run: |
-        TAG_NAME=${GITHUB_REF#refs/tags/}
         dotnet restore
         dotnet build -c Release
-        dotnet pack -c Release -o /tmp/nupkgs -v m -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg -p:PackageVersion=${TAG_NAME}
-        dotnet nuget push /tmp/nupkgs/NosCore.Packets.${TAG_NAME}.nupkg -s https://api.nuget.org/v3/index.json -k ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
-        echo "ARTIFACT_PATH=/tmp/nupkgs/NosCore.Packets.${TAG_NAME}.nupkg" >> $GITHUB_OUTPUT
+        dotnet pack -c Release -o /tmp/nupkgs -v m -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg -p:PackageVersion=${VERSION}
+        dotnet nuget push /tmp/nupkgs/NosCore.Packets.${VERSION}.nupkg -s https://api.nuget.org/v3/index.json -k ${{ steps.nuget-login.outputs.NUGET_API_KEY }} --skip-duplicate
+        echo "ARTIFACT_PATH=/tmp/nupkgs/NosCore.Packets.${VERSION}.nupkg" >> $GITHUB_OUTPUT
+
+    - name: Tag the released commit
+      if: steps.check-tag.outputs.match == 'true' && github.event_name == 'workflow_dispatch'
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        VERSION: ${{ steps.check-tag.outputs.version }}
+      run: |
+        existing=$(git ls-remote --tags "https://github.com/$GITHUB_REPOSITORY" "refs/tags/$VERSION" | cut -f1)
+        if [[ -z "$existing" ]]; then
+            gh api "repos/$GITHUB_REPOSITORY/git/refs" -f ref="refs/tags/$VERSION" -f sha="$GITHUB_SHA"
+        elif [[ "$existing" != "$GITHUB_SHA" ]]; then
+            echo "::error::tag $VERSION already exists on $existing, not on $GITHUB_SHA"
+            exit 1
+        fi
 
     - name: Upload Release Asset
       if: steps.check-tag.outputs.match == 'true'
       uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3
       with:
+        tag_name: ${{ steps.check-tag.outputs.version }}
         files: ${{ steps.build_artifact.outputs.ARTIFACT_PATH }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
