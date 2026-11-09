@@ -308,10 +308,14 @@
 - [evnt](../src/NosCore.Packets/ServerPackets/Event/EventPacket.cs) *InGame*
 - [fbt](../src/NosCore.Packets/ServerPackets/Event/FbtPacket.cs) *InGame*
 - [raidbf](../src/NosCore.Packets/ServerPackets/Event/RaidbfPacket.cs) *InGame*
+- [rl](../src/NosCore.Packets/ServerPackets/Event/RaidListPacket.cs) *InGame*
+- [raid_list_sub_packet](../src/NosCore.Packets/ServerPackets/Event/RaidListSubPacket.cs) *InGame*
 - [raidopen](../src/NosCore.Packets/ServerPackets/Event/RaidopenPacket.cs) *InGame*
 - [raid](../src/NosCore.Packets/ServerPackets/Event/RaidPacket.cs) *InGame*
 - [rboss](../src/NosCore.Packets/ServerPackets/Event/RbossPacket.cs) *InGame*
 - [rbr](../src/NosCore.Packets/ServerPackets/Event/RbrPacket.cs) *InGame*
+- [rdlst](../src/NosCore.Packets/ServerPackets/Event/RdlstPacket.cs) *InGame*
+- [rdlst_sub_packet](../src/NosCore.Packets/ServerPackets/Event/RdlstSubPacket.cs) *InGame*
 - [rp](../src/NosCore.Packets/ServerPackets/Event/RpPacket.cs) *InGame*
 
 ### Exchanges
