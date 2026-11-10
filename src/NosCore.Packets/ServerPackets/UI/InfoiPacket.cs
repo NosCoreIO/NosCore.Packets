@@ -15,10 +15,10 @@ namespace NosCore.Packets.ServerPackets.UI
         [PacketIndex(0)]
         public Game18NConstString Message { get; set; }
 
-        [PacketIndex(2)]
+        [PacketIndex(1)]
         public byte ArgumentType { get; set; }
         
-        [PacketIndex(1)]
+        [PacketIndex(2)]
         public Game18NArguments Game18NArguments { get; set; } = new(2);
     }
 }
