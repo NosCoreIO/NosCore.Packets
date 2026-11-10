@@ -17,6 +17,7 @@ using NosCore.Packets.ServerPackets.Battle;
 using NosCore.Packets.ServerPackets.CharacterSelectionScreen;
 using NosCore.Packets.ServerPackets.Chats;
 using NosCore.Packets.ServerPackets.Event;
+using NosCore.Packets.ServerPackets.Exchanges;
 using NosCore.Packets.ServerPackets.Inventory;
 using NosCore.Packets.ServerPackets.Login;
 using NosCore.Packets.ServerPackets.Map;
@@ -48,6 +49,7 @@ namespace NosCore.Packets.Tests
             new[]
             {
                 typeof(ClistPacket),
+                typeof(ServerExcListPacket),
                 typeof(MlistPacket),
                 typeof(MlistMaterialsPacket),
                 typeof(MlistMaterialSubPacket),
@@ -636,6 +638,24 @@ namespace NosCore.Packets.Tests
             Assert.AreEqual(
                 "sayitem 1 1 17 <SPEAKER>[Username]:{item} IconInfo 1012",
                 packet);
+        }
+
+        [TestMethod]
+        public void SerializeOptionalFieldsAfterARequiredOneWithTheirSeparators()
+        {
+            var packet = Serializer.Serialize(new ServerExcListPacket
+            {
+                VisualType = VisualType.Player,
+                VisualId = 1,
+                Gold = 0,
+                BankGold = 0,
+                SubPackets = new List<ServerExcListSubPacket?>
+                {
+                    new() { ExchangeSlot = 0, PocketType = PocketType.Equipment, ItemVnum = 21, AmountOrRare = 0, Upgrade = 6 },
+                    new() { ExchangeSlot = 1, PocketType = PocketType.Main, ItemVnum = 1015, AmountOrRare = 99 }
+                }
+            });
+            Assert.AreEqual("exc_list 1 1 0 0 0.0.21.0.6 1.1.1015.99.0", packet);
         }
 
         [TestMethod]

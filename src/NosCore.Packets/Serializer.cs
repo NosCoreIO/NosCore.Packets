@@ -236,20 +236,13 @@ namespace NosCore.Packets
                 Expression.Equal(propertySplitter, Expression.Constant(" ", typeof(string))),
                 Expression.Constant(!string.IsNullOrWhiteSpace(discriminator)),
                 Expression.Constant(false));
-            var startserie = true;
-            var isOptionalSerie = false;
+            // Only optional fields ahead of the first required one can be left out without a separator; a later
+            // optional run is still written out field by field ("0.0.21.0.6", not "0.0.2106").
+            var leadingOptional = true;
             foreach (var property in properties)
             {
                 var index = property.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First();
-                if (startserie && index.IsOptional)
-                {
-                    isOptionalSerie = true;
-                }
-                else
-                {
-                    startserie = index.IsOptional;
-                    isOptionalSerie = false;
-                }
+                leadingOptional = leadingOptional && index.IsOptional;
 
                 var splitter = Expression.Condition(injectedPacket,
                     Expression.Constant("^", typeof(object)),
@@ -283,7 +276,7 @@ namespace NosCore.Packets
 
                 propExp = ConcatExpression(propExp, trimnull);
 
-                incrementExpr = Expression.Constant(!isFromList || !isOptionalSerie);
+                incrementExpr = Expression.Constant(!isFromList || !leadingOptional);
             }
 
             // A sub-packet with its own separator is written after a single-space discriminator; an absent one
