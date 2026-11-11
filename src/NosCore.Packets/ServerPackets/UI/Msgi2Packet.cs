@@ -21,7 +21,8 @@ namespace NosCore.Packets.ServerPackets.UI
         [PacketIndex(2)]
         public byte ArgumentType { get; set; }
         
+        // ArgumentType 2 reads two strings, as in "%s and %s are now married".
         [PacketIndex(3)]
-        public Game18NArguments Game18NArguments { get; set; } = new(1);
+        public Game18NArguments Game18NArguments { get; set; } = new(2);
     }
 }
