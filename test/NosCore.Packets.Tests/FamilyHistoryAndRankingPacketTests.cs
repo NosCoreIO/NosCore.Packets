@@ -49,6 +49,17 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
+        [DataRow(FamilyRankingType.Experience, FamilyRankingTab.Current)]
+        [DataRow(FamilyRankingType.CurrentDemons, FamilyRankingTab.Current)]
+        [DataRow(FamilyRankingType.LastMonthAngels, FamilyRankingTab.Monthly)]
+        [DataRow(FamilyRankingType.DailyReputation, FamilyRankingTab.More)]
+        [DataRow(FamilyRankingType.SpireCatacombs, FamilyRankingTab.SpireCatacombs)]
+        public void EachRankingIsFiledUnderTheTabThatAsksForIt(FamilyRankingType type, FamilyRankingTab tab)
+        {
+            Assert.AreEqual(tab, type.Tab());
+        }
+
+        [TestMethod]
         public void AHistoryEntryJoinsItsArgumentsBetweenTypeAndAge()
         {
             var packet = Serializer.Serialize(new GhisPacket
