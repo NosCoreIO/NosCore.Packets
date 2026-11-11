@@ -79,6 +79,7 @@ namespace NosCore.Packets.Tests
                 typeof(WarehouseSubPacket),
                 typeof(RbrPacket),
                 typeof(MlobjlstPacket),
+                typeof(MltobjPacket),
                 typeof(SuccessPacket),
                 typeof(TargetOffPacket),
                 typeof(ScriptPacket),
@@ -443,6 +444,22 @@ namespace NosCore.Packets.Tests
 
             var packet = Serializer.Serialize(testPacket);
             Assert.AreEqual("mlobjlst 0.0.0.0.0.0.0.0.0.0 0.0.0.0.0.0.0.0.0.0", packet);
+        }
+
+        [TestMethod]
+        public void MltobjListsEachPlacedObjectAsVnumSlotAndPosition()
+        {
+            var testPacket = new MltobjPacket
+            {
+                MltobjSubPacket = new List<MltobjSubPacket?>
+                {
+                    new() { VNum = 3117, Slot = 0, MapX = 8, MapY = 8 },
+                    new() { VNum = 3101, Slot = 3, MapX = 12, MapY = 5 },
+                }
+            };
+
+            var packet = Serializer.Serialize(testPacket);
+            Assert.AreEqual("mltobj 3117.0.8.8 3101.3.12.5", packet);
         }
 
         [TestMethod]
