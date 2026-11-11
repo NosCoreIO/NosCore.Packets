@@ -358,7 +358,14 @@ namespace NosCore.Packets
                 }
                 if (isMaxIndex && string.IsNullOrWhiteSpace(separator))
                 {
-                    var remainingTokens = matches.Length - currentIndex;
+                    var lastToken = matches.Length;
+                    while (lastToken > currentIndex && matches[lastToken - 1].Length == 0)
+                    {
+                        lastToken--;
+                    }
+
+                    // A client line can end with a space, which would otherwise read as one more empty item.
+                    var remainingTokens = lastToken - currentIndex;
                     // Sub-packets whose fields are space-separated span several tokens each
                     // (exc_list's "type slot amount"), so the item count is tokens / fields.
                     var subPacketCreator = typeof(IPacket).IsAssignableFrom(subType) && remainingTokens > 0

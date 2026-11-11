@@ -6,6 +6,7 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Battle
 {
@@ -13,9 +14,9 @@ namespace NosCore.Packets.ClientPackets.Battle
     public class MultiTargetListSubPacket : PacketBase
     {
         [PacketIndex(0)]
-        public int SkillCastId { get; set; }
+        public VisualType VisualType { get; set; }
 
         [PacketIndex(1)]
-        public int TargetId { get; set; }
+        public long VisualId { get; set; }
     }
 }
