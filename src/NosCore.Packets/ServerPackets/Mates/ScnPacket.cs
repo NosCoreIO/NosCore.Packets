@@ -172,6 +172,10 @@ namespace NosCore.Packets.ServerPackets.Mates
         [PacketIndex(44)]
         public short Unknown5 { get; set; }
 
+        // Sent only with a card: the client reads it whenever SpDetails is set and drops the whole packet when it is missing.
+        [PacketIndex(45, IsOptional = true)]
+        public byte? Unknown6 { get; set; }
+
         public class ScSpDetails : PacketBase
         {
             [PacketIndex(0)]
