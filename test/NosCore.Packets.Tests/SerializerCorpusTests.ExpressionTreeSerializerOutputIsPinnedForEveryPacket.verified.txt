@@ -1,9 +1,9 @@
 ﻿GboxPacket#1 => gbox 1 44 0
 GboxPacket#7 => gbox 2 75 0
-MultiTargetListPacket#1 => mtlist 21 44.83 53.21
-MultiTargetListPacket#7 => mtlist 74 75.77 8.43
-MultiTargetListSubPacket#1 => multi_target_list_sub_packet 21 44
-MultiTargetListSubPacket#7 => multi_target_list_sub_packet 74 75
+MultiTargetListPacket#1 => mtlist 21 9.83 3.21
+MultiTargetListPacket#7 => mtlist 74 0.77 3.43
+MultiTargetListSubPacket#1 => multi_target_list_sub_packet 1 44
+MultiTargetListSubPacket#7 => multi_target_list_sub_packet 9 75
 NcifPacket#1 => ncif 1 44
 NcifPacket#7 => ncif 9 75
 UseAoeSkillPacket#1 => u_as 21 44 83

@@ -69,6 +69,8 @@ namespace NosCore.Packets.Tests
                 typeof(CreateFamilyPacket),
                 typeof(ExcListPacket),
                 typeof(ExcListSubPacket),
+                typeof(MultiTargetListPacket),
+                typeof(MultiTargetListSubPacket),
                 typeof(UnresolvedPacket)
             });
 
@@ -355,6 +357,18 @@ namespace NosCore.Packets.Tests
             Assert.AreEqual(5, packet.Users!.First()!.VisualId);
             Assert.AreEqual(VisualType.Player, packet.Users!.Skip(1).First()!.VisualType);
             Assert.AreEqual(4, packet.Users!.Skip(1).First()!.VisualId);
+        }
+
+        [TestMethod]
+        public void MtlistReadsVisualTypeIdPairsAndIgnoresTheTrailingSpace()
+        {
+            var packet = (MultiTargetListPacket)Deserializer.Deserialize("mtlist 2 3 990001 3 990002 ");
+            Assert.AreEqual(2, packet.TargetsAmount);
+            Assert.HasCount(2, packet.Targets!);
+            Assert.AreEqual(VisualType.Monster, packet.Targets![0]!.VisualType);
+            Assert.AreEqual(990001, packet.Targets[0]!.VisualId);
+            Assert.AreEqual(VisualType.Monster, packet.Targets[1]!.VisualType);
+            Assert.AreEqual(990002, packet.Targets[1]!.VisualId);
         }
 
         [TestMethod]
