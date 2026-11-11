@@ -397,6 +397,7 @@
 - [mlo_pmg](../src/NosCore.Packets/ServerPackets/Miniland/MloPmgPacket.cs) *InGame*
 - [mlo_rw](../src/NosCore.Packets/ServerPackets/Miniland/MloRwPacket.cs) *InGame*
 - [mlo_st](../src/NosCore.Packets/ServerPackets/Miniland/MloStPacket.cs) *InGame*
+- [mltobj](../src/NosCore.Packets/ServerPackets/Miniland/MltobjPacket.cs) *InGame*
 - [useobj](../src/NosCore.Packets/ServerPackets/Miniland/UseObjPacket.cs) *InGame*
 
 ### MiniMap
