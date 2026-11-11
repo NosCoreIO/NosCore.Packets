@@ -20,6 +20,7 @@ namespace NosCore.Packets.ClientPackets.Shops
         [PacketIndex(1)]
         public long VisualId { get; set; }
 
+        [Range(0, short.MaxValue)]
         [PacketIndex(2)]
         public short Slot { get; set; }
 

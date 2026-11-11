@@ -21,7 +21,7 @@ namespace NosCore.Packets.ClientPackets.Commands
     public class FamilyTitlePacket : PacketBase
     {
         [PacketIndex(0)]
-        public string? CharacterName { get; set; }
+        public required string CharacterName { get; set; }
 
         [PacketIndex(1)]
         public FamilyMemberRank Rank { get; set; }

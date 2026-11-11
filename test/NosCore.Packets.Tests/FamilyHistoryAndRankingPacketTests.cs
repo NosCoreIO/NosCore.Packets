@@ -37,7 +37,7 @@ namespace NosCore.Packets.Tests
         {
             var packet = Serializer.Serialize(new FrankStcPacket
             {
-                Type = FamilyRankingType.DailyReputation,
+                Type = FamilyRankingTab.More,
                 Entries = new List<FrankStcSubPacket?>
                 {
                     new() { Rank = 1, FamilyName = "Alpha", FamilyLevel = 5, Value = 1200 },
@@ -45,7 +45,7 @@ namespace NosCore.Packets.Tests
                 }
             });
 
-            Assert.AreEqual("frank_stc 9 1|Alpha|5|1200 2|Beta|3|40", packet);
+            Assert.AreEqual("frank_stc 2 1|Alpha|5|1200 2|Beta|3|40", packet);
         }
 
         [TestMethod]

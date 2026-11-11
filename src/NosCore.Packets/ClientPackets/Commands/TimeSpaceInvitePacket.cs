@@ -22,6 +22,6 @@ namespace NosCore.Packets.ClientPackets.Commands
     public class TimeSpaceInvitePacket : PacketBase
     {
         [PacketIndex(0)]
-        public string? CharacterName { get; set; }
+        public required string CharacterName { get; set; }
     }
 }

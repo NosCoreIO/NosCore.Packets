@@ -4,6 +4,7 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
+using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 
@@ -13,9 +14,11 @@ namespace NosCore.Packets.ClientPackets.Movement
     [MinimumInterval(Milliseconds = 50)]
     public class WalkPacket : PacketBase
     {
+        [Range(0, short.MaxValue)]
         [PacketIndex(0)]
         public short XCoordinate { get; set; }
 
+        [Range(0, short.MaxValue)]
         [PacketIndex(1)]
         public short YCoordinate { get; set; }
 

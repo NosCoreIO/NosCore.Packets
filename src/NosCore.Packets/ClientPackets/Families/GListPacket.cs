@@ -13,6 +13,6 @@ namespace NosCore.Packets.ClientPackets.Families
     public class GListPacket : PacketBase
     {
         [PacketIndex(1)]
-        public byte Type { get; set; }
+        public GListPacketType Type { get; set; }
     }
 }

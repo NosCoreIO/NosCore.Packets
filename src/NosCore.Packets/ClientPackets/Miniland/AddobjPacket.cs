@@ -4,6 +4,7 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
+using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 
@@ -12,6 +13,7 @@ namespace NosCore.Packets.ClientPackets.Miniland
     [PacketHeader("addobj", Scope.InGame)]
     public class AddobjPacket : PacketBase
     {
+        [Range(0, short.MaxValue)]
         [PacketIndex(0)]
         public short Slot { get; set; }
 

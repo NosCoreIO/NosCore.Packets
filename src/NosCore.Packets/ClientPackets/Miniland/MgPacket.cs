@@ -13,7 +13,7 @@ namespace NosCore.Packets.ClientPackets.Miniland
     public class MinigamePacket : PacketBase
     {
         [PacketIndex(0)]
-        public byte Type { get; set; }
+        public MinigamePacketType Type { get; set; }
 
         [PacketIndex(1)]
         public byte Id { get; set; }

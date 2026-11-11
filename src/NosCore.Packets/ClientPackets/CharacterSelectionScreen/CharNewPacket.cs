@@ -16,7 +16,7 @@ namespace NosCore.Packets.ClientPackets.CharacterSelectionScreen
     {
         [PacketIndex(0)]
         [StringLength(15, MinimumLength = 3)]
-        public string? Name { get; set; }
+        public required string Name { get; set; }
 
         [PacketIndex(1)]
         [Range(0, 3)]

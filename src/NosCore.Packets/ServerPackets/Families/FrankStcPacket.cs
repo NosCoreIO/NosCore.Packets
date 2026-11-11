@@ -13,9 +13,9 @@ namespace NosCore.Packets.ServerPackets.Families
     [PacketHeader("frank_stc", Scope.InGame)]
     public class FrankStcPacket : PacketBase
     {
-        // The tab the entries fill; the client reads the first entry as this when it is missing.
+        // The client reads the first entry as the tab when this is missing.
         [PacketIndex(0)]
-        public FamilyRankingType Type { get; set; }
+        public FamilyRankingTab Type { get; set; }
 
         [PacketListIndex(1)]
         public List<FrankStcSubPacket?>? Entries { get; set; }

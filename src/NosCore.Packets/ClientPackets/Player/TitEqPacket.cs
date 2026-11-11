@@ -13,7 +13,7 @@ namespace NosCore.Packets.ClientPackets.Player
     public class TitEqPacket : PacketBase
     {
         [PacketIndex(0)]
-        public byte Mode { get; set; }
+        public TitEqPacketType Mode { get; set; }
 
         [PacketIndex(1)]
         public short TitleId { get; set; }

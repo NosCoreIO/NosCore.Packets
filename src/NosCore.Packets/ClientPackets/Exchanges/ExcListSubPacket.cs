@@ -15,6 +15,7 @@ namespace NosCore.Packets.ClientPackets.Exchanges
         [PacketIndex(0)]
         public PocketType PocketType { get; set; }
 
+        [Range(0, short.MaxValue)]
         [PacketIndex(1)]
         public short Slot { get; set; }
 

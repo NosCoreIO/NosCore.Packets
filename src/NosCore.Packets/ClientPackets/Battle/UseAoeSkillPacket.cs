@@ -4,6 +4,7 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
+using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 
@@ -15,9 +16,11 @@ namespace NosCore.Packets.ClientPackets.Battle
         [PacketIndex(0)]
         public long CastId { get; set; }
 
+        [Range(0, short.MaxValue)]
         [PacketIndex(1)]
         public short MapX { get; set; }
 
+        [Range(0, short.MaxValue)]
         [PacketIndex(2)]
         public short MapY { get; set; }
     }
