@@ -73,6 +73,13 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         [DataRow("frank_cts 0", FamilyRankingType.Experience)]
         [DataRow("frank_cts 3", FamilyRankingType.Reputation)]
+        [DataRow("frank_cts 2", FamilyRankingType.MonthlyReputation)]
+        [DataRow("frank_cts 4", FamilyRankingType.LastMonthExperience)]
+        [DataRow("frank_cts 6", FamilyRankingType.LastMonthAngels)]
+        [DataRow("frank_cts 7", FamilyRankingType.LastMonthDemons)]
+        [DataRow("frank_cts 8", FamilyRankingType.DailyExperience)]
+        [DataRow("frank_cts 9", FamilyRankingType.DailyReputation)]
+        [DataRow("frank_cts 10", FamilyRankingType.SpireCatacombs)]
         public void TheRankingRequestNamesItsTab(string packet, FamilyRankingType expected)
         {
             Assert.AreEqual(expected, ((FrankCtsPacket)Deserializer.Deserialize(packet)).Type);
