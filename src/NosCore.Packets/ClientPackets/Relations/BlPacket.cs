@@ -13,6 +13,6 @@ namespace NosCore.Packets.ClientPackets.Relations
     public class BlPacket : PacketBase
     {
         [PacketIndex(0)]
-        public string? CharacterName { get; set; }
+        public required string CharacterName { get; set; }
     }
 }

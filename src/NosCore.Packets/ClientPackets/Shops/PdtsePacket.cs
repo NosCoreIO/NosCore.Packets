@@ -13,7 +13,7 @@ namespace NosCore.Packets.ClientPackets.Shops
     public class PdtsePacket : PacketBase
     {
         [PacketIndex(0)]
-        public byte Type { get; set; }
+        public PdtsePacketType Type { get; set; }
 
         [PacketIndex(1)]
         public short VNum { get; set; }

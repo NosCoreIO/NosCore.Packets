@@ -24,6 +24,7 @@ namespace NosCore.Packets.ClientPackets.Inventory
         [PacketIndex(2)]
         public PocketType Type { get; set; }
 
+        [Range(0, short.MaxValue)]
         [PacketIndex(3)]
         public short Slot { get; set; }
 

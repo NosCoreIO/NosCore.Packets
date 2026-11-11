@@ -4,6 +4,7 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
+using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 
@@ -15,9 +16,11 @@ namespace NosCore.Packets.ClientPackets.Inventory
         [PacketIndex(0)]
         public PocketType InventoryType { get; set; }
 
+        [Range(0, short.MaxValue)]
         [PacketIndex(1)]
         public short Slot { get; set; }
 
+        [Range(1, short.MaxValue)]
         [PacketIndex(2)]
         public short Amount { get; set; }
 

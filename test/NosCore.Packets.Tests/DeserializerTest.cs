@@ -392,6 +392,7 @@ namespace NosCore.Packets.Tests
                 "glmk"
             );
             Assert.IsNull(packet.FamilyName);
+            Assert.IsFalse(packet.IsValid);
         }
 
         

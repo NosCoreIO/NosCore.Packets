@@ -13,7 +13,7 @@ namespace NosCore.Packets.ClientPackets.Player
     public class EquipmentInfoPacket : PacketBase
     {
         [PacketIndex(0)]
-        public byte Type { get; set; } // todo more information
+        public EquipmentInfoType Type { get; set; }
 
         [PacketIndex(1)]
         public short Slot { get; set; }

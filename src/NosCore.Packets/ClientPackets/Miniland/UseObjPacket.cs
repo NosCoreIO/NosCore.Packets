@@ -4,6 +4,7 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
+using System.ComponentModel.DataAnnotations;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 
@@ -20,6 +21,7 @@ namespace NosCore.Packets.ClientPackets.Miniland
         [PacketIndex(0)]
         public string CharacterName { get; set; }
 
+        [Range(0, short.MaxValue)]
         [PacketIndex(1)]
         public short Slot { get; set; }
     }
