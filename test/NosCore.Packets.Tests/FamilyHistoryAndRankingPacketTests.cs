@@ -37,7 +37,7 @@ namespace NosCore.Packets.Tests
         {
             var packet = Serializer.Serialize(new FrankStcPacket
             {
-                Type = FamilyRankingType.Reputation,
+                Type = FamilyRankingType.DailyReputation,
                 Entries = new List<FrankStcSubPacket?>
                 {
                     new() { Rank = 1, FamilyName = "Alpha", FamilyLevel = 5, Value = 1200 },
@@ -45,7 +45,7 @@ namespace NosCore.Packets.Tests
                 }
             });
 
-            Assert.AreEqual("frank_stc 3 1|Alpha|5|1200 2|Beta|3|40", packet);
+            Assert.AreEqual("frank_stc 9 1|Alpha|5|1200 2|Beta|3|40", packet);
         }
 
         [TestMethod]
@@ -72,8 +72,8 @@ namespace NosCore.Packets.Tests
 
         [TestMethod]
         [DataRow("frank_cts 0", FamilyRankingType.Experience)]
-        [DataRow("frank_cts 3", FamilyRankingType.Reputation)]
-        [DataRow("frank_cts 2", FamilyRankingType.MonthlyReputation)]
+        [DataRow("frank_cts 3", FamilyRankingType.CurrentDemons)]
+        [DataRow("frank_cts 2", FamilyRankingType.CurrentAngels)]
         [DataRow("frank_cts 4", FamilyRankingType.LastMonthExperience)]
         [DataRow("frank_cts 6", FamilyRankingType.LastMonthAngels)]
         [DataRow("frank_cts 7", FamilyRankingType.LastMonthDemons)]
