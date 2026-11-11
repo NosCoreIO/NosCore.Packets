@@ -144,25 +144,25 @@ namespace NosCore.Packets.ServerPackets.Mates
         /// <summary>
         ///     Sp Instance or Skin
         /// </summary>
-        [PacketIndex(39)]
+        [PacketIndex(39, SpecialSeparator = ".")]
         public ScSpDetails? SpDetails { get; set; }
 
         /// <summary>
         ///     Sp Instance or Skin
         /// </summary>
-        [PacketIndex(40)]
+        [PacketIndex(40, SpecialSeparator = ".")]
         public ScSkillDetails? Skill1Details { get; set; }
 
         /// <summary>
         ///     Sp Instance or Skin
         /// </summary>
-        [PacketIndex(41)]
+        [PacketIndex(41, SpecialSeparator = ".")]
         public ScSkillDetails? Skill2Details { get; set; }
 
         /// <summary>
         ///     Sp Instance or Skin
         /// </summary>
-        [PacketIndex(42)]
+        [PacketIndex(42, SpecialSeparator = ".")]
         public ScSkillDetails? Skill3Details { get; set; }
 
         [PacketIndex(43)]
