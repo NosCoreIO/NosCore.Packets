@@ -24,8 +24,9 @@ namespace NosCore.Packets.ClientPackets.Shops
         [PacketIndex(2)]
         public short Slot { get; set; }
 
-        [PacketIndex(3)]
+        // A skill shop sends the skill vnum as the slot and no amount.
+        [PacketIndex(3, IsOptional = true)]
         [Range(1, short.MaxValue)]
-        public short Amount { get; set; }
+        public short? Amount { get; set; }
     }
 }
