@@ -8,6 +8,7 @@ namespace NosCore.Packets.Enumerations
 {
     public enum GListPacketType : byte
     {
+        FamilyManagement = 0,
         MemberList = 2
     }
 }
