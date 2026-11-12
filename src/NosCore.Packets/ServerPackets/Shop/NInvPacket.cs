@@ -29,7 +29,7 @@ namespace NosCore.Packets.ServerPackets.Shop
         [PacketListIndex(4, IsOptional = true)]
         public List<NInvItemSubPacket?>? Items { get; set; }
 
-        [PacketListIndex(5, IsOptional = true)]
+        [PacketListIndex(5, ListSeparator = " ", IsOptional = true)]
         public List<short>? Skills { get; set; }
 
         [PacketListIndex(6, IsOptional = true, SpecialSeparator = "|")]
