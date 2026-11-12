@@ -29,6 +29,7 @@ namespace NosCore.Packets.Enumerations
         PartnerBackpack = 202,
         SpPointInitializer = 203,
         ShellIdentification = 204,
+        Perfume = 205,
         UseBoxItem = 300,
         Title = 306,
         CollectItem = 400,
