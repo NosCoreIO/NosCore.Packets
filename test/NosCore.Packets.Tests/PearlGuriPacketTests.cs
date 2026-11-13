@@ -26,6 +26,13 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
+        public void TheFairyPearlWindowClosesOnGuri27()
+        {
+            Assert.AreEqual("guri 27 0 0",
+                Serializer.Serialize(new ServerGuriPacket { Type = GuriPacketType.CloseFairyPearlWindow }));
+        }
+
+        [TestMethod]
         public void TheMountConfirmationCarriesThePearlAndTheMount()
         {
             var packet = (ClientGuriPacket)Deserializer.Deserialize("guri 208 0 3 7 5");
