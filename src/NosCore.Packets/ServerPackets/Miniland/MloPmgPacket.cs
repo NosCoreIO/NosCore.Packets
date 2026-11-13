@@ -24,7 +24,7 @@ namespace NosCore.Packets.ServerPackets.Miniland
         [PacketIndex(3)]
         public bool IsFull { get; set; }
 
-        [PacketIndex(4)]
+        [PacketIndex(4, SpecialSeparator = " ")]
         public MloPmgSubPacket?[]? MloPmgSubPackets { get; set; }
     }
 }
