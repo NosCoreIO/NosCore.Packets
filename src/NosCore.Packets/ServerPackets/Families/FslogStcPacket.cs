@@ -13,8 +13,9 @@ namespace NosCore.Packets.ServerPackets.Families
     [PacketHeader("fslog_stc", Scope.InGame)]
     public class FslogStcPacket : PacketBase
     {
-        // -1 makes the client empty the window before adding the entries; any other value
-        // is read as one more entry and appends to what the window already shows.
+        // Must stay -1: it makes the client empty the window before adding the entries.
+        // The client reads any other value as the first entry, and appending to the window
+        // is not supported here since the whole history is always sent at once.
         [PacketIndex(0)]
         public int Reset { get; set; } = -1;
 
