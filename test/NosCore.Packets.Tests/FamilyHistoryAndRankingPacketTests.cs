@@ -31,6 +31,7 @@ namespace NosCore.Packets.Tests
         {
             typeof(FrankCtsPacket),
             typeof(FhistCtsPacket),
+            typeof(FslogCtsPacket),
             typeof(TodayPacket),
         });
 
@@ -118,6 +119,7 @@ namespace NosCore.Packets.Tests
         {
             Assert.IsInstanceOfType(Deserializer.Deserialize("fhis_cts"), typeof(FhistCtsPacket));
             Assert.IsInstanceOfType(Deserializer.Deserialize("today_cts"), typeof(TodayPacket));
+            Assert.IsInstanceOfType(Deserializer.Deserialize("fslog_cts"), typeof(FslogCtsPacket));
         }
     }
 }
