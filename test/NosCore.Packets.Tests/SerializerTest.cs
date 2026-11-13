@@ -124,7 +124,9 @@ namespace NosCore.Packets.Tests
                 typeof(InboxPacket),
                 typeof(CreateFamilyPacket),
                 typeof(EInfoWeaponPacket),
-                typeof(EInfoShellPacket)
+                typeof(EInfoShellPacket),
+                typeof(QnamliPacket),
+                typeof(NosCore.Packets.ClientPackets.UI.GuriPacket)
             });
 
         // The monster name ends the line, and a last field keeps its spaces unless it asks not
@@ -992,6 +994,20 @@ namespace NosCore.Packets.Tests
             };
             var packet = Serializer.Serialize(mapItem);
             Assert.AreEqual($"msgi 3 77 0 test 123 0 0 0", packet);
+        }
+
+        [TestMethod]
+        public void QnamliCarriesTheAnswerPacketAndTheQuestion()
+        {
+            var testPacket = new QnamliPacket
+            {
+                Type = QnamlType.InstantCombat,
+                YesPacket = new NosCore.Packets.ClientPackets.UI.GuriPacket { Type = GuriPacketType.EventInWaiting },
+                Question = Game18NConstString.JoinInstantCombatQuestion,
+            };
+
+            var packet = Serializer.Serialize(testPacket);
+            Assert.AreEqual("qnamli 1 #guri^506^-1 379 0 0 0", packet);
         }
 
         [TestMethod]
