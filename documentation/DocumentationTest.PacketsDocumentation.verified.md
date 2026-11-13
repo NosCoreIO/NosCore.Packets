@@ -506,6 +506,7 @@
 
 ### TimeSpaces
 - [minfo](../src/NosCore.Packets/ServerPackets/TimeSpaces/MinfoPacket.cs) *InGame*
+- [rsfm](../src/NosCore.Packets/ServerPackets/TimeSpaces/RsfmPacket.cs) *InGame*
 - [rsfn](../src/NosCore.Packets/ServerPackets/TimeSpaces/RsfnPacket.cs) *InGame*
 
 ### UI

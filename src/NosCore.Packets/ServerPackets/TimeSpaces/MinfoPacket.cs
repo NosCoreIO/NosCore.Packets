@@ -18,17 +18,17 @@ namespace NosCore.Packets.ServerPackets.TimeSpaces
         [PacketIndex(1)]
         public bool GoToExit { get; set; }
 
-        [PacketIndex(2)]
-        public MinfoObjectiveSubPacket? KillMonster { get; set; }
+        [PacketIndex(2, SpecialSeparator = ".")]
+        public MinfoObjectiveSubPacket? KillMonster { get; set; } = MinfoObjectiveSubPacket.None;
 
-        [PacketIndex(3)]
-        public MinfoObjectiveSubPacket? CollectItem { get; set; }
+        [PacketIndex(3, SpecialSeparator = ".")]
+        public MinfoObjectiveSubPacket? CollectItem { get; set; } = MinfoObjectiveSubPacket.None;
 
         [PacketIndex(4)]
-        public MinfoConversationSubPacket? Conversation { get; set; }
+        public MinfoConversationSubPacket? Conversation { get; set; } = MinfoConversationSubPacket.None;
 
-        [PacketIndex(5)]
-        public MinfoObjectiveSubPacket? InteractObjects { get; set; }
+        [PacketIndex(5, SpecialSeparator = ".")]
+        public MinfoObjectiveSubPacket? InteractObjects { get; set; } = MinfoObjectiveSubPacket.None;
 
         [PacketIndex(6)]
         public bool ProtectNpc { get; set; }

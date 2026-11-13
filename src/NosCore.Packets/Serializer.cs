@@ -255,7 +255,10 @@ namespace NosCore.Packets
                 var splitter = Expression.Condition(injectedPacket,
                     Expression.Constant("^", typeof(object)),
                     index.SpecialSeparator != null
-                        ? Expression.Constant(indexAttr.SpecialSeparator ?? string.Empty, typeof(object))
+                        // A value field writes its own separator ("vnum.current/total"); a nested sub-packet does not.
+                        ? Expression.Constant(typeof(PacketBase).IsAssignableFrom(property.PropertyType)
+                            ? indexAttr.SpecialSeparator ?? string.Empty
+                            : string.Empty, typeof(object))
                         : (Expression)Expression.Convert(propertySplitter, typeof(object)));
 
                 var exp = Expression.Convert(

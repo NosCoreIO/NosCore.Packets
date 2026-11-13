@@ -10,6 +10,8 @@ namespace NosCore.Packets.ServerPackets.TimeSpaces
 {
     public class MinfoConversationSubPacket : PacketBase
     {
+        public static MinfoConversationSubPacket None => new() { Had = -1 };
+
         [PacketIndex(0)]
         public int Had { get; set; }
 
