@@ -462,7 +462,6 @@
 
 ### Quest
 - [qnamli2](../src/NosCore.Packets/ServerPackets/Quest/Qnamli2Packet.cs) *InGame*
-- [qnamli](../src/NosCore.Packets/ServerPackets/Quest/QnamliPacket.cs) *InGame*
 - [qr](../src/NosCore.Packets/ServerPackets/Quest/QrPacket.cs) *InGame*
 - [qsti](../src/NosCore.Packets/ServerPackets/Quest/QstiPacket.cs) *InGame*
 - [qstlist](../src/NosCore.Packets/ServerPackets/Quest/QstlistPacket.cs) *InGame*
@@ -535,6 +534,7 @@
 - [pdelay](../src/NosCore.Packets/ServerPackets/UI/PdelayPacket.cs) *InGame*
 - [qnai2](../src/NosCore.Packets/ServerPackets/UI/Qnai2Packet.cs) *InGame*
 - [qnai](../src/NosCore.Packets/ServerPackets/UI/QnaiPacket.cs) *InGame*
+- [qnamli](../src/NosCore.Packets/ServerPackets/UI/QnamliPacket.cs) *InGame*
 - [qna](../src/NosCore.Packets/ServerPackets/UI/QnaPacket.cs) *InGame*
 - [rdi](../src/NosCore.Packets/ServerPackets/UI/RdiPacket.cs) *InGame*
 - [shopclose](../src/NosCore.Packets/ServerPackets/UI/ShopClosePacket.cs) *InGame*
