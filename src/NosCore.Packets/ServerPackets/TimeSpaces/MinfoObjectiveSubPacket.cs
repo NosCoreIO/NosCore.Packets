@@ -10,6 +10,9 @@ namespace NosCore.Packets.ServerPackets.TimeSpaces
 {
     public class MinfoObjectiveSubPacket : PacketBase
     {
+        // The client reads an objective the mission does not have as "-1.0/0"; a bare "-1" hangs it.
+        public static MinfoObjectiveSubPacket None => new() { Vnum = -1 };
+
         [PacketIndex(0)]
         public int Vnum { get; set; }
 
