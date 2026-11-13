@@ -4,31 +4,30 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
+using System.Collections.Generic;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Arena
 {
-    // Team arena participant roster: ta_p {arenaType} {teamType} {slots1} {slots2}
-    // {serializedGroups}. Groups carries a pre-rendered list of (char sub-packets)
-    // joined by spaces — OpenNos keeps that opaque so the server can ship whatever
-    // shape the UI expects without re-encoding.
+    // Team arena list: the receiver's team, its calls left and the opponent's, then the three
+    // fighters of each team in fighting order, own team first.
     [PacketHeader("ta_p", Scope.InGame)]
     public class TaPPacket : PacketBase
     {
         [PacketIndex(0)]
-        public byte ArenaType { get; set; }
+        public TaWindowMode Type { get; set; }
 
         [PacketIndex(1)]
-        public byte TeamType { get; set; }
+        public ArenaTeamType TeamType { get; set; }
 
         [PacketIndex(2)]
-        public int SlotsTeam1 { get; set; }
+        public int CallsLeft { get; set; }
 
         [PacketIndex(3)]
-        public int SlotsTeam2 { get; set; }
+        public int OpponentCallsLeft { get; set; }
 
-        [PacketIndex(4)]
-        public string? Groups { get; set; }
+        [PacketListIndex(4)]
+        public List<TaPSubPacket?>? Fighters { get; set; }
     }
 }

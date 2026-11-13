@@ -9,13 +9,12 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Arena
 {
-    // Arena finish-character notification: ta_fc {type} {characterId}. Used for join/
-    // leave events in the arena team UI.
+    // Marks the fighter currently in the ring in one of the team arena lists.
     [PacketHeader("ta_fc", Scope.InGame)]
     public class TaFcPacket : PacketBase
     {
         [PacketIndex(0)]
-        public byte Type { get; set; }
+        public ArenaSideType Side { get; set; }
 
         [PacketIndex(1)]
         public long CharacterId { get; set; }
