@@ -23,6 +23,8 @@ namespace NosCore.Packets.Tests
             typeof(GhisSubPacket),
             typeof(FhisStcPacket),
             typeof(TodayStcPacket),
+            typeof(FslogStcPacket),
+            typeof(FslogStcSubPacket),
         });
 
         private static readonly Deserializer Deserializer = new(new[]
@@ -72,6 +74,21 @@ namespace NosCore.Packets.Tests
             });
 
             Assert.AreEqual("ghis 0 11|Newbie|Head|2 5|4|0", packet);
+        }
+
+        [TestMethod]
+        public void AWarehouseHistoryClearsTheWindowThenListsWhoMovedWhichItem()
+        {
+            var packet = Serializer.Serialize(new FslogStcPacket
+            {
+                Entries = new List<FslogStcSubPacket?>
+                {
+                    new() { Type = FamilyWarehouseLogType.Withdrawal, CharacterName = "Bud", ItemVNum = 1012, Amount = 3, HoursAgo = 0 },
+                    new() { Type = FamilyWarehouseLogType.Deposit, CharacterName = "Tester", ItemVNum = 1, Amount = 1, HoursAgo = 5 }
+                }
+            });
+
+            Assert.AreEqual("fslog_stc -1 1|Bud|1012|3|0 0|Tester|1|1|5", packet);
         }
 
         [TestMethod]
