@@ -12,6 +12,8 @@ namespace NosCore.Packets.Enumerations
         Dance = 2,
         Script = 3,
         HPMPBonus = 4,
+        // What the client sends back from a TextInput window; Argument repeats the window's.
+        TextInputReply = 4,
         DanceAnimationPercent = 5,
         CharacterAnimation = 6,
         FreezeTimer = 8,
