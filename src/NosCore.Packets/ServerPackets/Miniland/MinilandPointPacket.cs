@@ -15,7 +15,7 @@ namespace NosCore.Packets.ServerPackets.Miniland
         [PacketIndex(0)]
         public long MinilandPoint { get; set; }
 
-        [PacketIndex(0)]
+        [PacketIndex(1)]
         public byte Unknown { get; set; }
     }
 }
