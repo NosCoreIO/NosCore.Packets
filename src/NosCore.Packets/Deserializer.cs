@@ -324,6 +324,16 @@ namespace NosCore.Packets
                     var subPacketContent = subPacketSeparator == ""
                         ? string.Join(' ', matches[currentIndex].ToCharArray())
                         : matches[currentIndex].Replace(subPacketSeparator ?? ".", " ");
+                    // A value field with its own separator ("vnum.current/total") is split on that one too.
+                    foreach (var fieldSeparator in prop.GetProperties()
+                        .Where(p => !typeof(IPacket).IsAssignableFrom(p.PropertyType))
+                        .Select(p => p.GetCustomAttribute<PacketIndexAttribute>()?.SpecialSeparator)
+                        .OfType<string>()
+                        .Where(separator => separator.Length > 0 && separator != " ")
+                        .Distinct())
+                    {
+                        subPacketContent = subPacketContent.Replace(fieldSeparator, " ");
+                    }
                     var packet = DeserializeIPacket(dic, subPacketContent, false, false);
                     currentIndex++;
                     return packet;

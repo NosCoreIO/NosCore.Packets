@@ -14,6 +14,7 @@ namespace NosCore.Packets.Tests
     public class MinfoPacketTests
     {
         private static readonly ISerializer Serializer = new Serializer(new[] { typeof(MinfoPacket) });
+        private static readonly IDeserializer Deserializer = new Deserializer(new[] { typeof(MinfoPacket), typeof(MinfoObjectiveSubPacket), typeof(MinfoConversationSubPacket) });
 
         [TestMethod]
         public void ObjectivesTheMissionDoesNotHaveAreWrittenTheWayTheClientReadsThem()
@@ -34,6 +35,17 @@ namespace NosCore.Packets.Tests
             });
 
             Assert.AreEqual("minfo 1 0 333.2/5 -1.0/0 -1/0 -1.0/0 0 1 0", wire);
+        }
+    
+        [TestMethod]
+        public void AnObjectiveReadsBackFromTheWire()
+        {
+            var packet = (MinfoPacket)Deserializer.Deserialize("minfo 1 0 333.2/5 -1.0/0 -1/0 -1.0/0 0 1 0");
+
+            Assert.AreEqual("333.2/5", $"{packet.KillMonster?.Vnum}.{packet.KillMonster?.Current}/{packet.KillMonster?.Total}");
+            Assert.AreEqual(-1, packet.CollectItem?.Vnum);
+            Assert.AreEqual(-1, packet.Conversation?.Had);
+            Assert.AreEqual(-1, packet.InteractObjects?.Vnum);
         }
     }
 }
