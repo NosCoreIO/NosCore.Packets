@@ -33,5 +33,8 @@ namespace NosCore.Packets.Attributes
         public bool RemoveHash { get; set; }
 
         public bool EscapeSpaces { get; set; }
+
+        // What EscapeSpaces writes in place of a space; a few client handlers read another mark than '^'.
+        public string SpaceEscape { get; set; } = "^";
     }
 }
