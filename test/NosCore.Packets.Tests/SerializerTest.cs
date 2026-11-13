@@ -1399,18 +1399,9 @@ namespace NosCore.Packets.Tests
         {
             var p = new QrPacket
             {
-                Type = 8,
-                Unknown1 = 13,
-                Unknown2 = 1,
-                Unknown3 = 0,
-                Unknown4 = 0,
-                Unknown5 = 0,
-                Unknown6 = 0,
-                Unknown7 = 0,
-                Unknown8 = 0,
-                Unknown9 = 0,
-                Unknown10 = 0,
-                Unknown11 = 0,
+                Reward1Type = QuestRewardType.WearItem,
+                Reward1Data = 13,
+                Reward1Amount = 1,
                 QuestId = 1500
             };
             Assert.AreEqual("qr 8 13 1 0 0 0 0 0 0 0 0 0 1500", Serializer.Serialize(p));
