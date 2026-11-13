@@ -23,12 +23,15 @@ namespace NosCore.Packets.Tests
             typeof(GhisSubPacket),
             typeof(FhisStcPacket),
             typeof(TodayStcPacket),
+            typeof(FslogStcPacket),
+            typeof(FslogStcSubPacket),
         });
 
         private static readonly Deserializer Deserializer = new(new[]
         {
             typeof(FrankCtsPacket),
             typeof(FhistCtsPacket),
+            typeof(FslogCtsPacket),
             typeof(TodayPacket),
         });
 
@@ -75,6 +78,21 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
+        public void AWarehouseHistoryClearsTheWindowThenListsWhoMovedWhichItem()
+        {
+            var packet = Serializer.Serialize(new FslogStcPacket
+            {
+                Entries = new List<FslogStcSubPacket?>
+                {
+                    new() { Type = FamilyWarehouseLogType.Withdrawal, CharacterName = "Bud", ItemVNum = 1012, Amount = 3, HoursAgo = 0 },
+                    new() { Type = FamilyWarehouseLogType.Deposit, CharacterName = "Tester", ItemVNum = 1, Amount = 1, HoursAgo = 5 }
+                }
+            });
+
+            Assert.AreEqual("fslog_stc -1 1|Bud|1012|3|0 0|Tester|1|1|5", packet);
+        }
+
+        [TestMethod]
         public void TheRefreshAndDailyMessageAnswersCarryNoField()
         {
             Assert.AreEqual("fhis_stc", Serializer.Serialize(new FhisStcPacket()));
@@ -101,6 +119,7 @@ namespace NosCore.Packets.Tests
         {
             Assert.IsInstanceOfType(Deserializer.Deserialize("fhis_cts"), typeof(FhistCtsPacket));
             Assert.IsInstanceOfType(Deserializer.Deserialize("today_cts"), typeof(TodayPacket));
+            Assert.IsInstanceOfType(Deserializer.Deserialize("fslog_cts"), typeof(FslogCtsPacket));
         }
     }
 }
