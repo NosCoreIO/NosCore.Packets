@@ -88,6 +88,7 @@ namespace NosCore.Packets.Tests
                 typeof(MsgiPacket),
                 typeof(SayiPacket),
                 typeof(BsPacket),
+                typeof(CtNPacket),
                 typeof(AtPacket),
                 typeof(LevPacket),
                 typeof(EventbPacket),
@@ -160,6 +161,21 @@ namespace NosCore.Packets.Tests
             });
 
             Assert.AreEqual("bs 1 5 30 40 220 30 11 4321 0 0 1 1 0 0 0", packet);
+        }
+
+        [TestMethod]
+        public void SerializeCtNStartsACellCast()
+        {
+            var packet = Serializer.Serialize(new CtNPacket
+            {
+                VisualType = VisualType.Player,
+                VisualId = 190794,
+                TargetVisualType = VisualType.Player,
+                CastAnimationId = 25,
+                SkillId = 1123
+            });
+
+            Assert.AreEqual("ct_n 1 190794 1 -1 25 -1 1123", packet);
         }
 
         [TestMethod]

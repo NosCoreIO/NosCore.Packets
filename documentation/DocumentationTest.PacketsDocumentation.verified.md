@@ -248,6 +248,7 @@
 - [bf](../src/NosCore.Packets/ServerPackets/Battle/BfPacket.cs) *InGame*
 - [bs](../src/NosCore.Packets/ServerPackets/Battle/BsPacket.cs) *InGame*
 - [cancel](../src/NosCore.Packets/ServerPackets/Battle/CancelPacket.cs) *InGame*
+- [ct_n](../src/NosCore.Packets/ServerPackets/Battle/CtNPacket.cs) *InGame*
 - [ct](../src/NosCore.Packets/ServerPackets/Battle/CtPacket.cs) *InGame*
 - [die](../src/NosCore.Packets/ServerPackets/Battle/DiePacket.cs) *InGame*
 - [dm](../src/NosCore.Packets/ServerPackets/Battle/DmPacket.cs) *InGame*
