@@ -9,8 +9,8 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Arena
 {
-    // Arena final score packet (team arena). Sent at match end with per-team tallies.
-    // Format: ta_f 0 {victoriousTeam} {arenaType} {score1} {life1} {call1} {score2} {life2} {call2}
+    // Team arena result window. The first three counts are the receiver's team (TeamType), the
+    // last three its opponent's.
     [PacketHeader("ta_f", Scope.InGame)]
     public class TaFPacket : PacketBase
     {
@@ -18,27 +18,27 @@ namespace NosCore.Packets.ServerPackets.Arena
         public byte Unknown { get; set; }
 
         [PacketIndex(1)]
-        public byte VictoriousTeam { get; set; }
+        public ArenaResultType Result { get; set; }
 
         [PacketIndex(2)]
-        public byte ArenaType { get; set; }
+        public ArenaTeamType TeamType { get; set; }
 
         [PacketIndex(3)]
-        public int ScoreTeam1 { get; set; }
+        public int Won { get; set; }
 
         [PacketIndex(4)]
-        public int LifeTeam1 { get; set; }
+        public int LivesLeft { get; set; }
 
         [PacketIndex(5)]
-        public int CallTeam1 { get; set; }
+        public int CallsLeft { get; set; }
 
         [PacketIndex(6)]
-        public int ScoreTeam2 { get; set; }
+        public int OpponentWon { get; set; }
 
         [PacketIndex(7)]
-        public int LifeTeam2 { get; set; }
+        public int OpponentLivesLeft { get; set; }
 
         [PacketIndex(8)]
-        public int CallTeam2 { get; set; }
+        public int OpponentCallsLeft { get; set; }
     }
 }

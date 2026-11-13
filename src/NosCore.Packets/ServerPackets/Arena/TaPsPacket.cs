@@ -4,17 +4,17 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
+using System.Collections.Generic;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Arena
 {
-    // Arena spectator/survivor list. Single opaque "groups" payload server-side renders
-    // (see TaPPacket for the reasoning around keeping this unstructured).
+    // HP and MP bars of the team arena list, in the same slot order as ta_p.
     [PacketHeader("ta_ps", Scope.InGame)]
     public class TaPsPacket : PacketBase
     {
-        [PacketIndex(0)]
-        public string? Groups { get; set; }
+        [PacketListIndex(0)]
+        public List<TaPsSubPacket?>? Fighters { get; set; }
     }
 }

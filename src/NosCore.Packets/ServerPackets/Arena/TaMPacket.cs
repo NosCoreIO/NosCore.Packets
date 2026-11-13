@@ -9,20 +9,19 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Arena
 {
-    // Live arena match state. Broadcast each tick during a team arena to refresh the
-    // scoreboard + countdown. Time is only non-zero for mid-match ticks (OpenNos
-    // sends deciseconds remaining / 10 when type == 3).
+    // Team arena scoreboard. The scores always read Zenas first; TimeRemaining (seconds) only
+    // counts with the Clock mode.
     [PacketHeader("ta_m", Scope.InGame)]
     public class TaMPacket : PacketBase
     {
         [PacketIndex(0)]
-        public byte Type { get; set; }
+        public TaWindowMode Type { get; set; }
 
         [PacketIndex(1)]
-        public int ScoreTeam1 { get; set; }
+        public int ZenasScore { get; set; }
 
         [PacketIndex(2)]
-        public int ScoreTeam2 { get; set; }
+        public int EreniaScore { get; set; }
 
         [PacketIndex(3)]
         public int TimeRemaining { get; set; }

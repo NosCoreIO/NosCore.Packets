@@ -232,9 +232,15 @@
 - [ta_fc](../src/NosCore.Packets/ServerPackets/Arena/TaFcPacket.cs) *InGame*
 - [ta_f](../src/NosCore.Packets/ServerPackets/Arena/TaFPacket.cs) *InGame*
 - [ta_m](../src/NosCore.Packets/ServerPackets/Arena/TaMPacket.cs) *InGame*
+- [ta_pn](../src/NosCore.Packets/ServerPackets/Arena/TaPnPacket.cs) *InGame*
 - [ta_p](../src/NosCore.Packets/ServerPackets/Arena/TaPPacket.cs) *InGame*
 - [ta_ps](../src/NosCore.Packets/ServerPackets/Arena/TaPsPacket.cs) *InGame*
+- [ta_ps_sub_packet](../src/NosCore.Packets/ServerPackets/Arena/TaPsSubPacket.cs) *InGame*
+- [ta_p_sub_packet](../src/NosCore.Packets/ServerPackets/Arena/TaPSubPacket.cs) *InGame*
+- [ta_s](../src/NosCore.Packets/ServerPackets/Arena/TaSPacket.cs) *InGame*
 - [ta_st](../src/NosCore.Packets/ServerPackets/Arena/TaStPacket.cs) *InGame*
+- [ta_sv](../src/NosCore.Packets/ServerPackets/Arena/TaSvPacket.cs) *InGame*
+- [ta_t](../src/NosCore.Packets/ServerPackets/Arena/TaTPacket.cs) *InGame*
 
 ### Auction
 - [rc_blist](../src/NosCore.Packets/ServerPackets/Auction/RcbListPacket.cs) *InGame*
