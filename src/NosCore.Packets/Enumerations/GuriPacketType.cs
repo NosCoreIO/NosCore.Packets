@@ -23,7 +23,9 @@ namespace NosCore.Packets.Enumerations
         PerfumAndIdentification = 18,
         AfterSumming = 19,
         AddMountInPearl = 24,
+        CloseMountPearlWindow = 25,
         AddFairyInPearl = 26,
+        CloseFairyPearlWindow = 27,
         TattooInfo = 40,
         FlipCamera = 41,
         FriendshipWings = 199,
@@ -32,6 +34,10 @@ namespace NosCore.Packets.Enumerations
         SpPointInitializer = 203,
         ShellIdentification = 204,
         Perfume = 205,
+        // The client's confirmation after AddMountInPearl/AddFairyInPearl:
+        // `guri 208 0 <pearl slot> <pocket> <item slot>`.
+        StoreMountInPearl = 208,
+        StoreFairyInPearl = 209,
         UseBoxItem = 300,
         Title = 306,
         CollectItem = 400,
