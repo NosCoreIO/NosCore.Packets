@@ -324,6 +324,7 @@
 ### Families
 - [fc](../src/NosCore.Packets/ServerPackets/Families/FcPacket.cs) *InGame*
 - [fhis_stc](../src/NosCore.Packets/ServerPackets/Families/FhisStcPacket.cs) *InGame*
+- [fmi](../src/NosCore.Packets/ServerPackets/Families/FmiPacket.cs) *InGame*
 - [frank_stc](../src/NosCore.Packets/ServerPackets/Families/FrankStcPacket.cs) *InGame*
 - [fslog_stc](../src/NosCore.Packets/ServerPackets/Families/FslogStcPacket.cs) *InGame*
 - [gexp](../src/NosCore.Packets/ServerPackets/Families/GexpPacket.cs) *InGame*
