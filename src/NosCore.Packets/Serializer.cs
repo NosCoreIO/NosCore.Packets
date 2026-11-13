@@ -72,16 +72,24 @@ namespace NosCore.Packets
         }
 
         private Expression StringSerializer(Expression exp, bool isLastIndex, bool isOptional, Expression splitter,
-            Expression escapeSeparator, bool isNested, bool escapeSpaces)
+            Expression escapeSeparator, bool isNested, bool escapeSpaces, string spaceEscape)
         {
             var replaceMethod = typeof(string).GetMethod("Replace", new[] { typeof(string), typeof(string) })!;
 
-            Expression escaped = Expression.Call(exp, replaceMethod,
+            Expression escaped = exp;
+            if (escapeSpaces)
+            {
+                escaped = Expression.Call(escaped, replaceMethod,
+                    Expression.Constant(" ", typeof(string)),
+                    Expression.Constant(spaceEscape, typeof(string)));
+            }
+
+            escaped = Expression.Call(escaped, replaceMethod,
                 Expression.Convert(escapeSeparator, typeof(string)),
                 Expression.Constant("^", typeof(string)));
 
             // A nested value also sits inside a field of the packet above it.
-            if (isNested || escapeSpaces)
+            if (isNested)
             {
                 escaped = Expression.Call(escaped, replaceMethod,
                     Expression.Constant(" ", typeof(string)),
@@ -340,7 +348,7 @@ namespace NosCore.Packets
                 case var t when t == typeof(string):
                     specificTypeExpression = StringSerializer(specificTypeExpression, indexAttr.Index == maxIndex,
                         indexAttr.IsOptional, propertySplitter, escapeSeparator, isNested,
-                        indexAttr.EscapeSpaces);
+                        indexAttr.EscapeSpaces, indexAttr.SpaceEscape);
                     break;
                 //IPacket declared type
                 case var t when typeof(IPacket).IsAssignableFrom(t) && (t != typeof(IPacket)):

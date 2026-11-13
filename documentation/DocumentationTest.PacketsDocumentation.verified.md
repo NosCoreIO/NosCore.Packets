@@ -35,6 +35,7 @@
 
 ### Chat
 - [btk](../src/NosCore.Packets/ClientPackets/Chat/BtkPacket.cs) *InTrade | InGame | WhileDead* - at least 500 ms apart
+- [csp](../src/NosCore.Packets/ClientPackets/Chat/ClientBubblePacket.cs) *InGame*
 - [say](../src/NosCore.Packets/ClientPackets/Chat/ClientSayPacket.cs) *InTrade | InGame | WhileDead* - at least 500 ms apart
 - [:](../src/NosCore.Packets/ClientPackets/Chat/FamilyChatPacket.cs) *InTrade | InGame | WhileDead* - at least 500 ms apart
 - [;](../src/NosCore.Packets/ClientPackets/Chat/GroupTalkPacket.cs) *InTrade | InGame | WhileDead* - at least 500 ms apart
@@ -278,6 +279,7 @@
 
 ### Chats
 - [csp](../src/NosCore.Packets/ServerPackets/Chats/BubblePacket.cs) *InGame*
+- [csp_r](../src/NosCore.Packets/ServerPackets/Chats/BubbleReplyPacket.cs) *InGame*
 - [IconInfo](../src/NosCore.Packets/ServerPackets/Chats/IconInfoPacket.cs) *InGame*
 - [inbox](../src/NosCore.Packets/ServerPackets/Chats/InboxPacket.cs) *InGame*
 - [sayi2](../src/NosCore.Packets/ServerPackets/Chats/Sayi2Packet.cs) *InGame*

@@ -9,7 +9,8 @@ namespace NosCore.Packets.ServerPackets.Chats
         [PacketIndex(0)]
         public long CharacterId { get; set; }
 
-        [PacketIndex(1)]
+        // The client turns each vertical tab back into a space.
+        [PacketIndex(1, EscapeSpaces = true, SpaceEscape = "\v")]
         public string? Message { get; set; }
     }
 }
