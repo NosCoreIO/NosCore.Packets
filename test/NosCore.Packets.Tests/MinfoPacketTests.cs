@@ -38,14 +38,13 @@ namespace NosCore.Packets.Tests
         }
     
         [TestMethod]
-        public void AnObjectiveReadsBackFromTheWire()
+        [DataRow("minfo 1 0 333.2/5 -1.0/0 -1/0 -1.0/0 0 1 0")]
+        [DataRow("minfo 0 0 -1.0/0 1012.3/10 -1/0 -1.0/0 0 1 0")]
+        [DataRow("minfo 0 0 -1.0/0 -1.0/0 2/4 1000.1/3 1 3 0")]
+        [DataRow("minfo 0 1 -1.0/0 -1.0/0 -1/0 -1.0/0 1 2 0")]
+        public void ObjectivesReadBackFromTheWire(string wire)
         {
-            var packet = (MinfoPacket)Deserializer.Deserialize("minfo 1 0 333.2/5 -1.0/0 -1/0 -1.0/0 0 1 0");
-
-            Assert.AreEqual("333.2/5", $"{packet.KillMonster?.Vnum}.{packet.KillMonster?.Current}/{packet.KillMonster?.Total}");
-            Assert.AreEqual(-1, packet.CollectItem?.Vnum);
-            Assert.AreEqual(-1, packet.Conversation?.Had);
-            Assert.AreEqual(-1, packet.InteractObjects?.Vnum);
+            Assert.AreEqual(wire, Serializer.Serialize(Deserializer.Deserialize(wire)));
         }
     }
 }
