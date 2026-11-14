@@ -13,6 +13,6 @@ namespace NosCore.Packets.ServerPackets.Login
     public class ItPacket : PacketBase
     {
         [PacketIndex(0)]
-        public byte Mode { get; set; }
+        public ItModeType Mode { get; set; }
     }
 }
