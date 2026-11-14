@@ -322,7 +322,11 @@
 - [raid](../src/NosCore.Packets/ServerPackets/Event/RaidPacket.cs) *InGame*
 - [rboss](../src/NosCore.Packets/ServerPackets/Event/RbossPacket.cs) *InGame*
 - [rbr](../src/NosCore.Packets/ServerPackets/Event/RbrPacket.cs) *InGame*
+- [rdlst](../src/NosCore.Packets/ServerPackets/Event/RdlstPacket.cs) *InGame*
+- [rdlst_sub_packet](../src/NosCore.Packets/ServerPackets/Event/RdlstSubPacket.cs) *InGame*
 - [rp](../src/NosCore.Packets/ServerPackets/Event/RpPacket.cs) *InGame*
+- [rl](../src/NosCore.Packets/ServerPackets/Event/ServerRlPacket.cs) *InGame*
+- [rl_sub_packet](../src/NosCore.Packets/ServerPackets/Event/ServerRlSubPacket.cs) *InGame*
 
 ### Exchanges
 - [exc_close](../src/NosCore.Packets/ServerPackets/Exchanges/ExcClosePacket.cs) *InGame*
