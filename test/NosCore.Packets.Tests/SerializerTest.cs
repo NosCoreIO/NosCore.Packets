@@ -1110,6 +1110,16 @@ namespace NosCore.Packets.Tests
                 Serializer.Serialize(characterTest));
         }
 
+        [TestMethod]
+        public void SerializeInPacketCarriesAMountMorph()
+        {
+            var characterTest = CharacterInPacket();
+            characterTest.InCharacterSubPacket!.Morph = 2369;
+            Assert.AreEqual(
+                "in 1 characterTest - 0 0 0 0 2 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 2369 0 0 -1.-1 - 1 0 0 0 0 1 0 0|0|0 0 0 10 0 0",
+                Serializer.Serialize(characterTest));
+        }
+
         private static InPacket CharacterInPacket(InFactionType faction = InFactionType.None)
         {
             return new InPacket
