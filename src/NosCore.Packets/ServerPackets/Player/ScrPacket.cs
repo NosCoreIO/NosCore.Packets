@@ -29,5 +29,8 @@ namespace NosCore.Packets.ServerPackets.Player
 
         [PacketIndex(5)]
         public int Unknow6 { get; set; }
+
+        [PacketIndex(6)]
+        public int Unknow7 { get; set; }
     }
 }

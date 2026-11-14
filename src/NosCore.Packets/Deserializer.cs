@@ -480,7 +480,10 @@ namespace NosCore.Packets
 
         private object? DeserializeEnum(Type type, string value)
         {
-            return value == "-1" || IsAbsentOptional(type, value)
+            // "-1" means "no value", unless the enum itself defines -1 (e.g. KeyBind.SameKey).
+            var isDefinedMinusOne = value == "-1" && type.IsEnum
+                && Enum.GetValues(type).Cast<object>().Any(v => Convert.ToInt64(v) == -1);
+            return (value == "-1" && !isDefinedMinusOne) || IsAbsentOptional(type, value)
                 ? type.GetDefaultValue()
                 : Enum.Parse(Nullable.GetUnderlyingType(type) ?? type, value);
         }
