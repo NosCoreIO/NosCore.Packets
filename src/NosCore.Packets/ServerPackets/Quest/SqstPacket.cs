@@ -27,7 +27,7 @@ namespace NosCore.Packets.ServerPackets.Quest
         public static SqstPacket FromCompletedQuests(byte block, IEnumerable<int> completedQuestIds)
         {
             var flags = new int[QuestsPerBlock / QuestsPerChar];
-            foreach (var offset in completedQuestIds.Where(id => BlockOf(id) == block).Select(id => id % QuestsPerBlock))
+            foreach (var offset in completedQuestIds.Where(id => id / QuestsPerBlock == block).Select(id => id % QuestsPerBlock))
             {
                 var position = offset % QuestsPerChar;
                 flags[offset / QuestsPerChar] |= position == 0 ? 0x20 : 1 << (position - 1);
