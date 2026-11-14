@@ -324,6 +324,7 @@
 - [rbr](../src/NosCore.Packets/ServerPackets/Event/RbrPacket.cs) *InGame*
 - [rdlst](../src/NosCore.Packets/ServerPackets/Event/RdlstPacket.cs) *InGame*
 - [rdlst_sub_packet](../src/NosCore.Packets/ServerPackets/Event/RdlstSubPacket.cs) *InGame*
+- [repay](../src/NosCore.Packets/ServerPackets/Event/RepayPacket.cs) *InGame*
 - [rp](../src/NosCore.Packets/ServerPackets/Event/RpPacket.cs) *InGame*
 - [rl](../src/NosCore.Packets/ServerPackets/Event/ServerRlPacket.cs) *InGame*
 - [rl_sub_packet](../src/NosCore.Packets/ServerPackets/Event/ServerRlSubPacket.cs) *InGame*
