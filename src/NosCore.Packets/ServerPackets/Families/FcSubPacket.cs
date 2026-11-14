@@ -9,7 +9,8 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Families
 {
-    // One faction's side of the fc HUD. The four raid flags name the Act 4 raid that is open.
+    // One faction's side of the fc HUD. The client draws one raid icon per slot from field 4 on;
+    // slots 1 to 4 follow the dg raid types, so a running Hatus raid sets IsHatus.
     public class FcSubPacket : PacketBase
     {
         [PacketIndex(0)]
@@ -25,18 +26,18 @@ namespace NosCore.Packets.ServerPackets.Families
         public short TotalSeconds { get; set; }
 
         [PacketIndex(4)]
-        public bool IsMorcos { get; set; }
+        public byte Unknown { get; set; }
 
         [PacketIndex(5)]
-        public bool IsHatus { get; set; }
+        public bool IsMorcos { get; set; }
 
         [PacketIndex(6)]
-        public bool IsCalvina { get; set; }
+        public bool IsHatus { get; set; }
 
         [PacketIndex(7)]
-        public bool IsBerios { get; set; }
+        public bool IsCalvina { get; set; }
 
         [PacketIndex(8)]
-        public byte Unknown { get; set; }
+        public bool IsBerios { get; set; }
     }
 }
