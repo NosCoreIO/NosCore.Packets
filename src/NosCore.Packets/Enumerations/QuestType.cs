@@ -34,5 +34,6 @@ namespace NosCore.Packets.Enumerations
         Inspect = 24,
         WinRaid = 25,
         FlowerQuest = 26,
+        DefeatEnemies = 27, // First objective column: 9999 any time-space, 9998 Act 4
     }
 }
