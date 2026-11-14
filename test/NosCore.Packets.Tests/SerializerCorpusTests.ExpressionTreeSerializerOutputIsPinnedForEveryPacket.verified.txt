@@ -484,8 +484,16 @@ RbrPacket#1 => rbr 21.0.2 53 0 82.87 55 52.90 80.24 -1.0 -1.0 -1.0 27.23 69.90 2
 s9768
 RbrPacket#7 => rbr 74.2.1 8 0 82.37 53 78.12 53.59 -1.0 -1.0 -1.0 96.45 47.58 74.95 71.58 -1.0 9.s2905 0 0 s29596
 s19655
+RdlstPacket#1 => rdlst 21 44 83 53.21.2.87.s30955.0.90.80 24.27.3.69.s29290.0.18.35
+RdlstPacket#7 => rdlst 74 75 77 8.43.2.37.s30753.0.12.53 59.96.0.47.s15958.0.95.71
+RdlstSubPacket#1 => rdlst_sub_packet 21 44 3 53 s14221 0 87 55
+RdlstSubPacket#7 => rdlst_sub_packet 74 75 2 8 s14143 0 37 53
 RpPacket#1 => rp 21 44 83 #gbox^1^21^1
 RpPacket#7 => rp 74 75 77 #gbox^0^43^1
+ServerRlPacket#1 => rl 21 44.83.53.s14221.82.87.0.0.90.80 24.27.23.s30369.90.20.3.1.9.75
+ServerRlPacket#7 => rl 74 75.77.8.s14143.82.37.3.0.12.53 59.96.45.s21847.58.74.0.1.58.9
+ServerRlSubPacket#1 => rl_sub_packet 21 44 83 s15853 21 82 2 1 52 90
+ServerRlSubPacket#7 => rl_sub_packet 74 75 77 s30408 43 82 2 1 78 12
 ExcClosePacket#1 => exc_close 1
 ExcClosePacket#7 => exc_close 0
 ServerExcListPacket#1 => exc_list 1 44 83 53 21.7.87.55.52 90.9.24.27.23
