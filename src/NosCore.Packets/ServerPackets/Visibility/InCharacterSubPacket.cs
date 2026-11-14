@@ -57,7 +57,7 @@ namespace NosCore.Packets.ServerPackets.Visibility
         public bool ShowInEffect { get; set; }
 
         [PacketIndex(14)]
-        public byte Morph { get; set; }
+        public short Morph { get; set; }
 
         [PacketIndex(15, SpecialSeparator = "")]
         public UpgradeRareSubPacket? WeaponUpgradeRareSubPacket { get; set; }
