@@ -39,7 +39,25 @@ namespace NosCore.Packets.Tests
         {
             var wire = Serializer.Serialize(new TcInfoPacket { Name = "Tester", Biography = "Hello there friend" });
 
-            StringAssert.EndsWith(wire, " Hello^there^friend");
+            StringAssert.EndsWith(wire, " Hello\vthere\vfriend");
+        }
+
+        [TestMethod]
+        public void NoBiographyShowsTheClientsNoIntroductionLine()
+        {
+            var wire = Serializer.Serialize(new TcInfoPacket { Name = "Tester" });
+
+            StringAssert.EndsWith(wire, " 833");
+        }
+
+        [TestMethod]
+        public void TheBiographyIsTheThirtyNinthField()
+        {
+            var wire = Serializer.Serialize(new TcInfoPacket { Name = "Tester", Biography = "Hi" });
+
+            var fields = wire.Split(' ');
+            Assert.AreEqual(40, fields.Length);
+            Assert.AreEqual("Hi", fields[39]);
         }
     }
 }
