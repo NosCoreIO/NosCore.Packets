@@ -57,20 +57,31 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
-        public void MinilandIntroEditKeepsItsWireValue()
+        public void MinilandIntroEditCarriesItsTextToTheEndOfTheLine()
         {
-            Assert.AreEqual("mledit 1 Welcome", Serializer.Serialize(new MLEditPacket { Type = MinilandEditType.Intro, MinilandInfo = "Welcome" }));
-            Assert.AreEqual(MinilandEditType.Intro, ((MLEditPacket)Deserializer.Deserialize("mledit 1 -1 Welcome")).Type);
+            const string wire = "mledit 1 Come in and rest";
+            Assert.AreEqual(wire, Serializer.Serialize(new MLEditPacket { Type = MinilandEditType.Intro, Value = "Come in and rest" }));
+            var packet = (MLEditPacket)Deserializer.Deserialize(wire);
+            Assert.AreEqual(MinilandEditType.Intro, packet.Type);
+            Assert.AreEqual("Come in and rest", packet.Introduction);
+            Assert.IsNull(packet.State);
         }
 
         [TestMethod]
         public void MinilandStateEditKeepsItsWireValue()
         {
             const string wire = "mledit 2 1";
-            Assert.AreEqual(wire, Serializer.Serialize(new MLEditPacket { Type = MinilandEditType.State, Parameter = MinilandState.Private }));
+            Assert.AreEqual(wire, Serializer.Serialize(new MLEditPacket { Type = MinilandEditType.State, Value = "1" }));
             var packet = (MLEditPacket)Deserializer.Deserialize(wire);
             Assert.AreEqual(MinilandEditType.State, packet.Type);
-            Assert.AreEqual(MinilandState.Private, packet.Parameter);
+            Assert.AreEqual(MinilandState.Private, packet.State);
+            Assert.IsNull(packet.Introduction);
+        }
+
+        [TestMethod]
+        public void MinilandStateEditWithAnUnknownStateHasNoState()
+        {
+            Assert.IsNull(((MLEditPacket)Deserializer.Deserialize("mledit 2 9")).State);
         }
 
         [TestMethod]
