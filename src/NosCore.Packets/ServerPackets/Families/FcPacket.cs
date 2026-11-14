@@ -9,10 +9,8 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Families
 {
-    // Act4 faction statistics packet. Tells the client which faction the character
-    // belongs to plus the global Angel vs Demon war state (reset timer, score ratio,
-    // mode). OpenNos appends more per-faction detail after the 4th field — the
-    // minimum header is what clients strictly require.
+    // The Act 4 faction HUD: the receiver's faction, then the angel side's war state and the
+    // demon side's.
     [PacketHeader("fc", Scope.InGame)]
     public class FcPacket : PacketBase
     {
@@ -23,9 +21,9 @@ namespace NosCore.Packets.ServerPackets.Families
         public int MinutesUntilReset { get; set; }
 
         [PacketIndex(2)]
-        public int Percentage { get; set; }
+        public FcSubPacket? Angel { get; set; }
 
         [PacketIndex(3)]
-        public int Mode { get; set; }
+        public FcSubPacket? Demon { get; set; }
     }
 }

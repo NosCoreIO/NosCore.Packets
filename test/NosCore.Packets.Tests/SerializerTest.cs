@@ -39,6 +39,8 @@ using NosCore.Shared.Enumerations;
 using System.Collections.Generic;
 using System.Linq;
 using ServerGidxPacket = NosCore.Packets.ServerPackets.Families.GidxPacket;
+using FcPacket = NosCore.Packets.ServerPackets.Families.FcPacket;
+using FcSubPacket = NosCore.Packets.ServerPackets.Families.FcSubPacket;
 
 namespace NosCore.Packets.Tests
 {
@@ -88,6 +90,7 @@ namespace NosCore.Packets.Tests
                 typeof(MsgiPacket),
                 typeof(SayiPacket),
                 typeof(BsPacket),
+                typeof(FcPacket),
                 typeof(CtNPacket),
                 typeof(AtPacket),
                 typeof(LevPacket),
@@ -133,6 +136,20 @@ namespace NosCore.Packets.Tests
 
         // The monster name ends the line, and a last field keeps its spaces unless it asks not
         // to. 929 of the 1109 monster-info lines in a capture carry a name with a space in it.
+        [TestMethod]
+        public void SerializeFcMatchesAPacketTrace()
+        {
+            var packet = Serializer.Serialize(new FcPacket
+            {
+                Faction = FactionType.Angel,
+                MinutesUntilReset = 9300,
+                Angel = new FcSubPacket { Mode = Act4WarMode.RaidOpen, SecondsLeft = 2132, TotalSeconds = 3600, IsHatus = true },
+                Demon = new FcSubPacket { Percentage = 57 }
+            });
+
+            Assert.AreEqual("fc 1 9300 0 3 2132 3600 0 1 0 0 0 57 0 0 0 0 0 0 0 0", packet);
+        }
+
         [TestMethod]
         public void SerializeEInfoNpcMonsterPacketEscapesTheName()
         {
