@@ -390,6 +390,7 @@
 - [minipet](../src/NosCore.Packets/ServerPackets/Mates/MinipetPacket.cs) *InGame*
 - [pet_cool2](../src/NosCore.Packets/ServerPackets/Mates/PetCool2Packet.cs) *InGame*
 - [petski](../src/NosCore.Packets/ServerPackets/Mates/PetskiPacket.cs) *InGame*
+- [petsr](../src/NosCore.Packets/ServerPackets/Mates/PetsrPacket.cs) *InGame*
 - [psd](../src/NosCore.Packets/ServerPackets/Mates/PsdPacket.cs) *InGame*
 - [pski](../src/NosCore.Packets/ServerPackets/Mates/PSkiPacket.cs) *InGame*
 - [sc_n](../src/NosCore.Packets/ServerPackets/Mates/ScnPacket.cs) *InGame*
