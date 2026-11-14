@@ -89,14 +89,28 @@ namespace NosCore.Packets.Tests
             var packet = (ServerPackets.Families.FcPacket)deserializer.Deserialize("fc 1 9300 0 3 2132 3600 0 1 0 0 0 57 0 0 0 0 0 0 0 0");
             Assert.AreEqual(Act4WarMode.RaidOpen, packet.Angel?.Mode);
             Assert.AreEqual((short)2132, packet.Angel?.SecondsLeft);
-            Assert.IsTrue(packet.Angel?.IsHatus);
+            Assert.IsTrue(packet.Angel?.IsMorcos);
             Assert.AreEqual((byte)57, packet.Demon?.Percentage);
 
-            var berios = (ServerPackets.Families.FcPacket)deserializer.Deserialize("fc 2 24542 25 0 0 0 0 0 0 0 0 40 0 0 0 0 0 0 1 0");
-            Assert.AreEqual((byte)25, berios.Angel?.Percentage);
-            Assert.AreEqual((byte)40, berios.Demon?.Percentage);
-            Assert.IsTrue(berios.Demon?.IsBerios);
-            Assert.IsFalse(berios.Demon?.IsCalvina);
+            var calvina = (ServerPackets.Families.FcPacket)deserializer.Deserialize("fc 2 24542 25 0 0 0 0 0 0 0 0 40 0 0 0 0 0 0 1 0");
+            Assert.AreEqual((byte)25, calvina.Angel?.Percentage);
+            Assert.AreEqual((byte)40, calvina.Demon?.Percentage);
+            Assert.IsTrue(calvina.Demon?.IsCalvina);
+            Assert.IsFalse(calvina.Demon?.IsBerios);
+        }
+
+        // Captured inside a Hatus raid (boss 577, dg 2) and a Calvina raid (boss 629, dg 3).
+        [TestMethod]
+        public void DeserializeFcPutsTheRaidFlagInTheSlotOfItsDgType()
+        {
+            var deserializer = new Deserializer(new[] { typeof(ServerPackets.Families.FcPacket), typeof(ServerPackets.Families.FcSubPacket) });
+            var hatus = (ServerPackets.Families.FcPacket)deserializer.Deserialize("fc 1 11008 0 3 1426 3600 0 0 1 0 0 95 0 0 0 0 0 0 0 0");
+            var calvina = (ServerPackets.Families.FcPacket)deserializer.Deserialize("fc 1 3453 0 3 1760 3600 0 0 0 1 0 26 0 0 0 0 0 0 0 0");
+
+            Assert.IsTrue(hatus.Angel?.IsHatus);
+            Assert.IsFalse(hatus.Angel?.IsMorcos);
+            Assert.IsTrue(calvina.Angel?.IsCalvina);
+            Assert.IsFalse(calvina.Angel?.IsBerios);
         }
 
         [TestMethod]

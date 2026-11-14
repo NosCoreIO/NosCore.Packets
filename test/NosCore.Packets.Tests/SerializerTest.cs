@@ -143,7 +143,7 @@ namespace NosCore.Packets.Tests
             {
                 Faction = FactionType.Angel,
                 MinutesUntilReset = 9300,
-                Angel = new FcSubPacket { Mode = Act4WarMode.RaidOpen, SecondsLeft = 2132, TotalSeconds = 3600, IsHatus = true },
+                Angel = new FcSubPacket { Mode = Act4WarMode.RaidOpen, SecondsLeft = 2132, TotalSeconds = 3600, IsMorcos = true },
                 Demon = new FcSubPacket { Percentage = 57 }
             });
 
