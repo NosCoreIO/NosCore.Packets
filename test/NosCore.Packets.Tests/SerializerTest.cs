@@ -103,6 +103,7 @@ namespace NosCore.Packets.Tests
                 typeof(StbmPacket),
                 typeof(MinipetPacket),
                 typeof(PetskiPacket),
+                typeof(PetsrPacket),
                 typeof(DpskiPacket),
                 typeof(RaidopenPacket),
                 typeof(CInfoResetPacket),
@@ -1238,15 +1239,22 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
+        public void SerializePetsrPacketNamesTheSlotThatIsReady()
+        {
+            Assert.AreEqual("petsr 1", Serializer.Serialize(new PetsrPacket { Slot = 1 }));
+            Assert.AreEqual("petsr -1", Serializer.Serialize(new PetsrPacket { Slot = -1 }));
+        }
+
+        [TestMethod]
         public void SerializePetskiPacketMatchesTrace()
         {
             Assert.AreEqual(
                 "petski 790 -1 -1",
                 Serializer.Serialize(new PetskiPacket
                 {
-                    MateTransportId = 790,
-                    FirstSkillVNum = -1,
+                    FirstSkillVNum = 790,
                     SecondSkillVNum = -1,
+                    ThirdSkillVNum = -1,
                 }));
         }
 

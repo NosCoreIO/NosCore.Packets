@@ -504,6 +504,24 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
+        [DataRow("u_pet 4 3 2073 664", (short)664, null, null)]
+        [DataRow("u_pet 4 3 2073 0", (short)0, null, null)]
+        [DataRow("u_pet 4 3 2073 664 144 124", (short)664, (short)144, (short)124)]
+        public void PetOrderCarriesTheSkillAndSometimesACell(string wire, short skill, short? x, short? y)
+        {
+            var deserializer = new Deserializer(new[] { typeof(ClientPackets.Mates.UpetPacket) });
+
+            var packet = (ClientPackets.Mates.UpetPacket)deserializer.Deserialize(wire);
+
+            Assert.AreEqual(4L, packet.MateTransportId);
+            Assert.AreEqual(2073L, packet.TargetId);
+            Assert.AreEqual(skill, packet.SkillVNum);
+            Assert.AreEqual(x, packet.MapX);
+            Assert.AreEqual(y, packet.MapY);
+            Assert.IsTrue(packet.IsValid);
+        }
+
+        [TestMethod]
         public void PacketWithSubPacketShorterThanSchemaLeavesTrailingFieldsDefault()
         {
             // IvnSubPacket has seven [PacketIndex] properties, but `inv 1` packets

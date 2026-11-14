@@ -24,6 +24,12 @@ namespace NosCore.Packets.ClientPackets.Mates
         public long TargetId { get; set; }
 
         [PacketIndex(3)]
-        public int Unknown2 { get; set; } // always 0
+        public short SkillVNum { get; set; }
+
+        [PacketIndex(4, IsOptional = true)]
+        public short? MapX { get; set; }
+
+        [PacketIndex(5, IsOptional = true)]
+        public short? MapY { get; set; }
     }
 }
