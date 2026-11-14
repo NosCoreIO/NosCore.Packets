@@ -38,8 +38,9 @@ namespace NosCore.Packets
             get
             {
                 var vc = new ValidationContext(this);
+                // A property that cannot be set is a view of other fields, not a field of the line.
                 foreach (var prop in GetType().GetProperties()
-                             .Where(x=> !typeof(PacketBase).GetProperties().Select(o=>o.Name).Contains(x.Name)))
+                             .Where(x=> x.CanWrite && !typeof(PacketBase).GetProperties().Select(o=>o.Name).Contains(x.Name)))
                 {
                     var value = prop.GetValue(this);
                     if (prop.PropertyType.IsEnum && value != null && !Enum.IsDefined(prop.PropertyType, value))
