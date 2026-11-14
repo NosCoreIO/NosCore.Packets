@@ -1,10 +1,11 @@
 ﻿namespace NosCore.Packets.Enumerations
 {
-    // TODO : Check if it's good I'm not sure
     public enum EndStateType
     {
+        Timeout = 1,
         Fail = 2,
-        Timeout = 3,
+        LivesExhausted = 3,
+        PartyMemberFailed = 4,
         Success = 5
     }
 }
