@@ -80,6 +80,7 @@ namespace NosCore.Packets.Tests
                 typeof(FStashAllPacket),
                 typeof(WarehouseSubPacket),
                 typeof(RbrPacket),
+                typeof(RepayPacket),
                 typeof(MlobjlstPacket),
                 typeof(MltobjPacket),
                 typeof(SuccessPacket),
@@ -523,6 +524,18 @@ namespace NosCore.Packets.Tests
             Assert.AreEqual("rbr 0.0.0 0 1 1.99 1 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 0 0 0 this is another test\nthis is a test", packet);
         }
 
+
+        [TestMethod]
+        public void SerializeRepayMarksEmptySlotsWithMinusOne()
+        {
+            var testPacket = new RepayPacket
+            {
+                BonusRewards = new List<RepaySubPacketItem> { new RepaySubPacketItem { ItemId = 1012, Amount = 5 } }
+            };
+
+            var packet = Serializer.Serialize(testPacket);
+            Assert.AreEqual("repay 1012.0.5 -1.0.0 -1.0.0 -1.0.0 -1.0.0 -1.0.0", packet);
+        }
 
         [TestMethod]
         public void SerializeWithRemoveHeader()
