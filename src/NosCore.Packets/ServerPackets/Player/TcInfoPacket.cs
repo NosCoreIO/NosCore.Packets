@@ -133,7 +133,16 @@ namespace NosCore.Packets.ServerPackets.Player
         [PacketIndex(36)]
         public long HeroLevel { get; set; }
 
-        [PacketIndex(37, EscapeSpaces = true)]
-        public string? Biography { get; set; }
+        // Shown as "(+N)" after the element on the class line when above 0.
+        [PacketIndex(37)]
+        public long Unknow5 { get; set; }
+
+        // The client shows its own "no introduction" line when the field is that message's number.
+        [PacketIndex(38, EscapeSpaces = true, SpaceEscape = "\v")]
+        public string? Biography
+        {
+            get => string.IsNullOrEmpty(field) ? ((int)Game18NConstString.NoIntroMessage).ToString() : field;
+            set;
+        }
     }
 }
