@@ -1081,7 +1081,25 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void GenerateInPacketIsNotCorruptedForCharacter()
         {
-            var characterTest = new InPacket
+            var characterTest = CharacterInPacket();
+            var packet = Serializer.Serialize(characterTest);
+            Assert.AreEqual(
+                "in 1 characterTest - 0 0 0 0 2 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 0 0 0 -1.-1 - 1 0 0 0 0 1 0 0|0|0 0 0 10 0 0",
+                packet);
+        }
+
+        [TestMethod]
+        public void SerializeInPacketCarriesTheAct4Faction()
+        {
+            var characterTest = CharacterInPacket(InFactionType.Demon);
+            Assert.AreEqual(
+                "in 1 characterTest - 0 0 0 0 2 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 0 0 0 -1.-1 - 1 0 0 4 0 1 0 0|0|0 0 0 10 0 0",
+                Serializer.Serialize(characterTest));
+        }
+
+        private static InPacket CharacterInPacket(InFactionType faction = InFactionType.None)
+        {
+            return new InPacket
             {
                 VisualType = VisualType.Player,
                 Name = "characterTest",
@@ -1118,7 +1136,7 @@ namespace NosCore.Packets.Tests
                     ReputIco = 1,
                     Invisible = false,
                     MorphUpgrade = 0,
-                    Faction = 0,
+                    Faction = faction,
                     MorphUpgrade2 = 0,
                     Level = 1,
                     FamilyLevel = 0,
@@ -1130,10 +1148,6 @@ namespace NosCore.Packets.Tests
                     Title = 0
                 }
             };
-            var packet = Serializer.Serialize(characterTest);
-            Assert.AreEqual(
-                $"in 1 characterTest - 0 0 0 0 {(byte)characterTest.InCharacterSubPacket.Authority} 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 0 0 0 -1.-1 - 1 0 0 0 0 1 0 0|0|0 0 0 {(byte)characterTest.InCharacterSubPacket.Size} 0 0",
-                packet);
         }
 
         [TestMethod]

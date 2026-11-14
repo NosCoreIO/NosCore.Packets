@@ -81,7 +81,7 @@ namespace NosCore.Packets.ServerPackets.Visibility
         public byte MorphUpgrade { get; set; }
 
         [PacketIndex(22)]
-        public FactionType Faction { get; set; }
+        public InFactionType Faction { get; set; }
 
         [PacketIndex(23)]
         public byte MorphUpgrade2 { get; set; }
