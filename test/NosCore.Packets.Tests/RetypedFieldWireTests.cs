@@ -4,6 +4,7 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NosCore.Packets.ClientPackets.Bazaar;
 using NosCore.Packets.ClientPackets.Event;
@@ -76,6 +77,15 @@ namespace NosCore.Packets.Tests
             Assert.AreEqual(MinilandEditType.State, packet.Type);
             Assert.AreEqual(MinilandState.Private, packet.State);
             Assert.IsNull(packet.Introduction);
+        }
+
+        [TestMethod]
+        [DataRow("7 mledit 2 2")]
+        [DataRow("8 mledit 1 Come in and rest")]
+        public void MinilandEditIsValidWhicheverViewIsEmpty(string wire)
+        {
+            var packet = (MLEditPacket)Deserializer.Deserialize(wire);
+            Assert.IsTrue(packet.IsValid, string.Join("; ", packet.ValidationResult.Select(v => v.ErrorMessage)));
         }
 
         [TestMethod]
