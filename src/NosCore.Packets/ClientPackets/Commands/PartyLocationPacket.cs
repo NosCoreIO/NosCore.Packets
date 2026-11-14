@@ -21,7 +21,8 @@ namespace NosCore.Packets.ClientPackets.Commands
     [PacketHeaderAlias("$Pozice", Flag = nameof(RegionType.CS))]
     public class PartyLocationPacket : PacketBase
     {
-        [PacketIndex(0)]
-        public required string CharacterName { get; set; }
+        // The command is usually typed on its own, without a name.
+        [PacketIndex(0, IsOptional = true)]
+        public string? CharacterName { get; set; }
     }
 }
