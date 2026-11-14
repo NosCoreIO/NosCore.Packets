@@ -39,6 +39,8 @@ using NosCore.Shared.Enumerations;
 using System.Collections.Generic;
 using System.Linq;
 using ServerGidxPacket = NosCore.Packets.ServerPackets.Families.GidxPacket;
+using FcPacket = NosCore.Packets.ServerPackets.Families.FcPacket;
+using FcSubPacket = NosCore.Packets.ServerPackets.Families.FcSubPacket;
 
 namespace NosCore.Packets.Tests
 {
@@ -88,6 +90,7 @@ namespace NosCore.Packets.Tests
                 typeof(MsgiPacket),
                 typeof(SayiPacket),
                 typeof(BsPacket),
+                typeof(FcPacket),
                 typeof(CtNPacket),
                 typeof(AtPacket),
                 typeof(LevPacket),
@@ -133,6 +136,20 @@ namespace NosCore.Packets.Tests
 
         // The monster name ends the line, and a last field keeps its spaces unless it asks not
         // to. 929 of the 1109 monster-info lines in a capture carry a name with a space in it.
+        [TestMethod]
+        public void SerializeFcMatchesAPacketTrace()
+        {
+            var packet = Serializer.Serialize(new FcPacket
+            {
+                Faction = FactionType.Angel,
+                MinutesUntilReset = 9300,
+                Angel = new FcSubPacket { Mode = Act4WarMode.RaidOpen, SecondsLeft = 2132, TotalSeconds = 3600, IsHatus = true },
+                Demon = new FcSubPacket { Percentage = 57 }
+            });
+
+            Assert.AreEqual("fc 1 9300 0 3 2132 3600 0 1 0 0 0 57 0 0 0 0 0 0 0 0", packet);
+        }
+
         [TestMethod]
         public void SerializeEInfoNpcMonsterPacketEscapesTheName()
         {
@@ -1064,7 +1081,25 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void GenerateInPacketIsNotCorruptedForCharacter()
         {
-            var characterTest = new InPacket
+            var characterTest = CharacterInPacket();
+            var packet = Serializer.Serialize(characterTest);
+            Assert.AreEqual(
+                "in 1 characterTest - 0 0 0 0 2 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 0 0 0 -1.-1 - 1 0 0 0 0 1 0 0|0|0 0 0 10 0 0",
+                packet);
+        }
+
+        [TestMethod]
+        public void SerializeInPacketCarriesTheAct4Faction()
+        {
+            var characterTest = CharacterInPacket(InFactionType.Demon);
+            Assert.AreEqual(
+                "in 1 characterTest - 0 0 0 0 2 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 0 0 0 -1.-1 - 1 0 0 4 0 1 0 0|0|0 0 0 10 0 0",
+                Serializer.Serialize(characterTest));
+        }
+
+        private static InPacket CharacterInPacket(InFactionType faction = InFactionType.None)
+        {
+            return new InPacket
             {
                 VisualType = VisualType.Player,
                 Name = "characterTest",
@@ -1101,7 +1136,7 @@ namespace NosCore.Packets.Tests
                     ReputIco = 1,
                     Invisible = false,
                     MorphUpgrade = 0,
-                    Faction = 0,
+                    Faction = faction,
                     MorphUpgrade2 = 0,
                     Level = 1,
                     FamilyLevel = 0,
@@ -1113,10 +1148,6 @@ namespace NosCore.Packets.Tests
                     Title = 0
                 }
             };
-            var packet = Serializer.Serialize(characterTest);
-            Assert.AreEqual(
-                $"in 1 characterTest - 0 0 0 0 {(byte)characterTest.InCharacterSubPacket.Authority} 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 0 0 0 -1.-1 - 1 0 0 0 0 1 0 0|0|0 0 0 {(byte)characterTest.InCharacterSubPacket.Size} 0 0",
-                packet);
         }
 
         [TestMethod]

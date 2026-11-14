@@ -317,6 +317,14 @@ namespace NosCore.Packets
                 case var prop when typeof(IPacket).IsAssignableFrom(prop):
                     var dic = _packetDeserializerDictionary[prop.Name];
                     var subPacketSeparator = packetBasePropertyInfo.Item2 is PacketListIndexAttribute ind ? ind.ListSeparator : packetBasePropertyInfo.Item2.SpecialSeparator;
+                    if (subPacketSeparator == " ")
+                    {
+                        // Fields joined by spaces span one token each, so the sub-packet takes as many
+                        // tokens as it has fields and the next property starts after them.
+                        var tokens = matches.Skip(currentIndex).Take(dic.PropertyAmount + 1).ToArray();
+                        currentIndex += tokens.Length;
+                        return DeserializeIPacket(dic, string.Join(" ", tokens), false, false);
+                    }
                     // SpecialSeparator = "" means "no character between fields on the wire" (e.g. UpgradeRareSubPacket
                     // packs Upgrade + Rare into a single 2-digit token like "75"). The serializer joins them with no
                     // separator, so on the read side we insert a space between every character to re-split. We can't
