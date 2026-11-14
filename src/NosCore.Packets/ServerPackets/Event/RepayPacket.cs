@@ -15,12 +15,12 @@ namespace NosCore.Packets.ServerPackets.Event
     public class RepayPacket : PacketBase
     {
         [PacketListIndex(0, Length = 3)]
-        public List<RepaySubPacketItem?>? BonusRewards { get; set; }
+        public List<RepaySubPacketItem> BonusRewards { get; set; } = [];
 
         [PacketListIndex(1, Length = 2)]
-        public List<RepaySubPacketItem?>? SpecialRewards { get; set; }
+        public List<RepaySubPacketItem> SpecialRewards { get; set; } = [];
 
         [PacketIndex(2, SpecialSeparator = ".")]
-        public RepaySubPacketItem? DrawnReward { get; set; }
+        public RepaySubPacketItem DrawnReward { get; set; } = new();
     }
 }

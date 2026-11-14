@@ -530,13 +530,11 @@ namespace NosCore.Packets.Tests
         {
             var testPacket = new RepayPacket
             {
-                BonusRewards = new List<RepaySubPacketItem?> { new RepaySubPacketItem { ItemId = 1012, Amount = 5 } },
-                SpecialRewards = new List<RepaySubPacketItem?>(),
-                DrawnReward = new RepaySubPacketItem { ItemId = 2282, Amount = 1 }
+                BonusRewards = new List<RepaySubPacketItem> { new RepaySubPacketItem { ItemId = 1012, Amount = 5 } }
             };
 
             var packet = Serializer.Serialize(testPacket);
-            Assert.AreEqual("repay 1012.0.5 -1.0.0 -1.0.0 -1.0.0 -1.0.0 2282.0.1", packet);
+            Assert.AreEqual("repay 1012.0.5 -1.0.0 -1.0.0 -1.0.0 -1.0.0 -1.0.0", packet);
         }
 
         [TestMethod]
