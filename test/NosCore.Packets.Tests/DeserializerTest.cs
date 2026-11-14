@@ -83,6 +83,23 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
+        public void DeserializeFcReadsBothSidesFromAPacketTrace()
+        {
+            var deserializer = new Deserializer(new[] { typeof(ServerPackets.Families.FcPacket), typeof(ServerPackets.Families.FcSubPacket) });
+            var packet = (ServerPackets.Families.FcPacket)deserializer.Deserialize("fc 1 9300 0 3 2132 3600 0 1 0 0 0 57 0 0 0 0 0 0 0 0");
+            Assert.AreEqual(Act4WarMode.RaidOpen, packet.Angel?.Mode);
+            Assert.AreEqual((short)2132, packet.Angel?.SecondsLeft);
+            Assert.IsTrue(packet.Angel?.IsHatus);
+            Assert.AreEqual((byte)57, packet.Demon?.Percentage);
+
+            var berios = (ServerPackets.Families.FcPacket)deserializer.Deserialize("fc 2 24542 25 0 0 0 0 0 0 0 0 40 0 0 0 0 0 0 1 0");
+            Assert.AreEqual((byte)25, berios.Angel?.Percentage);
+            Assert.AreEqual((byte)40, berios.Demon?.Percentage);
+            Assert.IsTrue(berios.Demon?.IsBerios);
+            Assert.IsFalse(berios.Demon?.IsCalvina);
+        }
+
+        [TestMethod]
         public void UnresolvedPacketsAreValid()
         {
             var packet = (UnresolvedPacket)Deserializer.Deserialize("unresolved");

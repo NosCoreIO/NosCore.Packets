@@ -20,10 +20,10 @@ namespace NosCore.Packets.ServerPackets.Families
         [PacketIndex(1)]
         public int MinutesUntilReset { get; set; }
 
-        [PacketIndex(2)]
+        [PacketIndex(2, SpecialSeparator = " ")]
         public FcSubPacket? Angel { get; set; }
 
-        [PacketIndex(3)]
+        [PacketIndex(3, SpecialSeparator = " ")]
         public FcSubPacket? Demon { get; set; }
     }
 }
