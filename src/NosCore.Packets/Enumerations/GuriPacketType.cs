@@ -26,6 +26,8 @@ namespace NosCore.Packets.Enumerations
         CloseMountPearlWindow = 25,
         AddFairyInPearl = 26,
         CloseFairyPearlWindow = 27,
+        // An Onyx Dragon appearing beside EntityId; Value and SecondValue are its cell.
+        OnyxDragon = 31,
         TattooInfo = 40,
         FlipCamera = 41,
         FriendshipWings = 199,
