@@ -99,6 +99,10 @@ namespace NosCore.Packets.Tests
         {
             Assert.AreEqual(EquipmentInfoType.Specialist, ((EquipmentInfoPacket)Deserializer.Deserialize("eqinfo 10 3")).Type);
             Assert.AreEqual(EquipmentInfoType.PartnerEquipment, ((EquipmentInfoPacket)Deserializer.Deserialize("eqinfo 7 1 12")).Type);
+            var exchange = (EquipmentInfoPacket)Deserializer.Deserialize("eqinfo 5 2 1 4242");
+            Assert.AreEqual(EquipmentInfoType.Exchange, exchange.Type);
+            Assert.AreEqual(4242, exchange.ShopOwnerId);
+            Assert.AreEqual(EquipmentInfoType.PersonalShop, ((EquipmentInfoPacket)Deserializer.Deserialize("eqinfo 6 0 1 4242")).Type);
         }
     }
 }

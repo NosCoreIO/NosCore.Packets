@@ -11,6 +11,8 @@ namespace NosCore.Packets.Enumerations
         Worn = 0,
         Equipment = 1,
         NpcShop = 2,
+        Exchange = 5,
+        PersonalShop = 6,
         PartnerEquipment = 7,
         Specialist = 10,
         Costume = 11
