@@ -54,6 +54,13 @@ namespace NosCore.Packets.Tests
                 .Where(p => p.CanWrite && p.GetCustomAttributes(true).OfType<PacketIndexAttribute>().Any())
                 .OrderBy(p => p.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First().Index))
             {
+                // A packet sharing its header keeps its own first field: that is what tells it apart on the line.
+                if (type.GetCustomAttribute<PacketHeaderAttribute>()?.AllowDuplicateHeader == true
+                    && property.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First().Index == 0)
+                {
+                    continue;
+                }
+
                 var value = ValueFor(property.PropertyType, counter, depth);
                 if (value == null)
                 {
