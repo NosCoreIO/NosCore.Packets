@@ -10,7 +10,8 @@ using NosCore.Packets.Enumerations;
 namespace NosCore.Packets.ServerPackets.Arena
 {
     // Team arena scoreboard. The scores always read Zenas first; TimeRemaining (seconds) only
-    // counts with the Clock mode.
+    // counts with the Clock mode. IsArenaOfMasters titles the window Arena of Masters instead of
+    // Arena of Talents.
     [PacketHeader("ta_m", Scope.InGame)]
     public class TaMPacket : PacketBase
     {
@@ -27,6 +28,6 @@ namespace NosCore.Packets.ServerPackets.Arena
         public int TimeRemaining { get; set; }
 
         [PacketIndex(4)]
-        public int Unknown { get; set; }
+        public bool IsArenaOfMasters { get; set; }
     }
 }
