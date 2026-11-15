@@ -238,12 +238,40 @@ namespace NosCore.Packets
             var matches = Regex.Matches(packetContent, @"([^\s\v]+)|(?<=\s)(?=\s|$)")
                 .Select(s => s.Value).ToArray();
             var start = (hasHeader ? 1 : 0) + (includesKeepAliveIdentity ? 1 : 0);
-            return DeserializeFields(dic, ref matches, ref start, hasHeader, inLine: false, lastInLine: true);
+            var tokens = matches;
+            try
+            {
+                return DeserializeFields(dic, ref matches, ref start, hasHeader, inLine: false, lastInLine: true);
+            }
+            catch (Exception) when (hasHeader)
+            {
+                // An optional field ahead of the last one can be left out of the line entirely; when reading it
+                // shifts every later field off its type, the line is read again without it.
+                var properties = dic.PacketDeserializerDictionary.Keys.ToList();
+                var maxindex = properties.Max(s => s.Item2.Index);
+                foreach (var optional in properties.Where(s => s.Item2.IsOptional && s.Item2.Index != maxindex
+                             && IsScalar(s.Item1)))
+                {
+                    try
+                    {
+                        var retry = tokens;
+                        var retryStart = start;
+                        return DeserializeFields(dic, ref retry, ref retryStart, hasHeader, inLine: false,
+                            lastInLine: true, leftOut: optional.Item3);
+                    }
+                    catch (Exception)
+                    {
+                        // the next optional field is tried
+                    }
+                }
+
+                throw;
+            }
         }
 
         // Reads a packet's fields from the tokens at a position. A sub-packet written with spaces between its
         // fields is read inLine, from its parent's own tokens, so whatever its fields span is consumed.
-        private IPacket DeserializeFields(TypeCreator dic, ref string[] matches, ref int start, bool hasHeader, bool inLine, bool lastInLine)
+        private IPacket DeserializeFields(TypeCreator dic, ref string[] matches, ref int start, bool hasHeader, bool inLine, bool lastInLine, string? leftOut = null)
         {
             var deg = (IPacket)dic.Constructor!.DynamicInvoke()!;
             if (matches.Length > 0 && dic.PacketDeserializerDictionary.Count > 0)
@@ -255,6 +283,17 @@ namespace NosCore.Packets
                 for (var position = 0; position < properties.Count; position++)
                 {
                     var packetBasePropertyInfo = properties[position];
+                    if (packetBasePropertyInfo.Key.Item3 == leftOut)
+                    {
+                        if (Nullable.GetUnderlyingType(packetBasePropertyInfo.Key.Item1) != null
+                            || !packetBasePropertyInfo.Key.Item1.IsValueType)
+                        {
+                            packetBasePropertyInfo.Value.DynamicInvoke(deg, null);
+                        }
+
+                        continue;
+                    }
+
                     if (position == absent || !IsPresent(dic.PacketType!, packetBasePropertyInfo.Key.Item3, deg))
                     {
                         continue;
