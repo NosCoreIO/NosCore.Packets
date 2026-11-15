@@ -44,7 +44,7 @@ namespace NosCore.Packets.ServerPackets.Parcel
         [PacketIndex(9)]
         public short Morph { get; set; }
 
-        [PacketListIndex(10, IsOptional = true)]
-        public List<int>? BuffIds { get; set; }
+        [PacketListIndex(10, SpecialSeparator = ".", IsOptional = true)]
+        public List<PstBuffSubPacket?>? Buffs { get; set; }
     }
 }

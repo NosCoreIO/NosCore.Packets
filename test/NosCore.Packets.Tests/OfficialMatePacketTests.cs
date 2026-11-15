@@ -9,6 +9,7 @@ using NosCore.Packets.ClientPackets.Mates;
 using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 using NosCore.Packets.ServerPackets.Mates;
+using NosCore.Packets.ServerPackets.Parcel;
 using NosCore.Packets.ServerPackets.Visibility;
 using NosCore.Shared.Enumerations;
 using System.Linq;
@@ -39,6 +40,23 @@ namespace NosCore.Packets.Tests
             Assert.AreEqual(
                 "sc_p 2 2682 1135622 48 397 86580 0 0 356 480 271 6 80 0 185 274 158 274 135 4 60 50 40 70 10638 10638 708 708 0 476535 0 @ 0 0 3 0 0 0 0 1",
                 Serializer.Serialize(packet));
+        }
+
+        [TestMethod]
+        public void APetsBarsCarryItsBuffsAsTheOfficialServerSendsThem()
+        {
+            var packet = new PstPacket
+            {
+                Type = VisualType.Npc, VisualId = 5922205, GroupOrder = 0, HpLeft = 55, MpLeft = 100, HpLoad = 10233,
+                MpLoad = 6115, Buffs = [new PstBuffSubPacket { CardId = 153, Level = 76 }, new PstBuffSubPacket { CardId = 152, Level = 76 }]
+            };
+
+            const string wire = "pst 2 5922205 0 55 100 10233 6115 0 0 0 153.76 152.76";
+            Assert.AreEqual(wire, Serializer.Serialize(packet));
+            var read = (PstPacket)new Deserializer(new[] { typeof(PstPacket), typeof(PstBuffSubPacket) }).Deserialize(wire);
+            Assert.AreEqual(2, read.Buffs!.Count);
+            Assert.AreEqual((short)152, read.Buffs[1]!.CardId);
+            Assert.AreEqual((byte)76, read.Buffs[1]!.Level);
         }
 
         [TestMethod]
