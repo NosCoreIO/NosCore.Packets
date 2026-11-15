@@ -23,6 +23,9 @@ namespace NosCore.Packets.ServerPackets.Chats
         public SayColorType Type { get; set; }
 
         [PacketIndex(3)]
+        public string? VisualName { get; set; }
+
+        [PacketIndex(4)]
         public string? Message { get; set; }
     }
 }

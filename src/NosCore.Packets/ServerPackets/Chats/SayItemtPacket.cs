@@ -6,6 +6,7 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.Interfaces;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Chats
@@ -26,15 +27,21 @@ namespace NosCore.Packets.ServerPackets.Chats
         public byte Type { get; set; }
 
         [PacketIndex(4)]
-        public Game18NConstString Message { get; set; }
+        public short ItemVNum { get; set; }
 
         [PacketIndex(5)]
         public string? VisualName { get; set; }
 
-        [PacketIndex(6, IsOptional = true)]
-        public string? Argument { get; set; } = "{%s}";
+        /// <summary>
+        /// The client writes the item's name where the message holds <c>{%s}</c>.
+        /// </summary>
+        [PacketIndex(6, EscapeSpaces = true, SpaceEscape = "|")]
+        public string? Message { get; set; }
 
-        [PacketIndex(7, IsOptional = true)]
-        public string? SubPacketRaw { get; set; }
+        /// <summary>
+        /// The packet the item's own info window gets (e_info, slinfo or IconInfo), written inline.
+        /// </summary>
+        [PacketIndex(7, RemoveHash = true)]
+        public IPacket? ItemInfo { get; set; }
     }
 }
