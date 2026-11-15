@@ -13,7 +13,7 @@ namespace NosCore.Packets.ServerPackets.Player
     public class ScPacket : PacketBase
     {
         [PacketIndex(0)]
-        public byte Type { get; set; }
+        public AttackType Type { get; set; }
 
         [PacketIndex(1)]
         public byte MainWeaponUpgrade { get; set; }
@@ -34,7 +34,7 @@ namespace NosCore.Packets.ServerPackets.Player
         public int CriticalHitMultiplier { get; set; }
 
         [PacketIndex(7)]
-        public byte Type2 { get; set; }
+        public AttackType Type2 { get; set; }
 
         [PacketIndex(8)]
         public short SecondaryWeaponUpgrade { get; set; }

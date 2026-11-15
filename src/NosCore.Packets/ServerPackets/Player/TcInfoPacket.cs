@@ -50,7 +50,7 @@ namespace NosCore.Packets.ServerPackets.Player
         public ExtendedReputationType ReputationIco { get; set; }
 
         [PacketIndex(9)]
-        public CharacterDignity DignityIco { get; set; }
+        public DignityType DignityIco { get; set; }
 
         [PacketIndex(10)]
         public int HaveWeapon { get; set; }
