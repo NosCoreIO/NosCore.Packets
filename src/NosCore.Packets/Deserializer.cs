@@ -86,6 +86,7 @@ namespace NosCore.Packets
     {
         private readonly ConcurrentDictionary<Type, Func<IEnumerable<object?>, object>> _getAndFillListMethods;
         private readonly Dictionary<string, TypeCreator> _packetDeserializerDictionary = new Dictionary<string, TypeCreator>();
+        private readonly Dictionary<string, List<TypeCreator>> _sharedHeaders = new Dictionary<string, List<TypeCreator>>();
 
         public Deserializer(IEnumerable<Type> types)
         {
@@ -99,36 +100,31 @@ namespace NosCore.Packets
 
         public void Initialize<T>() where T : PacketBase
         {
-            var header = typeof(T).GetCustomAttribute<PacketHeaderAttribute>()?.Identification;
+            var headerAttribute = typeof(T).GetCustomAttribute<PacketHeaderAttribute>();
+            var header = headerAttribute?.Identification;
             if (_packetDeserializerDictionary.ContainsKey(header ?? typeof(T).Name))
             {
                 if (typeof(T).Namespace!.Contains("ServerPackets"))
                 {
+                    if (headerAttribute?.AllowDuplicateHeader == true
+                        && _packetDeserializerDictionary[header!].PacketType!.Namespace!.Contains("ServerPackets"))
+                    {
+                        if (!_sharedHeaders.TryGetValue(header!, out var shared))
+                        {
+                            shared = new List<TypeCreator> { _packetDeserializerDictionary[header!] };
+                            _sharedHeaders.Add(header!, shared);
+                        }
+
+                        shared.Add(CreateTypeCreator<T>());
+                    }
+
                     return;
                 }
 
                 _packetDeserializerDictionary.Remove(header ?? typeof(T).Name);
             }
 
-            var types = typeof(T).GetProperties()
-                    .Where(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().Any()).ToList();
-            var propertyAmount = types.Any() ? types.Max(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First().Index) : 0;
-
-            var ctor = typeof(T).GetConstructors(BindingFlags.Instance | BindingFlags.Public)
-                .OrderBy(x => x.GetParameters().Length).First();
-
-            var parameters = ctor.GetParameters();
-            var parameterExpression = parameters.Select(p => Expression.Default(p.ParameterType)).ToArray();
-
-
-            var creator = new TypeCreator
-            {
-                PacketType = typeof(T),
-                PropertyAmount = propertyAmount,
-                Constructor = Expression.Lambda(Expression.New(ctor, parameterExpression)).Compile(),
-                PacketDeserializerDictionary = GeneratePacketDeserializerDictionary(typeof(T))
-            };
-
+            var creator = CreateTypeCreator<T>();
             _packetDeserializerDictionary.Add(header ?? typeof(T).Name, creator);
             var aliases = typeof(T).GetCustomAttributes<PacketHeaderAliasAttribute>().Select(s => s.Identification);
             foreach (var alias in aliases)
@@ -140,6 +136,28 @@ namespace NosCore.Packets
                 }
                 _packetDeserializerDictionary.Add(alias, creator);
             }
+        }
+
+        private TypeCreator CreateTypeCreator<T>() where T : PacketBase
+        {
+            var types = typeof(T).GetProperties()
+                    .Where(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().Any()).ToList();
+            var propertyAmount = types.Any() ? types.Max(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First().Index) : 0;
+
+            var ctor = typeof(T).GetConstructors(BindingFlags.Instance | BindingFlags.Public)
+                .OrderBy(x => x.GetParameters().Length).First();
+
+            var parameters = ctor.GetParameters();
+            var parameterExpression = parameters.Select(p => Expression.Default(p.ParameterType)).ToArray();
+
+
+            return new TypeCreator
+            {
+                PacketType = typeof(T),
+                PropertyAmount = propertyAmount,
+                Constructor = Expression.Lambda(Expression.New(ctor, parameterExpression)).Compile(),
+                PacketDeserializerDictionary = GeneratePacketDeserializerDictionary(typeof(T))
+            };
         }
 
         private Delegate GetPropSetter(Type typeObj, Type typeProperty, string propertyName)
@@ -205,7 +223,9 @@ namespace NosCore.Packets
 
                 if (_packetDeserializerDictionary.ContainsKey(packetsplit[header]))
                 {
-                    var dic = _packetDeserializerDictionary[packetsplit[header]];
+                    var dic = _sharedHeaders.TryGetValue(packetsplit[header], out var shared)
+                        ? ChooseSharedHeader(shared, packetsplit.Length > header + 1 ? packetsplit[header + 1] : null)
+                        : _packetDeserializerDictionary[packetsplit[header]];
                     var packet = DeserializeIPacket(dic, isSpecial ? packetstring : packetContent, includesKeepAliveIdentity, true);
                     packet!.Header = packetsplit[header];
                     packet!.KeepAliveId = includesKeepAliveIdentity ? (ushort?)keepalive : null;
@@ -231,6 +251,35 @@ namespace NosCore.Packets
                 };
                 throw exc;
             }
+        }
+
+        // Packets sharing a header are told apart by their first field, which each one sets to its own value.
+        private TypeCreator ChooseSharedHeader(List<TypeCreator> shared, string? firstToken)
+        {
+            foreach (var creator in shared)
+            {
+                var first = creator.PacketDeserializerDictionary.Keys.FirstOrDefault(s => s.Item2.Index == 0);
+                if (first == null || firstToken == null || !IsScalar(first.Item1))
+                {
+                    continue;
+                }
+
+                var own = creator.PacketType!.GetProperty(first.Item3)!.GetValue(creator.Constructor!.DynamicInvoke());
+                try
+                {
+                    var type = Nullable.GetUnderlyingType(first.Item1) ?? first.Item1;
+                    if (Equals(own, type.IsEnum ? Enum.Parse(type, firstToken) : DeserializeDefault(first.Item1, firstToken)))
+                    {
+                        return creator;
+                    }
+                }
+                catch (Exception)
+                {
+                    // the token is not this packet's first field
+                }
+            }
+
+            return shared[0];
         }
 
         private IPacket? DeserializeIPacket(TypeCreator dic, string packetContent, bool includesKeepAliveIdentity, bool hasHeader)
@@ -330,8 +379,9 @@ namespace NosCore.Packets
                             }
                         }
 
+                        var reserved = properties.Skip(position + 1).Count(later => !later.Key.Item2.IsOptional);
                         var value = DeserializeValue(packetBasePropertyInfo.Key, packetBasePropertyInfo.Key.Item1,
-                            ref matches, ref trueIndex, isMaxIndex);
+                            ref matches, ref trueIndex, isMaxIndex, reserved);
 
                         packetBasePropertyInfo.Value.DynamicInvoke(deg, value);
                     }
@@ -378,7 +428,7 @@ namespace NosCore.Packets
             return underlying.IsEnum || underlying.IsPrimitive || underlying == typeof(Guid);
         }
 
-        private object? DeserializeValue(Tuple<Type, PacketIndexAttribute, string, IEnumerable<ValidationAttribute>> packetBasePropertyInfo, Type item1, ref string[] matches, ref int currentIndex, bool isMaxIndex)
+        private object? DeserializeValue(Tuple<Type, PacketIndexAttribute, string, IEnumerable<ValidationAttribute>> packetBasePropertyInfo, Type item1, ref string[] matches, ref int currentIndex, bool isMaxIndex, int reserved = 0)
         {
             switch (item1)
             {
@@ -409,12 +459,12 @@ namespace NosCore.Packets
                     }
                     return g18n;
                 case var prop when prop.IsArray:
-                    var items = DeserializeList(prop.GetElementType()!, packetBasePropertyInfo.Item2, matches, ref currentIndex, isMaxIndex) as IList;
+                    var items = DeserializeList(prop.GetElementType()!, packetBasePropertyInfo.Item2, matches, ref currentIndex, isMaxIndex, reserved) as IList;
                     var array = Array.CreateInstance(prop.GetElementType()!, items?.Count ?? 0);
                     items?.CopyTo(array, 0);
                     return array;
                 case var prop when typeof(ICollection).IsAssignableFrom(prop):
-                    return DeserializeList(packetBasePropertyInfo.Item1.GetElementType() ?? packetBasePropertyInfo.Item1.GetGenericArguments()[0], packetBasePropertyInfo.Item2, matches, ref currentIndex, isMaxIndex);
+                    return DeserializeList(packetBasePropertyInfo.Item1.GetElementType() ?? packetBasePropertyInfo.Item1.GetGenericArguments()[0], packetBasePropertyInfo.Item2, matches, ref currentIndex, isMaxIndex, reserved);
                 case var prop when prop == typeof(IPacket):
                     return Deserialize(matches[currentIndex++]);
                 case var prop when typeof(IPacket).IsAssignableFrom(prop):
@@ -470,7 +520,7 @@ namespace NosCore.Packets
             }
         }
 
-        private object? DeserializeList(Type subType, PacketIndexAttribute packetIndexAttribute, string[] matches, ref int currentIndex, bool isMaxIndex)
+        private object? DeserializeList(Type subType, PacketIndexAttribute packetIndexAttribute, string[] matches, ref int currentIndex, bool isMaxIndex, int reserved = 0)
         {
             var newIndex = currentIndex;
             var length = packetIndexAttribute is PacketListIndexAttribute listIndex ? listIndex.Length : 0;
@@ -532,6 +582,27 @@ namespace NosCore.Packets
 
                     length = end - currentIndex;
                 }
+                else if (length == 0 && !isMaxIndex && separator == " ")
+                {
+                    // A space-separated list followed by other fields leaves their tokens to them; a list of values
+                    // also stops at the first token that is not one.
+                    var available = matches.Length - currentIndex - reserved;
+                    if (typeof(IPacket).IsAssignableFrom(subType))
+                    {
+                        var subPacketCreator = _packetDeserializerDictionary.Values.FirstOrDefault(s => s.PacketType == subType);
+                        length = subPacketCreator == null ? 0 : Math.Max(0, available / (subPacketCreator.PropertyAmount + 1));
+                    }
+                    else
+                    {
+                        var end = currentIndex;
+                        while (end < currentIndex + available && long.TryParse(matches[end], out _))
+                        {
+                            end++;
+                        }
+
+                        length = end - currentIndex;
+                    }
+                }
             }
 
             if (length > 0)
@@ -584,7 +655,7 @@ namespace NosCore.Packets
                         list.Add(value == -1 ? null : Convert.ChangeType(value, Nullable.GetUnderlyingType(subType) ?? subType));
                         if (splited == null)
                         {
-                            newIndex += i + 1;
+                            newIndex++;
                         }
                     }
                 }

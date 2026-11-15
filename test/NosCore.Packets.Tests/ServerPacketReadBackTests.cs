@@ -30,24 +30,16 @@ namespace NosCore.Packets.Tests
         // Packets the line alone cannot bring back. Remove an entry once it reads back; never add one to get green.
         private static readonly Dictionary<string, string> Unreadable = new()
         {
-            // One header shared by several classes, with nothing on the line to pick the class.
-            ["EInfoPacket"] = "e_info family",
-            ["EInfoArmorPacket"] = "e_info family",
-            ["EInfoFairyPacket"] = "e_info family",
-            ["EInfoJewelryPacket"] = "e_info family",
-            ["EInfoNpcMonsterPacket"] = "e_info family",
-            ["EInfoShellPacket"] = "e_info family",
-            ["EInfoWeaponPacket"] = "e_info family",
+            // Two classes sharing a header and the value of their first field.
+            ["EInfoJewelryPacket"] = "e_info 4 is also EInfoFairyPacket",
+            ["EInfoWeaponPacket"] = "e_info 0 is also EInfoPacket",
             ["SayItemPacket"] = "carries an e_info",
             ["RcbListPacket"] = "carries an e_info",
             ["RcsListPacket"] = "carries an e_info",
-            ["MlistPacket"] = "m_list is shared with MlistMaterialsPacket",
-            ["MlistMaterialsPacket"] = "m_list is shared with MlistPacket",
             // Upgrade and rarity are packed one digit each; the corpus fills them with two.
             ["InPacket"] = "digit-packed upgrade and rarity",
             ["EqPacket"] = "digit-packed upgrade and rarity",
             ["EquipPacket"] = "digit-packed upgrade and rarity",
-            ["NInvPacket"] = "a list of skills followed by family skills runs into them",
             ["QSlotPacket"] = "an optional first field is written without its separator",
             ["RbrPacket"] = "not read back yet",
         };
@@ -118,6 +110,29 @@ namespace NosCore.Packets.Tests
 
             Assert.AreEqual(3, shop.Items?.Count);
             Assert.AreEqual((2027, (short?)2, 700), (shop.Items![1]!.VNum, shop.Items[1]!.RareAmount, shop.Items[1]!.Price));
+        }
+
+        [TestMethod]
+        public void ASkillShopListReadsItsSkills()
+        {
+            var shop = (ServerPackets.Shop.NInvPacket)ClientSide.Deserialize("n_inv 2 7143 0 1 242 258 340");
+
+            Assert.AreEqual((byte?)1, shop.ShopKind);
+            CollectionAssert.AreEqual(new short[] { 242, 258, 340 }, shop.Skills);
+            Assert.IsNull(shop.Items);
+            Assert.IsNull(shop.FamilySkills);
+        }
+
+        [TestMethod]
+        public void TheProductionListsAreToldApartByTheirType()
+        {
+            var made = (ServerPackets.Production.MlistPacket)ClientSide.Deserialize("m_list 2 1012 1013 -100");
+            var materials = (ServerPackets.Production.MlistMaterialsPacket)ClientSide.Deserialize("m_list 3 1 1012 2 1013 5 -1");
+
+            CollectionAssert.AreEqual(new short[] { 1012, 1013 }, made.ItemVNums);
+            Assert.AreEqual((short)1, materials.Amount);
+            CollectionAssert.AreEqual(new[] { (1012, 2), (1013, 5) },
+                materials.Materials.Select(m => ((int)m.VNum, (int)m.Amount)).ToList());
         }
 
         [TestMethod]
