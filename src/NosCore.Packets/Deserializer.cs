@@ -223,10 +223,10 @@ namespace NosCore.Packets
 
                 if (_packetDeserializerDictionary.ContainsKey(packetsplit[header]))
                 {
-                    var dic = _sharedHeaders.TryGetValue(packetsplit[header], out var shared)
-                        ? ChooseSharedHeader(shared, packetsplit.Length > header + 1 ? packetsplit[header + 1] : null)
-                        : _packetDeserializerDictionary[packetsplit[header]];
-                    var packet = DeserializeIPacket(dic, isSpecial ? packetstring : packetContent, includesKeepAliveIdentity, true);
+                    var content = isSpecial ? packetstring : packetContent;
+                    var packet = _sharedHeaders.TryGetValue(packetsplit[header], out var shared)
+                        ? DeserializeShared(shared, packetsplit.Length > header + 1 ? packetsplit[header + 1] : null, content, includesKeepAliveIdentity)
+                        : DeserializeIPacket(_packetDeserializerDictionary[packetsplit[header]], content, includesKeepAliveIdentity, true);
                     packet!.Header = packetsplit[header];
                     packet!.KeepAliveId = includesKeepAliveIdentity ? (ushort?)keepalive : null;
                     return packet;
@@ -254,32 +254,83 @@ namespace NosCore.Packets
         }
 
         // Packets sharing a header are told apart by their first field, which each one sets to its own value.
-        private TypeCreator ChooseSharedHeader(List<TypeCreator> shared, string? firstToken)
+        // Where several share that value too, the one whose reading writes the line back unchanged is the one sent.
+        private IPacket? DeserializeShared(List<TypeCreator> shared, string? firstToken, string packetContent, bool includesKeepAliveIdentity)
         {
-            foreach (var creator in shared)
+            var candidates = shared.Where(creator => StartsWith(creator, firstToken)).ToList();
+            if (candidates.Count == 0)
             {
-                var first = creator.PacketDeserializerDictionary.Keys.FirstOrDefault(s => s.Item2.Index == 0);
-                if (first == null || firstToken == null || !IsScalar(first.Item1))
+                candidates.Add(shared[0]);
+            }
+
+            if (candidates.Count == 1)
+            {
+                return DeserializeIPacket(candidates[0], packetContent, includesKeepAliveIdentity, true);
+            }
+
+            IPacket? readable = null;
+            Exception? failure = null;
+            foreach (var creator in candidates)
+            {
+                IPacket? packet;
+                try
+                {
+                    packet = DeserializeIPacket(creator, packetContent, includesKeepAliveIdentity, true);
+                }
+                catch (Exception ex)
+                {
+                    failure ??= ex;
+                    continue;
+                }
+
+                if (packet == null)
                 {
                     continue;
                 }
 
-                var own = creator.PacketType!.GetProperty(first.Item3)!.GetValue(creator.Constructor!.DynamicInvoke());
-                try
+                readable ??= packet;
+                if (WritesBack(shared, packet, packetContent))
                 {
-                    var type = Nullable.GetUnderlyingType(first.Item1) ?? first.Item1;
-                    if (Equals(own, type.IsEnum ? Enum.Parse(type, firstToken) : DeserializeDefault(first.Item1, firstToken)))
-                    {
-                        return creator;
-                    }
-                }
-                catch (Exception)
-                {
-                    // the token is not this packet's first field
+                    return packet;
                 }
             }
 
-            return shared[0];
+            return readable ?? throw failure ?? new InvalidOperationException();
+        }
+
+        private bool StartsWith(TypeCreator creator, string? firstToken)
+        {
+            var first = creator.PacketDeserializerDictionary.Keys.FirstOrDefault(s => s.Item2.Index == 0);
+            if (first == null || firstToken == null || !IsScalar(first.Item1))
+            {
+                return false;
+            }
+
+            var own = creator.PacketType!.GetProperty(first.Item3)!.GetValue(creator.Constructor!.DynamicInvoke());
+            try
+            {
+                var type = Nullable.GetUnderlyingType(first.Item1) ?? first.Item1;
+                return Equals(own, type.IsEnum ? Enum.Parse(type, firstToken) : DeserializeDefault(first.Item1, firstToken));
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        private readonly ConcurrentDictionary<List<TypeCreator>, Serializer> _sharedWriters = new();
+
+        private bool WritesBack(List<TypeCreator> shared, IPacket packet, string packetContent)
+        {
+            var writer = _sharedWriters.GetOrAdd(shared, s => new Serializer(s.Select(c => c.PacketType!)));
+            try
+            {
+                return string.Equals(writer.Serialize(packet), packetContent.TrimEnd(), StringComparison.Ordinal);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         private IPacket? DeserializeIPacket(TypeCreator dic, string packetContent, bool includesKeepAliveIdentity, bool hasHeader)
