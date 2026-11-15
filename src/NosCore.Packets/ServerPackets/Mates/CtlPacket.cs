@@ -1,5 +1,6 @@
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Mates
 {
@@ -7,7 +8,7 @@ namespace NosCore.Packets.ServerPackets.Mates
     public class CtlPacket : PacketBase
     {
         [PacketIndex(0)]
-        public byte Type { get; set; }
+        public VisualType Type { get; set; }
 
         [PacketIndex(1)]
         public long PetId { get; set; }

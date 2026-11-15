@@ -16,7 +16,7 @@ namespace NosCore.Packets.ClientPackets.Parcel
         public PostActionType ActionType { get; set; }
 
         [PacketIndex(1)]
-        public int Type { get; set; }
+        public MailBoxType Type { get; set; }
 
         [PacketIndex(2)]
         public long Id { get; set; }

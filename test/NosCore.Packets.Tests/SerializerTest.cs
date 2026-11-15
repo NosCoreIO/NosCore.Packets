@@ -1387,7 +1387,7 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void SerializeCtlPacketMatchesTrace()
         {
-            var p = new CtlPacket { Type = 2, PetId = 1454169, Action = 3, Unknown = 0 };
+            var p = new CtlPacket { Type = VisualType.Npc, PetId = 1454169, Action = 3, Unknown = 0 };
             Assert.AreEqual("ctl 2 1454169 3 0", Serializer.Serialize(p));
         }
 

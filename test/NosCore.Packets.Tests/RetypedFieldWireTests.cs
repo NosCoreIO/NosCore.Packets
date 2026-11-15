@@ -12,6 +12,8 @@ using NosCore.Packets.ClientPackets.Families;
 using NosCore.Packets.ClientPackets.Miniland;
 using NosCore.Packets.ClientPackets.Parcel;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.ServerPackets.Event;
+using NosCore.Packets.ServerPackets.Parcel;
 
 namespace NosCore.Packets.Tests
 {
@@ -27,6 +29,9 @@ namespace NosCore.Packets.Tests
             typeof(MLEditPacket),
             typeof(PstClientPacket),
             typeof(CRegPacket),
+            typeof(PostPacket),
+            typeof(ParcelPacket),
+            typeof(DgPacket),
         });
 
         private static readonly Deserializer Deserializer = new(new[]
@@ -102,9 +107,20 @@ namespace NosCore.Packets.Tests
         {
             Assert.AreEqual(wire, Serializer.Serialize(new PstClientPacket
             {
-                ActionType = action, Type = 1, Id = 5, ReceiverName = "Bob", Title = "Title", Text = "Hello^there"
+                ActionType = action, Type = MailBoxType.Received, Id = 5, ReceiverName = "Bob", Title = "Title", Text = "Hello^there"
             }));
             Assert.AreEqual(action, ((PstClientPacket)Deserializer.Deserialize(wire)).ActionType);
+        }
+
+        [TestMethod]
+        public void NoteAndParcelFieldsKeepTheirWireValues()
+        {
+            Assert.AreEqual("post 1 2 7 0 0 2611150101 Alice Lunch", Serializer.Serialize(new PostPacket
+            {
+                Type = PostPacketType.Listed, PostType = MailBoxType.Sent, Id = 7, DateTime = "2611150101", SenderName = "Alice", Title = "Lunch"
+            }));
+            Assert.AreEqual("parcel 7 1 3", Serializer.Serialize(new ParcelPacket { Type = ParcelPacketType.Deleted, Box = MailBoxType.Received, Id = 3 }));
+            Assert.AreEqual("dg 3 1 60 0", Serializer.Serialize(new DgPacket { RaidType = Act4RaidType.Calvina, Urgency = 1, Seconds = 60 }));
         }
 
         [TestMethod]
