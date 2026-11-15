@@ -1107,7 +1107,7 @@ namespace NosCore.Packets.Tests
             var characterTest = CharacterInPacket();
             var packet = Serializer.Serialize(characterTest);
             Assert.AreEqual(
-                "in 1 characterTest - 0 0 0 0 2 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 0 0 0 -1.-1 - 1 0 0 0 0 1 0 0|0|0 0 0 10 0 0",
+                "in 1 characterTest - 0 0 0 0 2 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 0 0 0 -1.-1 - 1 0 0 0 0 1 0 0|0|0 0 0 10 0 0",
                 packet);
         }
 
@@ -1116,7 +1116,7 @@ namespace NosCore.Packets.Tests
         {
             var characterTest = CharacterInPacket(InFactionType.Demon);
             Assert.AreEqual(
-                "in 1 characterTest - 0 0 0 0 2 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 0 0 0 -1.-1 - 1 0 0 4 0 1 0 0|0|0 0 0 10 0 0",
+                "in 1 characterTest - 0 0 0 0 2 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 0 0 0 -1.-1 - 1 0 0 4 0 1 0 0|0|0 0 0 10 0 0",
                 Serializer.Serialize(characterTest));
         }
 
@@ -1126,7 +1126,7 @@ namespace NosCore.Packets.Tests
             var characterTest = CharacterInPacket();
             characterTest.InCharacterSubPacket!.Morph = 2369;
             Assert.AreEqual(
-                "in 1 characterTest - 0 0 0 0 2 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 2369 0 0 -1.-1 - 1 0 0 0 0 1 0 0|0|0 0 0 10 0 0",
+                "in 1 characterTest - 0 0 0 0 2 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 2369 0 0 -1.-1 - 1 0 0 0 0 1 0 0|0|0 0 0 10 0 0",
                 Serializer.Serialize(characterTest));
         }
 

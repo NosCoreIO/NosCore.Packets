@@ -7,6 +7,7 @@
 using System.Collections.Generic;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Packets.ServerPackets.Parcel;
 using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Entities
@@ -47,7 +48,7 @@ namespace NosCore.Packets.ServerPackets.Entities
         [PacketIndex(10)]
         public byte Unknown1 { get; set; }
 
-        [PacketListIndex(11, ListSeparator = " ", IsOptional = true)]
-        public List<short>? BuffIds { get; set; }
+        [PacketListIndex(11, SpecialSeparator = ".", IsOptional = true)]
+        public List<PstBuffSubPacket?>? Buffs { get; set; }
     }
 }
