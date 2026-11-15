@@ -29,7 +29,7 @@ namespace NosCore.Packets.Tests
                 Unknown6 = 0
             });
 
-            StringAssert.EndsWith(wire, " @ 2378 0 4825.100 1306.1 -1 -1 0 1 0");
+            Assert.AreEqual("sc_n 0 0 0 0 0 0 -1 -1 -1 -1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 @ 2378 0 4825.100 1306.1 -1 -1 0 1 0", wire);
         }
     }
 }
