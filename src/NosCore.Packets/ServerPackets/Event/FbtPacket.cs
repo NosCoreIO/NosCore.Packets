@@ -3,7 +3,7 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Event
 {
-    [PacketHeader("fbt", Scope.InGame)]
+    [PacketHeader("fbt", Scope.InGame, AllowDuplicateHeader = true)]
     public class FbtPacket : PacketBase
     {
         [PacketIndex(0)]

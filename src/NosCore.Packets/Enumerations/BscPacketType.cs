@@ -9,6 +9,7 @@ namespace NosCore.Packets.Enumerations
     // The kind of battle a search window (bsinfo) belongs to; its Cancel button sends it back in bsc.
     public enum BscPacketType : byte
     {
-        TalentArena = 2
+        TalentArena = 2,
+        RainbowBattle = 7
     }
 }

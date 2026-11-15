@@ -11,6 +11,7 @@ namespace NosCore.Packets.Enumerations
         MinilandInvitation = 0,
         InstantCombat = 1,
         IceBreaker = 2,
+        RainbowBattle = 8,
         RaidListing = 100
     }
 }

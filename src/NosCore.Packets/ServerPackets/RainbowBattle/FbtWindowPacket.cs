@@ -1,0 +1,21 @@
+//  __  _  __    __   ___ __  ___ ___
+// |  \| |/__\ /' _/ / _//__\| _ \ __|
+// | | ' | \/ |`._`.| \_| \/ | v / _|
+// |_|\__|\__/ |___/ \__/\__/|_|_\___|
+// -----------------------------------
+
+using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
+
+namespace NosCore.Packets.ServerPackets.RainbowBattle
+{
+    [PacketHeader("fbt", Scope.InGame, AllowDuplicateHeader = true)]
+    public class FbtWindowPacket : PacketBase
+    {
+        [PacketIndex(0)]
+        public byte Type { get; set; } = 1;
+
+        [PacketIndex(1)]
+        public bool IsInBattle { get; set; }
+    }
+}

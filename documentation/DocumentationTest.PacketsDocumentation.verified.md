@@ -494,7 +494,16 @@
 - [qslot](../src/NosCore.Packets/ServerPackets/Quicklist/QSlotPacket.cs) *InGame*
 
 ### RainbowBattle
+- [fblst](../src/NosCore.Packets/ServerPackets/RainbowBattle/FblstPacket.cs) *InGame*
+- [fblst_sub_packet](../src/NosCore.Packets/ServerPackets/RainbowBattle/FblstSubPacket.cs) *InGame*
 - [fbs](../src/NosCore.Packets/ServerPackets/RainbowBattle/FbsPacket.cs) *InGame*
+- [fbt](../src/NosCore.Packets/ServerPackets/RainbowBattle/FbtClockPacket.cs) *InGame*
+- [fbt](../src/NosCore.Packets/ServerPackets/RainbowBattle/FbtCrystalPacket.cs) *InGame*
+- [fbt](../src/NosCore.Packets/ServerPackets/RainbowBattle/FbtHealthPacket.cs) *InGame*
+- [fbt_health_sub_packet](../src/NosCore.Packets/ServerPackets/RainbowBattle/FbtHealthSubPacket.cs) *InGame*
+- [fbt](../src/NosCore.Packets/ServerPackets/RainbowBattle/FbtLeavePacket.cs) *InGame*
+- [fbt](../src/NosCore.Packets/ServerPackets/RainbowBattle/FbtMembersPacket.cs) *InGame*
+- [fbt](../src/NosCore.Packets/ServerPackets/RainbowBattle/FbtWindowPacket.cs) *InGame*
 
 ### Relations
 - [blinit](../src/NosCore.Packets/ServerPackets/Relations/BlinitPacket.cs) *InGame*
