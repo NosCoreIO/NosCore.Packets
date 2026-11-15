@@ -79,6 +79,17 @@ namespace NosCore.Packets.Tests
                 }
             }
 
+            // A field its packet leaves off the line for this kind holds nothing to write.
+            foreach (var property in type.GetProperties().Where(p => p.CanWrite))
+            {
+                if (property.GetCustomAttribute<PacketPresentWhenAttribute>() is { } presentWhen
+                    && type.GetProperty(presentWhen.Field) is { } field
+                    && !presentWhen.Values.Any(expected => Equals(expected, field.GetValue(instance))))
+                {
+                    property.SetValue(instance, null);
+                }
+            }
+
             return instance;
         }
 

@@ -122,6 +122,12 @@ namespace NosCore.Packets.Tests
             }));
             var listed = (PostPacket)Deserializer.Deserialize("post 1 2 7 0 0 2611150101 Alice Lunch");
             Assert.AreEqual(("2611150101", "Alice", "Lunch"), (listed.DateTime, listed.SenderName, listed.Title));
+            var opened = new PostPacket
+            {
+                Type = PostPacketType.Opened, PostType = MailBoxType.Received, Id = 7, SenderName = "Alice", Title = "Lunch", Message = "See you at noon",
+                PostSubPacket = new PostSubPacket { Equipment = new() }
+            };
+            StringAssert.EndsWith(Serializer.Serialize(opened), " Alice Lunch See\vyou\vat\vnoon");
             Assert.AreEqual("parcel 7 1 3", Serializer.Serialize(new ParcelPacket { Type = ParcelPacketType.Deleted, Box = MailBoxType.Received, Id = 3 }));
             Assert.AreEqual("dg 3 1 60 0", Serializer.Serialize(new DgPacket { RaidType = Act4RaidType.Calvina, Urgency = 1, Seconds = 60 }));
         }
