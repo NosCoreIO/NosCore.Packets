@@ -10,6 +10,9 @@ namespace NosCore.Packets.Enumerations
     {
         Worn = 0,
         Equipment = 1,
-        Specialist = 7
+        NpcShop = 2,
+        PartnerEquipment = 7,
+        Specialist = 10,
+        Costume = 11
     }
 }

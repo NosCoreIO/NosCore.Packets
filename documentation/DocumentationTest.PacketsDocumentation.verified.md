@@ -355,12 +355,17 @@
 
 ### Inventory
 - [e_info](../src/NosCore.Packets/ServerPackets/Inventory/EInfoAccessoryPacket.cs) *InGame*
+- [e_info](../src/NosCore.Packets/ServerPackets/Inventory/EInfoAmuletPacket.cs) *InGame*
 - [e_info](../src/NosCore.Packets/ServerPackets/Inventory/EInfoArmorPacket.cs) *InGame*
+- [e_info](../src/NosCore.Packets/ServerPackets/Inventory/EInfoCostumeHatPacket.cs) *InGame*
+- [e_info](../src/NosCore.Packets/ServerPackets/Inventory/EInfoCostumePacket.cs) *InGame*
+- [e_info](../src/NosCore.Packets/ServerPackets/Inventory/EInfoFairyBeadPacket.cs) *InGame*
 - [e_info](../src/NosCore.Packets/ServerPackets/Inventory/EInfoFairyPacket.cs) *InGame*
 - [e_info](../src/NosCore.Packets/ServerPackets/Inventory/EInfoJewelryPacket.cs) *InGame*
 - [e_info](../src/NosCore.Packets/ServerPackets/Inventory/EInfoNpcMonsterPacket.cs) *InGame*
 - [e_info](../src/NosCore.Packets/ServerPackets/Inventory/EInfoPacket.cs) *InGame*
 - [e_info](../src/NosCore.Packets/ServerPackets/Inventory/EInfoShellPacket.cs) *InGame*
+- [e_info](../src/NosCore.Packets/ServerPackets/Inventory/EInfoSpecialistHolderPacket.cs) *InGame*
 - [e_info](../src/NosCore.Packets/ServerPackets/Inventory/EInfoWeaponPacket.cs) *InGame*
 - [eq](../src/NosCore.Packets/ServerPackets/Inventory/EqPacket.cs) *InGame*
 - [equip](../src/NosCore.Packets/ServerPackets/Inventory/EquipPacket.cs) *InGame*
@@ -369,6 +374,7 @@
 - [inv](../src/NosCore.Packets/ServerPackets/Inventory/InvPacket.cs) *InGame*
 - [ivn](../src/NosCore.Packets/ServerPackets/Inventory/IvnPacket.cs) *InGame*
 - [pairy](../src/NosCore.Packets/ServerPackets/Inventory/PairyPacket.cs) *InGame*
+- [pslinfo](../src/NosCore.Packets/ServerPackets/Inventory/PslInfoPacket.cs) *InGame*
 - [get](../src/NosCore.Packets/ServerPackets/Inventory/ServerGetPacket.cs) *InGame*
 - [slinfo](../src/NosCore.Packets/ServerPackets/Inventory/SlInfoPacket.cs) *InGame*
 
