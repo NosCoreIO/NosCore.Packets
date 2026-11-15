@@ -48,8 +48,10 @@ An optional property (`IsOptional`) writes nothing when it is null.
 |---|---|---|---|
 | `IPacket` properties with a `PacketHeader` | space | `^` | `#` |
 | `IPacket` properties without a `PacketHeader` | space | space | none |
-| a `Host` property | `:` | `-1` | none |
 | a list of `IPacket` | space | `.` | none |
+
+A property with a `SpecialSeparator` is written after that separator instead of the usual one, so the server list
+entry of `NsTeST` comes out as `host:port:color:count.id.name`.
 
 ## Building
 
