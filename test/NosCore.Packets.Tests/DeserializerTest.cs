@@ -51,6 +51,7 @@ namespace NosCore.Packets.Tests
                 typeof(SitSubPacket),
                 typeof(MShopItemSubPacket),
                 typeof(StPacket),
+                typeof(ServerPackets.Parcel.PstBuffSubPacket),
                 typeof(NoS0575Packet),
                 typeof(NoS0577Packet),
                 typeof(FamilyChatPacket),
@@ -337,9 +338,11 @@ namespace NosCore.Packets.Tests
         public void DeserializeSimpleListWithoutSpaceSeparator()
         {
             var packet = (StPacket)Deserializer.Deserialize(
-                "st 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19"
+                "st 1 2 3 4 5 6 7 8 9 10 11 153.76 154.1"
                 );
-            Assert.HasCount(8, packet.BuffIds!);
+            Assert.HasCount(2, packet.Buffs!);
+            Assert.AreEqual((short)153, packet.Buffs![0]!.CardId);
+            Assert.AreEqual((byte)76, packet.Buffs[0]!.Level);
         }
 
         [TestMethod]

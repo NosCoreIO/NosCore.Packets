@@ -19,16 +19,18 @@ namespace NosCore.Packets.ServerPackets.Inventory
         [PacketIndex(2)]
         public short RareAmount { get; set; }
 
-        [PacketIndex(3)]
-        public short UpgradeDesign { get; set; }
+        // Main, Etc and Raid items carry one more field after the amount; a mount carries none.
+        [PacketIndex(3, IsOptional = true)]
+        public short? UpgradeDesign { get; set; } = 0;
 
-        [PacketIndex(4)]
-        public byte SecondUpgrade { get; set; }
+        // Specialist cards and costumes stop after this one; equipment carries the last two as well.
+        [PacketIndex(4, IsOptional = true)]
+        public byte? SecondUpgrade { get; set; } = 0;
 
-        [PacketIndex(5)]
-        public byte Unknown5 { get; set; }
+        [PacketIndex(5, IsOptional = true)]
+        public byte? Unknown5 { get; set; } = 0;
 
-        [PacketIndex(6)]
-        public short Unknown6 { get; set; }
+        [PacketIndex(6, IsOptional = true)]
+        public short? Unknown6 { get; set; } = 0;
     }
 }

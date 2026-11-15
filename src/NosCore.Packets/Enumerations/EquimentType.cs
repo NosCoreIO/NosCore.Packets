@@ -24,6 +24,7 @@ namespace NosCore.Packets.Enumerations
         CostumeSuit = 13,
         CostumeHat = 14,
         WeaponSkin = 15,
-        WingSkin = 16
+        WingSkin = 16,
+        MiniPet = 17
     }
 }

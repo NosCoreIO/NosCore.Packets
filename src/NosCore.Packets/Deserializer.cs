@@ -440,6 +440,11 @@ namespace NosCore.Packets
                     {
                         packetBasePropertyInfo.Value.DynamicInvoke(deg, packetBasePropertyInfo.Key.Item1.GetCustomAttributes().Any(s => s.ToString() == "System.Runtime.CompilerServices.NullableAttribute") ? null : string.Empty);
                     }
+                    else if (packetBasePropertyInfo.Key.Item2.IsOptional
+                             && Nullable.GetUnderlyingType(packetBasePropertyInfo.Key.Item1) != null)
+                    {
+                        packetBasePropertyInfo.Value.DynamicInvoke(deg, null);
+                    }
                     else
                     {
                         break;

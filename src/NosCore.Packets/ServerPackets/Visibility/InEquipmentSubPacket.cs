@@ -39,5 +39,8 @@ namespace NosCore.Packets.ServerPackets.Visibility
 
         [PacketIndex(9)]
         public short? WingSkin { get; set; }
+
+        [PacketIndex(10)]
+        public short? MiniPet { get; set; }
     }
 }
