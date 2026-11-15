@@ -152,6 +152,16 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
+        public void AnEscapedFieldIsReadBackWithItsSpaces()
+        {
+            var line = Serializer.Serialize(new EInfoNpcMonsterPacket { Unknown = -1, Name = "Fire Cannoneer" });
+
+            var packet = (EInfoNpcMonsterPacket)new Deserializer(new[] { typeof(EInfoNpcMonsterPacket) }).Deserialize(line);
+
+            Assert.AreEqual("Fire Cannoneer", packet.Name);
+        }
+
+        [TestMethod]
         public void SerializeEInfoNpcMonsterPacketEscapesTheName()
         {
             var testPacket = new EInfoNpcMonsterPacket

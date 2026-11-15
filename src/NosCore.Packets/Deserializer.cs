@@ -383,7 +383,10 @@ namespace NosCore.Packets
             switch (item1)
             {
                 case var prop when prop == typeof(string):
-                    return DeserializeString(matches, ref currentIndex, isMaxIndex);
+                    var text = DeserializeString(matches, ref currentIndex, isMaxIndex);
+                    return packetBasePropertyInfo.Item2.EscapeSpaces && text is string escaped
+                        ? escaped.Replace(packetBasePropertyInfo.Item2.SpaceEscape, " ", StringComparison.Ordinal)
+                        : text;
                 case var prop when prop == typeof(Guid) || prop == typeof(Guid?):
                     return DeserializeGuid(matches[currentIndex++]);
                 case var prop when prop == typeof(bool) || prop == typeof(bool?):
