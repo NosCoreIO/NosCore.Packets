@@ -4,6 +4,8 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
+using System;
+
 namespace NosCore.Packets.Enumerations
 {
     public enum GuriPacketType
@@ -45,8 +47,13 @@ namespace NosCore.Packets.Enumerations
         CollectItem = 400,
         IceBreaker = 501,
         IceBreakerFrozen = 502,
+        [Obsolete("Use RainbowBattleRegistration.")]
         StartRbbCountdown = 503,
+        [Obsolete("Use RainbowBattleCapture.")]
         TeleportToRbbBase = 504,
+        RainbowBattleRegistration = 503,
+        RainbowBattleCapture = 504,
+        RainbowBattleUnfreeze = 505,
         EventInWaiting = 506, 
         RemoveLaurenaMorph = 513,
         Wedding = 603,
