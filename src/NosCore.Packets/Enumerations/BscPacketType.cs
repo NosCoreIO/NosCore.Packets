@@ -10,6 +10,7 @@ namespace NosCore.Packets.Enumerations
     public enum BscPacketType : byte
     {
         TalentArena = 2,
+        ArenaOfMasters = 6,
         RainbowBattle = 7
     }
 }
