@@ -41,7 +41,7 @@ namespace NosCore.Packets.ServerPackets.Parcel
         [PacketIndex(8)]
         public string? Title { get; set; }
 
-        [PacketIndex(9, IsOptional = true)]
+        [PacketIndex(9, IsOptional = true, EscapeSpaces = true, SpaceEscape = "\v")]
         public string? Message { get; set; }
     }
 }
