@@ -5,6 +5,7 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Shared.Enumerations;
 using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Player
@@ -16,12 +17,12 @@ namespace NosCore.Packets.ServerPackets.Player
         public long Reput { get; set; }
 
         [PacketIndex(1)]
-        public int ReputIcon { get; set; }
+        public ReputationType ReputIcon { get; set; }
 
         [PacketIndex(2)]
         public int Dignity { get; set; }
 
         [PacketIndex(3)]
-        public int DignityIcon { get; set; }
+        public DignityType DignityIcon { get; set; }
     }
 }
