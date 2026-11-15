@@ -1345,9 +1345,9 @@ namespace NosCore.Packets.Tests
             {
                 VisualType = VisualType.Npc,
                 VisualId = 1095824,
-                Unknown1 = 1,
-                Unknown2 = 14267,
-                Unknown3 = 4766
+                TargetVisualType = VisualType.Player,
+                TargetVisualId = 14267,
+                EffectId = 4766
             };
             Assert.AreEqual("eff_t 2 1095824 1 14267 4766", Serializer.Serialize(p));
         }
