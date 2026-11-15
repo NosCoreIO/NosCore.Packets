@@ -441,6 +441,7 @@
 ### Parcel
 - [parcel](../src/NosCore.Packets/ServerPackets/Parcel/ParcelPacket.cs) *InGame*
 - [post](../src/NosCore.Packets/ServerPackets/Parcel/PostPacket.cs) *InGame*
+- [pst_buff_sub_packet](../src/NosCore.Packets/ServerPackets/Parcel/PstBuffSubPacket.cs) *InGame*
 - [pst](../src/NosCore.Packets/ServerPackets/Parcel/PstPacket.cs) *InGame*
 
 ### Player
