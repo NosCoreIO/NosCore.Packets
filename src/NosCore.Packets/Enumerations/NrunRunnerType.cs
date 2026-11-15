@@ -102,6 +102,10 @@ namespace NosCore.Packets.Enumerations
         ExchangeForSP6 = 147,
         ExchangeForSapphireOfCompletion = 148,
         GoToLandOfDeath = 150,
+        EnterLandOfLife = 151,
+        EnterAdvancedLandOfLife = 152,
+        CheckLandOfLifeTime = 153,
+        EnterExpertLandOfLife = 154,
         ExchangeReservesForRandomGift = 155, //Only used on KR client
         GetQuestBewitchedSoldiers = 193,
         ExchangeForCleansingPowder = 194,
@@ -138,8 +142,12 @@ namespace NosCore.Packets.Enumerations
         GetDailyQuestEasterEvaEnergy2 = 328, //March Hare one, requires: 10 Cleansed Eggs
         ExchangeForCleansedEggs = 330, //Required: 10 Rotten Eggs and Soul Gem Refiner.
         TriggerDialogHistoryMarchHare = 331, //Generates the Dialog 466
+        TravelToMap = 336, //Type = destination map id
         SkyTower = 338,
         GetThirdMartialArtistQuest = 340, //Used to obtain the Martial Artist SP3, type = quest id = 6332
+        MoveToMap = 384, //Type = destination map id
+        GoToNextDimension = 385, //Type = destination map id
+        EnterCelestialSpireCatacombs = 448,
         ChangePassion = 580,
         OpenShop = 900,
         GoToXTimeSpace = 1000, //Types = TS id. The ones used are: 518-524, 608.
