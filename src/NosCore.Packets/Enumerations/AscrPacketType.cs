@@ -1,4 +1,4 @@
-﻿namespace NosCore.Packets.Enumerations
+namespace NosCore.Packets.Enumerations
 {
     public enum AscrPacketType : long
     {
