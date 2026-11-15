@@ -9,14 +9,12 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Event
 {
-    // Act4 raid timer banner ("dg" = "defend guild"-era holdover). RaidType selects
-    // the event icon, Urgency is 1 (>30min) or 2 (<=30min) to flip the colour, Seconds
-    // drives the countdown, last field stays 0 in stock OpenNos.
+    // Act 4 raid countdown: Urgency 1 above 30 minutes left, 2 below, which flips the colour.
     [PacketHeader("dg", Scope.InGame)]
     public class DgPacket : PacketBase
     {
         [PacketIndex(0)]
-        public byte RaidType { get; set; }
+        public Act4RaidType RaidType { get; set; }
 
         [PacketIndex(1)]
         public byte Urgency { get; set; }

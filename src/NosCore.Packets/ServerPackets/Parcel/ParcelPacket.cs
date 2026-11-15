@@ -13,10 +13,10 @@ namespace NosCore.Packets.ServerPackets.Parcel
     public class ParcelPacket : PacketBase
     {
         [PacketIndex(0)]
-        public byte Type { get; set; }
+        public ParcelPacketType Type { get; set; }
 
         [PacketIndex(1)]
-        public byte Unknown { get; set; }
+        public MailBoxType Box { get; set; }
 
         [PacketIndex(2)]
         public short Id { get; set; }
