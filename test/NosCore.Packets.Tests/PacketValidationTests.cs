@@ -97,7 +97,8 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void EquipmentInfoNamesThePocketItLooksIn()
         {
-            Assert.AreEqual(EquipmentInfoType.Specialist, ((EquipmentInfoPacket)Deserializer.Deserialize("eqinfo 7 3")).Type);
+            Assert.AreEqual(EquipmentInfoType.Specialist, ((EquipmentInfoPacket)Deserializer.Deserialize("eqinfo 10 3")).Type);
+            Assert.AreEqual(EquipmentInfoType.PartnerEquipment, ((EquipmentInfoPacket)Deserializer.Deserialize("eqinfo 7 1 12")).Type);
         }
     }
 }

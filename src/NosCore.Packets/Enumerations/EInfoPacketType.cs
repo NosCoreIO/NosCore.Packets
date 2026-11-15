@@ -14,9 +14,9 @@ namespace NosCore.Packets.Enumerations
         Hat = 3,
         Jewelery = 4,
         MainWeaponMagician = 5,
-
+        SpecialistHolder = 7,
         Specialist = 8,
-        Shell = 9
-        // Box 7 - 11 - 12 - 13
+        Shell = 9,
+        FairyBead = 12
     }
 }
