@@ -53,7 +53,7 @@ namespace NosCore.Packets.ServerPackets.Inventory
         public int? FreePoints { get; set; }
 
         [PacketIndex(13, IsOptional = true)]
-        public byte? SpStoneUpgrade { get; set; }
+        public short? SpStoneUpgrade { get; set; }
 
         [PacketIndex(14, IsOptional = true)]
         public short? FireResistance { get; set; }
