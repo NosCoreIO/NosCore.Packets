@@ -102,7 +102,13 @@ namespace NosCore.Packets.Tests
             var exchange = (EquipmentInfoPacket)Deserializer.Deserialize("eqinfo 5 2 1 4242");
             Assert.AreEqual(EquipmentInfoType.Exchange, exchange.Type);
             Assert.AreEqual(4242, exchange.ShopOwnerId);
-            Assert.AreEqual(EquipmentInfoType.PersonalShop, ((EquipmentInfoPacket)Deserializer.Deserialize("eqinfo 6 0 1 4242")).Type);
+            Assert.IsTrue(exchange.IsValid);
+            var personalShop = (EquipmentInfoPacket)Deserializer.Deserialize("eqinfo 6 0 1 4242");
+            Assert.AreEqual(EquipmentInfoType.PersonalShop, personalShop.Type);
+            Assert.IsTrue(personalShop.IsValid);
+            Assert.AreEqual(EquipmentInfoType.Warehouse, ((EquipmentInfoPacket)Deserializer.Deserialize("eqinfo 8 4")).Type);
+            Assert.AreEqual(EquipmentInfoType.PartnerWarehouse, ((EquipmentInfoPacket)Deserializer.Deserialize("eqinfo 9 4")).Type);
+            Assert.AreEqual(EquipmentInfoType.FamilyWarehouse, ((EquipmentInfoPacket)Deserializer.Deserialize("eqinfo 12 4")).Type);
         }
     }
 }

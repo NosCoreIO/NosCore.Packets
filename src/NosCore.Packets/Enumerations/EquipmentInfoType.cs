@@ -14,7 +14,10 @@ namespace NosCore.Packets.Enumerations
         Exchange = 5,
         PersonalShop = 6,
         PartnerEquipment = 7,
+        Warehouse = 8,
+        PartnerWarehouse = 9,
         Specialist = 10,
-        Costume = 11
+        Costume = 11,
+        FamilyWarehouse = 12
     }
 }
