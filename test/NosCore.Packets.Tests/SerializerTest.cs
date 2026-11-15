@@ -884,7 +884,7 @@ namespace NosCore.Packets.Tests
             {
                 Message = "test message !"
             });
-            Assert.AreEqual("/ test message !", packet);
+            Assert.AreEqual("/test message !", packet);
         }
 
         [TestMethod]

@@ -34,10 +34,10 @@ namespace NosCore.Packets.ClientPackets.Login
         [PacketIndex(4)]
         public string? UnknownYet { get; set; }
 
-        [PacketIndex(5, SpecialSeparator = "")]
+        [PacketIndex(5)]
         public RegionType RegionType { get; set; }
 
-        [PacketIndex(6)]
+        [PacketIndex(6, SpecialSeparator = ".")]
         public ClientVersionSubPacket? ClientVersion { get; set; }
 
         [PacketIndex(7)]
