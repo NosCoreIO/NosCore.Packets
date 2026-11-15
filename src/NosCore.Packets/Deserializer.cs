@@ -516,6 +516,10 @@ namespace NosCore.Packets
                     return array;
                 case var prop when typeof(ICollection).IsAssignableFrom(prop):
                     return DeserializeList(packetBasePropertyInfo.Item1.GetElementType() ?? packetBasePropertyInfo.Item1.GetGenericArguments()[0], packetBasePropertyInfo.Item2, matches, ref currentIndex, isMaxIndex, reserved);
+                case var prop when prop == typeof(IPacket) && packetBasePropertyInfo.Item2.RemoveHash && isMaxIndex:
+                    var inlinePacket = string.Join(' ', matches.Skip(currentIndex));
+                    currentIndex = matches.Length;
+                    return Deserialize(inlinePacket);
                 case var prop when prop == typeof(IPacket):
                     return Deserialize(matches[currentIndex++]);
                 case var prop when typeof(IPacket).IsAssignableFrom(prop):

@@ -51,10 +51,12 @@ namespace NosCore.Packets
                 {
                     var place = fullString.IndexOf(InjectionKey, StringComparison.Ordinal);
                     var value = realType.GetProperty(prop.Name)!.GetValue(packet, null);
+                    // RemoveHash writes the packet inline as a line of its own ("e_info 7 4240 ...") instead of "#e_info^7^4240".
+                    var inline = prop.GetCustomAttribute<PacketIndexAttribute>()?.RemoveHash == true;
                     fullString = fullString
                         .Remove(place, InjectionKey.Length)
                         .Insert(place,
-                            (string)_packetSerializerDictionary[value!.GetType()].DynamicInvoke(value, true)!);
+                            (string)_packetSerializerDictionary[value!.GetType()].DynamicInvoke(value, !inline)!);
                 }
             }
 
