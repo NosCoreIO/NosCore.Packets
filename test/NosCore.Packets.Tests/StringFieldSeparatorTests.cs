@@ -76,8 +76,7 @@ namespace NosCore.Packets.Tests
                 PetId = 1, NpcMonsterVNum = 333, Level = 15, Name = "Joyeux Mouton", IsSummonable = true
             });
 
-            StringAssert.Contains(wire, "Joyeux^Mouton");
-            Assert.IsFalse(wire.Contains("Joyeux Mouton"));
+            Assert.AreEqual("sc_p 1 333 0 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 Joyeux^Mouton 1 0 0 0 0 0 0 0", wire);
         }
 
         [TestMethod]
@@ -87,15 +86,13 @@ namespace NosCore.Packets.Tests
             {
                 PetId = 1, NpcMonsterVNum = 333, Level = 15, Name = "Joyeux Mouton"
             });
-            StringAssert.Contains(scn, "Joyeux^Mouton");
-            Assert.IsFalse(scn.Contains("Joyeux Mouton"));
+            Assert.AreEqual("sc_n 1 333 0 15 0 0 -1 -1 -1 -1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 Joyeux^Mouton 0 0 -1 -1 -1 -1 0 0", scn);
 
             var inp = Serializer.Serialize(new InPacket
             {
                 VisualType = VisualType.Npc, Name = "Joyeux Mouton", VNum = "333", VisualId = 1
             });
-            StringAssert.Contains(inp, "Joyeux^Mouton");
-            Assert.IsFalse(inp.Contains("Joyeux Mouton"));
+            Assert.AreEqual("in 2 Joyeux^Mouton 333 1 0 0", inp);
         }
 
         [TestMethod]

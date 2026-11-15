@@ -20,7 +20,7 @@ namespace NosCore.Packets.Tests
         {
             var wire = Serializer.Serialize(new TcInfoPacket { Level = 1, Name = "Tester" });
 
-            StringAssert.StartsWith(wire, "tc_info 1 Tester 0 0 0 0 -1 - ");
+            Assert.AreEqual("tc_info 1 Tester 0 0 0 0 -1 - 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 833", wire);
         }
 
         [TestMethod]
@@ -31,7 +31,7 @@ namespace NosCore.Packets.Tests
                 Level = 1, Name = "Tester", FamilyId = 7, FamilyName = "Fam(Head)"
             });
 
-            StringAssert.StartsWith(wire, "tc_info 1 Tester 0 0 0 0 7 Fam(Head) ");
+            Assert.AreEqual("tc_info 1 Tester 0 0 0 0 7 Fam(Head) 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 833", wire);
         }
 
         [TestMethod]
@@ -39,7 +39,7 @@ namespace NosCore.Packets.Tests
         {
             var wire = Serializer.Serialize(new TcInfoPacket { Name = "Tester", Biography = "Hello there friend" });
 
-            StringAssert.EndsWith(wire, " Hello\vthere\vfriend");
+            Assert.AreEqual("tc_info 0 Tester 0 0 0 0 -1 - 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 Hello\vthere\vfriend", wire);
         }
 
         [TestMethod]
@@ -47,7 +47,7 @@ namespace NosCore.Packets.Tests
         {
             var wire = Serializer.Serialize(new TcInfoPacket { Name = "Tester" });
 
-            StringAssert.EndsWith(wire, " 833");
+            Assert.AreEqual("tc_info 0 Tester 0 0 0 0 -1 - 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 833", wire);
         }
 
         [TestMethod]
@@ -55,9 +55,7 @@ namespace NosCore.Packets.Tests
         {
             var wire = Serializer.Serialize(new TcInfoPacket { Name = "Tester", Biography = "Hi" });
 
-            var fields = wire.Split(' ');
-            Assert.AreEqual(40, fields.Length);
-            Assert.AreEqual("Hi", fields[39]);
+            Assert.AreEqual("tc_info 0 Tester 0 0 0 0 -1 - 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 Hi", wire);
         }
     }
 }

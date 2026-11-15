@@ -171,7 +171,7 @@ namespace NosCore.Packets.Tests
             };
 
             var packet = Serializer.Serialize(testPacket);
-            Assert.IsTrue(packet.EndsWith("-1 Fire^Cannoneer"), packet);
+            Assert.AreEqual("e_info 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 Fire^Cannoneer", packet);
         }
 
         [TestMethod]
@@ -235,21 +235,21 @@ namespace NosCore.Packets.Tests
                     new() { Level = 2, Type = 15, Value = 12 }
                 }
             });
-            Assert.IsTrue(packet.EndsWith("-1 5 1 2 1.1.50 2.15.12 0 0"), packet);
+            Assert.AreEqual("e_info 0 299 0 0 0 0 0 0 0 0 0 0 0 0 -1 5 1 2 1.1.50 2.15.12 0 0", packet);
         }
 
         [TestMethod]
         public void ThePityGaugeComesAfterTheShellLevel()
         {
             var packet = Serializer.Serialize(new EInfoWeaponPacket { ItemVNum = 299, PityGauge = 350 });
-            Assert.IsTrue(packet.EndsWith("-1 0 0 0 0 350"), packet);
+            Assert.AreEqual("e_info 0 299 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 0 0 350", packet);
         }
 
         [TestMethod]
         public void AnEmptyOptionalListLeavesNoGap()
         {
             var packet = Serializer.Serialize(new EInfoWeaponPacket { ItemVNum = 299, ShellOptions = new List<EInfoShellOptionSubPacket>() });
-            Assert.IsTrue(packet.EndsWith("-1 0 0 0 0 0"), packet);
+            Assert.AreEqual("e_info 0 299 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 0 0 0", packet);
         }
 
         [TestMethod]
@@ -1234,9 +1234,7 @@ namespace NosCore.Packets.Tests
                 IncreaseGoldEarned = 7
             };
             var wire = Serializer.Serialize(p);
-            Assert.AreEqual(28, wire.Split(' ').Length - 1);
-            Assert.IsTrue(wire.StartsWith("evtb "));
-            Assert.IsTrue(wire.Contains(" 1 3 7 "));
+            Assert.AreEqual("evtb 0 0 0 0 0 1 3 7 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0", wire);
         }
 
         [TestMethod]
@@ -1632,7 +1630,7 @@ namespace NosCore.Packets.Tests
                 Class = CharacterClassType.Adventurer
             });
 
-            Assert.IsTrue(packet.StartsWith("c_info Me - -1 5052.-1 -Nemesis-(Membre) 1 "), packet);
+            Assert.AreEqual("c_info Me - -1 5052.-1 -Nemesis-(Membre) 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0", packet);
         }
 
         [TestMethod]
