@@ -1,4 +1,4 @@
-﻿using NosCore.Packets.Attributes;
+using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Inventory
