@@ -28,11 +28,11 @@ namespace NosCore.Packets.ServerPackets.Parcel
         public bool IsOpened { get; set; }
 
         [PacketIndex(5, IsOptional = true)]
-        [PacketPresentWhen(nameof(Type), (byte)5)]
+        [PacketPresentWhen(nameof(Type), PostPacketType.Opened)]
         public PostSubPacket? PostSubPacket { get; set; }
 
         [PacketIndex(6, IsOptional = true)]
-        [PacketPresentWhen(nameof(Type), (byte)1)]
+        [PacketPresentWhen(nameof(Type), PostPacketType.Listed)]
         public string? DateTime { get; set; }
 
         [PacketIndex(7)]

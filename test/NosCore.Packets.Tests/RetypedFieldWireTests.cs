@@ -41,6 +41,7 @@ namespace NosCore.Packets.Tests
             typeof(MLEditPacket),
             typeof(PstClientPacket),
             typeof(CRegPacket),
+            typeof(PostPacket),
         });
 
         [TestMethod]
@@ -119,6 +120,8 @@ namespace NosCore.Packets.Tests
             {
                 Type = PostPacketType.Listed, PostType = MailBoxType.Sent, Id = 7, DateTime = "2611150101", SenderName = "Alice", Title = "Lunch"
             }));
+            var listed = (PostPacket)Deserializer.Deserialize("post 1 2 7 0 0 2611150101 Alice Lunch");
+            Assert.AreEqual(("2611150101", "Alice", "Lunch"), (listed.DateTime, listed.SenderName, listed.Title));
             Assert.AreEqual("parcel 7 1 3", Serializer.Serialize(new ParcelPacket { Type = ParcelPacketType.Deleted, Box = MailBoxType.Received, Id = 3 }));
             Assert.AreEqual("dg 3 1 60 0", Serializer.Serialize(new DgPacket { RaidType = Act4RaidType.Calvina, Urgency = 1, Seconds = 60 }));
         }
