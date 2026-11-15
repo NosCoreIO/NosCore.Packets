@@ -33,6 +33,9 @@ namespace NosCore.Packets.Tests
             // Two classes sharing a header and the value of their first field.
             ["EInfoJewelryPacket"] = "e_info 4 is also EInfoFairyPacket",
             ["EInfoWeaponPacket"] = "e_info 0 is also EInfoPacket",
+            ["EInfoCostumePacket"] = "e_info 2 is also EInfoArmorPacket",
+            ["EInfoCostumeHatPacket"] = "e_info 3 is also EInfoAccessoryPacket",
+            ["EInfoFairyPacket"] = "e_info 4 is also EInfoAmuletPacket",
             ["SayItemPacket"] = "carries an e_info",
             ["RcbListPacket"] = "carries an e_info",
             ["RcsListPacket"] = "carries an e_info",
