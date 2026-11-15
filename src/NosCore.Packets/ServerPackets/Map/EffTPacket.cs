@@ -14,12 +14,12 @@ namespace NosCore.Packets.ServerPackets.Map
         public long VisualId { get; set; }
 
         [PacketIndex(2)]
-        public byte Unknown1 { get; set; } //TODO to find
+        public VisualType TargetVisualType { get; set; }
 
         [PacketIndex(3)]
-        public int Unknown2 { get; set; } //TODO to find
+        public long TargetVisualId { get; set; }
 
         [PacketIndex(4)]
-        public int Unknown3 { get; set; } //TODO to find
+        public int EffectId { get; set; }
     }
 }
