@@ -58,6 +58,13 @@ namespace NosCore.Packets
                 }
             }
 
+            // A chat prefix ("/name text", ":text", ";text") is the start of its line's first word.
+            if (realType.GetCustomAttribute<PacketHeaderAttribute>()?.Identification is "/" or ":" or ";"
+                && fullString.Length > 1 && fullString[1] == ' ')
+            {
+                fullString = fullString.Remove(1, 1);
+            }
+
             return fullString;
         }
 

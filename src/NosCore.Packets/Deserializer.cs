@@ -235,22 +235,74 @@ namespace NosCore.Packets
 
         private IPacket? DeserializeIPacket(TypeCreator dic, string packetContent, bool includesKeepAliveIdentity, bool hasHeader)
         {
-            var deg = (IPacket)dic.Constructor!.DynamicInvoke()!;
-
             var matches = Regex.Matches(packetContent, @"([^\s\v]+)|(?<=\s)(?=\s|$)")
                 .Select(s => s.Value).ToArray();
+            var start = (hasHeader ? 1 : 0) + (includesKeepAliveIdentity ? 1 : 0);
+            var tokens = matches;
+            try
+            {
+                return DeserializeFields(dic, ref matches, ref start, hasHeader, inLine: false, lastInLine: true);
+            }
+            catch (Exception) when (hasHeader)
+            {
+                // An optional field ahead of the last one can be left out of the line entirely; when reading it
+                // shifts every later field off its type, the line is read again without it.
+                var properties = dic.PacketDeserializerDictionary.Keys.ToList();
+                var maxindex = properties.Max(s => s.Item2.Index);
+                foreach (var optional in properties.Where(s => s.Item2.IsOptional && s.Item2.Index != maxindex
+                             && IsScalar(s.Item1)))
+                {
+                    try
+                    {
+                        var retry = tokens;
+                        var retryStart = start;
+                        return DeserializeFields(dic, ref retry, ref retryStart, hasHeader, inLine: false,
+                            lastInLine: true, leftOut: optional.Item3);
+                    }
+                    catch (Exception)
+                    {
+                        // the next optional field is tried
+                    }
+                }
 
+                throw;
+            }
+        }
+
+        // Reads a packet's fields from the tokens at a position. A sub-packet written with spaces between its
+        // fields is read inLine, from its parent's own tokens, so whatever its fields span is consumed.
+        private IPacket DeserializeFields(TypeCreator dic, ref string[] matches, ref int start, bool hasHeader, bool inLine, bool lastInLine, string? leftOut = null)
+        {
+            var deg = (IPacket)dic.Constructor!.DynamicInvoke()!;
             if (matches.Length > 0 && dic.PacketDeserializerDictionary.Count > 0)
             {
                 var maxindex = dic.PacketDeserializerDictionary.Max(s => s.Key.Item2.Index);
                 var trueIndex = -1;
-                foreach (var packetBasePropertyInfo in dic.PacketDeserializerDictionary)
+                var properties = dic.PacketDeserializerDictionary.ToList();
+                var absent = -1;
+                for (var position = 0; position < properties.Count; position++)
                 {
-                    var isMaxIndex = packetBasePropertyInfo.Key.Item2.Index == maxindex;
-                    var keepaliveIndex = includesKeepAliveIdentity ? 1 : 0;
-                    var currentIndex = packetBasePropertyInfo.Key.Item2.Index + (hasHeader ? 1 : 0) + keepaliveIndex;
-                    trueIndex = trueIndex == -1 ? currentIndex : trueIndex;
-                    if (currentIndex < matches.Length)
+                    var packetBasePropertyInfo = properties[position];
+                    if (packetBasePropertyInfo.Key.Item3 == leftOut)
+                    {
+                        if (Nullable.GetUnderlyingType(packetBasePropertyInfo.Key.Item1) != null
+                            || !packetBasePropertyInfo.Key.Item1.IsValueType)
+                        {
+                            packetBasePropertyInfo.Value.DynamicInvoke(deg, null);
+                        }
+
+                        continue;
+                    }
+
+                    if (position == absent || !IsPresent(dic.PacketType!, packetBasePropertyInfo.Key.Item3, deg))
+                    {
+                        continue;
+                    }
+
+                    var isMaxIndex = packetBasePropertyInfo.Key.Item2.Index == maxindex && lastInLine;
+                    var currentIndex = inLine ? start + position : packetBasePropertyInfo.Key.Item2.Index + start;
+                    trueIndex = trueIndex == -1 ? (inLine ? start : currentIndex) : trueIndex;
+                    if (trueIndex < matches.Length)
                     {
                         if (trueIndex < matches.Length && matches[trueIndex].Length == 0 && IsScalar(packetBasePropertyInfo.Key.Item1))
                         {
@@ -258,9 +310,29 @@ namespace NosCore.Packets
                             continue;
                         }
 
+                        // A field written with its own separator rides on the token before it ("familyId.title");
+                        // when it is left out, the token has no separator and the field reads as absent.
+                        if ((hasHeader || inLine) && position + 1 < properties.Count && trueIndex < matches.Length
+                            && JoinedSeparator(properties[position + 1].Key) is { } joinedSeparator)
+                        {
+                            var at = matches[trueIndex].IndexOf(joinedSeparator, StringComparison.Ordinal);
+                            if (at < 0)
+                            {
+                                absent = position + 1;
+                            }
+                            else
+                            {
+                                matches = matches.Take(trueIndex)
+                                    .Append(matches[trueIndex][..at])
+                                    .Append(matches[trueIndex][(at + joinedSeparator.Length)..])
+                                    .Concat(matches.Skip(trueIndex + 1))
+                                    .ToArray();
+                            }
+                        }
+
                         var value = DeserializeValue(packetBasePropertyInfo.Key, packetBasePropertyInfo.Key.Item1,
-                            matches, ref trueIndex, isMaxIndex);
-                        
+                            ref matches, ref trueIndex, isMaxIndex);
+
                         packetBasePropertyInfo.Value.DynamicInvoke(deg, value);
                     }
                     else if (isMaxIndex && packetBasePropertyInfo.Key.Item1 == typeof(string))
@@ -272,10 +344,33 @@ namespace NosCore.Packets
                         break;
                     }
                 }
+
+                if (inLine)
+                {
+                    start = Math.Max(trueIndex, start);
+                }
             }
 
             return deg;
         }
+
+        private static bool IsPresent(Type packetType, string propertyName, IPacket packet)
+        {
+            if (packetType.GetProperty(propertyName)?.GetCustomAttribute<PacketPresentWhenAttribute>() is not { } presentWhen)
+            {
+                return true;
+            }
+
+            var value = packetType.GetProperty(presentWhen.Field)?.GetValue(packet);
+            return presentWhen.Values.Any(expected => Equals(expected, value));
+        }
+
+        private static string? JoinedSeparator(Tuple<Type, PacketIndexAttribute, string, IEnumerable<ValidationAttribute>> property) =>
+            property.Item2 is not PacketListIndexAttribute
+            && (IsScalar(property.Item1) || property.Item1 == typeof(string))
+            && property.Item2.SpecialSeparator is { Length: > 0 } separator && !separator.Any(char.IsWhiteSpace)
+                ? separator
+                : null;
 
         private static bool IsScalar(Type type)
         {
@@ -283,7 +378,7 @@ namespace NosCore.Packets
             return underlying.IsEnum || underlying.IsPrimitive || underlying == typeof(Guid);
         }
 
-        private object? DeserializeValue(Tuple<Type, PacketIndexAttribute, string, IEnumerable<ValidationAttribute>> packetBasePropertyInfo, Type item1, string[] matches, ref int currentIndex, bool isMaxIndex)
+        private object? DeserializeValue(Tuple<Type, PacketIndexAttribute, string, IEnumerable<ValidationAttribute>> packetBasePropertyInfo, Type item1, ref string[] matches, ref int currentIndex, bool isMaxIndex)
         {
             switch (item1)
             {
@@ -310,20 +405,37 @@ namespace NosCore.Packets
                         g18n.Add(long.TryParse(token, out var longValue) ? (object)longValue : token);
                     }
                     return g18n;
+                case var prop when prop.IsArray:
+                    var items = DeserializeList(prop.GetElementType()!, packetBasePropertyInfo.Item2, matches, ref currentIndex, isMaxIndex) as IList;
+                    var array = Array.CreateInstance(prop.GetElementType()!, items?.Count ?? 0);
+                    items?.CopyTo(array, 0);
+                    return array;
                 case var prop when typeof(ICollection).IsAssignableFrom(prop):
                     return DeserializeList(packetBasePropertyInfo.Item1.GetElementType() ?? packetBasePropertyInfo.Item1.GetGenericArguments()[0], packetBasePropertyInfo.Item2, matches, ref currentIndex, isMaxIndex);
                 case var prop when prop == typeof(IPacket):
                     return Deserialize(matches[currentIndex++]);
                 case var prop when typeof(IPacket).IsAssignableFrom(prop):
-                    var dic = _packetDeserializerDictionary[prop.Name];
-                    var subPacketSeparator = packetBasePropertyInfo.Item2 is PacketListIndexAttribute ind ? ind.ListSeparator : packetBasePropertyInfo.Item2.SpecialSeparator;
-                    if (subPacketSeparator == " ")
+                    // A field typed with a family of packets sharing one header (e_info) has nothing to say which
+                    // one it holds, so it is skipped rather than read as the wrong one.
+                    if ((_packetDeserializerDictionary.Values.FirstOrDefault(creator => creator.PacketType == prop)
+                        ?? (_packetDeserializerDictionary.TryGetValue(prop.Name, out var named) ? named : null)) is not { } dic)
                     {
-                        // Fields joined by spaces span one token each, so the sub-packet takes as many
-                        // tokens as it has fields and the next property starts after them.
-                        var tokens = matches.Skip(currentIndex).Take(dic.PropertyAmount + 1).ToArray();
-                        currentIndex += tokens.Length;
-                        return DeserializeIPacket(dic, string.Join(" ", tokens), false, false);
+                        currentIndex++;
+                        return null;
+                    }
+
+                    var subPacketSeparator = packetBasePropertyInfo.Item2 is PacketListIndexAttribute ind ? ind.ListSeparator : packetBasePropertyInfo.Item2.SpecialSeparator;
+                    // The serializer joins a header-less sub-packet's fields with spaces unless it names a separator;
+                    // a client line can still join them with dots.
+                    if (subPacketSeparator == " " || (subPacketSeparator == null && prop.GetCustomAttribute<PacketHeaderAttribute>() == null
+                        && !(currentIndex < matches.Length && IsJoinedSubPacket(matches[currentIndex], prop, "."))))
+                    {
+                        if (packetBasePropertyInfo.Item2.IsOptional && (currentIndex >= matches.Length || matches[currentIndex].Length == 0))
+                        {
+                            return null;
+                        }
+
+                        return DeserializeFields(dic, ref matches, ref currentIndex, hasHeader: false, inLine: true, lastInLine: isMaxIndex);
                     }
                     // SpecialSeparator = "" means "no character between fields on the wire" (e.g. UpgradeRareSubPacket
                     // packs Upgrade + Rare into a single 2-digit token like "75"). The serializer joins them with no
@@ -331,7 +443,7 @@ namespace NosCore.Packets
                     // use string.Replace("", " ") — .NET throws ArgumentException when oldValue is empty.
                     var subPacketContent = subPacketSeparator == ""
                         ? string.Join(' ', matches[currentIndex].ToCharArray())
-                        : matches[currentIndex].Replace(subPacketSeparator ?? ".", " ");
+                        : matches[currentIndex].Replace(subPacketSeparator ?? (prop.GetCustomAttribute<PacketHeaderAttribute>() == null ? "." : "^"), " ");
                     // A value field with its own separator ("vnum.current/total") is split on that one too.
                     foreach (var fieldSeparator in prop.GetProperties()
                         .Where(p => !typeof(IPacket).IsAssignableFrom(p.PropertyType))
@@ -345,6 +457,11 @@ namespace NosCore.Packets
                     var packet = DeserializeIPacket(dic, subPacketContent, false, false);
                     currentIndex++;
                     return packet;
+                // An optional field that is null is left off the line, so a -1 there is the value itself.
+                case var prop when packetBasePropertyInfo.Item2.IsOptional && matches[currentIndex] == "-1"
+                    && Nullable.GetUnderlyingType(prop) is { IsPrimitive: true } underlying:
+                    currentIndex++;
+                    return Convert.ChangeType(-1, underlying);
                 default:
                     return DeserializeDefault(item1, matches[currentIndex++]);
             }
@@ -387,7 +504,7 @@ namespace NosCore.Packets
                     // Sub-packets whose fields are space-separated span several tokens each
                     // (exc_list's "type slot amount"), so the item count is tokens / fields.
                     var subPacketCreator = typeof(IPacket).IsAssignableFrom(subType) && remainingTokens > 0
-                        && !matches[currentIndex].Contains(packetIndexAttribute.SpecialSeparator ?? ".")
+                        && !IsJoinedSubPacket(matches[currentIndex], subType, packetIndexAttribute.SpecialSeparator ?? ".")
                         ? _packetDeserializerDictionary.Values.FirstOrDefault(s => s.PacketType == subType)
                         : null;
                     var tokensPerItem = subPacketCreator == null ? 1 : subPacketCreator.PropertyAmount + 1;
@@ -398,6 +515,19 @@ namespace NosCore.Packets
                 {
                     splited = matches[currentIndex].Split(new[] { separator }, StringSplitOptions.RemoveEmptyEntries);
                     length = (sbyte)splited.Length;
+                }
+                else if (length == 0 && !isMaxIndex && separator == null && typeof(IPacket).IsAssignableFrom(subType))
+                {
+                    // A list followed by other fields runs while its items look like this sub-packet, or are
+                    // the "-1" of an empty entry.
+                    var end = currentIndex;
+                    while (end < matches.Length
+                        && (matches[end] == "-1" || IsJoinedSubPacket(matches[end], subType, packetIndexAttribute.SpecialSeparator ?? ".")))
+                    {
+                        end++;
+                    }
+
+                    length = end - currentIndex;
                 }
             }
 
@@ -416,40 +546,22 @@ namespace NosCore.Packets
                         }
 
                         var toConvert = "";
+                        var joined = IsJoinedSubPacket(matches[currentIndex + i], subType, packetIndexAttribute.SpecialSeparator ?? ".");
 
-                        if (matches[currentIndex + i].Contains(packetIndexAttribute.SpecialSeparator ?? "."))
+                        if (matches[currentIndex + i] == "-1")
                         {
-                            var subpacket = matches[currentIndex + i];
-
-                            var packSeperators = subType.GetProperties()
-                                .Select(prop => prop.GetCustomAttribute<PacketIndexAttribute>()).Where(s => s != null).ToList();
-
-                            // Fall back to the outer list's SpecialSeparator when the next property
-                            // doesn't override it. Sub-packets like ClinitSubPacket don't decorate
-                            // their own properties, so without this fallback the IndexOf looks for
-                            // "." in strings like "5130502|99|68|547|Trippybell" (not present) and
-                            // every loop iteration appends the whole subpacket — producing
-                            // "X|..X|..X|..X|..X|.." that then fails to parse.
-                            var fieldSeparator = packetIndexAttribute.SpecialSeparator ?? ".";
-                            for (var index = 0; index < packSeperators.Count; index++)
+                            list.Add(null);
+                            if (splited == null)
                             {
-                                var isLast = index == packSeperators.Count - 1;
-                                var c = isLast ? -1 : subpacket.IndexOf(packSeperators[index + 1]!.SpecialSeparator ?? fieldSeparator, StringComparison.Ordinal);
-                                if (c == -1)
-                                {
-                                    // Wire item has fewer fields than the sub-packet schema (common
-                                    // for optional trailing fields — e.g. IvnSubPacket has 7 indexes
-                                    // but `inv 1 0.5110.1` carries only 3). Emit the remaining
-                                    // subpacket once and stop; without this break the same tail got
-                                    // appended once per remaining schema property — producing
-                                    // "1 9023 33333" that overflowed Int16 or hit index-out-of-bounds.
-                                    toConvert += subpacket;
-                                    break;
-                                }
-
-                                toConvert += subpacket.Substring(0, c) + " ";
-                                subpacket = subpacket.Substring(c + 1);
+                                newIndex++;
                             }
+
+                            continue;
+                        }
+
+                        if (joined)
+                        {
+                            toConvert = SplitJoined(matches[currentIndex + i], subType, packetIndexAttribute.SpecialSeparator ?? ".");
                         }
                         else
                         {
@@ -460,7 +572,7 @@ namespace NosCore.Packets
 
                         if (splited == null)
                         {
-                            newIndex += 1 + dic.PropertyAmount;
+                            newIndex += joined ? 1 : 1 + dic.PropertyAmount;
                         }
                     }
                     else //simple list
@@ -486,11 +598,67 @@ namespace NosCore.Packets
             return null;
         }
 
+        // Splits a sub-packet written as one token into a token per field. When the line carries fewer fields
+        // than the class, the optional ones are the ones left out, latest first, and read as absent.
+        private static string SplitJoined(string token, Type subType, string listSeparator)
+        {
+            var fields = subType.GetProperties()
+                .Select(property => (Property: property, Index: property.GetCustomAttribute<PacketIndexAttribute>()))
+                .Where(field => field.Index != null)
+                .OrderBy(field => field.Index!.Index)
+                .ToList();
+            var parts = new List<string>();
+            var rest = token;
+            for (var index = 1; index < fields.Count; index++)
+            {
+                var separator = fields[index].Index!.SpecialSeparator ?? listSeparator;
+                var at = separator.Length == 0 ? -1 : rest.IndexOf(separator, StringComparison.Ordinal);
+                if (at < 0)
+                {
+                    break;
+                }
+
+                parts.Add(rest[..at]);
+                rest = rest[(at + separator.Length)..];
+            }
+
+            parts.Add(rest);
+            var absent = new HashSet<int>();
+            for (var index = fields.Count - 1; index >= 0 && fields.Count - absent.Count > parts.Count; index--)
+            {
+                if (fields[index].Index!.IsOptional)
+                {
+                    absent.Add(index);
+                }
+            }
+
+            var tokens = new List<string>();
+            var next = 0;
+            for (var index = 0; index < fields.Count && next < parts.Count; index++)
+            {
+                tokens.Add(absent.Contains(index)
+                    ? fields[index].Property.PropertyType == typeof(string) ? "-" : string.Empty
+                    : parts[next++]);
+            }
+
+            return string.Join(' ', tokens);
+        }
+
+        // A sub-packet written as one token joins its fields with the list's separator, or with the
+        // separator a field names for itself (gexp's "id|experience").
+        private static bool IsJoinedSubPacket(string token, Type subType, string listSeparator) =>
+            token.Contains(listSeparator) || subType.GetProperties()
+                .Select(property => property.GetCustomAttribute<PacketIndexAttribute>())
+                .Where(index => index is { Index: > 0 } && !string.IsNullOrEmpty(index.SpecialSeparator) && index.SpecialSeparator != " ")
+                .Any(index => token.Contains(index!.SpecialSeparator!));
+
         private object? DeserializeEnum(Type type, string value)
         {
-            return value == "-1" || IsAbsentOptional(type, value)
+            var enumType = Nullable.GetUnderlyingType(type) ?? type;
+            return (value == "-1" && !(Enum.TryParse(enumType, value, out var minusOne) && Enum.IsDefined(enumType, minusOne!)))
+                || IsAbsentOptional(type, value)
                 ? type.GetDefaultValue()
-                : Enum.Parse(Nullable.GetUnderlyingType(type) ?? type, value);
+                : Enum.Parse(enumType, value);
         }
 
         // The client ends some packets with a separator, which leaves an empty last field.

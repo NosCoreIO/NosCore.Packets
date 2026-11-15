@@ -13,6 +13,12 @@ namespace NosCore.Packets.ClientPackets.Shops
     [PacketHeader("sell", Scope.InGame)]
     public class SellPacket : PacketBase
     {
+        [PacketIndex(0)]
+        public byte Unknown1 { get; set; }
+
+        [PacketIndex(1)]
+        public byte Unknown2 { get; set; }
+
         [PacketIndex(2)]
         public short Data { get; set; }
 

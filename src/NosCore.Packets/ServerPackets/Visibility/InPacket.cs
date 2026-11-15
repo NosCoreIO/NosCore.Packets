@@ -17,6 +17,7 @@ namespace NosCore.Packets.ServerPackets.Visibility
         public VisualType VisualType { get; set; }
 
         [PacketIndex(1, IsOptional = true)]
+        [PacketPresentWhen(nameof(VisualType), VisualType.Player)]
         public string? Name { get; set; }
 
         [PacketIndex(2)]
@@ -32,15 +33,19 @@ namespace NosCore.Packets.ServerPackets.Visibility
         public short PositionY { get; set; }
 
         [PacketIndex(6, IsOptional = true)]
+        [PacketPresentWhen(nameof(VisualType), VisualType.Player, VisualType.Npc, VisualType.Monster)]
         public byte? Direction { get; set; }
 
         [PacketIndex(7, IsOptional = true)]
+        [PacketPresentWhen(nameof(VisualType), VisualType.Player)]
         public InCharacterSubPacket? InCharacterSubPacket { get; set; }
 
         [PacketIndex(8, IsOptional = true)]
+        [PacketPresentWhen(nameof(VisualType), VisualType.Object)]
         public InItemSubPacket? InItemSubPacket { get; set; }
 
         [PacketIndex(9, IsOptional = true)]
+        [PacketPresentWhen(nameof(VisualType), VisualType.Npc, VisualType.Monster)]
         public InNonPlayerSubPacket? InNonPlayerSubPacket { get; set; }
     }
 }
