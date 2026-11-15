@@ -241,6 +241,9 @@
 - [ta_st](../src/NosCore.Packets/ServerPackets/Arena/TaStPacket.cs) *InGame*
 - [ta_sv](../src/NosCore.Packets/ServerPackets/Arena/TaSvPacket.cs) *InGame*
 - [ta_t](../src/NosCore.Packets/ServerPackets/Arena/TaTPacket.cs) *InGame*
+- [taw_d](../src/NosCore.Packets/ServerPackets/Arena/TawDPacket.cs) *InGame*
+- [taw_open](../src/NosCore.Packets/ServerPackets/Arena/TawOpenPacket.cs) *InGame*
+- [taw_sv](../src/NosCore.Packets/ServerPackets/Arena/TawSvPacket.cs) *InGame*
 
 ### Auction
 - [rc_blist](../src/NosCore.Packets/ServerPackets/Auction/RcbListPacket.cs) *InGame*
