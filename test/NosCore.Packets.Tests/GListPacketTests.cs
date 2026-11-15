@@ -25,5 +25,9 @@ namespace NosCore.Packets.Tests
             Assert.IsTrue(packet.IsValid);
             Assert.AreEqual(type, packet.Type);
         }
+
+        [TestMethod]
+        public void TheMemberListRequestIsWrittenAsTheClientSendsIt() =>
+            Assert.AreEqual("glist 0 2", new Serializer(new[] { typeof(GListPacket) }).Serialize(new GListPacket { Type = GListPacketType.MemberList }));
     }
 }

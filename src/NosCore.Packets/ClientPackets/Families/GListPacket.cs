@@ -12,6 +12,10 @@ namespace NosCore.Packets.ClientPackets.Families
     [PacketHeader("glist", Scope.InGame | Scope.InTrade)]
     public class GListPacket : PacketBase
     {
+        // Always 0 from the client.
+        [PacketIndex(0)]
+        public byte Unknown { get; set; }
+
         [PacketIndex(1)]
         public GListPacketType Type { get; set; }
     }
