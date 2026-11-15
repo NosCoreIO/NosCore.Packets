@@ -9,7 +9,7 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ClientPackets.Player
 {
-    [PacketHeader("eqinfo", Scope.InGame | Scope.WhileDead)]
+    [PacketHeader("eqinfo", Scope.InGame | Scope.InTrade | Scope.WhileDead)]
     public class EquipmentInfoPacket : PacketBase
     {
         [PacketIndex(0)]

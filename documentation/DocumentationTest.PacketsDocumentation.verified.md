@@ -172,7 +172,7 @@
 - [bpp](../src/NosCore.Packets/ClientPackets/Player/BppPacket.cs) *InGame*
 - [bpt](../src/NosCore.Packets/ClientPackets/Player/BptPacket.cs) *InGame*
 - [compl](../src/NosCore.Packets/ClientPackets/Player/ComplPacket.cs) *InGame*
-- [eqinfo](../src/NosCore.Packets/ClientPackets/Player/EquipmentInfoPacket.cs) *InGame | WhileDead*
+- [eqinfo](../src/NosCore.Packets/ClientPackets/Player/EquipmentInfoPacket.cs) *InTrade | InGame | WhileDead*
 - [npinfo](../src/NosCore.Packets/ClientPackets/Player/NpInfoPacket.cs) *InGame*
 - [rsfi](../src/NosCore.Packets/ClientPackets/Player/RsfiPacket.cs) *InGame*
 - [snap](../src/NosCore.Packets/ClientPackets/Player/SnapPacket.cs) *InTrade | InGame | WhileDead*
