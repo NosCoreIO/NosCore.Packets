@@ -22,6 +22,9 @@ namespace NosCore.Packets.Tests
     {
         private static readonly Serializer Serializer = new(PacketCorpus.SerializableTypes.ToList());
 
+        private static readonly Deserializer Deserializer =
+            new(new[] { typeof(IvnPacket), typeof(InvPacket), typeof(IvnSubPacket) });
+
         [TestMethod]
         public void TheStatusLineCarriesEachBuffAsItsCardAndLevel()
         {
@@ -94,6 +97,23 @@ namespace NosCore.Packets.Tests
                         new IvnSubPacket { Slot = 1, VNum = 13414, RareAmount = 1, UpgradeDesign = null, SecondUpgrade = null, Unknown5 = null, Unknown6 = null },
                     ],
                 }));
+        }
+    
+        [TestMethod]
+        [DataRow("ivn 2 27.2025.1.0")]
+        [DataRow("ivn 6 0.904.0.0.0")]
+        public void AShortPocketItemReadsBackAsWritten(string line)
+        {
+            Assert.AreEqual(line, Serializer.Serialize(Deserializer.Deserialize(line)));
+        }
+
+        [TestMethod]
+        public void AMountReadsBackWithoutTheMissingFields()
+        {
+            var packet = (InvPacket)Deserializer.Deserialize("inv 9 0.9149.1 1.13414.1");
+
+            Assert.IsNull(packet.IvnSubPackets![1]!.UpgradeDesign);
+            Assert.AreEqual("inv 9 0.9149.1 1.13414.1", Serializer.Serialize(packet));
         }
     }
 }
