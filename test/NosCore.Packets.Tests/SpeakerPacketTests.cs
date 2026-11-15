@@ -73,6 +73,39 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
+        public void AMessageThatLooksLikeAPlaceholderIsWrittenAsTyped()
+        {
+            Assert.AreEqual("sayitemt 1 7 17 1 1219 Seller IPacketToInject IconInfo 1219",
+                Serializer.Serialize(new SayItemtPacket
+                {
+                    VisualType = VisualType.Player,
+                    VisualId = 7,
+                    OratorSlot = 17,
+                    Type = 1,
+                    ItemVNum = 1219,
+                    VisualName = "Seller",
+                    Message = "IPacketToInject",
+                    ItemInfo = new IconInfoPacket { IconId = 1219 },
+                }));
+        }
+
+        [TestMethod]
+        public void AMissingItemInfoIsWrittenAsAbsent()
+        {
+            Assert.AreEqual("sayitemt 1 7 17 1 1219 Seller WTS -1",
+                Serializer.Serialize(new SayItemtPacket
+                {
+                    VisualType = VisualType.Player,
+                    VisualId = 7,
+                    OratorSlot = 17,
+                    Type = 1,
+                    ItemVNum = 1219,
+                    VisualName = "Seller",
+                    Message = "WTS",
+                }));
+        }
+
+        [TestMethod]
         public void TheLinkedItemMessageReadsBack()
         {
             var packet = (SayItemtPacket)Deserializer.Deserialize(

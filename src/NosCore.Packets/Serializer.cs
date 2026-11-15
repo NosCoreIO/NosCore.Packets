@@ -16,8 +16,6 @@ namespace NosCore.Packets
 {
     public class Serializer : ISerializer
     {
-        private const string InjectionKey = "IPacketToInject";
-
         private readonly Dictionary<Type, Delegate> _packetSerializerDictionary = new Dictionary<Type, Delegate>();
 
 
@@ -44,22 +42,6 @@ namespace NosCore.Packets
             var realType = packet.GetType();
             var deg = _packetSerializerDictionary[packet.GetType()];
             var fullString = (string)deg.DynamicInvoke(packet, false)!;
-            if (fullString.Contains(InjectionKey))
-            {
-                //unfortunately some packets like DLG, DELAY can handle multiple type packet we can't build the full serializer at init, instead we inject serializer with reflection
-                foreach (var prop in realType.GetProperties().Where(p => p.PropertyType == typeof(IPacket)))
-                {
-                    var place = fullString.IndexOf(InjectionKey, StringComparison.Ordinal);
-                    var value = realType.GetProperty(prop.Name)!.GetValue(packet, null);
-                    // RemoveHash writes the packet inline as a line of its own ("e_info 7 4240 ...") instead of "#e_info^7^4240".
-                    var inline = prop.GetCustomAttribute<PacketIndexAttribute>()?.RemoveHash == true;
-                    fullString = fullString
-                        .Remove(place, InjectionKey.Length)
-                        .Insert(place,
-                            (string)_packetSerializerDictionary[value!.GetType()].DynamicInvoke(value, !inline)!);
-                }
-            }
-
             // A chat prefix ("/name text", ":text", ";text") is the start of its line's first word.
             if (realType.GetCustomAttribute<PacketHeaderAttribute>()?.Identification is "/" or ":" or ";"
                 && fullString.Length > 1 && fullString[1] == ' ')
@@ -69,6 +51,12 @@ namespace NosCore.Packets
 
             return fullString;
         }
+
+        // RemoveHash writes the packet inline as a line of its own ("e_info 7 4240 ...") instead of "#e_info^7^4240".
+        private string? SerializeInjected(IPacket? value, bool inline, bool isOptional) =>
+            value == null
+                ? isOptional ? null : "-1"
+                : (string)_packetSerializerDictionary[value.GetType()].DynamicInvoke(value, !inline)!;
 
         public string Serialize(IEnumerable<IPacket> packets)
         {
@@ -388,7 +376,11 @@ namespace NosCore.Packets
                         propertySplitter, indexAttr.RemoveHeader ? "" : header ?? "");
                     break;
                 case var t when t == typeof(IPacket):
-                    specificTypeExpression = Expression.Constant(InjectionKey, typeof(string));
+                    // A field declared as IPacket can hold any packet, so its serializer is looked up from the value.
+                    specificTypeExpression = Expression.Call(Expression.Constant(this),
+                        typeof(Serializer).GetMethod(nameof(SerializeInjected), BindingFlags.NonPublic | BindingFlags.Instance)!,
+                        Expression.Convert(specificTypeExpression, typeof(IPacket)),
+                        Expression.Constant(indexAttr.RemoveHash), Expression.Constant(indexAttr.IsOptional));
                     break;
                 default:
                     useCustomSerializer = false;
