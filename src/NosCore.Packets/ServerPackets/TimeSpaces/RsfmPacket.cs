@@ -19,11 +19,14 @@ namespace NosCore.Packets.ServerPackets.TimeSpaces
         [PacketIndex(1)]
         public RsfmPacketType Type { get; set; }
 
-        // The client only checks that both are positive; traces always carry 4 and 12.
+        // The room grid's size: every rsfn and rsfp coordinate falls inside it.
         [PacketIndex(2)]
-        public short Unknown1 { get; set; } = 4;
+        public short Width { get; set; } = 4;
 
         [PacketIndex(3)]
-        public short Unknown2 { get; set; } = 12;
+        public short Height { get; set; } = 12;
+
+        [PacketIndex(4)]
+        public byte Unknown1 { get; set; }
     }
 }
