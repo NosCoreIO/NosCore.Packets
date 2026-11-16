@@ -540,6 +540,7 @@
 - [minfo](../src/NosCore.Packets/ServerPackets/TimeSpaces/MinfoPacket.cs) *InGame*
 - [rsfm](../src/NosCore.Packets/ServerPackets/TimeSpaces/RsfmPacket.cs) *InGame*
 - [rsfn](../src/NosCore.Packets/ServerPackets/TimeSpaces/RsfnPacket.cs) *InGame*
+- [sinfo](../src/NosCore.Packets/ServerPackets/TimeSpaces/SinfoPacket.cs) *InGame*
 
 ### UI
 - [act6](../src/NosCore.Packets/ServerPackets/UI/Act6Packet.cs) *InGame*
