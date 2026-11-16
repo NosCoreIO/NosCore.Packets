@@ -25,5 +25,11 @@ namespace NosCore.Packets.ServerPackets.Inventory
 
         [PacketIndex(4)]
         public byte Unknown { get; set; }
+
+        [PacketIndex(5)]
+        public byte Unknown1 { get; set; }
+
+        [PacketIndex(6)]
+        public byte Unknown2 { get; set; }
     }
 }

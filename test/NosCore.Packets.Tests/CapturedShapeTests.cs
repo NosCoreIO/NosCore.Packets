@@ -123,5 +123,17 @@ namespace NosCore.Packets.Tests
             Assert.AreEqual("rsfm 14 0 6 12 0",
                 Serializer.Serialize(new RsfmPacket { Unknown = 14, Type = RsfmPacketType.Open, Width = 6, Height = 12 }));
         }
+
+        [TestMethod]
+        public void EachWornItemCarriesSevenFields()
+        {
+            Assert.AreEqual("equip 1 2 0.267.1.0.0.0.0",
+                Serializer.Serialize(new EquipPacket
+                {
+                    WeaponUpgradeRareSubPacket = new UpgradeRareSubPacket { Upgrade = null, Rare = 1 },
+                    ArmorUpgradeRareSubPacket = new UpgradeRareSubPacket { Upgrade = null, Rare = 2 },
+                    MainWeapon = new EquipmentSubPacket { EquipmentType = EquipmentType.MainWeapon, VNum = 267, Rare = 1 },
+                }));
+        }
     }
 }
