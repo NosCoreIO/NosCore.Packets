@@ -84,7 +84,7 @@ namespace NosCore.Packets.Tests
                 InNonPlayerSubPacket = new InNonPlayerSubPacket
                 {
                     InAliveSubPacket = new InAliveSubPacket { Hp = 100, Mp = 100 },
-                    GroupEffect = 3, Owner = 12988838, SpawnEffect = SpawnEffectType.NoEffect, Name = "@", Unknow1 = 2,
+                    GroupEffect = 3, Owner = 12988838, SpawnEffect = SpawnEffectType.NoEffect, Name = "@", MateType = MateVisualType.Pet,
                     Unknow7 = 2
                 }
             };

@@ -16,9 +16,9 @@ namespace NosCore.Packets.ServerPackets.UI
         public WindowType Type { get; set; }
 
         [PacketIndex(1)]
-        public byte Unknown { get; set; }
+        public byte Argument { get; set; }
 
         [PacketIndex(2)]
-        public byte Unknown2 { get; set; }
+        public byte Argument2 { get; set; }
     }
 }

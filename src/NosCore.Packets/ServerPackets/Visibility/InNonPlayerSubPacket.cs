@@ -40,7 +40,7 @@ namespace NosCore.Packets.ServerPackets.Visibility
         public string? Name { get; set; }
 
         [PacketIndex(10)]
-        public byte Unknow1 { get; set; }
+        public MateVisualType MateType { get; set; }
 
         [PacketIndex(11)]
         public short? Unknow2 { get; set; }

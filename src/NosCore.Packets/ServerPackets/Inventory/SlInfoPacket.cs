@@ -34,7 +34,7 @@ namespace NosCore.Packets.ServerPackets.Inventory
         public int Unknown { get; set; }
 
         [PacketIndex(7)]
-        public int Unknown2 { get; set; }
+        public int Speed { get; set; }
 
         [PacketIndex(8)]
         public int Unknown3 { get; set; }
