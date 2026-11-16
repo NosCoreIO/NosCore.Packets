@@ -11,6 +11,7 @@ using NosCore.Packets.Enumerations;
 using NosCore.Packets.ServerPackets.Entities;
 using NosCore.Packets.ServerPackets.Inventory;
 using NosCore.Packets.ServerPackets.Parcel;
+using NosCore.Packets.ServerPackets.TimeSpaces;
 using NosCore.Packets.ServerPackets.Visibility;
 using NosCore.Shared.Enumerations;
 
@@ -114,6 +115,13 @@ namespace NosCore.Packets.Tests
 
             Assert.IsNull(packet.IvnSubPackets![1]!.UpgradeDesign);
             Assert.AreEqual("inv 9 0.9149.1 1.13414.1", Serializer.Serialize(packet));
+        }
+
+        [TestMethod]
+        public void TheRoomMapCarriesItsGridSize()
+        {
+            Assert.AreEqual("rsfm 14 0 6 12 0",
+                Serializer.Serialize(new RsfmPacket { Unknown = 14, Type = RsfmPacketType.Open, Width = 6, Height = 12 }));
         }
     }
 }
