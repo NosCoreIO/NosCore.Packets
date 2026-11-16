@@ -135,5 +135,14 @@ namespace NosCore.Packets.Tests
                     MainWeapon = new EquipmentSubPacket { EquipmentType = EquipmentType.MainWeapon, VNum = 267, Rare = 1 },
                 }));
         }
+
+        [TestMethod]
+        public void ASpecialistCardInfoLineReadsBackWithItsTrailingFields()
+        {
+            const string line = "slinfo 0 8890 56 99 75 15 0 2 0 0 0 0 0 2 8 18 12 10 0 5991794 1963.1964.1965.1966.1967.1968.1969.1970.1971.1972 23892160 0 77 0 73 0 20 0 85 0 33 24 14 28 100 42 42 30 28 7 10 4 7 2 13587 5591 0";
+            var deserializer = new Deserializer(new[] { typeof(SlInfoPacket) });
+
+            Assert.AreEqual(line, Serializer.Serialize(deserializer.Deserialize(line)));
+        }
     }
 }
