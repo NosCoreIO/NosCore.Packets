@@ -143,5 +143,17 @@ namespace NosCore.Packets.ServerPackets.Inventory
 
         [PacketIndex(43)]
         public short SpDarkResistance { get; set; }
+
+        [PacketIndex(44)]
+        public int Unknown10 { get; set; }
+
+        [PacketIndex(45)]
+        public int Unknown11 { get; set; }
+
+        [PacketIndex(46)]
+        public int Unknown12 { get; set; }
+
+        [PacketIndex(47)]
+        public int Unknown13 { get; set; }
     }
 }
