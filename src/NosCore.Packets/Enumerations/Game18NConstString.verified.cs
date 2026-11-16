@@ -11817,8 +11817,65 @@ namespace NosCore.Packets.Enumerations
         [Game18NArguments(typeof(string))]
         HasExpiredEffectDeactivated = 2872,
         // <summary>
+        // The Frost VIP buff is active.
+        // <summary>
+        FrostVipBuffActive = 2873,
+        // <summary>
+        // Can be used to upgrade +%d specialist cards.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        CanUpgradeSpecialistCardsOfLevel = 2874,
+        // <summary>
+        // You have received %d champion XP by using this item.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        ReceivedChampionXpFromItem = 2875,
+        // <summary>
+        // You have received %d fairy XP by using this item.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        ReceivedFairyXpFromItem = 2876,
+        // <summary>
+        // Can be used on specialist cards of upgrade level 14 or less. Cannot be used on lifestyle specialist cards, or specialist cards whose soul has been destroyed.
+        // <summary>
+        UsableOnSpecialistUpgradeFourteenOrLess = 2877,
+        // <summary>
+        // Your job level is too low to equip the specialist card.
+        // <summary>
+        JobLevelTooLowForSpecialistCard = 2878,
+        // <summary>
+        // Can be used to improve specialist cards of perfection level 60-79.
+        // <summary>
+        ImprovesSpecialistPerfectionSixtyToSeventyNine = 2879,
+        // <summary>
+        // Can be used to improve specialist cards of perfection level 80-99.
+        // <summary>
+        ImprovesSpecialistPerfectionEightyToNinetyNine = 2880,
+        // <summary>
+        // This character slot can be used again once 7 days have elapsed since the character was deleted (%d hour(s) remaining).<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        CharacterSlotLockedAfterDeletion = 2881,
+        // <summary>
+        // Your champion level is too low to use this item.
+        // <summary>
+        ChampionLevelTooLowForItem = 2882,
+        // <summary>
+        // Can be used on specialist cards of perfection level 51 or higher.
+        // <summary>
+        UsableOnSpecialistPerfectionFiftyOneOrHigher = 2883,
+        // <summary>
         // This item increases the specialist card's upgrade level to 15. Do you want to use it?
         // <summary>
         SpecialistUpgradeToFifteenQuestion = 2884,
+        // <summary>
+        // You have successfully converted %d NosDollar Coupons into %d NosDollars.<NEW_TYPE><0,1>
+        // <summary>
+        [Game18NArguments(typeof(long), typeof(long))]
+        ConvertedNosDollarCoupons = 2885,
+        // <summary>
+        // Entering the Time-Space is not possible as at least one group member has no daily entries left.
+        // <summary>
+        GroupMemberHasNoTimeSpaceEntriesLeft = 2886,
     }
 }
