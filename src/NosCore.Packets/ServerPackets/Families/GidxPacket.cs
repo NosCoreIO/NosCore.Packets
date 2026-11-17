@@ -34,7 +34,9 @@ namespace NosCore.Packets.ServerPackets.Families
         [PacketIndex(5)]
         public byte FamilyLevel { get; set; }
 
+        // The family tag shows at most one icon: the third value 2, else the third 1, else the second 1,
+        // else the first 1 picks it.
         [PacketListIndex(6, ListSeparator = "|")]
-        public List<bool> FamilyIcons { get; set; } = new();
+        public List<byte> FamilyIcons { get; set; } = new();
     }
 }

@@ -12,10 +12,10 @@ namespace NosCore.Packets.ServerPackets.Inventory
     [PacketHeader("equip", Scope.InGame)]
     public class EquipPacket : PacketBase
     {
-        [PacketIndex(0, SpecialSeparator = "")]
+        [PacketIndex(0)]
         public UpgradeRareSubPacket? WeaponUpgradeRareSubPacket { get; set; }
 
-        [PacketIndex(1, SpecialSeparator = "")]
+        [PacketIndex(1)]
         public UpgradeRareSubPacket? ArmorUpgradeRareSubPacket { get; set; }
 
         [PacketIndex(2, IsOptional = true, SpecialSeparator = ".")]

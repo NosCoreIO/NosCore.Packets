@@ -583,11 +583,8 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
-        public void PacketWithEmptySpecialSeparatorSplitsEachCharIntoField()
+        public void UpgradeAndRareAreSplitFromOneNumberLikeTheClient()
         {
-            // UpgradeRareSubPacket has two fields (Upgrade, Rare). The wire joins
-            // them with no separator — "75" on the wire means Upgrade=7, Rare=5.
-            // Prior to 16.11.0 the deserializer crashed on String.Replace("", " ").
             var deserializer = new Deserializer(new[]
             {
                 typeof(ServerPackets.Inventory.EquipPacket),
@@ -595,14 +592,12 @@ namespace NosCore.Packets.Tests
                 typeof(ServerPackets.Inventory.EquipmentSubPacket),
             });
 
-            var packet = (ServerPackets.Inventory.EquipPacket)deserializer.Deserialize("equip 75 35");
+            var packet = (ServerPackets.Inventory.EquipPacket)deserializer.Deserialize("equip 108 -2");
 
-            Assert.IsNotNull(packet.WeaponUpgradeRareSubPacket);
-            Assert.AreEqual((byte)7, packet.WeaponUpgradeRareSubPacket!.Upgrade);
-            Assert.AreEqual((sbyte)5, packet.WeaponUpgradeRareSubPacket.Rare);
-            Assert.IsNotNull(packet.ArmorUpgradeRareSubPacket);
-            Assert.AreEqual((byte)3, packet.ArmorUpgradeRareSubPacket!.Upgrade);
-            Assert.AreEqual((sbyte)5, packet.ArmorUpgradeRareSubPacket.Rare);
+            Assert.AreEqual((byte)10, packet.WeaponUpgradeRareSubPacket!.Upgrade);
+            Assert.AreEqual((sbyte)8, packet.WeaponUpgradeRareSubPacket.Rare);
+            Assert.AreEqual((byte)0, packet.ArmorUpgradeRareSubPacket!.Upgrade);
+            Assert.AreEqual((sbyte)-2, packet.ArmorUpgradeRareSubPacket.Rare);
         }
 
         [TestMethod]

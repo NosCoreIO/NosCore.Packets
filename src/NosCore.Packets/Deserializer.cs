@@ -507,8 +507,12 @@ namespace NosCore.Packets
                     // crashed with IndexOutOfRange. Consume the remaining tokens directly
                     // into a fresh Game18NArguments; numeric tokens go in as long, the rest
                     // as string.
-                    var g18n = new Game18NArguments(Math.Max(1, matches.Length - currentIndex));
-                    while (currentIndex < matches.Length)
+                    var argumentCount = packetBasePropertyInfo.Item2 is PacketListIndexAttribute { Length: > 0 } fixedLength
+                        ? Math.Min((int)fixedLength.Length, matches.Length - currentIndex)
+                        : matches.Length - currentIndex;
+                    var g18n = new Game18NArguments(Math.Max(1, argumentCount));
+                    var argumentEnd = currentIndex + argumentCount;
+                    while (currentIndex < argumentEnd)
                     {
                         var token = matches[currentIndex++];
                         g18n.Add(long.TryParse(token, out var longValue) ? (object)longValue : token);
@@ -550,13 +554,7 @@ namespace NosCore.Packets
 
                         return DeserializeFields(dic, ref matches, ref currentIndex, hasHeader: false, inLine: true, lastInLine: isMaxIndex);
                     }
-                    // SpecialSeparator = "" means "no character between fields on the wire" (e.g. UpgradeRareSubPacket
-                    // packs Upgrade + Rare into a single 2-digit token like "75"). The serializer joins them with no
-                    // separator, so on the read side we insert a space between every character to re-split. We can't
-                    // use string.Replace("", " ") — .NET throws ArgumentException when oldValue is empty.
-                    var subPacketContent = subPacketSeparator == ""
-                        ? string.Join(' ', matches[currentIndex].ToCharArray())
-                        : matches[currentIndex].Replace(subPacketSeparator ?? (prop.GetCustomAttribute<PacketHeaderAttribute>() == null ? "." : "^"), " ");
+                    var subPacketContent = matches[currentIndex].Replace(subPacketSeparator ?? (prop.GetCustomAttribute<PacketHeaderAttribute>() == null ? "." : "^"), " ");
                     // A value field with its own separator ("vnum.current/total") is split on that one too.
                     foreach (var fieldSeparator in prop.GetProperties()
                         .Where(p => !typeof(IPacket).IsAssignableFrom(p.PropertyType))

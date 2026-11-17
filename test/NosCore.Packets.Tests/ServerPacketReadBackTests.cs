@@ -33,10 +33,6 @@ namespace NosCore.Packets.Tests
             ["SayItemPacket"] = "carries an e_info",
             ["RcbListPacket"] = "carries an e_info",
             ["RcsListPacket"] = "carries an e_info",
-            // Upgrade and rarity are packed one digit each; the corpus fills them with two.
-            ["InPacket"] = "digit-packed upgrade and rarity",
-            ["EqPacket"] = "digit-packed upgrade and rarity",
-            ["EquipPacket"] = "digit-packed upgrade and rarity",
             ["QSlotPacket"] = "an optional first field is written without its separator",
             ["RbrPacket"] = "not read back yet",
         };
@@ -72,7 +68,7 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
-        [DataRow("in 1 Alice - 104 80 116 2 0 0 0 0 1 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1 100 100 0 -1 0 0 0 0 0 0 00 00 -1.-1 - 1 0 0 0 0 1 0 0|0|0 0 0 100 0 0")]
+        [DataRow("in 1 Alice - 104 80 116 2 0 0 0 0 1 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1 100 100 0 -1 0 0 0 0 0 0 0 0 -1.-1 - 1 0 0 0 0 1 0 0|0|0 0 0 100 0 0")]
         [DataRow("in 2 1 1 84 118 0 100 100 0 0 0 -1 1 0 -1 - 0 -1 0 0 0 0 0 0 0 0 0 0 0 0 0")]
         [DataRow("in 3 2 100 30 30 0 100 100 0 0 0 -1 0 0 -1 - 0 -1 0 0 0 0 0 0 0 0 0 0 0 0 0")]
         [DataRow("in 9 2024 100009 81 117 5 0 0 0")]
@@ -82,7 +78,7 @@ namespace NosCore.Packets.Tests
         [DataRow("ghis 0 4|Bob|600|0 6|Bob|30|0")]
         [DataRow("gmbr 0 100|16|Alice|1|1|0|0|1|0 101|16|Bob|1|1|1|0|1|0")]
         [DataRow("post 1 1 0 0 0 2611150101 Alice Lunch")]
-        [DataRow("eq 1 0 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1 00 00 100")]
+        [DataRow("eq 1 0 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 100")]
         [DataRow("NsTeST  0 alice1 2 1 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 2 127.0.0.1:4000:1:0.1.S1-NosCore -1:-1:-1:10000.10000.1")]
         [DataRow("NsTeST  0 alice1 2 2 1 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 -99 0 2 127.0.0.1:4000:1:0.1.S1-NosCore -1:-1:-1:10000.10000.1")]
         public void ALineTheServerWritesReadsBack(string line)

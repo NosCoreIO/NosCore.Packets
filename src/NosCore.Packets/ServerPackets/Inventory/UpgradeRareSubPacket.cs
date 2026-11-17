@@ -10,10 +10,21 @@ namespace NosCore.Packets.ServerPackets.Inventory
 {
     public class UpgradeRareSubPacket : PacketBase
     {
-        [PacketIndex(0, IsOptional = true)]
-        public byte? Upgrade { get; set; }
+        public byte Upgrade { get; set; }
 
-        [PacketIndex(1)]
         public sbyte Rare { get; set; }
+
+        // The client reads one number and splits it with a truncating division by ten, so a negative
+        // rare only survives on an item without upgrade: upgrade 5 with rare -2 arrives as 4 and 8.
+        [PacketIndex(0)]
+        public short UpgradeRare
+        {
+            get => (short)(Upgrade * 10 + Rare);
+            set
+            {
+                Upgrade = (byte)(value / 10);
+                Rare = (sbyte)(value % 10);
+            }
+        }
     }
 }
