@@ -165,8 +165,9 @@ namespace NosCore.Packets.ServerPackets.Mates
         [PacketIndex(42, SpecialSeparator = ".")]
         public ScSkillDetails? Skill3Details { get; set; }
 
+        // The worn card's name while the partner is transformed, 0 otherwise.
         [PacketIndex(43)]
-        public short Unknown4 { get; set; }
+        public Game18NConstString SpecialistName { get; set; }
 
         // 0 or 1 depending on the partner.
         [PacketIndex(44)]

@@ -69,6 +69,7 @@ namespace NosCore.Packets.ServerPackets.Visibility
         [PacketIndex(19)]
         public bool IsInvisible { get; set; }
 
+        // A transformed partner's card name, among others.
         [PacketIndex(20)]
         public Game18NConstString Title { get; set; }
 
