@@ -130,10 +130,59 @@ namespace NosCore.Packets.Tests
             Assert.AreEqual("equip 1 2 0.267.1.0.0.0.0",
                 Serializer.Serialize(new EquipPacket
                 {
-                    WeaponUpgradeRareSubPacket = new UpgradeRareSubPacket { Upgrade = null, Rare = 1 },
-                    ArmorUpgradeRareSubPacket = new UpgradeRareSubPacket { Upgrade = null, Rare = 2 },
+                    WeaponUpgradeRareSubPacket = new UpgradeRareSubPacket { Rare = 1 },
+                    ArmorUpgradeRareSubPacket = new UpgradeRareSubPacket { Rare = 2 },
                     MainWeapon = new EquipmentSubPacket { EquipmentType = EquipmentType.MainWeapon, VNum = 267, Rare = 1 },
                 }));
+        }
+
+        [TestMethod]
+        public void APlayerLineWithANegativeRareReadsBack()
+        {
+            const string line = "in 1 MinigameSuchti - 14272624 38 72 2 0 0 1 96 1 200.165.141.70.372.280.624.4164.-1.-1.-1 100 100 0 -1 4 3 0 7 0 0 3 -2 1660.918 *GamerKrabben* 23 0 0 0 0 81 10 0|0|2 0 0 100 0 9337";
+            var deserializer = new Deserializer(PacketCorpus.SerializableTypes.Where(t => t.Namespace!.StartsWith("NosCore.Packets.ServerPackets.Visibility") || t.Namespace!.StartsWith("NosCore.Packets.ServerPackets.Inventory")));
+
+            var packet = (InPacket)deserializer.Deserialize(line);
+
+            Assert.AreEqual((sbyte)-2, packet.InCharacterSubPacket!.ArmorUpgradeRareSubPacket!.Rare);
+            Assert.AreEqual(line, Serializer.Serialize(packet));
+        }
+
+        [TestMethod]
+        public void ANonPlayerTitleCarriesItsArgument()
+        {
+            const string line = "in 2 1428 5927919 70 66 2 76 100 10000 0 0 -1 1 0 -1 @ 0 -1 0 0 0 0 0 0 0 0 595 Szilka111 0 0 0";
+            var deserializer = new Deserializer(PacketCorpus.SerializableTypes.Where(t => t.Namespace!.StartsWith("NosCore.Packets.ServerPackets.Visibility") || t.Namespace!.StartsWith("NosCore.Packets.ServerPackets.Inventory")));
+
+            var packet = (InPacket)deserializer.Deserialize(line);
+
+            Assert.AreEqual(Game18NConstString.UserMiniland, packet.InNonPlayerSubPacket!.Title);
+            Assert.AreEqual("Szilka111", packet.InNonPlayerSubPacket.TitleArguments.Single());
+            Assert.AreEqual(line, Serializer.Serialize(packet));
+        }
+
+        [TestMethod]
+        public void ANonPlayerTitleWithoutArgumentSendsZero()
+        {
+            const string line = "in 2 317 5929413 49 132 2 100 100 0 0 3 11877741 1 0 2789 @ 1 0 1 307 308 309 4237 4238 4239 0 2646 0 0 0 0";
+            var deserializer = new Deserializer(PacketCorpus.SerializableTypes.Where(t => t.Namespace!.StartsWith("NosCore.Packets.ServerPackets.Visibility") || t.Namespace!.StartsWith("NosCore.Packets.ServerPackets.Inventory")));
+
+            var packet = (InPacket)deserializer.Deserialize(line);
+            packet.InNonPlayerSubPacket!.TitleArguments = new Game18NArguments(1);
+
+            Assert.AreEqual(line, Serializer.Serialize(packet));
+        }
+
+        [TestMethod]
+        public void ABoundCostumeHatSaysItCannotBeTraded()
+        {
+            const string line = "e_info 3 -4115 20 0 0 0 0 0 0 0 0 2400 0 2 -1 0";
+            var deserializer = new Deserializer(new[] { typeof(EInfoCostumeHatPacket) });
+
+            var packet = (EInfoCostumeHatPacket)deserializer.Deserialize(line);
+
+            Assert.AreEqual(TradeRestriction.NotTradable, packet.TradeRestriction);
+            Assert.AreEqual(line, Serializer.Serialize(packet));
         }
 
         [TestMethod]

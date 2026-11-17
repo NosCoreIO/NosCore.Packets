@@ -59,10 +59,10 @@ namespace NosCore.Packets.ServerPackets.Visibility
         [PacketIndex(14)]
         public short Morph { get; set; }
 
-        [PacketIndex(15, SpecialSeparator = "")]
+        [PacketIndex(15)]
         public UpgradeRareSubPacket? WeaponUpgradeRareSubPacket { get; set; }
 
-        [PacketIndex(16, SpecialSeparator = "")]
+        [PacketIndex(16)]
         public UpgradeRareSubPacket? ArmorUpgradeRareSubPacket { get; set; }
 
         [PacketIndex(17, SpecialSeparator = ".")]
@@ -92,8 +92,10 @@ namespace NosCore.Packets.ServerPackets.Visibility
         [PacketIndex(25)]
         public byte FamilyLevel { get; set; }
 
+        // The family tag shows at most one icon: the third value 2, else the third 1, else the second 1,
+        // else the first 1 picks it.
         [PacketListIndex(26, ListSeparator = "|")]
-        public List<bool>? FamilyIcons { get; set; }
+        public List<byte>? FamilyIcons { get; set; }
 
         [PacketIndex(27)]
         public bool ArenaWinner { get; set; }

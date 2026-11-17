@@ -72,8 +72,9 @@ namespace NosCore.Packets.ServerPackets.Visibility
         [PacketIndex(20)]
         public Game18NConstString Title { get; set; }
 
-        [PacketIndex(21)]
-        public byte Unknow5 { get; set; }
+        // The title's one argument, such as the owner's name in "%s's [Miniland]"; 0 when it takes none.
+        [PacketListIndex(21, Length = 1, ListSeparator = " ")]
+        public Game18NArguments TitleArguments { get; set; } = new(1);
 
         [PacketIndex(22)]
         public byte Unknow6 { get; set; }

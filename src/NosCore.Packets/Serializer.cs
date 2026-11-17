@@ -185,6 +185,7 @@ namespace NosCore.Packets
             }
 
             if (indexAttr is PacketListIndexAttribute padIndex && padIndex.Length > 0
+                && subtype != typeof(object)
                 && subtype!.GetConstructor(Type.EmptyTypes) != null)
             {
                 var padMethod = typeof(Serializer).GetMethod(nameof(PadToMinimumLength),

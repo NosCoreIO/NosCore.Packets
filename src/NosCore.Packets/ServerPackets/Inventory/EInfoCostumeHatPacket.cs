@@ -53,7 +53,7 @@ namespace NosCore.Packets.ServerPackets.Inventory
         public short ShellEffectValue { get; set; } = -1;
 
         [PacketIndex(13)]
-        public bool IsTradable { get; set; }
+        public TradeRestriction TradeRestriction { get; set; }
 
         // -1 when the item never expires.
         [PacketIndex(14)]

@@ -779,7 +779,7 @@ namespace NosCore.Packets.Tests
                 Unknown = -1,
                 FamilyName = "testers(Familyhead)",
                 FamilyLevel = 1,
-                FamilyIcons = { false, false, false }
+                FamilyIcons = { 0, 0, 0 }
             });
 
             Assert.AreEqual("gidx 1 1 3.-1 testers(Familyhead) 1 0|0|0", packet);
@@ -1172,7 +1172,7 @@ namespace NosCore.Packets.Tests
                     Level = 1,
                     FamilyLevel = 0,
                     ArenaWinner = false,
-                    FamilyIcons = new List<bool> { false, false, false },
+                    FamilyIcons = new List<byte> { 0, 0, 0 },
                     Compliment = 0,
                     Size = 10,
                     HeroLevel = 0,
