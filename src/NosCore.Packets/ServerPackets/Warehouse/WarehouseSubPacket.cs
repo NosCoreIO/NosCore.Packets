@@ -15,8 +15,20 @@ namespace NosCore.Packets.ServerPackets.Warehouse
         [PacketIndex(0)]
         public short Slot { get; set; }
 
-        [PacketIndex(1)]
         public short VNum { get; set; }
+
+        public bool IsLimited { get; set; }
+
+        [PacketIndex(1)]
+        public short WireVNum
+        {
+            get => LimitedItem.ToWire(VNum, IsLimited);
+            set
+            {
+                VNum = LimitedItem.VNum(value);
+                IsLimited = LimitedItem.IsLimited(value);
+            }
+        }
 
         [PacketIndex(2)]
         public PocketType Type { get; set; }

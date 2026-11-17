@@ -139,7 +139,7 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void APlayerLineWithANegativeRareReadsBack()
         {
-            const string line = "in 1 MinigameSuchti - 14272624 38 72 2 0 0 1 96 1 200.165.141.70.372.280.624.4164.-1.-1.-1 100 100 0 -1 4 3 0 7 0 0 3 -2 1660.918 *GamerKrabben* 23 0 0 0 0 81 10 0|0|2 0 0 100 0 9337";
+            const string line = "in 1 Alice - 1234 38 72 2 0 0 1 96 1 200.165.141.70.372.280.624.4164.-1.-1.-1 100 100 0 -1 4 3 0 7 0 0 3 -2 100.918 Family 23 0 0 0 0 81 10 0|0|2 0 0 100 0 9337";
             var deserializer = new Deserializer(PacketCorpus.SerializableTypes.Where(t => t.Namespace!.StartsWith("NosCore.Packets.ServerPackets.Visibility") || t.Namespace!.StartsWith("NosCore.Packets.ServerPackets.Inventory")));
 
             var packet = (InPacket)deserializer.Deserialize(line);
@@ -151,26 +151,51 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void ANonPlayerTitleCarriesItsArgument()
         {
-            const string line = "in 2 1428 5927919 70 66 2 76 100 10000 0 0 -1 1 0 -1 @ 0 -1 0 0 0 0 0 0 0 0 595 Szilka111 0 0 0";
+            const string line = "in 2 1428 2345 70 66 2 76 100 10000 0 0 -1 1 0 -1 @ 0 -1 0 0 0 0 0 0 0 0 595 Alice 0 0 0";
             var deserializer = new Deserializer(PacketCorpus.SerializableTypes.Where(t => t.Namespace!.StartsWith("NosCore.Packets.ServerPackets.Visibility") || t.Namespace!.StartsWith("NosCore.Packets.ServerPackets.Inventory")));
 
             var packet = (InPacket)deserializer.Deserialize(line);
 
             Assert.AreEqual(Game18NConstString.UserMiniland, packet.InNonPlayerSubPacket!.Title);
-            Assert.AreEqual("Szilka111", packet.InNonPlayerSubPacket.TitleArguments.Single());
+            Assert.AreEqual("Alice", packet.InNonPlayerSubPacket.TitleArguments.Single());
             Assert.AreEqual(line, Serializer.Serialize(packet));
         }
 
         [TestMethod]
         public void ANonPlayerTitleWithoutArgumentSendsZero()
         {
-            const string line = "in 2 317 5929413 49 132 2 100 100 0 0 3 11877741 1 0 2789 @ 1 0 1 307 308 309 4237 4238 4239 0 2646 0 0 0 0";
+            const string line = "in 2 317 3456 49 132 2 100 100 0 0 3 1234 1 0 2789 @ 1 0 1 307 308 309 4237 4238 4239 0 2646 0 0 0 0";
             var deserializer = new Deserializer(PacketCorpus.SerializableTypes.Where(t => t.Namespace!.StartsWith("NosCore.Packets.ServerPackets.Visibility") || t.Namespace!.StartsWith("NosCore.Packets.ServerPackets.Inventory")));
 
             var packet = (InPacket)deserializer.Deserialize(line);
             packet.InNonPlayerSubPacket!.TitleArguments = new Game18NArguments(1);
 
             Assert.AreEqual(line, Serializer.Serialize(packet));
+        }
+
+        [TestMethod]
+        public void ALimitedItemGoesOutWithANegativeVNum()
+        {
+            Assert.AreEqual("ivn 7 1.4283.0.0.0 2.-4115.0.0.0 3.-1.0.0.0",
+                Serializer.Serialize(new IvnPacket
+                {
+                    Type = PocketType.Costume,
+                    IvnSubPackets = new List<IvnSubPacket>
+                    {
+                        new() { Slot = 1, VNum = 4283, SecondUpgrade = 0 },
+                        new() { Slot = 2, VNum = 4115, IsLimited = true, SecondUpgrade = 0 },
+                        new() { Slot = 3, VNum = -1, IsLimited = true, SecondUpgrade = 0 },
+                    }.Select(item => { item.Unknown5 = null; item.Unknown6 = null; return item; }).ToList(),
+                }));
+        }
+
+        [TestMethod]
+        public void ANegativeVNumReadsBackAsALimitedItem()
+        {
+            var packet = (IvnPacket)Deserializer.Deserialize("ivn 7 2.-4115.0.0.0");
+
+            Assert.AreEqual((short)4115, packet.IvnSubPackets![0].VNum);
+            Assert.IsTrue(packet.IvnSubPackets[0].IsLimited);
         }
 
         [TestMethod]
@@ -182,6 +207,8 @@ namespace NosCore.Packets.Tests
             var packet = (EInfoCostumeHatPacket)deserializer.Deserialize(line);
 
             Assert.AreEqual(TradeRestriction.NotTradable, packet.TradeRestriction);
+            Assert.AreEqual((short)4115, packet.ItemVNum);
+            Assert.IsTrue(packet.IsLimited);
             Assert.AreEqual(line, Serializer.Serialize(packet));
         }
 
