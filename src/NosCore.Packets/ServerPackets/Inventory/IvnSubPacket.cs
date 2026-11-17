@@ -13,8 +13,20 @@ namespace NosCore.Packets.ServerPackets.Inventory
         [PacketIndex(0)]
         public short Slot { get; set; }
 
-        [PacketIndex(1)]
         public short VNum { get; set; }
+
+        public bool IsLimited { get; set; }
+
+        [PacketIndex(1)]
+        public short WireVNum
+        {
+            get => LimitedItem.ToWire(VNum, IsLimited);
+            set
+            {
+                VNum = LimitedItem.VNum(value);
+                IsLimited = LimitedItem.IsLimited(value);
+            }
+        }
 
         [PacketIndex(2)]
         public short RareAmount { get; set; }

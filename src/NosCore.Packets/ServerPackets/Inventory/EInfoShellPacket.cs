@@ -18,8 +18,20 @@ namespace NosCore.Packets.ServerPackets.Inventory
         [PacketIndex(0)]
         public EInfoPacketType Type { get; set; } = EInfoPacketType.Shell;
 
-        [PacketIndex(1)]
         public short ItemVNum { get; set; }
+
+        public bool IsLimited { get; set; }
+
+        [PacketIndex(1)]
+        public short WireItemVNum
+        {
+            get => LimitedItem.ToWire(ItemVNum, IsLimited);
+            set
+            {
+                ItemVNum = LimitedItem.VNum(value);
+                IsLimited = LimitedItem.IsLimited(value);
+            }
+        }
 
         [PacketIndex(2)]
         public byte Level { get; set; }
