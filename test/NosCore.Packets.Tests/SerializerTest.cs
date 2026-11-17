@@ -1193,12 +1193,29 @@ namespace NosCore.Packets.Tests
                 Direction = 2,
                 Unknown1 = 0,
                 Music = 0,
-                Unknown2 = 1,
+                MapType = MapType.Normal,
                 Unknown3 = -1,
                 Unknown4 = 0,
                 Unknown5 = 0
             };
             Assert.AreEqual("at 116489 1 76 114 2 0 0 1 -1 0 0", Serializer.Serialize(p));
+        }
+
+        [TestMethod]
+        public void SerializeTimeSpaceRoomAtPacketMatchesTrace()
+        {
+            var p = new AtPacket
+            {
+                CharacterId = 116489,
+                MapId = 4101,
+                PositionX = 14,
+                PositionY = 28,
+                Direction = 2,
+                Music = 50,
+                MapType = MapType.TimeSpace,
+                Unknown3 = -1
+            };
+            Assert.AreEqual("at 116489 4101 14 28 2 0 50 2 -1 0 0", Serializer.Serialize(p));
         }
 
         [TestMethod]

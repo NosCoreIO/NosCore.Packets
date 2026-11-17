@@ -34,7 +34,7 @@ namespace NosCore.Packets.ServerPackets.MiniMap
         public int Music { get; set; }
 
         [PacketIndex(7)]
-        public short Unknown2 { get; set; } //TODO to find
+        public MapType MapType { get; set; }
 
         [PacketIndex(8)]
         public short Unknown3 { get; set; } //TODO to find
