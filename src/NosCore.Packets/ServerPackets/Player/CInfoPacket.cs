@@ -25,10 +25,8 @@ namespace NosCore.Packets.ServerPackets.Player
         [PacketIndex(3)]
         public int FamilyId { get; set; }
 
-        // -1 whenever there is a family; without it the client prints a message after the
-        // player's own family tag.
         [PacketIndex(4, SpecialSeparator = ".", IsOptional = true)]
-        public short? FamilyTitle { get; set; }
+        public Game18NConstString? FamilyRank { get; set; }
 
         [PacketIndex(5)]
         public string? FamilyName { get; set; }

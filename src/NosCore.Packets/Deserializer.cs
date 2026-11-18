@@ -554,6 +554,14 @@ namespace NosCore.Packets
 
                         return DeserializeFields(dic, ref matches, ref currentIndex, hasHeader: false, inLine: true, lastInLine: isMaxIndex);
                     }
+                    // An absent sub-packet is written as a lone -1 in place of its joined fields.
+                    if (subPacketSeparator is { Length: > 0 } && matches[currentIndex] == "-1"
+                        && prop.GetProperties().Count(p => p.GetCustomAttribute<PacketIndexAttribute>() != null) > 1)
+                    {
+                        currentIndex++;
+                        return null;
+                    }
+
                     var subPacketContent = matches[currentIndex].Replace(subPacketSeparator ?? (prop.GetCustomAttribute<PacketHeaderAttribute>() == null ? "." : "^"), " ");
                     // A value field with its own separator ("vnum.current/total") is split on that one too.
                     foreach (var fieldSeparator in prop.GetProperties()

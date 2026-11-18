@@ -11,6 +11,7 @@ using NosCore.Packets.Enumerations;
 using NosCore.Packets.ServerPackets.Entities;
 using NosCore.Packets.ServerPackets.Inventory;
 using NosCore.Packets.ServerPackets.Parcel;
+using NosCore.Packets.ServerPackets.Player;
 using NosCore.Packets.ServerPackets.TimeSpaces;
 using NosCore.Packets.ServerPackets.Visibility;
 using NosCore.Shared.Enumerations;
@@ -146,6 +147,56 @@ namespace NosCore.Packets.Tests
 
             Assert.AreEqual((sbyte)-2, packet.InCharacterSubPacket!.ArmorUpgradeRareSubPacket!.Rare);
             Assert.AreEqual(line, Serializer.Serialize(packet));
+        }
+
+        [TestMethod]
+        public void APlayerInAFamilyCarriesTheFamilyRankAndTheBareFamilyName()
+        {
+            const string line = "in 1 Alice - 6805743 75 3 2 0 0 1 8 3 4642.8647.8631.8639.8687.4132.8680.8682.8748.4443.8696 100 100 0 -1 4 4 0 43 0 3728 77 78 1618.917 Testers 27 0 0 0 5 99 30 0|0|0 0 0 100 99 0";
+            var deserializer = new Deserializer(PacketCorpus.SerializableTypes.Where(t => t.Namespace!.StartsWith("NosCore.Packets.ServerPackets.Visibility") || t.Namespace!.StartsWith("NosCore.Packets.ServerPackets.Inventory")));
+
+            var packet = (InPacket)deserializer.Deserialize(line);
+
+            var character = packet.InCharacterSubPacket!;
+            Assert.AreEqual((1618L, Game18NConstString.Familykeeper, "Testers"),
+                (character.FamilySubPacket?.FamilyId, character.FamilySubPacket?.FamilyRank, character.FamilyName));
+            Assert.AreEqual(line, Serializer.Serialize(packet));
+        }
+
+        [TestMethod]
+        public void APlayerWithoutAFamilySendsOneMinusOneAndADash()
+        {
+            const string line = "in 1 Bob - 12738248 71 78 2 0 0 0 38 1 337.4918.4900.4911.227.4132.4441.478.8699.4443.-1 100 100 0 -1 4 4 0 43 0 0 97 87 -1 - 23 0 0 0 0 85 0 0|0|0 0 0 100 1 9372";
+            var deserializer = new Deserializer(PacketCorpus.SerializableTypes.Where(t => t.Namespace!.StartsWith("NosCore.Packets.ServerPackets.Visibility") || t.Namespace!.StartsWith("NosCore.Packets.ServerPackets.Inventory")));
+
+            var packet = (InPacket)deserializer.Deserialize(line);
+
+            Assert.AreEqual(((FamilySubPacket?)null, (string?)null),
+                (packet.InCharacterSubPacket!.FamilySubPacket, packet.InCharacterSubPacket.FamilyName));
+            Assert.AreEqual(line, Serializer.Serialize(packet));
+        }
+
+        [TestMethod]
+        public void TheOwnCharacterInfoWithoutAFamilyHasNoRank()
+        {
+            Assert.AreEqual("c_info Tester - -1 -1 - 14293841 0 0 2 100 2 19 0 13 0 0 0 0 0 -1",
+                Serializer.Serialize(new CInfoPacket
+                {
+                    Name = "Tester",
+                    GroupId = -1,
+                    FamilyId = -1,
+                    FamilyRank = null,
+                    FamilyName = null,
+                    CharacterId = 14293841,
+                    Authority = AuthorityType.User,
+                    Gender = GenderType.Male,
+                    HairStyle = HairStyleType.HairStyleC,
+                    HairColor = (HairColorType)100,
+                    Class = CharacterClassType.Archer,
+                    Icon = 19,
+                    Morph = 13,
+                    Unknown3 = -1,
+                }));
         }
 
         [TestMethod]
