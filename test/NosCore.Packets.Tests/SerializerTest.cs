@@ -769,20 +769,20 @@ namespace NosCore.Packets.Tests
             new Serializer(new[] { typeof(ServerGidxPacket) });
 
         [TestMethod]
-        public void SerializeGidxWithTheCurrentClientShape()
+        public void SerializeGidxWithTheMembersRankAndTheBareFamilyName()
         {
             var packet = ServerSerializer.Serialize(new ServerGidxPacket
             {
                 VisualType = VisualType.Player,
-                VisualId = 1,
-                FamilyId = 3,
-                Unknown = -1,
-                FamilyName = "testers(Familyhead)",
-                FamilyLevel = 1,
+                VisualId = 14819755,
+                FamilyId = 7752,
+                FamilyRank = Game18NConstString.Familykeeper,
+                FamilyName = "Testers",
+                FamilyLevel = 11,
                 FamilyIcons = { 0, 0, 0 }
             });
 
-            Assert.AreEqual("gidx 1 1 3.-1 testers(Familyhead) 1 0|0|0", packet);
+            Assert.AreEqual("gidx 1 14819755 7752.917 Testers 11 0|0|0", packet);
         }
 
         [TestMethod]
@@ -791,13 +791,14 @@ namespace NosCore.Packets.Tests
             var packet = ServerSerializer.Serialize(new ServerGidxPacket
             {
                 VisualType = VisualType.Player,
-                VisualId = 741328,
+                VisualId = 14883192,
                 FamilyId = null,
-                FamilyName = "-",
-                FamilyLevel = 0
+                FamilyName = null,
+                FamilyLevel = 0,
+                FamilyIcons = { 0, 0, 0 }
             });
 
-            Assert.AreEqual("gidx 1 741328 -1 - 0 ", packet);
+            Assert.AreEqual("gidx 1 14883192 -1 - 0 0|0|0", packet);
         }
 
         [TestMethod]
@@ -1105,7 +1106,7 @@ namespace NosCore.Packets.Tests
             var characterTest = CharacterInPacket();
             var packet = Serializer.Serialize(characterTest);
             Assert.AreEqual(
-                "in 1 characterTest - 0 0 0 0 2 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 0 0 0 -1.-1 - 1 0 0 0 0 1 0 0|0|0 0 0 10 0 0",
+                "in 1 characterTest - 0 0 0 0 2 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 0 0 0 -1 - 1 0 0 0 0 1 0 0|0|0 0 0 10 0 0",
                 packet);
         }
 
@@ -1114,7 +1115,7 @@ namespace NosCore.Packets.Tests
         {
             var characterTest = CharacterInPacket(InFactionType.Demon);
             Assert.AreEqual(
-                "in 1 characterTest - 0 0 0 0 2 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 0 0 0 -1.-1 - 1 0 0 4 0 1 0 0|0|0 0 0 10 0 0",
+                "in 1 characterTest - 0 0 0 0 2 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 0 0 0 -1 - 1 0 0 4 0 1 0 0|0|0 0 0 10 0 0",
                 Serializer.Serialize(characterTest));
         }
 
@@ -1124,7 +1125,7 @@ namespace NosCore.Packets.Tests
             var characterTest = CharacterInPacket();
             characterTest.InCharacterSubPacket!.Morph = 2369;
             Assert.AreEqual(
-                "in 1 characterTest - 0 0 0 0 2 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 2369 0 0 -1.-1 - 1 0 0 0 0 1 0 0|0|0 0 0 10 0 0",
+                "in 1 characterTest - 0 0 0 0 2 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 0 0 -1 0 0 0 0 0 2369 0 0 -1 - 1 0 0 0 0 1 0 0|0|0 0 0 10 0 0",
                 Serializer.Serialize(characterTest));
         }
 
@@ -1162,7 +1163,7 @@ namespace NosCore.Packets.Tests
                     Morph = 0,
                     WeaponUpgradeRareSubPacket = new UpgradeRareSubPacket(),
                     ArmorUpgradeRareSubPacket = new UpgradeRareSubPacket(),
-                    FamilySubPacket = new FamilySubPacket(),
+                    FamilySubPacket = null,
                     FamilyName = null,
                     ReputIco = 1,
                     Invisible = false,
@@ -1628,15 +1629,15 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
-        public void SerializeCInfoPacketWithFamilyMatchesTrace()
+        public void SerializeCInfoPacketWithTheMembersRankAndTheBareFamilyName()
         {
             var packet = Serializer.Serialize(new CInfoPacket
             {
                 Name = "Me",
                 GroupId = -1,
                 FamilyId = 5052,
-                FamilyTitle = -1,
-                FamilyName = "-Nemesis-(Membre)",
+                FamilyRank = Game18NConstString.Member,
+                FamilyName = "-Nemesis-",
                 CharacterId = 1,
                 Authority = AuthorityType.User,
                 Gender = GenderType.Male,
@@ -1645,7 +1646,7 @@ namespace NosCore.Packets.Tests
                 Class = CharacterClassType.Adventurer
             });
 
-            Assert.AreEqual("c_info Me - -1 5052.-1 -Nemesis-(Membre) 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0", packet);
+            Assert.AreEqual("c_info Me - -1 5052.918 -Nemesis- 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0", packet);
         }
 
         [TestMethod]

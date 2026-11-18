@@ -333,7 +333,9 @@ namespace NosCore.Packets
                 //handle enum
                 case var t when (t.BaseType?.Equals(typeof(Enum)) ?? false) ||
                     (Nullable.GetUnderlyingType(t)?.IsEnum ?? false):
-                    specificTypeExpression = EnumSerializer(specificTypeExpression, propertySplitter);
+                    // A nullable enum gets its separator from the nullable wrapper below.
+                    specificTypeExpression = EnumSerializer(specificTypeExpression,
+                        Nullable.GetUnderlyingType(t) != null ? Expression.Constant(null, typeof(string)) : propertySplitter);
                     break;
                 //handle list
                 case var t when t.GetInterface("System.Collections.ICollection") != null:

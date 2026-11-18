@@ -5,6 +5,7 @@
 // -----------------------------------
 
 using NosCore.Packets.Attributes;
+using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Visibility
 {
@@ -14,6 +15,6 @@ namespace NosCore.Packets.ServerPackets.Visibility
         public long? FamilyId { get; set; }
 
         [PacketIndex(1)]
-        public short? Title { get; set; }
+        public Game18NConstString? FamilyRank { get; set; }
     }
 }

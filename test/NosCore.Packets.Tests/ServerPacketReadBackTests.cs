@@ -68,13 +68,13 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
-        [DataRow("in 1 Alice - 104 80 116 2 0 0 0 0 1 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1 100 100 0 -1 0 0 0 0 0 0 0 0 -1.-1 - 1 0 0 0 0 1 0 0|0|0 0 0 100 0 0")]
+        [DataRow("in 1 Alice - 104 80 116 2 0 0 0 0 1 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1 100 100 0 -1 0 0 0 0 0 0 0 0 -1 - 1 0 0 0 0 1 0 0|0|0 0 0 100 0 0")]
         [DataRow("in 2 1 1 84 118 0 100 100 0 0 0 -1 1 0 -1 - 0 -1 0 0 0 0 0 0 0 0 0 0 0 0 0")]
         [DataRow("in 3 2 100 30 30 0 100 100 0 0 0 -1 0 0 -1 - 0 -1 0 0 0 0 0 0 0 0 0 0 0 0 0")]
         [DataRow("in 9 2024 100009 81 117 5 0 0 0")]
         [DataRow("n_inv 1 422 0 0 2.0.2024.4.30 2.1.2027.2.700 -1 -1 -1")]
-        [DataRow("c_info Alice - -1 20.-1 Clan(Familyhead) 126 0 0 0 0 0 1 0 0 0 0 0 0 0 0")]
-        [DataRow("gidx 1 100 16.-1 Clan(Familyhead) 1 0|0|0")]
+        [DataRow("c_info Alice - -1 20.915 Clan 126 0 0 0 0 0 1 0 0 0 0 0 0 0 0")]
+        [DataRow("gidx 1 100 16.915 Clan 1 0|0|0")]
         [DataRow("ghis 0 4|Bob|600|0 6|Bob|30|0")]
         [DataRow("gmbr 0 100|16|Alice|1|1|0|0|1|0 101|16|Bob|1|1|1|0|1|0")]
         [DataRow("post 1 1 0 0 0 2611150101 Alice Lunch")]
