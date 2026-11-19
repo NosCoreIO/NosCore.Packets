@@ -266,7 +266,8 @@ namespace NosCore.Packets
             var candidates = shared.Where(creator => StartsWith(creator, firstToken)).ToList();
             if (candidates.Count == 0)
             {
-                candidates.Add(shared[0]);
+                // A shape that leaves its first field at the default reads the lines no other shape claims.
+                candidates.Add(shared.FirstOrDefault(creator => !ClaimsFirstField(creator)) ?? shared[0]);
             }
 
             if (candidates.Count == 1)
@@ -322,6 +323,19 @@ namespace NosCore.Packets
             {
                 return false;
             }
+        }
+
+        private static bool ClaimsFirstField(TypeCreator creator)
+        {
+            var first = creator.PacketDeserializerDictionary.Keys.FirstOrDefault(s => s.Item2.Index == 0);
+            if (first == null || creator.PacketType?.GetProperty(first.Item3) is not { } property
+                || creator.Constructor?.DynamicInvoke() is not { } fresh)
+            {
+                return false;
+            }
+
+            var unset = first.Item1.IsValueType ? Activator.CreateInstance(first.Item1) : null;
+            return !Equals(property.GetValue(fresh), unset);
         }
 
         private readonly ConcurrentDictionary<List<TypeCreator>, Serializer> _sharedWriters = new();
