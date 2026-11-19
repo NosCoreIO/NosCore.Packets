@@ -4,6 +4,7 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NosCore.Packets.Enumerations;
 using NosCore.Packets.ServerPackets.Chats;
@@ -44,6 +45,24 @@ namespace NosCore.Packets.Tests
             Assert.AreEqual((-1L, SayColorType.Yellow, Game18NConstString.Administrator, (short)999),
                 (packet.VisualId, packet.Type, packet.Message, packet.ArgumentType));
             Assert.AreEqual(MaintenanceLine, Serializer.Serialize(packet));
+        }
+
+        [TestMethod]
+        [DataRow("The servers will be shutdown in 5 minutes for the weekly maintenance.")]
+        [DataRow("The servers will be shutdown in 005 minutes for the weekly maintenance.")]
+        public void AnAnnouncementReadsAsOneTextWithItsDigitsAsWritten(string text)
+        {
+            var packet = (Sayi2Packet)Deserializer.Deserialize($"sayi2 1 -1  10 90 999 {text}  ");
+
+            CollectionAssert.AreEqual(new object[] { text }, packet.Game18NArguments.ToArray());
+        }
+
+        [TestMethod]
+        public void AnotherArgumentTypeStillReadsItsArgumentsOneByOne()
+        {
+            var packet = (Sayi2Packet)Deserializer.Deserialize("sayi2 1 14882169 12 413 9 163 Gold");
+
+            CollectionAssert.AreEqual(new object[] { 163L, "Gold" }, packet.Game18NArguments.ToArray());
         }
 
         [TestMethod]
