@@ -168,6 +168,12 @@ namespace NosCore.Packets
 
             var propertyGetterExpression = Expression.Property(paramExpression, propertyName);
 
+            // A field computed from the others is read past and not stored.
+            if (propertyGetterExpression.Member is PropertyInfo { CanWrite: false })
+            {
+                return Expression.Lambda(Expression.Empty(), paramExpression, paramExpression2).Compile();
+            }
+
             return Expression.Lambda
             (
                 Expression.Assign(propertyGetterExpression, paramExpression2), paramExpression, paramExpression2
@@ -431,8 +437,10 @@ namespace NosCore.Packets
                         }
 
                         var reserved = properties.Skip(position + 1).Count(later => !later.Key.Item2.IsOptional);
-                        var value = DeserializeValue(packetBasePropertyInfo.Key, packetBasePropertyInfo.Key.Item1,
-                            ref matches, ref trueIndex, isMaxIndex, reserved);
+                        var value = IsFreeText(dic.PacketType, packetBasePropertyInfo.Key.Item3, deg)
+                            ? ReadFreeText(matches, ref trueIndex)
+                            : DeserializeValue(packetBasePropertyInfo.Key, packetBasePropertyInfo.Key.Item1,
+                                ref matches, ref trueIndex, isMaxIndex, reserved);
 
                         packetBasePropertyInfo.Value.DynamicInvoke(deg, value);
                     }
@@ -469,6 +477,27 @@ namespace NosCore.Packets
 
             var value = packetType.GetProperty(presentWhen.Field)?.GetValue(packet);
             return presentWhen.Values.Any(expected => Equals(expected, value));
+        }
+
+        private static bool IsFreeText(Type? packetType, string propertyName, IPacket packet)
+        {
+            if (packetType?.GetProperty(propertyName) is not { } property
+                || property.PropertyType != typeof(Game18NArguments)
+                || property.GetCustomAttribute<PacketFreeTextWhenAttribute>() is not { } freeTextWhen)
+            {
+                return false;
+            }
+
+            var value = packetType.GetProperty(freeTextWhen.Field)?.GetValue(packet);
+            return freeTextWhen.Values.Any(expected => Equals(expected, value));
+        }
+
+        // The blanks the server leaves at the end of the line are not part of the text.
+        private static Game18NArguments ReadFreeText(string[] matches, ref int currentIndex)
+        {
+            var text = string.Join(' ', matches.Skip(currentIndex)).TrimEnd();
+            currentIndex = matches.Length;
+            return new Game18NArguments(1) { text };
         }
 
         private static string? JoinedSeparator(Tuple<Type, PacketIndexAttribute, string, IEnumerable<ValidationAttribute>> property) =>

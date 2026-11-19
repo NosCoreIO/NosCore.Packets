@@ -19,14 +19,10 @@ namespace NosCore.Packets.ServerPackets.Chats
         [PacketIndex(1)]
         public long VisualId { get; set; }
 
-        // A line without a sender leaves an empty field after the id; it follows VisualId, so there is nothing to set.
+        // A line without a sender leaves an empty field after the id.
         [PacketIndex(2, IsOptional = true)]
         [PacketPresentWhen(nameof(VisualId), -1L)]
-        public string? ExtraSpace
-        {
-            get => VisualId == -1 ? string.Empty : null;
-            set { }
-        }
+        public string? ExtraSpace => VisualId == -1 ? string.Empty : null;
 
         [PacketIndex(3)]
         public SayColorType Type { get; set; }
@@ -37,8 +33,8 @@ namespace NosCore.Packets.ServerPackets.Chats
         [PacketIndex(5)]
         public short ArgumentType { get; set; }
 
-        // ArgumentType 999 reads one free text, spaces included.
         [PacketIndex(6)]
+        [PacketFreeTextWhen(nameof(ArgumentType), (short)999)]
         public Game18NArguments Game18NArguments { get; set; } = new(1);
     }
 }
