@@ -55,6 +55,9 @@ namespace NosCore.Packets.Enumerations
         RainbowBattleCapture = 504,
         RainbowBattleUnfreeze = 505,
         EventInWaiting = 506, 
+        // Sent with no arguments when the player opens the Instant Combat question from its notification
+        // icon; the answer itself is the question's yes packet.
+        InstantCombatQuestionOpened = 508,
         RemoveLaurenaMorph = 513,
         Wedding = 603,
         SearchHiddenTimeSpace = 700,

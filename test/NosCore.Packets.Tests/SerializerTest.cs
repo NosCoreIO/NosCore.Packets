@@ -1067,6 +1067,18 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
+        public void OpeningTheInstantCombatQuestionIsAValidGuri()
+        {
+            var deserializer = new Deserializer(new[] { typeof(NosCore.Packets.ClientPackets.UI.GuriPacket) });
+
+            var packet = (NosCore.Packets.ClientPackets.UI.GuriPacket)deserializer.Deserialize("guri 508");
+
+            Assert.IsTrue(packet.IsValid);
+            Assert.AreEqual(GuriPacketType.InstantCombatQuestionOpened, packet.Type);
+            Assert.IsNull(packet.Argument);
+        }
+
+        [TestMethod]
         public void I18NargumentAreWellFormatedWithLength()
         {
             var mapItem = new SayiPacket
