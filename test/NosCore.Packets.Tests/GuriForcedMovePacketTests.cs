@@ -81,5 +81,17 @@ namespace NosCore.Packets.Tests
         {
             Assert.IsInstanceOfType(Deserializer.Deserialize(line), typeof(GuriPacket));
         }
+
+        [TestMethod]
+        [DataRow("guri 201 0")]
+        [DataRow("guri 1502 0")]
+        [DataRow("guri 508 0")]
+        [DataRow("guri 3 1 9836127 13 169 3 2 2 -1 1")]
+        public void AClientGuriRegisteredAfterTheServerOnesIsReadAsTheClientPacket(string line)
+        {
+            var server = new Deserializer(new[] { typeof(GuriPacket), typeof(GuriForcedMovePacket), typeof(ClientPackets.UI.GuriPacket) });
+
+            Assert.IsInstanceOfType(server.Deserialize(line), typeof(ClientPackets.UI.GuriPacket));
+        }
     }
 }
