@@ -122,6 +122,7 @@ namespace NosCore.Packets
                 }
 
                 _packetDeserializerDictionary.Remove(header ?? typeof(T).Name);
+                _sharedHeaders.Remove(header ?? typeof(T).Name);
             }
 
             var creator = CreateTypeCreator<T>();
