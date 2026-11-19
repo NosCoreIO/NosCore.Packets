@@ -12,7 +12,9 @@ namespace NosCore.Packets.Enumerations
     {
         Shadow = 0,
         Dance = 2,
+        [Obsolete("Use ForcedMove.")]
         Script = 3,
+        ForcedMove = 3,
         HPMPBonus = 4,
         // What the client sends back from a TextInput window; Argument repeats the window's.
         TextInputReply = 4,

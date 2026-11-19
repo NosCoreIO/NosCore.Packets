@@ -9,7 +9,7 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    [PacketHeader("guri", Scope.InGame)]
+    [PacketHeader("guri", Scope.InGame, AllowDuplicateHeader = true)]
     public class GuriPacket : PacketBase
     {
         [PacketIndex(0)]

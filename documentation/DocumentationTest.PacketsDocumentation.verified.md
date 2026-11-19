@@ -307,6 +307,7 @@
 - [ca_t](../src/NosCore.Packets/ServerPackets/Entities/CatPacket.cs) *InGame*
 - [char_sc](../src/NosCore.Packets/ServerPackets/Entities/CharScPacket.cs) *InGame*
 - [drop](../src/NosCore.Packets/ServerPackets/Entities/DropPacket.cs) *InGame*
+- [guri](../src/NosCore.Packets/ServerPackets/Entities/GuriForcedMovePacket.cs) *InGame*
 - [mv](../src/NosCore.Packets/ServerPackets/Entities/MovePacket.cs) *InGame*
 - [out](../src/NosCore.Packets/ServerPackets/Entities/OutPacket.cs) *InGame*
 - [req_info](../src/NosCore.Packets/ServerPackets/Entities/ReqInfoPacket.cs) *InGame | WhileDead*
