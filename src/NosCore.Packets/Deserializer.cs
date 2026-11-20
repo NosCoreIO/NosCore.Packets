@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -226,9 +227,11 @@ namespace NosCore.Packets
                 var packetstring = packetContent.Replace('^', ' ').TrimEnd();
                 var position = 0;
                 var first = NextField(packetstring, ref position)!;
-                var includesKeepAliveIdentity = ushort.TryParse(first, out var keepalive);
+                var includesKeepAliveIdentity = ushort.TryParse(first, NumberStyles.Integer, CultureInfo.InvariantCulture, out var keepalive);
                 var header = includesKeepAliveIdentity ? NextField(packetstring, ref position) ?? throw new InvalidOperationException("A line holds a keep-alive number and no header.") : first;
                 var firstToken = NextField(packetstring, ref position);
+                // The body of an unknown line starts after its header as written, '#' included.
+                var headerLength = header.Length;
                 if (header.Length >= 1 && header[0] is '/' or ':' or ';' or '#')
                 {
                     if (header[0] == '#')
@@ -239,6 +242,7 @@ namespace NosCore.Packets
                     else
                     {
                         header = header[0].ToString();
+                        headerLength = 1;
                         packetContent = packetContent.Insert(packetContent.IndexOf(header[0]) + 1, " ");
                     }
                 }
@@ -254,7 +258,7 @@ namespace NosCore.Packets
                     return packet;
                 }
 
-                var bodyIndex = (includesKeepAliveIdentity ? first.Length + 2 : 1) + header.Length;
+                var bodyIndex = (includesKeepAliveIdentity ? first.Length + 2 : 1) + headerLength;
                 return new UnresolvedPacket
                 {
                     Header = header,
@@ -492,6 +496,8 @@ namespace NosCore.Packets
                 }
                 else if (isMaxIndex && field.Type == typeof(string))
                 {
+                    // Null even where the property is not nullable: that is what makes validation reject a line
+                    // missing a required name.
                     set(deg, null);
                 }
                 else if (field.Index.IsOptional && field.Underlying != null)
@@ -558,7 +564,7 @@ namespace NosCore.Packets
                     while (currentIndex < argumentEnd)
                     {
                         var token = matches[currentIndex++];
-                        g18n.Add(long.TryParse(token, out var longValue) ? longValue : token);
+                        g18n.Add(long.TryParse(token, NumberStyles.Integer, CultureInfo.InvariantCulture, out var longValue) ? longValue : token);
                     }
                     return g18n;
                 case FieldKind.Array:
@@ -585,7 +591,7 @@ namespace NosCore.Packets
                 case FieldKind.Value when field.Index.IsOptional && matches[currentIndex] == "-1"
                     && field.Underlying is { IsPrimitive: true } underlying:
                     currentIndex++;
-                    return Convert.ChangeType(-1, underlying);
+                    return Convert.ChangeType(-1, underlying, CultureInfo.InvariantCulture);
                 default:
                     return DeserializeDefault(field, matches[currentIndex++]);
             }
@@ -641,13 +647,14 @@ namespace NosCore.Packets
             var packetIndexAttribute = field.Index;
             var isPacketList = typeof(IPacket).IsAssignableFrom(subType);
             var listSeparator = packetIndexAttribute.SpecialSeparator ?? ".";
-            var newIndex = currentIndex;
             var length = packetIndexAttribute is PacketListIndexAttribute listIndex ? listIndex.Length : 0;
+            var untilLastToken = false;
+            var lastToken = matches.Length;
             string[]? splited = null;
 
             if (length < 0)
             {
-                length = sbyte.Parse(matches[currentIndex + length]);
+                length = int.Parse(matches[currentIndex + length], NumberStyles.Integer, CultureInfo.InvariantCulture);
             }
             else
             {
@@ -664,32 +671,26 @@ namespace NosCore.Packets
                 {
                     // A list written with no separator holds one character per item ("011").
                     splited = matches[currentIndex].Select(character => character.ToString()).ToArray();
-                    length = (sbyte)splited.Length;
+                    length = splited.Length;
                 }
                 else if (isMaxIndex && string.IsNullOrWhiteSpace(separator))
                 {
-                    var lastToken = matches.Length;
+                    // A client line can end with a space, which would otherwise read as one more empty item.
                     while (lastToken > currentIndex && matches[lastToken - 1].Length == 0)
                     {
                         lastToken--;
                     }
 
-                    // A client line can end with a space, which would otherwise read as one more empty item.
-                    var remainingTokens = lastToken - currentIndex;
-                    // Sub-packets whose fields are space-separated span several tokens each
-                    // (exc_list's "type slot amount"), so the item count is tokens / fields.
-                    var subPacketCreator = isPacketList && remainingTokens > 0
-                        && !field.ElementLayout.IsJoined(matches[currentIndex], listSeparator)
-                        ? CreatorOf(subType)
-                        : null;
-                    var tokensPerItem = subPacketCreator == null ? 1 : subPacketCreator.PropertyAmount + 1;
-                    length = (sbyte)((remainingTokens + tokensPerItem - 1) / tokensPerItem);
+                    // Sub-packets whose fields are space-separated span several tokens each (exc_list's "type slot
+                    // amount"), and an absent one only its "-1", so the items run to the end of the line.
+                    untilLastToken = isPacketList;
+                    length = lastToken - currentIndex;
                 }
 
                 if (!string.IsNullOrWhiteSpace(separator))
                 {
                     splited = matches[currentIndex].Split(separator, StringSplitOptions.RemoveEmptyEntries);
-                    length = (sbyte)splited.Length;
+                    length = splited.Length;
                 }
                 else if (length == 0 && !isMaxIndex && separator == null && isPacketList)
                 {
@@ -717,7 +718,7 @@ namespace NosCore.Packets
                     else
                     {
                         var end = currentIndex;
-                        while (end < currentIndex + available && long.TryParse(matches[end], out _))
+                        while (end < currentIndex + available && long.TryParse(matches[end], NumberStyles.Integer, CultureInfo.InvariantCulture, out _))
                         {
                             end++;
                         }
@@ -733,65 +734,73 @@ namespace NosCore.Packets
             }
 
             var list = new List<object?>(length);
-            var creator = isPacketList ? CreatorOf(subType) : null;
-            for (var i = 0; i < length; i++)
+            if (isPacketList)
             {
-                if (isPacketList)
+                ReadPackets(field, list, splited, matches, ref currentIndex, length, untilLastToken ? lastToken : -1);
+            }
+            else
+            {
+                for (var i = 0; i < length; i++)
                 {
-                    if (creator == null)
-                    {
-                        continue;
-                    }
+                    var value = long.Parse(splited != null ? splited[i] : matches[currentIndex + i], NumberStyles.Integer, CultureInfo.InvariantCulture);
+                    list.Add(value == -1 ? null : Convert.ChangeType(value, Nullable.GetUnderlyingType(subType) ?? subType, CultureInfo.InvariantCulture));
+                }
 
-                    var token = matches[currentIndex + i];
-                    var joined = field.ElementLayout.IsJoined(token, listSeparator);
-                    if (token == "-1")
-                    {
-                        list.Add(null);
-                        if (splited == null)
-                        {
-                            newIndex++;
-                        }
+                currentIndex += splited != null ? 1 : length;
+            }
 
-                        continue;
-                    }
+            return field.FillList(list);
+        }
 
-                    string[] tokens;
-                    if (joined)
-                    {
-                        tokens = SplitJoined(token, creator.Layout, listSeparator);
-                    }
-                    else
-                    {
-                        var itemStart = Math.Min(currentIndex + i * (1 + creator.PropertyAmount), matches.Length);
-                        tokens = Tokenize(matches[itemStart..Math.Min(itemStart + creator.PropertyAmount + 1, matches.Length)]);
-                    }
+        // Reads a list's sub-packets: one per part of the token when the list has its own separator, otherwise from
+        // the line's tokens, where an item is its "-1" when absent, one token when its fields are joined, or one
+        // token per field. With lastToken set, the items run to that token rather than to a count.
+        private void ReadPackets(PacketField field, List<object?> list, string[]? splited, string[] matches, ref int currentIndex,
+            int length, int lastToken)
+        {
+            var listSeparator = field.Index.SpecialSeparator ?? ".";
+            if (CreatorOf(field.ElementType!) is not { } creator)
+            {
+                currentIndex += splited != null ? 1 : 0;
+                return;
+            }
 
-                    list.Add(DeserializeIPacket(creator, tokens, 0, false));
+            var position = currentIndex;
+            for (var i = 0; lastToken >= 0 ? position < lastToken : i < length; i++)
+            {
+                // A count can promise more items than the line holds.
+                if (splited == null && position >= matches.Length)
+                {
+                    break;
+                }
 
-                    if (splited == null)
-                    {
-                        newIndex += joined ? 1 : 1 + creator.PropertyAmount;
-                    }
+                var token = splited != null ? splited[i] : matches[position];
+                string[] tokens;
+                if (token == "-1")
+                {
+                    list.Add(null);
+                    position++;
+                    continue;
+                }
+
+                if (splited != null || field.ElementLayout.IsJoined(token, listSeparator))
+                {
+                    tokens = field.ElementLayout.IsJoined(token, listSeparator)
+                        ? SplitJoined(token, creator.Layout, listSeparator)
+                        : Tokenize(new[] { token });
+                    position++;
                 }
                 else
                 {
-                    var value = long.Parse(splited != null ? splited[i] : matches[currentIndex + i]);
-                    list.Add(value == -1 ? null : Convert.ChangeType(value, Nullable.GetUnderlyingType(subType) ?? subType));
-                    if (splited == null)
-                    {
-                        newIndex++;
-                    }
+                    var itemEnd = Math.Min(position + creator.PropertyAmount + 1, matches.Length);
+                    tokens = Tokenize(matches[position..itemEnd]);
+                    position = itemEnd;
                 }
+
+                list.Add(DeserializeIPacket(creator, tokens, 0, false));
             }
 
-            if (splited != null)
-            {
-                newIndex++;
-            }
-
-            currentIndex = newIndex;
-            return field.FillList(list);
+            currentIndex = splited != null ? currentIndex + 1 : position;
         }
 
         // Splits a sub-packet written as one token into a token per field. When the line carries fewer fields
@@ -850,7 +859,7 @@ namespace NosCore.Packets
         private static object? DeserializeDefault(PacketField field, string value) =>
             (value == "-1" && !field.Type.IsPrimitive) || IsAbsentOptional(field, value)
                 ? field.Default
-                : Convert.ChangeType(value, field.Underlying ?? field.Type);
+                : Convert.ChangeType(value, field.Underlying ?? field.Type, CultureInfo.InvariantCulture);
 
         private static string? DeserializeString(string[] matches, ref int currentIndex, bool isMaxIndex)
         {

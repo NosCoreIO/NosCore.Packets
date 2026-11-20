@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -66,11 +67,12 @@ namespace NosCore.Packets
 
         private Expression DefaultSerializer(Expression specificTypeExpression, Expression splitter)
         {
-            // A number is written with its own ToString rather than boxed for string.Concat to call it.
+            // A number is written with its own ToString rather than boxed for Text to format it.
             if (specificTypeExpression.Type.IsPrimitive)
             {
                 specificTypeExpression = Expression.Call(specificTypeExpression,
-                    specificTypeExpression.Type.GetMethod(nameof(ToString), Type.EmptyTypes)!);
+                    specificTypeExpression.Type.GetMethod(nameof(ToString), new[] { typeof(IFormatProvider) })!,
+                    Expression.Constant(CultureInfo.InvariantCulture, typeof(IFormatProvider)));
             }
 
             return ConcatExpression(splitter, specificTypeExpression);
@@ -141,10 +143,16 @@ namespace NosCore.Packets
         private Expression ConcatExpression(Expression left, Expression right)
         {
             return Expression.Convert(Expression.Call(
-                typeof(string).GetMethod("Concat", new[] { typeof(object), typeof(object) })!,
-                Expression.Convert(left, typeof(object)),
-                Expression.Convert(right, typeof(object))), typeof(object));
+                typeof(string).GetMethod(nameof(string.Concat), new[] { typeof(string), typeof(string) })!,
+                Expression.Call(TextMethod, Expression.Convert(left, typeof(object))),
+                Expression.Call(TextMethod, Expression.Convert(right, typeof(object)))), typeof(object));
         }
+
+        private static readonly MethodInfo TextMethod = typeof(Serializer).GetMethod(nameof(Text), BindingFlags.NonPublic | BindingFlags.Static)!;
+
+        // The wire format does not depend on the culture of the machine writing it.
+        private static string? Text(object? value) =>
+            value is IFormattable formattable ? formattable.ToString(null, CultureInfo.InvariantCulture) : value?.ToString();
 
         private Expression BooleanSerializer(Expression exp, Expression splitter)
         {
