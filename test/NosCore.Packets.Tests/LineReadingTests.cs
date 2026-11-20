@@ -22,13 +22,14 @@ namespace NosCore.Packets.Tests
 
         private static readonly Serializer Serializer = new(new[]
         {
-            typeof(StpPacket), typeof(Stp2Packet), typeof(StatPacket), typeof(JoinedListProbePacket),
+            typeof(StpPacket), typeof(Stp2Packet), typeof(StatPacket), typeof(JoinedListProbePacket), typeof(SpanProbePacket),
         });
 
         private static readonly Deserializer Deserializer = new(new[]
         {
             typeof(StpPacket), typeof(Stp2Packet), typeof(StpSubPacket), typeof(StatPacket), typeof(JoinedListProbePacket),
-            typeof(JoinedListProbeSubPacket),
+            typeof(JoinedListProbeSubPacket), typeof(CountProbePacket),
+            typeof(SpanProbePacket), typeof(SpanProbeSubPacket),
         });
 
         [TestMethod]
@@ -40,6 +41,24 @@ namespace NosCore.Packets.Tests
             Assert.AreEqual((779, (byte)3, (byte)3, (short)-1),
                 (stp.SubPackets[147]!.SkillId, stp.SubPackets[147]!.Rank1, stp.SubPackets[147]!.Rank2, stp.SubPackets[147]!.Unknown));
             Assert.AreEqual(StpLine, Serializer.Serialize(stp));
+        }
+
+        [TestMethod]
+        public void AHugeCountReservesNothingBeyondTheLine()
+        {
+            var read = (CountProbePacket)Deserializer.Deserialize($"count_probe {int.MaxValue} 1.2");
+
+            Assert.AreEqual(1, read.Items!.Count);
+        }
+
+        [TestMethod]
+        public void AFieldJoinedToTheOneBeforeItTakesNoTokenOfItsOwn()
+        {
+            var read = (SpanProbePacket)Deserializer.Deserialize("span_probe 1 2/3 4 5/6");
+
+            Assert.AreEqual(2, read.Items!.Count);
+            Assert.AreEqual((4, 5, 6), (read.Items[1]!.First, read.Items[1]!.Second, read.Items[1]!.Third));
+            Assert.AreEqual("span_probe 1 2/3 4 5/6", Serializer.Serialize(read));
         }
 
         [TestMethod]
@@ -105,6 +124,35 @@ namespace NosCore.Packets.Tests
     {
         [PacketListIndex(0, ListSeparator = "|")]
         public List<JoinedListProbeSubPacket?>? Items { get; set; }
+    }
+
+    [PacketHeader("count_probe", Scope.InGame)]
+    public class CountProbePacket : PacketBase
+    {
+        [PacketIndex(0)]
+        public int Amount { get; set; }
+
+        [PacketListIndex(1, Length = -1)]
+        public List<JoinedListProbeSubPacket?>? Items { get; set; }
+    }
+
+    [PacketHeader("span_probe", Scope.InGame)]
+    public class SpanProbePacket : PacketBase
+    {
+        [PacketListIndex(0, SpecialSeparator = " ")]
+        public List<SpanProbeSubPacket?>? Items { get; set; }
+    }
+
+    public class SpanProbeSubPacket : PacketBase
+    {
+        [PacketIndex(0)]
+        public int First { get; set; }
+
+        [PacketIndex(1)]
+        public int Second { get; set; }
+
+        [PacketIndex(2, SpecialSeparator = "/")]
+        public int Third { get; set; }
     }
 
     public class JoinedListProbeSubPacket : PacketBase

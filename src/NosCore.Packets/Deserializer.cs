@@ -713,7 +713,7 @@ namespace NosCore.Packets
                     if (isPacketList)
                     {
                         var subPacketCreator = CreatorOf(subType);
-                        length = subPacketCreator == null ? 0 : Math.Max(0, available / (subPacketCreator.PropertyAmount + 1));
+                        length = subPacketCreator == null ? 0 : Math.Max(0, available / subPacketCreator.Layout.TokenSpan);
                     }
                     else
                     {
@@ -733,7 +733,8 @@ namespace NosCore.Packets
                 return null;
             }
 
-            var list = new List<object?>(length);
+            // A count is read from the line, so it never reserves more than the line can hold.
+            var list = new List<object?>(Math.Min(length, splited?.Length ?? Math.Max(0, matches.Length - currentIndex)));
             if (isPacketList)
             {
                 ReadPackets(field, list, splited, matches, ref currentIndex, length, untilLastToken ? lastToken : -1);
@@ -792,9 +793,13 @@ namespace NosCore.Packets
                 }
                 else
                 {
-                    var itemEnd = Math.Min(position + creator.PropertyAmount + 1, matches.Length);
+                    var itemEnd = Math.Min(position + creator.Layout.TokenSpan, matches.Length);
                     tokens = Tokenize(matches[position..itemEnd]);
                     position = itemEnd;
+                    // Read in line so that a field joined to the one before it is split off its token.
+                    var start = 0;
+                    list.Add(DeserializeFields(creator, ref tokens, ref start, hasHeader: false, inLine: true, lastInLine: true));
+                    continue;
                 }
 
                 list.Add(DeserializeIPacket(creator, tokens, 0, false));
