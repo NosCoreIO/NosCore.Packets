@@ -12,13 +12,10 @@ namespace NosCore.Packets.ServerPackets.Quest
     [PacketHeader("script", Scope.InGame)]
     public class ScriptPacket : PacketBase
     {
-        [PacketIndex(0, IsOptional = true)]
-        public byte? Unknown { get; set; }
-
-        [PacketIndex(1)]
+        [PacketIndex(0)]
         public int ScriptId { get; set; }
 
-        [PacketIndex(2)]
+        [PacketIndex(1)]
         public int ScriptStepId { get; set; }
     }
 }

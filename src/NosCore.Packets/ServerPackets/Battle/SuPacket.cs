@@ -58,10 +58,11 @@ namespace NosCore.Packets.ServerPackets.Battle
         [PacketIndex(14)]
         public int SkillTypeMinusOne { get; set; }
 
-        [PacketIndex(15)]
-        public int TargetCurrentHp { get; set; }
+        // A line whose skill is -1 ends after SkillTypeMinusOne.
+        [PacketIndex(15, IsOptional = true)]
+        public int? TargetCurrentHp { get; set; }
 
-        [PacketIndex(16)]
-        public int TargetMaxHp { get; set; }
+        [PacketIndex(16, IsOptional = true)]
+        public int? TargetMaxHp { get; set; }
     }
 }

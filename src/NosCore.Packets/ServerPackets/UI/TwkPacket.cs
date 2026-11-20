@@ -43,6 +43,9 @@ namespace NosCore.Packets.ServerPackets.UI
             set => ServerLanguage = Enum.Parse<RegionType>(value, ignoreCase: true);
         }
 
+        [PacketIndex(7)]
+        public byte Unknown7 { get; set; }
+
         public RegionType ServerLanguage { get; set; }
         public RegionType ClientLanguage { get; set; }
     }

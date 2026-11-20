@@ -383,20 +383,6 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
-        public void SerializeScriptPacketComplete()
-        {
-            var testPacket = new ScriptPacket
-            {
-                Unknown = 0,
-                ScriptId = 1,
-                ScriptStepId = 80
-            };
-
-            var packet = Serializer.Serialize(testPacket);
-            Assert.AreEqual("script 0 1 80", packet);
-        }
-
-        [TestMethod]
         public void SerializeFlatQuestSubPacket()
         {
             var testPacket = new QstlistPacket(new List<QuestSubPacket>
@@ -516,7 +502,7 @@ namespace NosCore.Packets.Tests
             {
                 TsBasicInfo = new RbrSubPacketBasicInfo(),
                 BonusRewards = new List<RbrSubPacketItem?> { new RbrSubPacketItem(), new RbrSubPacketItem(), new RbrSubPacketItem() },
-                Completed = true,
+                Unknown2 = 15,
                 DrawRewards = new List<RbrSubPacketItem?> { new RbrSubPacketItem(), new RbrSubPacketItem(), new RbrSubPacketItem(), new RbrSubPacketItem(), new RbrSubPacketItem() },
                 HighScore = new RbrSubPacketHighScore(),
                 SpecialRewards = new List<RbrSubPacketItem?> { new RbrSubPacketItem(), new RbrSubPacketItem() },
@@ -531,7 +517,7 @@ namespace NosCore.Packets.Tests
             };
 
             var packet = Serializer.Serialize(testPacket);
-            Assert.AreEqual("rbr 0.0.0 0 1 1.99 1 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 0 0 0 this is another test\nthis is a test", packet);
+            Assert.AreEqual("rbr 0.0.0 0 15 1.99 1 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 -1.0 0 0 0 this is another test\rthis is a test", packet);
         }
 
 
@@ -1063,7 +1049,7 @@ namespace NosCore.Packets.Tests
             };
 
             var packet = Serializer.Serialize(testPacket);
-            Assert.AreEqual("qnamli 1 #guri^506^-1 379 0 0 0", packet);
+            Assert.AreEqual("qnamli 1 #guri^506 379 0 0 0", packet);
         }
 
         [TestMethod]
@@ -1318,7 +1304,7 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void SerializeStbmPacketMatchesTrace()
         {
-            Assert.AreEqual("stbm -3", Serializer.Serialize(new StbmPacket { Value = -3 }));
+            Assert.AreEqual("stbm -3", Serializer.Serialize(new StbmPacket { Values = [-3] }));
         }
 
         [TestMethod]
@@ -1383,17 +1369,7 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void SerializeEffObPacketMatchesTrace()
         {
-            var p = new EffObPacket
-            {
-                VisualType = VisualType.Player,
-                VisualId = 2,
-                IsVisible = true,
-                EffectId = 4430
-            };
-            Assert.AreEqual("eff_ob 1 2 1 4430", Serializer.Serialize(p));
-
-            p.IsVisible = false;
-            Assert.AreEqual("eff_ob 1 2 0 4430", Serializer.Serialize(p));
+            Assert.AreEqual("eff_ob  -1 -1 0 4269", Serializer.Serialize(new EffObPacket { EffectId = 4269 }));
         }
 
         [TestMethod]

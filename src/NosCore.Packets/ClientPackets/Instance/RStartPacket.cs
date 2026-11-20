@@ -12,7 +12,8 @@ namespace NosCore.Packets.ClientPackets.Instance
     [PacketHeader("rstart", Scope.InGame)]
     public class RStartPacket : PacketBase
     {
-        [PacketIndex(0)]
-        public RStartPacketType Type { get; set; }
+        // The dialog's No button sends the header alone.
+        [PacketIndex(0, IsOptional = true)]
+        public RStartPacketType? Type { get; set; }
     }
 }

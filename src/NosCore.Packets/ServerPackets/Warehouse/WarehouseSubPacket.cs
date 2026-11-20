@@ -41,5 +41,11 @@ namespace NosCore.Packets.ServerPackets.Warehouse
 
         [PacketIndex(5)]
         public byte Upgrade { get; set; }
+
+        [PacketIndex(6, IsOptional = true)]
+        public short? Unknown6 { get; set; }
+
+        [PacketIndex(7, IsOptional = true)]
+        public short? Unknown7 { get; set; }
     }
 }

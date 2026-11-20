@@ -4,15 +4,17 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
+using System.Collections.Generic;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 
-namespace NosCore.Packets.ClientPackets.Player
+namespace NosCore.Packets.ServerPackets.Player
 {
     [PacketHeader("bpt", Scope.InGame)]
     public class BptPacket : PacketBase
     {
-        [PacketIndex(0)]
-        public long MinutesUntilSeasonEnd { get; set; }
+        // 48 battle-pass countdowns in minutes, such as the season's end; -997 and -999 mark unused ones.
+        [PacketListIndex(0, ListSeparator = " ")]
+        public List<long> MinutesRemaining { get; set; } = [];
     }
 }

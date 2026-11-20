@@ -69,7 +69,9 @@ namespace NosCore.Packets.Enumerations
         ExchangeForChristmasSnowmanRaidSeal = 86, //30 Fresh cake
         ExchangeForChristmasSnowmanRaidSeal2 = 87, //30 Chocolate cake
         ExchangeForChristmasGiftBox = 88, //5 Christmas Stockings
+        GetDailyQuestChristmasSluggJingleBells = 89,
         GetDailyQuestChristmasEvaEnergyHugeSnowman = 90,
+        GetDailyQuestChristmasAlchemyAssociationIceFlowerCrystals = 91,
         GetDailyQuestChristmasSlugg = 30021,
         GetDailyQuestChristmasEvaEnergy = 30023, //Defeat Snowman Raid.
         GetDailyQuestChristmasMalcolmMix = 30024,
@@ -111,6 +113,7 @@ namespace NosCore.Packets.Enumerations
         GetQuestFreshLiverPlease = 178,
         GetQuestFoxysVerdict = 179,
         GetQuestFoxHunt = 180,
+        GetQuestSomeoneWhoKnowsTheTruth = 181,
         GetQuestBewitchedSoldiers = 193,
         ExchangeForCleansingPowder = 194,
 
@@ -118,6 +121,7 @@ namespace NosCore.Packets.Enumerations
             195, //Requires: five Seeds of Damnation. You can collect them in the Cave of Ghosts.
         GetQuestForTheRealmOfHeroes = 196,
         GetQuestRaphaelStory = 197,
+        QuestTwoFacesOfRaphaelGiveBunnyLiverAndRaidBox = 198,
         QuestTwoFacesOfRaphaelGiveOnlyBunnyLiver = 199,
         GetXQuestFromDialog2Quest = 200, //Related with GetXQuest
         GetQuestGingsengDagger = 201,

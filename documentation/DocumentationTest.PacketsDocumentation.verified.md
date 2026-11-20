@@ -118,6 +118,7 @@
 ### Inventory
 - [b_i](../src/NosCore.Packets/ClientPackets/Inventory/BiPacket.cs) *InGame*
 - [isort](../src/NosCore.Packets/ClientPackets/Inventory/ISortPacket.cs) *InGame*
+- [mve2](../src/NosCore.Packets/ClientPackets/Inventory/Mve2Packet.cs) *InGame*
 - [mve](../src/NosCore.Packets/ClientPackets/Inventory/MvePacket.cs) *InGame*
 - [mvi](../src/NosCore.Packets/ClientPackets/Inventory/MviPacket.cs) *InGame*
 - [pdti](../src/NosCore.Packets/ClientPackets/Inventory/PdtiPacket.cs) *InGame*
@@ -169,7 +170,6 @@
 - [bpo](../src/NosCore.Packets/ClientPackets/Player/BpoPacket.cs) *InGame*
 - [bp_open](../src/NosCore.Packets/ClientPackets/Player/BpOpenPacket.cs) *InGame*
 - [bpp](../src/NosCore.Packets/ClientPackets/Player/BppPacket.cs) *InGame*
-- [bpt](../src/NosCore.Packets/ClientPackets/Player/BptPacket.cs) *InGame*
 - [compl](../src/NosCore.Packets/ClientPackets/Player/ComplPacket.cs) *InGame*
 - [eqinfo](../src/NosCore.Packets/ClientPackets/Player/EquipmentInfoPacket.cs) *InTrade | InGame | WhileDead*
 - [npinfo](../src/NosCore.Packets/ClientPackets/Player/NpInfoPacket.cs) *InGame*
@@ -262,9 +262,11 @@
 - [dm](../src/NosCore.Packets/ServerPackets/Battle/DmPacket.cs) *InGame*
 - [ms_c](../src/NosCore.Packets/ServerPackets/Battle/MscPacket.cs) *InGame*
 - [mslot](../src/NosCore.Packets/ServerPackets/Battle/MslotPacket.cs) *InGame*
+- [psr](../src/NosCore.Packets/ServerPackets/Battle/PsrPacket.cs) *InGame*
 - [rank_cool](../src/NosCore.Packets/ServerPackets/Battle/RankCoolPacket.cs) *InGame*
 - [rc](../src/NosCore.Packets/ServerPackets/Battle/RcPacket.cs) *InGame*
 - [revive](../src/NosCore.Packets/ServerPackets/Battle/RevivePacket.cs) *InGame*
+- [rnsc](../src/NosCore.Packets/ServerPackets/Battle/RnscPacket.cs) *InGame*
 - [sr](../src/NosCore.Packets/ServerPackets/Battle/SkillResetPacket.cs) *InGame*
 - [su](../src/NosCore.Packets/ServerPackets/Battle/SuPacket.cs) *InGame*
 - [tbf](../src/NosCore.Packets/ServerPackets/Battle/TbfPacket.cs) *InGame*
@@ -306,6 +308,7 @@
 - [ca_t](../src/NosCore.Packets/ServerPackets/Entities/CatPacket.cs) *InGame*
 - [char_sc](../src/NosCore.Packets/ServerPackets/Entities/CharScPacket.cs) *InGame*
 - [drop](../src/NosCore.Packets/ServerPackets/Entities/DropPacket.cs) *InGame*
+- [guri](../src/NosCore.Packets/ServerPackets/Entities/GuriDancePacket.cs) *InGame*
 - [guri](../src/NosCore.Packets/ServerPackets/Entities/GuriForcedMovePacket.cs) *InGame*
 - [mv](../src/NosCore.Packets/ServerPackets/Entities/MovePacket.cs) *InGame*
 - [out](../src/NosCore.Packets/ServerPackets/Entities/OutPacket.cs) *InGame*
@@ -395,6 +398,7 @@
 - [eff_ob](../src/NosCore.Packets/ServerPackets/Map/EffObPacket.cs) *InGame*
 - [eff_t](../src/NosCore.Packets/ServerPackets/Map/EffTPacket.cs) *InGame*
 - [eff_g](../src/NosCore.Packets/ServerPackets/Map/GroundEffectPacket.cs) *InGame*
+- [mapclear](../src/NosCore.Packets/ServerPackets/Map/MapClearPacket.cs) *InGame*
 - [mapout](../src/NosCore.Packets/ServerPackets/Map/MapOutPacket.cs) *InGame*
 
 ### Mates
@@ -447,6 +451,7 @@
 ### Player
 - [bn](../src/NosCore.Packets/ServerPackets/Player/BnPacket.cs) *InGame*
 - [bpm](../src/NosCore.Packets/ServerPackets/Player/BpmPacket.cs) *InGame*
+- [bpt](../src/NosCore.Packets/ServerPackets/Player/BptPacket.cs) *InGame*
 - [c_info](../src/NosCore.Packets/ServerPackets/Player/CInfoPacket.cs) *InGame*
 - [c_info_reset](../src/NosCore.Packets/ServerPackets/Player/CInfoResetPacket.cs) *InGame*
 - [c_mode](../src/NosCore.Packets/ServerPackets/Player/CModePacket.cs) *InGame*
@@ -466,6 +471,7 @@
 - [sc](../src/NosCore.Packets/ServerPackets/Player/ScPacket.cs) *InGame*
 - [scr](../src/NosCore.Packets/ServerPackets/Player/ScrPacket.cs) *InGame*
 - [ski](../src/NosCore.Packets/ServerPackets/Player/SkiPacket.cs) *InGame*
+- [s_mode](../src/NosCore.Packets/ServerPackets/Player/SModePacket.cs) *InGame*
 - [stat](../src/NosCore.Packets/ServerPackets/Player/StatPacket.cs) *InGame*
 - [stbm](../src/NosCore.Packets/ServerPackets/Player/StbmPacket.cs) *InGame*
 - [stp2](../src/NosCore.Packets/ServerPackets/Player/Stp2Packet.cs) *InGame*
@@ -485,6 +491,7 @@
 
 ### Quest
 - [qnamli2](../src/NosCore.Packets/ServerPackets/Quest/Qnamli2Packet.cs) *InGame*
+- [qnpc](../src/NosCore.Packets/ServerPackets/Quest/QnpcPacket.cs) *InGame*
 - [qr](../src/NosCore.Packets/ServerPackets/Quest/QrPacket.cs) *InGame*
 - [qsti](../src/NosCore.Packets/ServerPackets/Quest/QstiPacket.cs) *InGame*
 - [qstlist](../src/NosCore.Packets/ServerPackets/Quest/QstlistPacket.cs) *InGame*
@@ -554,6 +561,7 @@
 - [dlgi](../src/NosCore.Packets/ServerPackets/UI/DlgiPacket.cs) *InGame*
 - [dlg](../src/NosCore.Packets/ServerPackets/UI/DlgPacket.cs) *InGame*
 - [fishopen](../src/NosCore.Packets/ServerPackets/UI/FishOpenPacket.cs) *InGame*
+- [guri](../src/NosCore.Packets/ServerPackets/UI/GuriMapTeleporterPacket.cs) *InGame*
 - [guri](../src/NosCore.Packets/ServerPackets/UI/GuriPacket.cs) *InGame*
 - [icon](../src/NosCore.Packets/ServerPackets/UI/IconPacket.cs) *InGame*
 - [infoi2](../src/NosCore.Packets/ServerPackets/UI/Infoi2Packet.cs) *InGame*
@@ -565,6 +573,7 @@
 - [msgi2](../src/NosCore.Packets/ServerPackets/UI/Msgi2Packet.cs) *InGame*
 - [msgi](../src/NosCore.Packets/ServerPackets/UI/MsgiPacket.cs) *InGame*
 - [msg](../src/NosCore.Packets/ServerPackets/UI/MsgPacket.cs) *InGame*
+- [nowtime](../src/NosCore.Packets/ServerPackets/UI/NowTimePacket.cs) *InGame*
 - [p_clear](../src/NosCore.Packets/ServerPackets/UI/PclearPacket.cs) *InGame*
 - [pdelay](../src/NosCore.Packets/ServerPackets/UI/PdelayPacket.cs) *InGame*
 - [qnai2](../src/NosCore.Packets/ServerPackets/UI/Qnai2Packet.cs) *InGame*
@@ -582,6 +591,7 @@
 
 ### Visibility
 - [cl](../src/NosCore.Packets/ServerPackets/Visibility/ClPacket.cs) *InGame*
+- [gmapr](../src/NosCore.Packets/ServerPackets/Visibility/GmaprPacket.cs) *InGame*
 - [in](../src/NosCore.Packets/ServerPackets/Visibility/InPacket.cs) *InGame*
 
 ### Warehouse

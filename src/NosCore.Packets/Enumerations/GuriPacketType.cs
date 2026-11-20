@@ -24,6 +24,8 @@ namespace NosCore.Packets.Enumerations
         TextInput = 10,
         CancelTarget = 11,
         Unknow4 = 15,
+        // A pet that could not pick an item up because the inventory is full.
+        MatePickUpRefused = 16,
         PerfumAndIdentification = 18,
         AfterSumming = 19,
         AddMountInPearl = 24,
