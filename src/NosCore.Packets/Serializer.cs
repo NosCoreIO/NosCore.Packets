@@ -16,8 +16,10 @@ namespace NosCore.Packets
 {
     public class Serializer : ISerializer
     {
-        private readonly Dictionary<Type, Delegate> _packetSerializerDictionary = new Dictionary<Type, Delegate>();
+        private readonly Dictionary<Type, PacketWriter> _packetSerializerDictionary = new Dictionary<Type, PacketWriter>();
 
+        // A chat prefix ("/name text", ":text", ";text") is the start of its line's first word.
+        private sealed record PacketWriter(Func<IPacket, bool, object> Write, bool IsChatPrefix);
 
         public Serializer(IEnumerable<Type> types)
         {
@@ -30,21 +32,20 @@ namespace NosCore.Packets
 
         public void Initialize<T>() where T : PacketBase
         {
-            var packetSerializerExpressionFalse = PacketSerializerExpression<T>();
-            if (packetSerializerExpressionFalse != null)
+            var header = typeof(T).GetCustomAttribute<PacketHeaderAttribute>()?.Identification;
+            if (string.IsNullOrEmpty(header))
             {
-                _packetSerializerDictionary[typeof(T)] = packetSerializerExpressionFalse.Compile();
+                return;
             }
+
+            _packetSerializerDictionary[typeof(T)] = new PacketWriter(PacketSerializerExpression<T>(header).Compile(), header is "/" or ":" or ";");
         }
 
         public string Serialize(IPacket packet)
         {
-            var realType = packet.GetType();
-            var deg = _packetSerializerDictionary[packet.GetType()];
-            var fullString = (string)deg.DynamicInvoke(packet, false)!;
-            // A chat prefix ("/name text", ":text", ";text") is the start of its line's first word.
-            if (realType.GetCustomAttribute<PacketHeaderAttribute>()?.Identification is "/" or ":" or ";"
-                && fullString.Length > 1 && fullString[1] == ' ')
+            var writer = _packetSerializerDictionary[packet.GetType()];
+            var fullString = (string)writer.Write(packet, false);
+            if (writer.IsChatPrefix && fullString.Length > 1 && fullString[1] == ' ')
             {
                 fullString = fullString.Remove(1, 1);
             }
@@ -56,15 +57,22 @@ namespace NosCore.Packets
         private string? SerializeInjected(IPacket? value, bool inline, bool isOptional) =>
             value == null
                 ? isOptional ? null : "-1"
-                : (string)_packetSerializerDictionary[value.GetType()].DynamicInvoke(value, !inline)!;
+                : (string)_packetSerializerDictionary[value.GetType()].Write(value, !inline);
 
         public string Serialize(IEnumerable<IPacket> packets)
         {
-            return string.Join('\uffff'.ToString(), packets.Select(Serialize));
+            return string.Join('\uffff', packets.Select(Serialize));
         }
 
         private Expression DefaultSerializer(Expression specificTypeExpression, Expression splitter)
         {
+            // A number is written with its own ToString rather than boxed for string.Concat to call it.
+            if (specificTypeExpression.Type.IsPrimitive)
+            {
+                specificTypeExpression = Expression.Call(specificTypeExpression,
+                    specificTypeExpression.Type.GetMethod(nameof(ToString), Type.EmptyTypes)!);
+            }
+
             return ConcatExpression(splitter, specificTypeExpression);
         }
 
@@ -231,12 +239,13 @@ namespace NosCore.Packets
         private Expression PacketSerializer(Expression injectedPacket, PacketIndexAttribute indexAttr, Expression specificTypeExpression, Type prop,
             int maxIndex, Expression propertySplitter, string discriminator, bool isFromList = false)
         {
-            var properties = prop.GetProperties()
-                .Where(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().Any())
-                .OrderBy(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First().Index).ToList();
-
-            Expression propExp = Expression.Condition(injectedPacket, Expression.Constant($"#{discriminator}"),
-                Expression.Constant(discriminator, typeof(string)));
+            // Every field's text is one argument of a single string.Concat, rather than each one being
+            // appended to a new copy of the line so far.
+            var pieces = new List<Expression>
+            {
+                Expression.Condition(injectedPacket, Expression.Constant($"#{discriminator}"),
+                    Expression.Constant(discriminator, typeof(string))),
+            };
 
             Expression incrementExpr = Expression.Condition(
                 Expression.Equal(propertySplitter, Expression.Constant(" ", typeof(string))),
@@ -245,9 +254,8 @@ namespace NosCore.Packets
             // Only optional fields ahead of the first required one can be left out without a separator; a later
             // optional run is still written out field by field ("0.0.21.0.6", not "0.0.2106").
             var leadingOptional = true;
-            foreach (var property in properties)
+            foreach (var (property, index) in IndexedProperties(prop))
             {
-                var index = property.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First();
                 leadingOptional = leadingOptional && index.IsOptional;
 
                 var splitter = Expression.Condition(injectedPacket,
@@ -259,7 +267,9 @@ namespace NosCore.Packets
                             : string.Empty, typeof(object))
                         : (Expression)Expression.Convert(propertySplitter, typeof(object)));
 
-                var exp = Expression.Convert(
+                // Held in a variable so that a nested sub-packet is written once, not once per test of its result.
+                var exp = Expression.Variable(typeof(object));
+                var written = Expression.Convert(
                     PropertySerializer(injectedPacket,
                         index,
                         property.PropertyType,
@@ -283,7 +293,7 @@ namespace NosCore.Packets
                     Expression.Constant(string.Empty, typeof(object)),
                     trimfirst);
 
-                propExp = ConcatExpression(propExp, trimnull);
+                pieces.Add(Expression.Block(new[] { exp }, new Expression[] { Expression.Assign(exp, written), trimnull }));
 
                 incrementExpr = Expression.Constant(!isFromList || !leadingOptional);
             }
@@ -293,30 +303,36 @@ namespace NosCore.Packets
             return Expression.Condition(
                 Expression.Equal(specificTypeExpression, Expression.Constant(null, typeof(object))),
                 Expression.Constant(indexAttr.IsOptional ? null : discriminator == " " ? " -1" : "-1", typeof(object)),
-                Expression.Convert(propExp, typeof(object))
+                Expression.Convert(Expression.Call(StringConcat, Expression.NewArrayInit(typeof(object),
+                    pieces.Select(piece => Expression.Convert(piece, typeof(object))))), typeof(object))
             );
         }
 
-        private LambdaExpression? PacketSerializerExpression<T>() where T : PacketBase
+        private static readonly MethodInfo StringConcat = typeof(string).GetMethod(nameof(string.Concat), new[] { typeof(object[]) })!;
+
+        // The indexed properties of a type in index order, each with a PacketIndexAttribute instance of its own.
+        private static IEnumerable<(PropertyInfo Property, PacketIndexAttribute Index)> IndexedProperties(Type type) =>
+            type.GetProperties()
+                .Select(property => (Property: property, Index: property.GetCustomAttributes(true).OfType<PacketIndexAttribute>().FirstOrDefault()))
+                .Where(field => field.Index != null)
+                .OrderBy(field => field.Index!.Index)
+                .Select(field => (field.Property, field.Index!));
+
+        private Expression<Func<IPacket, bool, object>> PacketSerializerExpression<T>(string header) where T : PacketBase
         {
-            var header = typeof(T).GetCustomAttribute<PacketHeaderAttribute>()?.Identification;
-
-            if (string.IsNullOrEmpty(header))
-            {
-                return null;
-            }
-
-            var properties = typeof(T).GetProperties()
-                .Where(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().Any())
-                .OrderBy(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First().Index).ToList();
-            var maxIndex = properties.LastOrDefault()?.GetCustomAttributes(true).OfType<PacketIndexAttribute>().First()
-                .Index ?? 0;
-            var param = Expression.Parameter(typeof(T));
+            var maxIndex = IndexedProperties(typeof(T)).Select(field => field.Index.Index).LastOrDefault();
+            var packet = Expression.Parameter(typeof(IPacket));
+            var typed = Expression.Variable(typeof(T));
             var injectedPacket = Expression.Parameter(typeof(bool));
-            return Expression.Lambda(
-                Expression.Convert(
-                    PacketSerializer(injectedPacket, new PacketIndexAttribute(0), param, typeof(T), maxIndex, Expression.Constant(" "), header),
-                    typeof(object)), param, injectedPacket);
+            return Expression.Lambda<Func<IPacket, bool, object>>(
+                Expression.Block(new[] { typed }, new Expression[]
+                {
+                    Expression.Assign(typed, Expression.Convert(packet, typeof(T))),
+                    Expression.Convert(
+                        PacketSerializer(injectedPacket, new PacketIndexAttribute(0), typed, typeof(T), maxIndex, Expression.Constant(" "), header),
+                        typeof(object)),
+                }),
+                packet, injectedPacket);
         }
 
         private Expression PropertySerializer(Expression injectedPacket, PacketIndexAttribute indexAttr, Type type,
@@ -371,9 +387,7 @@ namespace NosCore.Packets
 
                     // A sub-packet's fields are numbered from its own zero, so the parent's
                     // maxIndex would mark whichever field happens to share that number as last.
-                    var subMaxIndex = t.GetProperties()
-                        .SelectMany(x => x.GetCustomAttributes(true).OfType<PacketIndexAttribute>())
-                        .Select(x => x.Index).DefaultIfEmpty(0).Max();
+                    var subMaxIndex = IndexedProperties(t).Select(field => field.Index.Index).DefaultIfEmpty(0).Max();
 
                     specificTypeExpression = PacketSerializer(injectedPacket, indexAttr, specificTypeExpression, t, subMaxIndex,
                         propertySplitter, indexAttr.RemoveHeader ? "" : header ?? "");
