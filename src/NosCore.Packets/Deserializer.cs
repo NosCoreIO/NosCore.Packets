@@ -12,6 +12,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Threading;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Interfaces;
 
@@ -47,7 +48,7 @@ namespace NosCore.Packets
         // Each call gets a box of its own, so a caller mutating a struct default cannot change the next caller's.
         public static object GetDefaultValue(this Type type)
         {
-            if (type == null) throw new ArgumentNullException(nameof(type));
+            ArgumentNullException.ThrowIfNull(type);
             return Defaults.GetOrAdd(type, static type => Expression.Lambda<Func<object?>>(
                 Expression.Convert(Expression.Default(type), typeof(object))).Compile())()!;
         }
@@ -173,7 +174,8 @@ namespace NosCore.Packets
                 Create = create,
                 Setters = setters,
                 FirstField = first,
-                FirstFieldDefault = new Lazy<object?>(() => first?.Property.GetValue(create())),
+                // A getter that failed is tried again on the next line rather than failing every line after it.
+                FirstFieldDefault = new Lazy<object?>(() => first?.Property.GetValue(create()), LazyThreadSafetyMode.PublicationOnly),
             };
         }
 
@@ -225,7 +227,7 @@ namespace NosCore.Packets
                 var position = 0;
                 var first = NextField(packetstring, ref position)!;
                 var includesKeepAliveIdentity = ushort.TryParse(first, out var keepalive);
-                var header = includesKeepAliveIdentity ? NextField(packetstring, ref position) ?? throw new IndexOutOfRangeException() : first;
+                var header = includesKeepAliveIdentity ? NextField(packetstring, ref position) ?? throw new InvalidOperationException("A line holds a keep-alive number and no header.") : first;
                 var firstToken = NextField(packetstring, ref position);
                 if (header.Length >= 1 && header[0] is '/' or ':' or ';' or '#')
                 {
@@ -567,7 +569,7 @@ namespace NosCore.Packets
                 case FieldKind.List:
                     if (field.ElementType == null)
                     {
-                        throw new IndexOutOfRangeException();
+                        throw new InvalidOperationException($"{field.Name} is a collection with no element type.");
                     }
 
                     return DeserializeList(field, matches, ref currentIndex, isMaxIndex, reserved);

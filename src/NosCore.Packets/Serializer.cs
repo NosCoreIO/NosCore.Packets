@@ -293,7 +293,7 @@ namespace NosCore.Packets
                     Expression.Constant(string.Empty, typeof(object)),
                     trimfirst);
 
-                pieces.Add(Expression.Block(new[] { exp }, Expression.Assign(exp, written), trimnull));
+                pieces.Add(Expression.Block(new[] { exp }, new Expression[] { Expression.Assign(exp, written), trimnull }));
 
                 incrementExpr = Expression.Constant(!isFromList || !leadingOptional);
             }
@@ -325,11 +325,13 @@ namespace NosCore.Packets
             var typed = Expression.Variable(typeof(T));
             var injectedPacket = Expression.Parameter(typeof(bool));
             return Expression.Lambda<Func<IPacket, bool, object>>(
-                Expression.Block(new[] { typed },
+                Expression.Block(new[] { typed }, new Expression[]
+                {
                     Expression.Assign(typed, Expression.Convert(packet, typeof(T))),
                     Expression.Convert(
                         PacketSerializer(injectedPacket, new PacketIndexAttribute(0), typed, typeof(T), maxIndex, Expression.Constant(" "), header),
-                        typeof(object))),
+                        typeof(object)),
+                }),
                 packet, injectedPacket);
         }
 

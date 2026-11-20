@@ -16,7 +16,7 @@ namespace NosCore.Packets.Benchmark
     // ({"l": line, "n": times seen}); without it the server lines are the ones listed here.
     public static class Lines
     {
-        public const string TraceVariable = "NOSCORE_PACKETS_TRACE";
+        private const string TraceVariable = "NOSCORE_PACKETS_TRACE";
 
         public static readonly string[] Server =
         {
