@@ -31,7 +31,7 @@ namespace NosCore.Packets.ClientPackets.Inventory
         [PacketIndex(4)]
         public short Mode { get; set; }
 
-        [PacketIndex(5)]
+        [PacketIndex(5, IsOptional = true)]
         public short? Parameter { get; set; }
 
         [PacketIndex(6, IsOptional = true)]

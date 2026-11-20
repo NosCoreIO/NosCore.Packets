@@ -33,7 +33,6 @@ namespace NosCore.Packets.Tests
             ["SayItemPacket"] = "carries an e_info",
             ["RcbListPacket"] = "carries an e_info",
             ["RcsListPacket"] = "carries an e_info",
-            ["QSlotPacket"] = "an optional first field is written without its separator",
             ["RbrPacket"] = "not read back yet",
         };
 

@@ -14,7 +14,7 @@ namespace NosCore.Packets.ServerPackets.TimeSpaces
     public class RsfmPacket : PacketBase
     {
         [PacketIndex(0)]
-        public byte Unknown { get; set; }
+        public short TimeSpaceId { get; set; }
 
         [PacketIndex(1)]
         public RsfmPacketType Type { get; set; }

@@ -14,13 +14,17 @@ namespace NosCore.Packets.ServerPackets.Event
     [PacketHeader("repay", Scope.InGame)]
     public class RepayPacket : PacketBase
     {
-        [PacketListIndex(0, Length = 3)]
+        // The line has an empty field before the rewards.
+        [PacketIndex(0)]
+        public string ExtraSpace { get; set; } = string.Empty;
+
+        [PacketListIndex(1, Length = 3)]
         public List<RepaySubPacketItem> BonusRewards { get; set; } = [];
 
-        [PacketListIndex(1, Length = 2)]
+        [PacketListIndex(2, Length = 2)]
         public List<RepaySubPacketItem> SpecialRewards { get; set; } = [];
 
-        [PacketIndex(2, SpecialSeparator = ".")]
+        [PacketIndex(3, SpecialSeparator = ".")]
         public RepaySubPacketItem DrawnReward { get; set; } = new();
     }
 }
