@@ -14,5 +14,12 @@ namespace NosCore.Packets.ServerPackets.Battle
     {
         [PacketIndex(0)]
         public long CastId { get; set; }
+
+        // Only seen with a cast id of -10, after a refused capture.
+        [PacketIndex(1, IsOptional = true)]
+        public short? Unknown1 { get; set; }
+
+        [PacketIndex(2, IsOptional = true)]
+        public short? Unknown2 { get; set; }
     }
 }

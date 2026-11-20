@@ -41,5 +41,16 @@ namespace NosCore.Packets.ServerPackets.Warehouse
 
         [PacketIndex(5)]
         public byte Upgrade { get; set; }
+
+        [PacketIndex(6, IsOptional = true)]
+        public short? Unknown6 { get; set; }
+
+        // Every traced line carries both or neither, so this one is only written after Unknown6.
+        [PacketIndex(7, IsOptional = true)]
+        public short? Unknown7
+        {
+            get => Unknown6 is null ? null : field;
+            set;
+        }
     }
 }

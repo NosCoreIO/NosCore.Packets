@@ -35,7 +35,9 @@ namespace NosCore.Packets.ServerPackets.Chats
         /// <summary>
         /// The client writes the item's name where the message holds <c>{%s}</c>.
         /// </summary>
-        [PacketIndex(6, EscapeSpaces = true, SpaceEscape = "|")]
+        // Only a speaker message (OratorSlot 17) has one; an item shown with OratorSlot 16 goes straight to its info.
+        [PacketIndex(6, IsOptional = true, EscapeSpaces = true, SpaceEscape = "|")]
+        [PacketPresentWhen(nameof(OratorSlot), (byte)17)]
         public string? Message { get; set; }
 
         /// <summary>

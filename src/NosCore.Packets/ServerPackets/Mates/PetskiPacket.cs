@@ -10,10 +10,11 @@ namespace NosCore.Packets.ServerPackets.Mates
         [PacketIndex(0)]
         public short FirstSkillVNum { get; set; }
 
-        [PacketIndex(1)]
-        public short SecondSkillVNum { get; set; }
+        // A line whose first field is -2 or -3 has no other field.
+        [PacketIndex(1, IsOptional = true)]
+        public short? SecondSkillVNum { get; set; }
 
-        [PacketIndex(2)]
-        public short ThirdSkillVNum { get; set; }
+        [PacketIndex(2, IsOptional = true)]
+        public short? ThirdSkillVNum { get; set; }
     }
 }

@@ -24,5 +24,8 @@ namespace NosCore.Packets.ClientPackets.Npcs
 
         [PacketIndex(3, IsOptional = true)]
         public long? VisualId { get; set; }
+
+        [PacketIndex(4, IsOptional = true)]
+        public short? Unknown4 { get; set; }
     }
 }

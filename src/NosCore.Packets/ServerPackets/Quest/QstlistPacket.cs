@@ -14,12 +14,17 @@ namespace NosCore.Packets.ServerPackets.Quest
     [PacketHeader("qstlist", Scope.InGame)]
     public class QstlistPacket : PacketBase
     {
+        public QstlistPacket() : this([])
+        {
+        }
+
         public QstlistPacket(List<QuestSubPacket> questSubPackets)
         {
             QuestSubPackets = questSubPackets;
         }
 
-        [PacketListIndex(0, RemoveHeader = true)]
+        // A character without quest gets the header alone.
+        [PacketListIndex(0, RemoveHeader = true, IsOptional = true)]
         public List<QuestSubPacket> QuestSubPackets { get; set; }
     }
 }

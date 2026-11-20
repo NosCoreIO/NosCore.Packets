@@ -18,7 +18,7 @@ namespace NosCore.Packets.ServerPackets.Mates
         [PacketIndex(1)]
         public long SecondSkill { get; set; }
 
-        [PacketIndex(2)]
-        public long ThirdSkill { get; set; }
+        [PacketIndex(2, IsOptional = true)]
+        public long? ThirdSkill { get; set; }
     }
 }

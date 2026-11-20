@@ -8,5 +8,9 @@ namespace NosCore.Packets.ClientPackets.Inventory
     {
         [PacketIndex(0)]
         public PocketType PocketType { get; set; }
+
+        // 1 when the sort question was answered yes.
+        [PacketIndex(1, IsOptional = true)]
+        public bool? Confirmed { get; set; }
     }
 }

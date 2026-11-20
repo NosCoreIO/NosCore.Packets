@@ -12,6 +12,10 @@ namespace NosCore.Packets.Enumerations
         HairStyleB = 1,
         HairStyleC = 2,
         HairStyleD = 3,
-        NoHair = 4
+        NoHair = 4,
+        FrenchBraid = 10,
+        ChoppyBangs = 11,
+        FauxHawkUndercut = 13,
+        JellyRolls = 15
     }
 }

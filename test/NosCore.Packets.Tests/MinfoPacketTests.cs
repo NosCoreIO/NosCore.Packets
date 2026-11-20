@@ -5,6 +5,7 @@
 // -----------------------------------
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NosCore.Packets.Enumerations;
 using NosCore.Packets.Interfaces;
 using NosCore.Packets.ServerPackets.TimeSpaces;
 
@@ -29,7 +30,7 @@ namespace NosCore.Packets.Tests
         {
             var wire = Serializer.Serialize(new MinfoPacket
             {
-                KillAllMonsters = true,
+                KillAllMonsters = MinfoObjectiveState.Pending,
                 KillMonster = new MinfoObjectiveSubPacket { Vnum = 333, Current = 2, Total = 5 },
                 MaxLives = 1
             });

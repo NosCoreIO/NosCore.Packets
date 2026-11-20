@@ -15,7 +15,8 @@ namespace NosCore.Packets.ClientPackets.UI
         [PacketIndex(0)]
         public GuriPacketType Type { get; set; }
 
-        [PacketIndex(1)]
+        // A guri a dialog sends back, such as the event registration's guri 506, ends after its type.
+        [PacketIndex(1, IsOptional = true)]
         public int? Argument { get; set; }
 
         [PacketIndex(2, IsOptional = true)]

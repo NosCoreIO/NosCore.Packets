@@ -10,7 +10,7 @@ namespace NosCore.Packets.ServerPackets.Event
         public EventPacketType Type { get; set; }
 
         [PacketIndex(1)]
-        public bool IsDisabled { get; set; }
+        public EventTimerState State { get; set; }
 
         [PacketIndex(2)]
         public int Parameter { get; set; }

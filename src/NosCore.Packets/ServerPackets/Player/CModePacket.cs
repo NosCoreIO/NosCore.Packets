@@ -20,7 +20,7 @@ namespace NosCore.Packets.ServerPackets.Player
         public long VisualId { get; set; }
 
         [PacketIndex(2)]
-        public short Morph { get; set; }
+        public int Morph { get; set; }
 
         [PacketIndex(3)]
         public byte MorphUpgrade { get; set; }

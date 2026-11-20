@@ -20,7 +20,7 @@ namespace NosCore.Packets.ServerPackets.Event
         public byte Unknown { get; set; }
 
         [PacketIndex(2)]
-        public bool Completed { get; set; }
+        public byte Unknown2 { get; set; }
 
         [PacketIndex(3, SpecialSeparator = ".")]
         public RbrSubPacketMinMaxLevel? MinMaxLevel { get; set; }
@@ -46,7 +46,7 @@ namespace NosCore.Packets.ServerPackets.Event
         [PacketIndex(10)]
         public bool LoserMode { get; set; }
 
-        [PacketIndex(11, SpecialSeparator = "\n")]
+        [PacketIndex(11, SpecialSeparator = "\r")]
         public RbrSubPacketTitleAndDescription? TitleAndDescription { get; set; }
     }
 }

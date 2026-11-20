@@ -13,6 +13,12 @@ namespace NosCore.Packets.Enumerations
         Shout = 2,
         Center = 3,
         Hero = 4,
-        DefaultAndNotification
+        DefaultAndNotification,
+
+        // The countdown before a scheduled raid, such as "The Dodge Meteor raid starts soon".
+        EventCountdown = 6,
+
+        // The opening of a scheduled raid's registration.
+        EventRegistration = 9
     }
 }

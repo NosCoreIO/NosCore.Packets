@@ -13,7 +13,7 @@ namespace NosCore.Packets.ServerPackets.TimeSpaces
     public class MinfoPacket : PacketBase
     {
         [PacketIndex(0)]
-        public bool KillAllMonsters { get; set; }
+        public MinfoObjectiveState KillAllMonsters { get; set; }
 
         [PacketIndex(1)]
         public bool GoToExit { get; set; }
