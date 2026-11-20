@@ -226,7 +226,7 @@ namespace NosCore.Packets
 
             var packet = Expression.Parameter(typeof(object));
             _read = Expression.Lambda<Func<object, object?>>(
-                Expression.Convert(Expression.Property(Expression.Convert(packet, packetType), property), typeof(object)),
+                Expression.Convert(Expression.Property(property.GetMethod?.IsStatic == true ? null : Expression.Convert(packet, packetType), property), typeof(object)),
                 packet).Compile();
         }
 

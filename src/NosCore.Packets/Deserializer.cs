@@ -33,20 +33,23 @@ namespace NosCore.Packets
         internal Action<object, object?>[] Setters { get; init; } = Array.Empty<Action<object, object?>>();
 
         // The first field, and the value a fresh packet holds in it: what this shape claims when it shares its header.
+        // The value is read on the first shared-header line rather than at registration, so a getter that cannot
+        // run on a fresh packet only fails the lines that need it.
         internal PacketField? FirstField { get; init; }
 
-        internal object? FirstFieldDefault { get; init; }
+        internal Lazy<object?> FirstFieldDefault { get; init; } = null!;
     }
 
     public static class TypeExtension
     {
-        private static readonly ConcurrentDictionary<Type, object?> Defaults = new();
+        private static readonly ConcurrentDictionary<Type, Func<object?>> Defaults = new();
 
+        // Each call gets a box of its own, so a caller mutating a struct default cannot change the next caller's.
         public static object GetDefaultValue(this Type type)
         {
             if (type == null) throw new ArgumentNullException(nameof(type));
             return Defaults.GetOrAdd(type, static type => Expression.Lambda<Func<object?>>(
-                Expression.Convert(Expression.Default(type), typeof(object))).Compile()())!;
+                Expression.Convert(Expression.Default(type), typeof(object))).Compile())()!;
         }
 
         //https://stackoverflow.com/questions/35913495/moving-from-reflection-to-expression-tree
@@ -170,7 +173,7 @@ namespace NosCore.Packets
                 Create = create,
                 Setters = setters,
                 FirstField = first,
-                FirstFieldDefault = first?.Property.GetValue(create()),
+                FirstFieldDefault = new Lazy<object?>(() => first?.Property.GetValue(create())),
             };
         }
 
@@ -349,7 +352,7 @@ namespace NosCore.Packets
                 return false;
             }
 
-            var own = creator.FirstFieldDefault;
+            var own = creator.FirstFieldDefault.Value;
             if (first.Type == typeof(string))
             {
                 // A text first field claims only the token it holds, even an empty one ("score  5 ...").
@@ -372,7 +375,7 @@ namespace NosCore.Packets
         }
 
         private static bool ClaimsFirstField(TypeCreator creator) =>
-            creator.FirstField is { } first && !Equals(creator.FirstFieldDefault, first.Type.IsValueType ? first.Default : null);
+            creator.FirstField is { } first && !Equals(creator.FirstFieldDefault.Value, first.Type.IsValueType ? first.Default : null);
 
         private bool WritesBack(List<TypeCreator> shared, IPacket packet, string packetContent)
         {

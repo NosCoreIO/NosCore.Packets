@@ -92,6 +92,7 @@ namespace NosCore.Packets.Benchmark
             var lines = File.ReadLines(path)
                 .Select(json => JsonDocument.Parse(json).RootElement.GetProperty("l").GetString()!)
                 .Where(line => keep(line) && Readable(line))
+                .Distinct(StringComparer.Ordinal)
                 .ToList();
             var step = Math.Max(1, lines.Count / count);
             return lines.Where((_, index) => index % step == 0).Take(count).ToArray();
