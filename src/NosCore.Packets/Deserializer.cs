@@ -309,12 +309,18 @@ namespace NosCore.Packets
         private bool StartsWith(TypeCreator creator, string? firstToken)
         {
             var first = creator.PacketDeserializerDictionary.Keys.FirstOrDefault(s => s.Item2.Index == 0);
-            if (first == null || firstToken == null || !IsScalar(first.Item1))
+            if (first == null || firstToken == null || (!IsScalar(first.Item1) && first.Item1 != typeof(string)))
             {
                 return false;
             }
 
             var own = creator.PacketType!.GetProperty(first.Item3)!.GetValue(creator.Constructor!.DynamicInvoke());
+            if (first.Item1 == typeof(string))
+            {
+                // A text first field claims only the token it holds, even an empty one ("score  5 ...").
+                return own is string text && text == firstToken;
+            }
+
             try
             {
                 var type = Nullable.GetUnderlyingType(first.Item1) ?? first.Item1;
@@ -654,7 +660,14 @@ namespace NosCore.Packets
                     // inter-item separator, defaulting to ".".
                     separator = ind.ListSeparator ?? (typeof(IPacket).IsAssignableFrom(subType) ? null : separator ?? ".");
                 }
-                if (isMaxIndex && string.IsNullOrWhiteSpace(separator))
+
+                if (separator?.Length == 0)
+                {
+                    // A list written with no separator holds one character per item ("011").
+                    splited = matches[currentIndex].Select(character => character.ToString()).ToArray();
+                    length = (sbyte)splited.Length;
+                }
+                else if (isMaxIndex && string.IsNullOrWhiteSpace(separator))
                 {
                     var lastToken = matches.Length;
                     while (lastToken > currentIndex && matches[lastToken - 1].Length == 0)

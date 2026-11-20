@@ -111,7 +111,6 @@
 - [hidn](../src/NosCore.Packets/ClientPackets/Instance/HidnPacket.cs) *InGame*
 - [rstart](../src/NosCore.Packets/ClientPackets/Instance/RStartPacket.cs) *InGame*
 - [rxit](../src/NosCore.Packets/ClientPackets/Instance/RxitPacket.cs) *InGame*
-- [score](../src/NosCore.Packets/ClientPackets/Instance/ScorePacket.cs) *InGame*
 - [sreq](../src/NosCore.Packets/ClientPackets/Instance/SreqPacket.cs) *InGame*
 - [taw](../src/NosCore.Packets/ClientPackets/Instance/TawPacket.cs) *InGame*
 - [wreq](../src/NosCore.Packets/ClientPackets/Instance/WreqPacket.cs) *InGame*
@@ -541,6 +540,8 @@
 - [minfo](../src/NosCore.Packets/ServerPackets/TimeSpaces/MinfoPacket.cs) *InGame*
 - [rsfm](../src/NosCore.Packets/ServerPackets/TimeSpaces/RsfmPacket.cs) *InGame*
 - [rsfn](../src/NosCore.Packets/ServerPackets/TimeSpaces/RsfnPacket.cs) *InGame*
+- [score](../src/NosCore.Packets/ServerPackets/TimeSpaces/ScoreFailedPacket.cs) *InGame*
+- [score](../src/NosCore.Packets/ServerPackets/TimeSpaces/ScorePacket.cs) *InGame*
 - [sinfo](../src/NosCore.Packets/ServerPackets/TimeSpaces/SinfoPacket.cs) *InGame*
 
 ### UI
