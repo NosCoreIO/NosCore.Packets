@@ -469,6 +469,15 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
+        public void DeserializeNrunCarryingAQuestId()
+        {
+            var packet = (NrunPacket)Deserializer.Deserialize("n_run 347 6807 2 2001");
+            Assert.IsTrue(packet.IsValid);
+            Assert.AreEqual(NrunRunnerType.GetQuestTheMerlingsCurse, packet.Runner);
+            Assert.AreEqual((short)6807, packet.Type);
+        }
+
+        [TestMethod]
         public void DeserializeWithDoubleSpace()
         {
             var packet = (NoS0577Packet)Deserializer.Deserialize(
