@@ -69,6 +69,7 @@ namespace NosCore.Packets.Enumerations
         ExchangeForChristmasSnowmanRaidSeal = 86, //30 Fresh cake
         ExchangeForChristmasSnowmanRaidSeal2 = 87, //30 Chocolate cake
         ExchangeForChristmasGiftBox = 88, //5 Christmas Stockings
+        GetDailyQuestChristmasEvaEnergyHugeSnowman = 90,
         GetDailyQuestChristmasSlugg = 30021,
         GetDailyQuestChristmasEvaEnergy = 30023, //Defeat Snowman Raid.
         GetDailyQuestChristmasMalcolmMix = 30024,
@@ -107,6 +108,9 @@ namespace NosCore.Packets.Enumerations
         CheckLandOfLifeTime = 153,
         EnterExpertLandOfLife = 154,
         ExchangeReservesForRandomGift = 155, //Only used on KR client
+        GetQuestFreshLiverPlease = 178,
+        GetQuestFoxysVerdict = 179,
+        GetQuestFoxHunt = 180,
         GetQuestBewitchedSoldiers = 193,
         ExchangeForCleansingPowder = 194,
 
@@ -114,8 +118,12 @@ namespace NosCore.Packets.Enumerations
             195, //Requires: five Seeds of Damnation. You can collect them in the Cave of Ghosts.
         GetQuestForTheRealmOfHeroes = 196,
         GetQuestRaphaelStory = 197,
+        QuestTwoFacesOfRaphaelGiveOnlyBunnyLiver = 199,
         GetXQuestFromDialog2Quest = 200, //Related with GetXQuest
         GetQuestGingsengDagger = 201,
+        GetQuestDefeatLordMelonoth = 223,
+        GetDailyQuestReturnOfTheMelonLord = 224,
+        GetDailyQuestLabOnAlert = 225,
         GetQuestGrahamCrusarder = 300,
         GoToForgottenArchipelago = 301,
         GetQuestMissingScout = 302,
@@ -123,12 +131,18 @@ namespace NosCore.Packets.Enumerations
         QuestMissingScoutOption2 = 304,
 
         GoToShip = 305,
-        //GoToAncelloansWill = 306,
-        //GoToCylloan = 307,
+        GoToAncelloansWill = 306,
+        GoToCylloan = 307,
         GetQuestBarnisSoul = 308,
+        QuestGamblingDebtsPayGold = 309,
+        QuestGamblingDebtsAskTeodorTopp = 310,
+        GetQuestFromRagnar = 311,
+        GetQuestFromFrigg = 312,
         GoToTartHapendam = 313,
         ReturnFromTartHapendam = 314,
         GetQuestJeniffer = 315,
+        GetQuestThePathToTheLostCatacombs = 316,
+        StolenWandIsThatIt = 317, //White Witch Laurena's 'The Stolen Wand' dialog; what it starts is not in the client data.
         Get10thAnniversaryCake = 318, //Obtained via Eva Energy, only available once and for Archers.
         Get10thAnniversaryEpicFirecracker = 319, //Obtained via Malcolm Mix, only available once and for Mages.
         Get10thAnniversaryLegendarySword = 320, //Obtained via Teodor Topp, only available once and for Swordsmans.
@@ -140,11 +154,26 @@ namespace NosCore.Packets.Enumerations
         GetQuestChristmasDestroyFiends = 326,
         GetQuestAmoraStory = 327,
         GetDailyQuestEasterEvaEnergy2 = 328, //March Hare one, requires: 10 Cleansed Eggs
+        GetQuestEasterNotEnoughIngredients = 329, //Soraya Style, requires: 10 Cleansed Eggs
         ExchangeForCleansedEggs = 330, //Required: 10 Rotten Eggs and Soul Gem Refiner.
         TriggerDialogHistoryMarchHare = 331, //Generates the Dialog 466
+        GetQuestCauseForTheArrival = 332,
+        GetQuestFilledWithEvilEnergy = 333, //Shadow element Martial Artist
+        GoToMoritius = 334,
+        EnterCelestialSpireGroundFloor = 335,
         TravelToMap = 336, //Type = destination map id
+        GetQuestAmoraValentinesDay = 337,
         SkyTower = 338,
+        GetQuestASpecialEnergy = 339, //Type = quest id
         GetThirdMartialArtistQuest = 340, //Used to obtain the Martial Artist SP3, type = quest id = 6332
+        EnterCelestialSpireUppermostLevel = 341,
+        EnterCelestialSpireChallengeLowerLevels = 342,
+        EnterCelestialSpireChallengeMiddleLevels = 343,
+        EnterCelestialSpireChallengeUpperLevels = 344,
+        GetQuestTheCursed13 = 345,
+        GetQuestTheMerlingsCurse = 347, //Type = quest id
+        GetQuestTheTalkingMouse = 348, //Type = quest id
+        GetQuestACuriousRabbit = 349, //Type = quest id
         MoveToMap = 384, //Type = destination map id
         GoToNextDimension = 385, //Type = destination map id
         EnterCelestialSpireCatacombs = 448,
@@ -181,6 +210,7 @@ namespace NosCore.Packets.Enumerations
         GetQuestHigherTimeSpaceScore = 3002,
         GetXQuest = 3006, //Types = quest ids. Used for 284 quests.
         RainbowBattleRegistration = 4000,
+        GetPowerOfProtection = 5000,
         GoToShipGlacernon = 5001,
         ReturnFromGlacernon = 5002,
         CheckBoatSchedule = 5003, //Seems unused.
