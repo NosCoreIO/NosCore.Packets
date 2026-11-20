@@ -6,26 +6,21 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
-using NosCore.Shared.Enumerations;
+using System.Collections.Generic;
 
 namespace NosCore.Packets.ClientPackets.Mates
 {
+    // suctl <map id> <amount> then <mate id> <target type> <target id> for each mate sent at the target.
     [PacketHeader("suctl", Scope.InGame)]
     public class SuCtlPacket : PacketBase
     {
         [PacketIndex(0)]
-        public int CastId { get; set; }
+        public short MapId { get; set; }
 
         [PacketIndex(1)]
-        public int Unknown2 { get; set; }
+        public byte Amount { get; set; }
 
-        [PacketIndex(2)]
-        public long MateTransportId { get; set; }
-
-        [PacketIndex(3)]
-        public VisualType TargetType { get; set; }
-
-        [PacketIndex(4)]
-        public long TargetId { get; set; }
+        [PacketListIndex(2, Length = -1, SpecialSeparator = " ")]
+        public List<SuCtlSubPacket?>? Mates { get; set; }
     }
 }
