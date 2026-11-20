@@ -52,6 +52,7 @@ namespace NosCore.Packets
                 .Where(separator => separator.Length > 0 && separator != " ")
                 .Distinct()
                 .ToArray();
+            TokenSpan = MaxIndex + 1 - Fields.Count(field => field.Index.Index > 0 && field.JoinedSeparator != null);
             LeftOutCandidates = Fields
                 .Where(field => field.Index.IsOptional && field.Index.Index != MaxIndex && field.IsScalar)
                 .Select(field => field.Name)
@@ -66,6 +67,10 @@ namespace NosCore.Packets
         public int MaxIndex { get; }
 
         public bool HasHeader { get; }
+
+        // How many of the line's tokens the type spans when its fields are space-separated: a field joined to the
+        // one before it ("2/3") shares that one's token.
+        public int TokenSpan { get; }
 
         // The separators a field after the first names for itself ("id|experience"), which mark a sub-packet
         // written as one token.
