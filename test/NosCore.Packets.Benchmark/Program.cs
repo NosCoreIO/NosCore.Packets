@@ -4,74 +4,18 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
-using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Running;
-using NosCore.Packets.Benchmark.SaltyEmu;
-using NosCore.Packets.ClientPackets.Relations;
-using NosCore.Packets.Enumerations;
-using NosCore.Packets.Interfaces;
-using NosCore.Packets.ServerPackets.Shop;
-using NosCore.Packets.ServerPackets.UI;
+using BenchmarkDotNet.Toolchains.InProcess.Emit;
 
 namespace NosCore.Packets.Benchmark
 {
-    [SimpleJob(RuntimeMoniker.Net70)]
-    [RPlotExporter, RankColumn]
-    [MemoryDiagnoser]
-    public class PacketSerializationSpeed
+    public static class Program
     {
-        readonly ISerializer _chickenApiSerializer = new Serializer(
-            new[]
-            {
-                typeof(NInvPacket),
-            });
-
-        readonly PluggablePacketFactory _saltyEmuPacketSerializer = new PluggablePacketFactory();
-
-        [Params(1, 10, 100)] public int NumberOfItems;
-
-        private IPacket? _testPacket;
-
-        [GlobalSetup]
-        public void Setup()
-        {
-            _testPacket = new DlgPacket
-            {
-                Question = "question",
-                NoPacket = new FinsPacket { Type = FinsPacketType.Rejected, CharacterId = 1 },
-                YesPacket = new FinsPacket { Type = FinsPacketType.Accepted, CharacterId = 1 }
-            };
-        }
-
-        [Benchmark(Description = "NosCore.Packets' Serializer (Expression tree)")]
-        public bool ChickenAPI_Serializer_Serialize_X_Packets()
-        {
-            for (var i = 0; i < NumberOfItems; i++)
-            {
-                _chickenApiSerializer.Serialize(_testPacket!);
-            }
-
-            return true;
-        }
-
-        [Benchmark(Description = "SaltyEmu's Packet Factory, forked from OpenNos")]
-        public bool SaltyEmu_Serializer_Serialize_X_Packets()
-        {
-            for (var i = 0; i < NumberOfItems; i++)
-            {
-                _saltyEmuPacketSerializer.Serialize(_testPacket!);
-            }
-
-            return true;
-        }
-    }
-
-    class Program
-    {
-        static void Main()
-        {
-            BenchmarkRunner.Run<PacketSerializationSpeed>();
-        }
+        // BenchmarkDotNet cannot build a separate process for a runtime it does not know yet, so the benchmarks
+        // run in this one.
+        public static void Main(string[] args) => BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args,
+            DefaultConfig.Instance.AddJob(Job.Default.WithWarmupCount(3).WithIterationCount(10).WithToolchain(InProcessEmitToolchain.Instance)));
     }
 }
