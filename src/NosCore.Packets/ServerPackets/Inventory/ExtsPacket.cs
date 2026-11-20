@@ -23,5 +23,8 @@ namespace NosCore.Packets.ServerPackets.Inventory
 
         [PacketIndex(3)]
         public byte EtcExtension { get; set; }
+
+        [PacketIndex(4)]
+        public byte Unknown { get; set; }
     }
 }

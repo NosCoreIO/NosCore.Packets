@@ -21,8 +21,9 @@ namespace NosCore.Packets.ServerPackets.UI
         [PacketIndex(2, IsOptional = true)]
         public uint? SecondArgument { get; set; }
 
-        [PacketIndex(3)]
-        public long EntityId { get; set; }
+        // Most guri lines carry it; one that ends after its argument, such as the freeze timer's, leaves it out.
+        [PacketIndex(3, IsOptional = true)]
+        public long? EntityId { get; set; } = 0;
 
         [PacketIndex(4, IsOptional = true)]
         public uint? Value { get; set; }

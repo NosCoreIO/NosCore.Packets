@@ -28,13 +28,17 @@ namespace NosCore.Packets.ServerPackets.Player
         [PacketIndex(4)]
         public short MorphDesign { get; set; }
 
-        [PacketIndex(5)]
-        public byte MorphBonus { get; set; }
+        // Only a player's line carries the last three fields.
+        [PacketIndex(5, IsOptional = true)]
+        [PacketPresentWhen(nameof(VisualType), VisualType.Player)]
+        public byte? MorphBonus { get; set; }
 
-        [PacketIndex(6)]
-        public byte Size { get; set; }
+        [PacketIndex(6, IsOptional = true)]
+        [PacketPresentWhen(nameof(VisualType), VisualType.Player)]
+        public byte? Size { get; set; }
 
-        [PacketIndex(7)]
-        public short MorphSkin { get; set; }
+        [PacketIndex(7, IsOptional = true)]
+        [PacketPresentWhen(nameof(VisualType), VisualType.Player)]
+        public short? MorphSkin { get; set; }
     }
 }

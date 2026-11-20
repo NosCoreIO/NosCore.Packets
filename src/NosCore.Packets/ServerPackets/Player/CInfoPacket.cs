@@ -50,7 +50,7 @@ namespace NosCore.Packets.ServerPackets.Player
         public CharacterClassType Class { get; set; }
 
         [PacketIndex(12)]
-        public byte Icon { get; set; }
+        public ExtendedReputationType Icon { get; set; }
 
         [PacketIndex(13)]
         public short Compliment { get; set; }

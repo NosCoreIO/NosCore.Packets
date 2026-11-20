@@ -122,7 +122,7 @@ namespace NosCore.Packets.Tests
         public void TheRoomMapCarriesItsGridSize()
         {
             Assert.AreEqual("rsfm 14 0 6 12 0",
-                Serializer.Serialize(new RsfmPacket { Unknown = 14, Type = RsfmPacketType.Open, Width = 6, Height = 12 }));
+                Serializer.Serialize(new RsfmPacket { TimeSpaceId = 14, Type = RsfmPacketType.Open, Width = 6, Height = 12 }));
         }
 
         [TestMethod]
@@ -193,7 +193,7 @@ namespace NosCore.Packets.Tests
                     HairStyle = HairStyleType.HairStyleC,
                     HairColor = (HairColorType)100,
                     Class = CharacterClassType.Archer,
-                    Icon = 19,
+                    Icon = ExtendedReputationType.GreenMaster,
                     Morph = 13,
                     Unknown3 = -1,
                 }));

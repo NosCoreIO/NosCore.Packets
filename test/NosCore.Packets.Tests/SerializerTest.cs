@@ -544,7 +544,7 @@ namespace NosCore.Packets.Tests
             };
 
             var packet = Serializer.Serialize(testPacket);
-            Assert.AreEqual("repay 1012.0.5 -1.0.0 -1.0.0 -1.0.0 -1.0.0 -1.0.0", packet);
+            Assert.AreEqual("repay  1012.0.5 -1.0.0 -1.0.0 -1.0.0 -1.0.0 -1.0.0", packet);
         }
 
         [TestMethod]
@@ -735,7 +735,7 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
-        public void SerializeWithNullFirstParam()
+        public void SerializeEmptyQuicklistSlots()
         {
             var dlgTest = new QSlotPacket
             {
@@ -744,22 +744,22 @@ namespace NosCore.Packets.Tests
                 {
                     new QsetClientSubPacket
                     {
-                        OriginQuickList = 7,
-                        OriginQuickListSlot = 7,
-                        Data = -1
+                        Type = QSetType.Reset,
+                        OriginQuickList = -1,
+                        OriginQuickListSlot = -1
                     },
-                     new QsetClientSubPacket
+                    new QsetClientSubPacket
                     {
-                        OriginQuickList = 7,
-                        OriginQuickListSlot = 7,
-                        Data = -1
+                        Type = QSetType.Reset,
+                        OriginQuickList = -1,
+                        OriginQuickListSlot = -1
                     }
                 }
             };
 
             var packet = Serializer.Serialize(dlgTest);
             Assert.AreEqual(
-                "qslot 0 7.7.-1 7.7.-1",
+                "qslot 0 7.-1.-1 7.-1.-1",
                 packet);
         }
 
