@@ -94,6 +94,30 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
+        public void ATimeSpaceCardWithoutItsTextsReadsThemAsAbsent()
+        {
+            const string line = "rbr 3.0.0 4 15 10.99 1 205.1 207.1 208.1 209.1 210.1 203.1 -1.0 10.1 -1.0 -1.0 1120.Anonymous 0 0 -1";
+            var card = (RbrPacket)ClientSide.Deserialize(line);
+
+            Assert.IsNull(card.TitleAndDescription);
+            Assert.AreEqual(line, Serializer.Serialize(card));
+        }
+
+        [TestMethod]
+        public void AValidationIsTakenAgainOnEveryCall()
+        {
+            var fairy = new EInfoFairyPacket { Element = (ElementType)98 };
+
+            Assert.IsFalse(fairy.IsValid);
+            Assert.IsFalse(fairy.IsValid);
+            Assert.AreEqual(1, fairy.ValidationResult.Count);
+
+            fairy.Element = ElementType.Fire;
+            Assert.IsTrue(fairy.IsValid);
+            Assert.AreEqual(0, fairy.ValidationResult.Count);
+        }
+
+        [TestMethod]
         public void TheNoOfADialogCanBeWrittenWithoutItsHash()
         {
             var dialog = (DlgiPacket)DialogDeserializer.Deserialize("dlgi #rstart^1 rstart 92 0 0");

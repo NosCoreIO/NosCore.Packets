@@ -41,6 +41,7 @@ namespace NosCore.Packets
         {
             get
             {
+                _validationResult.Clear();
                 var vc = new ValidationContext(this);
                 // A property that cannot be set is a view of other fields, not a field of the line.
                 foreach (var prop in GetType().GetProperties()
