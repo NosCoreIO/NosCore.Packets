@@ -4,6 +4,7 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
+using System.Collections.Generic;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 
@@ -39,5 +40,18 @@ namespace NosCore.Packets.ServerPackets.Inventory
 
         [PacketIndex(4, IsOptional = true)]
         public short? ElementRate { get; set; }
+
+        // The held fairy's own Unknown4, Unknown5 and options.
+        [PacketIndex(5, IsOptional = true)]
+        public byte? Unknown { get; set; }
+
+        [PacketIndex(6, IsOptional = true)]
+        public byte? Unknown2 { get; set; }
+
+        [PacketIndex(7, IsOptional = true)]
+        public byte? OptionCount { get; set; }
+
+        [PacketListIndex(8, IsOptional = true)]
+        public List<EInfoFairyOptionSubPacket>? Options { get; set; }
     }
 }

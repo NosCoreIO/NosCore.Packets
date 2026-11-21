@@ -19,6 +19,10 @@ namespace NosCore.Packets
 
         public ushort? KeepAliveId { get; set; }
 
+        // A packet held in another packet's field is written with a leading '#' ("dlgi #rstart^1 rstart 92 0 0" has
+        // one of each); the client sends it back exactly as written.
+        public bool IsWrittenWithoutHash { get; set; }
+
         private readonly List<ValidationResult> _validationResult = new ();
         public List<ValidationResult> ValidationResult
         {

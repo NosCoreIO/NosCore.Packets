@@ -295,11 +295,18 @@ namespace NosCore.Packets
 
         // A packet's tokens are the runs of non-blank characters, with an empty token for every further blank
         // between two of them or closing the line ("a  b " is "a", "", "b", ""); a blank opening the line is not one.
+        // A carriage return is not a blank: it separates two texts that each keep their spaces (rbr's title and
+        // description).
         private static string[] Tokenize(string content)
         {
-            var tokens = content.Split((char[]?)null);
+            var tokens = content.Contains('\r') ? content.Split(BlanksButCarriageReturn) : content.Split((char[]?)null);
             return tokens[0].Length == 0 ? tokens[1..] : tokens;
         }
+
+        private static readonly char[] BlanksButCarriageReturn = Enumerable.Range(0, char.MaxValue + 1)
+            .Select(code => (char)code)
+            .Where(character => char.IsWhiteSpace(character) && character != '\r')
+            .ToArray();
 
         // The tokens a packet read from the given parts would have, had they been joined with spaces and tokenized.
         private static string[] Tokenize(string[] parts) => parts.Length > 0 && parts[0].Length == 0 ? parts[1..] : parts;
@@ -311,8 +318,13 @@ namespace NosCore.Packets
             var candidates = shared.Where(creator => StartsWith(creator, firstToken)).ToList();
             if (candidates.Count == 0)
             {
-                // A shape that leaves its first field at the default reads the lines no other shape claims.
-                candidates.Add(shared.FirstOrDefault(creator => !ClaimsFirstField(creator)) ?? shared[0]);
+                // The shapes that leave their first field at the default read the lines no other shape claims.
+                candidates.AddRange(shared.Where(creator => !ClaimsFirstField(creator)));
+            }
+
+            if (candidates.Count == 0)
+            {
+                candidates.Add(shared[0]);
             }
 
             if (candidates.Count == 1)
@@ -321,6 +333,7 @@ namespace NosCore.Packets
             }
 
             IPacket? readable = null;
+            IPacket? writtenBack = null;
             Exception? failure = null;
             foreach (var creator in candidates)
             {
@@ -341,13 +354,19 @@ namespace NosCore.Packets
                 }
 
                 readable ??= packet;
+                // Two shapes can write a line back alike; the one whose values its enumerations name is the one sent.
                 if (WritesBack(shared, packet, packetContent))
                 {
-                    return packet;
+                    if (packet.IsValid)
+                    {
+                        return packet;
+                    }
+
+                    writtenBack ??= packet;
                 }
             }
 
-            return readable ?? throw failure ?? new InvalidOperationException();
+            return writtenBack ?? readable ?? throw failure ?? new InvalidOperationException();
         }
 
         private static bool StartsWith(TypeCreator creator, string? firstToken)
@@ -465,6 +484,18 @@ namespace NosCore.Packets
                 var isMaxIndex = field.Index.Index == dic.Layout.MaxIndex && lastInLine;
                 var currentIndex = inLine ? start + position : field.Index.Index + start;
                 trueIndex = trueIndex == -1 ? (inLine ? start : currentIndex) : trueIndex;
+
+                // An optional field is left out when the rest of the line only holds the required fields after it.
+                if (field.Index.IsOptional && field.RequiredAfter > 0 && lastInLine && matches.Length - trueIndex <= field.RequiredAfter)
+                {
+                    if (field.AcceptsNull)
+                    {
+                        set(deg, null);
+                    }
+
+                    continue;
+                }
+
                 if (trueIndex < matches.Length)
                 {
                     if (matches[trueIndex].Length == 0 && field.IsScalar)
@@ -584,7 +615,20 @@ namespace NosCore.Packets
                     currentIndex = matches.Length;
                     return Deserialize(inlinePacket);
                 case FieldKind.AnyPacket:
-                    return Deserialize(matches[currentIndex++]);
+                    var embedded = matches[currentIndex++];
+                    if (embedded.StartsWith('#'))
+                    {
+                        return Deserialize(embedded);
+                    }
+
+                    // Its fields are still joined with '^'.
+                    var bare = Deserialize($"#{embedded}");
+                    if (bare is PacketBase written)
+                    {
+                        written.IsWrittenWithoutHash = true;
+                    }
+
+                    return bare;
                 case FieldKind.SubPacket:
                     return DeserializeSubPacket(field, ref matches, ref currentIndex, isMaxIndex);
                 // An optional field that is null is left off the line, so a -1 there is the value itself.
@@ -620,6 +664,16 @@ namespace NosCore.Packets
                 }
 
                 return DeserializeFields(dic, ref matches, ref currentIndex, hasHeader: false, inLine: true, lastInLine: isMaxIndex);
+            }
+
+            // Texts joined by a separator that is not a space, ending the line, each keep their spaces.
+            if (isMaxIndex && !layout.HasHeader && subPacketSeparator is { Length: > 0 } && subPacketSeparator.All(char.IsWhiteSpace)
+                && subPacketSeparator != " ")
+            {
+                var texts = string.Join(' ', matches, currentIndex, matches.Length - currentIndex)
+                    .Split(subPacketSeparator, layout.Fields.Length);
+                currentIndex = matches.Length;
+                return DeserializeIPacket(dic, texts, 0, false);
             }
 
             // An absent sub-packet is written as a lone -1 in place of its joined fields.

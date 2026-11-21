@@ -17,5 +17,8 @@ namespace NosCore.Packets.Attributes
 
         public string? ListSeparator { get; set; }
         public sbyte Length { get; set; }
+
+        // A list whose items are all absent ends with its separator ("-1.-1.-1.").
+        public bool TrailingSeparatorWhenAllAbsent { get; set; }
     }
 }

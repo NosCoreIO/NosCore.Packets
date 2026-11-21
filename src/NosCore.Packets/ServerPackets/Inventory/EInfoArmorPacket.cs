@@ -59,8 +59,9 @@ namespace NosCore.Packets.ServerPackets.Inventory
         [PacketIndex(10)]
         public long Price { get; set; }
 
+        // -1 on every traced line.
         [PacketIndex(11)]
-        public short ShellEffectValue { get; set; } = -1;
+        public short Unknown { get; set; } = -1;
 
         [PacketIndex(12)]
         public short ShellRarity { get; set; }
@@ -71,16 +72,30 @@ namespace NosCore.Packets.ServerPackets.Inventory
         [PacketIndex(14)]
         public byte ShellOptionCount { get; set; }
 
-        [PacketListIndex(15, IsOptional = true)]
+        // A non-zero value v adds a "Current Shell Level (v % 10/v / 10)" line. It is 62 or 81 to 88 on most traced
+        // items with options, 0 on others, and negative on a few bound ones, which is not settled.
+        [PacketIndex(15)]
+        public short ShellLevel { get; set; }
+
+        [PacketListIndex(16, IsOptional = true)]
         public List<EInfoShellOptionSubPacket>? ShellOptions { get; set; }
 
-        // Required after the options. Despite its name it is not the bar: a non-zero value v adds a
-        // "Current Shell Level (v % 10/v / 10)" line.
-        [PacketIndex(16)]
-        public short Gauge { get; set; }
+        // The rune section is only on the line of an item with runes.
+        [PacketIndex(17, IsOptional = true)]
+        public byte? RuneUpgrade { get; set; }
+
+        // 0, or 1 on a few items with runes.
+        [PacketIndex(18, IsOptional = true)]
+        public byte? Unknown2 { get; set; }
+
+        [PacketIndex(19, IsOptional = true)]
+        public byte? RuneCount { get; set; }
+
+        [PacketListIndex(20, IsOptional = true)]
+        public List<EInfoRuneSubPacket>? Runes { get; set; }
 
         // Out of 1000, drawn as the pity gauge bar in the window's top corner; 0 draws none.
-        [PacketIndex(17)]
+        [PacketIndex(21)]
         public short PityGauge { get; set; }
     }
 }

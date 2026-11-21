@@ -18,5 +18,9 @@ namespace NosCore.Packets.ServerPackets.Inventory
 
         [PacketIndex(2)]
         public int Value { get; set; }
+
+        // From -2 to 2, mostly 0.
+        [PacketIndex(3)]
+        public short Unknown { get; set; }
     }
 }

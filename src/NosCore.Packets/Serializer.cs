@@ -5,6 +5,7 @@
 // -----------------------------------
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -55,10 +56,16 @@ namespace NosCore.Packets
         }
 
         // RemoveHash writes the packet inline as a line of its own ("e_info 7 4240 ...") instead of "#e_info^7^4240".
-        private string? SerializeInjected(IPacket? value, bool inline, bool isOptional) =>
-            value == null
-                ? isOptional ? null : "-1"
-                : (string)_packetSerializerDictionary[value.GetType()].Write(value, !inline);
+        private string? SerializeInjected(IPacket? value, bool inline, bool isOptional)
+        {
+            if (value == null)
+            {
+                return isOptional ? null : "-1";
+            }
+
+            var written = (string)_packetSerializerDictionary[value.GetType()].Write(value, !inline);
+            return !inline && value is PacketBase { IsWrittenWithoutHash: true } ? written[1..] : written;
+        }
 
         public string Serialize(IEnumerable<IPacket> packets)
         {
@@ -173,6 +180,22 @@ namespace NosCore.Packets
                 isFalse);
         }
 
+        private static bool AllAbsent(IEnumerable? items)
+        {
+            var any = false;
+            foreach (var item in items ?? Array.Empty<object>())
+            {
+                if (item != null && !(item is sbyte or short or int or long && Convert.ToInt64(item, CultureInfo.InvariantCulture) == -1))
+                {
+                    return false;
+                }
+
+                any = true;
+            }
+
+            return any;
+        }
+
         private static IEnumerable<T> PadToMinimumLength<T>(IEnumerable<T>? source, int minimum) where T : new()
         {
             var list = source?.ToList() ?? new List<T>();
@@ -228,6 +251,15 @@ namespace NosCore.Packets
                     isPacketList || indexAttr is PacketListIndexAttribute ? Expression.Constant(packetSplitter, typeof(string)) : propertySplitter,
                     selectExp),
                 typeof(object));
+
+            if (indexAttr is PacketListIndexAttribute { TrailingSeparatorWhenAllAbsent: true } && !isPacketList)
+            {
+                listJoin = Expression.Convert(Expression.Condition(
+                    Expression.Call(typeof(Serializer).GetMethod(nameof(AllAbsent), BindingFlags.NonPublic | BindingFlags.Static)!,
+                        Expression.Convert(specificTypeExpression, typeof(IEnumerable))),
+                    ConcatExpression(listJoin, Expression.Constant(packetSplitter, typeof(string))),
+                    listJoin), typeof(object));
+            }
 
             Expression isAbsent = Expression.Equal(specificTypeExpression, Expression.Constant(null, typeof(object)));
             if (isOptional)

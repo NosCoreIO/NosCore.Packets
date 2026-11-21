@@ -221,7 +221,7 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
-        public void SerializeEInfoWeaponPacketWithShellOptionsThenTheGauge()
+        public void SerializeEInfoWeaponPacketWithTheShellLevelThenItsOptions()
         {
             var packet = Serializer.Serialize(new EInfoWeaponPacket
             {
@@ -229,13 +229,14 @@ namespace NosCore.Packets.Tests
                 ShellRarity = 5,
                 BoundCharacterId = 1,
                 ShellOptionCount = 2,
+                ShellLevel = 84,
                 ShellOptions = new List<EInfoShellOptionSubPacket>
                 {
                     new() { Level = 1, Type = 1, Value = 50 },
                     new() { Level = 2, Type = 15, Value = 12 }
                 }
             });
-            Assert.AreEqual("e_info 0 299 0 0 0 0 0 0 0 0 0 0 0 0 -1 5 1 2 1.1.50 2.15.12 0 0", packet);
+            Assert.AreEqual("e_info 0 299 0 0 0 0 0 0 0 0 0 0 0 0 -1 5 1 2 84 1.1.50.0 2.15.12.0 0", packet);
         }
 
         [TestMethod]
@@ -264,7 +265,7 @@ namespace NosCore.Packets.Tests
                 ShellOptionCount = 1,
                 ShellOptions = new List<EInfoShellOptionSubPacket> { new() { Level = 1, Type = 1, Value = 50 } }
             });
-            Assert.AreEqual("e_info 9 565 60 5 200 1 1.1.50", packet);
+            Assert.AreEqual("e_info 9 565 60 5 200 1 1.1.50.0", packet);
         }
 
         [TestMethod]
@@ -350,7 +351,7 @@ namespace NosCore.Packets.Tests
             };
 
             var packet = Serializer.Serialize(testPacket);
-            Assert.AreEqual("clist 0 test 0 0 0 0 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0  0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0 1", packet);
+            Assert.AreEqual("clist 0 test 0 0 0 0 0 0 0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1 0  0 0 -1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1.-1. 0 1", packet);
         }
 
 

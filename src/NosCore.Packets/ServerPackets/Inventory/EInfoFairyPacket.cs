@@ -4,6 +4,7 @@
 // |_|\__|\__/ |___/ \__/\__/|_|_\___|
 // -----------------------------------
 
+using System.Collections.Generic;
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
 
@@ -40,16 +41,37 @@ namespace NosCore.Packets.ServerPackets.Inventory
         [PacketIndex(4)]
         public int Unknown { get; set; }
 
+        // With ExperienceLeft, the same total for every fairy at one rate (19 350 at 80).
         [PacketIndex(5)]
-        public int Unknown2 { get; set; }
+        public long Experience { get; set; }
 
         [PacketIndex(6)]
-        public int Unknown3 { get; set; }
+        public long Price { get; set; }
 
         [PacketIndex(7)]
-        public int Unknown4 { get; set; }
+        public byte Unknown2 { get; set; }
 
         [PacketIndex(8)]
-        public bool IsNosmall { get; set; }
+        public byte Unknown3 { get; set; }
+
+        [PacketIndex(9)]
+        public long ExperienceLeft { get; set; }
+
+        [PacketIndex(10)]
+        public long BoundCharacterId { get; set; }
+
+        [PacketIndex(11)]
+        public byte Unknown4 { get; set; }
+
+        [PacketIndex(12)]
+        public byte Unknown5 { get; set; }
+
+        // The line of a fairy without options is one field shorter, all of its last fields 0, so which field it
+        // leaves out is not settled.
+        [PacketIndex(13, IsOptional = true)]
+        public byte? OptionCount { get; set; }
+
+        [PacketListIndex(14, IsOptional = true)]
+        public List<EInfoFairyOptionSubPacket>? Options { get; set; }
     }
 }
