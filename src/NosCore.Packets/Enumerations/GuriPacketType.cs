@@ -36,6 +36,12 @@ namespace NosCore.Packets.Enumerations
         OnyxDragon = 31,
         TattooInfo = 40,
         FlipCamera = 41,
+        // Sent by the story window's act buttons to replay that act's opening scene.
+        ReplayAct1Scene = 40,
+        ReplayAct2Scene = 41,
+        ReplayAct3Scene = 42,
+        ReplayAct4Scene = 43,
+        ReplayAct5Scene = 44,
         FriendshipWings = 199,
         PetBasket = 201,
         PartnerBackpack = 202,
