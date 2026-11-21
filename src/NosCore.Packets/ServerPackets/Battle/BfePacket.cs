@@ -10,9 +10,8 @@ using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Battle
 {
-    // Sent to the target and the surrounding map when a buff/debuff expires so the
-    // client drops the icon + any applied visual effect. Mirror of BfPacket which
-    // signals the inverse (buff applied / refreshed).
+    // Starts the card's lasting visual effect on the entity, for every client that sees it, or ends it when
+    // RemainingTime is 0. Only cards flagged for a lasting effect in Card.dat get one; the buff icon is bf's.
     [PacketHeader("bf_e", Scope.InGame)]
     public class BfePacket : PacketBase
     {
@@ -25,7 +24,8 @@ namespace NosCore.Packets.ServerPackets.Battle
         [PacketIndex(2)]
         public short CardId { get; set; }
 
+        // Deciseconds left on the card.
         [PacketIndex(3)]
-        public short Unknown { get; set; } //TODO to find
+        public short RemainingTime { get; set; }
     }
 }

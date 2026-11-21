@@ -19,6 +19,7 @@ using NosCore.Packets.ServerPackets.MiniMap;
 using NosCore.Packets.ServerPackets.Player;
 using NosCore.Packets.ServerPackets.Quicklist;
 using NosCore.Packets.ServerPackets.Quest;
+using NosCore.Packets.ServerPackets.Specialists;
 using NosCore.Packets.ServerPackets.TimeSpaces;
 using NosCore.Packets.ServerPackets.UI;
 using NosCore.Packets.ServerPackets.Visibility;
@@ -52,6 +53,12 @@ namespace NosCore.Packets.Tests
         [DataRow("rsfm 628 2 0 0 0")]
         [DataRow("rsfm 33 0 5 11 0")]
         [DataRow("c_mode 1 14293841 13 10 5 0 100 0")]
+        [DataRow("bf_e 1 14293841 4002 2005")]
+        [DataRow("bf_e 1 14595506 4250 0")]
+        [DataRow("scp 1")]
+        [DataRow("scp 0")]
+        [DataRow("minipet 1 14293841 -1")]
+        [DataRow("minipet 1 9891717 8910")]
         [DataRow("c_mode 2 7560447 2310 0 0")]
         [DataRow("c_mode 3 5118 462 0 0")]
         [DataRow("c_info Anonymous - -1 -1 - 9999999 0 1 0 9 3 -2 0 0 0 0 0 0 0 -1")]
@@ -179,6 +186,31 @@ namespace NosCore.Packets.Tests
 
             Assert.AreEqual(((short?)2028, (short)5), (repay.BonusRewards[0].ItemId, repay.BonusRewards[0].Amount));
             Assert.IsNull(repay.DrawnReward.ItemId);
+        }
+
+        [TestMethod]
+        public void ABuffEffectLineCarriesTheTimeLeftOnItsCard()
+        {
+            var effect = (BfePacket)Deserializer.Deserialize("bf_e 1 14293841 4002 2005");
+
+            Assert.AreEqual(((short)4002, (short)2005), (effect.CardId, effect.RemainingTime));
+        }
+
+        [TestMethod]
+        public void TheSpecialistDrainLineIsOnOrOff()
+        {
+            Assert.IsTrue(((ScpIndicatorPacket)Deserializer.Deserialize("scp 1")).IsDraining);
+            Assert.IsFalse(((ScpIndicatorPacket)Deserializer.Deserialize("scp 0")).IsDraining);
+        }
+
+        [TestMethod]
+        public void AMiniPetLineNamesTheWornMiniPet()
+        {
+            var worn = (MinipetPacket)Deserializer.Deserialize("minipet 1 9891717 8910");
+            var none = (MinipetPacket)Deserializer.Deserialize("minipet 1 14293841 -1");
+
+            Assert.AreEqual((VisualType.Player, 9891717L, (short?)8910), (worn.VisualType, worn.VisualId, worn.MiniPetVNum));
+            Assert.IsNull(none.MiniPetVNum);
         }
 
         [TestMethod]
