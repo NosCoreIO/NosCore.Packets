@@ -59,7 +59,7 @@ namespace NosCore.Packets.ServerPackets.CharacterSelectionScreen
         [PacketIndex(14)]
         public byte QuestPart { get; set; }
 
-        [PacketListIndex(15)]
+        [PacketListIndex(15, TrailingSeparatorWhenAllAbsent = true)]
         public List<short?>? Pets { get; set; }
 
         [PacketIndex(16)]

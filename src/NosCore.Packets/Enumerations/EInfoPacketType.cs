@@ -17,6 +17,8 @@ namespace NosCore.Packets.Enumerations
         SpecialistHolder = 7,
         Specialist = 8,
         Shell = 9,
-        FairyBead = 12
+        SpeedBooster = 11,
+        FairyBead = 12,
+        PartnerSpecialistHolder = 13
     }
 }

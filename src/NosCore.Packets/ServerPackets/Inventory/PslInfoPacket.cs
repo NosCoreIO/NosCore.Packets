@@ -15,70 +15,73 @@ namespace NosCore.Packets.ServerPackets.Inventory
     public class PslInfoPacket : PacketBase
     {
         [PacketIndex(0)]
-        public short ItemVNum { get; set; }
+        public string ExtraSpace { get; set; } = string.Empty;
 
         [PacketIndex(1)]
-        public ElementType Element { get; set; }
+        public short ItemVNum { get; set; }
 
         [PacketIndex(2)]
-        public short ElementRate { get; set; }
+        public ElementType Element { get; set; }
 
         [PacketIndex(3)]
-        public byte LevelMinimum { get; set; }
+        public short ElementRate { get; set; }
 
         [PacketIndex(4)]
-        public byte Speed { get; set; }
+        public byte LevelMinimum { get; set; }
 
         [PacketIndex(5)]
-        public short FireResistance { get; set; }
+        public byte Speed { get; set; }
 
         [PacketIndex(6)]
-        public short WaterResistance { get; set; }
+        public short FireResistance { get; set; }
 
         [PacketIndex(7)]
-        public short LightResistance { get; set; }
+        public short WaterResistance { get; set; }
 
         [PacketIndex(8)]
+        public short LightResistance { get; set; }
+
+        [PacketIndex(9)]
         public short DarkResistance { get; set; }
 
-        [PacketIndex(9, SpecialSeparator = ".")]
+        [PacketIndex(10, SpecialSeparator = ".")]
         public ScnPacket.ScSkillDetails? Skill1 { get; set; }
 
-        [PacketIndex(10, SpecialSeparator = ".")]
+        [PacketIndex(11, SpecialSeparator = ".")]
         public ScnPacket.ScSkillDetails? Skill2 { get; set; }
 
-        [PacketIndex(11, SpecialSeparator = ".")]
+        [PacketIndex(12, SpecialSeparator = ".")]
         public ScnPacket.ScSkillDetails? Skill3 { get; set; }
 
-        [PacketIndex(12)]
+        [PacketIndex(13)]
         public byte Upgrade { get; set; }
 
         // Shown as twenty times the value.
-        [PacketIndex(13)]
+        [PacketIndex(14)]
         public short AttackPoints { get; set; }
 
         // Shown as ten times the value.
-        [PacketIndex(14)]
+        [PacketIndex(15)]
         public short DefencePoints { get; set; }
 
         // Shown as a critical damage reduction percentage.
-        [PacketIndex(15)]
+        [PacketIndex(16)]
         public short CriticalDamageReductionPoints { get; set; }
 
         // Shown as three hundred times the value.
-        [PacketIndex(16)]
+        [PacketIndex(17)]
         public short HpMpPoints { get; set; }
 
-        [PacketIndex(17)]
+        [PacketIndex(18)]
         public short FirePoints { get; set; }
 
-        [PacketIndex(18)]
+        [PacketIndex(19)]
         public short WaterPoints { get; set; }
 
-        [PacketIndex(19)]
+        [PacketIndex(20)]
         public short LightPoints { get; set; }
 
-        [PacketIndex(20)]
+        [PacketIndex(21)]
         public short DarkPoints { get; set; }
     }
 }

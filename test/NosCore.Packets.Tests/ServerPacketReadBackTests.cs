@@ -33,7 +33,6 @@ namespace NosCore.Packets.Tests
             ["SayItemPacket"] = "carries an e_info",
             ["RcbListPacket"] = "carries an e_info",
             ["RcsListPacket"] = "carries an e_info",
-            ["RbrPacket"] = "not read back yet",
         };
 
         private static bool IsServerPacket(Type type) => type.Namespace?.Contains(".ServerPackets", StringComparison.Ordinal) == true;
