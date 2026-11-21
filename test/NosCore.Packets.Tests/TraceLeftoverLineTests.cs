@@ -104,6 +104,18 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
+        public void ATimeSpaceCardTitleStartingWithMinusOneKeepsItsTexts()
+        {
+            const string line = "rbr 3.0.0 4 15 10.99 1 205.1 207.1 208.1 209.1 210.1 203.1 -1.0 10.1 -1.0 -1.0 1120.Anonymous 0 0 -1 A Difficult Decision\rChoose wisely";
+            var card = (RbrPacket)ClientSide.Deserialize(line);
+
+            Assert.IsNotNull(card.TitleAndDescription);
+            Assert.AreEqual("-1 A Difficult Decision", card.TitleAndDescription.Title);
+            Assert.AreEqual("Choose wisely", card.TitleAndDescription.Description);
+            Assert.AreEqual(line, Serializer.Serialize(card));
+        }
+
+        [TestMethod]
         public void AValidationIsTakenAgainOnEveryCall()
         {
             var fairy = new EInfoFairyPacket { Element = (ElementType)98 };

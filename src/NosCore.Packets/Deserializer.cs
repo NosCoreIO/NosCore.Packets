@@ -666,16 +666,20 @@ namespace NosCore.Packets
                 return DeserializeFields(dic, ref matches, ref currentIndex, hasHeader: false, inLine: true, lastInLine: isMaxIndex);
             }
 
-            // An absent sub-packet is written as a lone -1 in place of its joined fields.
-            if (subPacketSeparator is { Length: > 0 } && matches[currentIndex] == "-1" && layout.Fields.Length > 1)
+            // Texts joined by a separator that is not a space, ending the line, each keep their spaces.
+            var joinedTexts = isMaxIndex && !layout.HasHeader && subPacketSeparator is { Length: > 0 }
+                && subPacketSeparator.All(char.IsWhiteSpace) && subPacketSeparator != " ";
+
+            // An absent sub-packet is written as a lone -1 in place of its joined fields; joined texts are absent
+            // only when the -1 is all that is left of the line, since a text may itself start with -1.
+            if (subPacketSeparator is { Length: > 0 } && matches[currentIndex] == "-1" && layout.Fields.Length > 1
+                && (!joinedTexts || currentIndex == matches.Length - 1))
             {
                 currentIndex++;
                 return null;
             }
 
-            // Texts joined by a separator that is not a space, ending the line, each keep their spaces.
-            if (isMaxIndex && !layout.HasHeader && subPacketSeparator is { Length: > 0 } && subPacketSeparator.All(char.IsWhiteSpace)
-                && subPacketSeparator != " ")
+            if (joinedTexts)
             {
                 var texts = string.Join(' ', matches, currentIndex, matches.Length - currentIndex)
                     .Split(subPacketSeparator, layout.Fields.Length);
