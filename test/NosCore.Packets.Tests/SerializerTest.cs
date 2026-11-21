@@ -1065,6 +1065,23 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
+        [DataRow("guri 40", GuriPacketType.ReplayAct1Scene)]
+        [DataRow("guri 41", GuriPacketType.ReplayAct2Scene)]
+        [DataRow("guri 42", GuriPacketType.ReplayAct3Scene)]
+        [DataRow("guri 43", GuriPacketType.ReplayAct4Scene)]
+        [DataRow("guri 44", GuriPacketType.ReplayAct5Scene)]
+        public void ReplayingAnActSceneIsAValidGuri(string line, GuriPacketType type)
+        {
+            var deserializer = new Deserializer(new[] { typeof(NosCore.Packets.ClientPackets.UI.GuriPacket) });
+
+            var packet = (NosCore.Packets.ClientPackets.UI.GuriPacket)deserializer.Deserialize(line);
+
+            Assert.IsTrue(packet.IsValid);
+            Assert.AreEqual(type, packet.Type);
+            Assert.AreEqual(line, Serializer.Serialize(packet));
+        }
+
+        [TestMethod]
         public void I18NargumentAreWellFormatedWithLength()
         {
             var mapItem = new SayiPacket
