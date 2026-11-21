@@ -1266,7 +1266,7 @@ namespace NosCore.Packets.Tests
                 VisualType = VisualType.Player,
                 VisualId = 11396565,
                 CardId = 4002,
-                Unknown = 0
+                RemainingTime = 0
             };
             Assert.AreEqual("bf_e 1 11396565 4002 0", Serializer.Serialize(p));
         }
@@ -1286,7 +1286,7 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void SerializeScpIndicatorPacketMatchesTrace()
         {
-            Assert.AreEqual("scp 1", Serializer.Serialize(new ScpIndicatorPacket { Value = 1 }));
+            Assert.AreEqual("scp 1", Serializer.Serialize(new ScpIndicatorPacket { IsDraining = true }));
         }
 
         [TestMethod]
@@ -1310,7 +1310,7 @@ namespace NosCore.Packets.Tests
         [TestMethod]
         public void SerializeMinipetPacketMatchesTrace()
         {
-            var p = new MinipetPacket { Type = 1, VisualId = 116489, MateTransportId = null };
+            var p = new MinipetPacket { VisualType = VisualType.Player, VisualId = 116489, MiniPetVNum = null };
             Assert.AreEqual("minipet 1 116489 -1", Serializer.Serialize(p));
         }
 
