@@ -229,6 +229,8 @@ namespace NosCore.Packets
                 var first = NextField(packetstring, ref position)!;
                 var includesKeepAliveIdentity = ushort.TryParse(first, NumberStyles.Integer, CultureInfo.InvariantCulture, out var keepalive);
                 var header = includesKeepAliveIdentity ? NextField(packetstring, ref position) ?? throw new InvalidOperationException("A line holds a keep-alive number and no header.") : first;
+                // A packet another one carried without its '#' comes back with '^' after its header ("guri^9999").
+                var isCaretJoined = position > 0 && packetContent[position - 1] == '^';
                 var firstToken = NextField(packetstring, ref position);
                 // The body of an unknown line starts after its header as written, '#' included.
                 var headerLength = header.Length;
@@ -249,7 +251,7 @@ namespace NosCore.Packets
 
                 if (_packetDeserializerDictionary.TryGetValue(header, out var creator))
                 {
-                    var content = isSpecial ? packetstring : packetContent;
+                    var content = isSpecial || isCaretJoined ? packetstring : packetContent;
                     var packet = _sharedHeaders.TryGetValue(header, out var shared)
                         ? DeserializeShared(shared, firstToken, content, includesKeepAliveIdentity)
                         : DeserializeIPacket(creator, content, includesKeepAliveIdentity, true);
