@@ -41,6 +41,7 @@ using System.Linq;
 using ServerGidxPacket = NosCore.Packets.ServerPackets.Families.GidxPacket;
 using FcPacket = NosCore.Packets.ServerPackets.Families.FcPacket;
 using FcSubPacket = NosCore.Packets.ServerPackets.Families.FcSubPacket;
+using RaidopenPacket = NosCore.Packets.ClientPackets.Event.RaidopenPacket;
 
 namespace NosCore.Packets.Tests
 {

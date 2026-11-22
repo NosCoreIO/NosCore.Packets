@@ -75,6 +75,10 @@ namespace NosCore.Packets.Enumerations
         TeleportOnOtherMapTp = 711,
         AddFlagToRbbTeam = 720,
         FactionEgg = 750,
+        // The yes answer of a quest script's teleport question: the map, then the cell.
+        ScriptTeleport = 1000,
         ActVRelic = 1502,
+        // The no answer of the same question, written without its '#'.
+        ScriptTeleportDeclined = 9999,
     }
 }
