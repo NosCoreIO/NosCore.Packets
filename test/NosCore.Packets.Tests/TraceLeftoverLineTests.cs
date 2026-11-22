@@ -168,6 +168,45 @@ namespace NosCore.Packets.Tests
             Assert.AreEqual((short)0, sword.PityGauge);
         }
 
+        private const string ShelledArmour = "e_info 2 4635 7 0 0 65 698 743 701 663 1400000 -1 0 0 10 0 13.2.39.0 13.18.48.0 14.24.7.0 14.10.29.0 15.19.82.0 15.1.188.0 16.4.19.0 19.31.83.0 24.33.31.0 24.37.15.0 0";
+
+        [TestMethod]
+        public void AnArmourReadsItsOptionLevelsAsAWeaponDoes()
+        {
+            var armour = (EInfoArmorPacket)ClientSide.Deserialize(ShelledArmour);
+
+            Assert.AreEqual(((byte)1, (byte)2, 39, true),
+                (armour.ShellOptions![0].Level, armour.ShellOptions[0].Type, armour.ShellOptions[0].Value, armour.ShellOptions[0].IsArmor));
+            Assert.AreEqual(((byte)12, (byte)37, 15, true),
+                (armour.ShellOptions[9].Level, armour.ShellOptions[9].Type, armour.ShellOptions[9].Value, armour.ShellOptions[9].IsArmor));
+        }
+
+        [TestMethod]
+        public void AnArmourWritesItsOptionLevelsAsTheTraceDoes()
+        {
+            var options = new (byte Level, byte Type, int Value)[]
+            {
+                (1, 2, 39), (1, 18, 48), (2, 24, 7), (2, 10, 29), (3, 19, 82),
+                (3, 1, 188), (4, 4, 19), (7, 31, 83), (12, 33, 31), (12, 37, 15),
+            };
+
+            var line = Serializer.Serialize(new EInfoArmorPacket
+            {
+                ItemVNum = 4635,
+                Rare = 7,
+                LevelMinimum = 65,
+                CloseDefence = 698,
+                DistanceDefence = 743,
+                MagicDefence = 701,
+                DefenceDodge = 663,
+                Price = 1400000,
+                ShellOptionCount = (byte)options.Length,
+                ShellOptions = options.Select(o => new EInfoShellOptionSubPacket { Level = o.Level, Type = o.Type, Value = o.Value, IsArmor = true }).ToList(),
+            });
+
+            Assert.AreEqual(ShelledArmour, line);
+        }
+
         [TestMethod]
         public void AWeaponWithoutRunesEndsWithItsPityGauge()
         {
