@@ -15,7 +15,9 @@ namespace NosCore.Packets.Enumerations
         NoHair = 4,
         FrenchBraid = 10,
         ChoppyBangs = 11,
+        SavageChoppyBangs = 12,
         FauxHawkUndercut = 13,
+        SavageFauxHawkUndercut = 14,
         JellyRolls = 15
     }
 }
