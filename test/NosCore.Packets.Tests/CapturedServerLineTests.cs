@@ -109,6 +109,7 @@ namespace NosCore.Packets.Tests
         [DataRow("sr -10 16 150")]
         [DataRow("sr 0")]
         [DataRow("stash 0.-1685.1.1.0.0.0.0")]
+        [DataRow("stash 4.1016.1.32.0.0.0.0")]
         [DataRow("ivn 9  2.0.0.0")]
         [DataRow("ivn 10  0.5967.5.0")]
         [DataRow("ivn 1 5.-9276.1.0")]
@@ -377,17 +378,15 @@ namespace NosCore.Packets.Tests
         {
             var item = ((StashClientPacket)Deserializer.Deserialize("stash 0.-1685.1.1.0.0.0.0")).Items![0];
 
-            Assert.AreEqual(((short)1685, true, (short)1, (short?)0, (short?)0), (item.VNum, item.IsLimited, item.Amount, item.Unknown6, item.Unknown7));
+            Assert.AreEqual(((short)1685, true, (short)1, (short)0, (short)0), (item.VNum, item.IsLimited, item.Amount, item.Unknown6, item.Unknown7));
         }
 
         [TestMethod]
-        public void TheLastTwoStashFieldsAreWrittenAsAPair()
+        public void AStashedItemIsWrittenWithItsEightFields()
         {
-            var item = new WarehouseSubPacket { Slot = 0, VNum = 1685, IsLimited = true, Type = PocketType.Main, Amount = 1, Unknown7 = 0 };
+            var item = new WarehouseSubPacket { Slot = 2, VNum = 5947, Type = PocketType.Main, Amount = 4 };
 
-            Assert.AreEqual("stash 0.-1685.1.1.0.0", Serializer.Serialize(new StashClientPacket { Items = [item] }));
-            item.Unknown6 = 0;
-            Assert.AreEqual("stash 0.-1685.1.1.0.0.0.0", Serializer.Serialize(new StashClientPacket { Items = [item] }));
+            Assert.AreEqual("stash 2.5947.1.4.0.0.0.0", Serializer.Serialize(new StashClientPacket { Items = [item] }));
         }
 
         [TestMethod]
