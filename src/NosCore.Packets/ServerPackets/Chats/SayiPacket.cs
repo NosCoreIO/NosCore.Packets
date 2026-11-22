@@ -19,16 +19,21 @@ namespace NosCore.Packets.ServerPackets.Chats
         [PacketIndex(1)]
         public long VisualId { get; set; }
 
-        [PacketIndex(2)]
-        public SayColorType Type { get; set; }
+        // A line without a sender leaves an empty field after the id.
+        [PacketIndex(2, IsOptional = true)]
+        [PacketPresentWhen(nameof(VisualId), -1L)]
+        public string? ExtraSpace => VisualId == -1 ? string.Empty : null;
 
         [PacketIndex(3)]
-        public Game18NConstString Message { get; set; }
+        public SayColorType Type { get; set; }
 
         [PacketIndex(4)]
-        public byte ArgumentType { get; set; }
+        public Game18NConstString Message { get; set; }
 
         [PacketIndex(5)]
+        public byte ArgumentType { get; set; }
+
+        [PacketIndex(6)]
         public Game18NArguments Game18NArguments { get; set; } = new (4);
     }
 }
