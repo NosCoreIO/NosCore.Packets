@@ -43,9 +43,11 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
-        public void TheNoAnswerIsReadAsTheDeclinedGuri()
+        [DataRow("guri^9999")]
+        [DataRow("4321 guri^9999")]
+        public void TheNoAnswerIsReadAsTheDeclinedGuri(string line)
         {
-            var packet = (ClientGuriPacket)Deserializer.Deserialize("guri^9999");
+            var packet = (ClientGuriPacket)Deserializer.Deserialize(line);
 
             Assert.AreEqual(GuriPacketType.ScriptTeleportDeclined, packet.Type);
             Assert.IsNull(packet.Argument);
