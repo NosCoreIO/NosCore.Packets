@@ -95,6 +95,24 @@ namespace NosCore.Packets
         private readonly Dictionary<string, List<TypeCreator>> _sharedHeaders = new Dictionary<string, List<TypeCreator>>();
         private readonly ConcurrentDictionary<List<TypeCreator>, Serializer> _sharedWriters = new();
         private volatile Dictionary<Type, TypeCreator>? _creatorsByType;
+        private readonly Dictionary<string, TypeCreator> _nestedDeserializerDictionary = new Dictionary<string, TypeCreator>();
+
+        // The nested types read the packets another packet carries, such as the answer of a dialog, where their
+        // header is also held by one of the types read as whole lines.
+        public Deserializer(IEnumerable<Type> types, IEnumerable<Type> nestedTypes) : this(types)
+        {
+            var creatorMethod = typeof(Deserializer).GetMethod(nameof(CreateTypeCreator), BindingFlags.NonPublic | BindingFlags.Static)!;
+            foreach (var type in nestedTypes)
+            {
+                var creator = (TypeCreator)creatorMethod.MakeGenericMethod(type).Invoke(null, null)!;
+                var header = type.GetCustomAttribute<PacketHeaderAttribute>()?.Identification ?? type.Name;
+                _nestedDeserializerDictionary[header] = creator;
+                foreach (var alias in type.GetCustomAttributes<PacketHeaderAliasAttribute>())
+                {
+                    _nestedDeserializerDictionary[alias.Identification] = creator;
+                }
+            }
+        }
 
         public Deserializer(IEnumerable<Type> types)
         {
@@ -218,7 +236,9 @@ namespace NosCore.Packets
             return creators.TryGetValue(type, out var found) ? found : null;
         }
 
-        public IPacket Deserialize(string packetContent)
+        public IPacket Deserialize(string packetContent) => Deserialize(packetContent, nested: false);
+
+        private IPacket Deserialize(string packetContent, bool nested)
         {
             try
             {
@@ -247,6 +267,14 @@ namespace NosCore.Packets
                         headerLength = 1;
                         packetContent = packetContent.Insert(packetContent.IndexOf(header[0]) + 1, " ");
                     }
+                }
+
+                if (nested && _nestedDeserializerDictionary.TryGetValue(header, out var nestedCreator))
+                {
+                    var packet = DeserializeIPacket(nestedCreator, isSpecial || isCaretJoined ? packetstring : packetContent, includesKeepAliveIdentity, true);
+                    packet.Header = header;
+                    packet.KeepAliveId = includesKeepAliveIdentity ? keepalive : null;
+                    return packet;
                 }
 
                 if (_packetDeserializerDictionary.TryGetValue(header, out var creator))
@@ -615,16 +643,16 @@ namespace NosCore.Packets
                 case FieldKind.AnyPacket when field.Index.RemoveHash && isMaxIndex:
                     var inlinePacket = string.Join(' ', matches, currentIndex, matches.Length - currentIndex);
                     currentIndex = matches.Length;
-                    return Deserialize(inlinePacket);
+                    return Deserialize(inlinePacket, nested: true);
                 case FieldKind.AnyPacket:
                     var embedded = matches[currentIndex++];
                     if (embedded.StartsWith('#'))
                     {
-                        return Deserialize(embedded);
+                        return Deserialize(embedded, nested: true);
                     }
 
                     // Its fields are still joined with '^'.
-                    var bare = Deserialize($"#{embedded}");
+                    var bare = Deserialize($"#{embedded}", nested: true);
                     if (bare is PacketBase written)
                     {
                         written.IsWrittenWithoutHash = true;
