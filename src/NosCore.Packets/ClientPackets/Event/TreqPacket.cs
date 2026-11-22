@@ -23,5 +23,9 @@ namespace NosCore.Packets.ClientPackets.Event
 
         [PacketIndex(3)]
         public bool? RecordPress { get; set; }
+
+        // Set when the player accepted the gold a record challenge costs.
+        [PacketIndex(4, IsOptional = true)]
+        public bool? GoldAccepted { get; set; }
     }
 }
