@@ -104,6 +104,8 @@ namespace NosCore.Packets.Tests
         [DataRow("qstlist 5.1526.1526.7.0.1.0.0.0.0.0.0.0.0.0.0")]
         [DataRow("script 1 1970")]
         [DataRow("script 2 10")]
+        [DataRow("ski 0 200 201 200 201 209")]
+        [DataRow("ski 0 922 922 922 923 924 925 926 927 928 929 930 931 932 22 26 30 38 42 46 50 54 58 60 340 341")]
         [DataRow("pski 1292 1293")]
         [DataRow("petski -2")]
         [DataRow("petski 790 -1 -1")]
@@ -138,6 +140,19 @@ namespace NosCore.Packets.Tests
 
             Assert.AreEqual(line, Serializer.Serialize(packet));
             Assert.IsTrue(((PacketBase)packet).IsValid, string.Join("; ", ((PacketBase)packet).ValidationResult.Select(result => result.ErrorMessage)));
+        }
+
+        [TestMethod]
+        public void ANewAdventurersSkillListStartsWithItsBasicAttack()
+        {
+            var ski = (SkiPacket)Deserializer.Deserialize("ski 0 200 201 200 201 209");
+
+            Assert.AreEqual(((short)200, (short)201), (ski.PrimarySkillVnum, ski.SecondarySkillVnum));
+            CollectionAssert.AreEqual(new short[] { 200, 201, 209 }, ski.SkillVnums);
+            Assert.AreEqual("ski 0 200 201 200 201 209", Serializer.Serialize(new SkiPacket
+            {
+                PrimarySkillVnum = 200, SecondarySkillVnum = 201, SkillVnums = [200, 201, 209]
+            }));
         }
 
         [TestMethod]
