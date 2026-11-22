@@ -1657,7 +1657,7 @@ namespace NosCore.Packets.Tests
         }
 
         [TestMethod]
-        public void SerializeFStashAllPacketMatchesTrace()
+        public void SerializeFStashAllPacketWritesEveryItemField()
         {
             var packet = new FStashAllPacket
             {
@@ -1669,7 +1669,7 @@ namespace NosCore.Packets.Tests
                 }
             };
 
-            Assert.AreEqual("f_stash_all 21 0.5920.1.23.0.0 4.2188.2.20.0.0", Serializer.Serialize(packet));
+            Assert.AreEqual("f_stash_all 21 0.5920.1.23.0.0.0.0 4.2188.2.20.0.0.0.0", Serializer.Serialize(packet));
         }
     }
 }
