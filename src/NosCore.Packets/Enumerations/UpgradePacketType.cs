@@ -28,6 +28,9 @@ namespace NosCore.Packets.Enumerations
         CreateFairyZenas = 50,
         CreateFairyErenia = 51,
         CreateFairyFernon = 52,
-        FusionItem = 53
+        FusionItem = 53,
+
+        // Sent by the tattoo window that wopen 81 opens, with the pocket and slot of the pattern to ink.
+        ApplyTattoo = 81
     }
 }
