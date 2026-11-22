@@ -680,5 +680,13 @@ namespace NosCore.Packets.Tests
             var scopes = typeof(ExchangeRequestPacket).GetCustomAttribute<PacketHeaderAttribute>()!.Scopes;
             Assert.IsTrue(scopes.HasFlag(Scope.InTrade));
         }
+
+        [TestMethod]
+        public void MallRequestKeepsItsUnknownValue()
+        {
+            var deserializer = new Deserializer(new[] { typeof(NosCore.Packets.ClientPackets.UI.MallPacket) });
+            var packet = (NosCore.Packets.ClientPackets.UI.MallPacket)deserializer.Deserialize("mall 50");
+            Assert.AreEqual((byte)50, packet.Unknown);
+        }
     }
 }
