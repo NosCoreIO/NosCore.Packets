@@ -11877,5 +11877,19 @@ namespace NosCore.Packets.Enumerations
         // Entering the Time-Space is not possible as at least one group member has no daily entries left.
         // <summary>
         GroupMemberHasNoTimeSpaceEntriesLeft = 2886,
+        // <summary>
+        // Chat is accessible from rank NosBlue or level %d+.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        ChatIsAccessibleFromRankNosBlueOrLevel = 2887,
+        // <summary>
+        // This item can be used from rank NosBlue or level %d+.<NEW_TYPE><0>
+        // <summary>
+        [Game18NArguments(typeof(long))]
+        ItemUsableFromRankNosBlueOrLevel = 2888,
+        // <summary>
+        // Do you really want to leave your family? (You cannot join a new family for one hour.)
+        // <summary>
+        LeaveFamilyOneHourQuestion = 2889,
     }
 }
