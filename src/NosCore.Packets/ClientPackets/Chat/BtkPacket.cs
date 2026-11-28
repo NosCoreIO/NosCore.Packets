@@ -16,7 +16,11 @@ namespace NosCore.Packets.ClientPackets.Chat
         [PacketIndex(0)]
         public long CharacterId { get; set; }
 
+        // The client writes the friend's name before the message.
         [PacketIndex(1)]
+        public string? CharacterName { get; set; }
+
+        [PacketIndex(2)]
         public string? Message { get; set; }
     }
 }
