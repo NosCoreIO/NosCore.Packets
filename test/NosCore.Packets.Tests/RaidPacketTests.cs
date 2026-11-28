@@ -18,7 +18,8 @@ namespace NosCore.Packets.Tests
     {
         private static readonly ISerializer Serializer = new Serializer(new[]
         {
-            typeof(RdlstPacket), typeof(RdlstSubPacket), typeof(ServerRlPacket), typeof(ServerRlSubPacket)
+            typeof(RdlstPacket), typeof(RdlstSubPacket), typeof(ServerRlPacket), typeof(ServerRlSubPacket),
+            typeof(HcscorePacket), typeof(HcscoreSubPacket)
         });
 
         [TestMethod]
@@ -65,6 +66,29 @@ namespace NosCore.Packets.Tests
             });
 
             Assert.AreEqual("rl 0 2.30.-10.Alice.50.-1.3.1.3.0", wire);
+        }
+
+        [TestMethod]
+        public void EachRankedPlayerIsOneDottedEntry()
+        {
+            var wire = Serializer.Serialize(new HcscorePacket
+            {
+                Ranking = new List<HcscoreSubPacket?>
+                {
+                    new()
+                    {
+                        Morph = 46, Class = CharacterClassType.Archer, Name = "Alice", Gender = GenderType.Male,
+                        Score = 57856, DamagePercent = 57
+                    },
+                    new()
+                    {
+                        Morph = 4, Class = CharacterClassType.Archer, Name = "Bob", Gender = GenderType.Male,
+                        Score = 780, DamagePercent = 0
+                    },
+                },
+            });
+
+            Assert.AreEqual("hcscore 46.2.Alice.0.57856.57 4.2.Bob.0.780.0", wire);
         }
     }
 }
