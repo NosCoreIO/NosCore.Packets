@@ -316,6 +316,7 @@
 - [req_info](../src/NosCore.Packets/ServerPackets/Entities/ReqInfoPacket.cs) *InGame | WhileDead*
 - [rest](../src/NosCore.Packets/ServerPackets/Entities/RestPacket.cs) *InGame*
 - [st](../src/NosCore.Packets/ServerPackets/Entities/StPacket.cs) *InGame*
+- [throw](../src/NosCore.Packets/ServerPackets/Entities/ThrowPacket.cs) *InGame*
 - [tp](../src/NosCore.Packets/ServerPackets/Entities/TpPacket.cs) *InGame*
 
 ### Event
@@ -325,11 +326,18 @@
 - [evnt](../src/NosCore.Packets/ServerPackets/Event/EventPacket.cs) *InGame*
 - [fbt](../src/NosCore.Packets/ServerPackets/Event/FbtPacket.cs) *InGame*
 - [raidbf](../src/NosCore.Packets/ServerPackets/Event/RaidbfPacket.cs) *InGame*
+- [raidfhp](../src/NosCore.Packets/ServerPackets/Event/RaidfhpPacket.cs) *InGame*
+- [raidf_member_sub_packet](../src/NosCore.Packets/ServerPackets/Event/RaidfMemberSubPacket.cs) *InGame*
+- [raidfmp](../src/NosCore.Packets/ServerPackets/Event/RaidfmpPacket.cs) *InGame*
+- [raidf](../src/NosCore.Packets/ServerPackets/Event/RaidfPacket.cs) *InGame*
+- [raidmbf](../src/NosCore.Packets/ServerPackets/Event/RaidmbfPacket.cs) *InGame*
 - [raid](../src/NosCore.Packets/ServerPackets/Event/RaidPacket.cs) *InGame*
 - [rboss](../src/NosCore.Packets/ServerPackets/Event/RbossPacket.cs) *InGame*
 - [rbr](../src/NosCore.Packets/ServerPackets/Event/RbrPacket.cs) *InGame*
+- [rdlstf](../src/NosCore.Packets/ServerPackets/Event/RdlstfPacket.cs) *InGame*
 - [rdlst](../src/NosCore.Packets/ServerPackets/Event/RdlstPacket.cs) *InGame*
 - [rdlst_sub_packet](../src/NosCore.Packets/ServerPackets/Event/RdlstSubPacket.cs) *InGame*
+- [rdlstv](../src/NosCore.Packets/ServerPackets/Event/RdlstvPacket.cs) *InGame*
 - [repay](../src/NosCore.Packets/ServerPackets/Event/RepayPacket.cs) *InGame*
 - [rp](../src/NosCore.Packets/ServerPackets/Event/RpPacket.cs) *InGame*
 - [rl](../src/NosCore.Packets/ServerPackets/Event/ServerRlPacket.cs) *InGame*
