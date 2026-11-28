@@ -30,7 +30,7 @@ namespace NosCore.Packets.ServerPackets.Event
         public byte LeaderLevel { get; set; }
 
         [PacketIndex(5)]
-        public short LeaderMorph { get; set; }
+        public short? LeaderMorph { get; set; }
 
         [PacketIndex(6)]
         public CharacterClassType LeaderClass { get; set; }

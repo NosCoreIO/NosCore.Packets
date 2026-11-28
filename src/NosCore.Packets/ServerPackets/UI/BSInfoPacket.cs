@@ -9,7 +9,7 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.UI
 {
-    // Battle search window. Time is the countdown in seconds, -1 for none.
+    // Battle search window. Time is the countdown in seconds, absent for none.
     [PacketHeader("bsinfo", Scope.InGame)]
     public class BSInfoPacket : PacketBase
     {
@@ -20,7 +20,7 @@ namespace NosCore.Packets.ServerPackets.UI
         public BscPacketType Title { get; set; }
 
         [PacketIndex(2)]
-        public short Time { get; set; }
+        public short? Time { get; set; }
 
         [PacketIndex(3)]
         public BsInfoText Text { get; set; }

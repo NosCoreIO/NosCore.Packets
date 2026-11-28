@@ -23,7 +23,7 @@ namespace NosCore.Packets.ServerPackets.Player
         public short? GroupId { get; set; }
 
         [PacketIndex(3)]
-        public int FamilyId { get; set; }
+        public long? FamilyId { get; set; }
 
         [PacketIndex(4, SpecialSeparator = ".", IsOptional = true)]
         public Game18NConstString? FamilyRank { get; set; }
@@ -74,6 +74,6 @@ namespace NosCore.Packets.ServerPackets.Player
         public byte Unknown2 { get; set; } //TODO to find
 
         [PacketIndex(20)]
-        public short Unknown3 { get; set; } //TODO to find
+        public short? Unknown3 { get; set; } //TODO to find
     }
 }

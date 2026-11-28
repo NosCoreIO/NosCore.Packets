@@ -37,7 +37,7 @@ namespace NosCore.Packets.ServerPackets.MiniMap
         public MapType MapType { get; set; }
 
         [PacketIndex(8)]
-        public short Unknown3 { get; set; } //TODO to find
+        public short? Unknown3 { get; set; } //TODO to find
 
         [PacketIndex(9)]
         public short Unknown4 { get; set; } //TODO to find

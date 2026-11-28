@@ -39,9 +39,9 @@ namespace NosCore.Packets.ServerPackets.Entities
         [PacketIndex(7)]
         public byte Unknown7 { get; set; } = 2;
 
-        // -1 on a knock-back or a pull, 11 on a monster's charge.
+        // Absent on a knock-back or a pull, 11 on a monster's charge.
         [PacketIndex(8)]
-        public short Unknown8 { get; set; } = -1;
+        public short? Unknown8 { get; set; }
 
         // 1 when a player moves, 0 when a monster does.
         [PacketIndex(9)]

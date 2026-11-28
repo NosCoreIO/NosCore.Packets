@@ -911,7 +911,7 @@ namespace NosCore.Packets.Tests
                 ArenaWinner = false
 
             });
-            Assert.AreEqual("c_info test - -1 0 - 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0", packet);
+            Assert.AreEqual("c_info test - -1 0 - 1 0 0 0 0 0 0 0 0 0 0 0 0 0 -1", packet);
         }
 
         [TestMethod]
@@ -1653,7 +1653,7 @@ namespace NosCore.Packets.Tests
                 Class = CharacterClassType.Adventurer
             });
 
-            Assert.AreEqual("c_info Me - -1 5052.918 -Nemesis- 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0", packet);
+            Assert.AreEqual("c_info Me - -1 5052.918 -Nemesis- 1 0 0 0 0 0 0 0 0 0 0 0 0 0 -1", packet);
         }
 
         [TestMethod]

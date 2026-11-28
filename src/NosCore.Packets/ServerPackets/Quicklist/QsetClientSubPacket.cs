@@ -15,10 +15,10 @@ namespace NosCore.Packets.ServerPackets.Quicklist
         public QSetType Type { get; set; }
 
         [PacketIndex(1)]
-        public short OriginQuickList { get; set; }
+        public short? OriginQuickList { get; set; }
 
         [PacketIndex(2)]
-        public short OriginQuickListSlot { get; set; }
+        public short? OriginQuickListSlot { get; set; }
 
         [PacketIndex(3, IsOptional = true)]
         public short? Data { get; set; }

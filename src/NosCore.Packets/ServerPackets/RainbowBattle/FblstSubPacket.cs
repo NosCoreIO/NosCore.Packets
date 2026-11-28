@@ -16,9 +16,9 @@ namespace NosCore.Packets.ServerPackets.RainbowBattle
         [PacketIndex(0)]
         public byte Level { get; set; }
 
-        // The specialist card morph the member wears, -1 without one.
+        // The specialist card morph the member wears, absent without one.
         [PacketIndex(1)]
-        public int Morph { get; set; }
+        public int? Morph { get; set; }
 
         [PacketIndex(2)]
         public CharacterClassType Class { get; set; }

@@ -39,9 +39,9 @@ namespace NosCore.Packets.ServerPackets.Player
         [PacketIndex(5)]
         public GenderType Gender { get; set; }
 
-        // -1 without a family.
+        // Absent without a family.
         [PacketIndex(6)]
-        public long FamilyId { get; set; } = -1;
+        public long? FamilyId { get; set; }
 
         [PacketIndex(7)]
         public string? FamilyName { get; set; }

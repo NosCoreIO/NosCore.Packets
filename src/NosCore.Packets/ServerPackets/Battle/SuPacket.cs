@@ -26,16 +26,16 @@ namespace NosCore.Packets.ServerPackets.Battle
         public long TargetId { get; set; }
 
         [PacketIndex(4)]
-        public long SkillVnum { get; set; }
+        public long? SkillVnum { get; set; }
 
         [PacketIndex(5)]
         public long SkillCooldown { get; set; }
 
         [PacketIndex(6)]
-        public long AttackAnimation { get; set; }
+        public long? AttackAnimation { get; set; }
 
         [PacketIndex(7)]
-        public long SkillEffect { get; set; }
+        public long? SkillEffect { get; set; }
 
         [PacketIndex(8)]
         public long PositionX { get; set; }

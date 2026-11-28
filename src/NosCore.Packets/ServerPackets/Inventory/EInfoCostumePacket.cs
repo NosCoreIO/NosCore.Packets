@@ -64,9 +64,9 @@ namespace NosCore.Packets.ServerPackets.Inventory
         [PacketIndex(12)]
         public TradeRestriction TradeRestriction { get; set; }
 
-        // -1 when the costume never expires.
+        // Absent when the costume never expires.
         [PacketIndex(13)]
-        public int RemainingHours { get; set; }
+        public int? RemainingHours { get; set; }
 
         [PacketIndex(14)]
         public byte Unknown { get; set; }
