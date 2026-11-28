@@ -72,6 +72,8 @@ namespace NosCore.Packets.Tests
         [DataRow("rp 3 153 199 #u_i^1^14882169^2^3^1")]
         [DataRow("rnsc 0")]
         [DataRow("rnsc 628")]
+        [DataRow("hcscore 46.2.PlayerA.0.57856.57 24.2.PlayerB.1.55234.54 4.2.PlayerC.0.780.0")]
+        [DataRow("hcscore 25.3.PlayerA.0.520087.43 24.2.PlayerB.1.299889.24 24.2.PlayerC.1.139151.11")]
         [DataRow("mapclear")]
         [DataRow("s_mode 1 14293841 13 0")]
         [DataRow("nowtime  13 40 30")]
