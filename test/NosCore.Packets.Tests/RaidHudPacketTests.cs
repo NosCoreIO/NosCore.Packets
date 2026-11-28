@@ -44,6 +44,13 @@ namespace NosCore.Packets.Tests
         [DataRow("raidf 2 -1")]
         [DataRow("raidf 5 0")]
         [DataRow("raidf 4")]
+        [DataRow("raid 1 1")]
+        [DataRow("raid 2 1000001")]
+        [DataRow("raid 1 0")]
+        [DataRow("raid 5 0")]
+        [DataRow("raid 4")]
+        [DataRow("raid 3 1000001.100.100 1000002.74.64 1000003.6.81")]
+        [DataRow("raid 2 -1")]
         public void ACapturedRaidLineReadsBackUnchanged(string line)
         {
             Assert.AreEqual(line, Serializer.Serialize(Deserializer.Deserialize(line)));
@@ -120,6 +127,31 @@ namespace NosCore.Packets.Tests
         {
             Assert.AreEqual("raidf 4", Serializer.Serialize(new RaidfPacket { Type = 4 }));
             Assert.IsNull(((RaidfPacket)Deserializer.Deserialize("raidf 4")).Value);
+        }
+    
+        [TestMethod]
+        public void EachMemberIsItsIdDotItsHpDotItsMp()
+        {
+            Assert.AreEqual("raid 3 1000001.100.100 1000002.74.64", Serializer.Serialize(new RaidMemberStatsPacket
+            {
+                Members = new List<RaidMemberStatSubPacket?>
+                {
+                    new() { CharacterId = 1000001, HpPercent = 100, MpPercent = 100 },
+                    new() { CharacterId = 1000002, HpPercent = 74, MpPercent = 64 }
+                }
+            }));
+
+            var stats = (RaidMemberStatsPacket)Deserializer.Deserialize("raid 3 1000001.6.81");
+            Assert.AreEqual(1000001L, stats.Members![0]!.CharacterId);
+            Assert.AreEqual((byte)6, stats.Members[0]!.HpPercent);
+            Assert.AreEqual((byte)81, stats.Members[0]!.MpPercent);
+        }
+
+        [TestMethod]
+        public void ARaidStateWithoutValueEndsAtItsType()
+        {
+            Assert.AreEqual("raid 4", Serializer.Serialize(new RaidPacket { Type = 4 }));
+            Assert.AreEqual(-1L, ((RaidPacket)Deserializer.Deserialize("raid 2 -1")).Value);
         }
     }
 }

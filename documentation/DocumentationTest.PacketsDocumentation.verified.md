@@ -331,6 +331,8 @@
 - [raidfmp](../src/NosCore.Packets/ServerPackets/Event/RaidfmpPacket.cs) *InGame*
 - [raidf](../src/NosCore.Packets/ServerPackets/Event/RaidfPacket.cs) *InGame*
 - [raidmbf](../src/NosCore.Packets/ServerPackets/Event/RaidmbfPacket.cs) *InGame*
+- [raid](../src/NosCore.Packets/ServerPackets/Event/RaidMemberStatsPacket.cs) *InGame*
+- [raid_member_stat_sub_packet](../src/NosCore.Packets/ServerPackets/Event/RaidMemberStatSubPacket.cs) *InGame*
 - [raid](../src/NosCore.Packets/ServerPackets/Event/RaidPacket.cs) *InGame*
 - [rboss](../src/NosCore.Packets/ServerPackets/Event/RbossPacket.cs) *InGame*
 - [rbr](../src/NosCore.Packets/ServerPackets/Event/RbrPacket.cs) *InGame*
