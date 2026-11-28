@@ -6,25 +6,32 @@
 
 using NosCore.Packets.Attributes;
 using NosCore.Packets.Enumerations;
+using NosCore.Shared.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Event
 {
-    // Raid boss HP bar update. Type tends to be 3 during the live fight in OpenNos
-    // (status = active); 0 hides the bar. MapMonsterId + HP values drive the visual
-    // so the raid party can see the boss's remaining health.
+    // A raid boss's HP bar. Sent right after the boss comes into view and about once a second while it
+    // lives, the last time with no HP left.
     [PacketHeader("rboss", Scope.InGame)]
     public class RbossPacket : PacketBase
     {
         [PacketIndex(0)]
-        public byte Type { get; set; }
+        public VisualType VisualType { get; set; }
 
         [PacketIndex(1)]
-        public int MapMonsterId { get; set; }
+        public long VisualId { get; set; }
 
         [PacketIndex(2)]
         public int CurrentHp { get; set; }
 
         [PacketIndex(3)]
         public int MaxHp { get; set; }
+
+        [PacketIndex(4)]
+        public short VNum { get; set; }
+
+        // 0 in every trace.
+        [PacketIndex(5)]
+        public byte Unknown { get; set; }
     }
 }

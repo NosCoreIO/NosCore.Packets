@@ -9,18 +9,16 @@ using NosCore.Packets.Enumerations;
 
 namespace NosCore.Packets.ServerPackets.Event
 {
-    // Raid membership / lifecycle broadcast. OpenNos multiplexes several subtypes:
-    //   raid 0 {characterId}  — member joined
-    //   raid 1 {active}       — raid started (1) or ended (0)
-    //   raid 2 {characterId}  — member left (-1 = full disband)
-    // Value carries the subtype-specific payload.
-    [PacketHeader("raid", Scope.InGame)]
+    // A raid team's state. Seen: raid 1 1 on joining the team and raid 1 0 on entering the raid, raid 2 with
+    // the leader's id (-1 once out of the team), then raid 5 0 and raid 4 with no value once inside. The
+    // members' HP and MP (raid 3) are RaidMemberStatsPacket.
+    [PacketHeader("raid", Scope.InGame, AllowDuplicateHeader = true)]
     public class RaidPacket : PacketBase
     {
         [PacketIndex(0)]
         public byte Type { get; set; }
 
-        [PacketIndex(1)]
-        public long Value { get; set; }
+        [PacketIndex(1, IsOptional = true)]
+        public long? Value { get; set; }
     }
 }
