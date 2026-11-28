@@ -18,7 +18,7 @@ namespace NosCore.Packets.ServerPackets.Event
 
         // -1 when the member is neither transformed nor riding.
         [PacketIndex(1)]
-        public short Morph { get; set; }
+        public short? Morph { get; set; }
 
         [PacketIndex(2)]
         public CharacterClassType Class { get; set; }

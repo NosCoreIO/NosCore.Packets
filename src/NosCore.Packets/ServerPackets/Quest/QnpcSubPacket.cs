@@ -8,16 +8,16 @@ using NosCore.Packets.Attributes;
 
 namespace NosCore.Packets.ServerPackets.Quest
 {
-    // Ten of them per line; an unused one is -1|-1|-1.
+    // Ten of them per line; an unused one has every field absent.
     public class QnpcSubPacket : PacketBase
     {
         [PacketIndex(0)]
-        public short Unknown0 { get; set; } = -1;
+        public short? Unknown0 { get; set; }
 
         [PacketIndex(1)]
-        public short Unknown1 { get; set; } = -1;
+        public short? Unknown1 { get; set; }
 
         [PacketIndex(2)]
-        public short Unknown2 { get; set; } = -1;
+        public short? Unknown2 { get; set; }
     }
 }

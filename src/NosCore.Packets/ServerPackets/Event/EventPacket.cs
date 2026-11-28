@@ -13,9 +13,9 @@ namespace NosCore.Packets.ServerPackets.Event
         public EventTimerState State { get; set; }
 
         [PacketIndex(2)]
-        public int Parameter { get; set; }
+        public int? Parameter { get; set; }
 
         [PacketIndex(3)]
-        public int SecondParameter { get; set; }
+        public int? SecondParameter { get; set; }
     }
 }

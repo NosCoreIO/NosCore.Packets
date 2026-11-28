@@ -19,6 +19,6 @@ namespace NosCore.Packets.ServerPackets.Battle
         public bool IsActivated { get; set; }
 
         [PacketIndex(2)]
-        public int RemainingTime { get; set; }
+        public int? RemainingTime { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace NosCore.Packets.ServerPackets.Shop
     public class PidxPacket : PacketBase
     {
         [PacketIndex(0)]
-        public long GroupId { get; set; }
+        public long? GroupId { get; set; }
 
         [PacketListIndex(1)]
         public List<PidxSubPacket?>? SubPackets { get; set; }
