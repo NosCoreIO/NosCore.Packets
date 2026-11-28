@@ -325,6 +325,8 @@
 - [evtb](../src/NosCore.Packets/ServerPackets/Event/EventbPacket.cs) *InGame*
 - [evnt](../src/NosCore.Packets/ServerPackets/Event/EventPacket.cs) *InGame*
 - [fbt](../src/NosCore.Packets/ServerPackets/Event/FbtPacket.cs) *InGame*
+- [hcscore](../src/NosCore.Packets/ServerPackets/Event/HcscorePacket.cs) *InGame*
+- [hcscore_sub_packet](../src/NosCore.Packets/ServerPackets/Event/HcscoreSubPacket.cs) *InGame*
 - [raidbf](../src/NosCore.Packets/ServerPackets/Event/RaidbfPacket.cs) *InGame*
 - [raidfhp](../src/NosCore.Packets/ServerPackets/Event/RaidfhpPacket.cs) *InGame*
 - [raidf_member_sub_packet](../src/NosCore.Packets/ServerPackets/Event/RaidfMemberSubPacket.cs) *InGame*
